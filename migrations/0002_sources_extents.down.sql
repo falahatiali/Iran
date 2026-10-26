@@ -1,0 +1,3 @@
+DROP TABLE IF EXISTS extents;
+DROP TABLE IF EXISTS dynasty_sources;
+DROP TABLE IF EXISTS sources;
