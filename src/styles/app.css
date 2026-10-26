@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@font-face { font-family: Vazirmatn; src: url('/fonts/Vazirmatn-Light.woff2') format('woff2'); font-weight: 300; font-display: swap; }
+@font-face { font-family: Vazirmatn; src: url('/fonts/Vazirmatn-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: Vazirmatn; src: url('/fonts/Vazirmatn-Medium.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+@font-face { font-family: Vazirmatn; src: url('/fonts/Vazirmatn-Bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: Vazirmatn; src: url('/fonts/Vazirmatn-Black.woff2') format('woff2'); font-weight: 900; font-display: swap; }
+
+@theme {
+  --font-sans: Vazirmatn, Tahoma, system-ui, sans-serif;
+  --color-night: #070d1f;
+  --color-lapis: #0f1f4b;
+  --color-lapis-2: #1a3478;
+  --color-turquoise: #2ec4b6;
+  --color-turquoise-soft: #9be7df;
+  --color-gold: #d9b45a;
+  --color-gold-bright: #f2d68b;
+  --color-ivory: #f6efe1;
+  --color-crimson: #9b1c31;
+  --text-display: clamp(2.6rem, 7vw, 6rem);
+  --ease-silk: cubic-bezier(.2,.8,.2,1);
+}
+
+html { scroll-behavior: smooth; }
+html, body { overflow-x: clip; }
+body {
+  @apply bg-night text-ivory font-sans antialiased;
+  background-image:
+    radial-gradient(1200px 600px at 85% -10%, rgb(46 196 182 / .12), transparent 60%),
+    radial-gradient(900px 500px at 0% 20%, rgb(217 180 90 / .10), transparent 60%);
+  background-attachment: fixed;
+}
+::selection { background: var(--color-gold); color: var(--color-night); }
+:focus-visible { outline: 2px solid var(--color-gold-bright); outline-offset: 3px; border-radius: 6px; }
+
+@utility glass {
+  background: linear-gradient(145deg, rgb(255 255 255 / .07), rgb(255 255 255 / .02));
+  border: 1px solid rgb(217 180 90 / .22);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  box-shadow: 0 10px 40px -12px rgb(0 0 0 / .55), inset 0 1px 0 rgb(255 255 255 / .06);
+}
+@utility text-gilded {
+  background: linear-gradient(100deg, #b8862f, #f2d68b 30%, #fff4cf 45%, #d9b45a 60%, #9c6f1f);
+  background-size: 200% auto;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: shimmer 8s linear infinite;
+}
+@keyframes shimmer { to { background-position: -200% center; } }
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+.animate-spin-slow { animation: spin-slow 120s linear infinite; }
+
+.girih-bg {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23d9b45a' stroke-opacity='.10' stroke-width='1'%3E%3Cpath d='M40 0l11.7 28.3L80 40 51.7 51.7 40 80 28.3 51.7 0 40l28.3-11.7z'/%3E%3Cpath d='M40 16l7 17 17 7-17 7-7 17-7-17-17-7 17-7z'/%3E%3Ccircle cx='40' cy='40' r='6'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+}
