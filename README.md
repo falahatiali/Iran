@@ -19,11 +19,15 @@
 ## ✨ ویژگی‌ها
 
 - **پیش‌رندر (Prerender) کامل**: همهٔ ۲۴۰ صفحه به‌صورت استاتیک تولید می‌شوند (SEO محور)
+- **صفحات اختصاصی**: صفحه‌ی جداگانه برای هر دودمان (`/dynasty/[slug]`) و هر فرمانروا (`/king/[slug]`)
+- **شجره‌نامه‌های تعاملی**: درخت خانوادگی کلیک‌پذیر (شجره‌نامه) با پیوندهای بین فرمانروایان
+- **گاه‌شمار جامع**: خط زمانی سراسری قابل فیلتر بر اساس دوره، دودمان و نوع رویداد
 - **طراحی راست‌به‌چپ**: واسط کاربری کاملاً فارسی با قلم محلی وزیرمتن
+- **جست‌وجوی هوشمند فارسی**: نرمال‌سازی ی/ي، ک/ك، نیم‌فاصله و اعراب برای جست‌وجوی دقیق
 - **انیمیشن‌های نرم**: انتقال صفحات و افکت‌های ظاهرسازی با احترام به `prefers-reduced-motion`
-- **جست‌وجوی پیشرفته**: جست‌وجو در فرمانروایان، دودمان‌ها و رویدادها با نرمال‌سازی فارسی
+- **واکنشگرا برای موبایل**: قالب‌های آزمایش‌شده در 360px، 390px و 768px با tap targets حداقل ۴۴px
 - **دسترسی‌پذیر**: Semantic HTML، ARIA labels، کنتراست رنگ‌ها
-- **موبایل‌محور**: طراحی واکنشگرا (responsive) برای همهٔ ابعاد صفحه
+- **یکپارچگی مداوم (CI)**: هر push/PR خودکار lint، typecheck، آزمون دود پایگاه داده، build و ساخت Docker image را اجرا می‌کند
 
 ## 🛠 فناوری‌ها
 
@@ -405,11 +409,15 @@ export const dynastySources: Record<string, string[]> = {
 ## ✨ Features
 
 - **Full prerendering**: all 240 pages generated as static HTML (SEO-first)
+- **Dedicated pages**: separate dynasty pages (`/dynasty/[slug]`) and king pages (`/king/[slug]`)
+- **Clickable interactive family trees**: multi-generational شجره‌نامه (shajare-nāme) with links between rulers
+- **Global filterable timeline**: unified chronological view with filters by era, dynasty, and event type
 - **Right-to-left design**: fully Persian UI with self-hosted Vazirmatn font
+- **Persian-aware search**: normalization for ي/ی, ك/ک, ZWNJ (zero-width non-joiner), and diacritics
 - **Smooth animations**: page transitions and reveal effects respecting `prefers-reduced-motion`
-- **Advanced search**: search rulers, dynasties, and events with Persian normalization
+- **Mobile-responsive**: templates tested at 360px, 390px, and 768px viewports with tap targets ≥44px
 - **Accessible**: semantic HTML, ARIA labels, color contrast
-- **Mobile-first**: responsive design for all screen sizes
+- **Continuous Integration**: automated lint, typecheck, database smoke test, build, and Docker image creation on every push/PR via GitHub Actions
 
 ## 🛠 Tech Stack
 
