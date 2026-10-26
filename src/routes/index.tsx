@@ -103,15 +103,19 @@ function Home() {
             <span className="sr-only">فیلتر پادشاهان</span>
             <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="فیلتر پادشاه…" className="w-32 md:w-48 rounded-full bg-ivory/5 border border-gold/25 px-4 py-1.5 text-sm outline-none focus:border-gold" />
           </label>
-          <nav ref={navRef} aria-label="دودمان‌ها" className="flex gap-1 overflow-x-auto [scrollbar-width:none]">
-            {filtered.map((d) => (
-              <a key={d.slug} data-chip={d.slug} href={`#d-${d.slug}`} aria-current={active === d.slug ? 'true' : undefined}
-                className={`relative whitespace-nowrap rounded-full px-3 py-2.5 text-sm transition-colors min-h-11 min-w-11 inline-flex items-center ${active === d.slug ? 'text-night' : 'text-ivory/70 hover:text-gold'}`}>
-                {active === d.slug && <motion.span layoutId="chip" className="absolute inset-0 rounded-full bg-gold" transition={{ type: 'spring', stiffness: 400, damping: 30 }} />}
-                <span className="relative">{d.name}</span>
-              </a>
-            ))}
-          </nav>
+          <div className="relative flex-1 min-w-0">
+            <nav ref={navRef} aria-label="دودمان‌ها" className="flex gap-2 overflow-x-auto [scrollbar-width:none] scroll-smooth">
+              {filtered.map((d) => (
+                <a key={d.slug} data-chip={d.slug} href={`#d-${d.slug}`} aria-current={active === d.slug ? 'true' : undefined}
+                  className={`relative shrink-0 whitespace-nowrap rounded-full px-3 py-2.5 text-sm transition-colors min-h-11 inline-flex items-center ${active === d.slug ? 'text-night' : 'text-ivory/70 hover:text-gold'}`}>
+                  {active === d.slug && <motion.span layoutId="chip" className="absolute inset-0 rounded-full bg-gold" transition={{ type: 'spring', stiffness: 400, damping: 30 }} />}
+                  <span className="relative">{d.name}</span>
+                </a>
+              ))}
+            </nav>
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-night/80 to-transparent" aria-hidden="true" />
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-night/80 to-transparent" aria-hidden="true" />
+          </div>
         </div>
       </div>
 
