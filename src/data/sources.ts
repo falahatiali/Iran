@@ -1,0 +1,84 @@
+export interface Source {
+  id: string
+  title: string
+  author?: string
+  kind: 'reference' | 'primary' | 'monograph'
+  url?: string
+}
+
+export const sources: Source[] = [
+  { id: 'iranica', title: 'Encyclopædia Iranica', author: 'ed. E. Yarshater et al.', kind: 'reference', url: 'https://www.iranicaonline.org/' },
+  { id: 'chi', title: 'The Cambridge History of Iran (7 vols.)', author: 'Cambridge University Press, 1968–1991', kind: 'reference' },
+  { id: 'herodotus', title: 'تاریخ (Histories)', author: 'هرودوت', kind: 'primary' },
+  { id: 'behistun', title: 'کتیبه‌ی بیستون', author: 'داریوش بزرگ', kind: 'primary', url: 'https://www.livius.org/sources/content/behistun-persian-text/' },
+  { id: 'cyrus-cylinder', title: 'استوانه‌ی کوروش', kind: 'primary', url: 'https://www.britishmuseum.org/collection/object/W_1880-0617-1941' },
+  { id: 'briant', title: 'From Cyrus to Alexander: A History of the Persian Empire', author: 'Pierre Briant', kind: 'monograph' },
+  { id: 'potts', title: 'The Archaeology of Elam', author: 'D. T. Potts', kind: 'monograph' },
+  { id: 'tabari', title: 'تاریخ الرسل و الملوک (تاریخ طبری)', author: 'محمد بن جریر طبری', kind: 'primary' },
+  { id: 'shahnameh', title: 'شاهنامه', author: 'فردوسی', kind: 'primary' },
+  { id: 'daryaee', title: 'Sasanian Persia: The Rise and Fall of an Empire', author: 'Touraj Daryaee', kind: 'monograph' },
+  { id: 'bosworth', title: 'The New Islamic Dynasties', author: 'C. E. Bosworth', kind: 'reference' },
+  { id: 'bayhaqi', title: 'تاریخ بیهقی', author: 'ابوالفضل بیهقی', kind: 'primary' },
+  { id: 'juvayni', title: 'تاریخ جهانگشای', author: 'عطاملک جوینی', kind: 'primary' },
+  { id: 'rashid', title: 'جامع‌التواریخ', author: 'رشیدالدین فضل‌الله', kind: 'primary' },
+  { id: 'newman', title: 'Safavid Iran: Rebirth of a Persian Empire', author: 'Andrew J. Newman', kind: 'monograph' },
+  { id: 'abrahamian', title: 'A History of Modern Iran', author: 'Ervand Abrahamian', kind: 'monograph' },
+  { id: 'amanat', title: 'Iran: A Modern History', author: 'Abbas Amanat', kind: 'monograph' },
+  { id: 'news-2026', title: 'گزارش‌های خبری AFP / Al Arabiya، مهر ۱۴۰۵ (اکتبر ۲۰۲۶)', kind: 'reference', url: 'https://english.alarabiya.net/News/middle-east/2026/10/21/iran-says-parliament-speaker-met-unseen-supreme-leader-mojtaba-khamenei' },
+]
+
+/** dynasty slug -> source ids */
+export const dynastySources: Record<string, string[]> = {
+  elam: ['potts', 'iranica', 'chi'],
+  medes: ['herodotus', 'iranica', 'chi'],
+  achaemenids: ['herodotus', 'behistun', 'cyrus-cylinder', 'briant', 'iranica'],
+  seleucids: ['chi', 'iranica'],
+  parthians: ['chi', 'iranica'],
+  sasanians: ['tabari', 'shahnameh', 'daryaee', 'iranica'],
+  tahirids: ['bosworth', 'tabari', 'iranica'],
+  saffarids: ['bosworth', 'iranica'],
+  samanids: ['bosworth', 'chi', 'iranica'],
+  ziyarids: ['bosworth', 'iranica'],
+  buyids: ['bosworth', 'chi', 'iranica'],
+  ghaznavids: ['bayhaqi', 'bosworth', 'iranica'],
+  seljuks: ['chi', 'bosworth', 'iranica'],
+  khwarazmshahs: ['juvayni', 'bosworth', 'iranica'],
+  ilkhanids: ['rashid', 'juvayni', 'chi', 'iranica'],
+  timurids: ['chi', 'bosworth', 'iranica'],
+  turkmens: ['bosworth', 'iranica'],
+  safavids: ['newman', 'chi', 'iranica'],
+  hotakis: ['chi', 'iranica'],
+  afsharids: ['chi', 'iranica'],
+  zands: ['chi', 'iranica'],
+  qajars: ['amanat', 'abrahamian', 'iranica'],
+  pahlavis: ['abrahamian', 'amanat', 'iranica'],
+  'islamic-republic': ['abrahamian', 'news-2026'],
+}
+
+/** rough territorial extent polygons [lon, lat] (simplified, self-drawn, approximate) */
+export const extents: Record<string, [number, number][]> = {
+  elam: [[47, 33], [50, 32.5], [53, 30], [52, 28.5], [49, 29.5], [47, 31]],
+  medes: [[38, 40], [45, 41], [52, 38], [58, 36], [56, 33], [48, 32], [42, 36]],
+  achaemenids: [[22, 41], [30, 42], [41, 44], [50, 42], [60, 44], [70, 41], [74, 37], [73, 30], [68, 24], [58, 25], [52, 27], [48, 29], [40, 30], [34, 28], [30, 25], [25, 30], [26, 37]],
+  seleucids: [[27, 38], [36, 38], [45, 38], [55, 38], [65, 40], [70, 36], [66, 28], [56, 26], [48, 29], [40, 31], [35, 31]],
+  parthians: [[38, 39], [46, 41], [54, 41], [62, 40], [68, 37], [66, 28], [58, 25], [50, 28], [47, 30], [40, 33]],
+  sasanians: [[38, 40], [46, 43], [54, 41], [62, 40], [70, 38], [70, 30], [64, 25], [56, 23], [50, 26], [45, 29], [39, 33]],
+  tahirids: [[52, 37], [58, 39], [66, 40], [69, 37], [64, 33], [57, 34]],
+  saffarids: [[50, 30], [58, 37], [67, 37], [69, 32], [63, 27], [55, 27]],
+  samanids: [[52, 37], [58, 41], [67, 43], [72, 41], [70, 36], [63, 32], [56, 34]],
+  ziyarids: [[50, 36.5], [54, 38], [56, 37.5], [55, 36], [51, 35.5]],
+  buyids: [[42, 36], [50, 37], [55, 36], [58, 30], [55, 26], [48, 28], [44, 31]],
+  ghaznavids: [[54, 37], [62, 40], [70, 38], [76, 32], [74, 25], [66, 25], [58, 30]],
+  seljuks: [[28, 40], [40, 42], [50, 42], [62, 42], [72, 40], [70, 34], [60, 28], [50, 27], [42, 31], [34, 33]],
+  khwarazmshahs: [[47, 40], [56, 44], [66, 45], [72, 42], [70, 33], [62, 27], [53, 27], [48, 31], [45, 35]],
+  ilkhanids: [[32, 39], [42, 42], [52, 42], [60, 40], [65, 36], [62, 27], [55, 26], [48, 29], [42, 31], [36, 35]],
+  timurids: [[42, 40], [52, 42], [62, 44], [72, 43], [74, 36], [68, 29], [60, 26], [52, 27], [46, 32]],
+  turkmens: [[38, 39], [45, 41], [50, 39], [54, 35], [52, 30], [46, 31], [40, 36]],
+  safavids: [[42, 40], [48, 42], [54, 40], [60, 38], [64, 35], [66, 31], [62, 26], [56, 25], [50, 28], [46, 30], [44, 34]],
+  hotakis: [[51, 33], [54, 33], [60, 32], [66, 32], [65, 30], [56, 29], [51, 31]],
+  afsharids: [[40, 41], [48, 43], [56, 41], [66, 38], [72, 35], [70, 28], [62, 25], [54, 25], [48, 29], [44, 33]],
+  zands: [[44, 38], [50, 39], [54, 36], [60, 34], [60, 27], [54, 26], [49, 29], [46, 31]],
+  qajars: [[44, 39.5], [48, 41], [54, 38], [61, 36.5], [61, 31], [61.5, 25.5], [56, 26.5], [51, 27.5], [48.5, 30], [46, 33], [44.5, 37]],
+  pahlavis: [[44, 39.5], [48, 39.7], [54, 37.3], [61, 36.5], [61, 31], [61.5, 25.5], [56, 26.5], [51, 27.5], [48.5, 30], [46, 33], [44.5, 37]],
+  'islamic-republic': [[44, 39.5], [48, 39.7], [54, 37.3], [61, 36.5], [61, 31], [61.5, 25.5], [56, 26.5], [51, 27.5], [48.5, 30], [46, 33], [44.5, 37]],
+}
