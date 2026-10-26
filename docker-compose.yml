@@ -1,0 +1,15 @@
+services:
+  web:
+    build: .
+    image: iran-history:latest
+    ports:
+      - "3000:3000"
+    environment:
+      DB_DRIVER: sqlite
+      DATABASE_URL: file:/data/iran.db
+    volumes:
+      - iran-db:/data
+    restart: unless-stopped
+
+volumes:
+  iran-db:
