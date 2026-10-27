@@ -1,0 +1,47 @@
+# Traefik configuration via Docker labels
+# Add these labels to your docker-compose.prod.yml service
+
+# Replace the ports section with:
+# ports: []
+
+# Uncomment networks section:
+# networks:
+#   - proxy
+
+# Add these labels:
+labels:
+  # Enable Traefik
+  - "traefik.enable=true"
+  
+  # HTTP router
+  - "traefik.http.routers.iran-history.rule=Host(`iran.example.com`)"
+  - "traefik.http.routers.iran-history.entrypoints=web"
+  
+  # Redirect HTTP to HTTPS
+  - "traefik.http.routers.iran-history.middlewares=iran-history-redirect"
+  - "traefik.http.middlewares.iran-history-redirect.redirectscheme.scheme=https"
+  - "traefik.http.middlewares.iran-history-redirect.redirectscheme.permanent=true"
+  
+  # HTTPS router
+  - "traefik.http.routers.iran-history-secure.rule=Host(`iran.example.com`)"
+  - "traefik.http.routers.iran-history-secure.entrypoints=websecure"
+  - "traefik.http.routers.iran-history-secure.tls=true"
+  - "traefik.http.routers.iran-history-secure.tls.certresolver=letsencrypt"
+  
+  # Service configuration
+  - "traefik.http.services.iran-history.loadbalancer.server.port=3000"
+  
+  # Security headers middleware
+  - "traefik.http.routers.iran-history-secure.middlewares=iran-history-headers"
+  - "traefik.http.middlewares.iran-history-headers.headers.stsSeconds=31536000"
+  - "traefik.http.middlewares.iran-history-headers.headers.stsIncludeSubdomains=true"
+  - "traefik.http.middlewares.iran-history-headers.headers.frameDeny=true"
+  - "traefik.http.middlewares.iran-history-headers.headers.contentTypeNosniff=true"
+  - "traefik.http.middlewares.iran-history-headers.headers.browserXssFilter=true"
+
+# Also ensure the proxy network exists:
+# networks:
+#   proxy:
+#     external: true
+
+# Create it with: docker network create proxy

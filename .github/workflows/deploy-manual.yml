@@ -1,0 +1,85 @@
+name: Manual Deploy/Rollback
+
+on:
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: 'Image tag to deploy (commit SHA or "latest")'
+        required: true
+        default: 'latest'
+        type: string
+      environment:
+        description: 'Target environment'
+        required: true
+        default: 'production'
+        type: choice
+        options:
+          - production
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy ${{ inputs.image_tag }} to ${{ inputs.environment }}
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.environment }}
+      url: ${{ vars.PRODUCTION_URL || 'https://iran.example.com' }}
+    concurrency:
+      group: ${{ inputs.environment }}-deploy
+      cancel-in-progress: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Validate image tag
+        run: |
+          if [[ "${{ inputs.image_tag }}" != "latest" ]] && ! [[ "${{ inputs.image_tag }}" =~ ^[0-9a-f]{7,40}$ ]]; then
+            echo "❌ Invalid image tag. Must be 'latest' or a commit SHA"
+            exit 1
+          fi
+          echo "✅ Image tag validated: ${{ inputs.image_tag }}"
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          echo "${{ secrets.DEPLOY_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+
+      - name: Deploy application
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER || 'iran-deploy' }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT || '22' }}
+          DEPLOY_DIR: ${{ vars.DEPLOY_DIR || '/opt/iran-history' }}
+          IMAGE_TAG: ${{ inputs.image_tag }}
+        run: |
+          echo "🚀 Deploying image tag: $IMAGE_TAG"
+          
+          # Copy deploy script
+          scp -i ~/.ssh/deploy_key -P $DEPLOY_PORT \
+            deploy/deploy.sh \
+            $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_DIR/
+
+          # Copy docker-compose.prod.yml
+          scp -i ~/.ssh/deploy_key -P $DEPLOY_PORT \
+            docker-compose.prod.yml \
+            $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_DIR/
+
+          # Execute deployment
+          ssh -i ~/.ssh/deploy_key -p $DEPLOY_PORT $DEPLOY_USER@$DEPLOY_HOST \
+            "cd $DEPLOY_DIR && IMAGE_TAG=$IMAGE_TAG bash deploy.sh"
+
+      - name: Cleanup
+        if: always()
+        run: rm -f ~/.ssh/deploy_key
+
+      - name: Summary
+        run: |
+          echo "### ✅ Deployment Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Image**: ghcr.io/falahatiali/iran:${{ inputs.image_tag }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Environment**: ${{ inputs.environment }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Deployed by**: @${{ github.actor }}" >> $GITHUB_STEP_SUMMARY

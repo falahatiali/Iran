@@ -1,0 +1,66 @@
+version: "3.9"
+
+services:
+  web:
+    image: ghcr.io/falahatiali/iran:${IMAGE_TAG:-latest}
+    container_name: iran-history
+    restart: unless-stopped
+    
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+    
+    # Environment variables
+    environment:
+      NODE_ENV: production
+      DB_DRIVER: sqlite
+      DATABASE_URL: file:/data/iran.db
+      PORT: 3000
+    
+    # Persistent volume
+    volumes:
+      - iran-data:/data:rw
+    
+    # Network configuration
+    # Option 1: Bind to localhost only (use with reverse proxy)
+    ports:
+      - "${BIND_HOST:-127.0.0.1}:${BIND_PORT:-3000}:3000"
+    
+    # Option 2: Use external network for Traefik/other proxy (comment out ports above)
+    # networks:
+    #   - proxy
+    # labels:
+    #   - "traefik.enable=true"
+    #   - "traefik.http.routers.iran.rule=Host(`${DOMAIN:-iran.example.com}`)"
+    #   - "traefik.http.routers.iran.entrypoints=websecure"
+    #   - "traefik.http.routers.iran.tls.certresolver=letsencrypt"
+    
+    # Logging
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3000/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  iran-data:
+    name: iran-history-data
+
+# Uncomment if using external network
+# networks:
+#   proxy:
+#     external: true
