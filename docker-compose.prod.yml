@@ -4,10 +4,15 @@ services:
     container_name: iran-history
     restart: unless-stopped
     
-    # Resource limits (v1-compatible format)
-    cpus: 1.0
-    mem_limit: 1g
-    mem_reservation: 256m
+    # Resource limits (compose-spec v2 format)
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+        reservations:
+          cpus: '0.25'
+          memory: 256M
     
     # Runtime environment from server-side file (secrets stay on server)
     env_file:
