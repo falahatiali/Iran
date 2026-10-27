@@ -12,6 +12,18 @@ COMPOSE_PROJECT="iran-history"
 HEALTHCHECK_TIMEOUT="${HEALTHCHECK_TIMEOUT:-60}"
 ROLLBACK_ON_FAILURE="${ROLLBACK_ON_FAILURE:-true}"
 
+# Detect Docker Compose command (v2 plugin or standalone)
+if docker compose version &>/dev/null; then
+    DOCKER_COMPOSE="docker compose"
+elif command -v docker-compose &>/dev/null; then
+    DOCKER_COMPOSE="docker-compose"
+else
+    echo "❌ Neither 'docker compose' (v2 plugin) nor 'docker-compose' (standalone) found"
+    echo "   Please install Docker Compose: https://docs.docker.com/compose/install/"
+    exit 1
+fi
+echo "Using: $DOCKER_COMPOSE"
+
 echo "🚀 Deploying Iran History"
 echo "========================"
 echo "Image: ghcr.io/falahatiali/iran:${IMAGE_TAG}"
@@ -82,13 +94,13 @@ echo "❌ Deployment failed! Container did not become healthy within ${HEALTHCHE
 if [ "$ROLLBACK_ON_FAILURE" = "true" ] && [ -n "$CURRENT_IMAGE" ]; then
     echo ""
     echo "🔄 Rolling back to previous image..."
-    docker compose -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" down
+    $DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" down
     
     # Restore previous image tag
     OLD_TAG=$(docker inspect "$CURRENT_IMAGE" --format '{{index .RepoTags 0}}' 2>/dev/null || echo "")
     if [ -n "$OLD_TAG" ]; then
         echo "IMAGE_TAG=${OLD_TAG##*:}" > "${DEPLOY_DIR}/.env.rollback"
-        docker compose -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" --env-file "${DEPLOY_DIR}/.env.rollback" up -d
+        $DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" --env-file "${DEPLOY_DIR}/.env.rollback" up -d
         echo "✅ Rolled back to previous version"
     else
         echo "⚠️  Could not determine previous image tag, manual intervention required"
@@ -98,6 +110,6 @@ fi
 # Show logs
 echo ""
 echo "📋 Recent logs:"
-docker compose -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" logs --tail=50
+$DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" logs --tail=50
 
 exit 1

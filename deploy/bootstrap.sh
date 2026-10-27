@@ -28,14 +28,19 @@ fi
 
 echo "✓ Docker is installed ($(docker --version))"
 
-# Check if Docker Compose plugin is installed
-if ! docker compose version &> /dev/null; then
-    echo "❌ Docker Compose plugin not found. Please install it:"
-    echo "   https://docs.docker.com/compose/install/linux/"
+# Check for Docker Compose (v2 plugin or standalone v1)
+if docker compose version &> /dev/null; then
+    echo "✓ Docker Compose plugin (v2) is installed ($(docker compose version --short))"
+elif command -v docker-compose &> /dev/null; then
+    echo "✓ docker-compose (standalone) is installed ($(docker-compose --version))"
+    echo "   Note: On Debian/Ubuntu with docker.io package, install with:"
+    echo "   sudo apt install docker-compose"
+else
+    echo "❌ No Docker Compose found. Install either:"
+    echo "   • Docker Compose v2 plugin: https://docs.docker.com/compose/install/linux/"
+    echo "   • Or standalone docker-compose: sudo apt install docker-compose"
     exit 1
 fi
-
-echo "✓ Docker Compose plugin is installed ($(docker compose version --short))"
 
 # Check deploy user exists
 if id "$DEPLOY_USER" &>/dev/null; then
