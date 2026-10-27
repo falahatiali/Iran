@@ -101,7 +101,7 @@ jobs:
           sbom: true
 
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@062f2592684a31eb3aa050cc61e7ca1451cecd3d # 0.18.0
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # 0.36.0
         continue-on-error: true  # Never block deploy on scan failures
         env:
           SHORT_SHA: ${{ steps.meta.outputs.version }}
