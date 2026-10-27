@@ -376,6 +376,16 @@ export const dynastySources: Record<string, string[]> = {
 
 ---
 
+## 🚀 استقرار (Deployment)
+
+برای راه‌اندازی استقرار خودکار به سرور شخصی خود، راهنمای کامل را در [DEPLOYMENT.md](./DEPLOYMENT.md) ببینید. این شامل:
+- راه‌اندازی CI/CD با GitHub Actions
+- پیکربندی Docker و reverse proxy
+- استقرار خودکار به production با health checks و rollback
+- نظارت، امنیت و عیب‌یابی
+
+---
+
 ## 📄 مجوز
 
 **MIT License** — نگاه کنید به [LICENSE](./LICENSE).
@@ -763,6 +773,16 @@ If you find incorrect information:
 ## 🗺 Roadmap
 
 See [ROADMAP.md](./ROADMAP.md) for planned features and development roadmap.
+
+---
+
+## 🚀 Deployment
+
+For automatic deployment to your own server, see the complete guide in [DEPLOYMENT.md](./DEPLOYMENT.md). It includes:
+- CI/CD setup with GitHub Actions
+- Docker and reverse proxy configuration
+- Automatic deployment to production with health checks and rollback
+- Monitoring, security, and troubleshooting
 
 ---
 
