@@ -231,7 +231,9 @@ jobs:
             exit 1
           fi
           
-          if docker exec iran-history node -e "fetch('http://localhost:3000/').then(r=>r.text()).then(t=>{if(t.includes('Something went wrong'))throw new Error('Error boundary');process.exit(0)}).catch(e=>{console.error(e);process.exit(1)})"; then
+          if docker exec iran-history node -e "fetch('http://localhost:3000/').then(r=>r.text()).then(t=>{if(t.includes('Something went wrong'))process.exit(1);process.exit(0)}).catch(()=>process.exit(1))"; then
+            :  # Good - no error boundary
+          else
             echo "❌ Homepage shows error boundary!"
             docker logs iran-history --tail 100
             exit 1
