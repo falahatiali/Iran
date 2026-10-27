@@ -64,28 +64,34 @@ echo ""
 echo "📦 GitHub Container Registry Setup"
 echo "=================================="
 echo ""
+echo "The Iran History Docker image (ghcr.io/falahatiali/iran) is private."
+echo "You need a GitHub Personal Access Token (fine-grained) with:"
+echo "  - Repository: falahatiali/Iran"
+echo "  - Permission: Contents (read-only)"
+echo ""
+echo "Create one at: https://github.com/settings/tokens?type=beta"
+echo ""
 
 # Check if already logged in
-if sudo -u "$DEPLOY_USER" docker login ghcr.io --get-login 2>/dev/null | grep -q "$GHCR_USERNAME"; then
-    echo "✓ Already logged in to GHCR as $GHCR_USERNAME"
+if sudo -u "$DEPLOY_USER" docker login ghcr.io --get-login 2>/dev/null | grep -q ""; then
+    echo "✓ Already logged in to GHCR"
 else
-    echo "To pull images from GHCR, you need a Personal Access Token (PAT)"
-    echo "with 'read:packages' scope."
-    echo ""
     read -p "Enter GitHub username [$GHCR_USERNAME]: " input_username
     GHCR_USERNAME="${input_username:-$GHCR_USERNAME}"
 
-    read -sp "Enter GitHub PAT (input hidden): " GHCR_TOKEN
+    read -sp "Enter GitHub fine-grained PAT (input hidden): " GHCR_TOKEN
     echo ""
 
     if [[ -z "$GHCR_TOKEN" ]]; then
-        echo "⚠️  No token provided. Skipping GHCR login."
-        echo "   You can login later as $DEPLOY_USER:"
+        echo "⚠️  No token provided. You MUST login before deploying:"
         echo "   sudo -u $DEPLOY_USER docker login ghcr.io -u $GHCR_USERNAME"
+        echo ""
+        echo "Without GHCR authentication, docker compose pull will fail with 401."
     else
         echo "$GHCR_TOKEN" | sudo -u "$DEPLOY_USER" docker login ghcr.io -u "$GHCR_USERNAME" --password-stdin
         if [[ $? -eq 0 ]]; then
             echo "✓ Logged in to GHCR as $GHCR_USERNAME"
+            echo "   Credentials saved to /home/$DEPLOY_USER/.docker/config.json"
         else
             echo "❌ Failed to login to GHCR"
             exit 1

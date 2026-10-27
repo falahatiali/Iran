@@ -13,14 +13,14 @@ on:
 
 permissions:
   contents: read
-  packages: write
-  security-events: write  # Required for Trivy SARIF upload to Code Scanning
 
 jobs:
   # Quality gates
   check:
     name: Lint, Type Check, and Test
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
@@ -51,6 +51,10 @@ jobs:
     name: Build and Push Docker Image
     runs-on: ubuntu-latest
     needs: check
+    permissions:
+      contents: read
+      packages: write
+      security-events: write
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     outputs:
       image-tag: ${{ steps.meta.outputs.tags }}
@@ -75,7 +79,7 @@ jobs:
         with:
           images: ghcr.io/falahatiali/iran
           tags: |
-            type=sha,prefix=,format=short
+            type=sha,prefix=
             type=raw,value=latest,enable={{is_default_branch}}
           labels: |
             org.opencontainers.image.title=Iran History
@@ -98,19 +102,123 @@ jobs:
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@062f2592684a31eb3aa050cc61e7ca1451cecd3d # 0.18.0
-        continue-on-error: true  # Don't fail the build if Trivy scan fails
         with:
-          image-ref: ghcr.io/falahatiali/iran:${{ github.sha }}
+          image-ref: ${{ steps.build.outputs.imageid }}
           format: 'sarif'
           output: 'trivy-results.sarif'
           severity: 'CRITICAL,HIGH'
+          exit-code: '1'  # Fail on CRITICAL/HIGH vulnerabilities
+          ignore-unfixed: true  # Only fail on fixable issues
 
       - name: Upload Trivy results
         uses: github/codeql-action/upload-sarif@1b1aada464948af03b950897e5eb522f92603cc2 # v3.24.9
-        continue-on-error: true  # Don't fail the build if upload fails
         if: always()
         with:
           sarif_file: 'trivy-results.sarif'
+
+  # Dry-run deployment test
+  deploy-test:
+    name: Deployment Dry-Run
+    runs-on: ubuntu-latest
+    needs: build-push
+    permissions:
+      contents: read
+      packages: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Log in to GHCR
+        uses: docker/login-action@e92390c5fb421da1463c202d546fed0ec5c39f20 # v3.1.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create mock environment
+        run: |
+          # Create external traefik-network stub
+          docker network create traefik-network || true
+          
+          # Create mock env file
+          mkdir -p /tmp/mock-deploy/envFiles
+          cat > /tmp/mock-deploy/envFiles/.env.iran-history << 'EOF'
+          NODE_ENV=production
+          PORT=3000
+          DB_DRIVER=sqlite
+          DATABASE_URL=file:/data/iran.db
+          VITE_SITE_URL=https://history.verzav.ir
+          EOF
+          
+          # Copy compose file
+          cp docker-compose.prod.yml /tmp/mock-deploy/
+          
+          # Create deploy env
+          cat > /tmp/mock-deploy/.env << EOF
+          IMAGE_TAG=${{ github.sha }}
+          APP_DOMAIN=history.verzav.ir
+          APP_ENV_FILE=/tmp/mock-deploy/envFiles/.env.iran-history
+          EOF
+
+      - name: Test deployment (pull and healthcheck)
+        run: |
+          cd /tmp/mock-deploy
+          
+          # Pull the image by the exact tag we just built
+          docker compose -f docker-compose.prod.yml pull
+          
+          # Start the container
+          docker compose -f docker-compose.prod.yml up -d
+          
+          # Wait for healthcheck (max 60s)
+          echo "Waiting for healthcheck..."
+          for i in {1..30}; do
+            HEALTH=$(docker inspect --format='{{.State.Health.Status}}' iran-history 2>/dev/null || echo "starting")
+            echo "  [$i/30] Health: $HEALTH"
+            
+            if [ "$HEALTH" = "healthy" ]; then
+              echo "✅ Container is healthy!"
+              docker logs iran-history
+              break
+            fi
+            
+            if [ "$HEALTH" = "unhealthy" ]; then
+              echo "❌ Container is unhealthy!"
+              docker logs iran-history
+              exit 1
+            fi
+            
+            sleep 2
+          done
+          
+          # Verify container is still healthy
+          FINAL_HEALTH=$(docker inspect --format='{{.State.Health.Status}}' iran-history)
+          if [ "$FINAL_HEALTH" != "healthy" ]; then
+            echo "❌ Final health check failed: $FINAL_HEALTH"
+            exit 1
+          fi
+
+      - name: Test rollback scenario
+        run: |
+          cd /tmp/mock-deploy
+          
+          # Simulate rollback by stopping and removing
+          docker compose -f docker-compose.prod.yml down
+          
+          # Verify clean shutdown
+          if docker ps -a | grep -q iran-history; then
+            echo "❌ Container not properly removed"
+            exit 1
+          fi
+          
+          echo "✅ Rollback test passed"
+
+      - name: Cleanup
+        if: always()
+        run: |
+          docker compose -f /tmp/mock-deploy/docker-compose.prod.yml down -v 2>/dev/null || true
+          docker network rm traefik-network 2>/dev/null || true
+          rm -rf /tmp/mock-deploy
 
   # Deploy to production
   deploy:
@@ -118,9 +226,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: build-push
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    permissions:
+      contents: read
     environment:
       name: production
-      url: ${{ vars.PRODUCTION_URL || 'https://iran.example.com' }}
+      url: ${{ vars.PRODUCTION_URL || 'https://history.verzav.ir' }}
     concurrency:
       group: production-deploy
       cancel-in-progress: false
