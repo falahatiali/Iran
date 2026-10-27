@@ -35,16 +35,16 @@ if [[ ! -f "$APP_ENV_FILE" ]]; then
 fi
 
 # Store current image for potential rollback
-CURRENT_IMAGE=$(docker compose -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" images -q web 2>/dev/null || echo "")
+CURRENT_IMAGE=$($DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" images -q web 2>/dev/null || echo "")
 
 echo "📥 Pulling new image..."
-docker compose -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" pull
+$DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" pull
 
 echo "🔄 Stopping current container..."
-docker compose -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" down
+$DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" down
 
 echo "🚀 Starting new container..."
-docker compose -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" up -d
+$DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" up -d
 
 echo "⏳ Waiting for health check..."
 ELAPSED=0
