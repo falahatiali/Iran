@@ -49,7 +49,7 @@ docker compose -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" up -d
 echo "⏳ Waiting for health check..."
 ELAPSED=0
 while [ $ELAPSED -lt $HEALTHCHECK_TIMEOUT ]; do
-    HEALTH=$(docker inspect --format='{{.State.Health.Status}}' "${COMPOSE_PROJECT}-web-1" 2>/dev/null || echo "starting")
+    HEALTH=$(docker inspect --format='{{.State.Health.Status}}' "iran-history" 2>/dev/null || echo "starting")
     
     if [ "$HEALTH" = "healthy" ]; then
         echo "✅ Container is healthy!"
