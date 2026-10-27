@@ -313,11 +313,11 @@ jobs:
             docker-compose.prod.yml \
             $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_DIR/
 
-          # Create .env file with non-secret deploy config (pin to exact digest)
+          # Create .env file with non-secret deploy config (pin to immutable SHA tag)
           SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
           ssh -i ~/.ssh/deploy_key -p $DEPLOY_PORT $DEPLOY_USER@$DEPLOY_HOST \
             "cat > $DEPLOY_DIR/.env" <<EOF
-          IMAGE_TAG=$SHORT_SHA@${{ needs.build-push.outputs.digest }}
+          IMAGE_TAG=$SHORT_SHA
           APP_DOMAIN=$APP_DOMAIN
           APP_ENV_FILE=$APP_ENV_FILE
           EOF
