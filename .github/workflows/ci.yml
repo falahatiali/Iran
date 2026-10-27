@@ -243,28 +243,28 @@ jobs:
             exit 1
           fi
           
-          if ! curl -sf http://localhost:3000/ | grep -q "هخامنشیان"; then
+          if ! docker exec iran-history curl -sf http://localhost:3000/ | grep -q "هخامنشیان"; then
             echo "❌ Homepage doesn't contain dynasty data!"
             docker logs iran-history --tail 100
             exit 1
           fi
           
-          if curl -sf http://localhost:3000/ | grep -q "Something went wrong"; then
+          if docker exec iran-history curl -sf http://localhost:3000/ | grep -q "Something went wrong"; then
             echo "❌ Homepage shows error boundary!"
             docker logs iran-history --tail 100
             exit 1
           fi
-          echo "✅ Homepage verified"
+          echo "✅ Homepage content verified"
           
-          # Verify known-good slug returns 200 with content
-          if ! curl -sf http://localhost:3000/dynasty/achaemenids | grep -q "هخامنشیان"; then
+          # Verify known-good slug returns 200 with dynasty content
+          if ! docker exec iran-history curl -sf http://localhost:3000/dynasty/achaemenids | grep -q "کوروش"; then
             echo "❌ /dynasty/achaemenids doesn't contain expected content!"
             exit 1
           fi
           echo "✅ Known-good slug verified"
           
           # Verify nonexistent slug returns 404
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3000/dynasty/nonexistent-xyz)
+          STATUS=$(docker exec iran-history curl -s -o /dev/null -w "%{http_code}" http://localhost:3000/dynasty/nonexistent-xyz)
           if [ "$STATUS" != "404" ]; then
             echo "❌ Nonexistent slug returned $STATUS instead of 404!"
             exit 1
