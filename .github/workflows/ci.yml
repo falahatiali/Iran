@@ -79,7 +79,7 @@ jobs:
         with:
           images: ghcr.io/falahatiali/iran
           tags: |
-            type=sha,prefix=
+            type=sha,prefix=,format=short
             type=raw,value=latest,enable={{is_default_branch}}
           labels: |
             org.opencontainers.image.title=Iran History
