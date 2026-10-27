@@ -85,9 +85,9 @@ ssh-keyscan -H your-server.com
 | Secret | مقدار | توضیحات |
 |--------|-------|---------|
 | `DEPLOY_SSH_KEY` | محتوای `~/.ssh/iran_deploy_key` | کلید خصوصی SSH (کل فایل را کپی کنید) |
-| `DEPLOY_HOST` | `your-server.com` یا IP | نام میزبان یا آدرس IP سرور |
+| `DEPLOY_HOST` | آدرس IP یا hostname سرور | نام میزبان یا آدرس IP سرور |
 | `DEPLOY_KNOWN_HOSTS` | خروجی `ssh-keyscan` | SSH host key برای اعتبارسنجی |
-| `DEPLOY_USER` | `iran-deploy` (اختیاری) | نام کاربری SSH (پیش‌فرض: iran-deploy) |
+| `DEPLOY_USER` | `deploy` (اختیاری) | نام کاربری SSH (پیش‌فرض: deploy) |
 | `DEPLOY_PORT` | `22` (اختیاری) | پورت SSH (پیش‌فرض: 22) |
 
 #### Variables (غیرحساس - برای پیکربندی)
@@ -96,10 +96,7 @@ ssh-keyscan -H your-server.com
 |----------|-------|---------|
 | `DEPLOY_DIR` | `/opt/iran-history` (اختیاری) | مسیر استقرار (پیش‌فرض: /opt/iran-history) |
 | `APP_DOMAIN` | `history.verzav.ir` | دامنه تولید (برای Traefik router) |
-| `TRAEFIK_NETWORK` | `traefik` (اختیاری) | نام شبکه Docker خارجی Traefik (پیش‌فرض: traefik) |
-| `TRAEFIK_ENTRYPOINT` | `websecure` (اختیاری) | نام entrypoint HTTPS Traefik (پیش‌فرض: websecure) |
-| `TRAEFIK_CERTRESOLVER` | `letsencrypt` (اختیاری) | نام certresolver SSL Traefik (پیش‌فرض: letsencrypt) |
-| `VITE_SITE_URL` | `https://history.verzav.ir` | URL کامل سایت (برای SEO و متاتگ‌ها) |
+| `APP_ENV_FILE` | `/home/deploy/envFiles/.env.iran-history` (اختیاری) | مسیر فایل env روی سرور (پیش‌فرض نشان داده شده) |
 
 ### مرحله ۴: پیکربندی Environment Protection (اختیاری اما توصیه می‌شود)
 
@@ -115,55 +112,77 @@ ssh-keyscan -H your-server.com
 
 اپلیکیشن به `127.0.0.1:3000` متصل می‌شود (یا پورت پیکربندی شده). برای دسترسی عمومی، یک reverse proxy برای HTTPS نیاز دارید.
 
-### گزینه ۱: استفاده از Traefik موجود
+### استقرار با Traefik موجود (پیش‌فرض)
 
-اگر Traefik v3 از قبل روی سرور شما اجرا می‌شود (به‌عنوان‌مثال، برای پروژه‌های دیگر)، `docker-compose.prod.yml` به‌طور پیش‌فرض برای استفاده از آن پیکربندی شده است.
+این پروژه برای استفاده از Traefik v3 موجود روی سرور پیکربندی شده است. `docker-compose.prod.yml` به‌طور خودکار به شبکه `traefik-network` متصل می‌شود.
 
-**۱. شناسایی پیکربندی Traefik**:
+**پیش‌نیازها**:
+- Traefik v3 در `/opt/traefik` نصب و اجرا شده باشد
+- شبکه `traefik-network` وجود داشته باشد
+- دامنه `history.verzav.ir` به آدرس IP سرور اشاره کند
+
+**گام‌های راه‌اندازی یک‌بار**:
+
+**۱. ایجاد فایل محیط runtime**:
 
 ```bash
-# نام شبکه Docker خارجی Traefik را پیدا کنید
-docker network ls | grep traefik
+# ایجاد دایرکتوری برای فایل‌های env (اگر وجود ندارد)
+mkdir -p ~/envFiles
+chmod 700 ~/envFiles
 
-# نام certresolver را از پیکربندی Traefik پیدا کنید
-docker inspect traefik | grep -i certresolver
+# کپی از نمونه
+cp /opt/iran-history/.env.production.example ~/envFiles/.env.iran-history
 
-# نام entrypoint برای HTTPS را پیدا کنید (معمولا websecure)
-docker inspect traefik | grep -i entrypoint
+# ویرایش با مقادیر واقعی
+nano ~/envFiles/.env.iran-history
+
+# ایمن‌سازی فایل
+chmod 600 ~/envFiles/.env.iran-history
 ```
 
-**۲. تنظیم متغیرهای GitHub**:
+متغیرهای مورد نیاز را از `.env.production.example` ببینید.
 
-در **Settings → Secrets and variables → Actions → Variables** این متغیرها را اضافه کنید:
+**۲. بازنشستگی پروژه قدیمی `history`**:
 
-| Variable | مقدار | توضیحات |
-|----------|-------|---------|
-| `APP_DOMAIN` | `history.verzav.ir` | دامنه تولید شما |
-| `TRAEFIK_NETWORK` | نام شبکه (معمولا `traefik`) | شبکه Docker خارجی Traefik |
-| `TRAEFIK_ENTRYPOINT` | نام entrypoint (معمولا `websecure`) | Entrypoint HTTPS Traefik |
-| `TRAEFIK_CERTRESOLVER` | نام certresolver (مثلا `letsencrypt`) | Resolver گواهی SSL Traefik |
-| `VITE_SITE_URL` | `https://history.verzav.ir` | URL کامل سایت |
-
-**۳. حذف روترهای قدیمی**:
-
-⚠️ **مهم**: اگر دامنه `history.verzav.ir` قبلاً توسط Traefik router یا سرویس دیگری استفاده می‌شود، باید آن را حذف کنید تا تداخل نداشته باشد.
+⚠️ **مهم**: اگر قبلاً پروژه‌ای با نام `history` یا هر کانتینری که دامنه `history.verzav.ir` را claim می‌کند وجود دارد، باید آن را بازنشسته کنید:
 
 ```bash
-# بررسی روترهای موجود برای این دامنه
+# بررسی کانتینرهای موجود برای این دامنه
 docker ps --filter "label=traefik.http.routers.*.rule=Host(\`history.verzav.ir\`)"
 
-# اگر کانتینر قدیمی پیدا کردید، آن را متوقف/حذف کنید
-docker stop <container-name>
+# متوقف کردن کانتینر قدیمی
+docker stop <old-container-name>
+docker rm <old-container-name>
+
+# حذف یا تغییر نام فایل env قدیمی
+mv ~/envFiles/.env.history ~/envFiles/.env.history.old
 ```
 
-**۴. ایجاد شبکه (اگر وجود ندارد)**:
+**۳. تنظیم متغیر GitHub**:
+
+در **Settings → Secrets and variables → Actions → Variables**:
+
+| Variable | مقدار |
+|----------|-------|
+| `APP_DOMAIN` | `history.verzav.ir` |
+
+**۴. پس از اولین استقرار**:
 
 ```bash
-# بررسی وجود شبکه Traefik
-docker network inspect traefik || docker network create traefik
+# بررسی لاگ‌ها
+docker logs iran-history
+
+# تست دسترسی
+curl -I https://history.verzav.ir
 ```
 
-پس از استقرار، اپلیکیشن به‌طور خودکار به Traefik متصل می‌شود و در `https://history.verzav.ir` در دسترس خواهد بود.
+پروژه در `https://history.verzav.ir` در دسترس خواهد بود.
+
+---
+
+**ارتقاء اختیاری: Secrets در GitHub Environment**
+
+به‌جای نگهداری secrets در `/home/deploy/envFiles/` روی سرور، می‌توانید آن‌ها را در GitHub Environment secrets ذخیره کنید و در زمان deploy بنویسید. این رویکرد secrets را متمرکز می‌کند اما نیاز به تغییر workflow دارد.
 
 ### گزینه ۲: Nginx
 
@@ -482,9 +501,9 @@ In your GitHub repository, go to **Settings → Secrets and variables → Action
 | Secret | Value | Description |
 |--------|-------|-------------|
 | `DEPLOY_SSH_KEY` | Contents of `~/.ssh/iran_deploy_key` | SSH private key (copy entire file) |
-| `DEPLOY_HOST` | `your-server.com` or IP | Server hostname or IP address |
+| `DEPLOY_HOST` | Server IP or hostname | Server hostname or IP address |
 | `DEPLOY_KNOWN_HOSTS` | Output of `ssh-keyscan` | SSH host key for verification |
-| `DEPLOY_USER` | `iran-deploy` (optional) | SSH username (default: iran-deploy) |
+| `DEPLOY_USER` | `deploy` (optional) | SSH username (default: deploy) |
 | `DEPLOY_PORT` | `22` (optional) | SSH port (default: 22) |
 
 #### Variables (Non-sensitive - for configuration)
@@ -493,10 +512,7 @@ In your GitHub repository, go to **Settings → Secrets and variables → Action
 |----------|-------|-------------|
 | `DEPLOY_DIR` | `/opt/iran-history` (optional) | Deployment path (default: /opt/iran-history) |
 | `APP_DOMAIN` | `history.verzav.ir` | Production domain (for Traefik router) |
-| `TRAEFIK_NETWORK` | `traefik` (optional) | Traefik external Docker network name (default: traefik) |
-| `TRAEFIK_ENTRYPOINT` | `websecure` (optional) | Traefik HTTPS entrypoint name (default: websecure) |
-| `TRAEFIK_CERTRESOLVER` | `letsencrypt` (optional) | Traefik SSL certresolver name (default: letsencrypt) |
-| `VITE_SITE_URL` | `https://history.verzav.ir` | Full site URL (for SEO and meta tags) |
+| `APP_ENV_FILE` | `/home/deploy/envFiles/.env.iran-history` (optional) | Path to env file on server (default shown) |
 
 ### Step 4: Configure Environment Protection (Optional but Recommended)
 
@@ -512,55 +528,77 @@ Go to **Settings → Environments** and for the `production` environment:
 
 The application binds to `127.0.0.1:3000` (or configured port). For public access, you need a reverse proxy for HTTPS.
 
-### Option 1: Using Existing Traefik
+### Deployment with Existing Traefik (Default)
 
-If you already have Traefik v3 running on your server (e.g., for other projects), `docker-compose.prod.yml` is preconfigured to use it by default.
+This project is preconfigured to use the existing Traefik v3 on the server. `docker-compose.prod.yml` automatically connects to the `traefik-network`.
 
-**1. Discover Traefik Configuration**:
+**Prerequisites**:
+- Traefik v3 installed and running at `/opt/traefik`
+- The `traefik-network` network exists
+- Domain `history.verzav.ir` points to the server IP
+
+**One-Time Setup Steps**:
+
+**1. Create Runtime Environment File**:
 
 ```bash
-# Find the Traefik external Docker network name
-docker network ls | grep traefik
+# Create directory for env files (if it doesn't exist)
+mkdir -p ~/envFiles
+chmod 700 ~/envFiles
 
-# Find the certresolver name from Traefik config
-docker inspect traefik | grep -i certresolver
+# Copy from example
+cp /opt/iran-history/.env.production.example ~/envFiles/.env.iran-history
 
-# Find the HTTPS entrypoint name (usually websecure)
-docker inspect traefik | grep -i entrypoint
+# Edit with actual values
+nano ~/envFiles/.env.iran-history
+
+# Secure the file
+chmod 600 ~/envFiles/.env.iran-history
 ```
 
-**2. Set GitHub Variables**:
+See `.env.production.example` for required variables.
 
-In **Settings → Secrets and variables → Actions → Variables**, add these variables:
+**2. Retire Old `history` Project**:
 
-| Variable | Value | Description |
-|----------|-------|-------------|
-| `APP_DOMAIN` | `history.verzav.ir` | Your production domain |
-| `TRAEFIK_NETWORK` | Network name (usually `traefik`) | Traefik external Docker network |
-| `TRAEFIK_ENTRYPOINT` | Entrypoint name (usually `websecure`) | Traefik HTTPS entrypoint |
-| `TRAEFIK_CERTRESOLVER` | Certresolver name (e.g., `letsencrypt`) | Traefik SSL certificate resolver |
-| `VITE_SITE_URL` | `https://history.verzav.ir` | Full site URL |
-
-**3. Remove Old Routers**:
-
-⚠️ **Important**: If the domain `history.verzav.ir` is already claimed by another Traefik router or service, you must remove it to avoid conflicts.
+⚠️ **Important**: If there's an old `history` project or any container claiming the `history.verzav.ir` domain, you must retire it:
 
 ```bash
-# Check for existing routers using this domain
+# Check for existing containers using this domain
 docker ps --filter "label=traefik.http.routers.*.rule=Host(\`history.verzav.ir\`)"
 
-# If you find an old container, stop/remove it
-docker stop <container-name>
+# Stop old container
+docker stop <old-container-name>
+docker rm <old-container-name>
+
+# Remove or rename old env file
+mv ~/envFiles/.env.history ~/envFiles/.env.history.old
 ```
 
-**4. Create Network (if it doesn't exist)**:
+**3. Set GitHub Variable**:
+
+In **Settings → Secrets and variables → Actions → Variables**:
+
+| Variable | Value |
+|----------|-------|
+| `APP_DOMAIN` | `history.verzav.ir` |
+
+**4. After First Deployment**:
 
 ```bash
-# Check if Traefik network exists
-docker network inspect traefik || docker network create traefik
+# Check logs
+docker logs iran-history
+
+# Test access
+curl -I https://history.verzav.ir
 ```
 
-After deployment, the application will automatically connect to Traefik and be available at `https://history.verzav.ir`.
+The project will be available at `https://history.verzav.ir`.
+
+---
+
+**Optional Upgrade: Secrets in GitHub Environment**
+
+Instead of keeping secrets in `/home/deploy/envFiles/` on the server, you can store them in GitHub Environment secrets and write them during deployment. This centralizes secrets but requires workflow changes.
 
 ### Option 2: Nginx
 

@@ -16,17 +16,13 @@ services:
           cpus: '0.25'
           memory: 256M
     
-    # Environment variables
-    environment:
-      NODE_ENV: production
-      DB_DRIVER: sqlite
-      DATABASE_URL: file:/data/iran.db
-      PORT: 3000
-      VITE_SITE_URL: ${VITE_SITE_URL:-https://history.verzav.ir}
+    # Runtime environment from server-side file (secrets stay on server)
+    env_file:
+      - ${APP_ENV_FILE:-/home/deploy/envFiles/.env.iran-history}
     
     # Networks: external Traefik network + internal
     networks:
-      - traefik
+      - traefik-network
       - internal
     
     # Traefik v3 labels for reverse proxy routing
@@ -34,21 +30,14 @@ services:
       # Enable Traefik
       - "traefik.enable=true"
       
-      # Specify which Docker network Traefik should use
-      - "traefik.docker.network=${TRAEFIK_NETWORK:-traefik}"
+      # Specify which Docker network Traefik should use (required when container has multiple networks)
+      - "traefik.docker.network=traefik-network"
       
       # HTTPS router
       - "traefik.http.routers.iran-history.rule=Host(`${APP_DOMAIN:-history.verzav.ir}`)"
-      - "traefik.http.routers.iran-history.entrypoints=${TRAEFIK_ENTRYPOINT:-websecure}"
+      - "traefik.http.routers.iran-history.entrypoints=websecure"
       - "traefik.http.routers.iran-history.tls=true"
-      - "traefik.http.routers.iran-history.tls.certresolver=${TRAEFIK_CERTRESOLVER:-letsencrypt}"
-      
-      # HTTP to HTTPS redirect router
-      - "traefik.http.routers.iran-history-http.rule=Host(`${APP_DOMAIN:-history.verzav.ir}`)"
-      - "traefik.http.routers.iran-history-http.entrypoints=web"
-      - "traefik.http.routers.iran-history-http.middlewares=iran-history-redirect"
-      - "traefik.http.middlewares.iran-history-redirect.redirectscheme.scheme=https"
-      - "traefik.http.middlewares.iran-history-redirect.redirectscheme.permanent=true"
+      - "traefik.http.routers.iran-history.tls.certresolver=letsencrypt"
       
       # Service configuration
       - "traefik.http.services.iran-history.loadbalancer.server.port=3000"
@@ -77,9 +66,8 @@ volumes:
     name: iran-history-data
 
 networks:
-  # External Traefik network (must be created beforehand)
-  traefik:
-    name: ${TRAEFIK_NETWORK:-traefik}
+  # External Traefik network (created by Traefik at /opt/traefik)
+  traefik-network:
     external: true
   
   # Internal network for non-public services

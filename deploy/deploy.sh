@@ -6,6 +6,7 @@ set -euo pipefail
 # Configuration from environment variables
 IMAGE_TAG="${IMAGE_TAG:-latest}"
 DEPLOY_DIR="${DEPLOY_DIR:-/opt/iran-history}"
+APP_ENV_FILE="${APP_ENV_FILE:-/home/deploy/envFiles/.env.iran-history}"
 COMPOSE_FILE="${DEPLOY_DIR}/docker-compose.prod.yml"
 COMPOSE_PROJECT="iran-history"
 HEALTHCHECK_TIMEOUT="${HEALTHCHECK_TIMEOUT:-60}"
@@ -15,9 +16,23 @@ echo "🚀 Deploying Iran History"
 echo "========================"
 echo "Image: ghcr.io/falahatiali/iran:${IMAGE_TAG}"
 echo "Directory: ${DEPLOY_DIR}"
+echo "Env file: ${APP_ENV_FILE}"
 echo ""
 
 cd "$DEPLOY_DIR"
+
+# Fail fast if runtime environment file is missing
+if [[ ! -f "$APP_ENV_FILE" ]]; then
+    echo "❌ Runtime environment file not found: $APP_ENV_FILE"
+    echo ""
+    echo "Please create it from .env.production.example:"
+    echo "  mkdir -p $(dirname "$APP_ENV_FILE")"
+    echo "  cp .env.production.example $APP_ENV_FILE"
+    echo "  nano $APP_ENV_FILE  # Edit with your values"
+    echo "  chmod 600 $APP_ENV_FILE"
+    echo ""
+    exit 1
+fi
 
 # Store current image for potential rollback
 CURRENT_IMAGE=$(docker compose -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" images -q web 2>/dev/null || echo "")

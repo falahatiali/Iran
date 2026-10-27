@@ -14,6 +14,7 @@ on:
 permissions:
   contents: read
   packages: write
+  security-events: write  # Required for Trivy SARIF upload to Code Scanning
 
 jobs:
   # Quality gates
@@ -147,20 +148,17 @@ jobs:
         if: steps.check-secrets.outputs.skip == 'false'
         env:
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
-          DEPLOY_USER: ${{ secrets.DEPLOY_USER || 'iran-deploy' }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER || 'deploy' }}
           DEPLOY_PORT: ${{ secrets.DEPLOY_PORT || '22' }}
           DEPLOY_DIR: ${{ vars.DEPLOY_DIR || '/opt/iran-history' }}
           IMAGE_TAG: ${{ github.sha }}
-          # Traefik configuration
+          # Traefik and domain configuration (non-secret build config)
           APP_DOMAIN: ${{ vars.APP_DOMAIN || 'history.verzav.ir' }}
-          TRAEFIK_NETWORK: ${{ vars.TRAEFIK_NETWORK || 'traefik' }}
-          TRAEFIK_ENTRYPOINT: ${{ vars.TRAEFIK_ENTRYPOINT || 'websecure' }}
-          TRAEFIK_CERTRESOLVER: ${{ vars.TRAEFIK_CERTRESOLVER || 'letsencrypt' }}
-          VITE_SITE_URL: ${{ vars.VITE_SITE_URL || 'https://history.verzav.ir' }}
+          APP_ENV_FILE: ${{ vars.APP_ENV_FILE || '/home/deploy/envFiles/.env.iran-history' }}
         run: |
-          # Copy deploy script
+          # Copy deploy script and .env.production.example
           scp -i ~/.ssh/deploy_key -P $DEPLOY_PORT \
-            deploy/deploy.sh \
+            deploy/deploy.sh .env.production.example \
             $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_DIR/
 
           # Copy docker-compose.prod.yml
@@ -168,15 +166,12 @@ jobs:
             docker-compose.prod.yml \
             $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_DIR/
 
-          # Create .env file with Traefik configuration
+          # Create .env file with non-secret deploy config
           ssh -i ~/.ssh/deploy_key -p $DEPLOY_PORT $DEPLOY_USER@$DEPLOY_HOST \
             "cat > $DEPLOY_DIR/.env" <<EOF
           IMAGE_TAG=$IMAGE_TAG
           APP_DOMAIN=$APP_DOMAIN
-          TRAEFIK_NETWORK=$TRAEFIK_NETWORK
-          TRAEFIK_ENTRYPOINT=$TRAEFIK_ENTRYPOINT
-          TRAEFIK_CERTRESOLVER=$TRAEFIK_CERTRESOLVER
-          VITE_SITE_URL=$VITE_SITE_URL
+          APP_ENV_FILE=$APP_ENV_FILE
           EOF
 
           # Execute deployment
