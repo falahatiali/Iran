@@ -8,15 +8,16 @@ WORKDIR /app
 # Copy dependency files
 COPY package.json package-lock.json ./
 
-# Install dependencies with clean cache
-RUN npm ci --no-audit --no-fund && \
-    npm cache clean --force
+# Install all dependencies including optional (for native bindings)
+RUN --mount=type=cache,target=/root/.npm \
+    npm ci --no-audit --no-fund
 
 # Copy source
 COPY . .
 
-# Build application
-RUN npm run build
+# Build application (requires rolldown native bindings)
+RUN npm run build && \
+    npm cache clean --force
 
 # Production stage
 FROM node:20.18.1-bookworm-slim AS runtime
