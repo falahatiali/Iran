@@ -58,34 +58,42 @@ CURRENT_IMAGE=$($DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" images 
 echo "📥 Pulling new image..."
 $DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" pull
 
-echo "🔄 Stopping current container..."
-$DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" down
+# Blue/Green deployment: start new container alongside old one
+echo "🔵 Starting new container (blue/green)..."
+NEW_NAME="${COMPOSE_PROJECT}-new"
 
-echo "🚀 Starting new container..."
-$DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" up -d
+# Clean up any existing -new container
+docker stop "$NEW_NAME" 2>/dev/null || true
+docker rm "$NEW_NAME" 2>/dev/null || true
 
-echo "⏳ Waiting for health check..."
+# Start new container with temporary name
+$DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" up -d --no-deps
+docker rename "$COMPOSE_PROJECT" "$NEW_NAME"
+
+echo "⏳ Waiting for new container to be healthy and serving content..."
 ELAPSED=0
+CONTENT_VERIFIED=false
 while [ $ELAPSED -lt $HEALTHCHECK_TIMEOUT ]; do
-    HEALTH=$(docker inspect --format='{{.State.Health.Status}}' "iran-history" 2>/dev/null || echo "starting")
+    HEALTH=$(docker inspect --format='{{.State.Health.Status}}' "$NEW_NAME" 2>/dev/null || echo "starting")
     
-    if [ "$HEALTH" = "healthy" ]; then
-        echo "✅ Container is healthy!"
-        
-        # Prune old images for this project only
-        echo "🧹 Pruning old images..."
-        docker image prune -f --filter "label=org.opencontainers.image.source=https://github.com/falahatiali/Iran"
-        
-        echo ""
-        echo "✅ Deployment successful!"
-        echo "Container: $(docker ps --filter name=${COMPOSE_PROJECT} --format '{{.Names}}')"
-        echo "Status: $(docker ps --filter name=${COMPOSE_PROJECT} --format '{{.Status}}')"
-        exit 0
+    if [ "$HEALTH" = "healthy" ] && [ "$CONTENT_VERIFIED" = "false" ]; then
+        # Verify serving real content
+        if docker exec "$NEW_NAME" node -e "fetch('http://localhost:3000/').then(r=>r.text()).then(t=>{if(!t.includes('تاریخ ایران'))throw new Error();process.exit(0)}).catch(()=>process.exit(1))" 2>/dev/null; then
+            echo "✅ New container healthy and serving content!"
+            CONTENT_VERIFIED=true
+            break
+        fi
     fi
     
     if [ "$HEALTH" = "unhealthy" ]; then
-        echo "❌ Container is unhealthy!"
-        break
+        echo "❌ New container is unhealthy!"
+        docker logs "$NEW_NAME" --tail 50
+        
+        # Rollback: remove new container, old one stays running
+        docker stop "$NEW_NAME" 2>/dev/null || true
+        docker rm "$NEW_NAME" 2>/dev/null || true
+        echo "✅ Rollback complete - old container still running (zero downtime)"
+        exit 1
     fi
     
     sleep 2
@@ -93,29 +101,33 @@ while [ $ELAPSED -lt $HEALTHCHECK_TIMEOUT ]; do
     echo "  Status: $HEALTH (${ELAPSED}s / ${HEALTHCHECK_TIMEOUT}s)"
 done
 
-# Health check failed
-echo ""
-echo "❌ Deployment failed! Container did not become healthy within ${HEALTHCHECK_TIMEOUT}s"
-
-if [ "$ROLLBACK_ON_FAILURE" = "true" ] && [ -n "$CURRENT_IMAGE" ]; then
-    echo ""
-    echo "🔄 Rolling back to previous image..."
-    $DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" down
-    
-    # Restore previous image tag
-    OLD_TAG=$(docker inspect "$CURRENT_IMAGE" --format '{{index .RepoTags 0}}' 2>/dev/null || echo "")
-    if [ -n "$OLD_TAG" ]; then
-        echo "IMAGE_TAG=${OLD_TAG##*:}" > "${DEPLOY_DIR}/.env.rollback"
-        $DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" --env-file "${DEPLOY_DIR}/.env.rollback" up -d
-        echo "✅ Rolled back to previous version"
-    else
-        echo "⚠️  Could not determine previous image tag, manual intervention required"
-    fi
+if [ "$CONTENT_VERIFIED" != "true" ]; then
+    echo "❌ New container failed to serve content within ${HEALTHCHECK_TIMEOUT}s"
+    docker logs "$NEW_NAME" --tail 50
+    docker stop "$NEW_NAME" 2>/dev/null || true
+    docker rm "$NEW_NAME" 2>/dev/null || true
+    echo "✅ Rollback complete - old container still running (zero downtime)"
+    exit 1
 fi
 
-# Show logs
-echo ""
-echo "📋 Recent logs:"
-$DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" logs --tail=50
+# Atomic switchover: rename new to production name
+echo "🔀 Switching traffic (Traefik will route to new container)..."
+docker stop "$COMPOSE_PROJECT" 2>/dev/null || true
+docker rename "$NEW_NAME" "$COMPOSE_PROJECT"
 
-exit 1
+# Remove old container
+echo "🧹 Cleaning up old container..."
+OLD_CONTAINER=$(docker ps -aq -f name="^${COMPOSE_PROJECT}\$" -f status=exited 2>/dev/null | head -1)
+if [ -n "$OLD_CONTAINER" ]; then
+    docker rm "$OLD_CONTAINER" 2>/dev/null || true
+fi
+
+# Prune old images for this project only
+echo "🧹 Pruning old images..."
+docker image prune -f --filter "label=org.opencontainers.image.source=https://github.com/falahatiali/Iran" >/dev/null || true
+
+echo ""
+echo "✅ Zero-downtime deployment successful!"
+echo "Container: $COMPOSE_PROJECT"
+FINAL_STATUS=$(docker inspect --format='{{.State.Status}} ({{.State.Health.Status}})' "$COMPOSE_PROJECT" 2>/dev/null)
+echo "Status: $FINAL_STATUS"
