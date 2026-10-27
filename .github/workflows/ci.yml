@@ -151,6 +151,12 @@ jobs:
           DEPLOY_PORT: ${{ secrets.DEPLOY_PORT || '22' }}
           DEPLOY_DIR: ${{ vars.DEPLOY_DIR || '/opt/iran-history' }}
           IMAGE_TAG: ${{ github.sha }}
+          # Traefik configuration
+          APP_DOMAIN: ${{ vars.APP_DOMAIN || 'history.verzav.ir' }}
+          TRAEFIK_NETWORK: ${{ vars.TRAEFIK_NETWORK || 'traefik' }}
+          TRAEFIK_ENTRYPOINT: ${{ vars.TRAEFIK_ENTRYPOINT || 'websecure' }}
+          TRAEFIK_CERTRESOLVER: ${{ vars.TRAEFIK_CERTRESOLVER || 'letsencrypt' }}
+          VITE_SITE_URL: ${{ vars.VITE_SITE_URL || 'https://history.verzav.ir' }}
         run: |
           # Copy deploy script
           scp -i ~/.ssh/deploy_key -P $DEPLOY_PORT \
@@ -162,9 +168,20 @@ jobs:
             docker-compose.prod.yml \
             $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_DIR/
 
+          # Create .env file with Traefik configuration
+          ssh -i ~/.ssh/deploy_key -p $DEPLOY_PORT $DEPLOY_USER@$DEPLOY_HOST \
+            "cat > $DEPLOY_DIR/.env" <<EOF
+          IMAGE_TAG=$IMAGE_TAG
+          APP_DOMAIN=$APP_DOMAIN
+          TRAEFIK_NETWORK=$TRAEFIK_NETWORK
+          TRAEFIK_ENTRYPOINT=$TRAEFIK_ENTRYPOINT
+          TRAEFIK_CERTRESOLVER=$TRAEFIK_CERTRESOLVER
+          VITE_SITE_URL=$VITE_SITE_URL
+          EOF
+
           # Execute deployment
           ssh -i ~/.ssh/deploy_key -p $DEPLOY_PORT $DEPLOY_USER@$DEPLOY_HOST \
-            "cd $DEPLOY_DIR && IMAGE_TAG=$IMAGE_TAG bash deploy.sh"
+            "cd $DEPLOY_DIR && bash deploy.sh"
 
       - name: Cleanup
         if: always()

@@ -22,24 +22,40 @@ services:
       DB_DRIVER: sqlite
       DATABASE_URL: file:/data/iran.db
       PORT: 3000
+      VITE_SITE_URL: ${VITE_SITE_URL:-https://history.verzav.ir}
+    
+    # Networks: external Traefik network + internal
+    networks:
+      - traefik
+      - internal
+    
+    # Traefik v3 labels for reverse proxy routing
+    labels:
+      # Enable Traefik
+      - "traefik.enable=true"
+      
+      # Specify which Docker network Traefik should use
+      - "traefik.docker.network=${TRAEFIK_NETWORK:-traefik}"
+      
+      # HTTPS router
+      - "traefik.http.routers.iran-history.rule=Host(`${APP_DOMAIN:-history.verzav.ir}`)"
+      - "traefik.http.routers.iran-history.entrypoints=${TRAEFIK_ENTRYPOINT:-websecure}"
+      - "traefik.http.routers.iran-history.tls=true"
+      - "traefik.http.routers.iran-history.tls.certresolver=${TRAEFIK_CERTRESOLVER:-letsencrypt}"
+      
+      # HTTP to HTTPS redirect router
+      - "traefik.http.routers.iran-history-http.rule=Host(`${APP_DOMAIN:-history.verzav.ir}`)"
+      - "traefik.http.routers.iran-history-http.entrypoints=web"
+      - "traefik.http.routers.iran-history-http.middlewares=iran-history-redirect"
+      - "traefik.http.middlewares.iran-history-redirect.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.iran-history-redirect.redirectscheme.permanent=true"
+      
+      # Service configuration
+      - "traefik.http.services.iran-history.loadbalancer.server.port=3000"
     
     # Persistent volume
     volumes:
       - iran-data:/data:rw
-    
-    # Network configuration
-    # Option 1: Bind to localhost only (use with reverse proxy)
-    ports:
-      - "${BIND_HOST:-127.0.0.1}:${BIND_PORT:-3000}:3000"
-    
-    # Option 2: Use external network for Traefik/other proxy (comment out ports above)
-    # networks:
-    #   - proxy
-    # labels:
-    #   - "traefik.enable=true"
-    #   - "traefik.http.routers.iran.rule=Host(`${DOMAIN:-iran.example.com}`)"
-    #   - "traefik.http.routers.iran.entrypoints=websecure"
-    #   - "traefik.http.routers.iran.tls.certresolver=letsencrypt"
     
     # Logging
     logging:
@@ -60,7 +76,13 @@ volumes:
   iran-data:
     name: iran-history-data
 
-# Uncomment if using external network
-# networks:
-#   proxy:
-#     external: true
+networks:
+  # External Traefik network (must be created beforehand)
+  traefik:
+    name: ${TRAEFIK_NETWORK:-traefik}
+    external: true
+  
+  # Internal network for non-public services
+  internal:
+    name: iran-internal
+    driver: bridge

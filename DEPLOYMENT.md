@@ -95,7 +95,11 @@ ssh-keyscan -H your-server.com
 | Variable | مقدار | توضیحات |
 |----------|-------|---------|
 | `DEPLOY_DIR` | `/opt/iran-history` (اختیاری) | مسیر استقرار (پیش‌فرض: /opt/iran-history) |
-| `PRODUCTION_URL` | `https://iran.example.com` (اختیاری) | URL سایت شما (برای لینک Environment) |
+| `APP_DOMAIN` | `history.verzav.ir` | دامنه تولید (برای Traefik router) |
+| `TRAEFIK_NETWORK` | `traefik` (اختیاری) | نام شبکه Docker خارجی Traefik (پیش‌فرض: traefik) |
+| `TRAEFIK_ENTRYPOINT` | `websecure` (اختیاری) | نام entrypoint HTTPS Traefik (پیش‌فرض: websecure) |
+| `TRAEFIK_CERTRESOLVER` | `letsencrypt` (اختیاری) | نام certresolver SSL Traefik (پیش‌فرض: letsencrypt) |
+| `VITE_SITE_URL` | `https://history.verzav.ir` | URL کامل سایت (برای SEO و متاتگ‌ها) |
 
 ### مرحله ۴: پیکربندی Environment Protection (اختیاری اما توصیه می‌شود)
 
@@ -111,7 +115,57 @@ ssh-keyscan -H your-server.com
 
 اپلیکیشن به `127.0.0.1:3000` متصل می‌شود (یا پورت پیکربندی شده). برای دسترسی عمومی، یک reverse proxy برای HTTPS نیاز دارید.
 
-### گزینه ۱: Nginx
+### گزینه ۱: استفاده از Traefik موجود
+
+اگر Traefik v3 از قبل روی سرور شما اجرا می‌شود (به‌عنوان‌مثال، برای پروژه‌های دیگر)، `docker-compose.prod.yml` به‌طور پیش‌فرض برای استفاده از آن پیکربندی شده است.
+
+**۱. شناسایی پیکربندی Traefik**:
+
+```bash
+# نام شبکه Docker خارجی Traefik را پیدا کنید
+docker network ls | grep traefik
+
+# نام certresolver را از پیکربندی Traefik پیدا کنید
+docker inspect traefik | grep -i certresolver
+
+# نام entrypoint برای HTTPS را پیدا کنید (معمولا websecure)
+docker inspect traefik | grep -i entrypoint
+```
+
+**۲. تنظیم متغیرهای GitHub**:
+
+در **Settings → Secrets and variables → Actions → Variables** این متغیرها را اضافه کنید:
+
+| Variable | مقدار | توضیحات |
+|----------|-------|---------|
+| `APP_DOMAIN` | `history.verzav.ir` | دامنه تولید شما |
+| `TRAEFIK_NETWORK` | نام شبکه (معمولا `traefik`) | شبکه Docker خارجی Traefik |
+| `TRAEFIK_ENTRYPOINT` | نام entrypoint (معمولا `websecure`) | Entrypoint HTTPS Traefik |
+| `TRAEFIK_CERTRESOLVER` | نام certresolver (مثلا `letsencrypt`) | Resolver گواهی SSL Traefik |
+| `VITE_SITE_URL` | `https://history.verzav.ir` | URL کامل سایت |
+
+**۳. حذف روترهای قدیمی**:
+
+⚠️ **مهم**: اگر دامنه `history.verzav.ir` قبلاً توسط Traefik router یا سرویس دیگری استفاده می‌شود، باید آن را حذف کنید تا تداخل نداشته باشد.
+
+```bash
+# بررسی روترهای موجود برای این دامنه
+docker ps --filter "label=traefik.http.routers.*.rule=Host(\`history.verzav.ir\`)"
+
+# اگر کانتینر قدیمی پیدا کردید، آن را متوقف/حذف کنید
+docker stop <container-name>
+```
+
+**۴. ایجاد شبکه (اگر وجود ندارد)**:
+
+```bash
+# بررسی وجود شبکه Traefik
+docker network inspect traefik || docker network create traefik
+```
+
+پس از استقرار، اپلیکیشن به‌طور خودکار به Traefik متصل می‌شود و در `https://history.verzav.ir` در دسترس خواهد بود.
+
+### گزینه ۲: Nginx
 
 ۱. نصب Nginx و Certbot:
 
@@ -438,7 +492,11 @@ In your GitHub repository, go to **Settings → Secrets and variables → Action
 | Variable | Value | Description |
 |----------|-------|-------------|
 | `DEPLOY_DIR` | `/opt/iran-history` (optional) | Deployment path (default: /opt/iran-history) |
-| `PRODUCTION_URL` | `https://iran.example.com` (optional) | Your site URL (for Environment link) |
+| `APP_DOMAIN` | `history.verzav.ir` | Production domain (for Traefik router) |
+| `TRAEFIK_NETWORK` | `traefik` (optional) | Traefik external Docker network name (default: traefik) |
+| `TRAEFIK_ENTRYPOINT` | `websecure` (optional) | Traefik HTTPS entrypoint name (default: websecure) |
+| `TRAEFIK_CERTRESOLVER` | `letsencrypt` (optional) | Traefik SSL certresolver name (default: letsencrypt) |
+| `VITE_SITE_URL` | `https://history.verzav.ir` | Full site URL (for SEO and meta tags) |
 
 ### Step 4: Configure Environment Protection (Optional but Recommended)
 
@@ -454,7 +512,57 @@ Go to **Settings → Environments** and for the `production` environment:
 
 The application binds to `127.0.0.1:3000` (or configured port). For public access, you need a reverse proxy for HTTPS.
 
-### Option 1: Nginx
+### Option 1: Using Existing Traefik
+
+If you already have Traefik v3 running on your server (e.g., for other projects), `docker-compose.prod.yml` is preconfigured to use it by default.
+
+**1. Discover Traefik Configuration**:
+
+```bash
+# Find the Traefik external Docker network name
+docker network ls | grep traefik
+
+# Find the certresolver name from Traefik config
+docker inspect traefik | grep -i certresolver
+
+# Find the HTTPS entrypoint name (usually websecure)
+docker inspect traefik | grep -i entrypoint
+```
+
+**2. Set GitHub Variables**:
+
+In **Settings → Secrets and variables → Actions → Variables**, add these variables:
+
+| Variable | Value | Description |
+|----------|-------|-------------|
+| `APP_DOMAIN` | `history.verzav.ir` | Your production domain |
+| `TRAEFIK_NETWORK` | Network name (usually `traefik`) | Traefik external Docker network |
+| `TRAEFIK_ENTRYPOINT` | Entrypoint name (usually `websecure`) | Traefik HTTPS entrypoint |
+| `TRAEFIK_CERTRESOLVER` | Certresolver name (e.g., `letsencrypt`) | Traefik SSL certificate resolver |
+| `VITE_SITE_URL` | `https://history.verzav.ir` | Full site URL |
+
+**3. Remove Old Routers**:
+
+⚠️ **Important**: If the domain `history.verzav.ir` is already claimed by another Traefik router or service, you must remove it to avoid conflicts.
+
+```bash
+# Check for existing routers using this domain
+docker ps --filter "label=traefik.http.routers.*.rule=Host(\`history.verzav.ir\`)"
+
+# If you find an old container, stop/remove it
+docker stop <container-name>
+```
+
+**4. Create Network (if it doesn't exist)**:
+
+```bash
+# Check if Traefik network exists
+docker network inspect traefik || docker network create traefik
+```
+
+After deployment, the application will automatically connect to Traefik and be available at `https://history.verzav.ir`.
+
+### Option 2: Nginx
 
 1. Install Nginx and Certbot:
 
