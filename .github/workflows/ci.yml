@@ -215,15 +215,30 @@ jobs:
             exit 1
           fi
           
-          # Verify page content - wait for app to be fully ready, then check
-          echo "Verifying page content..."
-          sleep 3
+          # Wait for app to be fully serving HTTP content (not just healthy)
+          echo "Waiting for app to serve content..."
+          for i in {1..15}; do
+            if curl -sf http://localhost:3000/ 2>/dev/null | grep -q "<html"; then
+              echo "App is serving HTML (attempt $i)"
+              break
+            fi
+            echo "  Waiting for HTML response... ($i/15)"
+            sleep 2
+          done
           
           # Homepage smoke test
-          if ! curl -sf http://localhost:3000/ | grep -q "تاریخ ایران"; then
+          echo "Verifying page content..."
+          RESPONSE=$(curl -sf http://localhost:3000/ 2>/dev/null)
+          if [ -z "$RESPONSE" ]; then
+            echo "❌ No response from homepage!"
+            docker logs iran-history --tail 100
+            exit 1
+          fi
+          
+          if ! echo "$RESPONSE" | grep -q "تاریخ ایران"; then
             echo "❌ Homepage doesn't contain title!"
             echo "Response sample:"
-            curl -s http://localhost:3000/ | head -100
+            echo "$RESPONSE" | head -100
             docker logs iran-history --tail 100
             exit 1
           fi
