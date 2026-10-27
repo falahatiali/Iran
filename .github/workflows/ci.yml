@@ -54,6 +54,9 @@ jobs:
     permissions:
       contents: read
       packages: write
+    outputs:
+      digest: ${{ steps.build.outputs.digest }}
+      version: ${{ steps.meta.outputs.version }}
       security-events: write
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     outputs:
@@ -99,6 +102,12 @@ jobs:
           platforms: linux/amd64
           provenance: true
           sbom: true
+          
+      - name: Output image references
+        run: |
+          echo "Image digest: ${{ steps.build.outputs.digest }}"
+          echo "Image tags: ${{ steps.meta.outputs.tags }}"
+          echo "Short SHA: ${{ steps.meta.outputs.version }}"
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@062f2592684a31eb3aa050cc61e7ca1451cecd3d # 0.18.0
@@ -208,6 +217,25 @@ jobs:
             echo "❌ Final health check failed: $FINAL_HEALTH"
             exit 1
           fi
+          
+          # Verify page content - must contain Persian title, dynasty data, and no error boundary
+          echo "Verifying page content..."
+          RESPONSE=$(curl -sf http://localhost:3000/ || echo "FAILED")
+          if echo "$RESPONSE" | grep -q "Something went wrong"; then
+            echo "❌ Page shows error boundary!"
+            docker logs iran-history --tail 100
+            exit 1
+          fi
+          if ! echo "$RESPONSE" | grep -q "تاریخ ایران"; then
+            echo "❌ Page doesn't contain expected title!"
+            exit 1
+          fi
+          if ! echo "$RESPONSE" | grep -q "هخامنشیان"; then
+            echo "❌ Page doesn't contain dynasty data (empty database)!"
+            docker logs iran-history --tail 100
+            exit 1
+          fi
+          echo "✅ Page content verified with data"
 
       - name: Test rollback scenario
         run: |
@@ -288,11 +316,11 @@ jobs:
             docker-compose.prod.yml \
             $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_DIR/
 
-          # Create .env file with non-secret deploy config (use short SHA)
+          # Create .env file with non-secret deploy config (pin to exact digest)
           SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
           ssh -i ~/.ssh/deploy_key -p $DEPLOY_PORT $DEPLOY_USER@$DEPLOY_HOST \
             "cat > $DEPLOY_DIR/.env" <<EOF
-          IMAGE_TAG=$SHORT_SHA
+          IMAGE_TAG=$SHORT_SHA@${{ needs.build-push.outputs.digest }}
           APP_DOMAIN=$APP_DOMAIN
           APP_ENV_FILE=$APP_ENV_FILE
           EOF

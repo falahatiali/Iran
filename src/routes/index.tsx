@@ -50,7 +50,7 @@ function Hero({ totals }: { totals: { dynasties: number; rulers: number; events:
 function Home() {
   const data = root.useLoaderData()
   const [q, setQ] = useState('')
-  const [active, setActive] = useState(data.dynasties[0]?.slug)
+  const [active, setActive] = useState(data.dynasties[0]?.slug ?? '')
   const navRef = useRef<HTMLDivElement>(null)
 
   const filtered = useMemo(() => {
@@ -82,6 +82,7 @@ function Home() {
         <div className="grid gap-4 md:grid-cols-5">
           {eras.map((era, i) => {
             const ds = data.dynasties.filter((d) => d.era === era)
+            if (ds.length === 0) return null
             return (
               <Reveal key={era} delay={i * 0.08}>
                 <div className="glass rounded-2xl p-5 h-full hover:-translate-y-1 transition-transform">

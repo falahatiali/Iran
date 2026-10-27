@@ -51,9 +51,9 @@ services:
         max-size: "10m"
         max-file: "3"
     
-    # Health check
+    # Health check - verify app responds AND doesn't show error boundary
     healthcheck:
-      test: ["CMD", "node", "-e", "fetch('http://localhost:3000/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      test: ["CMD", "sh", "-c", "curl -sf http://localhost:3000/ | grep -q 'تاریخ ایران' && ! curl -sf http://localhost:3000/ | grep -q 'Something went wrong'"]
       interval: 30s
       timeout: 5s
       retries: 3

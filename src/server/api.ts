@@ -96,3 +96,10 @@ export const getTimeline = createServerFn({ method: 'GET' }).handler(async () =>
     events: es.map((e): TimelineEvent => ({ ...e, dynastyName: by.get(e.dynastySlug)!.name, era: by.get(e.dynastySlug)!.era, accent: by.get(e.dynastySlug)!.accent })),
   }
 })
+
+export const healthCheck = createServerFn({ method: 'GET' }).handler(async () => {
+  const repo = getRepositories()
+  const [dynasties, rulers] = await Promise.all([repo.dynasties.list(), repo.rulers.list()])
+  const ok = dynasties.length > 0 && rulers.length > 0
+  return { ok, dynasties: dynasties.length, rulers: rulers.length }
+})

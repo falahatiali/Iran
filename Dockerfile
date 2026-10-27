@@ -22,10 +22,10 @@ RUN npm run build && \
 # Production stage
 FROM node:20-bookworm-slim AS runtime
 
-# Security: Install security updates and create non-root user
+# Security: Install security updates, curl for healthcheck, and create non-root user
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y --no-install-recommends dumb-init && \
+    apt-get install -y --no-install-recommends dumb-init curl && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     groupadd --gid 1001 iran && \
@@ -69,12 +69,12 @@ VOLUME ["/data"]
 # Expose port
 EXPOSE 3000
 
-# Health check
+# Health check - verify app responds AND doesn't show error boundary
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
-    CMD node -e "fetch('http://localhost:3000/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+    CMD sh -c "curl -sf http://localhost:3000/ | grep -q 'تاریخ ایران' && ! curl -sf http://localhost:3000/ | grep -q 'Something went wrong'"
 
 # Use dumb-init to handle signals properly
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
-# Start application with migrations
-CMD ["sh", "-c", "npx tsx scripts/db.ts migrate && node .output/server/index.mjs"]
+# Start application with migrations and seeding (idempotent)
+CMD ["sh", "-c", "npx tsx scripts/db.ts migrate && npx tsx scripts/db.ts seed && node .output/server/index.mjs"]
