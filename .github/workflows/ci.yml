@@ -215,33 +215,46 @@ jobs:
             exit 1
           fi
           
-          # Verify page content - must contain Persian title, dynasty data, and no error boundary
+          # Verify page content - wait for app to be fully ready, then check
           echo "Verifying page content..."
-          RESPONSE=$(curl -sf http://localhost:3000/ || echo "FAILED")
-          if echo "$RESPONSE" | grep -q "Something went wrong"; then
-            echo "❌ Page shows error boundary!"
-            docker logs iran-history --tail 100
-            exit 1
-          fi
-          if ! echo "$RESPONSE" | grep -q "تاریخ ایران"; then
-            echo "❌ Page doesn't contain expected title!"
-            exit 1
-          fi
-          if ! echo "$RESPONSE" | grep -q "هخامنشیان"; then
-            echo "❌ Page doesn't contain dynasty data (empty database)!"
-            docker logs iran-history --tail 100
-            exit 1
-          fi
-          echo "✅ Page content verified with data"
+          sleep 3
           
-          # Verify 404 handling for known-good slug
-          echo "Verifying 404 handling..."
-          STATUS=$(curl -sf -o /dev/null -w "%{http_code}" http://localhost:3000/dynasty/achaemenids || echo "000")
-          if [ "$STATUS" != "200" ]; then
-            echo "❌ Known-good slug /dynasty/achaemenids returned $STATUS instead of 200!"
+          # Homepage smoke test
+          if ! curl -sf http://localhost:3000/ | grep -q "تاریخ ایران"; then
+            echo "❌ Homepage doesn't contain title!"
+            echo "Response sample:"
+            curl -s http://localhost:3000/ | head -100
+            docker logs iran-history --tail 100
+            exit 1
+          fi
+          
+          if ! curl -sf http://localhost:3000/ | grep -q "هخامنشیان"; then
+            echo "❌ Homepage doesn't contain dynasty data!"
+            docker logs iran-history --tail 100
+            exit 1
+          fi
+          
+          if curl -sf http://localhost:3000/ | grep -q "Something went wrong"; then
+            echo "❌ Homepage shows error boundary!"
+            docker logs iran-history --tail 100
+            exit 1
+          fi
+          echo "✅ Homepage verified"
+          
+          # Verify known-good slug returns 200 with content
+          if ! curl -sf http://localhost:3000/dynasty/achaemenids | grep -q "هخامنشیان"; then
+            echo "❌ /dynasty/achaemenids doesn't contain expected content!"
             exit 1
           fi
           echo "✅ Known-good slug verified"
+          
+          # Verify nonexistent slug returns 404
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3000/dynasty/nonexistent-xyz)
+          if [ "$STATUS" != "404" ]; then
+            echo "❌ Nonexistent slug returned $STATUS instead of 404!"
+            exit 1
+          fi
+          echo "✅ 404 handling verified"
 
       - name: Test rollback scenario
         run: |
