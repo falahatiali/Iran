@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.4
 
 # Build stage
-FROM node:20.18.1-bookworm-slim@sha256:e8fcea02bd3b97d32ee47b2ea690a2e2a1783878a33a76f0f44b5bfaad39e071 AS build
+FROM node:20.18.1-bookworm-slim AS build
 
 WORKDIR /app
 
@@ -19,7 +19,7 @@ COPY . .
 RUN npm run build
 
 # Production stage
-FROM node:20.18.1-bookworm-slim@sha256:e8fcea02bd3b97d32ee47b2ea690a2e2a1783878a33a76f0f44b5bfaad39e071 AS runtime
+FROM node:20.18.1-bookworm-slim AS runtime
 
 # Security: Install security updates and create non-root user
 RUN apt-get update && \
