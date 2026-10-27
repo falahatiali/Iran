@@ -24,6 +24,12 @@ else
 fi
 echo "Using: $DOCKER_COMPOSE"
 
+# Read IMAGE_TAG from .env file if present (for pinned deployments)
+if [ -f "$DEPLOY_DIR/.env" ]; then
+    source "$DEPLOY_DIR/.env"
+fi
+IMAGE_TAG="${IMAGE_TAG:-latest}"
+
 echo "🚀 Deploying Iran History"
 echo "========================"
 echo "Image: ghcr.io/falahatiali/iran:${IMAGE_TAG}"

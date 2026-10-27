@@ -233,6 +233,15 @@ jobs:
             exit 1
           fi
           echo "✅ Page content verified with data"
+          
+          # Verify 404 handling for known-good slug
+          echo "Verifying 404 handling..."
+          STATUS=$(curl -sf -o /dev/null -w "%{http_code}" http://localhost:3000/dynasty/achaemenids || echo "000")
+          if [ "$STATUS" != "200" ]; then
+            echo "❌ Known-good slug /dynasty/achaemenids returned $STATUS instead of 200!"
+            exit 1
+          fi
+          echo "✅ Known-good slug verified"
 
       - name: Test rollback scenario
         run: |
