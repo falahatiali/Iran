@@ -1,8 +1,8 @@
 services:
-  web:
+  app:
     image: ghcr.io/falahatiali/iran:${IMAGE_TAG:-latest}
-    container_name: iran-history
     restart: unless-stopped
+    stop_grace_period: 30s
     
     # Resource limits (compose-spec v2 format)
     deploy:
@@ -52,12 +52,13 @@ services:
         max-file: "3"
     
     # Health check - verify app responds AND doesn't show error boundary
+    # Tight intervals for fast healthy state during zero-downtime deployment
     healthcheck:
       test: ["CMD", "sh", "-c", "curl -sf http://localhost:3000/ | grep -q 'تاریخ ایران' && ! curl -sf http://localhost:3000/ | grep -q 'Something went wrong'"]
-      interval: 30s
-      timeout: 5s
-      retries: 3
-      start_period: 10s
+      interval: 5s
+      timeout: 3s
+      retries: 2
+      start_period: 5s
 
 volumes:
   iran-data:

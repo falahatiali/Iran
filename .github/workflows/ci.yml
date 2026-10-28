@@ -189,19 +189,20 @@ jobs:
           
           # Wait for healthcheck (max 60s)
           echo "Waiting for healthcheck..."
+          CONTAINER_ID=$(docker compose -f docker-compose.prod.yml ps -q app)
           for i in {1..30}; do
-            HEALTH=$(docker inspect --format='{{.State.Health.Status}}' iran-history 2>/dev/null || echo "starting")
+            HEALTH=$(docker inspect --format='{{.State.Health.Status}}' "$CONTAINER_ID" 2>/dev/null || echo "starting")
             echo "  [$i/30] Health: $HEALTH"
             
             if [ "$HEALTH" = "healthy" ]; then
               echo "✅ Container is healthy!"
-              docker logs iran-history
+              docker logs "$CONTAINER_ID"
               break
             fi
             
             if [ "$HEALTH" = "unhealthy" ]; then
               echo "❌ Container is unhealthy!"
-              docker logs iran-history
+              docker logs "$CONTAINER_ID"
               exit 1
             fi
             
@@ -209,7 +210,7 @@ jobs:
           done
           
           # Verify container is still healthy
-          FINAL_HEALTH=$(docker inspect --format='{{.State.Health.Status}}' iran-history)
+          FINAL_HEALTH=$(docker inspect --format='{{.State.Health.Status}}' "$CONTAINER_ID")
           if [ "$FINAL_HEALTH" != "healthy" ]; then
             echo "❌ Final health check failed: $FINAL_HEALTH"
             exit 1
@@ -219,36 +220,36 @@ jobs:
           echo "Running smoke tests..."
           
           # Homepage content check  
-          if ! docker exec iran-history node -e "fetch('http://localhost:3000/').then(r=>r.text()).then(t=>{if(!t.includes('تاریخ ایران'))throw new Error('No title');process.exit(0)}).catch(e=>{console.error(e);process.exit(1)})"; then
+          if ! docker exec "$CONTAINER_ID" node -e "fetch('http://localhost:3000/').then(r=>r.text()).then(t=>{if(!t.includes('تاریخ ایران'))throw new Error('No title');process.exit(0)}).catch(e=>{console.error(e);process.exit(1)})"; then
             echo "❌ Homepage doesn't contain title!"
-            docker logs iran-history --tail 100
+            docker logs "$CONTAINER_ID" --tail 100
             exit 1
           fi
           
-          if ! docker exec iran-history node -e "fetch('http://localhost:3000/').then(r=>r.text()).then(t=>{if(!t.includes('هخامنشیان'))throw new Error('No dynasty data');process.exit(0)}).catch(e=>{console.error(e);process.exit(1)})"; then
+          if ! docker exec "$CONTAINER_ID" node -e "fetch('http://localhost:3000/').then(r=>r.text()).then(t=>{if(!t.includes('هخامنشیان'))throw new Error('No dynasty data');process.exit(0)}).catch(e=>{console.error(e);process.exit(1)})"; then
             echo "❌ Homepage doesn't contain dynasty data!"
-            docker logs iran-history --tail 100
+            docker logs "$CONTAINER_ID" --tail 100
             exit 1
           fi
           
-          if docker exec iran-history node -e "fetch('http://localhost:3000/').then(r=>r.text()).then(t=>{if(t.includes('Something went wrong'))process.exit(1);process.exit(0)}).catch(()=>process.exit(1))"; then
+          if docker exec "$CONTAINER_ID" node -e "fetch('http://localhost:3000/').then(r=>r.text()).then(t=>{if(t.includes('Something went wrong'))process.exit(1);process.exit(0)}).catch(()=>process.exit(1))"; then
             :  # Good - no error boundary
           else
             echo "❌ Homepage shows error boundary!"
-            docker logs iran-history --tail 100
+            docker logs "$CONTAINER_ID" --tail 100
             exit 1
           fi
           echo "✅ Homepage content verified"
           
           # Verify known-good slug returns 200 with content
-          if ! docker exec iran-history node -e "fetch('http://localhost:3000/dynasty/achaemenids').then(r=>r.text()).then(t=>{if(!t.includes('کوروش'))throw new Error('No content');process.exit(0)}).catch(e=>{console.error(e);process.exit(1)})"; then
+          if ! docker exec "$CONTAINER_ID" node -e "fetch('http://localhost:3000/dynasty/achaemenids').then(r=>r.text()).then(t=>{if(!t.includes('کوروش'))throw new Error('No content');process.exit(0)}).catch(e=>{console.error(e);process.exit(1)})"; then
             echo "❌ /dynasty/achaemenids doesn't contain expected content!"
             exit 1
           fi
           echo "✅ Known-good slug verified"
           
           # Verify nonexistent slug returns 404
-          if ! docker exec iran-history node -e "fetch('http://localhost:3000/dynasty/nonexistent-xyz').then(r=>{if(r.status!==404)throw new Error(\`Got \${r.status}\`);process.exit(0)}).catch(e=>{console.error(e);process.exit(1)})"; then
+          if ! docker exec "$CONTAINER_ID" node -e "fetch('http://localhost:3000/dynasty/nonexistent-xyz').then(r=>{if(r.status!==404)throw new Error(\`Got \${r.status}\`);process.exit(0)}).catch(e=>{console.error(e);process.exit(1)})"; then
             echo "❌ Nonexistent slug didn't return 404!"
             exit 1
           fi
@@ -262,7 +263,8 @@ jobs:
           docker compose -f docker-compose.prod.yml down
           
           # Verify clean shutdown
-          if docker ps -a | grep -q iran-history; then
+          REMAINING=$(docker compose -f docker-compose.prod.yml ps -q app 2>/dev/null || echo "")
+          if [ -n "$REMAINING" ]; then
             echo "❌ Container not properly removed"
             exit 1
           fi

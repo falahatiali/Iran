@@ -52,34 +52,45 @@ if [[ ! -f "$APP_ENV_FILE" ]]; then
     exit 1
 fi
 
-# Store current image for potential rollback
-CURRENT_IMAGE=$($DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" images -q web 2>/dev/null || echo "")
-
 echo "📥 Pulling new image..."
 $DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" pull
 
-# Blue/Green deployment: start new container alongside old one
-echo "🔵 Starting new container (blue/green)..."
-NEW_NAME="${COMPOSE_PROJECT}-new"
+# Get old container ID before scaling up
+OLD_CONTAINERS=$($DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" ps -q app 2>/dev/null || echo "")
 
-# Clean up any existing -new container
-docker stop "$NEW_NAME" 2>/dev/null || true
-docker rm "$NEW_NAME" 2>/dev/null || true
+echo "🔵 Starting new container alongside old (scale=2 for zero-downtime)..."
+# Scale to 2: new container starts with same labels, Traefik will load-balance
+$DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" up -d --no-deps --no-recreate --scale app=2
 
-# Start new container with temporary name
-$DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" up -d --no-deps
-docker rename "$COMPOSE_PROJECT" "$NEW_NAME"
+# Find the new container (the one not in OLD_CONTAINERS list)
+sleep 2
+ALL_CONTAINERS=$($DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" ps -q app 2>/dev/null)
+NEW_CONTAINER=""
+for CONTAINER in $ALL_CONTAINERS; do
+    if ! echo "$OLD_CONTAINERS" | grep -q "$CONTAINER"; then
+        NEW_CONTAINER="$CONTAINER"
+        break
+    fi
+done
 
-echo "⏳ Waiting for new container to be healthy and serving content..."
+if [ -z "$NEW_CONTAINER" ]; then
+    echo "❌ Could not identify new container!"
+    exit 1
+fi
+
+NEW_CONTAINER_NAME=$(docker inspect --format='{{.Name}}' "$NEW_CONTAINER" | sed 's/^\///')
+echo "New container: $NEW_CONTAINER_NAME ($NEW_CONTAINER)"
+
+echo "⏳ Waiting for new container to be healthy..."
 ELAPSED=0
 CONTENT_VERIFIED=false
 while [ $ELAPSED -lt $HEALTHCHECK_TIMEOUT ]; do
-    HEALTH=$(docker inspect --format='{{.State.Health.Status}}' "$NEW_NAME" 2>/dev/null || echo "starting")
+    HEALTH=$(docker inspect --format='{{.State.Health.Status}}' "$NEW_CONTAINER" 2>/dev/null || echo "starting")
     
     if [ "$HEALTH" = "healthy" ] && [ "$CONTENT_VERIFIED" = "false" ]; then
-        # Verify serving real content
-        if docker exec "$NEW_NAME" node -e "fetch('http://localhost:3000/').then(r=>r.text()).then(t=>{if(!t.includes('تاریخ ایران'))throw new Error();process.exit(0)}).catch(()=>process.exit(1))" 2>/dev/null; then
-            echo "✅ New container healthy and serving content!"
+        # Verify serving real content from inside container
+        if docker exec "$NEW_CONTAINER" node -e "fetch('http://localhost:3000/').then(r=>r.text()).then(t=>{if(!t.includes('تاریخ ایران'))throw new Error();process.exit(0)}).catch(()=>process.exit(1))" 2>/dev/null; then
+            echo "✅ New container is healthy and serving content!"
             CONTENT_VERIFIED=true
             break
         fi
@@ -87,11 +98,12 @@ while [ $ELAPSED -lt $HEALTHCHECK_TIMEOUT ]; do
     
     if [ "$HEALTH" = "unhealthy" ]; then
         echo "❌ New container is unhealthy!"
-        docker logs "$NEW_NAME" --tail 50
+        docker logs "$NEW_CONTAINER" --tail 50
         
-        # Rollback: remove new container, old one stays running
-        docker stop "$NEW_NAME" 2>/dev/null || true
-        docker rm "$NEW_NAME" 2>/dev/null || true
+        # Rollback: remove only new container, old keeps serving
+        echo "🔄 Rolling back: removing new container..."
+        docker stop "$NEW_CONTAINER" 2>/dev/null || true
+        docker rm "$NEW_CONTAINER" 2>/dev/null || true
         echo "✅ Rollback complete - old container still running (zero downtime)"
         exit 1
     fi
@@ -102,25 +114,47 @@ while [ $ELAPSED -lt $HEALTHCHECK_TIMEOUT ]; do
 done
 
 if [ "$CONTENT_VERIFIED" != "true" ]; then
-    echo "❌ New container failed to serve content within ${HEALTHCHECK_TIMEOUT}s"
-    docker logs "$NEW_NAME" --tail 50
-    docker stop "$NEW_NAME" 2>/dev/null || true
-    docker rm "$NEW_NAME" 2>/dev/null || true
+    echo "❌ New container failed to become healthy within ${HEALTHCHECK_TIMEOUT}s"
+    docker logs "$NEW_CONTAINER" --tail 50
+    docker stop "$NEW_CONTAINER" 2>/dev/null || true
+    docker rm "$NEW_CONTAINER" 2>/dev/null || true
     echo "✅ Rollback complete - old container still running (zero downtime)"
     exit 1
 fi
 
-# Atomic switchover: rename new to production name
-echo "🔀 Switching traffic (Traefik will route to new container)..."
-docker stop "$COMPOSE_PROJECT" 2>/dev/null || true
-docker rename "$NEW_NAME" "$COMPOSE_PROJECT"
+# Give Traefik a moment to discover the new healthy container
+echo "⏳ Waiting for Traefik to discover new container..."
+sleep 5
 
-# Remove old container
-echo "🧹 Cleaning up old container..."
-OLD_CONTAINER=$(docker ps -aq -f name="^${COMPOSE_PROJECT}\$" -f status=exited 2>/dev/null | head -1)
-if [ -n "$OLD_CONTAINER" ]; then
-    docker rm "$OLD_CONTAINER" 2>/dev/null || true
+# Verify public URL is serving (both containers should be load-balanced now)
+echo "🔍 Verifying public URL is responding..."
+for i in 1 2 3; do
+    if curl -sf "$APP_DOMAIN" | grep -q 'تاریخ ایران' 2>/dev/null; then
+        echo "✅ Public URL verified (attempt $i)"
+        break
+    fi
+    if [ $i -eq 3 ]; then
+        echo "❌ Public URL verification failed after 3 attempts"
+        docker logs "$NEW_CONTAINER" --tail 30
+        exit 1
+    fi
+    sleep 2
+done
+
+# Gracefully stop and remove old container(s)
+echo "🔀 Removing old container(s)..."
+if [ -n "$OLD_CONTAINERS" ]; then
+    for OLD in $OLD_CONTAINERS; do
+        OLD_NAME=$(docker inspect --format='{{.Name}}' "$OLD" 2>/dev/null | sed 's/^\///' || echo "$OLD")
+        echo "  Stopping $OLD_NAME..."
+        docker stop "$OLD" || true
+        docker rm "$OLD" 2>/dev/null || true
+    done
 fi
+
+# Scale back to 1
+echo "📉 Scaling back to 1 instance..."
+$DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" up -d --no-deps --scale app=1
 
 # Prune old images for this project only
 echo "🧹 Pruning old images..."
@@ -128,6 +162,8 @@ docker image prune -f --filter "label=org.opencontainers.image.source=https://gi
 
 echo ""
 echo "✅ Zero-downtime deployment successful!"
-echo "Container: $COMPOSE_PROJECT"
-FINAL_STATUS=$(docker inspect --format='{{.State.Status}} ({{.State.Health.Status}})' "$COMPOSE_PROJECT" 2>/dev/null)
+FINAL_CONTAINER=$($DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" ps -q app)
+FINAL_NAME=$(docker inspect --format='{{.Name}}' "$FINAL_CONTAINER" | sed 's/^\///')
+FINAL_STATUS=$(docker inspect --format='{{.State.Status}} ({{.State.Health.Status}})' "$FINAL_CONTAINER")
+echo "Container: $FINAL_NAME"
 echo "Status: $FINAL_STATUS"
