@@ -55,29 +55,31 @@ fi
 echo "📥 Pulling new image..."
 $DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" pull
 
-# Get old container ID before scaling up
-OLD_CONTAINERS=$($DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" ps -q app 2>/dev/null || echo "")
+# Get old containers and their creation times before scaling
+OLD_CONTAINERS_INFO=$($DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" ps -q app 2>/dev/null | xargs -r docker inspect --format='{{.Id}} {{.Created}}' 2>/dev/null || echo "")
+
+# Clean up any orphaned containers from old deployment
+ORPHANS=$(docker ps -a --filter "name=^iran-history$" --format "{{.ID}}" 2>/dev/null || echo "")
+if [ -n "$ORPHANS" ]; then
+    echo "🧹 Removing orphaned container from old deployment..."
+    docker rm -f $ORPHANS 2>/dev/null || true
+fi
 
 echo "🔵 Starting new container alongside old (scale=2 for zero-downtime)..."
 # Scale to 2: new container starts with same labels, Traefik will load-balance
 $DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" up -d --no-deps --no-recreate --scale app=2
 
-# Find the new container (the one not in OLD_CONTAINERS list)
+# Find the newest container (last one created)
 sleep 2
-ALL_CONTAINERS=$($DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" ps -q app 2>/dev/null)
-NEW_CONTAINER=""
-for CONTAINER in $ALL_CONTAINERS; do
-    if ! echo "$OLD_CONTAINERS" | grep -q "$CONTAINER"; then
-        NEW_CONTAINER="$CONTAINER"
-        break
-    fi
-done
+NEW_CONTAINER=$($DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" ps -q app 2>/dev/null | xargs docker inspect --format='{{.Id}} {{.Created}}' | sort -k2 | tail -1 | cut -d' ' -f1)
 
 if [ -z "$NEW_CONTAINER" ]; then
     echo "❌ Could not identify new container!"
+    $DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" ps
     exit 1
 fi
 
+OLD_CONTAINERS=$(echo "$OLD_CONTAINERS_INFO" | cut -d' ' -f1)
 NEW_CONTAINER_NAME=$(docker inspect --format='{{.Name}}' "$NEW_CONTAINER" | sed 's/^\///')
 echo "New container: $NEW_CONTAINER_NAME ($NEW_CONTAINER)"
 
