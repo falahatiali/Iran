@@ -8,18 +8,13 @@ export default defineConfig({
         'Cache-Control': 'public, max-age=31536000, immutable',
       },
     },
-    // No-cache for HTML pages
-    '/**/*.html': {
-      headers: {
-        'Cache-Control': 'no-cache, no-store, must-revalidate',
-      },
-    },
-    '/': {
+    // No-cache for HTML pages and routes
+    '/**': {
       headers: {
         'Cache-Control': 'no-cache, no-store, must-revalidate',
       },
     },
   },
   // Return 404 for missing assets instead of serving HTML
-  errorHandler: '~/server/error.ts',
+  errorHandler: './server/error.ts',
 })
