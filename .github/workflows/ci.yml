@@ -43,7 +43,7 @@ jobs:
       - name: Database smoke test
         run: npm run db:smoke
 
-      - name: Research content tests
+      - name: Tests
         run: npm test
 
       - name: Build application
@@ -59,7 +59,7 @@ jobs:
               if root.exists():
                   htmls.extend(root.rglob('*.html'))
           blob = '\n'.join(p.read_text(encoding='utf-8', errors='replace') for p in htmls)
-          missing = [s for s in ('BM 90920', 'استوانه', 'Cyrus Cylinder', 'شواهد تاریخی', 'Historical evidence') if s not in blob]
+          missing = [s for s in ('BM 90920', 'استوانه', 'Cyrus Cylinder', 'شواهد تاریخی', 'Historical evidence', 'گاه‌شمار سراسری') if s not in blob]
           if missing:
               raise SystemExit(f'missing in prerender: {missing}; html files={len(htmls)}')
           print(f'prerender ok ({len(htmls)} html files)')
@@ -289,6 +289,13 @@ jobs:
           fi
           echo "✅ /en/cylinder verified"
 
+          if ! docker exec "$CONTAINER_ID" node -e "fetch('http://localhost:3000/timeline?q='+encodeURIComponent('\u0628\u06cc\u0633\u062a\u0648\u0646')).then(async r=>{if(r.status!==200)throw new Error(r.status);const t=await r.text();if(!t.includes('\u0628\u06cc\u0633\u062a\u0648\u0646'))throw new Error('missing query hit');if(t.includes('Something went wrong'))throw new Error('boundary');if(!t.includes('canonical'))throw new Error('canonical');if(!t.includes('noindex'))throw new Error('robots');process.exit(0)}).catch(e=>{console.error(e);process.exit(1)})"; then
+            echo "❌ /timeline?q=بیستون failed content check!"
+            docker logs "$CONTAINER_ID" --tail 80
+            exit 1
+          fi
+          echo "✅ /timeline?q=بیستون verified"
+
       - name: Test rollback scenario
         run: |
           cd /tmp/mock-deploy
@@ -456,6 +463,18 @@ jobs:
             echo "  ✅ /en/cylinder content"
           else
             echo "  ❌ /en/cylinder missing expected markers"
+            FAILED=$((FAILED + 1))
+          fi
+
+          echo ""
+          echo "Filtered timeline (URL search params):"
+          Q=$(python3 -c "import urllib.parse; print(urllib.parse.quote('بیستون'))")
+          TL_STATUS=$(curl -sS -o /tmp/timeline-q.html -w "%{http_code}" "$PRODUCTION_URL/timeline?q=$Q" || echo "000")
+          TL_BODY=$(cat /tmp/timeline-q.html 2>/dev/null || true)
+          if [ "$TL_STATUS" = "200" ] && echo "$TL_BODY" | grep -q 'بیستون' && echo "$TL_BODY" | grep -q 'noindex' && echo "$TL_BODY" | grep -q 'rel="canonical"' && ! echo "$TL_BODY" | grep -q 'Something went wrong'; then
+            echo "  ✅ /timeline?q=بیستون → 200 (filtered, canonical, noindex)"
+          else
+            echo "  ❌ /timeline?q=بیستون → $TL_STATUS"
             FAILED=$((FAILED + 1))
           fi
 
