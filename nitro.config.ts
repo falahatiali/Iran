@@ -1,6 +1,6 @@
-import { defineNitroConfig } from 'nitropack/config'
+import { defineConfig } from 'nitro/config'
 
-export default defineNitroConfig({
+export default defineConfig({
   routeRules: {
     // Immutable cache for hashed assets
     '/assets/**': {
