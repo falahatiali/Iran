@@ -49,6 +49,22 @@ jobs:
       - name: Build application
         run: npm run build
 
+      - name: Verify prerendered cylinder pages
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          roots = [Path('.output/public'), Path('.output/server')]
+          htmls = []
+          for root in roots:
+              if root.exists():
+                  htmls.extend(root.rglob('*.html'))
+          blob = '\n'.join(p.read_text(encoding='utf-8', errors='replace') for p in htmls)
+          missing = [s for s in ('BM 90920', 'استوانه', 'Cyrus Cylinder', 'شواهد تاریخی', 'Historical evidence') if s not in blob]
+          if missing:
+              raise SystemExit(f'missing in prerender: {missing}; html files={len(htmls)}')
+          print(f'prerender ok ({len(htmls)} html files)')
+          PY
+
   # Build and push Docker image
   build-push:
     name: Build and Push Docker Image
@@ -258,6 +274,21 @@ jobs:
           fi
           echo "✅ 404 handling verified"
 
+          # Flagship cylinder pages (Persian primary, English)
+          if ! docker exec "$CONTAINER_ID" node -e "fetch('http://localhost:3000/cylinder').then(async r=>{if(r.status!==200)throw new Error(r.status);const t=await r.text();if(!t.includes('BM 90920')||!t.includes('شواهد تاریخی'))throw new Error('missing FA cylinder markers');process.exit(0)}).catch(e=>{console.error(e);process.exit(1)})"; then
+            echo "❌ /cylinder failed content check!"
+            docker logs "$CONTAINER_ID" --tail 80
+            exit 1
+          fi
+          echo "✅ /cylinder verified"
+
+          if ! docker exec "$CONTAINER_ID" node -e "fetch('http://localhost:3000/en/cylinder').then(async r=>{if(r.status!==200)throw new Error(r.status);const t=await r.text();if(!t.includes('BM 90920')||!t.includes('Historical evidence'))throw new Error('missing EN cylinder markers');process.exit(0)}).catch(e=>{console.error(e);process.exit(1)})"; then
+            echo "❌ /en/cylinder failed content check!"
+            docker logs "$CONTAINER_ID" --tail 80
+            exit 1
+          fi
+          echo "✅ /en/cylinder verified"
+
       - name: Test rollback scenario
         run: |
           cd /tmp/mock-deploy
@@ -358,14 +389,18 @@ jobs:
         run: |
           echo "🔍 Crawling and verifying all internal links..."
           
-          # Fetch sitemap
-          SITEMAP=$(curl -sf "$PRODUCTION_URL/sitemap.xml" | grep -oP '(?<=<loc>)[^<]+' || true)
+          # Fetch sitemap (full URLs) and reduce to paths
+          SITEMAP_PATHS=$(curl -sf "$PRODUCTION_URL/sitemap.xml" | grep -oP '(?<=<loc>)[^<]+' | sed -E "s#https?://[^/]+##" || true)
           
-          # Collect links from homepage
-          HOMEPAGE_LINKS=$(curl -sf "$PRODUCTION_URL/" | grep -oP 'href="(/[^"]+)"' | cut -d'"' -f2 || true)
+          # Collect links from homepage and cylinder pages
+          HOMEPAGE_LINKS=$(curl -sf "$PRODUCTION_URL/" | grep -oP 'href="(/[^"#?]+)' | cut -d'"' -f2 || true)
+          CYL_LINKS=$(curl -sf "$PRODUCTION_URL/cylinder" | grep -oP 'href="(/[^"#?]+)' | cut -d'"' -f2 || true)
+          EN_CYL_LINKS=$(curl -sf "$PRODUCTION_URL/en/cylinder" | grep -oP 'href="(/[^"#?]+)' | cut -d'"' -f2 || true)
           
-          # Combine all URLs (dedupe)
-          ALL_URLS=$(echo -e "$SITEMAP\n$HOMEPAGE_LINKS" | grep -E '^/' | sort -u)
+          EXPLICIT=$'/cylinder\n/en/cylinder\n/timeline\n/about'
+          
+          # Combine all URLs (dedupe). Skip asset/hash-only paths.
+          ALL_URLS=$(echo -e "$SITEMAP_PATHS\n$HOMEPAGE_LINKS\n$CYL_LINKS\n$EN_CYL_LINKS\n$EXPLICIT" | grep -E '^/' | grep -Ev '\.(css|js|svg|png|jpg|woff2?)$' | sort -u)
           
           TOTAL=0
           SUCCESS=0
@@ -407,6 +442,23 @@ jobs:
             FAILED=$((FAILED + 1))
           fi
           
+          echo ""
+          echo "Flagship content checks:"
+          FA_BODY=$(curl -sf "$PRODUCTION_URL/cylinder" || true)
+          EN_BODY=$(curl -sf "$PRODUCTION_URL/en/cylinder" || true)
+          if echo "$FA_BODY" | grep -q 'BM 90920' && echo "$FA_BODY" | grep -q 'شواهد تاریخی'; then
+            echo "  ✅ /cylinder content"
+          else
+            echo "  ❌ /cylinder missing expected markers"
+            FAILED=$((FAILED + 1))
+          fi
+          if echo "$EN_BODY" | grep -q 'BM 90920' && echo "$EN_BODY" | grep -q 'Historical evidence'; then
+            echo "  ✅ /en/cylinder content"
+          else
+            echo "  ❌ /en/cylinder missing expected markers"
+            FAILED=$((FAILED + 1))
+          fi
+
           echo ""
           echo "📊 Summary:"
           echo "  Total valid routes tested: $TOTAL"
