@@ -1,4 +1,4 @@
-import { HeadContent, Link, Outlet, Scripts, createRootRoute } from '@tanstack/react-router'
+import { HeadContent, Link, Outlet, Scripts, createRootRoute, useRouterState } from '@tanstack/react-router'
 import { MotionConfig } from 'motion/react'
 import { useEffect } from 'react'
 import appCss from '../styles/app.css?url'
@@ -29,6 +29,8 @@ export const Route = createRootRoute({
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+  const pathname = useRouterState({ select: (s) => s.location.pathname })
+  const isEn = pathname.startsWith('/en')
   useEffect(() => {
     // One-time reload guard for stale chunk/asset errors after deployment
     const handleChunkError = (event: ErrorEvent | PromiseRejectionEvent) => {
@@ -60,7 +62,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
   }, [])
   
   return (
-    <html lang="fa" dir="rtl">
+    <html lang={isEn ? 'en' : 'fa'} dir={isEn ? 'ltr' : 'rtl'}>
       <head><HeadContent /></head>
       <body>
         {children}

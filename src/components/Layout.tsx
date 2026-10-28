@@ -1,11 +1,14 @@
-import { Link } from '@tanstack/react-router'
+import { Link, useRouterState } from '@tanstack/react-router'
 import { motion, useScroll, useSpring } from 'motion/react'
 import { useEffect, useState } from 'react'
 import type { Overview } from '../server/api'
+import { localeFromPath } from '../lib/i18n'
 import { SearchDialog } from './Search'
 import { Shamseh } from './Ornament'
 
 export function Header({ data }: { data: Overview }) {
+  const pathname = useRouterState({ select: (s) => s.location.pathname })
+  const locale = localeFromPath(pathname)
   const [open, setOpen] = useState(false)
   const [menu, setMenu] = useState(false)
   const { scrollYProgress } = useScroll()
@@ -17,25 +20,43 @@ export function Header({ data }: { data: Overview }) {
     window.addEventListener('keydown', k)
     return () => window.removeEventListener('keydown', k)
   }, [])
-  const links = [
-    { to: '/', label: 'خانه' }, { to: '/timeline', label: 'گاه‌شمار' }, { to: '/about', label: 'درباره و روش‌شناسی' },
-  ] as const
+  const links = locale === 'en'
+    ? [
+        { to: '/', label: 'Home' },
+        { to: '/cylinder', label: 'Cyrus Cylinder' },
+        { to: '/timeline', label: 'Timeline' },
+        { to: '/about', label: 'About' },
+      ] as const
+    : [
+        { to: '/', label: 'خانه' },
+        { to: '/cylinder', label: 'استوانهٔ کوروش' },
+        { to: '/timeline', label: 'گاه‌شمار' },
+        { to: '/about', label: 'درباره و روش‌شناسی' },
+      ] as const
   return (
     <>
       <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:right-2 focus:z-[60] glass rounded-lg px-6 py-3 min-w-11 min-h-11">پرش به محتوا</a>
       <header className="sticky top-0 z-40 border-b border-gold/15 bg-night/70 backdrop-blur-xl">
         <div className="mx-auto max-w-7xl flex items-center justify-between gap-4 px-4 h-16">
-          <Link to="/" className="flex items-center gap-2 font-black text-lg min-h-11"><Shamseh className="size-8" /><span className="text-gilded">تاریخ ایران</span></Link>
+          <Link to="/" className="flex items-center gap-2 font-black text-lg min-h-11"><Shamseh className="size-8" /><span className="text-gilded">{locale === 'en' ? 'Iran History' : 'تاریخ ایران'}</span></Link>
           <nav aria-label="ناوبری اصلی" className="hidden md:flex items-center gap-1">
             {links.map((l) => (
               <Link key={l.to} to={l.to} activeOptions={{ exact: true }} className="rounded-full px-4 py-3 text-sm text-ivory/75 hover:text-gold transition-colors min-h-11" activeProps={{ className: 'bg-gold/15 !text-gold-bright' }}>{l.label}</Link>
             ))}
           </nav>
           <div className="flex items-center gap-2">
-            <button onClick={() => setOpen(true)} className="glass rounded-full px-5 py-2.5 text-sm flex items-center gap-2 hover:border-gold/60 transition-colors min-h-11 min-w-11" aria-label="جست‌وجو (Ctrl+K)">
-              <span aria-hidden="true">⌕</span><span className="hidden sm:inline text-ivory/70">جست‌وجو</span><kbd className="hidden lg:inline text-[0.65rem] text-ivory/40">Ctrl K</kbd>
+            <a
+              href={pathname.startsWith('/en') ? '/cylinder' : '/en/cylinder'}
+              className="hidden sm:inline-flex glass rounded-full px-4 py-2 text-sm hover:border-gold min-h-11 items-center"
+              hrefLang={pathname.startsWith('/en') ? 'fa' : 'en'}
+              title={pathname.startsWith('/en') ? 'نسخهٔ فارسی استوانهٔ کوروش' : 'English Cyrus Cylinder page'}
+            >
+              {locale === 'en' ? 'فا' : 'EN'}
+            </a>
+            <button onClick={() => setOpen(true)} className="glass rounded-full px-5 py-2.5 text-sm flex items-center gap-2 hover:border-gold/60 transition-colors min-h-11 min-w-11" aria-label={locale === 'en' ? 'Search (Ctrl+K)' : 'جست‌وجو (Ctrl+K)'}>
+              <span aria-hidden="true">⌕</span><span className="hidden sm:inline text-ivory/70">{locale === 'en' ? 'Search' : 'جست‌وجو'}</span><kbd className="hidden lg:inline text-[0.65rem] text-ivory/40">Ctrl K</kbd>
             </button>
-            <button className="md:hidden glass rounded-full size-11" aria-expanded={menu} aria-controls="mobile-nav" aria-label="منو" onClick={() => setMenu((m) => !m)}>☰</button>
+            <button className="md:hidden glass rounded-full size-11" aria-expanded={menu} aria-controls="mobile-nav" aria-label={locale === 'en' ? 'Menu' : 'منو'} onClick={() => setMenu((m) => !m)}>☰</button>
           </div>
         </div>
         {menu && (
@@ -73,6 +94,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-10 grid gap-6 md:grid-cols-3 text-sm text-ivory/60">
         <div><p className="text-gilded font-black text-lg">تاریخ ایران</p><p className="mt-2 leading-7">مرجعی آزاد و منبع‌دار برای تاریخ ایران، از ایلام تا امروز.</p></div>
         <nav aria-label="پیوندهای پانویس" className="flex flex-col gap-2">
+          <Link to="/cylinder" className="hover:text-gold py-2 inline-block min-h-11">استوانهٔ کوروش</Link>
           <Link to="/timeline" className="hover:text-gold py-2 inline-block min-h-11">گاه‌شمار سراسری</Link>
           <Link to="/about" className="hover:text-gold py-2 inline-block min-h-11">روش‌شناسی و منابع</Link>
         </nav>

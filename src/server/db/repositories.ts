@@ -43,6 +43,7 @@ export interface Repositories {
   rulers: RulerRepository
   events: EventRepository
   relations: RelationRepository
+  research: import('./research').ResearchRepository
 }
 
 /** Low-level driver contract used by the migrator and seeder. */

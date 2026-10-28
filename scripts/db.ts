@@ -5,6 +5,7 @@ import { createDriver, dbConfig } from '../src/server/db/factory'
 import type { SqlDriver } from '../src/server/db/repositories'
 import { dynasties } from '../src/data/dynasties'
 import { sources, dynastySources, extents } from '../src/data/sources'
+import { researchSeedStmts } from '../src/data/research/seed'
 
 const MIG_DIR = path.resolve(import.meta.dirname, '../migrations')
 
@@ -64,12 +65,16 @@ export async function seed(db: SqlDriver) {
     for (const s of r.family.spouses ?? []) rel(r.id, 'spouse', s)
   }
   await db.batch(stmts)
-  console.log(`seeded ${dynasties.length} dynasties, ${ids.size} rulers, ${dynasties.reduce((n, d) => n + d.events.length, 0)} events, ${sources.length} sources`)
+  await db.batch(researchSeedStmts())
+  console.log(`seeded ${dynasties.length} dynasties, ${ids.size} rulers, ${dynasties.reduce((n, d) => n + d.events.length, 0)} events, ${sources.length} sources, research content`)
 }
 
 async function counts(db: SqlDriver) {
   const q = async (t: string) => (await db.query<{ n: number }>(`SELECT COUNT(*) AS n FROM ${t}`))[0].n
-  return { dynasties: await q('dynasties'), rulers: await q('rulers'), events: await q('events'), relations: await q('relations') }
+  return {
+    dynasties: await q('dynasties'), rulers: await q('rulers'), events: await q('events'), relations: await q('relations'),
+    artifacts: await q('artifacts'), passages: await q('passages'), bibliography: await q('bibliography'),
+  }
 }
 
 async function main() {
@@ -96,4 +101,5 @@ async function main() {
   } finally { db.close() }
 }
 
-main().catch((e) => { console.error(e); process.exit(1) })
+const isCli = /(?:^|[/\\])db\.(ts|js)$/.test(process.argv[1] ?? '')
+if (isCli) main().catch((e) => { console.error(e); process.exit(1) })

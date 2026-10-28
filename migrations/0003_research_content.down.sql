@@ -1,0 +1,15 @@
+DROP TABLE IF EXISTS revisions;
+DROP TABLE IF EXISTS reviews;
+DROP TABLE IF EXISTS media_assets;
+DROP TABLE IF EXISTS interpretations;
+DROP TABLE IF EXISTS claims;
+DROP TABLE IF EXISTS citations;
+DROP TABLE IF EXISTS annotations;
+DROP TABLE IF EXISTS passage_texts;
+DROP TABLE IF EXISTS passages;
+DROP TABLE IF EXISTS translations;
+DROP TABLE IF EXISTS editions;
+DROP TABLE IF EXISTS fragments;
+DROP TABLE IF EXISTS source_texts;
+DROP TABLE IF EXISTS artifacts;
+DROP TABLE IF EXISTS bibliography;

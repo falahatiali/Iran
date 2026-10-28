@@ -45,6 +45,11 @@ function KingPage() {
             <section aria-labelledby="bio-h">
               <h2 id="bio-h" className="text-2xl font-bold text-gold mb-4">زندگی‌نامه</h2>
               <p className="text-xl leading-10 text-ivory/90">{r.description}</p>
+              {r.id === 'cyrus-ii' && (
+                <p className="mt-4">
+                  <Link to="/cylinder" className="text-gold hover:underline min-h-11 inline-flex items-center">صفحهٔ پرچم: استوانهٔ کوروش (BM 90920)</Link>
+                </p>
+              )}
               <p className="mt-4 text-ivory/60 leading-8">
                 {r.name} در {year(r.start)} بر تخت {d.name} نشست{k.predecessor ? ` و جانشین ${k.predecessor.name} شد` : ''}.
                 {k.successor ? ` پس از او ${k.successor.name} به فرمانروایی رسید.` : r.end === null ? '' : ' با او این دودمان به پایان رسید یا دوران آن بسته شد.'}
