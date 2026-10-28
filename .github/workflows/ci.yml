@@ -43,6 +43,9 @@ jobs:
       - name: Database smoke test
         run: npm run db:smoke
 
+      - name: Research content tests
+        run: npm test
+
       - name: Build application
         run: npm run build
 

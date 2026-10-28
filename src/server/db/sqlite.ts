@@ -1,5 +1,6 @@
 import { createClient, type Client, type InValue } from '@libsql/client'
 import type { Repositories, SqlDriver, DynastyRow, RulerRow, EventRow, RelationRow, Source } from './repositories'
+import { createResearchRepository } from './research'
 
 export function createSqliteDriver(url: string): SqlDriver {
   const client: Client = createClient({ url })
@@ -48,5 +49,6 @@ export function createSqlRepositories(db: SqlDriver): Repositories {
         `SELECT r.ruler_id AS id FROM relations r JOIN rulers x ON x.id = r.ruler_id WHERE r.kind = 'father' AND r.related_ruler_id = ? ORDER BY x.start_year`, [id])).map((r) => r.id),
       all: () => db.query<RelationRow>(REL),
     },
+    research: createResearchRepository(db),
   }
 }
