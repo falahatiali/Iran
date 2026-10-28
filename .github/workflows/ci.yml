@@ -346,6 +346,75 @@ jobs:
           ssh -i ~/.ssh/deploy_key -p $DEPLOY_PORT $DEPLOY_USER@$DEPLOY_HOST \
             "cd $DEPLOY_DIR && bash deploy.sh"
 
+      - name: Post-deploy link crawler
+        if: steps.check-secrets.outputs.skip == 'false'
+        env:
+          PRODUCTION_URL: ${{ vars.PRODUCTION_URL || 'https://history.verzav.ir' }}
+        run: |
+          echo "🔍 Crawling and verifying all internal links..."
+          
+          # Fetch sitemap
+          SITEMAP=$(curl -sf "$PRODUCTION_URL/sitemap.xml" | grep -oP '(?<=<loc>)[^<]+' || true)
+          
+          # Collect links from homepage
+          HOMEPAGE_LINKS=$(curl -sf "$PRODUCTION_URL/" | grep -oP 'href="(/[^"]+)"' | cut -d'"' -f2 || true)
+          
+          # Combine all URLs (dedupe)
+          ALL_URLS=$(echo -e "$SITEMAP\n$HOMEPAGE_LINKS" | grep -E '^/' | sort -u)
+          
+          TOTAL=0
+          SUCCESS=0
+          FAILED=0
+          
+          echo "Testing valid routes:"
+          for URL in $ALL_URLS; do
+            TOTAL=$((TOTAL + 1))
+            FULL_URL="$PRODUCTION_URL$URL"
+            STATUS=$(curl -sf -o /dev/null -w "%{http_code}" "$FULL_URL" || echo "000")
+            
+            if [ "$STATUS" = "200" ]; then
+              SUCCESS=$((SUCCESS + 1))
+              echo "  ✅ $URL → $STATUS"
+            else
+              FAILED=$((FAILED + 1))
+              echo "  ❌ $URL → $STATUS"
+            fi
+          done
+          
+          echo ""
+          echo "Testing invalid routes (should return 404):"
+          
+          # Test invalid dynasty slug
+          STATUS=$(curl -sf -o /dev/null -w "%{http_code}" "$PRODUCTION_URL/dynasty/nonexistent-xyz-fake" || echo "000")
+          if [ "$STATUS" = "404" ]; then
+            echo "  ✅ /dynasty/nonexistent-xyz-fake → 404"
+          else
+            echo "  ❌ /dynasty/nonexistent-xyz-fake → $STATUS (expected 404)"
+            FAILED=$((FAILED + 1))
+          fi
+          
+          # Test invalid king slug
+          STATUS=$(curl -sf -o /dev/null -w "%{http_code}" "$PRODUCTION_URL/king/nonexistent-xyz-fake" || echo "000")
+          if [ "$STATUS" = "404" ]; then
+            echo "  ✅ /king/nonexistent-xyz-fake → 404"
+          else
+            echo "  ❌ /king/nonexistent-xyz-fake → $STATUS (expected 404)"
+            FAILED=$((FAILED + 1))
+          fi
+          
+          echo ""
+          echo "📊 Summary:"
+          echo "  Total valid routes tested: $TOTAL"
+          echo "  Successful (200): $SUCCESS"
+          echo "  Failed: $FAILED"
+          
+          if [ $FAILED -gt 0 ]; then
+            echo "❌ Link crawler found failures"
+            exit 1
+          fi
+          
+          echo "✅ All internal links verified"
+
       - name: Cleanup
         if: always()
         run: rm -f ~/.ssh/deploy_key
