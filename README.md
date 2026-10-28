@@ -16,6 +16,14 @@
 - **نقشه‌های گسترهٔ سرزمینی** برای هر دودمان
 - **۱۸ منبع معتبر** با نمایش کتاب‌شناسی کامل برای هر دودمان
 
+## اصل بنیادین
+
+متن کامل دستور مالک پروژه: [docs/FOUNDATIONAL_PHILOSOPHY.md](./docs/FOUNDATIONAL_PHILOSOPHY.md).
+
+حقوق مالکیت فردی چارچوب تحلیل است، نه مجوزی برای تحریف تاریخ. هر ادعای تاریخی باید با شاهد ثابت شود. در داده و در رابط کاربری سه لایه جدا می‌مانند: **شواهد تاریخی**، **تفسیر فلسفی**، **معنای فرهنگی امروز**. نقل‌قول، ترجمه، تصویر و مدل سه‌بعدی ساختگی ممنوع است. جزئیات پژوهشی این مرحله در [docs/RESEARCH_LOG.md](./docs/RESEARCH_LOG.md) و سیاهه‌ی بهبود در [docs/IMPROVEMENT_LOG.md](./docs/IMPROVEMENT_LOG.md) است.
+
+---
+
 ## ✨ ویژگی‌ها
 
 - **پیش‌رندر (Prerender) کامل**: همهٔ ۲۴۰ صفحه به‌صورت استاتیک تولید می‌شوند (SEO محور)
@@ -735,9 +743,12 @@ Then `npm run db:reset`.
 
 ### Content Principles
 
-1. **All claims must be sourced**: each dynasty references one or more authoritative sources.
-2. **Neutral, factual content**: no political or religious bias.
-3. **Historical accuracy**: dates, names, and events based on scholarly sources.
+The owner directive in [docs/FOUNDATIONAL_PHILOSOPHY.md](./docs/FOUNDATIONAL_PHILOSOPHY.md) governs research and UI. In short:
+
+1. **All claims must be sourced**: each dynasty references one or more authoritative sources. Never invent a citation or quote.
+2. **Three layers, labeled:** historical evidence, philosophical interpretation, and modern cultural meaning stay distinct.
+3. **Neutral, factual historical layer**: no political or religious bias in what the sources establish.
+4. **Translations and media:** reproduce a translation or image only with a verified license; otherwise summarize and link. No fabricated cuneiform or fake museum scans.
 
 ### How to Submit Corrections
 
@@ -772,7 +783,7 @@ If you find incorrect information:
 
 ## 🗺 Roadmap
 
-See [ROADMAP.md](./ROADMAP.md) for planned features and development roadmap.
+See [ROADMAP.md](./ROADMAP.md) for planned features, including the mapping of the philosophy directive’s section 8 priorities. Research notes: [docs/RESEARCH_LOG.md](./docs/RESEARCH_LOG.md). Improvement log: [docs/IMPROVEMENT_LOG.md](./docs/IMPROVEMENT_LOG.md).
 
 ---
 
