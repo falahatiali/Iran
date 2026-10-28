@@ -7,12 +7,14 @@ export function seo({
   path = '/',
   locale = 'fa_IR',
   alternates,
+  noindex = false,
 }: {
   title: string
   description: string
   path?: string
   locale?: string
   alternates?: { hrefLang: string; path: string }[]
+  noindex?: boolean
 }) {
   const full = title === SITE_NAME ? title : `${title} | ${SITE_NAME}`
   return {
@@ -26,6 +28,7 @@ export function seo({
       { property: 'og:url', content: SITE_URL + path },
       { property: 'og:site_name', content: SITE_NAME },
       { name: 'twitter:card', content: 'summary' },
+      ...(noindex ? [{ name: 'robots', content: 'noindex, follow' }] : []),
     ],
     links: [
       { rel: 'canonical', href: SITE_URL + path },

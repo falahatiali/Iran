@@ -1,14 +1,23 @@
-import { Link, createFileRoute, getRouteApi } from '@tanstack/react-router'
+import { Link, createFileRoute, getRouteApi, stripSearchParams, useNavigate } from '@tanstack/react-router'
 import { motion, useScroll, useTransform } from 'motion/react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Shamseh, Divider } from '../components/Ornament'
 import { Reveal } from '../components/Reveal'
+import { ShareLink } from '../components/ShareLink'
 import { eraNames, fa, range } from '../lib/format'
 import { normalize } from '../lib/search'
 import { seo } from '../lib/seo'
+import { HOME_DEFAULTS, filterByQuery, hasNonDefaultSearch, homeSearchSchema, type HomeSearch } from '../lib/searchSchema'
+import { useDraftQuery } from '../lib/useDraftQuery'
 
 export const Route = createFileRoute('/')({
-  head: () => seo({ title: 'تاریخ ایران', description: 'تاریخ ایران از ایلام و هخامنشیان تا امروز: همه‌ی دودمان‌ها و پادشاهان به ترتیب زمانی، با رویدادها، شجره‌نامه و منابع.' }),
+  validateSearch: (search: Record<string, unknown>): HomeSearch => homeSearchSchema.parse(search),
+  search: { middlewares: [stripSearchParams(HOME_DEFAULTS)] },
+  head: ({ match }) => seo({
+    title: 'تاریخ ایران',
+    description: 'تاریخ ایران از ایلام و هخامنشیان تا امروز: همه‌ی دودمان‌ها و پادشاهان به ترتیب زمانی، با رویدادها، شجره‌نامه و منابع.',
+    noindex: hasNonDefaultSearch({ ...HOME_DEFAULTS, ...match.search }, HOME_DEFAULTS),
+  }),
   component: Home,
 })
 const root = getRouteApi('__root__')
@@ -50,7 +59,11 @@ function Hero({ totals }: { totals: { dynasties: number; rulers: number; events:
 
 function Home() {
   const data = root.useLoaderData()
-  const [q, setQ] = useState('')
+  const { q = '' } = Route.useSearch()
+  const navigate = useNavigate({ from: '/' })
+  const [draft, setDraft] = useDraftQuery(q, (next) => {
+    void navigate({ search: { q: next }, replace: true, resetScroll: false })
+  })
   const [active, setActive] = useState(data.dynasties[0]?.slug ?? '')
   const navRef = useRef<HTMLDivElement>(null)
 
@@ -58,7 +71,12 @@ function Home() {
     const n = normalize(q)
     if (!n) return data.dynasties
     return data.dynasties
-      .map((d) => ({ ...d, rulers: normalize(`${d.name} ${d.latin}`).includes(n) ? d.rulers : d.rulers.filter((r) => normalize(`${r.name} ${r.latin}`).includes(n)) }))
+      .map((d) => ({
+        ...d,
+        rulers: normalize(`${d.name} ${d.latin}`).includes(n)
+          ? d.rulers
+          : filterByQuery(d.rulers, q, (r) => `${r.name} ${r.latin}`),
+      }))
       .filter((d) => d.rulers.length)
   }, [q, data])
 
@@ -103,8 +121,9 @@ function Home() {
         <div className="mx-auto max-w-7xl px-4 flex items-center gap-3 py-2">
           <label className="shrink-0">
             <span className="sr-only">فیلتر پادشاهان</span>
-            <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="فیلتر پادشاه…" className="w-32 md:w-48 rounded-full bg-ivory/5 border border-gold/25 px-4 py-1.5 text-sm outline-none focus:border-gold" />
+            <input value={draft} onChange={(e) => setDraft(e.target.value)} placeholder="فیلتر پادشاه…" className="w-32 md:w-48 rounded-full bg-ivory/5 border border-gold/25 px-4 py-1.5 text-sm outline-none focus:border-gold" />
           </label>
+          <ShareLink label="رونوشت پیوند" />
           <div className="relative flex-1 min-w-0">
             <nav ref={navRef} aria-label="دودمان‌ها" className="flex gap-2 overflow-x-auto [scrollbar-width:none] scroll-smooth">
               {filtered.map((d) => (

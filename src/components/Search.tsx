@@ -44,7 +44,12 @@ export function SearchDialog({ data, open, onClose }: { data: Overview; open: bo
     onClose()
     if (h.kind === 'ruler') void navigate({ to: '/king/$slug', params: { slug: h.slug } })
     else if (h.kind === 'page') void navigate({ to: '/cylinder' })
+    else if (h.kind === 'event') void navigate({ to: '/timeline', search: { q: h.label } })
     else void navigate({ to: '/dynasty/$slug', params: { slug: h.slug } })
+  }
+  const openTimeline = () => {
+    onClose()
+    void navigate({ to: '/timeline', search: { q } })
   }
   const label = { dynasty: 'دودمان', ruler: 'فرمانروا', event: 'رویداد', page: 'صفحه' }
 
@@ -59,6 +64,7 @@ export function SearchDialog({ data, open, onClose }: { data: Overview; open: bo
               if (e.key === 'ArrowDown') { e.preventDefault(); setSel((s) => Math.min(s + 1, hits.length - 1)) }
               if (e.key === 'ArrowUp') { e.preventDefault(); setSel((s) => Math.max(s - 1, 0)) }
               if (e.key === 'Enter' && hits[sel]) go(hits[sel])
+              else if (e.key === 'Enter' && q.trim()) openTimeline()
             }}>
             <label className="flex items-center gap-3 px-5 border-b border-gold/20">
               <span aria-hidden="true" className="text-gold">⌕</span>
@@ -68,7 +74,12 @@ export function SearchDialog({ data, open, onClose }: { data: Overview; open: bo
               <kbd className="text-xs text-ivory/40 border border-ivory/20 rounded px-1.5">Esc</kbd>
             </label>
             <ul id="search-results" role="listbox" className="max-h-[55vh] overflow-y-auto p-2">
-              {q && hits.length === 0 && <li className="p-4 text-ivory/50 text-center">نتیجه‌ای یافت نشد.</li>}
+              {q && hits.length === 0 && (
+                <li className="p-4 text-ivory/50 text-center">
+                  نتیجه‌ای یافت نشد.
+                  <button type="button" onClick={openTimeline} className="block mx-auto mt-3 text-gold hover:underline min-h-11">جست‌وجو در گاه‌شمار</button>
+                </li>
+              )}
               {hits.map((h, i) => (
                 <li key={h.key} id={h.key} role="option" aria-selected={i === sel}>
                   <button onMouseEnter={() => setSel(i)} onClick={() => go(h)} className={`w-full text-right flex items-center justify-between gap-3 rounded-xl px-4 py-2.5 transition-colors ${i === sel ? 'bg-gold/15' : ''}`}>
@@ -77,6 +88,13 @@ export function SearchDialog({ data, open, onClose }: { data: Overview; open: bo
                   </button>
                 </li>
               ))}
+              {q.trim() !== '' && (
+                <li className="px-4 py-2">
+                  <button type="button" onClick={openTimeline} className="text-sm text-gold hover:underline min-h-11">
+                    جست‌وجو در گاه‌شمار برای «{q}»
+                  </button>
+                </li>
+              )}
             </ul>
           </motion.div>
         </motion.div>

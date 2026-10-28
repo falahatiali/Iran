@@ -1,17 +1,32 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute, Link, stripSearchParams, useNavigate } from '@tanstack/react-router'
 import { AnimatePresence, motion } from 'motion/react'
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { getTimeline } from '../server/api'
 import { Breadcrumbs } from '../components/Breadcrumbs'
 import { PageTransition } from '../components/Reveal'
 import { EventIcon } from '../components/EventIcon'
+import { ShareLink } from '../components/ShareLink'
 import { eraNames, eventTypeNames, fa, year } from '../lib/format'
-import { normalize } from '../lib/search'
 import { seo } from '../lib/seo'
+import {
+  TIMELINE_DEFAULTS,
+  applyTimelineSearch,
+  hasNonDefaultSearch,
+  timelineSearchSchema,
+  type TimelineSearch,
+} from '../lib/searchSchema'
+import { useDraftQuery } from '../lib/useDraftQuery'
 
 export const Route = createFileRoute('/timeline')({
+  validateSearch: (search: Record<string, unknown>): TimelineSearch => timelineSearchSchema.parse(search),
+  search: { middlewares: [stripSearchParams(TIMELINE_DEFAULTS)] },
   loader: () => getTimeline(),
-  head: () => seo({ title: 'گاه‌شمار سراسری', description: 'همه‌ی رویدادهای تاریخ ایران از ایلام تا امروز، با فیلتر دوران، دودمان و نوع رویداد.', path: '/timeline' }),
+  head: ({ match }) => seo({
+    title: 'گاه‌شمار سراسری',
+    description: 'همه‌ی رویدادهای تاریخ ایران از ایلام تا امروز، با فیلتر دوران، دودمان و نوع رویداد.',
+    path: '/timeline',
+    noindex: hasNonDefaultSearch({ ...TIMELINE_DEFAULTS, ...match.search }, TIMELINE_DEFAULTS),
+  }),
   component: TimelinePage,
 })
 
@@ -19,15 +34,18 @@ const sel = 'rounded-full bg-ivory/5 border border-gold/25 px-4 py-2 text-sm out
 
 function TimelinePage() {
   const { dynasties, events } = Route.useLoaderData()
-  const [era, setEra] = useState('')
-  const [dyn, setDyn] = useState('')
-  const [type, setType] = useState('')
-  const [major, setMajor] = useState(false)
-  const [q, setQ] = useState('')
-  const list = useMemo(() => {
-    const n = normalize(q)
-    return events.filter((e) => (!era || e.era === era) && (!dyn || e.dynastySlug === dyn) && (!type || e.type === type) && (!major || e.importance === 'major') && (!n || normalize(`${e.title} ${e.description ?? ''} ${e.dynastyName}`).includes(n)))
-  }, [events, era, dyn, type, major, q])
+  const search = Route.useSearch({ select: (s) => ({ ...TIMELINE_DEFAULTS, ...s }) })
+  const navigate = useNavigate({ from: '/timeline' })
+  const list = useMemo(() => applyTimelineSearch(events, search), [events, search])
+
+  const patch = (next: Partial<TimelineSearch>, replace: boolean) => {
+    void navigate({
+      search: (prev) => ({ ...prev, ...next }),
+      replace,
+      resetScroll: false,
+    })
+  }
+  const [draft, setDraft] = useDraftQuery(search.q, (q) => patch({ q }, true))
 
   return (
     <PageTransition>
@@ -37,20 +55,26 @@ function TimelinePage() {
         <p className="mt-3 text-ivory/65">{fa(events.length)} رویداد از {fa(dynasties.length)} دوره.</p>
 
         <form role="search" onSubmit={(e) => e.preventDefault()} className="sticky top-16 z-20 mt-8 glass bg-night/80 rounded-2xl p-4 flex flex-wrap gap-3 items-center">
-          <label><span className="sr-only">جست‌وجو</span><input value={q} onChange={(e) => setQ(e.target.value)} placeholder="جست‌وجوی رویداد…" className={sel} /></label>
+          <label><span className="sr-only">جست‌وجو</span><input value={draft} onChange={(e) => setDraft(e.target.value)} placeholder="جست‌وجوی رویداد…" className={sel} /></label>
           <label><span className="sr-only">دوران</span>
-            <select value={era} onChange={(e) => { setEra(e.target.value); setDyn('') }} className={sel}>
+            <select value={search.era} onChange={(e) => patch({ era: e.target.value as TimelineSearch['era'], dynasty: '' }, false)} className={sel}>
               <option value="">همه‌ی دوران‌ها</option>{Object.entries(eraNames).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
             </select></label>
           <label><span className="sr-only">دودمان</span>
-            <select value={dyn} onChange={(e) => setDyn(e.target.value)} className={sel}>
-              <option value="">همه‌ی دودمان‌ها</option>{dynasties.filter((d) => !era || d.era === era).map((d) => <option key={d.slug} value={d.slug}>{d.name}</option>)}
+            <select value={search.dynasty} onChange={(e) => patch({ dynasty: e.target.value }, false)} className={sel}>
+              <option value="">همه‌ی دودمان‌ها</option>{dynasties.filter((d) => !search.era || d.era === search.era).map((d) => <option key={d.slug} value={d.slug}>{d.name}</option>)}
             </select></label>
           <label><span className="sr-only">نوع</span>
-            <select value={type} onChange={(e) => setType(e.target.value)} className={sel}>
+            <select value={search.type} onChange={(e) => patch({ type: e.target.value as TimelineSearch['type'] }, false)} className={sel}>
               <option value="">همه‌ی انواع</option>{Object.entries(eventTypeNames).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
             </select></label>
-          <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={major} onChange={(e) => setMajor(e.target.checked)} className="accent-[#d9b45a] size-4" /> فقط رویدادهای کلیدی</label>
+          <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={search.major} onChange={(e) => patch({ major: e.target.checked }, false)} className="accent-[#d9b45a] size-4" /> فقط رویدادهای کلیدی</label>
+          <label><span className="sr-only">چینش</span>
+            <select value={search.sort} onChange={(e) => patch({ sort: e.target.value as TimelineSearch['sort'] }, false)} className={sel}>
+              <option value="year-asc">کهن به نو</option>
+              <option value="year-desc">نو به کهن</option>
+            </select></label>
+          <ShareLink />
           <span className="text-xs text-ivory/50 mr-auto" aria-live="polite">{fa(list.length)} نتیجه</span>
         </form>
 
@@ -72,6 +96,7 @@ function TimelinePage() {
             ))}
           </AnimatePresence>
         </ol>
+        {list.length === 0 && <p className="text-center py-16 text-ivory/50">نتیجه‌ای برای این پالایه یافت نشد.</p>}
       </div>
     </PageTransition>
   )
