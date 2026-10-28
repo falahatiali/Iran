@@ -1,5 +1,6 @@
 import { HeadContent, Link, Outlet, Scripts, createRootRoute } from '@tanstack/react-router'
 import { MotionConfig } from 'motion/react'
+import { useEffect } from 'react'
 import appCss from '../styles/app.css?url'
 import { getOverview } from '../server/api'
 import { BackToTop, Footer, Header } from '../components/Layout'
@@ -28,6 +29,36 @@ export const Route = createRootRoute({
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    // One-time reload guard for stale chunk/asset errors after deployment
+    const handleChunkError = (event: ErrorEvent | PromiseRejectionEvent) => {
+      const error = 'reason' in event ? event.reason : event.error
+      const message = error?.message || String(error)
+      
+      // Detect dynamic import / chunk loading failures
+      if (
+        message.includes('Failed to fetch dynamically imported module') ||
+        message.includes('error loading dynamically imported module') ||
+        message.includes('Importing a module script failed') ||
+        message.includes('chunk')
+      ) {
+        const reloadKey = 'chunk-reload-attempted'
+        if (!sessionStorage.getItem(reloadKey)) {
+          sessionStorage.setItem(reloadKey, Date.now().toString())
+          window.location.reload()
+        }
+      }
+    }
+    
+    window.addEventListener('error', handleChunkError)
+    window.addEventListener('unhandledrejection', handleChunkError)
+    
+    return () => {
+      window.removeEventListener('error', handleChunkError)
+      window.removeEventListener('unhandledrejection', handleChunkError)
+    }
+  }, [])
+  
   return (
     <html lang="fa" dir="rtl">
       <head><HeadContent /></head>
