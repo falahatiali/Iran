@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Zero-downtime deployment proof script - Run during deployment to verify no downtime
 set -euo pipefail
 
 PRODUCTION_URL="${1:-https://history.verzav.ir}"
