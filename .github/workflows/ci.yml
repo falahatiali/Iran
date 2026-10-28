@@ -385,7 +385,7 @@ jobs:
           echo "Testing invalid routes (should return 404):"
           
           # Test invalid dynasty slug
-          STATUS=$(curl -sf -o /dev/null -w "%{http_code}" "$PRODUCTION_URL/dynasty/nonexistent-xyz-fake" || echo "000")
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$PRODUCTION_URL/dynasty/nonexistent-xyz-fake")
           if [ "$STATUS" = "404" ]; then
             echo "  ✅ /dynasty/nonexistent-xyz-fake → 404"
           else
@@ -394,7 +394,7 @@ jobs:
           fi
           
           # Test invalid king slug
-          STATUS=$(curl -sf -o /dev/null -w "%{http_code}" "$PRODUCTION_URL/king/nonexistent-xyz-fake" || echo "000")
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$PRODUCTION_URL/king/nonexistent-xyz-fake")
           if [ "$STATUS" = "404" ]; then
             echo "  ✅ /king/nonexistent-xyz-fake → 404"
           else
