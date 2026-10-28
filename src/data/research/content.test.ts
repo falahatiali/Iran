@@ -39,6 +39,18 @@ test('every bibliography row records access and a specific claim', () => {
   }
 })
 
+test('licensed museum photo is on disk', () => {
+  assert.ok(fs.existsSync(path.resolve('public/media/cyrus-cylinder-daderot-cc0.jpg')))
+})
+
+test('Cyrus II biographical line does not call the cylinder a modern charter', () => {
+  const src = fs.readFileSync(path.resolve('src/data/ancient.ts'), 'utf8')
+  const line = src.split('\n').find((row) => row.includes("['cyrus-ii'"))
+  assert.ok(line)
+  assert.equal(/آزادی دینی/.test(line), false)
+  assert.match(line, /کتیبهٔ بنایی/)
+})
+
 test('3D media is labeled a reconstruction', () => {
   const d3 = mediaAssets.filter((m) => m.kind === '3d')
   assert.equal(d3.length, 1)

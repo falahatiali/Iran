@@ -9,6 +9,7 @@ type Hit =
   | { kind: 'dynasty'; key: string; label: string; sub: string; slug: string }
   | { kind: 'ruler'; key: string; label: string; sub: string; slug: string }
   | { kind: 'event'; key: string; label: string; sub: string; slug: string }
+  | { kind: 'page'; key: string; label: string; sub: string; slug: string }
 
 export function SearchDialog({ data, open, onClose }: { data: Overview; open: boolean; onClose: () => void }) {
   const [q, setQ] = useState('')
@@ -23,6 +24,14 @@ export function SearchDialog({ data, open, onClose }: { data: Overview; open: bo
       for (const r of d.rulers) all.push({ kind: 'ruler', key: `r-${r.id}`, label: r.name, sub: `${d.name} · ${range(r.start, r.end)}`, slug: r.id, hay: normalize(`${r.name} ${r.latin}`) })
     }
     for (const e of data.events) all.push({ kind: 'event', key: `e-${e.id}`, label: e.title, sub: `${names.get(e.dynastySlug)} · ${year(e.year)}`, slug: e.dynastySlug, hay: normalize(e.title) })
+    all.push({
+      kind: 'page',
+      key: 'p-cylinder',
+      label: 'استوانهٔ کوروش',
+      sub: 'BM 90920 · Cyrus Cylinder',
+      slug: 'cylinder',
+      hay: normalize('استوانه کوروش Cyrus Cylinder BM 90920 منشور کتیبه بابل'),
+    })
     return all
   }, [data])
   const nq = normalize(q)
@@ -34,9 +43,10 @@ export function SearchDialog({ data, open, onClose }: { data: Overview; open: bo
   const go = (h: Hit) => {
     onClose()
     if (h.kind === 'ruler') void navigate({ to: '/king/$slug', params: { slug: h.slug } })
+    else if (h.kind === 'page') void navigate({ to: '/cylinder' })
     else void navigate({ to: '/dynasty/$slug', params: { slug: h.slug } })
   }
-  const label = { dynasty: 'دودمان', ruler: 'فرمانروا', event: 'رویداد' }
+  const label = { dynasty: 'دودمان', ruler: 'فرمانروا', event: 'رویداد', page: 'صفحه' }
 
   return (
     <AnimatePresence>

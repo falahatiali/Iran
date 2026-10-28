@@ -11,7 +11,7 @@ export default defineConfig({
     tailwindcss(),
     tanstackStart({
       prerender: { enabled: true, crawlLinks: true, failOnError: true },
-      pages: [{ path: '/' }, { path: '/timeline' }, { path: '/about' }],
+      pages: [{ path: '/' }, { path: '/cylinder' }, { path: '/en/cylinder' }, { path: '/timeline' }, { path: '/about' }],
     }),
     nitro(),
     viteReact(),
