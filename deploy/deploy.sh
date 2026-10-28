@@ -124,39 +124,46 @@ if [ "$CONTENT_VERIFIED" != "true" ]; then
     exit 1
 fi
 
-# Give Traefik a moment to discover the new healthy container
-echo "⏳ Waiting for Traefik to discover new container..."
-sleep 5
+# Give Traefik time to discover the new healthy container and route traffic to it
+echo "⏳ Waiting for Traefik to discover new container and start routing..."
+sleep 10
 
-# Verify public URL is serving (both containers should be load-balanced now)
+# Verify public URL is load-balancing (hitting either old or new container)
 echo "🔍 Verifying public URL is responding..."
 PUBLIC_URL="https://${APP_DOMAIN}"
 for i in 1 2 3; do
     if curl -sf "$PUBLIC_URL" | grep -q 'تاریخ ایران' 2>/dev/null; then
-        echo "✅ Public URL verified (attempt $i)"
+        echo "✅ Public URL verified - Traefik is routing (attempt $i)"
         break
     fi
     if [ $i -eq 3 ]; then
-        echo "⚠️  Public URL verification failed after 3 attempts - continuing anyway (Traefik may need more time)"
+        echo "⚠️  Public URL verification failed after 3 attempts - continuing anyway"
         echo "Container is healthy and serving internally, proceeding with cutover"
     fi
-    sleep 2
+    sleep 3
 done
 
-# Gracefully stop and remove old container(s)
+# Give Traefik a few more seconds to stabilize before removing old container
+echo "⏳ Waiting for traffic distribution to stabilize..."
+sleep 5
+
+# Gracefully stop and remove old container(s) one at a time
 echo "🔀 Removing old container(s)..."
 if [ -n "$OLD_CONTAINERS" ]; then
     for OLD in $OLD_CONTAINERS; do
         OLD_NAME=$(docker inspect --format='{{.Name}}' "$OLD" 2>/dev/null | sed 's/^\///' || echo "$OLD")
-        echo "  Stopping $OLD_NAME..."
+        echo "  Gracefully stopping $OLD_NAME (SIGTERM with 30s grace)..."
         docker stop "$OLD" || true
+        echo "  Removing $OLD_NAME..."
         docker rm "$OLD" 2>/dev/null || true
+        # Brief pause between container removals if multiple
+        sleep 2
     done
 fi
 
-# Scale back to 1
-echo "📉 Scaling back to 1 instance..."
-$DOCKER_COMPOSE -f "$COMPOSE_FILE" -p "$COMPOSE_PROJECT" up -d --no-deps --scale app=1
+# Do NOT scale back - let the new container keep running
+# Scaling back can cause momentary 404s as compose recreates containers
+# The new container is already running and healthy, just leave it
 
 # Prune old images for this project only
 echo "🧹 Pruning old images..."
