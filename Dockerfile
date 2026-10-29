@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.4
 
 # Build stage  
-FROM node:20-bookworm-slim AS build
+FROM node:25-bookworm-slim AS build
 
 WORKDIR /app
 
@@ -33,7 +33,7 @@ RUN SITE="${VITE_SITE_URL:-}" && \
     npm cache clean --force
 
 # Production stage
-FROM node:20-bookworm-slim AS runtime
+FROM node:25-bookworm-slim AS runtime
 
 # Security: Install security updates, curl for healthcheck, and create non-root user
 RUN apt-get update && \
