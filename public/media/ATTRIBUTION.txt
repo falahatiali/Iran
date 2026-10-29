@@ -6,3 +6,34 @@ License: Creative Commons CC0 1.0 Universal Public Domain Dedication
 https://creativecommons.org/publicdomain/zero/1.0/
 Date: 21 May 2024
 Note: resized Wikimedia thumbnail (1280px) of the original CC0 file.
+
+cyrus-cylinder-peel-1.jpg
+Photograph: Mike Peel (www.mikepeel.net)
+Source: https://commons.wikimedia.org/wiki/File:Cyrus_Cylinder.jpg
+License: CC BY-SA 4.0
+https://creativecommons.org/licenses/by-sa/4.0/
+
+cyrus-cylinder-peel-2.jpg
+Photograph: Mike Peel (www.mikepeel.net)
+Source: https://commons.wikimedia.org/wiki/File:Cyrus_Cylinder_2.jpg
+License: CC BY-SA 4.0
+
+cyrus-cylinder-peel-4.jpg
+Photograph: Mike Peel (www.mikepeel.net)
+Source: https://commons.wikimedia.org/wiki/File:Cyrus_Cylinder_4.jpg
+License: CC BY-SA 4.0
+
+cyrus-cylinder-prioryman-front.jpg
+Photograph: Prioryman
+Source: https://commons.wikimedia.org/wiki/File:Cyrus_Cylinder_front.jpg
+License: CC BY-SA 4.0 (as stated on the file page)
+
+3D model (embedded, not stored in this folder):
+The Cyrus Cylinder, Sketchfab UID f8d0a48f63f44bb49323b623853f6592
+Author: artfletch
+Technique: photogrammetry, 159 photos, November 2024, Sony a7R V, Reality Capture
+Object: BM 90920 in the British Museum (visitor capture of the actual cylinder)
+License: CC BY 4.0
+https://creativecommons.org/licenses/by/4.0/
+https://sketchfab.com/3d-models/the-cyrus-cylinder-f8d0a48f63f44bb49323b623853f6592
+Not an official British Museum scan.

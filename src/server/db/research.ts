@@ -84,7 +84,7 @@ const CYLINDER_BIB = new Set([
   'bm-90920', 'iranica-cyrus-iv', 'finkel-2013', 'cais-cylinder', 'rogers-1912',
   'livius-cogan-schaudig', 'iranica-persepolis-admin', 'iranica-persepolis-elamite',
   'walker-1972', 'berger-1975', 'kuhrt-1983', 'schaudig-2001', 'daderot-cc0',
-  'artfletch-sketchfab', 'jannatkhah-youtube-2024',
+  'artfletch-sketchfab',
 ])
 
 const ARCHIVES_BIB = new Set([

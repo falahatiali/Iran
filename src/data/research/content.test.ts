@@ -5,8 +5,7 @@ import path from 'node:path'
 import { test } from 'node:test'
 import { createDriver } from '../../server/db/factory'
 import { migrate, seed } from '../../../scripts/db'
-import { assertResearchInvariants, bibliography, claims, mediaAssets, passageTexts, passages, publishedCount, rationCategories, rationFacts, translations } from './index'
-import { jannatkhahWorks } from './jannatkhah'
+import { assertResearchInvariants, bibliography, claims, cylinderLines, mediaAssets, passageTexts, passages, publishedCount, rationCategories, rationFacts, translations } from './index'
 import { formatChicago, formatPersianCite } from '../../lib/cite'
 
 test('research invariants: licenses, passage IDs, evidence layers', () => {
@@ -44,26 +43,72 @@ test('licensed museum photo is on disk', () => {
   assert.ok(fs.existsSync(path.resolve('public/media/cyrus-cylinder-daderot-cc0.jpg')))
 })
 
-test('Cyrus II biographical line does not call the cylinder a modern charter', () => {
+test('Cyrus II biographical line names the Cylinder as a building inscription with return and yoke', () => {
   const src = fs.readFileSync(path.resolve('src/data/ancient.ts'), 'utf8')
   const line = src.split('\n').find((row) => row.includes("['cyrus-ii'"))
   assert.ok(line)
-  assert.equal(/آزادی دینی/.test(line), false)
   assert.match(line, /کتیبهٔ بنایی/)
+  assert.match(line, /یوغ|خانه‌/)
 })
 
-test('3D media is labeled a reconstruction', () => {
+test('3D media is licensed photogrammetry of the actual object', () => {
   const d3 = mediaAssets.filter((m) => m.kind === '3d')
   assert.equal(d3.length, 1)
-  assert.equal(d3[0].isAuthentic, false)
-  assert.ok(d3[0].reconstructionLabel?.toLowerCase().includes('reconstruction'))
+  assert.equal(d3[0].isAuthentic, true)
+  assert.equal(d3[0].license, 'cc-by')
+  assert.match(d3[0].provenance, /photogrammetry/i)
+  assert.equal(d3[0].reconstructionLabel, null)
 })
 
-test('Jannatkhah unverified book title is flagged', () => {
-  const reported = jannatkhahWorks.find((w) => w.id === 'jk-din-va-azadi')
-  assert.ok(reported)
-  assert.equal(reported.titleVerified, false)
-  assert.equal(reported.url, null)
+test('full Rogers fragment A is present line by line; Yale join is marked empty', () => {
+  assert.equal(cylinderLines.length, 45)
+  for (const n of [8, 22, 24, 25, 26, 32, 33, 34]) {
+    const line = cylinderLines.find((l) => l.n === n)
+    assert.ok(line?.en && line.fa && line.akkadian, `line ${n}`)
+  }
+  const yale = cylinderLines.filter((l) => l.n >= 37)
+  assert.equal(yale.length, 9)
+  assert.ok(yale.every((l) => l.status === 'yale-join' && l.en === null))
+})
+
+test('site copy does not deny the Cylinder’s property and liberty reading', () => {
+  const src = [
+    fs.readFileSync(path.resolve('src/components/cylinder/CylinderPage.tsx'), 'utf8'),
+    fs.readFileSync(path.resolve('src/data/research/cylinder.ts'), 'utf8'),
+  ].join('\n')
+  assert.equal(/بیان نمی‌کند/.test(src), false)
+  assert.equal(/does not state a universal ownership/.test(src), false)
+  assert.equal(/does not express property/.test(src), false)
+})
+
+test('named-commentator strings are gone from research data and cylinder UI', () => {
+  const needle = ['Jan', 'natkhah'].join('')
+  const fa = ['\u062c\u0646\u062a', '\u200c', '\u062e\u0648\u0627\u0647'].join('')
+  const faSpace = ['\u062c\u0646\u062a', ' ', '\u062e\u0648\u0627\u0647'].join('')
+  const files = [
+    'src/data/research/cylinder.ts',
+    'src/data/research/archives.ts',
+    'src/data/research/bibliography.ts',
+    'src/data/research/index.ts',
+    'src/components/cylinder/CylinderPage.tsx',
+    'src/server/db/research.ts',
+  ]
+  for (const f of files) {
+    const src = fs.readFileSync(path.resolve(f), 'utf8')
+    assert.equal(new RegExp(`${needle}|${fa}|${faSpace}`, 'i').test(src), false, f)
+  }
+})
+
+test('licensed cylinder photographs are on disk', () => {
+  for (const p of [
+    'public/media/cyrus-cylinder-daderot-cc0.jpg',
+    'public/media/cyrus-cylinder-peel-1.jpg',
+    'public/media/cyrus-cylinder-peel-2.jpg',
+    'public/media/cyrus-cylinder-peel-4.jpg',
+    'public/media/cyrus-cylinder-prioryman-front.jpg',
+  ]) {
+    assert.ok(fs.existsSync(path.resolve(p)), p)
+  }
 })
 
 test('passages cover fragment A and the Yale join', () => {

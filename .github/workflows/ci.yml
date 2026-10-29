@@ -83,7 +83,7 @@ jobs:
               if root.exists():
                   htmls.extend(root.rglob('*.html'))
           blob = '\n'.join(p.read_text(encoding='utf-8', errors='replace') for p in htmls)
-          missing = [s for s in ('BM 90920', 'استوانه', 'Cyrus Cylinder', 'شواهد تاریخی', 'Historical evidence', 'گاه‌شمار سراسری', 'بایگانی بارو', 'Hallock', 'Ration explorer', 'کاوشگر جیره') if s not in blob]
+          missing = [s for s in ('BM 90920', 'استوانه', 'Cyrus Cylinder', 'شواهد تاریخی', 'Historical evidence', 'گاه‌شمار سراسری', 'بایگانی بارو', 'Hallock', 'Ration explorer', 'کاوشگر جیره', 'Rogers 1912', 'یوغ', 'artfletch') if s not in blob]
           if missing:
               raise SystemExit(f'missing in prerender: {missing}; html files={len(htmls)}')
           if 'iran-history.example' in blob:

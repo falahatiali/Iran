@@ -132,30 +132,9 @@ Related later news (not opened as a primary Finkel publication here): reports th
 
 ---
 
-## 8. Mohammad Ali Jannatkhah — first verified pass
+## 8. Liberty and property frame (unattributed)
 
-**Rule followed:** no invented quotes; no screenshot as a primary source; titles verified only as they appear on public pages.
-
-### 8.1 What was verified
-
-| Item | Evidence | Access |
-|---|---|---|
-| Name | محمدعلی جنت‌خواه / Mohammad Ali Jannatkhah; public accounts Aparat `Jannatkhah.ir`, YouTube, X `@jannatkhah_ir`, Telegram `t.me/jannatkhah` | Public profiles |
-| Working title of the theory, as used by the author on YouTube (1 Nov 2024) | «شاه کلید آینده ایران: نظریه‌ای نو درباره آزادی و دین» — video https://www.youtube.com/watch?v=X9PVaxjoVYE (also on Aparat) | Title + author’s description verified; **full video not transcribed this pass** |
-| Author’s own framing of that video (YouTube description / X, Nov 2024) | He states the **book was not yet finished**; because of his legal situation he turned **1,340 Instagram stories** that were becoming a book into this video; he presents the theory as concerning the reason for religion, “objective” principles of religion, the goal of freedom, and a formal system of **freedom and property rights** | This is the author’s public description, not a page-level edition |
-| Later public file title on Telegram/X (2025–26 posts found in search) | «نظریه آزادی، ایران و دین» offered as downloadable reading files | **Files not downloaded or quoted** (copyright; not independently paginated) |
-| Podcast / Clubhouse talks under his name | Apple Podcasts / Castro listings, e.g. «تغییر گفتمان به نظریه آزادی و دین» (26 Nov 2024) | Titles only |
-
-### 8.2 What was **not** found or not used
-
-- **No ISBN, publisher, or library catalog record** was found for a printed book exactly titled «دین و آزادی» or «شاه کلید آینده ایران: نظریه‌ای نو درباره آزادی و دین».
-- The phrase «دین و آزادی» appears in the owner directive as a known work-name. **This pass did not verify a separate published edition under that exact title.** It is recorded as an **unverified title until a publisher, date, and text are in hand**.
-- A third-party Instagram post (attributed in search snippets to «جاوید جنت خواه») paraphrases “four ownerships” (body, mind, time, assets). **That paraphrase is not treated as Jannatkhah’s wording.** It is a secondary summary and is **not cited as evidence**.
-- Full books, Instagram story archive, and complete video transcripts were **not accessible as citable editions** in this pass.
-
-### 8.3 How the product uses this
-
-The Cylinder page’s philosophical layer may **ask Jannatkhah’s questions** (individual ownership, limits on political authority, religion and liberty) as the project’s analytical frame, clearly labeled **philosophical interpretation**. It must not put words in his mouth. A dedicated Jannatkhah dossier waits for verified texts.
+**Owner, 2026-10-29:** the product names no living commentator as the source of the liberty/property frame. The frame itself remains: individual ownership, limits on political authority, religion and liberty. On the Cylinder it is argued from Rogers 1912 lines 8, 22–26, 30–34 (yoke, peaceful entry, houses, return, cults), labeled **philosophical interpretation**, never mixed with the Akkadian wording.
 
 ---
 
@@ -164,7 +143,10 @@ The Cylinder page’s philosophical layer may **ask Jannatkhah’s questions** (
 | File | Author | License | Date | Use |
 |---|---|---|---|---|
 | [Cyrus Cylinder … DSC01316.jpg](https://commons.wikimedia.org/wiki/File:Cyrus_Cylinder,_Babylon,_Iraq,_mid_500s_BC,_cuneiform_on_clay_-_British_Museum_-_DSC01316.jpg) | Daderot | **CC0 1.0** | 21 May 2024 | Primary still; 3D fallback |
-| [Cyrus Cylinder.jpg](https://commons.wikimedia.org/wiki/File:Cyrus_Cylinder.jpg) | Photographers identified on file page | CC BY-SA 4.0 | — | Optional gallery only if local copy + attribution are stored |
+| [Cyrus Cylinder.jpg](https://commons.wikimedia.org/wiki/File:Cyrus_Cylinder.jpg) | Mike Peel | **CC BY-SA 4.0** | 27 June 2010 | Face gallery |
+| [Cyrus Cylinder 2.jpg](https://commons.wikimedia.org/wiki/File:Cyrus_Cylinder_2.jpg) | Mike Peel | **CC BY-SA 4.0** | 27 June 2010 | Face gallery |
+| [Cyrus Cylinder 4.jpg](https://commons.wikimedia.org/wiki/File:Cyrus_Cylinder_4.jpg) | Mike Peel | **CC BY-SA 4.0** | 27 June 2010 | Face gallery |
+| [Cyrus Cylinder front.jpg](https://commons.wikimedia.org/wiki/File:Cyrus_Cylinder_front.jpg) | Prioryman | **CC BY-SA 4.0** | 26 May 2012 | Front face |
 
 British Museum catalog preview images: **not used** (no reusable license on the object page).
 
@@ -177,10 +159,10 @@ No generic AI “historical” imagery.
 | Candidate | Result |
 |---|---|
 | British Museum Sketchfab `@britishmuseum` | Museum has released some collection scans; **Cyrus Cylinder is not among the official BM models found** in this pass |
-| [Sketchfab “The Cyrus Cylinder” by @artfletch](https://sketchfab.com/3d-models/the-cyrus-cylinder-f8d0a48f63f44bb49323b623853f6592) | Visitor photogrammetry (159 photos, Nov 2024, Reality Capture), CC Attribution. **Not an official museum scan.** Not used: we will not present a tourist photogrammetry mesh as the BM object, and we will not invent cuneiform from it |
+| [Sketchfab “The Cyrus Cylinder” by @artfletch](https://sketchfab.com/3d-models/the-cyrus-cylinder-f8d0a48f63f44bb49323b623853f6592) | Visitor photogrammetry of the **actual BM 90920** (159 photos, Nov 2024, Reality Capture), **CC BY 4.0**, downloadable. Not an official museum scan. **Used 2026-10-29** as the interactive exhibit, with attribution. |
 | Smithsonian / other museum open-access 3D | No Cylinder hit in this pass |
 
-**Decision:** procedural clay cylinder at BM proportions (length ~22.5 cm, max diameter 10 cm, tapered ends), **explicitly labeled artistic reconstruction**, **no cuneiform signs**. Static fallback = Daderot CC0 photograph.
+**Decision (2026-10-29):** embed the artfletch CC BY photogrammetry of the real object so every side of the cuneiform barrel can be rotated. Fallback: licensed photographs of multiple faces (Daderot CC0; Peel and Prioryman CC BY-SA 4.0). The blank procedural reconstruction is withdrawn. We still do not call this an official British Museum scan.
 
 ---
 
@@ -189,7 +171,7 @@ No generic AI “historical” imagery.
 Not a starting URL from Ali, but required to separate layers:
 
 - Amélie Kuhrt, “The Cyrus Cylinder and Achaemenid Imperial Policy,” *JSOT* 25 (1983), 83–97 — listed in Iranica and BM bibliographies. **Full article not accessed this pass.** Iranica already uses it to treat the Cylinder as imperial/building policy, not a unique edict of human rights.
-- Popular UN/human-rights framing is **modern cultural meaning**. Historical layer: Babylonian building inscription in Marduk’s voice and Cyrus’s royal self-presentation.
+- Popular UN/human-rights heading is **modern cultural meaning**. Historical layer: quote Rogers 1912. Philosophical layer: those lines recognize property and liberty.
 
 ---
 
@@ -197,11 +179,10 @@ Not a starting URL from Ali, but required to separate layers:
 
 1. Finkel 2013 monograph (full text) and Schaudig 2001 edition.
 2. Razmju Persian translation PDF (license unverified).
-3. Jannatkhah printed book / ISBN edition; full video transcript; Instagram story corpus.
-4. Official BM 3D scan of BM 90920.
-5. Yale NBC 2504 fragment photography with a verified free license (not located this pass).
-6. Hallock 1969 *Persepolis Fortification Tablets* and Cameron Treasury volumes (editions cited via Iranica, not opened). **Superseded for Hallock intro/TOC on 2026-10-29 — see §13.**
-7. Murashu archive publications (named in the philosophy directive; **not opened this pass** — flagged for the property-rights dossier).
+3. Official BM 3D scan of BM 90920 (visitor photogrammetry used instead).
+4. Yale NBC 2504 fragment photography with a verified free license (not located this pass).
+5. Hallock 1969 *Persepolis Fortification Tablets* and Cameron Treasury volumes (editions cited via Iranica, not opened). **Superseded for Hallock intro/TOC on 2026-10-29 — see §13.**
+6. Murashu archive publications (named in the philosophy directive; **not opened this pass** — flagged for the property-rights dossier).
 
 ---
 

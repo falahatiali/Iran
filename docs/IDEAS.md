@@ -13,4 +13,4 @@ Bold product ideas recorded during daily improvement runs. None of these are pro
 - **Behistun as the next inscription object:** reuse the Cylinder content model (passages, layers, cite/share) for DB/OP/Elamite columns, with the same ban on invented signs in 3D.
 - **Disputed-number widget:** a small UI that shows Herzfeld’s 30,000 vs Stolper’s 20–25k side by side, because the interesting fact is the disagreement.
 - **PFA Project live shelf:** when a stable OCHRE or ISAC project URL is verified, embed a “what is still unpublished” counter sourced from that page, never guessed.
-- **Jannatkhah dossier v1:** only after an ISBN, publisher page, or timestamped transcript exists; until then keep asking his questions without putting words in his mouth.
+- **Liberty/property dossier v1:** Locke, Bastiat, and the Cylinder lines on houses, yoke, return, and cult — labeled interpretation, never mixed with the Akkadian wording.

@@ -25,8 +25,8 @@ export type {
 } from './types'
 
 export { bibliography } from './bibliography'
-export { jannatkhahWorks } from './jannatkhah'
 export { publishedCount, rationCategories, rationFacts } from './rations'
+export { cylinderLines } from './cylinderLines'
 
 import { bibliography } from './bibliography'
 import {
@@ -108,7 +108,10 @@ export function assertResearchInvariants(): string[] {
   }
   for (const m of mediaAssets) {
     if (!m.license || !m.provenance) errors.push(`media ${m.id} missing license or provenance`)
-    if (m.kind === '3d' && m.isAuthentic) errors.push(`3d asset ${m.id} marked authentic without a verified museum scan`)
+    if (m.kind === '3d' && m.isAuthentic && m.license !== 'cc-by' && m.license !== 'cc0' && m.license !== 'public-domain') {
+      errors.push(`3d asset ${m.id} marked authentic without a reusable license`)
+    }
+    if (m.kind === '3d' && !m.provenance) errors.push(`3d asset ${m.id} missing provenance`)
   }
   for (const b of bibliography) {
     if (!b.supports.trim()) errors.push(`bibliography ${b.id} has empty supports`)

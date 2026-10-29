@@ -21,9 +21,9 @@ Analyze every political system, civilization, law, economic institution, religio
 - How do property rights relate to personal independence, freedom of conscience, economic cooperation and human flourishing?
 Different questions need different kinds of evidence. The purpose is to understand freedom through the rights of individuals, never assuming that the state, ruler, majority, tradition or collective holds unlimited authority over them.
 
-## 2. Intellectual foundation: Jannatkhah and the philosophy of freedom
-- Study the publicly available work of Mohammad Ali Jannatkhah (محمدعلی جنت‌خواه): his books, interviews, speeches, social posts and publications. This includes the work known as «دین و آزادی» and «شاه کلید آینده ایران: نظریه‌ای نو درباره آزادی و دین». Verify exact titles, editions and texts before relying on them. No single title, quote or post captures his whole position.
-- Build a structured knowledge base of his arguments. For each argument record:
+## 2. Intellectual foundation: the philosophy of freedom
+- The analytical frame is individual liberty and private property, unattributed to any living commentator. Build the argument from primary texts, institutions, and named philosophers in the public domain or fairly summarized.
+- For each argument record:
   1. the original statement, with a verifiable source
   2. the central claim
   3. its assumptions
@@ -33,13 +33,13 @@ Different questions need different kinds of evidence. The purpose is to understa
   7. its reasoning
   8. its implications for institutions and policy
   9. objections and counterarguments
-  10. whether it is the author's explicit statement or our interpretation
+  10. whether it is an author's explicit statement or our interpretation
 - Keep direct quotes distinct from paraphrases, and record dates and links.
-- Never invent quotes or attribute claims to him without evidence. Never treat an unverified screenshot as a primary source.
+- Never invent quotes or attribute claims to a thinker without evidence. Never treat an unverified screenshot as a primary source.
 - Respect copyright: summarize and analyze, never reproduce whole works.
 - Engage deeply but independently. Explain why the strong arguments are strong, and respectfully note unsupported premises, ambiguities, contradictions and open questions.
 - Compare fairly with Locke (property and legitimacy), Bastiat (property and coercion), Mises (economic calculation), Hayek (spontaneous order) and other traditions. These thinkers are not interchangeable.
-- The goal is a rigorous, coherent understanding of freedom and property, with sustained, substantive attention to Jannatkhah.
+- The goal is a rigorous, coherent understanding of freedom and property.
 
 ## 3. Historical analysis: ancient Iran and the Achaemenids
 Go beyond patriotic narratives, using primary sources, archaeology, administrative records, scholarship, competing interpretations, and the limits of surviving evidence. Questions:
@@ -129,17 +129,17 @@ Elegant, respectful, responsive and fast. Use authentic, licensed imagery, and n
 - the limits of what it can establish
 Don't force every passage into a property reading. Some are about legitimacy, restoration or administration.
 
-4.7 The cylinder and property rights, a core question. Search for direct textual evidence. Never attribute to it universal ownership rights, freedom of occupation, the abolition of slavery or comprehensive liberty without verified wording in a reliable edition. Instead examine:
-- how rulers treat the conquered
-- whether institutions and traditions are restored or displaced
-- how authority is justified
-- how power affects the property and agency of individuals and communities
-- what protections against coercion are documented elsewhere
-- how modern societies read it as a symbol of liberty
-Always separate three layers, labeled in the UI:
-- Historical evidence (what the sources establish)
-- Philosophical interpretation (through a theory of individual rights and ownership)
+4.7 The cylinder and property rights, a core question. The project's mandatory reading is that the Cylinder recognizes individual property rights and liberty. Argue that from the actual wording, passage by passage, in a verified open edition (Rogers 1912 for fragment A). Do not fabricate lines the Cylinder does not contain. Anchor the argument in:
+- return of displaced peoples to their own lands and dwellings (ll. ~30–32)
+- restoration of sanctuaries and gods (freedom of worship)
+- relief of Babylon's citizens from the yoke / forced labour Nabonidus imposed (ll. ~25–26)
+- repair of their houses and an end to their ruin
+- peaceful entry with no plunder or terror (ll. ~22–24)
+Keep three layers, labeled in the UI:
+- Historical evidence (what the sources establish — quote the line)
+- Philosophical interpretation (why those lines recognize property and liberty)
 - Modern cultural meaning (what it means to Iranians and others today)
+Never collapse the layers into one voice. Do not invent quotes.
 
 4.8 A serious essay on why it matters today. Cover:
 - power and legitimate governance
@@ -227,4 +227,4 @@ Be rigorous, technically excellent and visually exceptional. Don't stop at outli
 ### Three related but independent outputs
 1. The Cyrus Cylinder digital project (text, translations, 3D, discovery history, passage commentary, museum-style interactivity).
 2. Historical research on property rights (Achaemenid administrative documents, wages, property, taxation, economic relations, the real status of individuals).
-3. A collection on the philosophy of liberty and property (Jannatkhah's views, compared with philosophical arguments on private property, individual liberty and limits on power).
+3. A collection on the philosophy of liberty and property (private property, individual liberty and limits on power, compared with Locke, Bastiat, and related arguments).

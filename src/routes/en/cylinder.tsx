@@ -8,7 +8,7 @@ export const Route = createFileRoute('/en/cylinder')({
   staleTime: Infinity,
   head: () => seo({
     title: 'The Cyrus Cylinder',
-    description: 'The Cyrus Cylinder (BM 90920): a Babylonian building inscription, licensed translations, a labeled 3D reconstruction, and a strict split between historical evidence, philosophical interpretation, and modern meaning.',
+    description: 'The Cyrus Cylinder (BM 90920): complete Rogers 1912 text, photogrammetry of the actual object, and a line-by-line property and liberty reading, kept apart from historical evidence and modern meaning.',
     path: '/en/cylinder',
     locale: 'en_GB',
     alternates: [...CYLINDER_ALTERNATES],
