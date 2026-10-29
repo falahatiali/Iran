@@ -4,7 +4,7 @@ import type { Locale } from '../../lib/i18n'
 /** Photogrammetry of the actual BM 90920. CC BY 4.0, @artfletch on Sketchfab. Not an official museum scan. */
 const SKETCHFAB = {
   uid: 'f8d0a48f63f44bb49323b623853f6592',
-  embed: 'https://sketchfab.com/models/f8d0a48f63f44bb49323b623853f6592/embed?autostart=1&ui_theme=dark&ui_infos=1&ui_watermark=0',
+  embed: 'https://sketchfab.com/models/f8d0a48f63f44bb49323b623853f6592/embed?autostart=1&ui_theme=dark&ui_infos=1&ui_controls=1&ui_stop=0',
   page: 'https://sketchfab.com/3d-models/the-cyrus-cylinder-f8d0a48f63f44bb49323b623853f6592',
   license: 'https://creativecommons.org/licenses/by/4.0/',
 }
@@ -63,10 +63,9 @@ export function CylinderViewer({ locale }: { locale: Locale }) {
             title={fa ? 'استوانهٔ کوروش، فتوگرامتری شیء واقعی BM 90920' : 'The Cyrus Cylinder, photogrammetry of the actual BM 90920'}
             src={SKETCHFAB.embed}
             className="absolute inset-0 h-full w-full border-0"
-            allow="autoplay; fullscreen; xr-spatial-tracking"
+            allow="autoplay; fullscreen; xr-spatial-tracking; web-share"
             allowFullScreen
-            loading="lazy"
-            referrerPolicy="strict-origin-when-cross-origin"
+            loading="eager"
           />
         </div>
       ) : (

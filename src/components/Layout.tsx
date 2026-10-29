@@ -90,7 +90,7 @@ export function BackToTop() {
       aria-label="بازگشت به بالا" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       initial={false} animate={{ opacity: show ? 1 : 0, scale: show ? 1 : 0.6, pointerEvents: show ? 'auto' : 'none' }}
       whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.92 }}
-      className="fixed bottom-6 left-6 z-40 size-12 rounded-full bg-gradient-to-br from-gold to-[#9c6f1f] text-night text-xl font-black shadow-lg shadow-gold/30"
+      className="fixed bottom-6 right-6 z-40 hidden sm:grid place-items-center size-12 rounded-full bg-gradient-to-br from-gold to-[#9c6f1f] text-night text-xl font-black shadow-lg shadow-gold/30"
     >↑</motion.button>
   )
 }
