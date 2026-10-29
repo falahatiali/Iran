@@ -32,6 +32,14 @@ export function SearchDialog({ data, open, onClose }: { data: Overview; open: bo
       slug: 'cylinder',
       hay: normalize('استوانه کوروش Cyrus Cylinder BM 90920 منشور کتیبه بابل'),
     })
+    all.push({
+      kind: 'page',
+      key: 'p-archives',
+      label: 'بایگانی بارو و خزانهٔ تخت‌جمشید',
+      sub: 'Persepolis Fortification · Treasury',
+      slug: 'archives',
+      hay: normalize('بایگانی بارو خزانه تخت‌جمشید Persepolis Fortification Treasury Hallock جیره الواح'),
+    })
     return all
   }, [data])
   const nq = normalize(q)
@@ -43,7 +51,7 @@ export function SearchDialog({ data, open, onClose }: { data: Overview; open: bo
   const go = (h: Hit) => {
     onClose()
     if (h.kind === 'ruler') void navigate({ to: '/king/$slug', params: { slug: h.slug } })
-    else if (h.kind === 'page') void navigate({ to: '/cylinder' })
+    else if (h.kind === 'page') void navigate({ to: h.slug === 'archives' ? '/archives' : '/cylinder' })
     else if (h.kind === 'event') void navigate({ to: '/timeline', search: { q: h.label } })
     else void navigate({ to: '/dynasty/$slug', params: { slug: h.slug } })
   }

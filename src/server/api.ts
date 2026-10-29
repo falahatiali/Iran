@@ -2,7 +2,7 @@ import { createServerFn } from '@tanstack/react-start'
 import { notFound } from '@tanstack/react-router'
 import { getRepositories } from './db/factory'
 import type { DynastyRow, EventRow, RulerRow, Source } from './db/repositories'
-import type { CylinderProject } from './db/research'
+import type { ArchivesProject, CylinderProject } from './db/research'
 
 export interface DynastySummary extends DynastyRow { rulers: Pick<RulerRow, 'id' | 'name' | 'latin' | 'start' | 'end'>[]; eventCount: number }
 export interface Overview { dynasties: DynastySummary[]; events: Pick<EventRow, 'id' | 'title' | 'year' | 'dynastySlug'>[]; totals: { dynasties: number; rulers: number; events: number } }
@@ -105,10 +105,16 @@ export const healthCheck = createServerFn({ method: 'GET' }).handler(async () =>
   return { ok, dynasties: dynasties.length, rulers: rulers.length }
 })
 
-export type { CylinderProject }
+export type { ArchivesProject, CylinderProject }
 
 export const getCylinder = createServerFn({ method: 'GET' }).handler(async (): Promise<CylinderProject> => {
   const project = await getRepositories().research.cylinder()
+  if (!project) throw notFound()
+  return project
+})
+
+export const getArchives = createServerFn({ method: 'GET' }).handler(async (): Promise<ArchivesProject> => {
+  const project = await getRepositories().research.archives()
   if (!project) throw notFound()
   return project
 })

@@ -24,12 +24,14 @@ export function Header({ data }: { data: Overview }) {
     ? [
         { to: '/', label: 'Home' },
         { to: '/cylinder', label: 'Cyrus Cylinder' },
+        { to: '/archives', label: 'Persepolis archives' },
         { to: '/timeline', label: 'Timeline' },
         { to: '/about', label: 'About' },
       ] as const
     : [
         { to: '/', label: 'خانه' },
         { to: '/cylinder', label: 'استوانهٔ کوروش' },
+        { to: '/archives', label: 'بایگانی تخت‌جمشید' },
         { to: '/timeline', label: 'گاه‌شمار' },
         { to: '/about', label: 'درباره و روش‌شناسی' },
       ] as const
@@ -46,10 +48,15 @@ export function Header({ data }: { data: Overview }) {
           </nav>
           <div className="flex items-center gap-2">
             <a
-              href={pathname.startsWith('/en') ? '/cylinder' : '/en/cylinder'}
+              href={
+                pathname === '/en/archives' ? '/archives'
+                  : pathname === '/archives' ? '/en/archives'
+                    : pathname.startsWith('/en') ? '/cylinder'
+                      : '/en/cylinder'
+              }
               className="hidden sm:inline-flex glass rounded-full px-4 py-2 text-sm hover:border-gold min-h-11 items-center"
               hrefLang={pathname.startsWith('/en') ? 'fa' : 'en'}
-              title={pathname.startsWith('/en') ? 'نسخهٔ فارسی استوانهٔ کوروش' : 'English Cyrus Cylinder page'}
+              title={pathname.startsWith('/en') ? 'نسخهٔ فارسی' : 'English'}
             >
               {locale === 'en' ? 'فا' : 'EN'}
             </a>
@@ -95,6 +102,7 @@ export function Footer() {
         <div><p className="text-gilded font-black text-lg">تاریخ ایران</p><p className="mt-2 leading-7">مرجعی آزاد و منبع‌دار برای تاریخ ایران، از ایلام تا امروز.</p></div>
         <nav aria-label="پیوندهای پانویس" className="flex flex-col gap-2">
           <Link to="/cylinder" className="hover:text-gold py-2 inline-block min-h-11">استوانهٔ کوروش</Link>
+          <Link to="/archives" className="hover:text-gold py-2 inline-block min-h-11">بایگانی تخت‌جمشید</Link>
           <Link to="/timeline" className="hover:text-gold py-2 inline-block min-h-11">گاه‌شمار سراسری</Link>
           <Link to="/about" className="hover:text-gold py-2 inline-block min-h-11">روش‌شناسی و منابع</Link>
         </nav>

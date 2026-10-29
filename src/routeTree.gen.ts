@@ -11,9 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as ArchivesRouteImport } from './routes/archives'
 import { Route as CylinderRouteImport } from './routes/cylinder'
 import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as DynastySlugRouteImport } from './routes/dynasty/$slug'
+import { Route as EnArchivesRouteImport } from './routes/en/archives'
 import { Route as EnCylinderRouteImport } from './routes/en/cylinder'
 import { Route as KingSlugRouteImport } from './routes/king/$slug'
 
@@ -25,6 +27,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArchivesRoute = ArchivesRouteImport.update({
+  id: '/archives',
+  path: '/archives',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CylinderRoute = CylinderRouteImport.update({
@@ -42,6 +49,11 @@ const DynastySlugRoute = DynastySlugRouteImport.update({
   path: '/dynasty/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnArchivesRoute = EnArchivesRouteImport.update({
+  id: '/en/archives',
+  path: '/en/archives',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EnCylinderRoute = EnCylinderRouteImport.update({
   id: '/en/cylinder',
   path: '/en/cylinder',
@@ -56,18 +68,22 @@ const KingSlugRoute = KingSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/archives': typeof ArchivesRoute
   '/cylinder': typeof CylinderRoute
   '/timeline': typeof TimelineRoute
   '/dynasty/$slug': typeof DynastySlugRoute
+  '/en/archives': typeof EnArchivesRoute
   '/en/cylinder': typeof EnCylinderRoute
   '/king/$slug': typeof KingSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/archives': typeof ArchivesRoute
   '/cylinder': typeof CylinderRoute
   '/timeline': typeof TimelineRoute
   '/dynasty/$slug': typeof DynastySlugRoute
+  '/en/archives': typeof EnArchivesRoute
   '/en/cylinder': typeof EnCylinderRoute
   '/king/$slug': typeof KingSlugRoute
 }
@@ -75,9 +91,11 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/archives': typeof ArchivesRoute
   '/cylinder': typeof CylinderRoute
   '/timeline': typeof TimelineRoute
   '/dynasty/$slug': typeof DynastySlugRoute
+  '/en/archives': typeof EnArchivesRoute
   '/en/cylinder': typeof EnCylinderRoute
   '/king/$slug': typeof KingSlugRoute
 }
@@ -86,27 +104,33 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/archives'
     | '/cylinder'
     | '/timeline'
     | '/dynasty/$slug'
+    | '/en/archives'
     | '/en/cylinder'
     | '/king/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/archives'
     | '/cylinder'
     | '/timeline'
     | '/dynasty/$slug'
+    | '/en/archives'
     | '/en/cylinder'
     | '/king/$slug'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/archives'
     | '/cylinder'
     | '/timeline'
     | '/dynasty/$slug'
+    | '/en/archives'
     | '/en/cylinder'
     | '/king/$slug'
   fileRoutesById: FileRoutesById
@@ -114,9 +138,11 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  ArchivesRoute: typeof ArchivesRoute
   CylinderRoute: typeof CylinderRoute
   TimelineRoute: typeof TimelineRoute
   DynastySlugRoute: typeof DynastySlugRoute
+  EnArchivesRoute: typeof EnArchivesRoute
   EnCylinderRoute: typeof EnCylinderRoute
   KingSlugRoute: typeof KingSlugRoute
 }
@@ -135,6 +161,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/archives': {
+      id: '/archives'
+      path: '/archives'
+      fullPath: '/archives'
+      preLoaderRoute: typeof ArchivesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cylinder': {
@@ -158,6 +191,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DynastySlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/en/archives': {
+      id: '/en/archives'
+      path: '/en/archives'
+      fullPath: '/en/archives'
+      preLoaderRoute: typeof EnArchivesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/en/cylinder': {
       id: '/en/cylinder'
       path: '/en/cylinder'
@@ -178,21 +218,14 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  ArchivesRoute: ArchivesRoute,
   CylinderRoute: CylinderRoute,
   TimelineRoute: TimelineRoute,
   DynastySlugRoute: DynastySlugRoute,
+  EnArchivesRoute: EnArchivesRoute,
   EnCylinderRoute: EnCylinderRoute,
   KingSlugRoute: KingSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}

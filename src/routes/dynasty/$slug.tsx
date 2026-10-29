@@ -34,6 +34,12 @@ function DynastyPage() {
             <span className="glass rounded-full px-4 py-1.5">📜 {fa(events.length)} رویداد</span>
           </div>
           <p className="mt-6 max-w-3xl text-lg leading-9 text-ivory/85">{d.summary}</p>
+          {d.slug === 'achaemenids' && (
+            <p className="mt-6 flex flex-wrap gap-3">
+              <Link to="/cylinder" className="glass rounded-full px-5 py-2 min-h-11 inline-flex items-center hover:border-gold">استوانهٔ کوروش</Link>
+              <Link to="/archives" className="glass rounded-full px-5 py-2 min-h-11 inline-flex items-center hover:border-gold">بایگانی بارو و خزانه</Link>
+            </p>
+          )}
         </div>
       </header>
 

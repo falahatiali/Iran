@@ -12,6 +12,7 @@ export const sources: Source[] = [
   { id: 'herodotus', title: 'تاریخ (Histories)', author: 'هرودوت', kind: 'primary' },
   { id: 'behistun', title: 'کتیبه‌ی بیستون', author: 'داریوش بزرگ', kind: 'primary', url: 'https://www.livius.org/sources/content/behistun-persian-text/' },
   { id: 'cyrus-cylinder', title: 'استوانه‌ی کوروش', kind: 'primary', url: 'https://www.britishmuseum.org/collection/object/W_1880-0617-1941' },
+  { id: 'persepolis-tablets', title: 'الواح بارو و خزانهٔ تخت‌جمشید (هالوک ۱۹۶۹؛ کامرون ۱۹۴۸)', kind: 'primary', url: '/archives' },
   { id: 'briant', title: 'From Cyrus to Alexander: A History of the Persian Empire', author: 'Pierre Briant', kind: 'monograph' },
   { id: 'potts', title: 'The Archaeology of Elam', author: 'D. T. Potts', kind: 'monograph' },
   { id: 'tabari', title: 'تاریخ الرسل و الملوک (تاریخ طبری)', author: 'محمد بن جریر طبری', kind: 'primary' },
@@ -31,7 +32,7 @@ export const sources: Source[] = [
 export const dynastySources: Record<string, string[]> = {
   elam: ['potts', 'iranica', 'chi'],
   medes: ['herodotus', 'iranica', 'chi'],
-  achaemenids: ['herodotus', 'behistun', 'cyrus-cylinder', 'briant', 'iranica'],
+  achaemenids: ['herodotus', 'behistun', 'cyrus-cylinder', 'persepolis-tablets', 'briant', 'iranica'],
   seleucids: ['chi', 'iranica'],
   parthians: ['chi', 'iranica'],
   sasanians: ['tabari', 'shahnameh', 'daryaee', 'iranica'],

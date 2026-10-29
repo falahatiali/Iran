@@ -200,5 +200,86 @@ Not a starting URL from Ali, but required to separate layers:
 3. Jannatkhah printed book / ISBN edition; full video transcript; Instagram story corpus.
 4. Official BM 3D scan of BM 90920.
 5. Yale NBC 2504 fragment photography with a verified free license (not located this pass).
-6. Hallock 1969 *Persepolis Fortification Tablets* and Cameron Treasury volumes (editions cited via Iranica, not opened).
+6. Hallock 1969 *Persepolis Fortification Tablets* and Cameron Treasury volumes (editions cited via Iranica, not opened). **Superseded for Hallock intro/TOC on 2026-10-29 — see §13.**
 7. Murashu archive publications (named in the philosophy directive; **not opened this pass** — flagged for the property-rights dossier).
+
+---
+
+## 13. Persepolis archives — second research track (2026-10-29)
+
+Method unchanged: live pages and the ISAC PDF of Hallock 1969 (introduction + table of contents). Figures that could not be cross-checked, or that conflict without a way to choose, are either attributed as disputed or left out.
+
+### 13.1 Hallock 1969, OIP 92 — opened
+
+- **URL (catalog + PDF):** https://isac.uchicago.edu/publications/persepolis-fortification-tablets — PDF `https://isac-assets.s3.amazonaws.com/isac-publications/oip92.pdf`
+- **License of the PDF as served by ISAC:** CC BY-NC-ND 4.0. **We summarize categories and quote short facts; we do not reproduce tablet texts.**
+- **ISBN:** 0-226-62195-2. Chicago: Oriental Institute, 1969. Pp. x + 776.
+- **Accessed:** 2026-10-29 (local extract of front matter through the introduction, printed pp. vii–viii and 1–5).
+
+**Claims this source supports:**
+
+- Tablets excavated **1933/34** by an Oriental Institute expedition headed by **Ernst Herzfeld**, from the fortification wall at the **northeast corner** of the Persepolis terrace; shipped to Chicago; available for study in 1937.
+- The volume publishes **PF 1–2087 = 2,087** Elamite texts in **thirty-two classes** (categories **A–W**, skipping I and O in his lettering).
+- Dates of the Fortification texts: **509–494 BCE**, years 13–28 of Darius I.
+- Treasury texts (already published) date **492–458 BCE** and record silver **chiefly in lieu of rations in kind**.
+- **354** texts (PF 741–1084, 2036–45) = regular monthly rations (K 1–L 3 combined); **304** travel-ration texts (category Q). These two totals were recomputed from the TOC PF ranges and match Hallock’s own numbers.
+- Usual monthly grain ration for **men: 3 BAR (30 quarts)**; normal maximum **6 BAR**; usual minimum **5 QA = 1 BAR**.
+- In L 1–3, **women are much more numerous** than men, boys, and girls; normally smaller rations than men; some women receive more than any of the men (Hallock infers supervisors / special skills).
+- Category **N**, mothers’ rations: mothers of boys regularly **twice** mothers of girls, “given as reward.” PF 1224: nine Ionian mothers of boys, 2 quarts each; fourteen of girls, 1 quart each.
+- Four high officials, daily wine/beer: **Gobryas 10 marris, Parnaka 9, Irdumartiya 5, Zissawis 3**.
+- Exchange texts: **1 sheep = 10 BAR (100 quarts)**; **1 marris of wine = 3 BAR** of barley.
+- Hallock’s own metrology in this introduction: **1 BAR = 5 QA**; **1 marris = 10 QA ≈ 10 quarts**. A single Greek tablet Fort. 1771 uses *maris*.
+
+**Does not support:** converting BAR to litres with Iranica’s “1 bar ≈ 10 litres / 1 qa ≈ 1 litre” (that implies 10 QA per BAR, against Hallock’s 5 QA = 1 BAR). **Logged as unverified / disputed; not used in the explorer.**
+
+### 13.2 ISAC publication page (Lewis excerpt)
+
+- **URL:** https://isac.uchicago.edu/publications/persepolis-fortification-tablets
+- **Accessed:** 2026-10-29
+- **Supports:** “over 2100 texts published”; food commodities in the Persepolis region in the **fifteen years down to 493**; everyone in the state sphere on a **fixed ration-scale**, or a salary in commodities too large for one person to consume; travelers carried **sealed documents** issued by the king or satrapal-level officials. The paragraph is attributed on the page to D. M. Lewis, *Achaemenid History* IV (1990), pp. 2–6.
+
+### 13.3 Cameron 1948, OIP 65 — catalog only
+
+- **URL:** https://isac.uchicago.edu/publications/persepolis-treasury-tablets
+- **Accessed:** 2026-10-29
+- **Supports at catalog level:** OIP 65 transliterates, translates, and plates **103 Elamite tablets and one Akkadian** tablet. **Volume body not opened.** No PT line readings are taken from memory. Cameron 1958 and 1965 JNES sequels remain cited via Iranica.
+
+### 13.4 Encyclopaedia Iranica — opened 2026-10-29
+
+| Article | URL | Supports |
+|---|---|---|
+| Persepolis Elamite Tablets (Dandamayev 2002/2012) | https://www.iranicaonline.org/articles/persepolis-elamite-tablets/ | OI 1933–34 and 1936–38; Fortification “over 30,000”, Hallock **2,120** (1969+1978); Treasury **753** / **128** published; 509–494 vs 492–458; kurtaš; pay in kind then unminted silver; royal taxes in livestock and grain; 1 marriš ≈ 10 litres (Dandamayev) |
+| Administrative Archives (hub, 2017) | https://www.iranicaonline.org/articles/persepolis-admin-archive/ | Two groups named for findspots: Fortification and Treasury |
+| i. Fortification Archive (2017) | https://www.iranicaonline.org/articles/persepolis-admin-archive/persepolis-administrative-archives-i-persepolis-fortification-archive/ | Herzfeld **March 1933**; Herzfeld estimate **~30,000+**; 2017 OI **20–25k** tablets/fragments ≈ **15–18k** original documents; **~70% Elamite, ~5% Aramaic, ~20% seal-only**; PFA Project named |
+| ii. Treasury Archive (2017) | https://www.iranicaonline.org/articles/persepolis-admin-archive/persepolis-administrative-archives-ii-persepolis-treasury-archive/ | Schmidt **1934–38**; **198** tablets + **548** fragments; **199** sealings; silver in lieu of sheep/wine/grain; kapnuškir; **492–457 BCE** |
+| iv. Significance (2017) | https://www.iranicaonline.org/articles/persepolis-admin-archive/persepolis-administrative-archives-iv-significance/ | Workers by sex, age, ethnicity; Parnakka; royal-family estates inside the administration; travel authorizations; commodity branches; market exchange implied |
+| Achaemenid Taxation | https://www.iranicaonline.org/articles/achaemenid-taxation/ | Fortification records of small livestock as state taxes (citing Hallock 1969, pp. 16, 136–38); Persians exempt from money-tax not in-kind |
+| Fiscal System i. Achaemenid | https://www.iranicaonline.org/articles/fiscal-system-i-achaemenid/ | Cross-check that Iranica repeats Herodotus 3.90–94 (7,740 Babylonian talents). **Not a tablet total — not used as one.** |
+| Economy iii | https://www.iranicaonline.org/articles/economy-iii/ | Royal sector; pay in kind then silver; coin wages not used in these texts. **“More than 16,000 kurtaš” left out (one source).** |
+
+### 13.5 Conflicts recorded, not flattened
+
+| Topic | Source A | Source B | Handling |
+|---|---|---|---|
+| Fortification bulk count | Herzfeld / Dandamayev: over 30,000 | Stolper 2017: 20–25k remaining at OI, 15–18k original documents | Both stated; labelled disputed |
+| Hallock published count | OIP 92: **2,087** (PF 1–2087) | Dandamayev: **2,120** (1969+1978); ISAC: “over 2100” | Successive publication totals, not one count |
+| Treasury pieces | Dandamayev: 753 / 128 published | Stolper: 198 + 548 (=746) + 199 sealings; ISAC OIP 65: 103+1 in 1948 | All three stated |
+| Treasury end year | Hallock & Dandamayev: **458** | Iranica 2017 ii: **457** | One-year discrepancy logged |
+| Fortification end year | Hallock: 494 | Iranica 2017 i / ISAC: 493 | Same regnal span; logged |
+| Treasury excavation window | Dandamayev: 1936–38 | Stolper: Schmidt 1934–38 (Herzfeld fragment 1932) | 1934–38 used as the more precise window, with the other cited |
+| BAR / QA / litre | Hallock: 5 QA = 1 BAR; marris = 10 QA ≈ 10 quarts | Dandamayev: 1 qa ≈ 1 litre, 1 bar ≈ 10 litres, 1 marriš ≈ 10 litres | **No litre conversion in the product** |
+
+### 13.6 Inaccessible or unused this pass
+
+1. Cameron 1948 volume body; Cameron 1958 and 1965 JNES PDFs.
+2. Hallock 1978 PFa texts; category commentaries beyond the introduction totals (amounts not mined from later chapters).
+3. *Cambridge History of Iran* vol. 2, ch. 11 “The Evidence of the Persepolis Tablets” — TOC/bibliography verified on Cambridge Core; **chapter not opened**.
+4. Pierre Briant, *From Cyrus to Alexander* — listed; **not opened**.
+5. A dedicated Iranica article titled “Wages” — **not found** in this pass (pay is covered in Elamite Tablets / Economy iii).
+6. Henkelman 2008a and other Henkelman monographs — cited by Iranica; **books not opened** (no remembered page numbers).
+7. OCHRE / live PFA Project workspace — Iranica names the project; a dedicated ISAC project URL redirected to a generic research-projects search in this pass.
+8. Figures left out: 16,000 kurtaš; 3,000 bar of barley in one text (Iranica sentence truncated in the scrape); PT 4 = 530 karša to thirteen individuals; Kawase 1984 *pašap* (not re-quoted from a page this pass); Herodotus 7,740 talents as if it were a tablet sum.
+
+### 13.7 Cylinder passage annotations added this pass
+
+Verified from Iranica *Cyrus iv* (already opened 2026-10-28) and Hallock/Iranica on the archives: Harmatta/Assurbanipal model on lines 4–8; Babylonian titulary on 20–22; wages/rations are **not** in the Cylinder (pointing to the archives) on 30–36; wall / Ashurbanipal on the Yale join 36–45. Still no Finkel running translation.

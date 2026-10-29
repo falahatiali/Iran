@@ -14,7 +14,7 @@ import {
   revisions,
   sourceTexts,
   translations,
-} from './cylinder'
+} from './index'
 
 export const researchClearSql = [
   'DELETE FROM revisions',

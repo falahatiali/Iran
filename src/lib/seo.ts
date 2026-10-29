@@ -42,3 +42,9 @@ export const CYLINDER_ALTERNATES = [
   { hrefLang: 'en', path: '/en/cylinder' },
   { hrefLang: 'x-default', path: '/cylinder' },
 ] as const
+
+export const ARCHIVES_ALTERNATES = [
+  { hrefLang: 'fa', path: '/archives' },
+  { hrefLang: 'en', path: '/en/archives' },
+  { hrefLang: 'x-default', path: '/archives' },
+] as const

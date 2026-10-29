@@ -340,6 +340,62 @@ export const annotations: Annotation[] = [
     locale: 'en',
     body: 'These lines are the Yale join, absent from Rogers 1912. Line-level English belongs to Finkel 2013 or Schaudig 2001 — here only a summary is given.',
   },
+  {
+    id: 'ann-harmatta-fa',
+    passageId: 'cyl-l04-08',
+    kind: 'context',
+    locale: 'fa',
+    body: 'ایرانیکا (داندمایف ۱۹۹۳/۲۰۱۳، به هارماتا): متن در قالبی کهن‌گرا و الهام‌گرفته از الگوهای نواشوری، به‌ویژه کتیبه‌های آشوربانی‌پال که در بابل پیش‌نویس شده‌اند. اتهام نبونئید بخشی از همان سنت مشروعیت است.',
+  },
+  {
+    id: 'ann-harmatta-en',
+    passageId: 'cyl-l04-08',
+    kind: 'context',
+    locale: 'en',
+    body: 'Iranica (Dandamayev 1993/2013, following Harmatta): composed in an archaizing form inspired by Neo-Assyrian models, especially Assurbanipal inscriptions drafted in Babylon. The indictment of Nabonidus belongs to that legitimacy tradition.',
+  },
+  {
+    id: 'ann-titles-fa',
+    passageId: 'cyl-l20-22',
+    kind: 'term',
+    locale: 'fa',
+    body: 'القاب «شاه جهان / بابل / سومر و اکد / چهار گوشه» و تبار تا چیش‌پیش، شاهی را در زبان بابل می‌نشانند (ایرانیکا: خطوط ۲۰–۲۲). این فهرست حقوقی مالکیت نیست؛ راجرز ۱۹۱۲ همین القاب را در قطعهٔ A دارد و ویراست فینکل ۲۰۱۳ مرجع جاری خط است.',
+  },
+  {
+    id: 'ann-titles-en',
+    passageId: 'cyl-l20-22',
+    kind: 'term',
+    locale: 'en',
+    body: 'The titles “king of the world / Babylon / Sumer and Akkad / the four quarters” and the genealogy to Teispes seat kingship in Babylonian language (Iranica: lines 20–22). This is not a property statute. Rogers 1912 has these titles on fragment A; Finkel 2013 remains the current line-level edition.',
+  },
+  {
+    id: 'ann-wages-not-here-fa',
+    passageId: 'cyl-l30-36',
+    kind: 'limit',
+    locale: 'fa',
+    body: 'استوانه جیره، مزد یا مالیات را کمی نمی‌کند. برای آن باید به بایگانی بارو و خزانهٔ تخت‌جمشید رجوع کرد (ایرانیکا؛ هالوک ۱۹۶۹). بازگرداندن جماعت‌ها در این بند، سند حقوق کار نیست.',
+  },
+  {
+    id: 'ann-wages-not-here-en',
+    passageId: 'cyl-l30-36',
+    kind: 'limit',
+    locale: 'en',
+    body: 'The Cylinder does not quantify rations, wages, or tax. That evidence sits in the Persepolis Fortification and Treasury archives (Iranica; Hallock 1969). The return of communities in this span is not a labour-rights statute.',
+  },
+  {
+    id: 'ann-wall-fa',
+    passageId: 'cyl-l36-45',
+    kind: 'term',
+    locale: 'fa',
+    body: 'ایرانیکا: بازسازی دفاع بابل و یافتن کتیبه‌ای از آشوربانی‌پال در همین قطعه. این ادامهٔ کتیبهٔ بنایی است، نه متمم حقوق بشری. ترجمهٔ مالکیت عمومی برای قطعهٔ ییل در دست نیست.',
+  },
+  {
+    id: 'ann-wall-en',
+    passageId: 'cyl-l36-45',
+    kind: 'term',
+    locale: 'en',
+    body: 'Iranica: restoration of Babylon’s defences and an inscription of Ashurbanipal belong to this join. That continues the building inscription; it is not a human-rights rider. No public-domain English of the Yale fragment is reproduced here.',
+  },
 ]
 
 export const citations: Citation[] = [
@@ -366,6 +422,14 @@ export const citations: Citation[] = [
     url: 'https://www.iranicaonline.org/articles/persepolis-elamite-tablets/',
     accessedOn: '2026-10-28',
     claim: 'PF/PT archives document rations, silver pay, and royal-economy workers — not a Cylinder-style law of private property.',
+  },
+  {
+    id: 'cit-iranica-lines',
+    bibliographicId: 'iranica-cyrus-iv',
+    locator: 'contents outline by line-range (Dandamayev 1993/2013)',
+    url: 'https://www.iranicaonline.org/articles/cyrus-iv/',
+    accessedOn: '2026-10-29',
+    claim: 'Line-range contents: Marduk on Nabonidus (4–8); choice of Cyrus and bloodless entry (9–19); titles and genealogy (20–22); cult restoration and return (30–36); wall and Ashurbanipal (36–45). Archaizing Neo-Assyrian / Assurbanipal model (Harmatta).',
   },
 ]
 

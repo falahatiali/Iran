@@ -1,11 +1,14 @@
 import { Link } from '@tanstack/react-router'
+import { useEffect } from 'react'
 import type { CylinderProject } from '../../server/db/research'
 import type { EvidenceLayer } from '../../data/research/types'
 import type { Locale } from '../../lib/i18n'
 import { altCylinderPath } from '../../lib/i18n'
+import { formatBoth, pageCitation } from '../../lib/cite'
 import { fa as faNum } from '../../lib/format'
 import { PageTransition, Reveal } from '../Reveal'
 import { Divider } from '../Ornament'
+import { CiteButton, ShareHashButton } from '../CiteButton'
 import { CylinderViewer } from './CylinderViewer'
 import { EvidenceBadge } from './EvidenceBadge'
 
@@ -48,6 +51,10 @@ export function CylinderPage({ locale, data }: { locale: Locale; data: CylinderP
         finkelLink: 'ترجمهٔ فینکل در کاتالوگ موزهٔ بریتانیا',
         liviusLink: 'ترجمهٔ علمی دیگر (کوگان/شادیگ) در Livius — بدون مجوز بازنشر',
         photoCredit: 'عکس: دادروت، موزهٔ بریتانیا، CC0 ۱.۰',
+        citePage: 'استناد به این صفحه',
+        citePassage: 'استناد به این بند',
+        sharePassage: 'پیوند این بند',
+        copied: 'کپی شد',
       }
     : {
         kicker: 'Flagship object · BM 90920',
@@ -75,10 +82,29 @@ export function CylinderPage({ locale, data }: { locale: Locale; data: CylinderP
         finkelLink: 'Finkel’s translation on the British Museum catalog',
         liviusLink: 'Another scholarly English (Cogan/Schaudig) on Livius — no reuse licence stated',
         photoCredit: 'Photo: Daderot, British Museum, CC0 1.0',
+        citePage: 'Cite this page',
+        citePassage: 'Cite this passage',
+        sharePassage: 'Share this passage',
+        copied: 'Copied',
       }
 
   const claims = (layer: EvidenceLayer) => data.claims.filter((c) => c.evidenceLayer === layer && c.locale === locale)
   const yearLabel = (y: number) => (y < 0 ? (isFa ? `${faNum(-y)} پ.م.` : `${-y} BCE`) : (isFa ? `${faNum(y)} م.` : `${y} CE`))
+  const iranica = data.bibliography.find((b) => b.id === 'iranica-cyrus-iv')
+  const bm = data.bibliography.find((b) => b.id === 'bm-90920')
+  const pageCite = pageCitation({
+    locale,
+    titleFa: 'استوانهٔ کوروش',
+    titleEn: 'The Cyrus Cylinder',
+    path: locale === 'en' ? '/en/cylinder' : '/cylinder',
+    extra: [bm, iranica].filter(Boolean).map((b) => formatBoth(b!)).join('\n\n'),
+  })
+
+  useEffect(() => {
+    const id = window.location.hash.slice(1)
+    if (!id) return
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }, [])
 
   return (
     <PageTransition>
@@ -92,10 +118,11 @@ export function CylinderPage({ locale, data }: { locale: Locale; data: CylinderP
         <p className="text-turquoise-soft tracking-wide text-sm">{t.kicker}</p>
         <h1 className="text-4xl md:text-5xl font-black text-gilded leading-[1.25] mt-3">{t.title}</h1>
         <p className="mt-6 text-lg leading-9 text-ivory/80">{t.lede}</p>
-        <p className="mt-4">
+        <p className="mt-4 flex flex-wrap gap-2">
           <a href={altCylinderPath(locale)} className="glass rounded-full px-5 py-2 inline-block min-h-11 hover:border-gold" hrefLang={locale === 'fa' ? 'en' : 'fa'}>
             {t.alt}
           </a>
+          <CiteButton text={pageCite} label={t.citePage} copiedLabel={t.copied} />
         </p>
         <Divider />
 
@@ -252,6 +279,18 @@ export function CylinderPage({ locale, data }: { locale: Locale; data: CylinderP
                       <code dir="ltr" className="text-gold text-sm">{p.id}</code>
                       <span className="text-ivory/50 text-sm">{t.lines} {isFa ? `${faNum(p.linesFrom)}–${faNum(p.linesTo)}` : `${p.linesFrom}–${p.linesTo}`}</span>
                       {p.damaged && <span className="text-xs text-crimson">{t.damaged}</span>}
+                      <ShareHashButton hash={p.id} label={t.sharePassage} copiedLabel={t.copied} />
+                      <CiteButton
+                        text={pageCitation({
+                          locale,
+                          titleFa: `استوانهٔ کوروش، بند ${p.id} (سطر ${p.linesFrom}–${p.linesTo})`,
+                          titleEn: `Cyrus Cylinder, passage ${p.id} (lines ${p.linesFrom}–${p.linesTo})`,
+                          path: `${locale === 'en' ? '/en/cylinder' : '/cylinder'}#${p.id}`,
+                          extra: iranica ? formatBoth(iranica) : undefined,
+                        })}
+                        label={t.citePassage}
+                        copiedLabel={t.copied}
+                      />
                     </header>
                     <p className="leading-8 text-ivory/85">{isFa ? p.summaryFa : p.summaryEn}</p>
                     {body ? (
@@ -294,13 +333,13 @@ export function CylinderPage({ locale, data }: { locale: Locale; data: CylinderP
             {isFa ? (
               <>
                 <p className="leading-9 text-ivory/80">جست‌وجوی شاهد مستقیم: استوانه حق مالکیت جهانی، آزادی پیشه، یا الغای بردگی را بیان نمی‌کند. آنچه می‌گوید رفتار شاه با مغلوب، بازسازی نهادهای محلی، توجیه قدرت، و بازگرداندن جماعت‌ها و پیکره‌هاست. این‌ها برای پرسش از قدرت خودسر مهم‌اند — اما شاهد قانونی مالکیت خصوصی نیستند.</p>
-                <p className="leading-9 text-ivory/80">برای اقتصاد واقعی هخامنشی باید سراغ بایگانی باروی و خزانهٔ تخت‌جمشید رفت: جیره، نقره، کارگران kurtaš، مالیات شاهی. ایرانیکا این‌ها را ادارهٔ اقتصاد شاهی می‌داند، نه سند مالکیت فردی به معنای مدرن. بایگانی موری‌شو در این گذر باز نشد.</p>
+                <p className="leading-9 text-ivory/80">برای اقتصاد واقعی هخامنشی باید سراغ <Link to="/archives" className="text-gold hover:underline">بایگانی بارو و خزانهٔ تخت‌جمشید</Link> رفت: جیره، نقره، کارگران kurtaš، مالیات شاهی. ایرانیکا این‌ها را ادارهٔ اقتصاد شاهی می‌داند، نه سند مالکیت فردی به معنای مدرن. بایگانی موری‌شو در این گذر باز نشد.</p>
                 <p className="leading-9 text-ivory/80">پرسش‌های جنت‌خواه — آیا فرد صاحب حق است؟ آیا ثمرهٔ کارش در امان است؟ آیا قدرت حد دارد؟ — چارچوب تحلیل ماست. در این گذر کتاب چاپ‌شده با شابک از او تأیید نشد؛ جمله‌ای به او نسبت داده نشده است.</p>
               </>
             ) : (
               <>
                 <p className="leading-9 text-ivory/80">Direct textual search: the Cylinder does not state a universal ownership right, freedom of occupation, or the abolition of slavery. It does speak to how a conqueror treats the defeated, restores local institutions, justifies power, and returns communities and cult images. That matters for arbitrary power — it is not a statute of private property.</p>
-                <p className="leading-9 text-ivory/80">For the Achaemenid economy, turn to the Persepolis Fortification and Treasury archives: rations, silver, kurtaš workers, royal taxes. Iranica treats these as royal-economy administration, not modern individual title. The Murashu archive was not opened this pass.</p>
+                <p className="leading-9 text-ivory/80">For the Achaemenid economy, turn to the <Link to="/archives" className="text-gold hover:underline">Persepolis Fortification and Treasury archives</Link>: rations, silver, kurtaš workers, royal taxes. Iranica treats these as royal-economy administration, not modern individual title. The Murashu archive was not opened this pass.</p>
                 <p className="leading-9 text-ivory/80">Jannatkhah’s questions — is the individual a rights-holder? is the fruit of labour secure? are there limits on power? — are our analytical frame. No ISBN edition of his book was verified here; no sentence is attributed to him.</p>
               </>
             )}
@@ -338,6 +377,7 @@ export function CylinderPage({ locale, data }: { locale: Locale; data: CylinderP
         <Reveal>
           <section id="related" className="mb-8 space-y-3">
             <h2 className="text-3xl font-black text-gilded">{t.related}</h2>
+            <p><Link to="/archives" className="text-gold hover:underline min-h-11 inline-flex items-center">{isFa ? 'بایگانی بارو و خزانهٔ تخت‌جمشید' : 'Persepolis Fortification and Treasury archives'}</Link></p>
             <p><Link to="/dynasty/$slug" params={{ slug: 'achaemenids' }} className="text-gold hover:underline min-h-11 inline-flex items-center">{isFa ? 'دودمان هخامنشی' : 'The Achaemenid dynasty'}</Link></p>
             <p><Link to="/king/$slug" params={{ slug: 'cyrus-ii' }} className="text-gold hover:underline min-h-11 inline-flex items-center">{isFa ? 'کوروش دوم' : 'Cyrus II'}</Link></p>
             <p><Link to="/about" className="text-gold hover:underline min-h-11 inline-flex items-center">{isFa ? 'روش‌شناسی' : 'Methodology'}</Link></p>

@@ -182,3 +182,29 @@ export interface Revision {
   changedAt: string
   summary: string
 }
+
+/** Hallock 1969 (OIP 92) text category — labels from the volume table of contents. */
+export type RationGroup = 'supply' | 'rations-people' | 'rations-animals' | 'admin'
+
+export interface RationCategory {
+  id: string
+  letter: string
+  nameFa: string
+  nameEn: string
+  pfRange: string
+  group: RationGroup
+  citationId: string
+}
+
+export interface RationFact {
+  id: string
+  categoryLetters: string[]
+  whoFa: string
+  whoEn: string
+  commodityFa: string
+  commodityEn: string
+  amount: string
+  unitGloss: string
+  citationId: string
+  confidence: Confidence
+}
