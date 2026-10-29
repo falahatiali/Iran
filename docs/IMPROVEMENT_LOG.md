@@ -2,6 +2,15 @@
 
 A running record of substantial product and research work. Older infrastructure notes live in git history.
 
+## 2026-10-29 — Public origin must be the real site URL
+
+**Bug:** production canonical, `og:url`, all sitemap `<loc>` entries, and the robots `Sitemap` line pointed at `https://iran-history.example`.
+
+**Done in this pass**
+
+- Site origin comes from `VITE_SITE_URL` / `APP_DOMAIN` (GitHub `PRODUCTION_URL` / `APP_DOMAIN`, default `https://history.verzav.ir`). Production and sitemap generation fail if that value is missing, `http://`, or a placeholder.
+- Docker image build takes the same values as `ARG`s. CI and post-deploy crawls fail if any canonical or sitemap URL is not the configured origin.
+
 ## 2026-10-28 — Foundational philosophy and Cyrus Cylinder first release
 
 **Directive:** [FOUNDATIONAL_PHILOSOPHY.md](./FOUNDATIONAL_PHILOSOPHY.md) committed verbatim as a permanent project principle.

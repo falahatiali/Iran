@@ -14,6 +14,12 @@ on:
 permissions:
   contents: read
 
+# Public origin baked into canonical / og:url / sitemap / robots. Override with
+# repository variables PRODUCTION_URL (full origin) or APP_DOMAIN (hostname).
+env:
+  PUBLIC_SITE_URL: ${{ vars.PRODUCTION_URL || 'https://history.verzav.ir' }}
+  PUBLIC_APP_DOMAIN: ${{ vars.APP_DOMAIN || 'history.verzav.ir' }}
+
 jobs:
   # Quality gates
   check:
@@ -46,13 +52,31 @@ jobs:
       - name: Tests
         run: npm test
 
+      - name: Sitemap refuses a missing public origin
+        env:
+          VITE_SITE_URL: ''
+          APP_DOMAIN: ''
+        run: |
+          if npm run sitemap; then
+            echo "sitemap generation must fail without VITE_SITE_URL or APP_DOMAIN"
+            exit 1
+          fi
+          echo "✅ sitemap fails closed without a public origin"
+
       - name: Build application
+        env:
+          VITE_SITE_URL: ${{ env.PUBLIC_SITE_URL }}
+          APP_DOMAIN: ${{ env.PUBLIC_APP_DOMAIN }}
         run: npm run build
 
-      - name: Verify prerendered cylinder pages
+      - name: Verify prerendered pages and site origin
+        env:
+          VITE_SITE_URL: ${{ env.PUBLIC_SITE_URL }}
         run: |
           python3 - <<'PY'
+          import os
           from pathlib import Path
+          origin = os.environ['VITE_SITE_URL'].rstrip('/')
           roots = [Path('.output/public'), Path('.output/server')]
           htmls = []
           for root in roots:
@@ -62,7 +86,19 @@ jobs:
           missing = [s for s in ('BM 90920', 'استوانه', 'Cyrus Cylinder', 'شواهد تاریخی', 'Historical evidence', 'گاه‌شمار سراسری', 'بایگانی بارو', 'Hallock', 'Ration explorer', 'کاوشگر جیره') if s not in blob]
           if missing:
               raise SystemExit(f'missing in prerender: {missing}; html files={len(htmls)}')
-          print(f'prerender ok ({len(htmls)} html files)')
+          if 'iran-history.example' in blob:
+              raise SystemExit('placeholder domain iran-history.example leaked into prerendered HTML')
+          if origin not in blob:
+              raise SystemExit(f'public origin {origin} missing from prerendered HTML')
+          sitemap = Path('public/sitemap.xml').read_text(encoding='utf-8')
+          robots = Path('public/robots.txt').read_text(encoding='utf-8')
+          if 'iran-history.example' in sitemap or 'iran-history.example' in robots:
+              raise SystemExit('placeholder domain in sitemap/robots')
+          if f'<loc>{origin}/' not in sitemap:
+              raise SystemExit(f'sitemap.xml does not use {origin}')
+          if f'Sitemap: {origin}/sitemap.xml' not in robots:
+              raise SystemExit(f'robots.txt Sitemap line does not use {origin}')
+          print(f'prerender ok ({len(htmls)} html files) origin={origin}')
           PY
 
   # Build and push Docker image
@@ -118,6 +154,9 @@ jobs:
           platforms: linux/amd64
           provenance: true
           sbom: true
+          build-args: |
+            VITE_SITE_URL=${{ env.PUBLIC_SITE_URL }}
+            APP_DOMAIN=${{ env.PUBLIC_APP_DOMAIN }}
           
       - name: Output image references
         run: |
@@ -239,7 +278,7 @@ jobs:
           echo "Running smoke tests..."
           
           # Homepage content check  
-          if ! docker exec "$CONTAINER_ID" node -e "fetch('http://localhost:3000/').then(r=>r.text()).then(t=>{if(!t.includes('تاریخ ایران'))throw new Error('No title');process.exit(0)}).catch(e=>{console.error(e);process.exit(1)})"; then
+          if ! docker exec "$CONTAINER_ID" node -e "fetch('http://localhost:3000/').then(r=>r.text()).then(t=>{if(!t.includes('تاریخ ایران'))throw new Error('No title');if(t.includes('iran-history.example'))throw new Error('placeholder domain');if(!t.includes('${PUBLIC_SITE_URL}'))throw new Error('missing public origin');process.exit(0)}).catch(e=>{console.error(e);process.exit(1)})"; then
             echo "❌ Homepage doesn't contain title!"
             docker logs "$CONTAINER_ID" --tail 100
             exit 1
@@ -259,6 +298,20 @@ jobs:
             exit 1
           fi
           echo "✅ Homepage content verified"
+
+          if ! docker exec "$CONTAINER_ID" node -e "fetch('http://localhost:3000/sitemap.xml').then(async r=>{if(r.status!==200)throw new Error(r.status);const t=await r.text();if(t.includes('iran-history.example'))throw new Error('placeholder');if(!t.includes('${PUBLIC_SITE_URL}'))throw new Error('missing origin');if(!(t.match(/<loc>/g)||[]).length)throw new Error('no loc');process.exit(0)}).catch(e=>{console.error(e);process.exit(1)})"; then
+            echo "❌ /sitemap.xml origin check failed"
+            docker logs "$CONTAINER_ID" --tail 80
+            exit 1
+          fi
+          echo "✅ /sitemap.xml origin verified"
+
+          if ! docker exec "$CONTAINER_ID" node -e "fetch('http://localhost:3000/robots.txt').then(async r=>{if(r.status!==200)throw new Error(r.status);const t=await r.text();if(t.includes('iran-history.example'))throw new Error('placeholder');if(!t.includes('Sitemap: ${PUBLIC_SITE_URL}/sitemap.xml'))throw new Error('missing sitemap line');process.exit(0)}).catch(e=>{console.error(e);process.exit(1)})"; then
+            echo "❌ /robots.txt origin check failed"
+            docker logs "$CONTAINER_ID" --tail 80
+            exit 1
+          fi
+          echo "✅ /robots.txt origin verified"
           
           # Verify known-good slug returns 200 with content
           if ! docker exec "$CONTAINER_ID" node -e "fetch('http://localhost:3000/dynasty/achaemenids').then(r=>r.text()).then(t=>{if(!t.includes('کوروش'))throw new Error('No content');process.exit(0)}).catch(e=>{console.error(e);process.exit(1)})"; then
@@ -512,6 +565,75 @@ jobs:
             echo "  ✅ /timeline?q=بیستون → 200 (filtered, canonical, noindex)"
           else
             echo "  ❌ /timeline?q=بیستون → $TL_STATUS"
+            FAILED=$((FAILED + 1))
+          fi
+
+          echo ""
+          echo "Public origin (canonical / sitemap / robots):"
+          if ! python3 - <<'PY'
+          import os, re, sys, urllib.request
+          origin = os.environ["PRODUCTION_URL"].rstrip("/")
+          def fetch(path):
+              req = urllib.request.Request(origin + path, headers={"User-Agent": "iran-history-ci"})
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  return r.read().decode("utf-8", "replace")
+          def urls_for(html, rel):
+              found = re.findall(r'rel="%s"\s+href="([^"]+)"' % rel, html)
+              if not found:
+                  found = re.findall(r'<link[^>]+rel="%s"[^>]+href="([^"]+)"' % rel, html)
+              if not found:
+                  found = re.findall(r'<link[^>]+href="([^"]+)"[^>]+rel="%s"' % rel, html)
+              return found
+          def og(html):
+              found = re.findall(r'property="og:url"\s+content="([^"]+)"', html)
+              if not found:
+                  found = re.findall(r'<meta[^>]+property="og:url"[^>]+content="([^"]+)"', html)
+              if not found:
+                  found = re.findall(r'<meta[^>]+content="([^"]+)"[^>]+property="og:url"', html)
+              return found
+          def ok_origin(u):
+              return u == origin or u == origin + "/" or u.startswith(origin + "/")
+          failed = 0
+          for path in ("/", "/cylinder", "/archives", "/about"):
+              html = fetch(path)
+              if "iran-history.example" in html:
+                  print(f"  ❌ {path} contains placeholder domain")
+                  failed += 1
+              canons = urls_for(html, "canonical")
+              ogs = og(html)
+              if not canons:
+                  print(f"  ❌ {path} has no canonical")
+                  failed += 1
+              for u in canons + ogs:
+                  if not ok_origin(u):
+                      print(f"  ❌ {path} {u} does not match {origin}")
+                      failed += 1
+                  else:
+                      print(f"  ✅ {path} {u}")
+          sitemap = fetch("/sitemap.xml")
+          robots = fetch("/robots.txt")
+          if "iran-history.example" in sitemap or "iran-history.example" in robots:
+              print("  ❌ placeholder domain in sitemap/robots")
+              failed += 1
+          locs = re.findall(r"<loc>([^<]+)</loc>", sitemap)
+          if not locs:
+              print("  ❌ sitemap has no <loc>")
+              failed += 1
+          bad = [u for u in locs if not ok_origin(u)]
+          if bad:
+              print(f"  ❌ sitemap loc mismatch ({len(bad)}/{len(locs)}): {bad[:3]}")
+              failed += 1
+          else:
+              print(f"  ✅ sitemap.xml {len(locs)} <loc> under {origin}")
+          want = f"Sitemap: {origin}/sitemap.xml"
+          if want not in robots:
+              print(f"  ❌ robots.txt missing {want}")
+              failed += 1
+          else:
+              print(f"  ✅ robots.txt {want}")
+          sys.exit(1 if failed else 0)
+          PY
+          then
             FAILED=$((FAILED + 1))
           fi
 

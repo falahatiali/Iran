@@ -1,5 +1,6 @@
 import type { BibliographyEntry } from '../data/research/types'
 import type { Locale } from './i18n'
+import { SITE_URL } from './seo'
 
 function chicagoDate(iso: string): string {
   const [y, m, d] = iso.split('-').map(Number)
@@ -49,7 +50,7 @@ export function pageCitation(opts: {
   site?: string
   extra?: string
 }): string {
-  const site = opts.site ?? 'https://history.verzav.ir'
+  const site = opts.site ?? SITE_URL
   const url = `${site}${opts.path}`
   const fa = `تاریخ ایران. ۲۰۲۶. «${opts.titleFa}». ${url}`
   const chicago = `Iran History. 2026. "${opts.titleEn}." ${url}.`

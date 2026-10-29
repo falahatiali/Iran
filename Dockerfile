@@ -15,8 +15,21 @@ RUN --mount=type=cache,target=/root/.npm \
 # Copy source
 COPY . .
 
-# Build application (requires rolldown native bindings)
-RUN npm run build && \
+# Public origin is baked into canonical, og:url, sitemap, and robots at build time.
+# Never default to a placeholder — fail the image if neither ARG is a real https origin.
+ARG VITE_SITE_URL
+ARG APP_DOMAIN
+ENV NODE_ENV=production
+RUN SITE="${VITE_SITE_URL:-}" && \
+    if [ -z "$SITE" ] && [ -n "$APP_DOMAIN" ]; then SITE="https://${APP_DOMAIN#https://}"; SITE="${SITE#http://}"; fi && \
+    SITE="${SITE%/}" && \
+    echo "Building with VITE_SITE_URL=${SITE}" && \
+    case "$SITE" in \
+      ""|*iran-history.example*|*://example.com*|http://*) \
+        echo "Refusing empty, placeholder, or non-https VITE_SITE_URL/APP_DOMAIN: '${SITE}'" >&2; \
+        exit 1 ;; \
+    esac && \
+    VITE_SITE_URL="$SITE" APP_DOMAIN="${APP_DOMAIN:-}" npm run build && \
     npm cache clean --force
 
 # Production stage
@@ -33,12 +46,17 @@ RUN apt-get update && \
 
 WORKDIR /app
 
+ARG VITE_SITE_URL
+ARG APP_DOMAIN
+
 # Set production environment
 ENV NODE_ENV=production \
     PORT=3000 \
     DB_DRIVER=sqlite \
     DATABASE_URL=file:/data/iran.db \
-    NODE_OPTIONS="--max-old-space-size=512"
+    NODE_OPTIONS="--max-old-space-size=512" \
+    VITE_SITE_URL=${VITE_SITE_URL} \
+    APP_DOMAIN=${APP_DOMAIN}
 
 # Copy dependency files and install production dependencies
 COPY package.json package-lock.json ./

@@ -221,7 +221,7 @@ DB_DRIVER=sqlite
 # مسیر فایل SQLite
 DATABASE_URL=file:./data/iran.db
 
-# نشانی سایت (برای sitemap و OpenGraph)
+# نشانی سایت (canonical، og:url، sitemap، robots). ساخت تولید بدون آن یا با iran-history.example شکست می‌خورد.
 VITE_SITE_URL=http://localhost:3000
 ```
 
@@ -621,7 +621,7 @@ DB_DRIVER=sqlite
 # SQLite file path
 DATABASE_URL=file:./data/iran.db
 
-# Site URL (for sitemap and OpenGraph)
+# Site URL (canonical, og:url, sitemap, robots). Production builds refuse a missing value or iran-history.example.
 VITE_SITE_URL=http://localhost:3000
 ```
 

@@ -1,4 +1,13 @@
-export const SITE_URL = (import.meta.env.VITE_SITE_URL as string | undefined) ?? 'https://iran-history.example'
+import { resolvePublicSiteUrl } from './siteUrl'
+
+const viteEnv = (import.meta.env ?? {}) as { VITE_SITE_URL?: string; MODE?: string }
+
+export const SITE_URL = resolvePublicSiteUrl({
+  viteUrl: viteEnv.VITE_SITE_URL,
+  envUrl: typeof process !== 'undefined' ? process.env.VITE_SITE_URL : undefined,
+  appDomain: typeof process !== 'undefined' ? process.env.APP_DOMAIN : undefined,
+  mode: viteEnv.MODE ?? (typeof process !== 'undefined' ? process.env.NODE_ENV : undefined),
+})
 export const SITE_NAME = 'تاریخ ایران'
 
 export function seo({

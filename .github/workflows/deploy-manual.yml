@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: ${{ inputs.environment }}
-      url: ${{ vars.PRODUCTION_URL || 'https://iran.example.com' }}
+      url: ${{ vars.PRODUCTION_URL || 'https://history.verzav.ir' }}
     concurrency:
       group: ${{ inputs.environment }}-deploy
       cancel-in-progress: false

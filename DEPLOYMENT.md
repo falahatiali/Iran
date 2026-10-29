@@ -95,7 +95,8 @@ ssh-keyscan -H your-server.com
 | Variable | مقدار | توضیحات |
 |----------|-------|---------|
 | `DEPLOY_DIR` | `/opt/iran-history` (اختیاری) | مسیر استقرار (پیش‌فرض: /opt/iran-history) |
-| `APP_DOMAIN` | `history.verzav.ir` | دامنه تولید (برای Traefik router) |
+| `APP_DOMAIN` | `history.verzav.ir` | دامنه تولید (Traefik و مبدأ عمومی اگر `PRODUCTION_URL` تنظیم نشده باشد) |
+| `PRODUCTION_URL` | `https://history.verzav.ir` | مبدأ کامل برای canonical، og:url، sitemap و robots. در زمان ساخت ایمیج Docker پخته می‌شود؛ برای تعویض دامنه این متغیر را عوض کنید و از `main` دوباره بسازید. |
 | `APP_ENV_FILE` | `/home/deploy/envFiles/.env.iran-history` (اختیاری) | مسیر فایل env روی سرور (پیش‌فرض نشان داده شده) |
 
 ### مرحله ۴: پیکربندی Environment Protection (اختیاری اما توصیه می‌شود)
@@ -165,6 +166,7 @@ mv ~/envFiles/.env.history ~/envFiles/.env.history.old
 | Variable | مقدار |
 |----------|-------|
 | `APP_DOMAIN` | `history.verzav.ir` |
+| `PRODUCTION_URL` | `https://history.verzav.ir` |
 
 **۴. پس از اولین استقرار**:
 
@@ -511,7 +513,8 @@ In your GitHub repository, go to **Settings → Secrets and variables → Action
 | Variable | Value | Description |
 |----------|-------|-------------|
 | `DEPLOY_DIR` | `/opt/iran-history` (optional) | Deployment path (default: /opt/iran-history) |
-| `APP_DOMAIN` | `history.verzav.ir` | Production domain (for Traefik router) |
+| `APP_DOMAIN` | `history.verzav.ir` | Production hostname (Traefik, and public origin if `PRODUCTION_URL` is unset) |
+| `PRODUCTION_URL` | `https://history.verzav.ir` | Full origin for canonical, og:url, sitemap, and robots. Baked into the Docker image at build time; change this variable and rebuild from `main` to switch domains. |
 | `APP_ENV_FILE` | `/home/deploy/envFiles/.env.iran-history` (optional) | Path to env file on server (default shown) |
 
 ### Step 4: Configure Environment Protection (Optional but Recommended)
@@ -581,6 +584,7 @@ In **Settings → Secrets and variables → Actions → Variables**:
 | Variable | Value |
 |----------|-------|
 | `APP_DOMAIN` | `history.verzav.ir` |
+| `PRODUCTION_URL` | `https://history.verzav.ir` |
 
 **4. After First Deployment**:
 
