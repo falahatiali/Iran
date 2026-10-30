@@ -2,7 +2,7 @@ import type { FeaturedKing } from './types'
 import { dariusEvents, dariusSources, dossier as dariusDossier, synthesis as dariusSynthesis } from '../darius'
 import { xerxesBattles, xerxesCampaign, xerxesDossier, xerxesEvents, xerxesPhotos, xerxesPlaces, xerxesSources, xerxesSynthesis } from '../xerxes'
 import { artaxerxesCampaign, artaxerxesDossier, artaxerxesEvents, artaxerxesPhotos, artaxerxesPlaces, artaxerxesSources, artaxerxesSynthesis } from '../artaxerxes'
-import { artaxerxesIV, bessus, sogdianus, xerxesII } from '../late-achaemenid'
+import { lateKings } from '../late-achaemenid'
 import { untashDossier, untashEvents, untashPhotos, untashSources, untashSynthesis } from '../untash'
 
 export * from './types'
@@ -162,7 +162,7 @@ const artaxerxes: FeaturedKing = {
 
 /** Registry keyed by ruler slug. Add an entry here to give any king the extended page. */
 export const featuredKings: Record<string, FeaturedKing> = { [untash.slug]: untash, [darius.slug]: darius, [xerxes.slug]: xerxes, [artaxerxes.slug]: artaxerxes,
-  ...Object.fromEntries([xerxesII, sogdianus, artaxerxesIV, bessus].map((k) => [k.slug, k])),
+  ...Object.fromEntries(lateKings.map((k) => [k.slug, k])),
 }
 
 export function getFeaturedKing(slug: string): FeaturedKing | undefined {

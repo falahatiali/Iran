@@ -1,8 +1,10 @@
 import type { FeaturedKing } from '../featured/types'
+import { dariusII } from './darius2'
 import { artaxerxesIV, bessus, sogdianus, xerxesII } from './short'
 
 export * from './common'
 export * from './short'
+export * from './darius2'
 
 /** Every late-Achaemenid featured king, in reign order. */
-export const lateKings: FeaturedKing[] = [xerxesII, sogdianus, artaxerxesIV, bessus]
+export const lateKings: FeaturedKing[] = [xerxesII, sogdianus, dariusII, artaxerxesIV, bessus]

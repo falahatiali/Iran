@@ -48,3 +48,9 @@ artaxerxes-i/reign-{fa,en}.{gif,mp4,webm,png}
   from this site's own /king/artaxerxes-i page by scripts/render-campaign-clip.py --section reign.
   Coastlines: Natural Earth (public domain). Narrative after Thucydides (tr. T. Hobbes, 1843),
   Diodorus (tr. C. H. Oldfather) and Ctesias (tr. J. H. Freese, 1920), as cited on the page.
+
+darius-ii/reign-{fa,en}.{gif,mp4,webm,png}
+  Animated campaign map of the Ionian War and the western satrapies under Darius II (412-404 BCE),
+  rendered from this site's own /king/darius-ii page by scripts/render-campaign-clip.py --section reign.
+  Coastlines: Natural Earth (public domain). Narrative after Thucydides (tr. R. Crawley, 1874),
+  Xenophon, Hellenica (tr. H. G. Dakyns) and the modern works cited on the page.
