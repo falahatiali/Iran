@@ -114,3 +114,16 @@ See [RESEARCH_LOG.md](./RESEARCH_LOG.md) §13 for the source table.
 - No texts on markets, wages or ordinary people survive from the reign, and the page says so.
 
 **Next king:** Shutruk-Nakhunte (Elam), covering the Babylonian campaign and the Hammurabi stele and Naram-Sin stele brought to Susa.
+
+## 2026-10-30 — Darius III: Ariobarzanes and the Persian Gates; Shutruk-Nakhunte dossier
+
+**Done in this pass**
+
+- Darius III: new section on Ariobarzanes and the Persian Gates, a five-phase animated battle diagram (GIF/MP4/WebM, fa and en) and two map steps (repulse; the turning path). Disputes flagged: army size, the site (Stein 1940 vs Speck 2002), Ariobarzanes' end (Arrian vs Curtius), the guide.
+- New «روایت مردمی» box type (`DossierSection.folk`), marked as not historical. Youtab, his "sister", appears in no ancient source; the earliest place we found her is Farrokh 2007 (no source given). A link to Iotapa of Atropatene (Cassius Dio 51.16) is offered only as a guess.
+- `src/data/shutruk/`: Shutruk-Nakhunte featured page with 8 life events, a 6-step animated 1158 BCE raid map (fa/en clip), 7 dossier sections, 11 sources (Vallat/Iranica, Potts 1999, König 1965, Van De Mieroop 2015, Van Dijk 1986, Vallat 1985, Scheil 1902, Roth), 5 Commons photos with API-checked licences, and four official titles in the epithet index.
+- Only verbatim quote: his Elamite inscription on the Naram-Sin stele, in Van De Mieroop's translation.
+- Flagged: reign dates (1184–1155 vs Vallat's 1210–1100 dynasty), the Kassite marriage, the Berlin letter's author, the Code's erased columns (Scheil's guess), the Code's origin (Roth: Sippar), Manishtushu statues (Akkad vs Eshnunna), Hutelutush's mother (Vallat 1985), Kutir-Nakhunte II vs III.
+- Left out as unverified: the Meli-Shipak kudurru as his booty, the Marduk statue, and any nickname.
+
+**Next king:** Shilhak-Inshushinak.

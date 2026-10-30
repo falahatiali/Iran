@@ -26,6 +26,12 @@ const GREAT_KING = (who: string, whoEn: string, label: string, url?: string): Ep
 })
 
 export const epithets: Record<string, Epithet[]> = {
+  'shutruk-nakhunte': [
+    { fa: 'شاه انشان و شوش', en: 'King of Anshan and Susa', lang: 'Elamite', meaning: { fa: 'عنوان رسمی او در کتیبه‌هایش', en: 'his official style in his inscriptions' }, kind: 'title', source: { label: 'Elamite inscription on the Naram-Sin stele (Louvre Sb 4), tr. M. Van De Mieroop, A History of the Ancient Near East (2015), p. 199' } },
+    { fa: 'بندهٔ محبوب اینشوشیناک', en: 'Beloved servant of Inshushinak', lang: 'Elamite', kind: 'title', source: { label: 'Elamite inscription on the Naram-Sin stele (Louvre Sb 4), tr. M. Van De Mieroop, A History of the Ancient Near East (2015), p. 199' } },
+    { fa: 'گسترش‌دهندهٔ پادشاهی', en: 'Who has enlarged the kingdom', lang: 'Elamite', kind: 'title', source: { label: 'Elamite inscription on the Naram-Sin stele (Louvre Sb 4), tr. M. Van De Mieroop, A History of the Ancient Near East (2015), p. 199' } },
+    { fa: 'سرور سرزمین ایلام', en: 'Lord of the land of Elam', lang: 'Elamite', kind: 'title', source: { label: 'Elamite inscription on the Naram-Sin stele (Louvre Sb 4), tr. M. Van De Mieroop, A History of the Ancient Near East (2015), p. 199' } },
+  ],
   'cyrus-ii': [
     { fa: 'شاه بزرگ', en: 'Great King', original: 'šarru rabû', lang: 'Akkadian', meaning: { fa: 'از عنوان‌های او در استوانهٔ کوروش («شاه جهان، شاه بزرگ، شاه توانا…»)', en: 'one of his titles on the Cyrus Cylinder (“king of the universe, the great king, the powerful king…”)' }, kind: 'title', source: { label: 'Cyrus Cylinder, BM 90920, tr. I. Finkel (British Museum)', url: 'https://www.britishmuseum.org/collection/object/W_1880-0617-1941' } },
   ],

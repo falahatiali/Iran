@@ -1,3 +1,4 @@
+import { shutrukNakhunte } from '../shutruk'
 import type { FeaturedKing } from './types'
 import { dariusEvents, dariusSources, dossier as dariusDossier, synthesis as dariusSynthesis } from '../darius'
 import { xerxesBattles, xerxesCampaign, xerxesDossier, xerxesEvents, xerxesPhotos, xerxesPlaces, xerxesSources, xerxesSynthesis } from '../xerxes'
@@ -161,7 +162,7 @@ const artaxerxes: FeaturedKing = {
 }
 
 /** Registry keyed by ruler slug. Add an entry here to give any king the extended page. */
-export const featuredKings: Record<string, FeaturedKing> = { [untash.slug]: untash, [darius.slug]: darius, [xerxes.slug]: xerxes, [artaxerxes.slug]: artaxerxes,
+export const featuredKings: Record<string, FeaturedKing> = { [untash.slug]: untash, [shutrukNakhunte.slug]: shutrukNakhunte, [darius.slug]: darius, [xerxes.slug]: xerxes, [artaxerxes.slug]: artaxerxes,
   ...Object.fromEntries(lateKings.map((k) => [k.slug, k])),
 }
 
