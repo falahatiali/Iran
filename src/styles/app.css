@@ -82,3 +82,8 @@ body {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
 }
+
+/* Cylinder reader: brief highlight of a deep-linked line (#line-NN) */
+@keyframes line-flash { 0%, 60% { box-shadow: 0 0 0 2px var(--color-gold-bright); } 100% { box-shadow: 0 0 0 0 transparent; } }
+.line-flash { animation: line-flash 2.2s ease-out; }
+@media (prefers-reduced-motion: reduce) { .line-flash { animation: none; box-shadow: 0 0 0 2px var(--color-gold-bright); } }

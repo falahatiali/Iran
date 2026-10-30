@@ -1,4 +1,6 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
+import { parseLineHash } from '../../lib/lineLink'
+import { CopyLineLink } from './CopyLineLink'
 import type { Locale } from '../../lib/i18n'
 import { fa as faNum } from '../../lib/format'
 import {
@@ -20,6 +22,33 @@ export function CylinderReader({ locale }: { locale: Locale }) {
     [filter],
   )
   const colCount = (cols.akk ? 1 : 0) + (cols.en ? 1 : 0) + (cols.fa ? 1 : 0) || 1
+  const [flash, setFlash] = useState<string | null>(null)
+  useEffect(() => {
+    let timer: number | undefined
+    const go = (retry = true) => {
+      const id = parseLineHash(window.location.hash)
+      if (!id) return
+      const el = document.getElementById(id)
+      if (!el) {
+        if (!retry) return
+        // line hidden by a theme filter: show all lines, then retry on next render
+        setFilter('all')
+        window.requestAnimationFrame(() => window.requestAnimationFrame(() => go(false)))
+        return
+      }
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      setFlash(id)
+      window.clearTimeout(timer)
+      timer = window.setTimeout(() => setFlash(null), 2200)
+    }
+    const onHash = () => go()
+    go()
+    window.addEventListener('hashchange', onHash)
+    return () => {
+      window.removeEventListener('hashchange', onHash)
+      window.clearTimeout(timer)
+    }
+  }, [])
   const t = isFa
     ? {
         title: 'متن کامل استوانه — خوانش موازی',
@@ -101,12 +130,13 @@ export function CylinderReader({ locale }: { locale: Locale }) {
             <li
               key={line.n}
               id={lineAnchor(line.n)}
-              className={`rounded-2xl px-4 py-3 scroll-mt-24 ${gold ? 'border border-gold/50 bg-gold/5' : 'glass'}`}
+              className={`rounded-2xl px-4 py-3 scroll-mt-24 transition-shadow ${flash === lineAnchor(line.n) ? 'line-flash' : ''} ${gold ? 'border border-gold/50 bg-gold/5' : 'glass'}`}
             >
-              <div className="flex flex-wrap items-baseline gap-3 mb-2">
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-2">
                 <a href={`#${lineAnchor(line.n)}`} className="font-serif text-gold font-bold tabular-nums" dir="ltr">
                   {isFa ? faNum(line.n) : line.n}
                 </a>
+                <CopyLineLink anchor={lineAnchor(line.n)} locale={locale} />
                 {line.status === 'damaged' && <span className="text-xs text-crimson">{t.damaged}</span>}
                 {line.status === 'yale-join' && <span className="text-xs text-crimson">{t.yale}</span>}
                 {gold && (
