@@ -93,7 +93,7 @@ export const getTimeline = createServerFn({ method: 'GET' }).handler(async () =>
   const [ds, es] = await Promise.all([repo.dynasties.list(), repo.events.list()])
   const by = new Map(ds.map((d) => [d.slug, d]))
   return {
-    dynasties: ds.map((d) => ({ slug: d.slug, name: d.name, era: d.era })),
+    dynasties: ds.map((d) => ({ slug: d.slug, name: d.name, era: d.era, start: d.start, end: d.end, accent: d.accent })),
     events: es.map((e): TimelineEvent => ({ ...e, dynastyName: by.get(e.dynastySlug)!.name, era: by.get(e.dynastySlug)!.era, accent: by.get(e.dynastySlug)!.accent })),
   }
 })

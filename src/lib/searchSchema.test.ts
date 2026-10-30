@@ -95,3 +95,25 @@ test('home search coerces and truncates', () => {
   assert.equal(parseHomeSearch('nope').q, '')
   assert.ok(parseHomeSearch({ q: 'آ'.repeat(500) }).q.length <= 200)
 })
+
+test('timeline window is parsed, clamped and kept at a minimum span', () => {
+  const a = parseTimelineSearch({ from: '-550', to: '-330' })
+  assert.deepEqual([a.from, a.to], [-550, -330])
+  const b = parseTimelineSearch({ from: '-99999', to: 'x' })
+  assert.deepEqual([b.from, b.to], [TIMELINE_DEFAULTS.from, TIMELINE_DEFAULTS.to])
+  const c = parseTimelineSearch({ from: '100', to: '-100' })
+  assert.deepEqual([c.from, c.to], [-100, 100])
+  const d = parseTimelineSearch({ from: '1000', to: '1001' })
+  assert.ok(d.to - d.from >= 20)
+  assert.equal(parseTimelineSearch({ ev: 'achaemenids-e3<script>' }).ev, 'achaemenids-e3script')
+})
+
+test('timeline window filters events and default window is stripped from the URL', () => {
+  const events = [
+    { era: 'ancient', dynastySlug: 'a', type: 'culture', importance: 'major', title: 'x', dynastyName: 'A', year: -520 },
+    { era: 'modern', dynastySlug: 'b', type: 'reform', importance: 'minor', title: 'y', dynastyName: 'B', year: 1906 },
+  ]
+  const r = applyTimelineSearch(events, { ...TIMELINE_DEFAULTS, from: -600, to: -400 })
+  assert.deepEqual(r.map((e) => e.title), ['x'])
+  assert.deepEqual(compactSearch(parseTimelineSearch({}), TIMELINE_DEFAULTS), {})
+})

@@ -1,5 +1,5 @@
 import { createFileRoute, Link, stripSearchParams, useNavigate } from '@tanstack/react-router'
-import { AnimatePresence, motion } from 'motion/react'
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { useMemo } from 'react'
 import { getTimeline } from '../server/api'
 import { Breadcrumbs } from '../components/Breadcrumbs'
@@ -9,8 +9,11 @@ import { ShareLink } from '../components/ShareLink'
 import { eraNames, eventTypeNames, fa, year } from '../lib/format'
 import { seo } from '../lib/seo'
 import { placeForEventTitle } from '../data/places'
+import { CertaintyBadge, TimelineChart } from '../components/timeline/TimelineChart'
+import type { Win } from '../components/timeline/scale'
 import {
   TIMELINE_DEFAULTS,
+  TIMELINE_MAX,
   applyTimelineSearch,
   hasNonDefaultSearch,
   timelineSearchSchema,
@@ -38,6 +41,15 @@ function TimelinePage() {
   const search = Route.useSearch({ select: (s) => ({ ...TIMELINE_DEFAULTS, ...s }) })
   const navigate = useNavigate({ from: '/timeline' })
   const list = useMemo(() => applyTimelineSearch(events, search), [events, search])
+  // the chart shows every filtered event across all time; the window only narrows what is drawn and listed
+  const chartEvents = useMemo(() => applyTimelineSearch(events, { ...search, from: TIMELINE_DEFAULTS.from, to: TIMELINE_DEFAULTS.to, sort: 'year-asc' }), [events, search])
+  const reduced = useReducedMotion() ?? false
+  const eraRanges = useMemo(() => Object.keys(eraNames).flatMap((id) => {
+    const ds = dynasties.filter((d) => d.era === id)
+    if (!ds.length) return []
+    return [{ id, from: Math.min(...ds.map((d) => d.start)), to: Math.min(TIMELINE_MAX, Math.max(...ds.map((d) => d.end ?? TIMELINE_MAX))) }]
+  }), [dynasties])
+  const selected = events.find((e) => e.id === search.ev)
 
   const patch = (next: Partial<TimelineSearch>, replace: boolean) => {
     void navigate({
@@ -46,6 +58,7 @@ function TimelinePage() {
       resetScroll: false,
     })
   }
+  const setWindow = (w: Win, replace: boolean) => patch({ from: w.from, to: w.to }, replace)
   const [draft, setDraft] = useDraftQuery(search.q, (q) => patch({ q }, true))
 
   return (
@@ -58,7 +71,7 @@ function TimelinePage() {
         <form role="search" onSubmit={(e) => e.preventDefault()} className="sticky top-16 z-20 mt-8 glass bg-night/80 rounded-2xl p-4 flex flex-wrap gap-3 items-center">
           <label><span className="sr-only">جست‌وجو</span><input value={draft} onChange={(e) => setDraft(e.target.value)} placeholder="جست‌وجوی رویداد…" className={sel} /></label>
           <label><span className="sr-only">دوران</span>
-            <select value={search.era} onChange={(e) => patch({ era: e.target.value as TimelineSearch['era'], dynasty: '' }, false)} className={sel}>
+            <select value={search.era} onChange={(e) => { const era = e.target.value as TimelineSearch['era']; const r = eraRanges.find((x) => x.id === era); patch({ era, dynasty: '', from: r?.from ?? TIMELINE_DEFAULTS.from, to: r?.to ?? TIMELINE_DEFAULTS.to }, false) }} className={sel}>
               <option value="">همه‌ی دوران‌ها</option>{Object.entries(eraNames).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
             </select></label>
           <label><span className="sr-only">دودمان</span>
@@ -79,15 +92,19 @@ function TimelinePage() {
           <span className="text-xs text-ivory/50 mr-auto" aria-live="polite">{fa(list.length)} نتیجه</span>
         </form>
 
+        <TimelineChart dynasties={dynasties} events={chartEvents} win={{ from: search.from, to: search.to }} selected={selected} onWindow={setWindow} onSelect={(ev) => patch({ ev }, true)} eraRanges={eraRanges} eraNames={eraNames} reduced={reduced} />
+
+        <h2 className="sr-only">فهرست رویدادها</h2>
         <ol className="relative mt-10 border-r-2 border-gold/20 pr-6">
           <AnimatePresence initial={false}>
             {list.map((e) => (
-              <motion.li key={e.id} layout initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.3 }} className="relative mb-5">
+              <motion.li key={e.id} id={e.id} layout={!reduced} initial={reduced ? false : { opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={reduced ? { opacity: 0 } : { opacity: 0, x: -20 }} transition={{ duration: reduced ? 0 : 0.3 }} className="relative mb-5 scroll-mt-40">
                 <span className="absolute -right-[1.95rem] top-2 size-3.5 rounded-full ring-4 ring-night" style={{ background: e.accent }} aria-hidden="true" />
-                <div className="glass rounded-xl p-4 hover:border-gold/50 transition-colors">
+                <div className={`glass rounded-xl p-4 hover:border-gold/50 transition-colors ${search.ev === e.id ? 'border-gold' : ''}`}>
                   <div className="flex flex-wrap items-center gap-2 text-xs">
                     <span className="font-bold text-gold-bright text-sm">{year(e.year)}</span>
                     <span className="text-turquoise-soft"><EventIcon type={e.type} /> {eventTypeNames[e.type]}</span>
+                    <CertaintyBadge y={e.year} />
                     <Link to="/dynasty/$slug" params={{ slug: e.dynastySlug }} className="rounded-full px-3 py-2 border hover:bg-ivory/10 min-h-11 inline-flex items-center text-sm" style={{ borderColor: e.accent }}>{e.dynastyName}</Link>
                   </div>
                   <p className={`mt-1 ${e.importance === 'major' ? 'font-bold text-lg' : 'text-ivory/80'}`}>{e.title}</p>

@@ -7,6 +7,12 @@ export const EVENT_TYPES = Object.keys(eventTypeNames) as EventType[]
 export const TIMELINE_SORTS = ['year-asc', 'year-desc'] as const
 export type TimelineSort = (typeof TIMELINE_SORTS)[number]
 
+/** Full extent of the chart in years (negative = BCE). The visible window is [from, to]. */
+export const TIMELINE_MIN = -3300
+export const TIMELINE_MAX = 2030
+/** Narrowest zoom, in years. */
+export const TIMELINE_MIN_SPAN = 20
+
 /** Optional in the URL; `parseTimelineSearch` fills defaults so the view always has a complete object. */
 export interface TimelineSearch {
   q?: string
@@ -15,6 +21,11 @@ export interface TimelineSearch {
   type?: '' | EventType
   major?: boolean
   sort?: TimelineSort
+  /** visible window, years */
+  from?: number
+  to?: number
+  /** selected event id */
+  ev?: string
 }
 
 export type TimelineSearchFilled = Required<TimelineSearch>
@@ -26,6 +37,9 @@ export const TIMELINE_DEFAULTS: TimelineSearchFilled = {
   type: '',
   major: false,
   sort: 'year-asc',
+  from: TIMELINE_MIN,
+  to: TIMELINE_MAX,
+  ev: '',
 }
 
 export interface HomeSearch {
@@ -49,6 +63,23 @@ function asBool(v: unknown): boolean {
   return v === true || v === 'true' || v === '1' || v === 1
 }
 
+function asYear(v: unknown, fallback: number): number {
+  const n = typeof v === 'number' ? v : Number.parseInt(asString(v, 8), 10)
+  if (!Number.isFinite(n)) return fallback
+  return Math.min(TIMELINE_MAX, Math.max(TIMELINE_MIN, Math.round(n)))
+}
+
+/** Clamp a window into range, keeping at least the minimum span. */
+export function clampWindow(from: number, to: number): { from: number; to: number } {
+  let a = Math.min(from, to)
+  let b = Math.max(from, to)
+  if (b - a < TIMELINE_MIN_SPAN) { const mid = (a + b) / 2; a = mid - TIMELINE_MIN_SPAN / 2; b = mid + TIMELINE_MIN_SPAN / 2 }
+  const span = Math.min(b - a, TIMELINE_MAX - TIMELINE_MIN)
+  if (a < TIMELINE_MIN) { a = TIMELINE_MIN; b = a + span }
+  if (b > TIMELINE_MAX) { b = TIMELINE_MAX; a = b - span }
+  return { from: Math.round(a), to: Math.round(b) }
+}
+
 function record(input: unknown): Record<string, unknown> {
   return input && typeof input === 'object' && !Array.isArray(input) ? (input as Record<string, unknown>) : {}
 }
@@ -63,6 +94,8 @@ export function parseTimelineSearch(input: unknown): TimelineSearchFilled {
     type: asEnum(s.type, EVENT_TYPES, ''),
     major: asBool(s.major),
     sort: (asEnum(s.sort, TIMELINE_SORTS, TIMELINE_DEFAULTS.sort) || TIMELINE_DEFAULTS.sort) as TimelineSort,
+    ...clampWindow(asYear(s.from, TIMELINE_MIN), asYear(s.to, TIMELINE_MAX)),
+    ev: asString(s.ev, 80).replace(/[^a-z0-9-]/gi, ''),
   }
 }
 
@@ -123,6 +156,7 @@ export function applyTimelineSearch<T extends {
     && (!search.dynasty || e.dynastySlug === search.dynasty)
     && (!search.type || e.type === search.type)
     && (!search.major || e.importance === 'major')
+    && e.year >= search.from && e.year <= search.to
     && (!n || normalize(`${e.title} ${e.description ?? ''} ${e.dynastyName}`).includes(n)),
   )
   if (search.sort === 'year-desc') return [...filtered].sort((a, b) => b.year - a.year || a.title.localeCompare(b.title, 'fa'))
