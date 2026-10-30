@@ -18,10 +18,11 @@ function Layer({ layer, paras, locale }: { layer: EvidenceLayer; paras: BiParas;
 export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: Locale }) {
   const isFa = locale === 'fa'
   const t = isFa
-    ? { kicker: 'پروندهٔ ویژه', layers: 'سه لایهٔ جدا', dossier: 'پرونده', synthesis: 'جمع‌بندی', bib: 'کتاب‌شناسی', sources: 'منابع', quoteNote: 'ترجمهٔ انگلیسی منتشرشده؛ برگردان فارسی از ماست.',
+    ? { kicker: 'پروندهٔ ویژه', layers: 'سه لایهٔ جدا', dossier: 'پرونده', synthesis: 'جمع‌بندی', bib: 'کتاب‌شناسی', sources: 'منابع', quoteNote: 'ترجمهٔ انگلیسی منتشرشده؛ برگردان فارسی از ماست.', photoNote: 'همهٔ عکس‌ها از ویکی‌انبار (Wikimedia Commons) است؛ پروانه و پدیدآورنده در صفحهٔ هر پرونده بررسی شده است.',
         layersNote: 'هر بخش سه لایه دارد: «شواهد تاریخی» فقط آنچه منابع می‌گویند؛ «تفسیر فلسفی» خوانش ما با معیار مالکیت و آزادی؛ «معنای فرهنگی امروز». نقل‌قول‌ها فقط از ترجمه‌های منتشرشده و با ارجاع است.' }
-    : { kicker: 'Featured dossier', layers: 'Three separate layers', dossier: 'Dossier', synthesis: 'Synthesis', bib: 'Bibliography', sources: 'Sources', quoteNote: '',
+    : { kicker: 'Featured dossier', layers: 'Three separate layers', dossier: 'Dossier', synthesis: 'Synthesis', bib: 'Bibliography', sources: 'Sources', quoteNote: '', photoNote: 'All photos are from Wikimedia Commons; licence and author were checked on each file page.',
         layersNote: 'Each section has three layers: “Historical evidence” is only what the sources say; “Philosophical interpretation” is our reading by the standard of property and liberty; “Modern cultural meaning”. Quotations come only from published translations, with references.' }
+  const photo = (id: string) => king.photos?.find((p) => p.id === id)
   const author = (id: string) => king.sources.find((x) => x.id === id)?.author ?? id
   const toc = [['map', king.mapTitle[locale]], ['layers', t.layers], ...king.dossier.map((d) => [d.id, d.title[locale]]), ['synthesis', t.synthesis], ['bibliography', t.bib]]
 
@@ -70,6 +71,18 @@ export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: 
                 <footer className="mt-2 text-xs text-ivory/50">{q.ref} · <a href={`#src-${q.source}`} className="text-gold hover:underline">{author(q.source)}</a>{isFa && ` · ${t.quoteNote}`}</footer>
               </blockquote>
             ))}
+            {s.photos && (
+              <div className="mt-6 grid sm:grid-cols-2 gap-4">
+                {s.photos.map(photo).filter((x) => x !== undefined).map((ph) => (
+                  <figure key={ph.id} className="glass rounded-2xl overflow-hidden">
+                    <img src={ph.src} alt={ph.caption[locale]} loading="lazy" decoding="async" className="w-full h-64 object-cover object-top" />
+                    <figcaption className="p-3 text-sm text-ivory/70">
+                      {ph.caption[locale]} · <a href={ph.page} className="text-gold hover:underline" rel="noopener noreferrer" target="_blank">{ph.author}</a>, {ph.licenseUrl ? <a href={ph.licenseUrl} className="hover:underline" rel="license noopener noreferrer" target="_blank">{ph.license}</a> : ph.license}
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+            )}
             <Layer layer="philosophical" paras={s.interpretation} locale={locale} />
             <Layer layer="modern" paras={s.modern} locale={locale} />
             <p className="mt-4 text-xs text-ivory/50 leading-6">
@@ -96,6 +109,7 @@ export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: 
             </li>
           ))}
         </ol>
+        {king.photos && <p className="mt-4 text-xs text-ivory/50">{t.photoNote}</p>}
         <p className="mt-8 flex flex-wrap gap-2">
           {king.related.map((r) => <a key={r.href.fa} href={r.href[locale]} className="glass rounded-full px-5 py-2 inline-flex items-center min-h-11 hover:border-gold">{r.label[locale]}</a>)}
         </p>

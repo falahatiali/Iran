@@ -51,3 +51,19 @@ See [RESEARCH_LOG.md](./RESEARCH_LOG.md) for source-by-source claims.
 - Ideas file opened at [IDEAS.md](./IDEAS.md). ROADMAP §8.9 marked in progress.
 
 See [RESEARCH_LOG.md](./RESEARCH_LOG.md) §13 for the source table.
+
+## 2026-10-30 — King-by-king program: Untash-Napirisha (first king in site order)
+
+**Directive:** give every ruler, in site order, a featured dossier to the Darius standard: animated deeds map with certainty flags, three separate layers per section, licensed Commons photos, and verbatim quotes only from published translations.
+
+**Done in this pass**
+
+- Untash-Napirisha (Elam, Igihalkid dynasty) is the first ruler of the first dynasty. He is historical, not legendary.
+- Moved his dates to c. 1340–1300 BCE (the Burnaburiash synchronism; Wiley *EAH* and Iranica *Ziggurat*). The lower chronology, c. 1275–1240 BCE (Carter 1992, UNESCO), is noted on the page. The ziggurat timeline event moved to c. 1320 BCE.
+- `src/data/untash/`: 10 mapped events, 8 dossier sections and a synthesis, 15 sources, and 6 Commons photos with licences checked through the Commons API.
+- `FeaturedKing.photos` and `DossierSection.photos` are generic now, so the next dossiers can carry galleries.
+- The only verbatim quote is the Napir-Asu statue curse, in F. Tallon's translation (Harper, Aruz and Tallon 1992, cat. 83).
+- Flagged as disputed: the Immeriya statue (a campaign, or homage to Burnaburiash; Vallat 1999, Durand 2000) and the highland-gods "policy" (Miroschedji). Abandonment of the site: Carter (c. 1000 BCE) versus UNESCO (Ashurbanipal, c. 640 BCE).
+- No texts on markets, wages or ordinary people survive from the reign, and the page says so.
+
+**Next king:** Shutruk-Nakhunte (Elam), covering the Babylonian campaign and the Hammurabi stele and Naram-Sin stele brought to Susa.

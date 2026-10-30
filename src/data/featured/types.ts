@@ -3,6 +3,7 @@
  * synthesis essay, bibliography) attached to a king page by ruler slug.
  * Any ruler can gain one by adding an entry to `featuredKings` in ./index.ts.
  */
+import type { CommonsPhoto } from '../places/types'
 export interface Bi { fa: string; en: string }
 export interface BiParas { fa: string[]; en: string[] }
 export type Lon = number
@@ -31,7 +32,7 @@ export interface MapEvent {
 
 export interface FeaturedSource { id: string; author: string; title: string; year: string; url?: string; note?: Bi }
 export interface DossierQuote { text: string; fa: string; ref: string; source: string }
-export interface DossierSection { id: string; title: Bi; historical: BiParas; interpretation: BiParas; modern: BiParas; quotes?: DossierQuote[]; sources: string[] }
+export interface DossierSection { id: string; title: Bi; historical: BiParas; interpretation: BiParas; modern: BiParas; quotes?: DossierQuote[]; sources: string[]; /** ids into FeaturedKing.photos */ photos?: string[] }
 export interface Synthesis { title: Bi; paras: BiParas; sources: string[] }
 
 export interface FeaturedKing {
@@ -53,4 +54,6 @@ export interface FeaturedKing {
   /** related links shown after the bibliography */
   related: { href: { fa: string; en: string }; label: Bi }[]
   wikipedia?: string
+  /** Commons photos with verified licence, referenced by DossierSection.photos */
+  photos?: CommonsPhoto[]
 }

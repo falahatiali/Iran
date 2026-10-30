@@ -1,5 +1,6 @@
 import type { FeaturedKing } from './types'
 import { dariusEvents, dariusSources, dossier as dariusDossier, synthesis as dariusSynthesis } from '../darius'
+import { untashDossier, untashEvents, untashPhotos, untashSources, untashSynthesis } from '../untash'
 
 export * from './types'
 
@@ -33,8 +34,38 @@ const darius: FeaturedKing = {
   wikipedia: 'https://en.wikipedia.org/wiki/Darius_the_Great',
 }
 
+const untash: FeaturedKing = {
+  slug: 'untash-napirisha',
+  name: { fa: 'اونتاش‌ناپیریشا', en: 'Untash-Napirisha' },
+  dynastyName: { fa: 'ایلام (دودمان ایگی‌هلکی)', en: 'Elam (Igihalkid dynasty)' },
+  reign: { fa: 'حدود ۱۳۴۰–۱۳۰۰ پ.م.', en: 'c. 1340–1300 BCE' },
+  title: { fa: 'اونتاش‌ناپیریشا؛ شاهی که با خشت سخن گفت', en: 'Untash-Napirisha: a king who spoke in bricks' },
+  lede: {
+    fa: 'شاه انشان و شوش، سازندهٔ شهر آل‌اونتاش‌ناپیریشا و زیگورات چغازنبیل، بزرگ‌ترین زیگورات شناخته‌شده بیرون از میان‌رودان. او را تقریباً فقط از خشت‌های نوشته‌دار و تندیس‌ها می‌شناسیم؛ پس این پرونده جاهایی را که منابع خاموش‌اند، خاموش می‌گذارد. کارهایش را روی نقشهٔ متحرک دنبال کنید و دورانش را با عینک حقوق مالکیت بسنجید، با شواهد، تفسیر و معنای امروز در سه لایهٔ جدا.',
+    en: 'King of Anshan and Susa, builder of the city of Al-Untash-Napirisha and the Chogha Zanbil ziggurat, the largest known ziggurat outside Mesopotamia. We know him almost only from inscribed bricks and statues, so this dossier leaves silent what the sources leave silent. Follow his works on the animated map, then weigh his reign through a property-rights lens, with evidence, interpretation and modern meaning in three separate layers.',
+  },
+  stats: [
+    { n: { fa: '۱۰۵ م', en: '105 m' }, l: { fa: 'ضلع زیگورات', en: 'side of the ziggurat' } },
+    { n: { fa: '~۵۳ م', en: '~53 m' }, l: { fa: 'بلندی اصلی (بازسازی)', en: 'original height (reconstructed)' } },
+    { n: { fa: '~۱۸', en: '~18' }, l: { fa: 'خدا با معبد بازسازی‌شده در شوش', en: 'gods with rebuilt temples at Susa' } },
+    { n: { fa: '۱۹۷۹', en: '1979' }, l: { fa: 'ثبت در میراث جهانی یونسکو', en: 'UNESCO World Heritage listing' } },
+  ],
+  mapTitle: { fa: 'نقشهٔ متحرک: ساخته‌ها و پیوندها', en: 'Animated map: works and alliances' },
+  events: untashEvents,
+  span: [-1340, -1300],
+  dossier: untashDossier,
+  synthesis: untashSynthesis,
+  sources: untashSources,
+  photos: untashPhotos,
+  related: [
+    { href: { fa: '/dynasty/elam', en: '/dynasty/elam' }, label: { fa: 'دودمان ایلام', en: 'The Elamite dynasty' } },
+    { href: { fa: '/timeline', en: '/timeline' }, label: { fa: 'خط زمان', en: 'Timeline' } },
+  ],
+  wikipedia: 'https://en.wikipedia.org/wiki/Untash-Napirisha',
+}
+
 /** Registry keyed by ruler slug. Add an entry here to give any king the extended page. */
-export const featuredKings: Record<string, FeaturedKing> = { [darius.slug]: darius }
+export const featuredKings: Record<string, FeaturedKing> = { [untash.slug]: untash, [darius.slug]: darius }
 
 export function getFeaturedKing(slug: string): FeaturedKing | undefined {
   return Object.prototype.hasOwnProperty.call(featuredKings, slug) ? featuredKings[slug] : undefined
