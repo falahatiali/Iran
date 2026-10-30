@@ -10,6 +10,7 @@ REPO_NAME="Iran"
 PROJECT_TITLE="Iiraan — Historical Research & Development"
 PROJECT_DESCRIPTION="A public roadmap for building Iiraan: an independent, evidence-driven exploration of Iranian history, civilization, culture, mythology, and historical narratives."
 DRY_RUN=false
+SKIP_PROJECT=false
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -37,6 +38,11 @@ while [ $# -gt 0 ]; do
         --dry-run)
             DRY_RUN=true
             log_warn "Running in dry-run mode - no changes will be made"
+            shift
+            ;;
+        --skip-project)
+            SKIP_PROJECT=true
+            log_warn "Skipping project creation/check (insufficient scopes)"
             shift
             ;;
         *)
@@ -69,6 +75,15 @@ check_auth() {
         log_warn "Project creation may require ownership"
     fi
     log_success "Authentication OK"
+    
+    # Check scopes
+    local scopes
+    scopes=$(gh auth status --show-token 2>&1 | grep "Token scopes" | sed 's/.*Token scopes: *//')
+    if ! echo "$scopes" | grep -q "read:project"; then
+        log_warn "Token missing 'read:project' scope - project operations will be skipped"
+        log_warn "Create token at https://github.com/settings/tokens with 'read:project' and 'project' scopes"
+        SKIP_PROJECT=true
+    fi
 }
 
 check_repo() {
@@ -92,6 +107,12 @@ get_user_id() {
 
 find_project() {
     log_info "Searching for existing project..."
+    
+    if [ "$SKIP_PROJECT" = true ]; then
+        log_warn "Skipping project search due to missing scopes"
+        echo ""
+        return 0
+    fi
     
     local result
     if ! result=$(gh api graphql -f query='query { user(login: "'"$REPO_OWNER"'") { projectsV2(first: 100) { nodes { id title } } } }' --jq .data.user.projectsV2.nodes 2>/dev/null); then
@@ -132,6 +153,12 @@ create_project() {
     if [ "$DRY_RUN" = true ]; then
         print_op "Create project: $PROJECT_TITLE"
         echo "dry-run-project-id"
+        return
+    fi
+    
+    if [ "$SKIP_PROJECT" = true ]; then
+        log_warn "Skipping project creation due to missing scopes"
+        echo ""
         return
     fi
     
@@ -390,13 +417,17 @@ main() {
     check_repo
     echo ""
     
-    local project_id
-    project_id=$(find_project)
-    
-    if [ -z "$project_id" ] || [ "$project_id" = "null" ]; then
-        project_id=$(create_project)
+    local project_id="skipped"
+    if [ "$SKIP_PROJECT" != true ]; then
+        project_id=$(find_project)
+        
+        if [ -z "$project_id" ] || [ "$project_id" = "null" ]; then
+            project_id=$(create_project)
+        else
+            log_info "Using existing project: $project_id"
+        fi
     else
-        log_info "Using existing project: $project_id"
+        log_warn "Project operations skipped - using REST API only"
     fi
     
     echo ""
