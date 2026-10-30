@@ -2,7 +2,7 @@
  * Shared sources, places and helpers for the late Achaemenid kings (424–329 BCE).
  * Verbatim quotes come only from the published translations named here; Persian renderings are ours.
  */
-import type { Bi, Certainty, Coord, EventKind, FeaturedSource, MapEvent } from '../featured/types'
+import type { Bi, Certainty, Coord, DossierSection, EventKind, FeaturedSource, MapEvent } from '../featured/types'
 import type { CommonsPhoto } from '../places/types'
 
 export const SUSA: Coord = [48.257, 32.19]
@@ -99,3 +99,13 @@ export const related = (...links: [string, string, string][]) => [
   ...links.map(([slug, fa, en]) => ({ href: { fa: `/king/${slug}`, en: `/en/king/${slug}` }, label: { fa, en } })),
   { href: { fa: '/dynasty/achaemenids', en: '/dynasty/achaemenids' }, label: { fa: 'دودمان هخامنشی', en: 'The Achaemenid dynasty' } },
 ]
+
+const bi = (fa: string, en: string): Bi => ({ fa, en })
+/** Clip paths written by scripts/render-campaign-clip.py --section reign into public/media/<slug>/. */
+export const clipFor = (slug: string) => {
+  const p = (ext: string) => bi(`/media/${slug}/reign-fa.${ext}`, `/media/${slug}/reign-en.${ext}`)
+  return { gif: p('gif'), mp4: p('mp4'), webm: p('webm'), poster: p('png'), width: 958, height: 356 }
+}
+/** One dossier section: evidence, interpretation and modern meaning kept as separate layers. */
+export const sec = (id: string, fa: string, en: string, h: [string[], string[]], i: [string[], string[]], m: [string[], string[]], sources: string[], extra: Partial<DossierSection> = {}): DossierSection =>
+  ({ id, title: { fa, en }, historical: { fa: h[0], en: h[1] }, interpretation: { fa: i[0], en: i[1] }, modern: { fa: m[0], en: m[1] }, sources, ...extra })

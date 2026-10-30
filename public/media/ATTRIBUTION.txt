@@ -54,3 +54,9 @@ darius-ii/reign-{fa,en}.{gif,mp4,webm,png}
   rendered from this site's own /king/darius-ii page by scripts/render-campaign-clip.py --section reign.
   Coastlines: Natural Earth (public domain). Narrative after Thucydides (tr. R. Crawley, 1874),
   Xenophon, Hellenica (tr. H. G. Dakyns) and the modern works cited on the page.
+
+artaxerxes-ii/reign-{fa,en}.{gif,mp4,webm,png}
+  Animated map of Cyrus the Younger's march and the retreat of the Ten Thousand (401-400 BCE),
+  rendered from this site's own /king/artaxerxes-ii page by scripts/render-campaign-clip.py --section reign.
+  Coastlines: Natural Earth (public domain). Narrative after Xenophon, Anabasis (tr. H. G. Dakyns),
+  as cited on the page. Routes are approximate editorial sketches.
