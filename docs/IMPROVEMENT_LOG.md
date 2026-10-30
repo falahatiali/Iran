@@ -2,6 +2,19 @@
 
 A running record of substantial product and research work. Older infrastructure notes live in git history.
 
+## 2026-10-30 — The late Achaemenids, Artaxerxes I to Bessus
+
+**Directive:** owner. Present every king after Artaxerxes I to the end of the Achaemenids, in order and with their data, each on its canonical `/king/<slug>` page (+ `/en`).
+
+**Done in this pass**
+
+- Shared module `src/data/late-achaemenid/` (`common.ts`: one bibliography, places, Commons photos with licences read from the Commons API, event helpers; `late.test.ts`: order, bilingual three layers, certainty notes, photo licences, cited quotes).
+- Compact featured pages: `xerxes-ii`, `sogdianus` (Ctesias flagged as almost the only source; Babylonian documents go straight from Artaxerxes I to Darius II), `artaxerxes-iv` (Arses; Bagoas; Xanthos trilingual stele, flagged), and a new ruler `artaxerxes-v` (Bessus, claimant 330–329, flagged).
+
+**Disputed points flagged:** the reigns of Xerxes II and Sogdianus (Ctesias 45 days / 6½ months vs Diodorus 1 year / 7 months; unknown to Babylon); whether the Xanthos “Artaxerxes” is Arses or Artaxerxes III; Bagoas' role in the poisonings; where Bessus was executed.
+
+**Next:** Shutruk-Nakhunte.
+
 ## 2026-10-30 — Xerxes' murder, Artaxerxes I Longhand, and royal epithets
 
 **Directive:** owner. Explain how Xerxes was killed and what came before and after; give Artaxerxes I (“Longhand”) a full dossier; add the kings' epithets and titles where a source names them.
