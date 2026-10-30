@@ -31,12 +31,30 @@ services:
       # Specify which Docker network Traefik should use (required when container has multiple networks)
       - "traefik.docker.network=traefik-network"
       
-      # HTTPS router
-      - "traefik.http.routers.iran-history.rule=Host(`${APP_DOMAIN:-history.verzav.ir}`)"
+      # HTTPS router (apex only; history.verzav.ir is intentionally no longer served)
+      - "traefik.http.routers.iran-history.rule=Host(`${APP_DOMAIN:-iiraan.com}`)"
       - "traefik.http.routers.iran-history.entrypoints=websecure"
       - "traefik.http.routers.iran-history.tls=true"
       - "traefik.http.routers.iran-history.tls.certresolver=letsencrypt"
-      
+      - "traefik.http.routers.iran-history.service=iran-history"
+      - "traefik.http.routers.iran-history.middlewares=iran-history-hsts"
+
+      # www -> apex: own certificate, 301 preserving path and query
+      - "traefik.http.routers.iran-history-www.rule=Host(`www.${APP_DOMAIN:-iiraan.com}`)"
+      - "traefik.http.routers.iran-history-www.entrypoints=websecure"
+      - "traefik.http.routers.iran-history-www.tls=true"
+      - "traefik.http.routers.iran-history-www.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.iran-history-www.service=iran-history"
+      - "traefik.http.routers.iran-history-www.middlewares=iran-history-www-redirect,iran-history-hsts"
+      - "traefik.http.middlewares.iran-history-www-redirect.redirectregex.regex=^https?://www\\.([^/]+)(.*)$$"
+      - "traefik.http.middlewares.iran-history-www-redirect.redirectregex.replacement=https://$${1}$${2}"
+      - "traefik.http.middlewares.iran-history-www-redirect.redirectregex.permanent=true"
+
+      # Security headers: HSTS (no preload)
+      - "traefik.http.middlewares.iran-history-hsts.headers.stsSeconds=31536000"
+      - "traefik.http.middlewares.iran-history-hsts.headers.stsIncludeSubdomains=true"
+      - "traefik.http.middlewares.iran-history-hsts.headers.stsPreload=false"
+
       # Service configuration
       - "traefik.http.services.iran-history.loadbalancer.server.port=3000"
     

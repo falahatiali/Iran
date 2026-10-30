@@ -95,8 +95,8 @@ ssh-keyscan -H your-server.com
 | Variable | مقدار | توضیحات |
 |----------|-------|---------|
 | `DEPLOY_DIR` | `/opt/iran-history` (اختیاری) | مسیر استقرار (پیش‌فرض: /opt/iran-history) |
-| `APP_DOMAIN` | `history.verzav.ir` | دامنه تولید (Traefik و مبدأ عمومی اگر `PRODUCTION_URL` تنظیم نشده باشد) |
-| `PRODUCTION_URL` | `https://history.verzav.ir` | مبدأ کامل برای canonical، og:url، sitemap و robots. در زمان ساخت ایمیج Docker پخته می‌شود؛ برای تعویض دامنه این متغیر را عوض کنید و از `main` دوباره بسازید. |
+| `APP_DOMAIN` | `iiraan.com` | دامنه تولید (Traefik و مبدأ عمومی اگر `PRODUCTION_URL` تنظیم نشده باشد) |
+| `PRODUCTION_URL` | `https://iiraan.com` | مبدأ کامل برای canonical، og:url، sitemap و robots. در زمان ساخت ایمیج Docker پخته می‌شود؛ برای تعویض دامنه این متغیر را عوض کنید و از `main` دوباره بسازید. |
 | `APP_ENV_FILE` | `/home/deploy/envFiles/.env.iran-history` (اختیاری) | مسیر فایل env روی سرور (پیش‌فرض نشان داده شده) |
 
 ### مرحله ۴: پیکربندی Environment Protection (اختیاری اما توصیه می‌شود)
@@ -120,7 +120,7 @@ ssh-keyscan -H your-server.com
 **پیش‌نیازها**:
 - Traefik v3 در `/opt/traefik` نصب و اجرا شده باشد
 - شبکه `traefik-network` وجود داشته باشد
-- دامنه `history.verzav.ir` به آدرس IP سرور اشاره کند
+- دامنه `iiraan.com` به آدرس IP سرور اشاره کند
 
 **گام‌های راه‌اندازی یک‌بار**:
 
@@ -145,11 +145,11 @@ chmod 600 ~/envFiles/.env.iran-history
 
 **۲. بازنشستگی پروژه قدیمی `history`**:
 
-⚠️ **مهم**: اگر قبلاً پروژه‌ای با نام `history` یا هر کانتینری که دامنه `history.verzav.ir` را claim می‌کند وجود دارد، باید آن را بازنشسته کنید:
+⚠️ **مهم**: اگر قبلاً پروژه‌ای با نام `history` یا هر کانتینری که دامنه `iiraan.com` را claim می‌کند وجود دارد، باید آن را بازنشسته کنید:
 
 ```bash
 # بررسی کانتینرهای موجود برای این دامنه
-docker ps --filter "label=traefik.http.routers.*.rule=Host(\`history.verzav.ir\`)"
+docker ps --filter "label=traefik.http.routers.*.rule=Host(\`iiraan.com\`)"
 
 # متوقف کردن کانتینر قدیمی
 docker stop <old-container-name>
@@ -165,8 +165,8 @@ mv ~/envFiles/.env.history ~/envFiles/.env.history.old
 
 | Variable | مقدار |
 |----------|-------|
-| `APP_DOMAIN` | `history.verzav.ir` |
-| `PRODUCTION_URL` | `https://history.verzav.ir` |
+| `APP_DOMAIN` | `iiraan.com` |
+| `PRODUCTION_URL` | `https://iiraan.com` |
 
 **۴. پس از اولین استقرار**:
 
@@ -175,10 +175,10 @@ mv ~/envFiles/.env.history ~/envFiles/.env.history.old
 docker logs iran-history
 
 # تست دسترسی
-curl -I https://history.verzav.ir
+curl -I https://iiraan.com
 ```
 
-پروژه در `https://history.verzav.ir` در دسترس خواهد بود.
+پروژه در `https://iiraan.com` در دسترس خواهد بود.
 
 ---
 
@@ -513,8 +513,8 @@ In your GitHub repository, go to **Settings → Secrets and variables → Action
 | Variable | Value | Description |
 |----------|-------|-------------|
 | `DEPLOY_DIR` | `/opt/iran-history` (optional) | Deployment path (default: /opt/iran-history) |
-| `APP_DOMAIN` | `history.verzav.ir` | Production hostname (Traefik, and public origin if `PRODUCTION_URL` is unset) |
-| `PRODUCTION_URL` | `https://history.verzav.ir` | Full origin for canonical, og:url, sitemap, and robots. Baked into the Docker image at build time; change this variable and rebuild from `main` to switch domains. |
+| `APP_DOMAIN` | `iiraan.com` | Production hostname (Traefik, and public origin if `PRODUCTION_URL` is unset) |
+| `PRODUCTION_URL` | `https://iiraan.com` | Full origin for canonical, og:url, sitemap, and robots. Baked into the Docker image at build time; change this variable and rebuild from `main` to switch domains. |
 | `APP_ENV_FILE` | `/home/deploy/envFiles/.env.iran-history` (optional) | Path to env file on server (default shown) |
 
 ### Step 4: Configure Environment Protection (Optional but Recommended)
@@ -538,7 +538,7 @@ This project is preconfigured to use the existing Traefik v3 on the server. `doc
 **Prerequisites**:
 - Traefik v3 installed and running at `/opt/traefik`
 - The `traefik-network` network exists
-- Domain `history.verzav.ir` points to the server IP
+- Domain `iiraan.com` points to the server IP
 
 **One-Time Setup Steps**:
 
@@ -563,11 +563,11 @@ See `.env.production.example` for required variables.
 
 **2. Retire Old `history` Project**:
 
-⚠️ **Important**: If there's an old `history` project or any container claiming the `history.verzav.ir` domain, you must retire it:
+⚠️ **Important**: If there's an old `history` project or any container claiming the `iiraan.com` domain, you must retire it:
 
 ```bash
 # Check for existing containers using this domain
-docker ps --filter "label=traefik.http.routers.*.rule=Host(\`history.verzav.ir\`)"
+docker ps --filter "label=traefik.http.routers.*.rule=Host(\`iiraan.com\`)"
 
 # Stop old container
 docker stop <old-container-name>
@@ -583,8 +583,8 @@ In **Settings → Secrets and variables → Actions → Variables**:
 
 | Variable | Value |
 |----------|-------|
-| `APP_DOMAIN` | `history.verzav.ir` |
-| `PRODUCTION_URL` | `https://history.verzav.ir` |
+| `APP_DOMAIN` | `iiraan.com` |
+| `PRODUCTION_URL` | `https://iiraan.com` |
 
 **4. After First Deployment**:
 
@@ -593,10 +593,10 @@ In **Settings → Secrets and variables → Actions → Variables**:
 docker logs iran-history
 
 # Test access
-curl -I https://history.verzav.ir
+curl -I https://iiraan.com
 ```
 
-The project will be available at `https://history.verzav.ir`.
+The project will be available at `https://iiraan.com`.
 
 ---
 

@@ -11,7 +11,7 @@ function stripSlash(url: string): string {
   return url.trim().replace(/\/+$/, '')
 }
 
-/** Turn APP_DOMAIN (`history.verzav.ir` or a full origin) into an origin. */
+/** Turn APP_DOMAIN (`iiraan.com` or a full origin) into an origin. */
 export function originFromAppDomain(domain: string): string {
   const d = domain.trim()
   if (!d) return ''
@@ -36,7 +36,7 @@ export function resolvePublicSiteUrl(opts: {
 
   if (raw && isPlaceholderSiteUrl(raw)) {
     throw new Error(
-      `Refusing placeholder site URL "${raw}". Set VITE_SITE_URL (or APP_DOMAIN) to the public origin, e.g. https://history.verzav.ir.`,
+      `Refusing placeholder site URL "${raw}". Set VITE_SITE_URL (or APP_DOMAIN) to the public origin, e.g. https://iiraan.com.`,
     )
   }
   if (strict) {

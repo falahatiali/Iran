@@ -17,8 +17,8 @@ permissions:
 # Public origin baked into canonical / og:url / sitemap / robots. Override with
 # repository variables PRODUCTION_URL (full origin) or APP_DOMAIN (hostname).
 env:
-  PUBLIC_SITE_URL: ${{ vars.PRODUCTION_URL || 'https://history.verzav.ir' }}
-  PUBLIC_APP_DOMAIN: ${{ vars.APP_DOMAIN || 'history.verzav.ir' }}
+  PUBLIC_SITE_URL: ${{ vars.PRODUCTION_URL || 'https://iiraan.com' }}
+  PUBLIC_APP_DOMAIN: ${{ vars.APP_DOMAIN || 'iiraan.com' }}
 
 jobs:
   # Quality gates
@@ -221,7 +221,7 @@ jobs:
           PORT=3000
           DB_DRIVER=sqlite
           DATABASE_URL=file:/data/iran.db
-          VITE_SITE_URL=https://history.verzav.ir
+          VITE_SITE_URL=https://iiraan.com
           EOF
           
           # Copy compose file
@@ -231,7 +231,7 @@ jobs:
           SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
           cat > /tmp/mock-deploy/.env << EOF
           IMAGE_TAG=$SHORT_SHA
-          APP_DOMAIN=history.verzav.ir
+          APP_DOMAIN=iiraan.com
           APP_ENV_FILE=/tmp/mock-deploy/envFiles/.env.iran-history
           EOF
 
@@ -396,7 +396,7 @@ jobs:
       contents: read
     environment:
       name: production
-      url: ${{ vars.PRODUCTION_URL || 'https://history.verzav.ir' }}
+      url: ${{ vars.PRODUCTION_URL || 'https://iiraan.com' }}
     concurrency:
       group: production-deploy
       cancel-in-progress: false
@@ -430,7 +430,7 @@ jobs:
           DEPLOY_PORT: ${{ secrets.DEPLOY_PORT || '22' }}
           DEPLOY_DIR: ${{ vars.DEPLOY_DIR || '/opt/iran-history' }}
           # Traefik and domain configuration (non-secret build config)
-          APP_DOMAIN: ${{ vars.APP_DOMAIN || 'history.verzav.ir' }}
+          APP_DOMAIN: ${{ vars.APP_DOMAIN || 'iiraan.com' }}
           APP_ENV_FILE: ${{ vars.APP_ENV_FILE || '/home/deploy/envFiles/.env.iran-history' }}
         run: |
           # Copy deploy script and .env.production.example
@@ -459,7 +459,7 @@ jobs:
       - name: Post-deploy link crawler
         if: steps.check-secrets.outputs.skip == 'false'
         env:
-          PRODUCTION_URL: ${{ vars.PRODUCTION_URL || 'https://history.verzav.ir' }}
+          PRODUCTION_URL: ${{ vars.PRODUCTION_URL || 'https://iiraan.com' }}
         run: |
           echo "🔍 Crawling and verifying all internal links..."
           

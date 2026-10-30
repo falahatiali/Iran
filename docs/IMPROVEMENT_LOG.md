@@ -19,7 +19,7 @@ A running record of substantial product and research work. Older infrastructure 
 
 **Done in this pass**
 
-- Site origin comes from `VITE_SITE_URL` / `APP_DOMAIN` (GitHub `PRODUCTION_URL` / `APP_DOMAIN`, default `https://history.verzav.ir`). Production and sitemap generation fail if that value is missing, `http://`, or a placeholder.
+- Site origin comes from `VITE_SITE_URL` / `APP_DOMAIN` (GitHub `PRODUCTION_URL` / `APP_DOMAIN`, default `https://iiraan.com`). Production and sitemap generation fail if that value is missing, `http://`, or a placeholder.
 - Docker image build takes the same values as `ARG`s. CI and post-deploy crawls fail if any canonical or sitemap URL is not the configured origin.
 
 ## 2026-10-28 — Foundational philosophy and Cyrus Cylinder first release

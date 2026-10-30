@@ -2,7 +2,7 @@
 # Zero-downtime deployment proof script - Run during deployment to verify no downtime
 set -euo pipefail
 
-PRODUCTION_URL="${1:-https://history.verzav.ir}"
+PRODUCTION_URL="${1:-https://iiraan.com}"
 DURATION="${2:-120}"  # seconds to monitor
 INTERVAL="${3:-0.5}"  # seconds between requests
 

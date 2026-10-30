@@ -13,26 +13,26 @@ test('production refuses an empty URL and the historical placeholder', () => {
     /placeholder/i,
   )
   assert.throws(
-    () => resolvePublicSiteUrl({ viteUrl: 'http://history.verzav.ir', mode: 'production' }),
+    () => resolvePublicSiteUrl({ viteUrl: 'http://iiraan.com', mode: 'production' }),
     /https/,
   )
 })
 
 test('APP_DOMAIN and VITE_SITE_URL both produce a trailing-slash-free https origin', () => {
-  assert.equal(originFromAppDomain('history.verzav.ir'), 'https://history.verzav.ir')
-  assert.equal(originFromAppDomain('https://history.verzav.ir/'), 'https://history.verzav.ir')
+  assert.equal(originFromAppDomain('iiraan.com'), 'https://iiraan.com')
+  assert.equal(originFromAppDomain('https://iiraan.com/'), 'https://iiraan.com')
   assert.equal(
-    resolvePublicSiteUrl({ appDomain: 'history.verzav.ir', mode: 'production' }),
-    'https://history.verzav.ir',
+    resolvePublicSiteUrl({ appDomain: 'iiraan.com', mode: 'production' }),
+    'https://iiraan.com',
   )
   assert.equal(
-    resolvePublicSiteUrl({ viteUrl: 'https://history.verzav.ir/', envUrl: '', mode: 'production' }),
-    'https://history.verzav.ir',
+    resolvePublicSiteUrl({ viteUrl: 'https://iiraan.com/', envUrl: '', mode: 'production' }),
+    'https://iiraan.com',
   )
 })
 
 test('dev may use localhost when nothing is configured; never the placeholder', () => {
   assert.equal(resolvePublicSiteUrl({ mode: 'development' }), 'http://localhost:3000')
   assert.equal(isPlaceholderSiteUrl('https://iran-history.example/'), true)
-  assert.equal(isPlaceholderSiteUrl('https://history.verzav.ir'), false)
+  assert.equal(isPlaceholderSiteUrl('https://iiraan.com'), false)
 })
