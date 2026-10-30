@@ -83,3 +83,9 @@ export function kingJsonLd(opts: { locale: 'fa' | 'en'; slug: string; headline: 
     }),
   }
 }
+
+export const ABOUT_ALTERNATES = [
+  { hrefLang: 'fa', path: '/about' },
+  { hrefLang: 'en', path: '/en/about' },
+  { hrefLang: 'x-default', path: '/about' },
+] as const

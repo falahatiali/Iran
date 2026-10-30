@@ -27,7 +27,7 @@ export function Header({ data }: { data: Overview }) {
         { to: '/cylinder', label: 'Cyrus Cylinder' },
         { to: '/archives', label: 'Persepolis archives' },
         { to: '/timeline', label: 'Timeline' },
-        { to: '/about', label: 'About' },
+        { to: '/en/about', label: 'About' },
       ] as const
     : [
         { to: '/', label: 'خانه' },
@@ -50,7 +50,9 @@ export function Header({ data }: { data: Overview }) {
           <div className="flex items-center gap-2">
             <a
               href={
-                pathname.startsWith('/en/king/') ? pathname.slice(3)
+                pathname === '/en/about' ? '/about'
+                  : pathname === '/about' ? '/en/about'
+                  : pathname.startsWith('/en/king/') ? pathname.slice(3)
                   : pathname.startsWith('/king/') && isFeaturedKing(pathname.slice(6)) ? `/en${pathname}`
                   : pathname === '/en/archives' ? '/archives'
                   : pathname === '/archives' ? '/en/archives'

@@ -16,6 +16,7 @@ import { Route as CylinderRouteImport } from './routes/cylinder'
 import { Route as DariusRouteImport } from './routes/darius'
 import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as DynastySlugRouteImport } from './routes/dynasty/$slug'
+import { Route as EnAboutRouteImport } from './routes/en/about'
 import { Route as EnArchivesRouteImport } from './routes/en/archives'
 import { Route as EnCylinderRouteImport } from './routes/en/cylinder'
 import { Route as EnDariusRouteImport } from './routes/en/darius'
@@ -57,6 +58,11 @@ const DynastySlugRoute = DynastySlugRouteImport.update({
   path: '/dynasty/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnAboutRoute = EnAboutRouteImport.update({
+  id: '/en/about',
+  path: '/en/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EnArchivesRoute = EnArchivesRouteImport.update({
   id: '/en/archives',
   path: '/en/archives',
@@ -91,6 +97,7 @@ export interface FileRoutesByFullPath {
   '/darius': typeof DariusRoute
   '/timeline': typeof TimelineRoute
   '/dynasty/$slug': typeof DynastySlugRoute
+  '/en/about': typeof EnAboutRoute
   '/en/archives': typeof EnArchivesRoute
   '/en/cylinder': typeof EnCylinderRoute
   '/en/darius': typeof EnDariusRoute
@@ -105,6 +112,7 @@ export interface FileRoutesByTo {
   '/darius': typeof DariusRoute
   '/timeline': typeof TimelineRoute
   '/dynasty/$slug': typeof DynastySlugRoute
+  '/en/about': typeof EnAboutRoute
   '/en/archives': typeof EnArchivesRoute
   '/en/cylinder': typeof EnCylinderRoute
   '/en/darius': typeof EnDariusRoute
@@ -120,6 +128,7 @@ export interface FileRoutesById {
   '/darius': typeof DariusRoute
   '/timeline': typeof TimelineRoute
   '/dynasty/$slug': typeof DynastySlugRoute
+  '/en/about': typeof EnAboutRoute
   '/en/archives': typeof EnArchivesRoute
   '/en/cylinder': typeof EnCylinderRoute
   '/en/darius': typeof EnDariusRoute
@@ -136,6 +145,7 @@ export interface FileRouteTypes {
     | '/darius'
     | '/timeline'
     | '/dynasty/$slug'
+    | '/en/about'
     | '/en/archives'
     | '/en/cylinder'
     | '/en/darius'
@@ -150,6 +160,7 @@ export interface FileRouteTypes {
     | '/darius'
     | '/timeline'
     | '/dynasty/$slug'
+    | '/en/about'
     | '/en/archives'
     | '/en/cylinder'
     | '/en/darius'
@@ -164,6 +175,7 @@ export interface FileRouteTypes {
     | '/darius'
     | '/timeline'
     | '/dynasty/$slug'
+    | '/en/about'
     | '/en/archives'
     | '/en/cylinder'
     | '/en/darius'
@@ -179,6 +191,7 @@ export interface RootRouteChildren {
   DariusRoute: typeof DariusRoute
   TimelineRoute: typeof TimelineRoute
   DynastySlugRoute: typeof DynastySlugRoute
+  EnAboutRoute: typeof EnAboutRoute
   EnArchivesRoute: typeof EnArchivesRoute
   EnCylinderRoute: typeof EnCylinderRoute
   EnDariusRoute: typeof EnDariusRoute
@@ -237,6 +250,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DynastySlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/en/about': {
+      id: '/en/about'
+      path: '/en/about'
+      fullPath: '/en/about'
+      preLoaderRoute: typeof EnAboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/en/archives': {
       id: '/en/archives'
       path: '/en/archives'
@@ -283,6 +303,7 @@ const rootRouteChildren: RootRouteChildren = {
   DariusRoute: DariusRoute,
   TimelineRoute: TimelineRoute,
   DynastySlugRoute: DynastySlugRoute,
+  EnAboutRoute: EnAboutRoute,
   EnArchivesRoute: EnArchivesRoute,
   EnCylinderRoute: EnCylinderRoute,
   EnDariusRoute: EnDariusRoute,
