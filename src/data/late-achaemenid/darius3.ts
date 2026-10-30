@@ -4,7 +4,7 @@
  * Alexander historians written centuries later. Battle diagrams are schematic (100×60, x east, y south).
  */
 import type { BattleDiagram, BattleUnit, Coord, DossierSection, FeaturedKing } from '../featured/types'
-import { ACH, BABYLON, ECBATANA, MEMPHIS, PERSEPOLIS, SARDIS, SUSA, clipFor, ev, note, photos, pick, related, sec } from './common'
+import { ACH, BABYLON, ECBATANA, MEMPHIS, PERSEPOLIS, SARDIS, SUSA, clipFor, battleClipFor, ev, note, photos, pick, related, sec } from './common'
 
 const B = (fa: string, en: string) => ({ fa, en })
 const GRANICUS: Coord = [27.25, 40.25]
@@ -135,22 +135,22 @@ const persianGates: BattleDiagram = {
   labels: [
     { at: [30, 12], text: { fa: 'کوه‌های پوشیده از برف', en: 'Snow-covered mountains' } },
     { at: [30, 52], text: { fa: 'کوه‌ها', en: 'Mountains' } },
-    { at: [12, 31], text: { fa: 'از سوی شوش', en: 'from Susa' }, tone: 'sea' },
-    { at: [86, 31], text: { fa: 'به سوی تخت‌جمشید', en: 'to Persepolis' }, tone: 'sea' },
+    { at: [9, 32], text: { fa: 'از سوی شوش', en: 'from Susa' }, tone: 'sea' },
+    { at: [88.5, 32], text: { fa: 'به سوی تخت‌جمشید', en: 'to Persepolis' }, tone: 'sea' },
     { at: [66, 23], text: { fa: 'دیوار', en: 'Wall' } },
   ],
   phases: [
     {
       id: 'wall', title: { fa: 'تنگه بسته می‌شود', en: 'The gorge is closed' },
       body: { fa: 'اریوبرزن تنگه را با دیواری از سنگ بست و اردوگاهش را پشت آن زد. سربازانش را روی بلندی‌های دو سوی تنگه گذاشت. اسکندر، که از راه کوهستان آمده بود، بی‌خبر وارد دره شد.', en: 'Ariobarzanes closed the gorge with a stone wall and camped behind it. He posted troops on the heights on both sides. Alexander, coming by the mountain road, marched into the valley unaware.' },
-      units: [P('ario', 'اریوبرزن', 'Ariobarzanes', [70, 30]), P('north', 'تیراندازان بالای کوه', 'Troops on the heights', [52, 20]), P('south', 'سنگ‌اندازان', 'Slingers and stone-throwers', [52, 40]), M('alex', 'اسکندر', 'Alexander', [14, 30])],
+      units: [P('ario', 'اریوبرزن', 'Ariobarzanes', [70, 30]), P('north', 'تیراندازان بالای کوه', 'Troops on the heights', [52, 20]), P('south', 'سنگ‌اندازان', 'Slingers and stone-throwers', [52, 40]), M('alex', 'اسکندر', 'Alexander', [24, 30])],
       certainty: 'probable', certaintyNote: { fa: 'آریان ۴۰ هزار پیاده و ۷۰۰ سوار می‌گوید؛ کورتیوس و دیودوروس ۲۵ هزار. شهبازی همهٔ این ارقام را اغراق‌آمیز می‌داند.', en: 'Arrian gives 40,000 foot and 700 horse; Curtius and Diodorus 25,000. Shahbazi thinks all these figures inflated.' },
       sources: ['arrian', 'curtius', 'diodorus', 'ir-ariobarzanes'],
     },
     {
       id: 'repulse', title: { fa: 'حملهٔ روبه‌رو شکست می‌خورد', en: 'The frontal attack fails' },
       body: { fa: 'مقدونیان تا نزدیک دیوار پیش رفتند. از بالا سنگ، تیر و نیزه بر سرشان بارید. بسیاری کشته و زخمی شدند. اسکندر دستور عقب‌نشینی داد و حتی کشته‌هایش را جا گذاشت.', en: 'The Macedonians pushed up close to the wall. Stones, arrows and javelins rained down from above. Many were killed or wounded. Alexander ordered a retreat and even left his dead behind.' },
-      units: [P('ario', 'اریوبرزن', 'Ariobarzanes', [70, 30]), P('north', 'تیراندازان بالای کوه', 'Troops on the heights', [50, 24]), P('south', 'سنگ‌اندازان', 'Slingers and stone-throwers', [50, 36]), M('alex', 'اسکندر', 'Alexander', [40, 30])],
+      units: [P('ario', 'اریوبرزن', 'Ariobarzanes', [70, 30]), P('north', 'تیراندازان بالای کوه', 'Troops on the heights', [50, 24]), P('south', 'سنگ‌اندازان', 'Slingers and stone-throwers', [50, 36]), M('alex', 'اسکندر', 'Alexander', [30, 30])],
       arrows: [{ side: 'greek', path: [[14, 30], [56, 30]] }, { side: 'persian', path: [[50, 22], [44, 29]] }, { side: 'persian', path: [[50, 38], [44, 31]] }, { side: 'greek', path: [[54, 31], [24, 31]] }],
       certainty: 'secure', certaintyNote: { fa: 'هر سه منبع اصلی این شکست را گزارش می‌کنند.', en: 'All three main sources report this repulse.' },
       sources: ['arrian', 'curtius', 'diodorus'],
@@ -173,7 +173,7 @@ const persianGates: BattleDiagram = {
     {
       id: 'last', title: { fa: 'ایستادگی واپسین اریوبرزن', en: 'Ariobarzanes’ last stand' },
       body: { fa: 'اریوبرزن با گروهی کوچک از حلقه بیرون زد. آریان می‌گوید او با چند سوار به کوه‌ها گریخت. کورتیوس می‌گوید او به سوی تخت‌جمشید رفت، اما نگهبانان شهر دروازه را به رویش بستند و او جنگید تا کشته شد.', en: 'Ariobarzanes broke out with a small band. Arrian says he escaped into the mountains with a few horsemen. Curtius says he made for Persepolis, but the city’s garrison shut the gates on him and he fought on until he was killed.' },
-      units: [P('ario', 'اریوبرزن', 'Ariobarzanes', [90, 20]), M('alex', 'اسکندر', 'Alexander', [78, 31]), M('crat', 'کراتروس', 'Craterus', [60, 30])],
+      units: [P('ario', 'اریوبرزن', 'Ariobarzanes', [90, 20]), M('alex', 'اسکندر', 'Alexander', [75, 31]), M('crat', 'کراتروس', 'Craterus', [60, 30])],
       arrows: [{ side: 'persian', path: [[70, 29], [80, 24], [90, 21]] }],
       certainty: 'disputed', certaintyNote: { fa: 'دو روایت از پایان او هست: گریز (آریان ۳.۱۸.۹) یا مرگ در جنگ (کورتیوس ۵.۴.۳۳–۳۴). بوسورث کورتیوس را می‌پذیرد.', en: 'Two traditions of his end: escape (Arrian 3.18.9) or death fighting (Curtius 5.4.33–34). Bosworth accepts Curtius.' },
       sources: ['arrian', 'curtius', 'bosworth1980', 'ir-ariobarzanes'],
@@ -243,6 +243,7 @@ const dossier: DossierSection[] = [
       'Arrian has Parmenio advise against burning Persepolis, since “it was not well to destroy what was now his own property”. The lesson is simple: war destroys people’s property, even when the victor counts it as his own.',
     ]],
     ['arrian', 'curtius', 'diodorus', 'ir-ariobarzanes', 'bosworth1980', 'heckel1980', 'stein1940', 'speck2002', 'livius-pg'], {
+      clip: { media: battleClipFor('darius-iii', 'persian-gates', 800, 420), caption: { fa: 'نبرد دروازه‌های پارس، گام‌به‌گام (طرح‌وار؛ جای دقیق محل بحث است).', en: 'The battle of the Persian Gates, step by step (schematic; the exact site is disputed).' } },
       photos: ['gate-site', 'yasuj-statue', 'pg-1849'],
       quotes: [
         { text: 'found that Ariobarzanes, the viceroy of Persis, with 40,000 infantry and 700 cavalry, had built a wall across the pass, and had pitched his camp there near the wall to block Alexander’s passage.', fa: '[اسکندر] دید که اریوبرزن، فرمانروای پارس، با ۴۰ هزار پیاده و ۷۰۰ سوار، دیواری در گذرگاه ساخته و اردوگاهش را کنار دیوار زده است تا راه اسکندر را ببندد.', ref: 'Arrian, Anabasis 3.18.2, tr. E. J. Chinnock', source: 'arrian' },

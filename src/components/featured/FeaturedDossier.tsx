@@ -3,6 +3,7 @@ import type { BiParas, FeaturedKing } from '../../data/featured/types'
 import type { Locale } from '../../lib/i18n'
 import { Reveal } from '../Reveal'
 import { EvidenceBadge } from '../cylinder/EvidenceBadge'
+import { AnimatedClip } from './AnimatedClip'
 import { BattleDiagram } from './BattleDiagram'
 import { CampaignMap } from './CampaignMap'
 
@@ -61,18 +62,7 @@ export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: 
           <div className="mt-6">
             <CampaignMap events={c.events} sources={king.sources} locale={locale} label={c.title[locale]} view={c.view} places={c.places} stamp="when" />
           </div>
-          {c.clip && (
-            <figure className="mt-8 glass rounded-3xl p-4 md:p-6">
-              <video controls muted playsInline loop preload="none" poster={c.clip.poster[locale]} width={c.clip.width} height={c.clip.height} className="w-full h-auto rounded-2xl">
-                <source src={c.clip.webm[locale]} type="video/webm" />
-                <source src={c.clip.mp4[locale]} type="video/mp4" />
-              </video>
-              <figcaption className="mt-3 text-sm text-ivory/70 leading-7">
-                {isFa ? 'همین نقشه به صورت کلیپ برای هم‌رسانی. بارگیری:' : 'The same map as a shareable clip. Download:'}{' '}
-                <a href={c.clip.gif[locale]} download className="text-gold hover:underline">GIF</a> · <a href={c.clip.mp4[locale]} download className="text-gold hover:underline">MP4</a> · <a href={c.clip.webm[locale]} download className="text-gold hover:underline">WebM</a>
-              </figcaption>
-            </figure>
-          )}
+          {c.clip && <AnimatedClip clip={c.clip} caption={{ fa: 'همین نقشه به صورت کلیپ برای هم‌رسانی.', en: 'The same map as a shareable clip.' }} locale={locale} />}
           {c.battles?.map((b) => <div key={b.id} id={`battle-${b.id}`} className="mt-10 scroll-mt-24"><BattleDiagram battle={b} sources={king.sources} locale={locale} /></div>)}
         </section>
       )}
@@ -96,6 +86,7 @@ export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: 
                 <footer className="mt-2 text-xs text-ivory/50">{q.ref} · <a href={`#src-${q.source}`} className="text-gold hover:underline">{author(q.source)}</a>{isFa && ` · ${t.quoteNote}`}</footer>
               </blockquote>
             ))}
+            {s.clip && <AnimatedClip clip={s.clip.media} caption={s.clip.caption} locale={locale} />}
             {s.photos && (
               <div className="mt-6 grid sm:grid-cols-2 gap-4">
                 {s.photos.map(photo).filter((x) => x !== undefined).map((ph) => (

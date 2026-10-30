@@ -116,6 +116,11 @@ export const clipFor = (slug: string) => {
   const p = (ext: string) => bi(`/media/${slug}/reign-fa.${ext}`, `/media/${slug}/reign-en.${ext}`)
   return { gif: p('gif'), mp4: p('mp4'), webm: p('webm'), poster: p('png'), width: 958, height: 356 }
 }
+/** A rendered battle clip (render-campaign-clip.py --battle id). */
+export const battleClipFor = (slug: string, id: string, width: number, height: number) => {
+  const p = (ext: string) => bi(`/media/${slug}/battle-${id}-fa.${ext}`, `/media/${slug}/battle-${id}-en.${ext}`)
+  return { gif: p('gif'), mp4: p('mp4'), webm: p('webm'), poster: p('png'), width, height }
+}
 /** One dossier section: evidence, interpretation and modern meaning kept as separate layers. */
 export const sec = (id: string, fa: string, en: string, h: [string[], string[]], i: [string[], string[]], m: [string[], string[]], sources: string[], extra: Partial<DossierSection> = {}): DossierSection =>
   ({ id, title: { fa, en }, historical: { fa: h[0], en: h[1] }, interpretation: { fa: i[0], en: i[1] }, modern: { fa: m[0], en: m[1] }, sources, ...extra })

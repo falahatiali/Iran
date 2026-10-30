@@ -23,7 +23,7 @@ async def record(url, section, step_ms, workdir, chrome, battle=None):
                f'#{section} article p:last-of-type, #{section} article p span.block{{display:none!important}}')
         t0 = time.monotonic()
         pg = await ctx.new_page()
-        await pg.goto(url, wait_until='networkidle')
+        await pg.goto(url, wait_until='load'); await pg.wait_for_timeout(1500)
         await pg.add_style_tag(content=css)
         if battle:
             fig = pg.locator(f'#battle-{battle} figure').first

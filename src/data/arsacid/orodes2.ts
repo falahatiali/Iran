@@ -6,7 +6,7 @@
 import type { BattleDiagram, BattleUnit, Bi, FeaturedKing, MapEvent } from '../featured/types'
 import {
   AMANUS, ANTIOCH, APAMEA, ARTAXATA, BALIKH, BABYLON, CARRHAE, CTESIPHON, ECBATANA, GINDARUS, ICHNAE, JERUSALEM, PAR, SELEUCIA, SINNACA, ZEUGMA,
-  clipFor, ev, note, photos, pick, related, sec,
+  clipFor, battleClipFor, ev, note, photos, pick, related, sec,
 } from './common'
 
 const B = (fa: string, en: string): Bi => ({ fa, en })
@@ -149,6 +149,7 @@ export const orodesII: FeaturedKing = {
       [['دیدگاه کهن، که جنگ را فقط نتیجهٔ آز کراسوس می‌داند (چیچرو: «هیچ دلیلی برای جنگ نبود»)، به نظر شهبازی باید کنار گذاشته شود: برخورد روم و پارت یک سده در راه بود. همو می‌گوید خیانت ابگر، شاه اوسروئنه، که منابع رومی گناه را به گردن او می‌اندازند، ثابت‌شدنی نیست. شمارها هم محل بحث است: فلوروس از یازده لژیون می‌گوید.'], ['The old view, that the war was nothing but Crassus’ greed (Cicero: “no cause for the war”), should in Shahbazi’s view be dropped: a clash between Rome and Parthia had been coming for a century. He also says the treachery of Abgar of Osrhoene, whom the Roman sources blame, cannot be proved. The numbers are disputed too: Florus speaks of eleven legions.']],
       [['حران نشان داد ابزار درست در زمین درست بر شمار برتری دارد. آن سوی ماجرا: سپاهی که از سرزمین بیگانه برای غارت آمده بود، با مردمی روبه‌رو شد که از خانهٔ خود دفاع می‌کردند.'], ['Carrhae showed that the right tool on the right ground beats numbers. The other side of the story: an army that came to plunder a foreign land met people defending their own home.']],
       ['plut-crassus', 'ir-carrhae', 'florus', 'overtoom'], {
+        clip: { media: battleClipFor('orodes-ii', 'carrhae', 800, 458), caption: B('نبرد حران، گام‌به‌گام (طرح‌وار؛ جای‌ها ویرایشی‌اند).', 'The battle of Carrhae, step by step (schematic; positions are editorial).') },
         quotes: [{ text: 'For the Parthians do not encourage themselves to war with cornets and trumpets, but with a kind of kettle-drum, which they strike all at once in various quarters. With these they make a dead hollow noise like the bellowing of beasts, mixed with sounds resembling thunder… When they had sufficiently terrified the Romans with their noise, they threw off the covering of their armor, and shone like lightning in their breastplates and helmets of polished Margianian steel, and with their horses covered with brass and steel trappings.', fa: 'پارتیان برای جنگ با شیپور و کرنا به خود دل نمی‌دهند، بلکه با گونه‌ای طبل که همه با هم از هر سو می‌کوبند. با آن صدایی گنگ و توخالی چون نعرهٔ جانوران، آمیخته با بانگی همچون تندر، پدید می‌آورند… چون رومیان را با این بانگ به‌اندازه ترساندند، پوشش زره‌ها را کنار زدند و در جوشن‌ها و کلاه‌خودهای پولاد صیقلی مرو و با اسبانی پوشیده در برگستوان مفرغ و پولاد، چون آذرخش درخشیدند.', ref: 'Plutarch, Crassus 23–24', source: 'plut-crassus' }],
       }),
     sec('crassus', 'مرگ کراسوس به روایت پلوتارک', 'The death of Crassus, as Plutarch tells it',

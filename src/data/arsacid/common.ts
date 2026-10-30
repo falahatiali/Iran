@@ -7,7 +7,7 @@ import type { Coord, FeaturedSource } from '../featured/types'
 import type { CommonsPhoto } from '../places/types'
 import { IR } from '../late-achaemenid/common'
 
-export { ev, note, sec, clipFor, IR } from '../late-achaemenid/common'
+export { ev, note, sec, clipFor, battleClipFor, IR } from '../late-achaemenid/common'
 
 export const NISA: Coord = [58.2, 37.98]
 export const ASTAUENE: Coord = [58.5, 37.1]
