@@ -139,3 +139,17 @@ See [RESEARCH_LOG.md](./RESEARCH_LOG.md) §13 for the source table.
 - Flagged: Tiridates, Justin vs Strabo on Arsaces' origin, Assar's lower chronology, "Arsaces IV", Phraates II's dates and death site, Artabanus I/II numbering, Tocharii = Yuezhi, Mithridates II's parentage, the Sulla date (96 vs 92), 400 vs 4,000 free men, "feudalism".
 
 **Next king:** Gotarzes I (`gotarzes-i`, c. 91–80 BCE).
+
+## 2026-10-31 — Parthians, batch 2: Gotarzes I to Vonones I
+
+**Done in this pass**
+
+- Short pages (`dark.ts`): Gotarzes I, Orodes I, Sinatruces, Phraates III, Mithridates III, with every date flagged against the Babylonian tablets and the Sellwood/Assar/Olbrycht disagreements.
+- Featured: Orodes II (reign map 57–37 BCE, animated Carrhae diagram in six phases, sections on Surena, Carrhae, Crassus' death after Plutarch, the prisoners in Merv, Pacorus I and Orodes' death) and Phraates IV (Antony's 36 BCE campaign map, the return of the standards in 20 BCE, Musa and the sons sent to Rome).
+- Short pages (`late.ts`): Phraates V and Musa, Orodes III, Vonones I.
+- Verbatim quotes only from Dryden/Clough's Plutarch, Watson's Justin, Whiston's Josephus and Bushnell's Res Gestae. Dio, Tacitus and Velleius are paraphrased or quoted through Iranica.
+- `BattleDiagram` gained an optional `sides` legend (Parthians/Romans).
+- Flagged: Mithridates III/IV numbering, the Carrhae army sizes, whether Crassus' death was a trap, the Shami statue as "Surena", the Liqian legend, the Gindarus anniversary, Orodes' death (parricide vs grief), the thirty brothers, Phraaspa's site, the 20 BCE date and treaty, who gave Musa, the incest story, Orodes III's death (feast vs hunt).
+- Left out as unverified: Surena's personal name, any epithet for Phraates IV beyond the coins, Tacitus quoted verbatim.
+
+**Next king:** Artabanus II (`artabanus-ii`, 12–38 CE).
