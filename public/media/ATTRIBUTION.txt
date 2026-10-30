@@ -85,3 +85,10 @@ shutruk-nakhunte/reign-{fa,en}.{gif,mp4,webm,png}
   Manishtushu statues. Rendered from this site's own /king/shutruk-nakhunte page by
   scripts/render-campaign-clip.py --section reign. Narrative after F. Vallat (Iranica, "Elam i"), D. T. Potts,
   The Archaeology of Elam (1999) and F. W. König (1965), as cited on the page. Routes are editorial sketches.
+
+mithridates-i/reign-{fa,en}.{gif,mp4,webm,png}
+  Animated map of Mithridates I's western conquests (c. 148-138 BCE): Bisotun (June 148 Seleucid inscription),
+  Media, Seleucia-on-the-Tigris, Uruk (12 Oct 141 tablet), the capture of Demetrius II and Elymais. Rendered from
+  this site's own /king/mithridates-i page by scripts/render-campaign-clip.py --section reign. Narrative after
+  Justin 41.6, Iranica ("Arsacids ii"), M. J. Olbrycht (2010) and the Babylonian astronomical diaries, as cited on
+  the page. Routes are editorial sketches. Coastlines: Natural Earth (public domain).
