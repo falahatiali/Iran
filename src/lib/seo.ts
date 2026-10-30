@@ -57,3 +57,26 @@ export const ARCHIVES_ALTERNATES = [
   { hrefLang: 'en', path: '/en/archives' },
   { hrefLang: 'x-default', path: '/archives' },
 ] as const
+
+export const DARIUS_ALTERNATES = [
+  { hrefLang: 'fa', path: '/darius' },
+  { hrefLang: 'en', path: '/en/darius' },
+  { hrefLang: 'x-default', path: '/darius' },
+] as const
+
+/** schema.org JSON-LD for the Darius dossier (Article about Person). */
+export function dariusJsonLd(locale: 'fa' | 'en') {
+  const path = locale === 'fa' ? '/darius' : '/en/darius'
+  return {
+    type: 'application/ld+json',
+    children: JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      inLanguage: locale,
+      headline: locale === 'fa' ? 'داریوش بزرگ؛ شمشیر، قرارداد و مالکیت' : 'Darius the Great: sword, contract and property',
+      url: SITE_URL + path,
+      publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
+      about: { '@type': 'Person', name: locale === 'fa' ? 'داریوش یکم' : 'Darius I', sameAs: 'https://en.wikipedia.org/wiki/Darius_the_Great' },
+    }),
+  }
+}

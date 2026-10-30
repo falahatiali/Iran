@@ -13,10 +13,12 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ArchivesRouteImport } from './routes/archives'
 import { Route as CylinderRouteImport } from './routes/cylinder'
+import { Route as DariusRouteImport } from './routes/darius'
 import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as DynastySlugRouteImport } from './routes/dynasty/$slug'
 import { Route as EnArchivesRouteImport } from './routes/en/archives'
 import { Route as EnCylinderRouteImport } from './routes/en/cylinder'
+import { Route as EnDariusRouteImport } from './routes/en/darius'
 import { Route as KingSlugRouteImport } from './routes/king/$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -39,6 +41,11 @@ const CylinderRoute = CylinderRouteImport.update({
   path: '/cylinder',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DariusRoute = DariusRouteImport.update({
+  id: '/darius',
+  path: '/darius',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TimelineRoute = TimelineRouteImport.update({
   id: '/timeline',
   path: '/timeline',
@@ -59,6 +66,11 @@ const EnCylinderRoute = EnCylinderRouteImport.update({
   path: '/en/cylinder',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnDariusRoute = EnDariusRouteImport.update({
+  id: '/en/darius',
+  path: '/en/darius',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const KingSlugRoute = KingSlugRouteImport.update({
   id: '/king/$slug',
   path: '/king/$slug',
@@ -70,10 +82,12 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/archives': typeof ArchivesRoute
   '/cylinder': typeof CylinderRoute
+  '/darius': typeof DariusRoute
   '/timeline': typeof TimelineRoute
   '/dynasty/$slug': typeof DynastySlugRoute
   '/en/archives': typeof EnArchivesRoute
   '/en/cylinder': typeof EnCylinderRoute
+  '/en/darius': typeof EnDariusRoute
   '/king/$slug': typeof KingSlugRoute
 }
 export interface FileRoutesByTo {
@@ -81,10 +95,12 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/archives': typeof ArchivesRoute
   '/cylinder': typeof CylinderRoute
+  '/darius': typeof DariusRoute
   '/timeline': typeof TimelineRoute
   '/dynasty/$slug': typeof DynastySlugRoute
   '/en/archives': typeof EnArchivesRoute
   '/en/cylinder': typeof EnCylinderRoute
+  '/en/darius': typeof EnDariusRoute
   '/king/$slug': typeof KingSlugRoute
 }
 export interface FileRoutesById {
@@ -93,10 +109,12 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/archives': typeof ArchivesRoute
   '/cylinder': typeof CylinderRoute
+  '/darius': typeof DariusRoute
   '/timeline': typeof TimelineRoute
   '/dynasty/$slug': typeof DynastySlugRoute
   '/en/archives': typeof EnArchivesRoute
   '/en/cylinder': typeof EnCylinderRoute
+  '/en/darius': typeof EnDariusRoute
   '/king/$slug': typeof KingSlugRoute
 }
 export interface FileRouteTypes {
@@ -106,10 +124,12 @@ export interface FileRouteTypes {
     | '/about'
     | '/archives'
     | '/cylinder'
+    | '/darius'
     | '/timeline'
     | '/dynasty/$slug'
     | '/en/archives'
     | '/en/cylinder'
+    | '/en/darius'
     | '/king/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -117,10 +137,12 @@ export interface FileRouteTypes {
     | '/about'
     | '/archives'
     | '/cylinder'
+    | '/darius'
     | '/timeline'
     | '/dynasty/$slug'
     | '/en/archives'
     | '/en/cylinder'
+    | '/en/darius'
     | '/king/$slug'
   id:
     | '__root__'
@@ -128,10 +150,12 @@ export interface FileRouteTypes {
     | '/about'
     | '/archives'
     | '/cylinder'
+    | '/darius'
     | '/timeline'
     | '/dynasty/$slug'
     | '/en/archives'
     | '/en/cylinder'
+    | '/en/darius'
     | '/king/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -140,10 +164,12 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ArchivesRoute: typeof ArchivesRoute
   CylinderRoute: typeof CylinderRoute
+  DariusRoute: typeof DariusRoute
   TimelineRoute: typeof TimelineRoute
   DynastySlugRoute: typeof DynastySlugRoute
   EnArchivesRoute: typeof EnArchivesRoute
   EnCylinderRoute: typeof EnCylinderRoute
+  EnDariusRoute: typeof EnDariusRoute
   KingSlugRoute: typeof KingSlugRoute
 }
 
@@ -177,6 +203,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CylinderRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/darius': {
+      id: '/darius'
+      path: '/darius'
+      fullPath: '/darius'
+      preLoaderRoute: typeof DariusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/timeline': {
       id: '/timeline'
       path: '/timeline'
@@ -205,6 +238,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnCylinderRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/en/darius': {
+      id: '/en/darius'
+      path: '/en/darius'
+      fullPath: '/en/darius'
+      preLoaderRoute: typeof EnDariusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/king/$slug': {
       id: '/king/$slug'
       path: '/king/$slug'
@@ -220,12 +260,23 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ArchivesRoute: ArchivesRoute,
   CylinderRoute: CylinderRoute,
+  DariusRoute: DariusRoute,
   TimelineRoute: TimelineRoute,
   DynastySlugRoute: DynastySlugRoute,
   EnArchivesRoute: EnArchivesRoute,
   EnCylinderRoute: EnCylinderRoute,
+  EnDariusRoute: EnDariusRoute,
   KingSlugRoute: KingSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}

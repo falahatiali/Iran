@@ -50,6 +50,11 @@ function KingPage() {
                   <Link to="/cylinder" className="text-gold hover:underline min-h-11 inline-flex items-center">صفحهٔ پرچم: استوانهٔ کوروش (BM 90920)</Link>
                 </p>
               )}
+              {r.id === 'darius-i' && (
+                <p className="mt-4">
+                  <Link to="/darius" className="text-gold hover:underline min-h-11 inline-flex items-center">پروندهٔ ویژه: داریوش بزرگ، نقشهٔ متحرک جنگ‌ها و تحلیل مالکیت</Link>
+                </p>
+              )}
               <p className="mt-4 text-ivory/60 leading-8">
                 {r.name} در {year(r.start)} بر تخت {d.name} نشست{k.predecessor ? ` و جانشین ${k.predecessor.name} شد` : ''}.
                 {k.successor ? ` پس از او ${k.successor.name} به فرمانروایی رسید.` : r.end === null ? '' : ' با او این دودمان به پایان رسید یا دوران آن بسته شد.'}

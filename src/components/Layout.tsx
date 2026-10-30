@@ -24,6 +24,7 @@ export function Header({ data }: { data: Overview }) {
     ? [
         { to: '/', label: 'Home' },
         { to: '/cylinder', label: 'Cyrus Cylinder' },
+        { to: '/darius', label: 'Darius the Great' },
         { to: '/archives', label: 'Persepolis archives' },
         { to: '/timeline', label: 'Timeline' },
         { to: '/about', label: 'About' },
@@ -31,6 +32,7 @@ export function Header({ data }: { data: Overview }) {
     : [
         { to: '/', label: 'خانه' },
         { to: '/cylinder', label: 'استوانهٔ کوروش' },
+        { to: '/darius', label: 'داریوش بزرگ' },
         { to: '/archives', label: 'بایگانی تخت‌جمشید' },
         { to: '/timeline', label: 'گاه‌شمار' },
         { to: '/about', label: 'درباره و روش‌شناسی' },
@@ -49,7 +51,9 @@ export function Header({ data }: { data: Overview }) {
           <div className="flex items-center gap-2">
             <a
               href={
-                pathname === '/en/archives' ? '/archives'
+                pathname === '/en/darius' ? '/darius'
+                  : pathname === '/darius' ? '/en/darius'
+                  : pathname === '/en/archives' ? '/archives'
                   : pathname === '/archives' ? '/en/archives'
                     : pathname.startsWith('/en') ? '/cylinder'
                       : '/en/cylinder'
@@ -102,6 +106,7 @@ export function Footer() {
         <div><p className="text-gilded font-black text-lg">تاریخ ایران</p><p className="mt-2 leading-7">مرجعی آزاد و منبع‌دار برای تاریخ ایران، از ایلام تا امروز.</p></div>
         <nav aria-label="پیوندهای پانویس" className="flex flex-col gap-2">
           <Link to="/cylinder" className="hover:text-gold py-2 inline-block min-h-11">استوانهٔ کوروش</Link>
+          <Link to="/darius" className="hover:text-gold py-2 inline-block min-h-11">داریوش بزرگ</Link>
           <Link to="/archives" className="hover:text-gold py-2 inline-block min-h-11">بایگانی تخت‌جمشید</Link>
           <Link to="/timeline" className="hover:text-gold py-2 inline-block min-h-11">گاه‌شمار سراسری</Link>
           <Link to="/about" className="hover:text-gold py-2 inline-block min-h-11">روش‌شناسی و منابع</Link>

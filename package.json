@@ -15,7 +15,7 @@
     "db:seed": "tsx scripts/db.ts seed",
     "db:reset": "tsx scripts/db.ts reset",
     "db:smoke": "tsx scripts/db.ts smoke",
-    "test": "tsx --test src/data/research/content.test.ts src/lib/searchSchema.test.ts src/lib/siteUrl.test.ts src/lib/lineLink.test.ts",
+    "test": "tsx --test src/data/research/content.test.ts src/lib/searchSchema.test.ts src/lib/siteUrl.test.ts src/lib/lineLink.test.ts src/data/darius/darius.test.ts",
     "start": "node .output/server/index.mjs",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
