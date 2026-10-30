@@ -127,3 +127,15 @@ See [RESEARCH_LOG.md](./RESEARCH_LOG.md) §13 for the source table.
 - Left out as unverified: the Meli-Shipak kudurru as his booty, the Marduk statue, and any nickname.
 
 **Next king:** Shilhak-Inshushinak.
+
+## 2026-10-30 — Parthians, batch 1: Arsaces I to Mithridates II
+
+**Done in this pass**
+
+- `src/data/arsacid/`: shared Parthian coordinates, sources (Justin/Watson, Strabo/Hamilton & Falconer, Plutarch/Dryden-Clough, Shiji/Watson, Isidore/Schoff, Nisa ostraca, Babylonian diaries, Iranica "Arsacids ii", Assar 2006, Olbrycht, Dąbrowa, Sellwood, Curtis, Badian and others) and CNG coin photos with checked licences.
+- Short pages: Arsaces I, Arsaces II, Phriapatius, Phraates I, Phraates II, Artabanus I.
+- Featured: Mithridates I (map clip of Media and Mesopotamia, 148–138 BCE) and Mithridates II (clip covering Characene, the Han embassy, Armenia, Sulla and Gotarzes).
+- Verbatim quotes only from Watson's Justin, Hamilton & Falconer's Strabo and Dryden/Clough's Plutarch. Shiji 123 is paraphrased.
+- Flagged: Tiridates, Justin vs Strabo on Arsaces' origin, Assar's lower chronology, "Arsaces IV", Phraates II's dates and death site, Artabanus I/II numbering, Tocharii = Yuezhi, Mithridates II's parentage, the Sulla date (96 vs 92), 400 vs 4,000 free men, "feudalism".
+
+**Next king:** Gotarzes I (`gotarzes-i`, c. 91–80 BCE).

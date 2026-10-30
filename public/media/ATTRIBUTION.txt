@@ -92,3 +92,11 @@ mithridates-i/reign-{fa,en}.{gif,mp4,webm,png}
   this site's own /king/mithridates-i page by scripts/render-campaign-clip.py --section reign. Narrative after
   Justin 41.6, Iranica ("Arsacids ii"), M. J. Olbrycht (2010) and the Babylonian astronomical diaries, as cited on
   the page. Routes are editorial sketches. Coastlines: Natural Earth (public domain).
+
+mithridates-ii/reign-{fa,en}.{gif,mp4,webm,png}
+  Animated map of Mithridates II's reign (c. 122-91 BCE): Characene, the eastern wars, the Han embassy
+  (Zhang Qian's mission), Dura-Europos, "King of Kings", Armenia (Tigranes as hostage), the meeting with Sulla on
+  the Euphrates and Gotarzes at Bisotun. Rendered from this site's own /king/mithridates-ii page by
+  scripts/render-campaign-clip.py --section reign. Narrative after Justin 42.2, Strabo 11.14.15, Plutarch, Sulla 5,
+  Sima Qian, Shiji 123 (tr. B. Watson), Iranica and Olbrycht, as cited on the page. Routes are editorial sketches.
+  Coastlines: Natural Earth (public domain).

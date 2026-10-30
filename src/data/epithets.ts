@@ -32,6 +32,10 @@ export const epithets: Record<string, Epithet[]> = {
   'mithridates-i': [
     { fa: 'دوستدار یونانیان', en: 'Philhellene', original: 'ΦΙΛΕΛΛΗΝΟΣ', lang: 'Greek', meaning: { fa: 'لقب روی سکه‌های چهاردرهمی او پس از گشودن سلوکیه، برای دل‌جویی از شهرهای یونانی', en: 'the title on his tetradrachms after taking Seleucia, a gesture to the Greek cities' }, kind: 'title', source: { label: 'D. Sellwood, An Introduction to the Coinage of Parthia (2nd ed., 1980), types 10–13' } },
   ],
+  'mithridates-ii': [
+    { fa: 'بزرگ', en: 'the Great', lang: 'Latin', meaning: { fa: 'یوستینوس: کارهایش لقب «بزرگ» را برایش آورد', en: 'Justin: his deeds earned him the surname “the Great”' }, kind: 'nickname', source: { label: 'Justin, Epitome 42.2.3, tr. J. S. Watson (1853)', url: 'https://www.attalus.org/translate/justin7.html' } },
+    { fa: 'شاه شاهان', en: 'King of Kings', original: 'ΒΑΣΙΛΕΩΣ ΒΑΣΙΛΕΩΝ', lang: 'Greek', meaning: { fa: 'از حدود ۱۰۹/۱۰۸ پ.م. روی سکه‌هایش؛ بازگشت به عنوان هخامنشی', en: 'on his coins from c. 109/8 BCE; a revival of the Achaemenid title' }, kind: 'title', source: { label: 'D. Sellwood, An Introduction to the Coinage of Parthia (2nd ed., 1980), type 27' } },
+  ],
   'shutruk-nakhunte': [
     { fa: 'شاه انشان و شوش', en: 'King of Anshan and Susa', lang: 'Elamite', meaning: { fa: 'عنوان رسمی او در کتیبه‌هایش', en: 'his official style in his inscriptions' }, kind: 'title', source: { label: 'Elamite inscription on the Naram-Sin stele (Louvre Sb 4), tr. M. Van De Mieroop, A History of the Ancient Near East (2015), p. 199' } },
     { fa: 'بندهٔ محبوب اینشوشیناک', en: 'Beloved servant of Inshushinak', lang: 'Elamite', kind: 'title', source: { label: 'Elamite inscription on the Naram-Sin stele (Louvre Sb 4), tr. M. Van De Mieroop, A History of the Ancient Near East (2015), p. 199' } },
