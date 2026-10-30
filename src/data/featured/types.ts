@@ -44,6 +44,8 @@ export interface BattleDiagram {
   land: string[]
   labels: { at: [number, number]; text: Bi; tone?: 'land' | 'sea' }[]
   phases: BattlePhase[]
+  /** Legend names for the two sides; default Persians / Greeks */
+  sides?: Record<Side, Bi>
 }
 /** Rendered clip of a campaign map (scripts/render-campaign-clip.py). Paths are public URLs. */
 export interface CampaignClip { gif: Bi; mp4: Bi; webm: Bi; poster: Bi; width: number; height: number }

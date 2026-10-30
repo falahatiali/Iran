@@ -63,8 +63,8 @@ export function BattleDiagram({ battle, sources, locale }: { battle: Diagram; so
             <button type="button" onClick={() => setI((n) => Math.min(battle.phases.length - 1, n + 1))} disabled={i === battle.phases.length - 1} className="glass rounded-full px-4 min-h-11 disabled:opacity-40">{isFa ? 'بعدی' : 'Next'}</button>
           </div>
           <p className="mt-3 flex gap-4 text-xs text-ivory/60">
-            <span className="inline-flex items-center gap-1"><span className="size-2.5 rounded-sm" style={{ background: SIDE.persian }} aria-hidden="true" />{isFa ? 'ایرانیان' : 'Persians'}</span>
-            <span className="inline-flex items-center gap-1"><span className="size-2.5 rounded-sm" style={{ background: SIDE.greek }} aria-hidden="true" />{isFa ? 'یونانیان' : 'Greeks'}</span>
+            <span className="inline-flex items-center gap-1"><span className="size-2.5 rounded-sm" style={{ background: SIDE.persian }} aria-hidden="true" />{battle.sides?.persian[locale] ?? (isFa ? 'ایرانیان' : 'Persians')}</span>
+            <span className="inline-flex items-center gap-1"><span className="size-2.5 rounded-sm" style={{ background: SIDE.greek }} aria-hidden="true" />{battle.sides?.greek[locale] ?? (isFa ? 'یونانیان' : 'Greeks')}</span>
           </p>
         </div>
       </div>
