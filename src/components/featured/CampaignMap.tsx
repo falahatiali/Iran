@@ -127,6 +127,11 @@ export function CampaignMap({ events, sources, locale, label }: { events: MapEve
                   <span key={s}>{n > 0 && ' · '}<a href={`#src-${s}`} className="text-gold hover:underline">{src ? `${src.author}, ${src.year}` : s}</a></span>
                 ) })}
               </p>
+              {ev.place && (
+                <a href={locale === 'fa' ? `/place/${ev.place}` : `/en/place/${ev.place}`} className="mt-3 inline-flex items-center min-h-11 rounded-full border border-gold/40 px-4 text-sm text-gold hover:bg-gold/10">
+                  {locale === 'fa' ? 'همه چیز دربارهٔ این مکان ←' : 'Everything about this place →'}
+                </a>
+              )}
             </motion.article>
           </AnimatePresence>
         </div>

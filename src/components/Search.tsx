@@ -4,12 +4,14 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import type { Overview } from '../server/api'
 import { normalize } from '../lib/search'
 import { range, year } from '../lib/format'
+import { placeForEventTitle, places } from '../data/places'
 
 type Hit =
   | { kind: 'dynasty'; key: string; label: string; sub: string; slug: string }
   | { kind: 'ruler'; key: string; label: string; sub: string; slug: string }
   | { kind: 'event'; key: string; label: string; sub: string; slug: string }
   | { kind: 'page'; key: string; label: string; sub: string; slug: string }
+  | { kind: 'place'; key: string; label: string; sub: string; slug: string }
 
 export function SearchDialog({ data, open, onClose }: { data: Overview; open: boolean; onClose: () => void }) {
   const [q, setQ] = useState('')
@@ -24,6 +26,7 @@ export function SearchDialog({ data, open, onClose }: { data: Overview; open: bo
       for (const r of d.rulers) all.push({ kind: 'ruler', key: `r-${r.id}`, label: r.name, sub: `${d.name} · ${range(r.start, r.end)}`, slug: r.id, hay: normalize(`${r.name} ${r.latin}`) })
     }
     for (const e of data.events) all.push({ kind: 'event', key: `e-${e.id}`, label: e.title, sub: `${names.get(e.dynastySlug)} · ${year(e.year)}`, slug: e.dynastySlug, hay: normalize(e.title) })
+    for (const p of Object.values(places)) all.push({ kind: 'place', key: `pl-${p.slug}`, label: p.name.fa, sub: p.name.en, slug: p.slug, hay: normalize([p.name.fa, p.name.en, ...p.aliases].join(' ')) })
     all.push({
       kind: 'page',
       key: 'p-cylinder',
@@ -43,7 +46,8 @@ export function SearchDialog({ data, open, onClose }: { data: Overview; open: bo
     return all
   }, [data])
   const nq = normalize(q)
-  const hits = nq ? index.filter((h) => h.hay.includes(nq)).slice(0, 30) : []
+  // places first: a topic page beats a same-named ruler (e.g. بیستون the monument vs. the Ziyarid ruler)
+  const hits = nq ? index.filter((h) => h.hay.includes(nq)).sort((a, b) => Number(b.kind === 'place') - Number(a.kind === 'place')).slice(0, 30) : []
 
   useEffect(() => { if (open) { setQ(''); setTimeout(() => input.current?.focus(), 30) } }, [open])
   useEffect(() => setSel(0), [q])
@@ -52,14 +56,19 @@ export function SearchDialog({ data, open, onClose }: { data: Overview; open: bo
     onClose()
     if (h.kind === 'ruler') void navigate({ to: '/king/$slug', params: { slug: h.slug } })
     else if (h.kind === 'page') void navigate({ to: h.slug === 'archives' ? '/archives' : '/cylinder' })
-    else if (h.kind === 'event') void navigate({ to: '/timeline', search: { q: h.label } })
+    else if (h.kind === 'place') void navigate({ to: '/place/$slug', params: { slug: h.slug } })
+    else if (h.kind === 'event') {
+      const pl = placeForEventTitle(h.label)
+      if (pl) void navigate({ to: '/place/$slug', params: { slug: pl.slug } })
+      else void navigate({ to: '/timeline', search: { q: h.label } })
+    }
     else void navigate({ to: '/dynasty/$slug', params: { slug: h.slug } })
   }
   const openTimeline = () => {
     onClose()
     void navigate({ to: '/timeline', search: { q } })
   }
-  const label = { dynasty: 'دودمان', ruler: 'فرمانروا', event: 'رویداد', page: 'صفحه' }
+  const label = { dynasty: 'دودمان', ruler: 'فرمانروا', event: 'رویداد', page: 'صفحه', place: 'مکان و اثر' }
 
   return (
     <AnimatePresence>

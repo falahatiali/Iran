@@ -8,6 +8,7 @@ import { EventIcon } from '../components/EventIcon'
 import { ShareLink } from '../components/ShareLink'
 import { eraNames, eventTypeNames, fa, year } from '../lib/format'
 import { seo } from '../lib/seo'
+import { placeForEventTitle } from '../data/places'
 import {
   TIMELINE_DEFAULTS,
   applyTimelineSearch,
@@ -91,6 +92,7 @@ function TimelinePage() {
                   </div>
                   <p className={`mt-1 ${e.importance === 'major' ? 'font-bold text-lg' : 'text-ivory/80'}`}>{e.title}</p>
                   {e.description && <p className="text-sm text-ivory/60 leading-7 mt-1">{e.description}</p>}
+                  {(() => { const pl = placeForEventTitle(e.title); return pl && <Link to="/place/$slug" params={{ slug: pl.slug }} className="mt-2 inline-flex items-center min-h-11 text-sm text-gold hover:underline">صفحهٔ {pl.name.fa} ←</Link> })()}
                 </div>
               </motion.li>
             ))}

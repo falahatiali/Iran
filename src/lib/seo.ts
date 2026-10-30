@@ -89,3 +89,26 @@ export const ABOUT_ALTERNATES = [
   { hrefLang: 'en', path: '/en/about' },
   { hrefLang: 'x-default', path: '/about' },
 ] as const
+
+export const placeAlternates = (slug: string) => [
+  { hrefLang: 'fa', path: `/place/${slug}` },
+  { hrefLang: 'en', path: `/en/place/${slug}` },
+  { hrefLang: 'x-default', path: `/place/${slug}` },
+]
+
+export function placeJsonLd(opts: { locale: 'fa' | 'en'; slug: string; name: string; description: string; lat: number; lon: number; sameAs?: string }) {
+  const path = opts.locale === 'fa' ? `/place/${opts.slug}` : `/en/place/${opts.slug}`
+  return {
+    type: 'application/ld+json',
+    children: JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'LandmarksOrHistoricalBuildings',
+      inLanguage: opts.locale,
+      name: opts.name,
+      description: opts.description,
+      url: SITE_URL + path,
+      geo: { '@type': 'GeoCoordinates', latitude: opts.lat, longitude: opts.lon },
+      ...(opts.sameAs ? { sameAs: opts.sameAs } : {}),
+    }),
+  }
+}

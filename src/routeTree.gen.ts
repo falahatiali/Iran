@@ -21,7 +21,9 @@ import { Route as EnArchivesRouteImport } from './routes/en/archives'
 import { Route as EnCylinderRouteImport } from './routes/en/cylinder'
 import { Route as EnDariusRouteImport } from './routes/en/darius'
 import { Route as KingSlugRouteImport } from './routes/king/$slug'
+import { Route as PlaceSlugRouteImport } from './routes/place/$slug'
 import { Route as EnKingSlugRouteImport } from './routes/en/king/$slug'
+import { Route as EnPlaceSlugRouteImport } from './routes/en/place/$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -83,9 +85,19 @@ const KingSlugRoute = KingSlugRouteImport.update({
   path: '/king/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PlaceSlugRoute = PlaceSlugRouteImport.update({
+  id: '/place/$slug',
+  path: '/place/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EnKingSlugRoute = EnKingSlugRouteImport.update({
   id: '/en/king/$slug',
   path: '/en/king/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnPlaceSlugRoute = EnPlaceSlugRouteImport.update({
+  id: '/en/place/$slug',
+  path: '/en/place/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -102,7 +114,9 @@ export interface FileRoutesByFullPath {
   '/en/cylinder': typeof EnCylinderRoute
   '/en/darius': typeof EnDariusRoute
   '/king/$slug': typeof KingSlugRoute
+  '/place/$slug': typeof PlaceSlugRoute
   '/en/king/$slug': typeof EnKingSlugRoute
+  '/en/place/$slug': typeof EnPlaceSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -117,7 +131,9 @@ export interface FileRoutesByTo {
   '/en/cylinder': typeof EnCylinderRoute
   '/en/darius': typeof EnDariusRoute
   '/king/$slug': typeof KingSlugRoute
+  '/place/$slug': typeof PlaceSlugRoute
   '/en/king/$slug': typeof EnKingSlugRoute
+  '/en/place/$slug': typeof EnPlaceSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -133,7 +149,9 @@ export interface FileRoutesById {
   '/en/cylinder': typeof EnCylinderRoute
   '/en/darius': typeof EnDariusRoute
   '/king/$slug': typeof KingSlugRoute
+  '/place/$slug': typeof PlaceSlugRoute
   '/en/king/$slug': typeof EnKingSlugRoute
+  '/en/place/$slug': typeof EnPlaceSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -150,7 +168,9 @@ export interface FileRouteTypes {
     | '/en/cylinder'
     | '/en/darius'
     | '/king/$slug'
+    | '/place/$slug'
     | '/en/king/$slug'
+    | '/en/place/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -165,7 +185,9 @@ export interface FileRouteTypes {
     | '/en/cylinder'
     | '/en/darius'
     | '/king/$slug'
+    | '/place/$slug'
     | '/en/king/$slug'
+    | '/en/place/$slug'
   id:
     | '__root__'
     | '/'
@@ -180,7 +202,9 @@ export interface FileRouteTypes {
     | '/en/cylinder'
     | '/en/darius'
     | '/king/$slug'
+    | '/place/$slug'
     | '/en/king/$slug'
+    | '/en/place/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -196,7 +220,9 @@ export interface RootRouteChildren {
   EnCylinderRoute: typeof EnCylinderRoute
   EnDariusRoute: typeof EnDariusRoute
   KingSlugRoute: typeof KingSlugRoute
+  PlaceSlugRoute: typeof PlaceSlugRoute
   EnKingSlugRoute: typeof EnKingSlugRoute
+  EnPlaceSlugRoute: typeof EnPlaceSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -285,11 +311,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KingSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/place/$slug': {
+      id: '/place/$slug'
+      path: '/place/$slug'
+      fullPath: '/place/$slug'
+      preLoaderRoute: typeof PlaceSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/en/king/$slug': {
       id: '/en/king/$slug'
       path: '/en/king/$slug'
       fullPath: '/en/king/$slug'
       preLoaderRoute: typeof EnKingSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/place/$slug': {
+      id: '/en/place/$slug'
+      path: '/en/place/$slug'
+      fullPath: '/en/place/$slug'
+      preLoaderRoute: typeof EnPlaceSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -308,7 +348,9 @@ const rootRouteChildren: RootRouteChildren = {
   EnCylinderRoute: EnCylinderRoute,
   EnDariusRoute: EnDariusRoute,
   KingSlugRoute: KingSlugRoute,
+  PlaceSlugRoute: PlaceSlugRoute,
   EnKingSlugRoute: EnKingSlugRoute,
+  EnPlaceSlugRoute: EnPlaceSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

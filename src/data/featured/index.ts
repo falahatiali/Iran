@@ -26,6 +26,7 @@ const darius: FeaturedKing = {
   synthesis: dariusSynthesis,
   sources: dariusSources,
   related: [
+    { href: { fa: '/place/bisotun', en: '/en/place/bisotun' }, label: { fa: 'بیستون: کوه، نقش و کتیبه', en: 'Bisotun: the mountain, relief and inscription' } },
     { href: { fa: '/archives', en: '/en/archives' }, label: { fa: 'بایگانی تخت‌جمشید', en: 'The Persepolis archives' } },
     { href: { fa: '/cylinder', en: '/en/cylinder' }, label: { fa: 'استوانهٔ کوروش', en: 'The Cyrus Cylinder' } },
   ],

@@ -52,7 +52,9 @@ export function Header({ data }: { data: Overview }) {
           <div className="flex items-center gap-2">
             <a
               href={
-                pathname === '/en/about' ? '/about'
+                pathname.startsWith('/en/place/') ? pathname.slice(3)
+                  : pathname.startsWith('/place/') ? `/en${pathname}`
+                  : pathname === '/en/about' ? '/about'
                   : pathname === '/about' ? '/en/about'
                   : pathname.startsWith('/en/king/') ? pathname.slice(3)
                   : pathname.startsWith('/king/') && isFeaturedKing(pathname.slice(6)) ? `/en${pathname}`

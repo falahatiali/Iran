@@ -9,6 +9,7 @@ import { EventIcon } from '../../components/EventIcon'
 import { eventTypeNames, fa, range, shRange, year } from '../../lib/format'
 import { kingAlternates, kingJsonLd, seo } from '../../lib/seo'
 import { getFeaturedKing } from '../../data/featured'
+import { placesForKing } from '../../data/places'
 import { FeaturedDossier } from '../../components/featured/FeaturedDossier'
 
 export const Route = createFileRoute('/king/$slug')({
@@ -102,6 +103,11 @@ function KingPage() {
             </section>
           )}
 
+          {placesForKing(r.id).length > 0 && (
+            <section aria-label="مکان‌های مرتبط" className="mt-10 flex flex-wrap gap-2">
+              {placesForKing(r.id).map((pl) => <Link key={pl.slug} to="/place/$slug" params={{ slug: pl.slug }} className="glass rounded-full px-4 py-2 inline-flex items-center min-h-11 hover:border-gold">مکان: {pl.name.fa}</Link>)}
+            </section>
+          )}
           {featured && <FeaturedDossier king={featured} locale="fa" />}
 
           <nav aria-label="فرمانروای پیشین و پسین" className="grid sm:grid-cols-2 gap-4">
