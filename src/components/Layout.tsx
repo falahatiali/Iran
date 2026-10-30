@@ -26,6 +26,7 @@ export function Header({ data }: { data: Overview }) {
         { to: '/', label: 'Home' },
         { to: '/cylinder', label: 'Cyrus Cylinder' },
         { to: '/archives', label: 'Persepolis archives' },
+        { to: '/en/king/$slug', params: { slug: 'darius-i' }, label: 'Darius the Great' },
         { to: '/timeline', label: 'Timeline' },
         { to: '/en/about', label: 'About' },
       ] as const
@@ -33,6 +34,7 @@ export function Header({ data }: { data: Overview }) {
         { to: '/', label: 'خانه' },
         { to: '/cylinder', label: 'استوانهٔ کوروش' },
         { to: '/archives', label: 'بایگانی تخت‌جمشید' },
+        { to: '/king/$slug', params: { slug: 'darius-i' }, label: 'داریوش بزرگ' },
         { to: '/timeline', label: 'گاه‌شمار' },
         { to: '/about', label: 'درباره و روش‌شناسی' },
       ] as const
@@ -44,7 +46,7 @@ export function Header({ data }: { data: Overview }) {
           <Link to="/" className="flex items-center gap-2 font-black text-lg min-h-11"><Shamseh className="size-8" /><span className="text-gilded">{locale === 'en' ? 'Iran History' : 'تاریخ ایران'}</span></Link>
           <nav aria-label="ناوبری اصلی" className="hidden md:flex items-center gap-1">
             {links.map((l) => (
-              <Link key={l.to} to={l.to} activeOptions={{ exact: true }} className="rounded-full px-4 py-3 text-sm text-ivory/75 hover:text-gold transition-colors min-h-11" activeProps={{ className: 'bg-gold/15 !text-gold-bright' }}>{l.label}</Link>
+              <Link key={l.label} to={l.to} params={'params' in l ? l.params : undefined} activeOptions={{ exact: true }} className="rounded-full px-4 py-3 text-sm text-ivory/75 hover:text-gold transition-colors min-h-11" activeProps={{ className: 'bg-gold/15 !text-gold-bright' }}>{l.label}</Link>
             ))}
           </nav>
           <div className="flex items-center gap-2">
@@ -73,7 +75,7 @@ export function Header({ data }: { data: Overview }) {
         </div>
         {menu && (
           <nav id="mobile-nav" aria-label="ناوبری موبایل" className="md:hidden border-t border-gold/15 px-4 py-2 flex flex-col">
-            {links.map((l) => <Link key={l.to} to={l.to} onClick={() => setMenu(false)} className="py-3 text-ivory/80 min-h-11 flex items-center">{l.label}</Link>)}
+            {links.map((l) => <Link key={l.label} to={l.to} params={'params' in l ? l.params : undefined} onClick={() => setMenu(false)} className="py-3 text-ivory/80 min-h-11 flex items-center">{l.label}</Link>)}
           </nav>
         )}
         <motion.div style={{ scaleX }} className="h-0.5 origin-right bg-gradient-to-l from-turquoise via-gold to-crimson" aria-hidden="true" />
