@@ -102,6 +102,10 @@ export const parSources: Record<string, FeaturedSource> = Object.fromEntries(([
   { id: 'olbrycht1998', author: 'M. J. Olbrycht', title: 'Parthia et ulteriores gentes: Die politischen Beziehungen zwischen dem arsakidischen Iran und den Nomaden der eurasischen Steppen', year: '1998' },
   { id: 'sherwin-white', author: 'A. N. Sherwin-White', title: 'Roman Foreign Policy in the East, 168 B.C. to A.D. 1', year: '1984' },
   { id: 'ziegler', author: 'K.-H. Ziegler', title: 'Die Beziehungen zwischen Rom und dem Partherreich', year: '1964' },
+  { id: 'pliny', author: 'Pliny the Elder, tr. J. Bostock & H. T. Riley', title: 'Natural History 6.18 (6.47): Margiana', year: '1855' },
+  { id: 'florus', author: 'Florus, tr. E. S. Forster', title: 'Epitome of Roman History 1.46, 2.19–20', year: '1929' },
+  { id: 'dubs', author: 'H. H. Dubs', title: 'A Roman City in Ancient China', year: '1957', note: { fa: 'خاستگاه نظریهٔ «رومیان لیچیان»؛ نظریه‌ای مدرن که در منابع باستانی نیست.', en: 'The origin of the “Romans of Liqian” theory: a modern idea not found in the ancient sources.' } },
+  { id: 'overtoom', author: 'N. L. Overtoom', title: 'Reign of Arrows: The Rise of the Parthian Empire in the Hellenistic Middle East', year: '2020' },
 ] as FeaturedSource[]).map((s) => [s.id, s]))
 
 export const pick = (...ids: string[]): FeaturedSource[] => ids.map((id) => {

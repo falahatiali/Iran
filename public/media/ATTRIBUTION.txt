@@ -100,3 +100,16 @@ mithridates-ii/reign-{fa,en}.{gif,mp4,webm,png}
   scripts/render-campaign-clip.py --section reign. Narrative after Justin 42.2, Strabo 11.14.15, Plutarch, Sulla 5,
   Sima Qian, Shiji 123 (tr. B. Watson), Iranica and Olbrycht, as cited on the page. Routes are editorial sketches.
   Coastlines: Natural Earth (public domain).
+
+orodes-ii/reign-{fa,en}.{gif,mp4,webm,png}
+  Original animation by this project (same licence as the site). The life of Orodes II: the brothers' war and
+  Surena at Seleucia, Crassus at Zeugma, Orodes in Armenia, Carrhae, Crassus' death near Sinnaca, the Bacchae at
+  Artaxata, Pacorus in Syria (51 and 40 BCE), the Amanus, Gindarus and Orodes' death. Rendered from this site's own
+  /king/orodes-ii page by scripts/render-campaign-clip.py --section reign. Narrative after Plutarch, Crassus and
+  Antony, Justin 42.4, Dio and Encyclopaedia Iranica (Olbrycht; Shahbazi), as cited on the page. Routes are
+  editorial sketches; the site of Sinnaca is unknown. Coastlines: Natural Earth (public domain).
+
+orodes-ii/battle-carrhae-{fa,en}.{gif,mp4,webm,png}
+  Original animation by this project (same licence as the site). Schematic phases of Carrhae (53 BCE) after
+  Plutarch, Crassus 23–31 and Shahbazi, "Carrhae", Encyclopaedia Iranica. Rendered by
+  scripts/render-campaign-clip.py --battle carrhae. Positions are editorial, not to scale.

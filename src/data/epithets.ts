@@ -39,6 +39,13 @@ export const epithets: Record<string, Epithet[]> = {
   'gotarzes-i': [
     { fa: 'ساتراپ ساتراپ‌ها', en: 'Satrap of satraps', lang: 'Greek', meaning: { fa: 'نوشتهٔ نقش ویران‌شدهٔ بیستون به خوانش هرتسفلد؛ یکی بودن این گودرز با شاه محل بحث است', en: 'the damaged Bisotun relief as read by Herzfeld; whether this Gotarzes is the king is disputed' }, kind: 'title', source: { label: 'K. Schippmann, “Arsacids ii”, Encyclopaedia Iranica (1986)', url: 'https://www.iranicaonline.org/articles/arsacids-ii/' } },
   ],
+  'orodes-ii': [
+    { fa: 'شاه شاهان', en: 'King of Kings', lang: 'Greek', meaning: { fa: 'بر سکه‌ها: ΒΑΣΙΛΕΩΣ ΒΑΣΙΛΕΩΝ', en: 'on the coins: ΒΑΣΙΛΕΩΣ ΒΑΣΙΛΕΩΝ' }, kind: 'title', source: { label: 'M. J. Olbrycht, “Orodes II”, Encyclopaedia Iranica (2021)', url: 'https://www.iranicaonline.org/articles/orodes-ii/' } },
+    { fa: 'اوئرگتس', en: 'Euergetes', lang: 'Greek', meaning: { fa: '«نیکوکار»؛ بر سکه‌ها', en: '“Benefactor”; on the coins' }, kind: 'title', source: { label: 'M. J. Olbrycht, “Orodes II”, Encyclopaedia Iranica (2021)', url: 'https://www.iranicaonline.org/articles/orodes-ii/' } },
+    { fa: 'دیکایوس', en: 'Dikaios', lang: 'Greek', meaning: { fa: '«دادگر»؛ بر سکه‌ها', en: '“the Just”; on the coins' }, kind: 'title', source: { label: 'M. J. Olbrycht, “Orodes II”, Encyclopaedia Iranica (2021)', url: 'https://www.iranicaonline.org/articles/orodes-ii/' } },
+    { fa: 'اپیفانس', en: 'Epiphanes', lang: 'Greek', meaning: { fa: '«آشکار (چون خدا)»؛ بر سکه‌ها', en: '“Manifest (as a god)”; on the coins' }, kind: 'title', source: { label: 'M. J. Olbrycht, “Orodes II”, Encyclopaedia Iranica (2021)', url: 'https://www.iranicaonline.org/articles/orodes-ii/' } },
+    { fa: 'فیلهلن', en: 'Philhellene', lang: 'Greek', meaning: { fa: '«دوستدار یونانیان»؛ بر سکه‌ها', en: '“friend of the Greeks”; on the coins' }, kind: 'title', source: { label: 'M. J. Olbrycht, “Orodes II”, Encyclopaedia Iranica (2021)', url: 'https://www.iranicaonline.org/articles/orodes-ii/' } },
+  ],
   'shutruk-nakhunte': [
     { fa: 'شاه انشان و شوش', en: 'King of Anshan and Susa', lang: 'Elamite', meaning: { fa: 'عنوان رسمی او در کتیبه‌هایش', en: 'his official style in his inscriptions' }, kind: 'title', source: { label: 'Elamite inscription on the Naram-Sin stele (Louvre Sb 4), tr. M. Van De Mieroop, A History of the Ancient Near East (2015), p. 199' } },
     { fa: 'بندهٔ محبوب اینشوشیناک', en: 'Beloved servant of Inshushinak', lang: 'Elamite', kind: 'title', source: { label: 'Elamite inscription on the Naram-Sin stele (Louvre Sb 4), tr. M. Van De Mieroop, A History of the Ancient Near East (2015), p. 199' } },
