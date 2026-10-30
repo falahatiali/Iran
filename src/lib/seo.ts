@@ -17,6 +17,7 @@ export function seo({
   locale = 'fa_IR',
   alternates,
   noindex = false,
+  image,
 }: {
   title: string
   description: string
@@ -24,7 +25,10 @@ export function seo({
   locale?: string
   alternates?: { hrefLang: string; path: string }[]
   noindex?: boolean
+  /** site-relative or absolute og:image; switches the Twitter card to summary_large_image */
+  image?: string
 }) {
+  const img = image ? (image.startsWith('http') ? image : SITE_URL + image) : undefined
   const full = title === SITE_NAME ? title : `${title} | ${SITE_NAME}`
   return {
     meta: [
@@ -36,7 +40,8 @@ export function seo({
       { property: 'og:locale', content: locale },
       { property: 'og:url', content: SITE_URL + path },
       { property: 'og:site_name', content: SITE_NAME },
-      { name: 'twitter:card', content: 'summary' },
+      { name: 'twitter:card', content: img ? 'summary_large_image' : 'summary' },
+      ...(img ? [{ property: 'og:image', content: img }, { name: 'twitter:image', content: img }] : []),
       ...(noindex ? [{ name: 'robots', content: 'noindex, follow' }] : []),
     ],
     links: [

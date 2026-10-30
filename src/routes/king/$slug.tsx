@@ -22,6 +22,7 @@ export const Route = createFileRoute('/king/$slug')({
       description: `${loaderData.ruler.name} (${loaderData.dynasty.name}): ${loaderData.ruler.description}`,
       path: `/king/${params.slug}`,
       alternates: fk ? kingAlternates(params.slug) : undefined,
+      image: fk?.shareImage,
     })
     return {
       ...base,

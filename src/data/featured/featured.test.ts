@@ -15,5 +15,13 @@ test('featured slug list matches the registry and every slug is a real ruler', (
     const ids = new Set(k.sources.map((s) => s.id))
     for (const e of k.events) for (const s of e.sources) assert.ok(ids.has(s), `${slug}/${e.id}/${s}`)
     for (const d of k.dossier) for (const s of d.sources) assert.ok(ids.has(s), `${slug}/${d.id}/${s}`)
+    if (k.campaign) {
+      const c = k.campaign
+      for (const e of c.events) {
+        assert.ok(e.year >= c.span[0] && e.year <= c.span[1], `${slug}/campaign/${e.id}`)
+        for (const s of e.sources) assert.ok(ids.has(s), `${slug}/campaign/${e.id}/${s}`)
+      }
+      for (const b of c.battles ?? []) for (const p of b.phases) for (const s of p.sources) assert.ok(ids.has(s), `${slug}/${b.id}/${p.id}/${s}`)
+    }
   }
 })

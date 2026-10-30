@@ -1,5 +1,5 @@
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useId, useState } from 'react'
 import { BASEMAP, LAND_PATH } from '../../data/basemap'
 import type { Certainty, Coord, EventKind, FeaturedSource, MapEvent } from '../../data/featured/types'
 import type { Locale } from '../../lib/i18n'
@@ -31,8 +31,37 @@ const PLACES: { name: { fa: string; en: string }; c: Coord }[] = [
   { name: { fa: 'باختر', en: 'Bactra' }, c: [66.9, 36.75] },
 ]
 
-export function CampaignMap({ events, sources, locale, label }: { events: MapEvent[]; sources: FeaturedSource[]; locale: Locale; label?: string }) {
+const FLEET = '#60a5fa'
+
+/** Fit a [lonMin, latMin, lonMax, latMax] window to the basemap's aspect ratio. */
+function viewBoxOf(view?: [number, number, number, number]) {
+  if (!view) return { x: 0, y: 0, w: BASEMAP.width, h: BASEMAP.height }
+  const [x0, y1] = project([view[0], view[1]])
+  const [x1, y0] = project([view[2], view[3]])
+  let w = x1 - x0, h = y1 - y0
+  const aspect = BASEMAP.width / BASEMAP.height
+  if (w / h < aspect) w = h * aspect
+  else h = w / aspect
+  return { x: (x0 + x1) / 2 - w / 2, y: (y0 + y1) / 2 - h / 2, w, h }
+}
+
+/** Optional capture hook: scripts/render-campaign-clip.py sets window.__FK_STEP_MS to pace autoplay for recording. */
+const stepMs = (reduce: boolean | null) => {
+  const w = typeof window !== 'undefined' ? (window as unknown as { __FK_STEP_MS?: number }).__FK_STEP_MS : undefined
+  return w ?? (reduce ? 6000 : 3800)
+}
+
+export function CampaignMap({ events, sources, locale, label, view, places, stamp = 'year' }: {
+  events: MapEvent[]; sources: FeaturedSource[]; locale: Locale; label?: string
+  view?: [number, number, number, number]; places?: { name: { fa: string; en: string }; c: Coord; left?: boolean }[]; stamp?: 'year' | 'when'
+}) {
   const isFa = locale === 'fa'
+  const uid = useId().replace(/:/g, '')
+  const vb = viewBoxOf(view)
+  const k = vb.w / BASEMAP.width
+  /** zoomed maps get larger place labels: fewer, more important names */
+  const lf = view ? 13 : 9
+  const labels: { name: { fa: string; en: string }; c: Coord; left?: boolean }[] = places ?? PLACES
   const reduce = useReducedMotion()
   const [i, setI] = useState(0)
   const [playing, setPlaying] = useState(false)
@@ -43,7 +72,7 @@ export function CampaignMap({ events, sources, locale, label }: { events: MapEve
   useEffect(() => {
     if (!playing) return
     if (i >= last) { setPlaying(false); return }
-    const t = window.setTimeout(() => setI((n) => n + 1), reduce ? 6000 : 3800)
+    const t = window.setTimeout(() => setI((n) => n + 1), stepMs(reduce))
     return () => window.clearTimeout(t)
   }, [playing, i, last, reduce])
 
@@ -68,40 +97,50 @@ export function CampaignMap({ events, sources, locale, label }: { events: MapEve
     <section aria-label={t.map} className="glass rounded-2xl p-3 md:p-4" onKeyDown={onKey} tabIndex={0}>
       <div className="grid gap-4 lg:grid-cols-[1.6fr_1fr]">
         <figure className="relative overflow-hidden rounded-xl">
-          <svg viewBox={`0 0 ${BASEMAP.width} ${BASEMAP.height}`} role="img" aria-label={`${t.map}: ${ev.title[locale]}`} className="w-full h-auto">
+          <svg viewBox={`${vb.x} ${vb.y} ${vb.w} ${vb.h}`} role="img" aria-label={`${t.map}: ${ev.title[locale]}`} className="w-full h-auto">
             <defs>
-              <marker id="fk-arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+              <marker id={`${uid}-arrow`} viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
                 <path d="M0 0L10 5L0 10z" fill={KIND_COLOR[ev.kind]} />
               </marker>
-              <radialGradient id="fk-glow"><stop offset="0%" stopColor="#f2d68b" stopOpacity=".55" /><stop offset="100%" stopColor="#f2d68b" stopOpacity="0" /></radialGradient>
+              <marker id={`${uid}-ship`} viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                <path d="M0 0L10 5L0 10z" fill={FLEET} />
+              </marker>
+              <radialGradient id={`${uid}-glow`}><stop offset="0%" stopColor="#f2d68b" stopOpacity=".55" /><stop offset="100%" stopColor="#f2d68b" stopOpacity="0" /></radialGradient>
             </defs>
-            <rect width="100%" height="100%" fill="#0a1636" />
-            <path d={LAND_PATH} fill="#1b2a52" stroke="#d9b45a" strokeOpacity=".25" strokeWidth=".6" />
-            {PLACES.map((p) => { const [px, py] = project(p.c); return (
+            <rect x={vb.x} y={vb.y} width={vb.w} height={vb.h} fill="#0a1636" />
+            <path d={LAND_PATH} fill="#1b2a52" stroke="#d9b45a" strokeOpacity=".25" strokeWidth={0.6 * k} />
+            {labels.map((p) => { const [px, py] = project(p.c); return (
               <g key={p.name.en} aria-hidden="true">
-                <circle cx={px} cy={py} r="1.8" fill="#f5f0e6" fillOpacity=".5" />
-                <text x={px + 4} y={py + 10} fill="#f5f0e6" fillOpacity=".45" fontSize="9">{p.name[locale]}</text>
+                <circle cx={px} cy={py} r={(view ? 2.6 : 1.8) * k} fill="#f5f0e6" fillOpacity=".6" />
+                <text x={p.left ? px - 4 * k : px + 4 * k} y={py + (lf + 1) * k} textAnchor={p.left ? 'end' : 'start'} fill="#f5f0e6" fillOpacity=".6" fontSize={lf * k}>{p.name[locale]}</text>
               </g>
             ) })}
-            {events.slice(0, i).map((e) => e.route && (
-              <path key={e.id} d={pathOf(e.route)} fill="none" stroke={KIND_COLOR[e.kind]} strokeOpacity=".22" strokeWidth="1.4" strokeDasharray="3 3" />
+            {events.slice(0, i).map((e) => (
+              <g key={e.id}>
+                {e.route && <path d={pathOf(e.route)} fill="none" stroke={KIND_COLOR[e.kind]} strokeOpacity=".3" strokeWidth={1.4 * k} strokeDasharray={`${3 * k} ${3 * k}`} />}
+                {e.fleet && <path d={pathOf(e.fleet)} fill="none" stroke={FLEET} strokeOpacity=".3" strokeWidth={1.4 * k} strokeDasharray={`${1.5 * k} ${2.5 * k}`} />}
+              </g>
             ))}
             {events.map((e, n) => { const [ex, ey] = project(e.coord); return (
-              <circle key={e.id} cx={ex} cy={ey} r={n === i ? 0 : 3} fill={KIND_COLOR[e.kind]} fillOpacity={n < i ? 0.75 : 0.2}
+              <circle key={e.id} cx={ex} cy={ey} r={n === i ? 0 : 3 * k} fill={KIND_COLOR[e.kind]} fillOpacity={n < i ? 0.75 : 0.2}
                 className="cursor-pointer" onClick={() => go(n)}>
                 <title>{`${year(e.year)} · ${e.title[locale]}`}</title>
               </circle>
             ) })}
             {ev.route && (
-              <motion.path key={`r-${ev.id}`} d={pathOf(ev.route)} fill="none" stroke={KIND_COLOR[ev.kind]} strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" markerEnd="url(#fk-arrow)"
+              <motion.path key={`r-${ev.id}`} d={pathOf(ev.route)} fill="none" stroke={KIND_COLOR[ev.kind]} strokeWidth={2.6 * k} strokeLinecap="round" strokeLinejoin="round" markerEnd={`url(#${uid}-arrow)`}
                 initial={reduce ? false : { pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 2.2, ease: 'easeInOut' }} />
             )}
-            <motion.g key={`m-${ev.id}`} initial={reduce ? false : { opacity: 0, scale: 0.4 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: reduce ? 0 : ev.route ? 1.8 : 0.1, duration: 0.5 }} style={{ transformOrigin: `${x}px ${y}px` }}>
-              <circle cx={x} cy={y} r="22" fill="url(#fk-glow)" />
-              {!reduce && <motion.circle cx={x} cy={y} r="7" fill="none" stroke={KIND_COLOR[ev.kind]} strokeWidth="1.5" animate={{ r: [7, 16], opacity: [0.9, 0] }} transition={{ repeat: Infinity, duration: 1.8 }} />}
-              <circle cx={x} cy={y} r="6" fill={KIND_COLOR[ev.kind]} stroke="#0a1636" strokeWidth="1.5" />
+            {ev.fleet && (
+              <motion.path key={`f-${ev.id}`} d={pathOf(ev.fleet)} fill="none" stroke={FLEET} strokeWidth={2.2 * k} strokeLinecap="round" strokeLinejoin="round" strokeDasharray={`${4 * k} ${2 * k}`} markerEnd={`url(#${uid}-ship)`}
+                initial={reduce ? false : { pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 2.2, ease: 'easeInOut' }} />
+            )}
+            <motion.g key={`m-${ev.id}`} initial={reduce ? false : { opacity: 0, scale: 0.4 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: reduce ? 0 : ev.route || ev.fleet ? 1.8 : 0.1, duration: 0.5 }} style={{ transformOrigin: `${x}px ${y}px` }}>
+              <circle cx={x} cy={y} r={22 * k} fill={`url(#${uid}-glow)`} />
+              {!reduce && <motion.circle cx={x} cy={y} r={7 * k} fill="none" stroke={KIND_COLOR[ev.kind]} strokeWidth={1.5 * k} animate={{ r: [7 * k, 16 * k], opacity: [0.9, 0] }} transition={{ repeat: Infinity, duration: 1.8 }} />}
+              <circle cx={x} cy={y} r={6 * k} fill={KIND_COLOR[ev.kind]} stroke="#0a1636" strokeWidth={1.5 * k} />
             </motion.g>
-            <text x={isFa ? BASEMAP.width - 16 : 16} y="34" textAnchor={isFa ? 'end' : 'start'} fill="#f2d68b" fontSize="26" fontWeight="900">{year(ev.year)}</text>
+            <text x={isFa ? vb.x + vb.w - 16 * k : vb.x + 16 * k} y={vb.y + 34 * k} textAnchor={isFa ? 'end' : 'start'} fill="#f2d68b" fontSize={(stamp === 'when' ? 20 : 26) * k} fontWeight="900">{stamp === 'when' ? ev.when[locale] : year(ev.year)}</text>
           </svg>
           <figcaption className="text-xs text-ivory/50 mt-2 px-1">
             {isFa ? 'مسیرها طرح ویراستاری و تقریبی‌اند، نه ردّ دقیق جغرافیایی. خطوط ساحلی: Natural Earth (مالکیت عمومی).' : 'Routes are approximate editorial sketches, not exact tracks. Coastlines: Natural Earth (public domain).'}
@@ -152,15 +191,16 @@ export function CampaignMap({ events, sources, locale, label }: { events: MapEve
           <li key={e.id}>
             <button type="button" onClick={() => { setPlaying(false); go(n) }} aria-current={n === i ? 'step' : undefined}
               className={`whitespace-nowrap rounded-full border px-3 min-h-11 ${n === i ? 'border-gold bg-gold/15 text-gold-bright' : 'border-ivory/10 text-ivory/60 hover:border-gold/50'}`}>
-              <span className="inline-block size-2 rounded-full me-1" style={{ background: KIND_COLOR[e.kind] }} aria-hidden="true" />{year(e.year)}
+              <span className="inline-block size-2 rounded-full me-1" style={{ background: KIND_COLOR[e.kind] }} aria-hidden="true" />{stamp === 'when' ? e.when[locale] : year(e.year)}
             </button>
           </li>
         ))}
       </ol>
       <p className="mt-2 flex flex-wrap gap-3 text-xs text-ivory/55" aria-label={t.legend}>
-        {(Object.keys(KIND_COLOR) as EventKind[]).map((k) => (
-          <span key={k} className="inline-flex items-center gap-1"><span className="size-2.5 rounded-full" style={{ background: KIND_COLOR[k] }} aria-hidden="true" />{KIND_LABEL[locale][k]}</span>
+        {(Object.keys(KIND_COLOR) as EventKind[]).map((kind) => (
+          <span key={kind} className="inline-flex items-center gap-1"><span className="size-2.5 rounded-full" style={{ background: KIND_COLOR[kind] }} aria-hidden="true" />{KIND_LABEL[locale][kind]}</span>
         ))}
+        {events.some((e) => e.fleet) && <span className="inline-flex items-center gap-1"><span className="w-4 border-t-2 border-dashed" style={{ borderColor: FLEET }} aria-hidden="true" />{isFa ? 'مسیر ناوگان' : 'Fleet track'}</span>}
         <span className="text-ivory/40">{t.hint}</span>
       </p>
     </section>

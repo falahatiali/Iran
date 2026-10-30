@@ -1,5 +1,6 @@
 import type { FeaturedKing } from './types'
 import { dariusEvents, dariusSources, dossier as dariusDossier, synthesis as dariusSynthesis } from '../darius'
+import { xerxesBattles, xerxesCampaign, xerxesDossier, xerxesEvents, xerxesPhotos, xerxesPlaces, xerxesSources, xerxesSynthesis } from '../xerxes'
 import { untashDossier, untashEvents, untashPhotos, untashSources, untashSynthesis } from '../untash'
 
 export * from './types'
@@ -64,8 +65,55 @@ const untash: FeaturedKing = {
   wikipedia: 'https://en.wikipedia.org/wiki/Untash-Napirisha',
 }
 
+const clip = (ext: string) => ({ fa: `/media/xerxes/war-fa.${ext}`, en: `/media/xerxes/war-en.${ext}` })
+const xerxes: FeaturedKing = {
+  slug: 'xerxes-i',
+  name: { fa: 'خشایارشا', en: 'Xerxes I' },
+  dynastyName: { fa: 'هخامنشیان', en: 'Achaemenids' },
+  reign: { fa: '۴۸۶–۴۶۵ پ.م.', en: '486–465 BCE' },
+  title: { fa: 'خشایارشا؛ سازندهٔ دروازهٔ ملل و جنگ بزرگ با یونان', en: 'Xerxes I: builder of the Gate of All Nations and the great war with Greece' },
+  lede: {
+    fa: 'پسر داریوش و نوهٔ کوروش، که امپراتوری را نگه داشت، شورش‌های مصر و بابل را خواباند، تخت‌جمشید را به اوج رساند و در ۴۸۰ پ.م. به یونان لشکر کشید. زندگی‌اش را به ترتیب دنبال کنید، جنگ یونان را گام‌به‌گام روی نقشهٔ متحرک و در نمودار نبردهای ترموپیل و سالامیس ببینید، و دورانش را با عینک حقوق مالکیت و آزادی فردی بسنجید، با شواهد، تفسیر و معنای امروز در سه لایهٔ جدا. هر جا روایت یونانی است یا محل بحث، گفته‌ایم.',
+    en: 'Son of Darius and grandson of Cyrus, he held the empire together, put down revolts in Egypt and Babylon, brought Persepolis to its peak and invaded Greece in 480 BCE. Follow his life in order, watch the Greek war step by step on the animated map and in diagrams of Thermopylae and Salamis, then weigh his reign through the lens of property rights and individual liberty, with evidence, interpretation and modern meaning in three separate layers. Wherever a story is Greek or disputed, we say so.',
+  },
+  stats: [
+    { n: { fa: '۲۱', en: '21' }, l: { fa: 'سال پادشاهی', en: 'years of reign' } },
+    { n: { fa: '۱٬۲۰۷', en: '1,207' }, l: { fa: 'کشتی جنگی به گفتهٔ هرودوت', en: 'warships, per Herodotus' } },
+    { n: { fa: '۷ روز', en: '7 days' }, l: { fa: 'گذر از هلسپونت (هرودوت ۷.۵۶)', en: 'to cross the Hellespont (Hdt 7.56)' } },
+    { n: { fa: '۴۶۵', en: '465' }, l: { fa: 'سال قتل در کاخ (پ.م.)', en: 'murdered in the palace (BCE)' } },
+  ],
+  mapTitle: { fa: 'نقشهٔ متحرک: زندگی خشایارشا', en: 'Animated map: the life of Xerxes' },
+  events: xerxesEvents,
+  span: [-518, -465],
+  campaign: {
+    id: 'war',
+    title: { fa: 'جنگ یونان، گام‌به‌گام (۴۹۹–۴۷۹ پ.م.)', en: 'The Greek war, step by step (499–479 BCE)' },
+    intro: {
+      fa: ['خط نارنجی راه سپاه و خط آبی خط‌چین راه ناوگان است. هر گام می‌گوید قطعی، محتمل یا محل بحث است. تقریباً همهٔ جزئیات از هرودوت است که یونانی و نیم‌قرن پس از جنگ می‌نوشت؛ ارقام او را ادعای او می‌دانیم.'],
+      en: ['The coloured line is the army’s route and the dashed blue line the fleet’s. Each step says whether it is secure, probable or disputed. Almost every detail comes from Herodotus, a Greek writing half a century later; we treat his numbers as his claim.'],
+    },
+    events: xerxesCampaign,
+    span: [-499, -479],
+    view: [21.6, 36.9, 28.6, 41.2],
+    places: xerxesPlaces,
+    clip: { gif: clip('gif'), mp4: clip('mp4'), webm: clip('webm'), poster: clip('png'), width: 800, height: 298 },
+    battles: xerxesBattles,
+  },
+  shareImage: '/media/xerxes/war-en.png',
+  dossier: xerxesDossier,
+  synthesis: xerxesSynthesis,
+  sources: xerxesSources,
+  photos: xerxesPhotos,
+  related: [
+    { href: { fa: '/king/darius-i', en: '/en/king/darius-i' }, label: { fa: 'داریوش بزرگ، پدرش', en: 'Darius the Great, his father' } },
+    { href: { fa: '/archives', en: '/en/archives' }, label: { fa: 'بایگانی تخت‌جمشید', en: 'The Persepolis archives' } },
+    { href: { fa: '/dynasty/achaemenids', en: '/dynasty/achaemenids' }, label: { fa: 'دودمان هخامنشی', en: 'The Achaemenid dynasty' } },
+  ],
+  wikipedia: 'https://en.wikipedia.org/wiki/Xerxes_I',
+}
+
 /** Registry keyed by ruler slug. Add an entry here to give any king the extended page. */
-export const featuredKings: Record<string, FeaturedKing> = { [untash.slug]: untash, [darius.slug]: darius }
+export const featuredKings: Record<string, FeaturedKing> = { [untash.slug]: untash, [darius.slug]: darius, [xerxes.slug]: xerxes }
 
 export function getFeaturedKing(slug: string): FeaturedKing | undefined {
   return Object.prototype.hasOwnProperty.call(featuredKings, slug) ? featuredKings[slug] : undefined

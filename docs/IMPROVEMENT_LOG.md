@@ -2,6 +2,21 @@
 
 A running record of substantial product and research work. Older infrastructure notes live in git history.
 
+## 2026-10-30 — Xerxes I: life, the Greek war, battle diagrams and a GIF clip
+
+**Directive:** owner. Focus on Xerxes: everything known, his life in order, the Greek war in full, shown as an animation from beginning to end.
+
+**Done in this pass**
+
+- `/king/xerxes-i` and `/en/king/xerxes-i` became featured dossiers. The life map has 12 dated, sourced steps, from his birth c. 518 to his murder in 465.
+- New zoomed campaign map, 15 steps from the Ionian revolt to the aftermath of 479. It shows the army route and a dashed blue fleet track, and labels every step secure, probable or disputed. `CampaignMap` gained the `view`, `places`, `stamp` and `fleet` options, plus the `window.__FK_STEP_MS` capture hook.
+- Schematic `BattleDiagram` component with phase-by-phase Thermopylae (3 phases) and Salamis (4 phases) diagrams. Each phase cites Herodotus book.chapter and flags debated deployments (Tuplin).
+- Clip rendered from the real page by `scripts/render-campaign-clip.py` (headless Chrome + ffmpeg) to `public/media/xerxes/war-{fa,en}.{gif,mp4,webm,png}`. The GIF is under 3 MB; the PNG is the og:image. `seo()` now takes `image`.
+- Ten dossier sections keep the three layers separate: life, the revolts and the Esagila myth (Kuhrt & Sherwin-White 1987; Waerzeggers 2003/4), the war, army size (Herodotus' 1.7M / 5,283,220 given as his claim; modern estimates kept separate), economy and tribute, markets and the post, religion and XPh, law, freedoms, and reception (Aeschylus, Herodotus, Ctesias flagged unreliable, Esther, *300*).
+- Ten Commons photos, with licences checked via the API.
+
+**Next:** Shutruk-Nakhunte.
+
 ## 2026-10-29 — Cylinder: full text, real 3D, property/liberty reading
 
 **Directive:** owner. Remove every named living commentator from the product; keep the liberty/property frame. Argue from the Cylinder’s wording that it recognizes individual property and liberty. Replace the blank reconstruction with a licensed model of the actual object. Print the complete open text.

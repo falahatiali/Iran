@@ -1,0 +1,66 @@
+#!/usr/bin/env python3
+"""Render a featured king's campaign map (map + narrative panel) to GIF, MP4, WebM and a PNG poster.
+
+Usage: python3 scripts/render-campaign-clip.py BASE_URL SLUG OUT_DIR [--section war] [--step-ms 2600]
+Serve a production build first, e.g. `python3 -m http.server 8811 -d .output/public`.
+Writes OUT_DIR/war-fa.* and OUT_DIR/war-en.*. Needs Playwright (Python), Chrome and ffmpeg.
+"""
+import argparse, asyncio, os, shutil, subprocess, tempfile, time
+from playwright.async_api import async_playwright
+
+def ff(*args):
+    subprocess.run(['ffmpeg', '-v', 'error', '-y', *args], check=True)
+
+async def record(url, section, step_ms, workdir, chrome):
+    async with async_playwright() as p:
+        b = await p.chromium.launch(executable_path=chrome)
+        ctx = await b.new_context(viewport={'width': 1200, 'height': 800}, record_video_dir=workdir, record_video_size={'width': 1200, 'height': 800})
+        await ctx.add_init_script(f'window.__FK_STEP_MS = {step_ms}')
+        # Capture-only styling: compact narrative so the panel fits beside the map.
+        css = (f'#{section} article p{{font-size:13px!important;line-height:1.55!important;margin-top:6px!important}}'
+               f'#{section} article h3{{font-size:18px!important;line-height:1.5!important}}'
+               f'#{section} article p:last-of-type, #{section} article p span.block{{display:none!important}}')
+        t0 = time.monotonic()
+        pg = await ctx.new_page()
+        await pg.goto(url, wait_until='networkidle')
+        await pg.add_style_tag(content=css)
+        grid = pg.locator(f'#{section} section[aria-label] > div.grid').first
+        await grid.scroll_into_view_if_needed()
+        await pg.evaluate('(el) => el.scrollIntoView({block: "center"})', await grid.element_handle())
+        await pg.wait_for_timeout(800)
+        box = await grid.bounding_box()
+        steps = await pg.locator(f'#{section} section[aria-label] ol > li').count()
+        await pg.locator(f'#{section} section[aria-label] button[aria-pressed]').first.click()
+        start = time.monotonic() - t0
+        await pg.wait_for_timeout(steps * step_ms + 2500)
+        await pg.screenshot(path=os.path.join(workdir, 'poster.png'), clip=box)
+        dur = time.monotonic() - t0 - start
+        video = await pg.video.path()
+        await ctx.close(); await b.close()
+        return video, box, start, dur
+
+async def main():
+    a = argparse.ArgumentParser()
+    a.add_argument('base'); a.add_argument('slug'); a.add_argument('out')
+    a.add_argument('--section', default='war'); a.add_argument('--step-ms', type=int, default=2600)
+    a.add_argument('--width', type=int, default=640); a.add_argument('--video-width', type=int, default=800); a.add_argument('--fps', type=int, default=5)
+    a.add_argument('--chrome', default='/usr/bin/google-chrome')
+    o = a.parse_args()
+    os.makedirs(o.out, exist_ok=True)
+    for loc, prefix in (('fa', ''), ('en', '/en')):
+        with tempfile.TemporaryDirectory() as wd:
+            video, box, start, dur = await record(f'{o.base}{prefix}/king/{o.slug}/', o.section, o.step_ms, wd, o.chrome)
+            x, y, w, h = (int(round(v)) // 2 * 2 for v in (box['x'], box['y'], box['width'], box['height']))
+            crop = f'crop={w}:{h}:{x}:{y},scale={o.width}:-2:flags=lanczos'
+            vcrop = f'crop={w}:{h}:{x}:{y},scale={o.video_width}:-2:flags=lanczos'
+            base = os.path.join(o.out, f'{o.section}-{loc}')
+            clip = ['-ss', f'{start:.2f}', '-t', f'{dur:.2f}', '-i', video]
+            ff(*clip, '-vf', f'{vcrop},fps=24', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '26', '-movflags', '+faststart', '-an', base + '.mp4')
+            ff(*clip, '-vf', f'{vcrop},fps=24', '-c:v', 'libvpx-vp9', '-b:v', '0', '-crf', '38', '-an', base + '.webm')
+            ff(*clip, '-vf', f'{crop},fps={o.fps},split[a][b];[a]palettegen=max_colors=64:stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=4:diff_mode=rectangle', base + '.gif')
+            ff('-i', os.path.join(wd, 'poster.png'), '-vf', f'scale={o.video_width}:-2:flags=lanczos', base + '.png')
+            print(loc, {k: os.path.getsize(base + k) for k in ('.gif', '.mp4', '.webm', '.png')}, f'{w}x{h}', f'{dur:.1f}s')
+
+if __name__ == '__main__':
+    if not shutil.which('ffmpeg'): raise SystemExit('ffmpeg not found')
+    asyncio.run(main())

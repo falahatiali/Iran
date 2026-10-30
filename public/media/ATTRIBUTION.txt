@@ -37,3 +37,8 @@ License: CC BY 4.0
 https://creativecommons.org/licenses/by/4.0/
 https://sketchfab.com/3d-models/the-cyrus-cylinder-f8d0a48f63f44bb49323b623853f6592
 Not an official British Museum scan.
+
+xerxes/war-{fa,en}.{gif,mp4,webm,png}
+  Animated campaign map of Xerxes' Greek war (480-479 BCE), rendered from this site's own
+  /king/xerxes-i page by scripts/render-campaign-clip.py. Coastlines: Natural Earth (public domain).
+  Narrative after Herodotus (tr. A. D. Godley, 1920) and the modern works cited on the page.

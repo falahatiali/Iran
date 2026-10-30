@@ -17,7 +17,7 @@ export const Route = createFileRoute('/en/king/$slug')({
     const fk = getFeaturedKing(params.slug)
     if (!fk) return {}
     return {
-      ...seo({ title: fk.title.en, description: fk.lede.en.slice(0, 300), path: `/en/king/${params.slug}`, locale: 'en_GB', alternates: kingAlternates(params.slug) }),
+      ...seo({ title: fk.title.en, description: fk.lede.en.slice(0, 300), path: `/en/king/${params.slug}`, locale: 'en_GB', alternates: kingAlternates(params.slug), image: fk.shareImage }),
       scripts: [kingJsonLd({ locale: 'en', slug: params.slug, headline: fk.title.en, name: fk.name.en, sameAs: fk.wikipedia })],
     }
   },

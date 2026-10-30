@@ -3,6 +3,7 @@ import type { BiParas, FeaturedKing } from '../../data/featured/types'
 import type { Locale } from '../../lib/i18n'
 import { Reveal } from '../Reveal'
 import { EvidenceBadge } from '../cylinder/EvidenceBadge'
+import { BattleDiagram } from './BattleDiagram'
 import { CampaignMap } from './CampaignMap'
 
 function Layer({ layer, paras, locale }: { layer: EvidenceLayer; paras: BiParas; locale: Locale }) {
@@ -24,7 +25,8 @@ export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: 
         layersNote: 'Each section has three layers: “Historical evidence” is only what the sources say; “Philosophical interpretation” is our reading by the standard of property and liberty; “Modern cultural meaning”. Quotations come only from published translations, with references.' }
   const photo = (id: string) => king.photos?.find((p) => p.id === id)
   const author = (id: string) => king.sources.find((x) => x.id === id)?.author ?? id
-  const toc = [['map', king.mapTitle[locale]], ['layers', t.layers], ...king.dossier.map((d) => [d.id, d.title[locale]]), ['synthesis', t.synthesis], ['bibliography', t.bib]]
+  const c = king.campaign
+  const toc = [['map', king.mapTitle[locale]], ...(c ? [[c.id, c.title[locale]]] : []), ['layers', t.layers], ...king.dossier.map((d) => [d.id, d.title[locale]]), ['synthesis', t.synthesis], ['bibliography', t.bib]]
 
   return (
     <div lang={locale} dir={isFa ? 'rtl' : 'ltr'} className="space-y-0">
@@ -51,6 +53,29 @@ export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: 
         <h2 className="text-3xl font-black text-gilded mb-4">{king.mapTitle[locale]}</h2>
         <CampaignMap events={king.events} sources={king.sources} locale={locale} label={king.mapTitle[locale]} />
       </section>
+
+      {c && (
+        <section id={c.id} className="scroll-mt-24 mt-16">
+          <h2 className="text-3xl font-black text-gilded mb-4 leading-[1.4]">{c.title[locale]}</h2>
+          {c.intro[locale].map((p, n) => <p key={n} className="mt-3 leading-9 text-ivory/85">{p}</p>)}
+          <div className="mt-6">
+            <CampaignMap events={c.events} sources={king.sources} locale={locale} label={c.title[locale]} view={c.view} places={c.places} stamp="when" />
+          </div>
+          {c.clip && (
+            <figure className="mt-8 glass rounded-3xl p-4 md:p-6">
+              <video controls muted playsInline loop preload="none" poster={c.clip.poster[locale]} width={c.clip.width} height={c.clip.height} className="w-full h-auto rounded-2xl">
+                <source src={c.clip.webm[locale]} type="video/webm" />
+                <source src={c.clip.mp4[locale]} type="video/mp4" />
+              </video>
+              <figcaption className="mt-3 text-sm text-ivory/70 leading-7">
+                {isFa ? 'همین نقشه به صورت کلیپ برای هم‌رسانی. بارگیری:' : 'The same map as a shareable clip. Download:'}{' '}
+                <a href={c.clip.gif[locale]} download className="text-gold hover:underline">GIF</a> · <a href={c.clip.mp4[locale]} download className="text-gold hover:underline">MP4</a> · <a href={c.clip.webm[locale]} download className="text-gold hover:underline">WebM</a>
+              </figcaption>
+            </figure>
+          )}
+          {c.battles?.map((b) => <div key={b.id} id={`battle-${b.id}`} className="mt-10 scroll-mt-24"><BattleDiagram battle={b} sources={king.sources} locale={locale} /></div>)}
+        </section>
+      )}
 
       <section id="layers" className="scroll-mt-24 mt-14">
         <h2 className="text-2xl font-black text-gilded">{t.layers}</h2>
