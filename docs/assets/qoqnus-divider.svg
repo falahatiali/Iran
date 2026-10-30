@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 60" width="600" height="60" role="img" aria-label="Qoqnus divider">
+<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2d68b"/><stop offset="1" stop-color="#b8892f"/></linearGradient></defs>
+<path d="M20,34 H250 M350,34 H580" stroke="#b8892f" stroke-width="1.5"/>
+<path d="M240,34 l6,-5 6,5 -6,5z M348,34 l6,-5 6,5 -6,5z" fill="#c99a3c"/>
+<g transform="translate(300,36)" fill="url(#g)" stroke="#7a5a1c" stroke-width=".8">
+<path d="M0,-4 C-10,-14 -30,-22 -44,-20 C-34,-14 -26,-8 -18,-4 C-28,-6 -38,-4 -44,0 C-30,2 -16,2 -6,2Z"/>
+<path d="M0,-4 C10,-14 30,-22 44,-20 C34,-14 26,-8 18,-4 C28,-6 38,-4 44,0 C30,2 16,2 6,2Z"/>
+<path d="M-5,2 C-6,-8 -4,-16 0,-20 C4,-16 6,-8 5,2Z"/><path d="M0,-20 C2,-26 6,-28 9,-27 L5,-23Z"/>
+<path d="M-4,2 C-10,10 -8,18 0,22 C-3,14 0,10 0,6 C0,10 3,14 0,22 C8,18 10,10 4,2Z" fill="#e0703a" stroke="#8a3a14"/>
+</g></svg>
