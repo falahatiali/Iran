@@ -163,7 +163,7 @@ export function TimelineChart({ dynasties, events, win, selected, onWindow, onSe
             <CertaintyBadge y={selected.year} />
           </div>
           <h3 className="mt-2 text-xl font-bold">{selected.title}</h3>
-          {selected.description && <p className="mt-1 text-ivory/70 leading-8">{selected.description}</p>}
+          {selected.description && <p className="read mt-1 text-ivory/70">{selected.description}</p>}
           <div className="mt-3 flex flex-wrap gap-2">
             <Link to="/dynasty/$slug" params={{ slug: selected.dynastySlug }} className={btn}>{selected.dynastyName}</Link>
             {(() => { const pl = placeForEventTitle(selected.title); return pl && <Link to="/place/$slug" params={{ slug: pl.slug }} className={btn}>صفحهٔ {pl.name.fa}</Link> })()}

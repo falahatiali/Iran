@@ -85,7 +85,7 @@ export function CylinderReader({ locale }: { locale: Locale }) {
     <div className="space-y-5" dir={isFa ? 'rtl' : 'ltr'}>
       <header className="space-y-3">
         <h2 className="text-3xl font-black text-gilded">{t.title}</h2>
-        <p className="leading-9 text-ivory/80">{t.lede}</p>
+        <p className="read text-ivory/80">{t.lede}</p>
         <p className="text-xs text-ivory/50">{t.source}</p>
       </header>
 
@@ -152,19 +152,19 @@ export function CylinderReader({ locale }: { locale: Locale }) {
                   className={`grid gap-4 ${colCount === 3 ? 'md:grid-cols-3' : colCount === 2 ? 'md:grid-cols-2' : 'grid-cols-1'}`}
                 >
                   {cols.akk && (
-                    <p className="font-serif text-[1.05rem] leading-8 text-ivory/90" dir="ltr" lang="akk">
+                    <p className="read font-serif text-ivory/90" dir="ltr" lang="akk">
                       <span className="block text-[0.7rem] uppercase tracking-wide text-ivory/40 mb-1">{t.akk}</span>
                       {line.akkadian}
                     </p>
                   )}
                   {cols.en && (
-                    <p className="font-serif text-[1.05rem] leading-8 text-ivory/90" dir="ltr" lang="en">
+                    <p className="read font-serif text-ivory/90" dir="ltr" lang="en">
                       <span className="block text-[0.7rem] uppercase tracking-wide text-ivory/40 mb-1">{t.en}</span>
                       {line.en}
                     </p>
                   )}
                   {cols.fa && (
-                    <p className="leading-8 text-ivory/90" dir="rtl" lang="fa">
+                    <p className="read text-ivory/90" dir="rtl" lang="fa">
                       <span className="block text-[0.7rem] tracking-wide text-ivory/40 mb-1">{t.fa}</span>
                       {line.fa}
                     </p>

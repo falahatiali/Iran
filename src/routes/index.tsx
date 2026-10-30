@@ -152,7 +152,7 @@ function Home() {
                   <p className="text-sm text-turquoise-soft">{eraNames[d.era]} · {fa(i + 1)}</p>
                   <h2 id={`h-${d.slug}`} className="text-4xl md:text-5xl font-black mt-2" style={{ textShadow: `0 0 40px ${d.accent}` }}>{d.name}</h2>
                   <p dir="ltr" className="text-right text-sm text-ivory/50 mt-1">{d.latin}</p>
-                  <p className="mt-4 max-w-3xl leading-8 text-ivory/80">{d.summary}</p>
+                  <p className="read mt-4 max-w-3xl text-ivory/80">{d.summary}</p>
                 </div>
                 <div className="text-left">
                   <p className="text-2xl font-bold text-gold-bright">{range(d.start, d.end)}</p>

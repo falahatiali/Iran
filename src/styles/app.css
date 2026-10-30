@@ -87,3 +87,30 @@ body {
 @keyframes line-flash { 0%, 60% { box-shadow: 0 0 0 2px var(--color-gold-bright); } 100% { box-shadow: 0 0 0 0 transparent; } }
 .line-flash { animation: line-flash 2.2s ease-out; }
 @media (prefers-reduced-motion: reduce) { .line-flash { animation: none; box-shadow: 0 0 0 2px var(--color-gold-bright); } }
+
+/* ── Long-form reading typography ─────────────────────────────────────────
+   Every body paragraph, list and quote of running text carries `.read`.
+   Readers can scale these via the reading tool (src/lib/reading.ts), which
+   only rewrites the custom properties below on <html>. */
+:root {
+  --read-scale: 1;
+  --read-base: clamp(1.0625rem, 0.98rem + 0.3vw, 1.1875rem); /* ~17px mobile → 19px desktop */
+  --read-size: calc(var(--read-base) * var(--read-scale));
+  --read-leading-fa: 2;
+  --read-leading-lat: 1.7;
+  --read-measure: 70ch;
+  --read-weight: 400;
+  --read-gap: 0.95em;
+}
+.read {
+  font-size: var(--read-size);
+  line-height: var(--read-leading-fa);
+  font-weight: var(--read-weight);
+  max-width: var(--read-measure);
+}
+.read.read-lede { font-size: calc(var(--read-size) * 1.08); }
+.read:lang(en), .read :lang(en), .read.font-serif, .read .font-serif { line-height: var(--read-leading-lat); }
+:lang(en) > .read, .read:lang(en) { font-weight: max(400, var(--read-weight)); }
+p.read + p.read { margin-top: var(--read-gap); }
+blockquote.read p + p { margin-top: 0.6em; }
+li.read + li.read, .read > li + li { margin-top: 0.4em; }

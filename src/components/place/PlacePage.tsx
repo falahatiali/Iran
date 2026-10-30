@@ -61,7 +61,7 @@ export function PlacePage({ place, locale, kings }: { place: Place; locale: Loca
                 {s.layers.map((l, i) => (
                   <div key={i} className="mt-5">
                     <EvidenceBadge layer={l.layer} locale={locale} />
-                    {l.paras[locale].map((para, n) => <p key={n} className="mt-3 leading-9 text-ivory/85">{para}</p>)}
+                    {l.paras[locale].map((para, n) => <p key={n} className="read mt-3 text-ivory/85">{para}</p>)}
                   </div>
                 ))}
                 {s.photos && (

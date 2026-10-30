@@ -83,7 +83,7 @@ export function ArchivesPage({ locale, data }: { locale: Locale; data: ArchivesP
 
         <p className="text-turquoise-soft tracking-wide text-sm">{t.kicker}</p>
         <h1 className="text-4xl md:text-5xl font-black text-gilded leading-[1.25] mt-3">{t.title}</h1>
-        <p className="mt-6 text-lg leading-9 text-ivory/80">{t.lede}</p>
+        <p className="read mt-6 text-ivory/80 read-lede">{t.lede}</p>
         <p className="mt-4 flex flex-wrap gap-2">
           <a href={altArchivesPath(locale)} className="glass rounded-full px-5 py-2 inline-block min-h-11 hover:border-gold" hrefLang={locale === 'fa' ? 'en' : 'fa'}>
             {t.alt}
@@ -132,14 +132,14 @@ export function ArchivesPage({ locale, data }: { locale: Locale; data: ArchivesP
             <h2 className="text-3xl font-black text-gilded">{t.discover}</h2>
             <EvidenceBadge layer="historical" locale={locale} />
             {pf && (
-              <p className="leading-9 text-ivory/80">
+              <p className="read text-ivory/80">
                 {isFa
                   ? `${pf.nameFa}. ${pf.findspot}. کاوش: ${pf.excavator}، ${pf.discoveryYear}. زبان: ${pf.language}.`
                   : `${pf.nameEn}. ${pf.findspot}. Excavator: ${pf.excavator}, ${pf.discoveryYear}. Language: ${pf.language}.`}
               </p>
             )}
             {claims('historical').filter((c) => c.id.includes('discovery') || c.id.includes('counts') || c.id.includes('languages') || c.id.includes('dates') || c.id.includes('what')).map((c) => (
-              <p key={c.id} className="leading-9 text-ivory/80">{c.statement}</p>
+              <p key={c.id} className="read text-ivory/80">{c.statement}</p>
             ))}
             <p className="text-sm text-ivory/55">
               {isFa
@@ -167,7 +167,7 @@ export function ArchivesPage({ locale, data }: { locale: Locale; data: ArchivesP
             <h2 className="text-3xl font-black text-gilded">{t.labor}</h2>
             <EvidenceBadge layer="historical" locale={locale} />
             {claims('historical').filter((c) => c.id.includes('labor')).map((c) => (
-              <p key={c.id} className="leading-9 text-ivory/80">{c.statement}</p>
+              <p key={c.id} className="read text-ivory/80">{c.statement}</p>
             ))}
           </section>
         </Reveal>
@@ -177,7 +177,7 @@ export function ArchivesPage({ locale, data }: { locale: Locale; data: ArchivesP
             <h2 className="text-3xl font-black text-gilded">{t.travel}</h2>
             <EvidenceBadge layer="historical" locale={locale} />
             {claims('historical').filter((c) => c.id.includes('travel')).map((c) => (
-              <p key={c.id} className="leading-9 text-ivory/80">{c.statement}</p>
+              <p key={c.id} className="read text-ivory/80">{c.statement}</p>
             ))}
           </section>
         </Reveal>
@@ -187,7 +187,7 @@ export function ArchivesPage({ locale, data }: { locale: Locale; data: ArchivesP
             <h2 className="text-3xl font-black text-gilded">{t.tax}</h2>
             <EvidenceBadge layer="historical" locale={locale} />
             {claims('historical').filter((c) => c.id.includes('tax') || c.id.includes('institutional')).map((c) => (
-              <p key={c.id} className="leading-9 text-ivory/80">{c.statement}</p>
+              <p key={c.id} className="read text-ivory/80">{c.statement}</p>
             ))}
           </section>
         </Reveal>
@@ -197,14 +197,14 @@ export function ArchivesPage({ locale, data }: { locale: Locale; data: ArchivesP
             <h2 className="text-3xl font-black text-gilded">{t.treasury}</h2>
             <EvidenceBadge layer="historical" locale={locale} />
             {pt && (
-              <p className="leading-9 text-ivory/80">
+              <p className="read text-ivory/80">
                 {isFa
                   ? `${pt.nameFa}. ${pt.findspot}. کاوش: ${pt.excavator}.`
                   : `${pt.nameEn}. ${pt.findspot}. Excavator: ${pt.excavator}.`}
               </p>
             )}
             {claims('historical').filter((c) => c.id.includes('pt-') || c.id.includes('silver')).map((c) => (
-              <p key={c.id} className="leading-9 text-ivory/80">{c.statement}</p>
+              <p key={c.id} className="read text-ivory/80">{c.statement}</p>
             ))}
           </section>
         </Reveal>
@@ -213,10 +213,10 @@ export function ArchivesPage({ locale, data }: { locale: Locale; data: ArchivesP
           <section id="philosophy" className="mb-16 space-y-4">
             <h2 className="text-3xl font-black text-gilded">{t.philosophy}</h2>
             <EvidenceBadge layer="philosophical" locale={locale} />
-            {claims('philosophical').map((c) => <p key={c.id} className="leading-9 text-ivory/80">{c.statement}</p>)}
+            {claims('philosophical').map((c) => <p key={c.id} className="read text-ivory/80">{c.statement}</p>)}
             {data.interpretations.filter((i) => i.locale === locale).map((i) => (
               <div key={i.id} className="glass rounded-2xl p-5">
-                <p className="leading-8 text-ivory/80">{i.body}</p>
+                <p className="read text-ivory/80">{i.body}</p>
               </div>
             ))}
           </section>
@@ -226,7 +226,7 @@ export function ArchivesPage({ locale, data }: { locale: Locale; data: ArchivesP
           <section id="meaning" className="mb-16 space-y-4">
             <h2 className="text-3xl font-black text-gilded">{t.meaning}</h2>
             <EvidenceBadge layer="modern" locale={locale} />
-            {claims('modern').map((c) => <p key={c.id} className="leading-9 text-ivory/80">{c.statement}</p>)}
+            {claims('modern').map((c) => <p key={c.id} className="read text-ivory/80">{c.statement}</p>)}
           </section>
         </Reveal>
 

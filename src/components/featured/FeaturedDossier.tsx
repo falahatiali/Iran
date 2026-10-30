@@ -10,7 +10,7 @@ function Layer({ layer, paras, locale }: { layer: EvidenceLayer; paras: BiParas;
   return (
     <div className="mt-5">
       <EvidenceBadge layer={layer} locale={locale} />
-      {paras[locale].map((p, n) => <p key={n} className="mt-3 leading-9 text-ivory/85">{p}</p>)}
+      {paras[locale].map((p, n) => <p key={n} className="read mt-3 text-ivory/85">{p}</p>)}
     </div>
   )
 }
@@ -33,7 +33,7 @@ export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: 
       <section aria-labelledby="fk-h">
         <p className="text-sm text-turquoise-soft">{t.kicker}</p>
         <h2 id="fk-h" className="text-3xl md:text-5xl font-black text-gilded leading-[1.3] mt-2">{king.title[locale]}</h2>
-        <p className="mt-5 text-lg leading-9 text-ivory/80">{king.lede[locale]}</p>
+        <p className="read mt-5 text-ivory/80 read-lede">{king.lede[locale]}</p>
         <dl className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3">
           {king.stats.map((s) => (
             <div key={s.n.en + s.l.en} className="glass rounded-2xl p-4 flex flex-col-reverse">
@@ -57,7 +57,7 @@ export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: 
       {c && (
         <section id={c.id} className="scroll-mt-24 mt-16">
           <h2 className="text-3xl font-black text-gilded mb-4 leading-[1.4]">{c.title[locale]}</h2>
-          {c.intro[locale].map((p, n) => <p key={n} className="mt-3 leading-9 text-ivory/85">{p}</p>)}
+          {c.intro[locale].map((p, n) => <p key={n} className="read mt-3 text-ivory/85">{p}</p>)}
           <div className="mt-6">
             <CampaignMap events={c.events} sources={king.sources} locale={locale} label={c.title[locale]} view={c.view} places={c.places} stamp="when" />
           </div>
@@ -79,7 +79,7 @@ export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: 
 
       <section id="layers" className="scroll-mt-24 mt-14">
         <h2 className="text-2xl font-black text-gilded">{t.layers}</h2>
-        <p className="mt-3 leading-8 text-ivory/75">{t.layersNote}</p>
+        <p className="read mt-3 text-ivory/75">{t.layersNote}</p>
         <p className="mt-3 flex flex-wrap gap-2"><EvidenceBadge layer="historical" locale={locale} /><EvidenceBadge layer="philosophical" locale={locale} /><EvidenceBadge layer="modern" locale={locale} /></p>
       </section>
 
@@ -90,7 +90,7 @@ export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: 
             <h2 className="text-3xl font-black text-gilded mt-1 leading-[1.4]">{s.title[locale]}</h2>
             <Layer layer="historical" paras={s.historical} locale={locale} />
             {s.quotes?.map((q) => (
-              <blockquote key={q.text} className="border-gold/40 px-4 py-3 my-4 text-ivory/90 leading-8" style={{ borderInlineStartWidth: 4, borderInlineStartStyle: 'solid' }}>
+              <blockquote key={q.text} className="read border-gold/40 px-4 py-3 my-4 text-ivory/90" style={{ borderInlineStartWidth: 4, borderInlineStartStyle: 'solid' }}>
                 <p className="font-serif" dir="ltr" lang="en">{q.text}</p>
                 {isFa && <p className="mt-2" dir="rtl" lang="fa">{q.fa}</p>}
                 <footer className="mt-2 text-xs text-ivory/50">{q.ref} · <a href={`#src-${q.source}`} className="text-gold hover:underline">{author(q.source)}</a>{isFa && ` · ${t.quoteNote}`}</footer>
@@ -120,7 +120,7 @@ export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: 
       <section id="synthesis" className="scroll-mt-24 mt-20 glass rounded-3xl p-6 md:p-10 border-gold/30">
         <EvidenceBadge layer="philosophical" locale={locale} />
         <h2 className="text-3xl md:text-4xl font-black text-gilded mt-4 leading-[1.4]">{king.synthesis.title[locale]}</h2>
-        {king.synthesis.paras[locale].map((p, n) => <p key={n} className={`mt-5 leading-9 text-ivory/90 ${n === 0 ? 'text-lg' : ''}`}>{p}</p>)}
+        {king.synthesis.paras[locale].map((p, n) => <p key={n} className={`read mt-5 text-ivory/90 ${n === 0 ? 'read-lede' : ''}`}>{p}</p>)}
       </section>
 
       <section id="bibliography" className="scroll-mt-24 mt-16">

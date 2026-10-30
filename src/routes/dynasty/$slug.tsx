@@ -33,7 +33,7 @@ function DynastyPage() {
             <span className="glass rounded-full px-4 py-1.5">👑 {fa(rulers.length)} فرمانروا</span>
             <span className="glass rounded-full px-4 py-1.5">📜 {fa(events.length)} رویداد</span>
           </div>
-          <p className="mt-6 max-w-3xl text-lg leading-9 text-ivory/85">{d.summary}</p>
+          <p className="read mt-6 max-w-3xl text-ivory/85 read-lede">{d.summary}</p>
           {d.slug === 'achaemenids' && (
             <p className="mt-6 flex flex-wrap gap-3">
               <Link to="/cylinder" className="glass rounded-full px-5 py-2 min-h-11 inline-flex items-center hover:border-gold">استوانهٔ کوروش</Link>
@@ -49,7 +49,7 @@ function DynastyPage() {
             <DynastyMap extent={extent} accent={d.accent} name={d.name} />
             <div>
               <h2 className="text-2xl font-bold text-gold">گستره‌ی فرمانروایی</h2>
-              <p className="mt-3 leading-8 text-ivory/75">طرح ساده‌شده‌ی قلمرو {d.name} در اوج گسترش. مرزهای دوران پیشامدرن سیال بودند؛ این نقشه تنها برای جهت‌یابی است.</p>
+              <p className="read mt-3 text-ivory/75">طرح ساده‌شده‌ی قلمرو {d.name} در اوج گسترش. مرزهای دوران پیشامدرن سیال بودند؛ این نقشه تنها برای جهت‌یابی است.</p>
             </div>
           </Reveal>
         )}

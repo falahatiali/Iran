@@ -5,6 +5,8 @@ import appCss from '../styles/app.css?url'
 import { getOverview } from '../server/api'
 import { BackToTop, Footer, Header } from '../components/Layout'
 import { Shamseh } from '../components/Ornament'
+import { ReadingTool } from '../components/ReadingTool'
+import { READING_BOOT_SCRIPT } from '../lib/reading'
 
 export const Route = createRootRoute({
   loader: () => getOverview(),
@@ -63,8 +65,11 @@ function RootDocument({ children }: { children: React.ReactNode }) {
   }, [])
   
   return (
-    <html lang={isEn ? 'en' : 'fa'} dir={isEn ? 'ltr' : 'rtl'}>
-      <head><HeadContent /></head>
+    <html lang={isEn ? 'en' : 'fa'} dir={isEn ? 'ltr' : 'rtl'} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: READING_BOOT_SCRIPT }} />
+        <HeadContent />
+      </head>
       <body>
         {children}
         <Scripts />
@@ -75,12 +80,14 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 
 function RootLayout() {
   const data = Route.useLoaderData()
+  const isEn = useRouterState({ select: (s) => s.location.pathname.startsWith('/en') })
   return (
     <MotionConfig reducedMotion="user">
       <Header data={data} />
       <main id="main"><Outlet /></main>
       <Footer />
       <BackToTop />
+      <ReadingTool locale={isEn ? 'en' : 'fa'} />
     </MotionConfig>
   )
 }

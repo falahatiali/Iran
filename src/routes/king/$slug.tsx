@@ -76,7 +76,7 @@ function KingPage() {
                   <a href={`/en/king/${r.id}`} hrefLang="en" className="glass rounded-full px-4 min-h-11 inline-flex items-center hover:border-gold">English</a>
                 </p>
               )}
-              <p className="mt-4 text-ivory/60 leading-8">
+              <p className="read mt-4 text-ivory/60">
                 {r.name} در {year(r.start)} بر تخت {d.name} نشست{k.predecessor ? ` و جانشین ${k.predecessor.name} شد` : ''}.
                 {k.successor ? ` پس از او ${k.successor.name} به فرمانروایی رسید.` : r.end === null ? '' : ' با او این دودمان به پایان رسید یا دوران آن بسته شد.'}
               </p>

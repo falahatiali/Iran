@@ -8,8 +8,8 @@ function Block({ b, locale }: { b: AboutBlock; locale: Locale }) {
     <Reveal>
       <section id={b.id} className="scroll-mt-24">
         <h3 className="text-2xl font-black text-gold-bright">{b.title[locale]}</h3>
-        {b.paras[locale].map((p, i) => <p key={i} className="mt-4 text-lg leading-9 text-ivory/85">{p}</p>)}
-        {b.list && <ul className="mt-4 space-y-2 leading-8 text-ivory/80 list-disc ps-6">{b.list[locale].map((x) => <li key={x}>{x}</li>)}</ul>}
+        {b.paras[locale].map((p, i) => <p key={i} className="read mt-4 text-ivory/85 read-lede">{p}</p>)}
+        {b.list && <ul className="read mt-4 space-y-2 text-ivory/80 list-disc ps-6">{b.list[locale].map((x) => <li key={x}>{x}</li>)}</ul>}
       </section>
     </Reveal>
   )

@@ -29,7 +29,7 @@ function Quote({ n, locale }: { n: number; locale: Locale }) {
   if (!line?.en) return null
   const isFa = locale === 'fa'
   return (
-    <blockquote className="border-gold/30 px-4 py-3 my-3 text-ivory/90 leading-8" style={{ borderInlineStartWidth: 4, borderInlineStartStyle: 'solid' }}>
+    <blockquote className="read border-gold/30 px-4 py-3 my-3 text-ivory/90" style={{ borderInlineStartWidth: 4, borderInlineStartStyle: 'solid' }}>
       <p className="font-serif" dir="ltr" lang="en">{line.en}</p>
       {isFa && <p className="mt-2" dir="rtl" lang="fa">{line.fa}</p>}
       <footer className="mt-2 text-xs text-ivory/50">
@@ -136,7 +136,7 @@ export function CylinderPage({ locale, data }: { locale: Locale; data: CylinderP
 
         <p className="text-turquoise-soft tracking-wide text-sm">{t.kicker}</p>
         <h1 className="text-4xl md:text-5xl font-black text-gilded leading-[1.25] mt-3">{t.title}</h1>
-        <p className="mt-6 text-lg leading-9 text-ivory/80">{t.lede}</p>
+        <p className="read mt-6 text-ivory/80 read-lede">{t.lede}</p>
         <p className="mt-4 flex flex-wrap gap-2">
           <a href={altCylinderPath(locale)} className="glass rounded-full px-5 py-2 inline-block min-h-11 hover:border-gold" hrefLang={locale === 'fa' ? 'en' : 'fa'}>
             {t.alt}
@@ -187,13 +187,13 @@ export function CylinderPage({ locale, data }: { locale: Locale; data: CylinderP
             <h2 className="text-3xl font-black text-gilded">{t.open1}</h2>
             {isFa ? (
               <>
-                <p className="leading-9 text-ivory/80">در ویترین موزهٔ بریتانیا بشکه‌ای گلی به درازای تقریبی یک کف دست خوابیده است: پخته، چرخ‌ساز، با میخ‌خط اکدی. شمارهٔ موزه ۹۰۹۲۰ است. کاتالوگ می‌گوید پس از ۵۳۹ پ.م. در بابل ساخته شده، هرمز رسام آن را در ۱۸۷۹ در عمران یافته، و حتی پس از مرمت متن کامل نیست.</p>
-                <p className="leading-9 text-ivory/80">افتخار ایرانی به این شیء روی همان سطرهایی می‌ایستد که در دست است: شاهی پارسی که در زبان بابل اعلام می‌کند خانه‌ها را باز می‌سازد، یوغ را برمی‌دارد، خدایان و مردم را به جای خود بازمی‌گرداند، و سپاهش بدون غارت وارد شهر می‌شود. آن سطرها را باید خواند، نه با شعار پوشاند و نه با انکار خالی کرد.</p>
+                <p className="read text-ivory/80">در ویترین موزهٔ بریتانیا بشکه‌ای گلی به درازای تقریبی یک کف دست خوابیده است: پخته، چرخ‌ساز، با میخ‌خط اکدی. شمارهٔ موزه ۹۰۹۲۰ است. کاتالوگ می‌گوید پس از ۵۳۹ پ.م. در بابل ساخته شده، هرمز رسام آن را در ۱۸۷۹ در عمران یافته، و حتی پس از مرمت متن کامل نیست.</p>
+                <p className="read text-ivory/80">افتخار ایرانی به این شیء روی همان سطرهایی می‌ایستد که در دست است: شاهی پارسی که در زبان بابل اعلام می‌کند خانه‌ها را باز می‌سازد، یوغ را برمی‌دارد، خدایان و مردم را به جای خود بازمی‌گرداند، و سپاهش بدون غارت وارد شهر می‌شود. آن سطرها را باید خواند، نه با شعار پوشاند و نه با انکار خالی کرد.</p>
               </>
             ) : (
               <>
-                <p className="leading-9 text-ivory/80">In a British Museum case lies a clay barrel about a handspan long: fired, wheel-made, inscribed in Akkadian cuneiform. Museum number 90920. The catalog dates it after 539 BCE in Babylon, credits Hormuzd Rassam at Amran in 1879, and notes that the text is still incomplete after restoration.</p>
-                <p className="leading-9 text-ivory/80">Iranian pride in this object stands on the lines we actually have: a Persian king, speaking in Babylonian, who restores houses, lifts a shameful yoke, returns gods and people to their places, and brings his army in without plunder. Those lines should be read — neither wrapped in slogans nor emptied by denial.</p>
+                <p className="read text-ivory/80">In a British Museum case lies a clay barrel about a handspan long: fired, wheel-made, inscribed in Akkadian cuneiform. Museum number 90920. The catalog dates it after 539 BCE in Babylon, credits Hormuzd Rassam at Amran in 1879, and notes that the text is still incomplete after restoration.</p>
+                <p className="read text-ivory/80">Iranian pride in this object stands on the lines we actually have: a Persian king, speaking in Babylonian, who restores houses, lifts a shameful yoke, returns gods and people to their places, and brings his army in without plunder. Those lines should be read — neither wrapped in slogans nor emptied by denial.</p>
               </>
             )}
           </section>
@@ -204,13 +204,13 @@ export function CylinderPage({ locale, data }: { locale: Locale; data: CylinderP
             <h2 className="text-3xl font-black text-gilded">{t.open2}</h2>
             {isFa ? (
               <>
-                <p className="leading-9 text-ivory/80">در ۵۳۹ پ.م. کوروش بابل را گرفت. آخرین شاه کلدانی نبونئید بود. کتیبه — به روایت ایرانیکا — از زبان کاهنان مردوک نوشته شده: مردوک نبونئید را به تباهی آیین متهم می‌کند، کوروش شاه انشان را برمی‌گزیند، و بابل بدون نبرد سقوط می‌کند. سپس کوروش به اول‌شخص سخن می‌گوید.</p>
-                <p className="leading-9 text-ivory/80">این سند مشروعیت بابلی است، هم‌خانوادهٔ کتیبه‌های پی‌نهاد میان‌رودان. ایرانیکا آن را کتیبهٔ بنایی می‌خواند. همان قالب، محتوای مشخصی دارد که در سطرهای ۲۲ تا ۳۴ به خانه، یوغ، پرستشگاه و بازگشت مردم می‌رسد.</p>
+                <p className="read text-ivory/80">در ۵۳۹ پ.م. کوروش بابل را گرفت. آخرین شاه کلدانی نبونئید بود. کتیبه — به روایت ایرانیکا — از زبان کاهنان مردوک نوشته شده: مردوک نبونئید را به تباهی آیین متهم می‌کند، کوروش شاه انشان را برمی‌گزیند، و بابل بدون نبرد سقوط می‌کند. سپس کوروش به اول‌شخص سخن می‌گوید.</p>
+                <p className="read text-ivory/80">این سند مشروعیت بابلی است، هم‌خانوادهٔ کتیبه‌های پی‌نهاد میان‌رودان. ایرانیکا آن را کتیبهٔ بنایی می‌خواند. همان قالب، محتوای مشخصی دارد که در سطرهای ۲۲ تا ۳۴ به خانه، یوغ، پرستشگاه و بازگشت مردم می‌رسد.</p>
               </>
             ) : (
               <>
-                <p className="leading-9 text-ivory/80">In 539 BCE Cyrus took Babylon. Nabonidus was the last Chaldean king. Iranica’s account: the text was composed by priests of Marduk. Marduk accuses Nabonidus of cultic ruin, chooses Cyrus of Anshan, and Babylon falls without a battle. Then Cyrus speaks in the first person.</p>
-                <p className="leading-9 text-ivory/80">It is a Babylonian legitimacy document, kin to Mesopotamian foundation inscriptions. Iranica calls it a building inscription. That genre still carries specific content: lines 22–34 reach houses, the yoke, sanctuaries, and the return of people.</p>
+                <p className="read text-ivory/80">In 539 BCE Cyrus took Babylon. Nabonidus was the last Chaldean king. Iranica’s account: the text was composed by priests of Marduk. Marduk accuses Nabonidus of cultic ruin, chooses Cyrus of Anshan, and Babylon falls without a battle. Then Cyrus speaks in the first person.</p>
+                <p className="read text-ivory/80">It is a Babylonian legitimacy document, kin to Mesopotamian foundation inscriptions. Iranica calls it a building inscription. That genre still carries specific content: lines 22–34 reach houses, the yoke, sanctuaries, and the return of people.</p>
               </>
             )}
             <EvidenceBadge layer="historical" locale={locale} />
@@ -243,7 +243,7 @@ export function CylinderPage({ locale, data }: { locale: Locale; data: CylinderP
           <section id="guided" className="mb-16 space-y-4">
             <h2 className="text-3xl font-black text-gilded">{t.guided}</h2>
             {isFa ? (
-              <ol className="list-decimal leading-9 text-ivory/80 space-y-2 ps-6">
+              <ol className="read list-decimal text-ivory/80 space-y-2 ps-6">
                 <li>آغاز شکسته است؛ چیزی به آن نیفزایید.</li>
                 <li>اتهام نبونئید الهیات مردوک است؛ همان اتهام یوغ و بیگاری را نام می‌برد (<a className="text-gold hover:underline" href={`#${lineAnchor(8)}`}>سطر ۸</a>).</li>
                 <li>«بدون نبرد» ادعای کتیبه است (<a className="text-gold hover:underline" href={`#${lineAnchor(17)}`}>سطر ۱۷</a>).</li>
@@ -252,7 +252,7 @@ export function CylinderPage({ locale, data }: { locale: Locale; data: CylinderP
                 <li>بازگشت مردم و خدایان به جای خود، بازگرداندن سکونت و آیین است (<a className="text-gold hover:underline" href={`#${lineAnchor(32)}`}>۳۰–۳۴</a>).</li>
               </ol>
             ) : (
-              <ol className="list-decimal leading-9 text-ivory/80 space-y-2 ps-6">
+              <ol className="read list-decimal text-ivory/80 space-y-2 ps-6">
                 <li>The opening is broken; do not silently restore it.</li>
                 <li>The indictment of Nabonidus is Marduk theology; it also names a yoke of unresting servitude (<a className="text-gold hover:underline" href={`#${lineAnchor(8)}`}>line 8</a>).</li>
                 <li>“Without battle” is the inscription’s claim (<a className="text-gold hover:underline" href={`#${lineAnchor(17)}`}>line 17</a>).</li>
@@ -268,9 +268,9 @@ export function CylinderPage({ locale, data }: { locale: Locale; data: CylinderP
           <section id="text" className="mb-16 space-y-6">
             <CylinderReader locale={locale} />
             {isFa ? (
-              <p className="leading-9 text-ivory/80">متن اکدی ۴۵ سطر است (ایرانیکا): قطعهٔ A در لندن، قطعهٔ B در ییل. ویراست مرجع جاری فینکل ۲۰۱۳ است؛ ترجمهٔ او در کاتالوگ موزه آمده و <strong>اینجا بازنشر نشده</strong> چون حق‌نشر دارد. آنچه قانوناً سطر به سطر می‌آید راجرز ۱۹۱۲ است.</p>
+              <p className="read text-ivory/80">متن اکدی ۴۵ سطر است (ایرانیکا): قطعهٔ A در لندن، قطعهٔ B در ییل. ویراست مرجع جاری فینکل ۲۰۱۳ است؛ ترجمهٔ او در کاتالوگ موزه آمده و <strong>اینجا بازنشر نشده</strong> چون حق‌نشر دارد. آنچه قانوناً سطر به سطر می‌آید راجرز ۱۹۱۲ است.</p>
             ) : (
-              <p className="leading-9 text-ivory/80">The Akkadian text runs to 45 lines (Iranica): fragment A in London, fragment B at Yale. The current reference edition is Finkel 2013; his translation appears on the museum catalog and is <strong>not reproduced here</strong> (copyright). What we may print line by line is Rogers 1912.</p>
+              <p className="read text-ivory/80">The Akkadian text runs to 45 lines (Iranica): fragment A in London, fragment B at Yale. The current reference edition is Finkel 2013; his translation appears on the museum catalog and is <strong>not reproduced here</strong> (copyright). What we may print line by line is Rogers 1912.</p>
             )}
             <p className="flex flex-wrap gap-3 text-sm">
               <a className="text-gold hover:underline min-h-11 inline-flex items-center" href="https://www.britishmuseum.org/collection/object/W_1880-0617-1941">{t.finkelLink}</a>
@@ -305,9 +305,9 @@ export function CylinderPage({ locale, data }: { locale: Locale; data: CylinderP
                         copiedLabel={t.copied}
                       />
                     </header>
-                    <p className="leading-8 text-ivory/85">{isFa ? p.summaryFa : p.summaryEn}</p>
+                    <p className="read text-ivory/85">{isFa ? p.summaryFa : p.summaryEn}</p>
                     {body ? (
-                      <blockquote className="border-gold/30 px-4 py-2 text-ivory/90 leading-8" style={{ borderInlineStartWidth: 4, borderInlineStartStyle: 'solid' }}>
+                      <blockquote className="read border-gold/30 px-4 py-2 text-ivory/90" style={{ borderInlineStartWidth: 4, borderInlineStartStyle: 'solid' }}>
                         <p>{body.body}</p>
                         <footer className="mt-2 text-xs text-ivory/50">{t.source}: Rogers 1912</footer>
                       </blockquote>
@@ -336,12 +336,12 @@ export function CylinderPage({ locale, data }: { locale: Locale; data: CylinderP
             <h2 className="text-3xl font-black text-gilded">{t.analysis}</h2>
             <EvidenceBadge layer="historical" locale={locale} />
             {isFa ? (
-              <p className="leading-9 text-ivory/80">از نظر تاریخی استوانه گزارش فتح و بازسازی بابل است با صدای مردوک و سپس صدای شاه. کاهنان آن را در سنت کتیبه‌های پی‌نهاد نوشتند. همان گزارش، سطر به سطر، خانه‌های فروریخته، یوغ ننگین، بازگشت مردم به سکونتگاه، و بازگشت خدایان به پرستشگاه را نام می‌برد.</p>
+              <p className="read text-ivory/80">از نظر تاریخی استوانه گزارش فتح و بازسازی بابل است با صدای مردوک و سپس صدای شاه. کاهنان آن را در سنت کتیبه‌های پی‌نهاد نوشتند. همان گزارش، سطر به سطر، خانه‌های فروریخته، یوغ ننگین، بازگشت مردم به سکونتگاه، و بازگشت خدایان به پرستشگاه را نام می‌برد.</p>
             ) : (
-              <p className="leading-9 text-ivory/80">Historically the Cylinder is an account of Babylon’s capture and restoration, in Marduk’s voice then the king’s. Priests wrote it in the foundation-inscription tradition. That same account, line by line, names fallen houses, a shameful yoke, people returned to their settlements, and gods returned to their sanctuaries.</p>
+              <p className="read text-ivory/80">Historically the Cylinder is an account of Babylon’s capture and restoration, in Marduk’s voice then the king’s. Priests wrote it in the foundation-inscription tradition. That same account, line by line, names fallen houses, a shameful yoke, people returned to their settlements, and gods returned to their sanctuaries.</p>
             )}
             <EvidenceBadge layer="philosophical" locale={locale} />
-            {claims('philosophical').map((c) => <p key={c.id} className="leading-9 text-ivory/80">{c.statement}</p>)}
+            {claims('philosophical').map((c) => <p key={c.id} className="read text-ivory/80">{c.statement}</p>)}
           </section>
         </Reveal>
 
@@ -350,9 +350,9 @@ export function CylinderPage({ locale, data }: { locale: Locale; data: CylinderP
             <h2 className="text-3xl font-black text-gilded">{t.rights}</h2>
             <EvidenceBadge layer="philosophical" locale={locale} />
             {isFa ? (
-              <p className="leading-9 text-ivory/80">موضع این پروژه این است که استوانه حق مالکیت فردی و آزادی را به رسمیت می‌شناسد. این تفسیر است، نه شعار جدا از متن. هر بند زیر به سطر مشخص و نقل راجرز ۱۹۱۲ بسته است. واژه‌ای که در استوانه نیست — از جمله نام یهودا — ساخته نشده است.</p>
+              <p className="read text-ivory/80">موضع این پروژه این است که استوانه حق مالکیت فردی و آزادی را به رسمیت می‌شناسد. این تفسیر است، نه شعار جدا از متن. هر بند زیر به سطر مشخص و نقل راجرز ۱۹۱۲ بسته است. واژه‌ای که در استوانه نیست — از جمله نام یهودا — ساخته نشده است.</p>
             ) : (
-              <p className="leading-9 text-ivory/80">This project’s position is that the Cylinder recognizes individual property rights and liberty. That is interpretation, not a slogan detached from the text. Each block below is tied to a numbered line and to Rogers 1912. Words the Cylinder does not contain — including the name Judah — are not invented.</p>
+              <p className="read text-ivory/80">This project’s position is that the Cylinder recognizes individual property rights and liberty. That is interpretation, not a slogan detached from the text. Each block below is tied to a numbered line and to Rogers 1912. Words the Cylinder does not contain — including the name Judah — are not invented.</p>
             )}
 
             <article className="glass rounded-2xl p-6 space-y-2">
@@ -360,9 +360,9 @@ export function CylinderPage({ locale, data }: { locale: Locale; data: CylinderP
                 <a href={`#${lineAnchor(24)}`}>{isFa ? LIBERTY_THEMES.peace.fa : LIBERTY_THEMES.peace.en}</a>
               </h3>
               {isFa ? (
-                <p className="leading-8 text-ivory/80">کوروش ورود خود را «با پیروزی» اما «آسوده» می‌نویسد و می‌گوید در همهٔ سومر و اکد دشمنی را راه نداده است. غارت، وحشت، و دست‌درازی سپاه به مال مردم دقیقاً همان چیزی است که این سطرها نفی می‌کنند. امنیت تصرف، پیش‌شرط مالکیت است.</p>
+                <p className="read text-ivory/80">کوروش ورود خود را «با پیروزی» اما «آسوده» می‌نویسد و می‌گوید در همهٔ سومر و اکد دشمنی را راه نداده است. غارت، وحشت، و دست‌درازی سپاه به مال مردم دقیقاً همان چیزی است که این سطرها نفی می‌کنند. امنیت تصرف، پیش‌شرط مالکیت است.</p>
               ) : (
-                <p className="leading-8 text-ivory/80">Cyrus writes his entry as triumphant and yet peaceful, and says he permitted no enemy in all Sumer and Akkad. Plunder, terror, and an army’s seizure of people’s goods are exactly what these lines shut out. Secure possession is the precondition of property.</p>
+                <p className="read text-ivory/80">Cyrus writes his entry as triumphant and yet peaceful, and says he permitted no enemy in all Sumer and Akkad. Plunder, terror, and an army’s seizure of people’s goods are exactly what these lines shut out. Secure possession is the precondition of property.</p>
               )}
               <Quote n={22} locale={locale} />
               <Quote n={24} locale={locale} />
@@ -373,9 +373,9 @@ export function CylinderPage({ locale, data }: { locale: Locale; data: CylinderP
                 <a href={`#${lineAnchor(25)}`}>{isFa ? LIBERTY_THEMES.corvee.fa : LIBERTY_THEMES.corvee.en}</a>
               </h3>
               {isFa ? (
-                <p className="leading-8 text-ivory/80">نبونئید، به روایت کتیبه، مردم را «با بیگاری بی‌آسایش» تباه کرده بود. کوروش می‌گوید «یوغ ننگین» از گردن مردم بابل برداشته شد. بیگاری، گرفتن اجباری زمان و نیروی شخص است — نقیض آزادی پیشه و ثمرهٔ کار. برداشتن یوغ، به رسمیت شناختن همان آزادی است.</p>
+                <p className="read text-ivory/80">نبونئید، به روایت کتیبه، مردم را «با بیگاری بی‌آسایش» تباه کرده بود. کوروش می‌گوید «یوغ ننگین» از گردن مردم بابل برداشته شد. بیگاری، گرفتن اجباری زمان و نیروی شخص است — نقیض آزادی پیشه و ثمرهٔ کار. برداشتن یوغ، به رسمیت شناختن همان آزادی است.</p>
               ) : (
-                <p className="leading-8 text-ivory/80">Nabonidus, in the inscription’s voice, had brought people to ruin through “servitude without rest.” Cyrus says the “shameful yoke” was removed from Babylon’s people. Corvée is coerced taking of a person’s time and labour — the negation of liberty of occupation and of the fruit of work. Lifting that yoke recognizes that liberty.</p>
+                <p className="read text-ivory/80">Nabonidus, in the inscription’s voice, had brought people to ruin through “servitude without rest.” Cyrus says the “shameful yoke” was removed from Babylon’s people. Corvée is coerced taking of a person’s time and labour — the negation of liberty of occupation and of the fruit of work. Lifting that yoke recognizes that liberty.</p>
               )}
               <Quote n={8} locale={locale} />
               <Quote n={25} locale={locale} />
@@ -386,9 +386,9 @@ export function CylinderPage({ locale, data }: { locale: Locale; data: CylinderP
                 <a href={`#${lineAnchor(26)}`}>{isFa ? LIBERTY_THEMES.houses.fa : LIBERTY_THEMES.houses.en}</a>
               </h3>
               {isFa ? (
-                <p className="leading-8 text-ivory/80">سطر ۲۶ خانه‌های فروریخته را بازمی‌سازد و ویرانه را پاک می‌کند. خانه، ملموس‌ترین شکل ملک است. شاهی که ویرانی خانه‌ها را پایان می‌دهد، تصرف مسکونی را به رسمیت می‌شناسد — نه به‌عنوان لطف مبهم، بلکه به‌عنوان عمل مشخص روی «šubat» / dwellings.</p>
+                <p className="read text-ivory/80">سطر ۲۶ خانه‌های فروریخته را بازمی‌سازد و ویرانه را پاک می‌کند. خانه، ملموس‌ترین شکل ملک است. شاهی که ویرانی خانه‌ها را پایان می‌دهد، تصرف مسکونی را به رسمیت می‌شناسد — نه به‌عنوان لطف مبهم، بلکه به‌عنوان عمل مشخص روی «šubat» / dwellings.</p>
               ) : (
-                <p className="leading-8 text-ivory/80">Line 26 restores fallen dwellings and clears their ruins. A house is the most concrete form of property. A king who ends the ruin of houses recognizes residential possession — not as a vague favour, but as a specified act upon “dwellings.”</p>
+                <p className="read text-ivory/80">Line 26 restores fallen dwellings and clears their ruins. A house is the most concrete form of property. A king who ends the ruin of houses recognizes residential possession — not as a vague favour, but as a specified act upon “dwellings.”</p>
               )}
               <Quote n={26} locale={locale} />
             </article>
@@ -398,9 +398,9 @@ export function CylinderPage({ locale, data }: { locale: Locale; data: CylinderP
                 <a href={`#${lineAnchor(32)}`}>{isFa ? LIBERTY_THEMES.return.fa : LIBERTY_THEMES.return.en}</a>
               </h3>
               {isFa ? (
-                <p className="leading-8 text-ivory/80">از آشور و شوش تا شهرهای آن سوی دجله، کوروش مردم را گرد می‌آورد و به سکونتگاه‌هایشان بازمی‌گرداند. تبعید، سلب سرزمین و خانه است. بازگشت به «da-ád-mi» / dwelling-places، اعادهٔ همان ملک است. نام یهودا در متن نیست؛ ادعای ما از همین سطرهای نام‌برده است، نه از کتاب مقدس.</p>
+                <p className="read text-ivory/80">از آشور و شوش تا شهرهای آن سوی دجله، کوروش مردم را گرد می‌آورد و به سکونتگاه‌هایشان بازمی‌گرداند. تبعید، سلب سرزمین و خانه است. بازگشت به «da-ád-mi» / dwelling-places، اعادهٔ همان ملک است. نام یهودا در متن نیست؛ ادعای ما از همین سطرهای نام‌برده است، نه از کتاب مقدس.</p>
               ) : (
-                <p className="leading-8 text-ivory/80">From Asshur and Susa to the cities beyond the Tigris, Cyrus gathers people and restores them to their dwelling-places. Deportation is the taking of land and house. Return to those settlements is restitution of that holding. Judah is not named; the claim here is from these lines, not from the Bible.</p>
+                <p className="read text-ivory/80">From Asshur and Susa to the cities beyond the Tigris, Cyrus gathers people and restores them to their dwelling-places. Deportation is the taking of land and house. Return to those settlements is restitution of that holding. Judah is not named; the claim here is from these lines, not from the Bible.</p>
               )}
               <Quote n={30} locale={locale} />
               <Quote n={32} locale={locale} />
@@ -411,18 +411,18 @@ export function CylinderPage({ locale, data }: { locale: Locale; data: CylinderP
                 <a href={`#${lineAnchor(33)}`}>{isFa ? LIBERTY_THEMES.worship.fa : LIBERTY_THEMES.worship.en}</a>
               </h3>
               {isFa ? (
-                <p className="leading-8 text-ivory/80">خدایانی که نبونئید به‌زور به بابل آورده بود به پرستشگاه خود بازمی‌گردند. آزادی آیین یعنی جماعت بتواند خدای خود را در جای خود بپرستد، نه در اسارتِ مرکز. این سطرها همان آزادی را ثبت می‌کنند.</p>
+                <p className="read text-ivory/80">خدایانی که نبونئید به‌زور به بابل آورده بود به پرستشگاه خود بازمی‌گردند. آزادی آیین یعنی جماعت بتواند خدای خود را در جای خود بپرستد، نه در اسارتِ مرکز. این سطرها همان آزادی را ثبت می‌کنند.</p>
               ) : (
-                <p className="leading-8 text-ivory/80">Gods whom Nabonidus had forced into Babylon are returned to their own sanctuaries. Freedom of worship means a community may serve its god in its own place, not in captivity at the centre. These lines record that liberty.</p>
+                <p className="read text-ivory/80">Gods whom Nabonidus had forced into Babylon are returned to their own sanctuaries. Freedom of worship means a community may serve its god in its own place, not in captivity at the centre. These lines record that liberty.</p>
               )}
               <Quote n={33} locale={locale} />
               <Quote n={34} locale={locale} />
             </article>
 
             {isFa ? (
-              <p className="leading-9 text-ivory/80">برای اقتصاد جاری هخامنشی — جیره، نقره، kurtaš — باید سراغ <Link to="/archives" className="text-gold hover:underline">بایگانی بارو و خزانهٔ تخت‌جمشید</Link> رفت. آن الواح دستگاه توشهٔ شاهی‌اند. استوانه چیز دیگری است: اعلام حد بر غارت، بیگاری، تبعید آیین و سلب خانه.</p>
+              <p className="read text-ivory/80">برای اقتصاد جاری هخامنشی — جیره، نقره، kurtaš — باید سراغ <Link to="/archives" className="text-gold hover:underline">بایگانی بارو و خزانهٔ تخت‌جمشید</Link> رفت. آن الواح دستگاه توشهٔ شاهی‌اند. استوانه چیز دیگری است: اعلام حد بر غارت، بیگاری، تبعید آیین و سلب خانه.</p>
             ) : (
-              <p className="leading-9 text-ivory/80">For the running Achaemenid economy — rations, silver, kurtaš — turn to the <Link to="/archives" className="text-gold hover:underline">Persepolis Fortification and Treasury archives</Link>. Those tablets are a royal provisioning machine. The Cylinder is something else: a public limit on plunder, corvée, cultic exile, and the taking of houses.</p>
+              <p className="read text-ivory/80">For the running Achaemenid economy — rations, silver, kurtaš — turn to the <Link to="/archives" className="text-gold hover:underline">Persepolis Fortification and Treasury archives</Link>. Those tablets are a royal provisioning machine. The Cylinder is something else: a public limit on plunder, corvée, cultic exile, and the taking of houses.</p>
             )}
           </section>
         </Reveal>
@@ -433,7 +433,7 @@ export function CylinderPage({ locale, data }: { locale: Locale; data: CylinderP
             {data.interpretations.filter((i) => i.locale === locale).map((i) => (
               <div key={i.id} className="glass rounded-2xl p-5 space-y-2">
                 <EvidenceBadge layer={i.school.includes('liberty') || i.school.includes('property') ? 'philosophical' : 'modern'} locale={locale} />
-                <p className="leading-8 text-ivory/80">{i.body}</p>
+                <p className="read text-ivory/80">{i.body}</p>
               </div>
             ))}
           </section>
