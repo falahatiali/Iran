@@ -1,8 +1,7 @@
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { useCallback, useEffect, useState } from 'react'
 import { BASEMAP, LAND_PATH } from '../../data/basemap'
-import type { Certainty, Coord, DariusEvent, EventKind } from '../../data/darius'
-import { dariusSources } from '../../data/darius'
+import type { Certainty, Coord, EventKind, FeaturedSource, MapEvent } from '../../data/featured/types'
 import type { Locale } from '../../lib/i18n'
 import { fa as faNum } from '../../lib/format'
 
@@ -32,7 +31,7 @@ const PLACES: { name: { fa: string; en: string }; c: Coord }[] = [
   { name: { fa: 'باختر', en: 'Bactra' }, c: [66.9, 36.75] },
 ]
 
-export function CampaignMap({ events, locale }: { events: DariusEvent[]; locale: Locale }) {
+export function CampaignMap({ events, sources, locale, label }: { events: MapEvent[]; sources: FeaturedSource[]; locale: Locale; label?: string }) {
   const isFa = locale === 'fa'
   const reduce = useReducedMotion()
   const [i, setI] = useState(0)
@@ -60,10 +59,10 @@ export function CampaignMap({ events, locale }: { events: DariusEvent[]; locale:
 
   const year = (y: number) => (isFa ? `${faNum(-y)} پ.م.` : `${-y} BCE`)
   const [x, y] = project(ev.coord)
-  const srcName = (id: string) => dariusSources.find((s) => s.id === id)
+  const srcName = (id: string) => sources.find((s) => s.id === id)
   const t = isFa
-    ? { play: 'پخش', pause: 'توقف', prev: 'رویداد پیشین', next: 'رویداد بعدی', scrub: 'گاه‌نما', sources: 'منابع', cert: 'میزان قطعیت', legend: 'راهنما', hint: 'کلیدهای جهت‌نما، Home/End و فاصله کار می‌کنند.', map: 'نقشهٔ متحرک لشکرکشی‌ها و ساخت‌وسازهای داریوش' }
-    : { play: 'Play', pause: 'Pause', prev: 'Previous event', next: 'Next event', scrub: 'Timeline', sources: 'Sources', cert: 'Certainty', legend: 'Legend', hint: 'Arrow keys, Home/End and Space work.', map: 'Animated map of Darius’s campaigns and building works' }
+    ? { play: 'پخش', pause: 'توقف', prev: 'رویداد پیشین', next: 'رویداد بعدی', scrub: 'گاه‌نما', sources: 'منابع', cert: 'میزان قطعیت', legend: 'راهنما', hint: 'کلیدهای جهت‌نما، Home/End و فاصله کار می‌کنند.', map: label ?? 'نقشهٔ متحرک' }
+    : { play: 'Play', pause: 'Pause', prev: 'Previous event', next: 'Next event', scrub: 'Timeline', sources: 'Sources', cert: 'Certainty', legend: 'Legend', hint: 'Arrow keys, Home/End and Space work.', map: label ?? 'Animated map' }
 
   return (
     <section aria-label={t.map} className="glass rounded-2xl p-3 md:p-4" onKeyDown={onKey} tabIndex={0}>
@@ -71,10 +70,10 @@ export function CampaignMap({ events, locale }: { events: DariusEvent[]; locale:
         <figure className="relative overflow-hidden rounded-xl">
           <svg viewBox={`0 0 ${BASEMAP.width} ${BASEMAP.height}`} role="img" aria-label={`${t.map}: ${ev.title[locale]}`} className="w-full h-auto">
             <defs>
-              <marker id="darius-arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+              <marker id="fk-arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
                 <path d="M0 0L10 5L0 10z" fill={KIND_COLOR[ev.kind]} />
               </marker>
-              <radialGradient id="darius-glow"><stop offset="0%" stopColor="#f2d68b" stopOpacity=".55" /><stop offset="100%" stopColor="#f2d68b" stopOpacity="0" /></radialGradient>
+              <radialGradient id="fk-glow"><stop offset="0%" stopColor="#f2d68b" stopOpacity=".55" /><stop offset="100%" stopColor="#f2d68b" stopOpacity="0" /></radialGradient>
             </defs>
             <rect width="100%" height="100%" fill="#0a1636" />
             <path d={LAND_PATH} fill="#1b2a52" stroke="#d9b45a" strokeOpacity=".25" strokeWidth=".6" />
@@ -94,11 +93,11 @@ export function CampaignMap({ events, locale }: { events: DariusEvent[]; locale:
               </circle>
             ) })}
             {ev.route && (
-              <motion.path key={`r-${ev.id}`} d={pathOf(ev.route)} fill="none" stroke={KIND_COLOR[ev.kind]} strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" markerEnd="url(#darius-arrow)"
+              <motion.path key={`r-${ev.id}`} d={pathOf(ev.route)} fill="none" stroke={KIND_COLOR[ev.kind]} strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" markerEnd="url(#fk-arrow)"
                 initial={reduce ? false : { pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 2.2, ease: 'easeInOut' }} />
             )}
             <motion.g key={`m-${ev.id}`} initial={reduce ? false : { opacity: 0, scale: 0.4 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: reduce ? 0 : ev.route ? 1.8 : 0.1, duration: 0.5 }} style={{ transformOrigin: `${x}px ${y}px` }}>
-              <circle cx={x} cy={y} r="22" fill="url(#darius-glow)" />
+              <circle cx={x} cy={y} r="22" fill="url(#fk-glow)" />
               {!reduce && <motion.circle cx={x} cy={y} r="7" fill="none" stroke={KIND_COLOR[ev.kind]} strokeWidth="1.5" animate={{ r: [7, 16], opacity: [0.9, 0] }} transition={{ repeat: Infinity, duration: 1.8 }} />}
               <circle cx={x} cy={y} r="6" fill={KIND_COLOR[ev.kind]} stroke="#0a1636" strokeWidth="1.5" />
             </motion.g>

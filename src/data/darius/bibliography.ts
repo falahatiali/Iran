@@ -1,14 +1,7 @@
-/** Sources cited on /darius. Every event and dossier section points here by id. */
-export interface DariusSource {
-  id: string
-  author: string
-  title: string
-  year: string
-  url?: string
-  note?: { fa: string; en: string }
-}
+/** Sources cited on /king/darius-i. Every event and dossier section points here by id. */
+import type { FeaturedSource } from '../featured/types'
 
-export const dariusSources: DariusSource[] = [
+export const dariusSources: FeaturedSource[] = [
   { id: 'kent1953', author: 'R. G. Kent', title: 'Old Persian: Grammar, Texts, Lexicon (2nd ed.)', year: '1953', note: { fa: 'ویراست و ترجمهٔ استاندارد کتیبه‌های پارسی باستان (DB، DNa، DNb، DSf، DZc).', en: 'Standard edition and translation of the Old Persian inscriptions (DB, DNa, DNb, DSf, DZc).' } },
   { id: 'schmitt1991', author: 'R. Schmitt', title: 'The Bisitun Inscriptions of Darius the Great: Old Persian Text (Corpus Inscriptionum Iranicarum I/I/I)', year: '1991' },
   { id: 'kuhrt2007', author: 'A. Kuhrt', title: 'The Persian Empire: A Corpus of Sources from the Achaemenid Period', year: '2007', note: { fa: 'مجموعهٔ منابع اصلی (کتیبه‌ها، گل‌نبشته‌ها، پاپیروس‌ها، متون یونانی) با ترجمه و شرح.', en: 'Sourcebook of primary texts (inscriptions, tablets, papyri, Greek authors) with translation and commentary.' } },

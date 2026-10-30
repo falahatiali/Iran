@@ -58,25 +58,28 @@ export const ARCHIVES_ALTERNATES = [
   { hrefLang: 'x-default', path: '/archives' },
 ] as const
 
-export const DARIUS_ALTERNATES = [
-  { hrefLang: 'fa', path: '/darius' },
-  { hrefLang: 'en', path: '/en/darius' },
-  { hrefLang: 'x-default', path: '/darius' },
-] as const
+/** fa/en/x-default alternates for a king that has an English mirror (featured kings). */
+export function kingAlternates(slug: string) {
+  return [
+    { hrefLang: 'fa', path: `/king/${slug}` },
+    { hrefLang: 'en', path: `/en/king/${slug}` },
+    { hrefLang: 'x-default', path: `/king/${slug}` },
+  ]
+}
 
-/** schema.org JSON-LD for the Darius dossier (Article about Person). */
-export function dariusJsonLd(locale: 'fa' | 'en') {
-  const path = locale === 'fa' ? '/darius' : '/en/darius'
+/** schema.org JSON-LD (Article about Person) for a king page. */
+export function kingJsonLd(opts: { locale: 'fa' | 'en'; slug: string; headline: string; name: string; sameAs?: string }) {
+  const path = opts.locale === 'fa' ? `/king/${opts.slug}` : `/en/king/${opts.slug}`
   return {
     type: 'application/ld+json',
     children: JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'Article',
-      inLanguage: locale,
-      headline: locale === 'fa' ? 'داریوش بزرگ؛ شمشیر، قرارداد و مالکیت' : 'Darius the Great: sword, contract and property',
+      inLanguage: opts.locale,
+      headline: opts.headline,
       url: SITE_URL + path,
       publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
-      about: { '@type': 'Person', name: locale === 'fa' ? 'داریوش یکم' : 'Darius I', sameAs: 'https://en.wikipedia.org/wiki/Darius_the_Great' },
+      about: { '@type': 'Person', name: opts.name, ...(opts.sameAs ? { sameAs: opts.sameAs } : {}) },
     }),
   }
 }

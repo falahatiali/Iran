@@ -7,11 +7,26 @@ import { PageTransition, Reveal } from '../../components/Reveal'
 import { Shamseh } from '../../components/Ornament'
 import { EventIcon } from '../../components/EventIcon'
 import { eventTypeNames, fa, range, shRange, year } from '../../lib/format'
-import { seo } from '../../lib/seo'
+import { kingAlternates, kingJsonLd, seo } from '../../lib/seo'
+import { getFeaturedKing } from '../../data/featured'
+import { FeaturedDossier } from '../../components/featured/FeaturedDossier'
 
 export const Route = createFileRoute('/king/$slug')({
   loader: ({ params }) => getRuler({ data: params.slug }),
-  head: ({ loaderData, params }) => loaderData ? seo({ title: loaderData.ruler.name, description: `${loaderData.ruler.name} (${loaderData.dynasty.name}): ${loaderData.ruler.description}`, path: `/king/${params.slug}` }) : {},
+  head: ({ loaderData, params }) => {
+    if (!loaderData) return {}
+    const fk = getFeaturedKing(params.slug)
+    const base = seo({
+      title: fk ? fk.title.fa : loaderData.ruler.name,
+      description: `${loaderData.ruler.name} (${loaderData.dynasty.name}): ${loaderData.ruler.description}`,
+      path: `/king/${params.slug}`,
+      alternates: fk ? kingAlternates(params.slug) : undefined,
+    })
+    return {
+      ...base,
+      scripts: [kingJsonLd({ locale: 'fa', slug: params.slug, headline: fk ? fk.title.fa : loaderData.ruler.name, name: loaderData.ruler.name, sameAs: fk?.wikipedia })],
+    }
+  },
   component: KingPage,
 })
 
@@ -20,6 +35,7 @@ function KingPage() {
   const { ruler: r, dynasty: d } = k
   const years = (r.end ?? new Date().getFullYear()) - r.start
   const sh = shRange(r.start, r.end)
+  const featured = getFeaturedKing(r.id)
   return (
     <PageTransition>
       <article>
@@ -50,9 +66,10 @@ function KingPage() {
                   <Link to="/cylinder" className="text-gold hover:underline min-h-11 inline-flex items-center">صفحهٔ پرچم: استوانهٔ کوروش (BM 90920)</Link>
                 </p>
               )}
-              {r.id === 'darius-i' && (
-                <p className="mt-4">
-                  <Link to="/darius" className="text-gold hover:underline min-h-11 inline-flex items-center">پروندهٔ ویژه: داریوش بزرگ، نقشهٔ متحرک جنگ‌ها و تحلیل مالکیت</Link>
+              {featured && (
+                <p className="mt-4 flex flex-wrap gap-2">
+                  <a href="#fk-h" className="text-gold hover:underline min-h-11 inline-flex items-center">پروندهٔ ویژه: نقشهٔ متحرک و تحلیل مالکیت ↓</a>
+                  <a href={`/en/king/${r.id}`} hrefLang="en" className="glass rounded-full px-4 min-h-11 inline-flex items-center hover:border-gold">English</a>
                 </p>
               )}
               <p className="mt-4 text-ivory/60 leading-8">
@@ -84,6 +101,8 @@ function KingPage() {
               </ol>
             </section>
           )}
+
+          {featured && <FeaturedDossier king={featured} locale="fa" />}
 
           <nav aria-label="فرمانروای پیشین و پسین" className="grid sm:grid-cols-2 gap-4">
             {k.predecessor ? (

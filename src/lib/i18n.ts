@@ -12,6 +12,3 @@ export function altArchivesPath(locale: Locale): string {
   return locale === 'fa' ? '/en/archives' : '/archives'
 }
 
-export function altDariusPath(locale: Locale): string {
-  return locale === 'fa' ? '/en/darius' : '/darius'
-}

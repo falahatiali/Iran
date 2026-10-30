@@ -20,6 +20,7 @@ import { Route as EnArchivesRouteImport } from './routes/en/archives'
 import { Route as EnCylinderRouteImport } from './routes/en/cylinder'
 import { Route as EnDariusRouteImport } from './routes/en/darius'
 import { Route as KingSlugRouteImport } from './routes/king/$slug'
+import { Route as EnKingSlugRouteImport } from './routes/en/king/$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -76,6 +77,11 @@ const KingSlugRoute = KingSlugRouteImport.update({
   path: '/king/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnKingSlugRoute = EnKingSlugRouteImport.update({
+  id: '/en/king/$slug',
+  path: '/en/king/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -89,6 +95,7 @@ export interface FileRoutesByFullPath {
   '/en/cylinder': typeof EnCylinderRoute
   '/en/darius': typeof EnDariusRoute
   '/king/$slug': typeof KingSlugRoute
+  '/en/king/$slug': typeof EnKingSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -102,6 +109,7 @@ export interface FileRoutesByTo {
   '/en/cylinder': typeof EnCylinderRoute
   '/en/darius': typeof EnDariusRoute
   '/king/$slug': typeof KingSlugRoute
+  '/en/king/$slug': typeof EnKingSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -116,6 +124,7 @@ export interface FileRoutesById {
   '/en/cylinder': typeof EnCylinderRoute
   '/en/darius': typeof EnDariusRoute
   '/king/$slug': typeof KingSlugRoute
+  '/en/king/$slug': typeof EnKingSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -131,6 +140,7 @@ export interface FileRouteTypes {
     | '/en/cylinder'
     | '/en/darius'
     | '/king/$slug'
+    | '/en/king/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -144,6 +154,7 @@ export interface FileRouteTypes {
     | '/en/cylinder'
     | '/en/darius'
     | '/king/$slug'
+    | '/en/king/$slug'
   id:
     | '__root__'
     | '/'
@@ -157,6 +168,7 @@ export interface FileRouteTypes {
     | '/en/cylinder'
     | '/en/darius'
     | '/king/$slug'
+    | '/en/king/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -171,6 +183,7 @@ export interface RootRouteChildren {
   EnCylinderRoute: typeof EnCylinderRoute
   EnDariusRoute: typeof EnDariusRoute
   KingSlugRoute: typeof KingSlugRoute
+  EnKingSlugRoute: typeof EnKingSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -252,6 +265,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KingSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/en/king/$slug': {
+      id: '/en/king/$slug'
+      path: '/en/king/$slug'
+      fullPath: '/en/king/$slug'
+      preLoaderRoute: typeof EnKingSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -267,6 +287,7 @@ const rootRouteChildren: RootRouteChildren = {
   EnCylinderRoute: EnCylinderRoute,
   EnDariusRoute: EnDariusRoute,
   KingSlugRoute: KingSlugRoute,
+  EnKingSlugRoute: EnKingSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

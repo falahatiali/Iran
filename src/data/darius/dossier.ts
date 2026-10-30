@@ -1,21 +1,5 @@
-/** Long-form dossier for /darius. Each section keeps the three layers of docs/FOUNDATIONAL_PHILOSOPHY.md apart. */
-import type { Bi } from './events'
-
-export interface BiParas { fa: string[]; en: string[] }
-export interface DossierQuote { text: string; fa: string; ref: string; source: string }
-
-export interface DossierSection {
-  id: string
-  title: Bi
-  /** Layer 1: what the sources say. */
-  historical: BiParas
-  /** Layer 2: property-rights and liberty interpretation (ours, argued). */
-  interpretation: BiParas
-  /** Layer 3: what it means today. */
-  modern: BiParas
-  quotes?: DossierQuote[]
-  sources: string[]
-}
+/** Long-form dossier for /king/darius-i. Each section keeps the three layers of docs/FOUNDATIONAL_PHILOSOPHY.md apart. */
+import type { DossierSection, Synthesis } from '../featured/types'
 
 export const dossier: DossierSection[] = [
   {
@@ -296,7 +280,7 @@ export const dossier: DossierSection[] = [
 ]
 
 /** Closing synthesis essay (interpretation layer only). */
-export const synthesis: { title: Bi; paras: BiParas; sources: string[] } = {
+export const synthesis: Synthesis = {
   title: { fa: 'جمع‌بندی: «راهزن ساکن» یا نگهبان مالکیت؟ نظم داریوش با عینک حقوق مالکیت', en: 'Synthesis: “stationary bandit” or guardian of property? Darius’s order through a property-rights lens' },
   paras: {
     fa: [

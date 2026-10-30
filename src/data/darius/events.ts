@@ -1,27 +1,7 @@
-/** Dated events of Darius I's reign for the animated campaign map on /darius. */
-export type Lon = number
-export type Lat = number
-export type Coord = [Lon, Lat]
-export type EventKind = 'battle' | 'campaign' | 'building' | 'admin' | 'religion'
-/** secure: datable from Persian/Babylonian primary sources; probable: consensus with gaps; disputed: scholars disagree on date, place or facts. */
-export type Certainty = 'secure' | 'probable' | 'disputed'
-export interface Bi { fa: string; en: string }
+/** Dated events of Darius I's reign for the animated campaign map on /king/darius-i. */
+import type { Coord, MapEvent } from '../featured/types'
 
-export interface DariusEvent {
-  id: string
-  /** Astronomical-ish year, negative = BCE. Used for ordering and the scrubber. */
-  year: number
-  when: Bi
-  kind: EventKind
-  title: Bi
-  body: Bi
-  coord: Coord
-  /** Optional animated route ending at coord. */
-  route?: Coord[]
-  certainty: Certainty
-  certaintyNote?: Bi
-  sources: string[]
-}
+export type DariusEvent = MapEvent
 
 const SUSA: Coord = [48.26, 32.19]
 const BABYLON: Coord = [44.42, 32.54]
@@ -85,7 +65,7 @@ export const dariusEvents: DariusEvent[] = [
     id: 'behistun', year: -520, when: { fa: 'حدود ۵۲۰–۵۱۸ پ.م.', en: 'c. 520–518 BCE' }, kind: 'building',
     title: { fa: 'کتیبهٔ بیستون کنده می‌شود', en: 'The Behistun inscription is carved' },
     body: { fa: 'بر صخره‌ای کنار راه بابل–هگمتانه، داریوش روایت رسیدن به قدرت را به ایلامی، بابلی و پارسی باستان نوشت؛ پارسی باستان احتمالاً تازه برای همین کار به خط درآمد. نسخه‌های آرامی آن تا الفانتین مصر رسید.', en: 'On a cliff by the Babylon–Ecbatana road Darius set down his account of the accession in Elamite, Babylonian and Old Persian; Old Persian writing was probably created for this. Aramaic copies reached Elephantine in Egypt.' },
-    coord: [47.44, 34.39], certainty: 'probable', certaintyNote: { fa: 'ترتیب ساخت نسخه‌ها و ستون پنجم (افزوده دربارهٔ ایلام و سکاها) دقیق تاریخ‌گذاری نشده است.', en: 'The order of the versions and the added fifth column (Elam and the Saka) are not precisely dated.' },
+    coord: [47.44, 34.39], place: 'bisotun', certainty: 'probable', certaintyNote: { fa: 'ترتیب ساخت نسخه‌ها و ستون پنجم (افزوده دربارهٔ ایلام و سکاها) دقیق تاریخ‌گذاری نشده است.', en: 'The order of the versions and the added fifth column (Elam and the Saka) are not precisely dated.' },
     sources: ['schmitt1991', 'kuhrt2007', 'livius-ari'],
   },
   {
