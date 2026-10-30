@@ -66,3 +66,9 @@ artaxerxes-iii/reign-{fa,en}.{gif,mp4,webm,png}
   (358-340 BCE), rendered from this site's own /king/artaxerxes-iii page by scripts/render-campaign-clip.py
   --section reign. Coastlines: Natural Earth (public domain). Narrative after Diodorus (tr. C. H. Oldfather),
   Justin and Arrian (tr. E. J. Chinnock), as cited on the page. Routes are approximate editorial sketches.
+
+darius-iii/reign-{fa,en}.{gif,mp4,webm,png}
+  Animated map of Alexander's campaign against Darius III (334-330 BCE), with schematic Issus and Gaugamela
+  diagrams, rendered from this site's own /king/darius-iii page by scripts/render-campaign-clip.py --section reign.
+  Coastlines: Natural Earth (public domain). Narrative after Arrian (tr. E. J. Chinnock), as cited on the page.
+  Routes and battle layouts are approximate editorial sketches.
