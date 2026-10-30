@@ -26,6 +26,9 @@ const GREAT_KING = (who: string, whoEn: string, label: string, url?: string): Ep
 })
 
 export const epithets: Record<string, Epithet[]> = {
+  'arsaces-i': [
+    { fa: 'ارشک', en: 'Arsaces', original: 'Aršak', lang: 'Parthian', meaning: { fa: 'نام بنیان‌گذار که پس از او نام شاهی همهٔ شاهان اشکانی شد', en: 'the founder’s name, which became the throne name of every later Arsacid king' }, kind: 'title', source: { label: 'Justin, Epitome 41.5.6, tr. J. S. Watson (1853)', url: 'https://www.attalus.org/translate/justin7.html' } },
+  ],
   'shutruk-nakhunte': [
     { fa: 'شاه انشان و شوش', en: 'King of Anshan and Susa', lang: 'Elamite', meaning: { fa: 'عنوان رسمی او در کتیبه‌هایش', en: 'his official style in his inscriptions' }, kind: 'title', source: { label: 'Elamite inscription on the Naram-Sin stele (Louvre Sb 4), tr. M. Van De Mieroop, A History of the Ancient Near East (2015), p. 199' } },
     { fa: 'بندهٔ محبوب اینشوشیناک', en: 'Beloved servant of Inshushinak', lang: 'Elamite', kind: 'title', source: { label: 'Elamite inscription on the Naram-Sin stele (Louvre Sb 4), tr. M. Van De Mieroop, A History of the Ancient Near East (2015), p. 199' } },
