@@ -113,3 +113,11 @@ orodes-ii/battle-carrhae-{fa,en}.{gif,mp4,webm,png}
   Original animation by this project (same licence as the site). Schematic phases of Carrhae (53 BCE) after
   Plutarch, Crassus 23–31 and Shahbazi, "Carrhae", Encyclopaedia Iranica. Rendered by
   scripts/render-campaign-clip.py --battle carrhae. Positions are editorial, not to scale.
+
+phraates-iv/reign-{fa,en}.{gif,mp4,webm,png}
+  Original animation by this project (same licence as the site). The reign of Phraates IV: the purge of his
+  brothers, Antony's march from Zeugma through Armenia to Phraaspa (36 BCE), the destruction of Statianus' siege
+  train, the 27-day retreat to the Araxes, Tiridates' revolt and the return of the standards (20 BCE). Rendered from
+  this site's own /king/phraates-iv page by scripts/render-campaign-clip.py --section reign. Narrative after
+  Plutarch, Antony 37-50, Justin 42.5, Res Gestae 29 and Encyclopaedia Iranica (Chaumont; Olbrycht), as cited on the
+  page. Routes are editorial sketches; Phraaspa's site is unknown. Coastlines: Natural Earth (public domain).
