@@ -52,6 +52,27 @@ while [ $# -gt 0 ]; do
     esac
 done
 
+# Retry helper
+retry_cmd() {
+    local max_attempts=3
+    local attempt=1
+    local delay=1
+    local cmd="$1"
+    
+    while [ $attempt -le $max_attempts ]; do
+        if eval "$cmd"; then
+            return 0
+        fi
+        if [ $attempt -eq $max_attempts ]; then
+            return 1
+        fi
+        log_warn "Attempt $attempt failed, retrying in ${delay}s..."
+        sleep $delay
+        delay=$((delay * 2))
+        attempt=$((attempt + 1))
+    done
+}
+
 check_deps() {
     log_info "Checking dependencies..."
     command -v gh >/dev/null 2>&1 || { log_error "GitHub CLI (gh) required"; exit 1; }
@@ -67,10 +88,20 @@ check_auth() {
         log_info "Or set GH_TOKEN environment variable"
         exit 1
     fi
+    
+    # Get user from auth status output (more reliable than API call)
+    local auth_output
+    auth_output=$(gh auth status 2>&1)
     local user
-    user=$(gh api user --jq .login 2>/dev/null || echo "unknown")
+    user=$(echo "$auth_output" | grep "Logged in to" | sed -E 's/.*Logged in to github.com account ([^ ]+).*/\1/' || echo "unknown")
+    
+    if [ -z "$user" ] || [ "$user" = "unknown" ]; then
+        # Fallback to API call
+        user=$(gh api user --jq .login 2>/dev/null || echo "unknown")
+    fi
+    
     log_info "Authenticated as: $user"
-    if [ "$user" != "$REPO_OWNER" ]; then
+    if [ "$user" != "$REPO_OWNER" ] && [ "$user" != "unknown" ]; then
         log_warn "Authenticated user ($user) != repo owner ($REPO_OWNER)"
         log_warn "Project creation may require ownership"
     fi
@@ -78,7 +109,7 @@ check_auth() {
     
     # Check scopes
     local scopes
-    scopes=$(gh auth status --show-token 2>&1 | grep "Token scopes" | sed 's/.*Token scopes: *//')
+    scopes=$(gh auth status --show-token 2>&1 | grep "Token scopes" | sed 's/.*Token scopes: *//' || echo "")
     if ! echo "$scopes" | grep -q "read:project"; then
         log_warn "Token missing 'read:project' scope - project operations will be skipped"
         log_warn "Create token at https://github.com/settings/tokens with 'read:project' and 'project' scopes"
@@ -88,8 +119,9 @@ check_auth() {
 
 check_repo() {
     log_info "Checking repository access..."
-    if ! gh repo view "$REPO_OWNER/$REPO_NAME" >/dev/null 2>&1; then
+    if ! retry_cmd "gh repo view \"$REPO_OWNER/$REPO_NAME\" >/dev/null 2>&1"; then
         log_error "Cannot access $REPO_OWNER/$REPO_NAME"
+        log_error "Check network connection and repository permissions"
         exit 1
     fi
     log_success "Repository access OK"
@@ -211,7 +243,9 @@ create_milestones() {
         fi
         
         local exists
-        exists=$(gh api repos/$REPO_OWNER/$REPO_NAME/milestones --jq "[.[] | select(.title==\"$title\")] | length" 2>/dev/null || echo "0")
+        if ! exists=$(gh api repos/$REPO_OWNER/$REPO_NAME/milestones --jq "[.[] | select(.title==\"$title\")] | length" 2>/dev/null); then
+            exists=0
+        fi
         
         if [ "$exists" -gt 0 ]; then
             log_info "Milestone exists: $title"
@@ -265,7 +299,9 @@ create_labels() {
         fi
         
         local exists
-        exists=$(gh api repos/$REPO_OWNER/$REPO_NAME/labels --jq "[.[] | select(.name==\"$name\")] | length" 2>/dev/null || echo "0")
+        if ! exists=$(gh api repos/$REPO_OWNER/$REPO_NAME/labels --jq "[.[] | select(.name==\"$name\")] | length" 2>/dev/null); then
+            exists=0
+        fi
         
         if [ "$exists" -gt 0 ]; then
             log_info "Label exists: $name"
@@ -315,7 +351,9 @@ create_issues() {
         fi
         
         local exists
-        exists=$(gh issue list --repo "$REPO_OWNER/$REPO_NAME" --search "$title" --json number --jq '.[0].number' 2>/dev/null || echo "")
+        if ! exists=$(gh issue list --repo "$REPO_OWNER/$REPO_NAME" --search "$title" --json number --jq '.[0].number' 2>/dev/null); then
+            exists=""
+        fi
         
         if [ -n "$exists" ] && [ "$exists" != "null" ]; then
             log_info "Issue exists: $title (#$exists)"

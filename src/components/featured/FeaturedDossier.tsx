@@ -108,6 +108,20 @@ export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: 
                 ))}
               </div>
             )}
+            {s.folk && (
+              <aside aria-label={s.folk.title[locale]} className="folk mt-8 rounded-3xl p-5 md:p-7 border-2 border-dashed border-amber-300/50" style={{ background: 'linear-gradient(135deg, rgba(120,72,20,.35), rgba(40,24,60,.55))' }}>
+                <p className="inline-flex items-center gap-2 rounded-full bg-amber-300/15 border border-amber-300/50 px-3 py-1 text-sm font-bold text-amber-200">
+                  <span aria-hidden="true">❦</span>{isFa ? 'روایت مردمی · در منابع باستانی نیامده است' : 'Popular tradition · not in the ancient sources'}
+                </p>
+                <h3 className="text-2xl font-black text-amber-100 mt-3 leading-[1.5]">{s.folk.title[locale]}</h3>
+                {s.folk.story[locale].map((p, k) => <p key={k} className="read mt-3 text-ivory/90 italic">{p}</p>)}
+                <div className="mt-5 rounded-2xl bg-black/25 p-4">
+                  <p className="text-sm font-bold text-turquoise-soft">{isFa ? 'این روایت از کجا آمده؟' : 'Where does this story come from?'}</p>
+                  {s.folk.origin[locale].map((p, k) => <p key={k} className="read mt-2 text-ivory/80">{p}</p>)}
+                  <p className="mt-3 text-xs text-ivory/50">{t.sources}: {s.folk.sources.map((id, k) => <span key={id}>{k > 0 && ' · '}<a href={`#src-${id}`} className="text-gold hover:underline">{author(id)}</a></span>)}</p>
+                </div>
+              </aside>
+            )}
             <Layer layer="philosophical" paras={s.interpretation} locale={locale} />
             <Layer layer="modern" paras={s.modern} locale={locale} />
             <p className="mt-4 text-xs text-ivory/50 leading-6">

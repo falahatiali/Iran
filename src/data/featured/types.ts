@@ -63,7 +63,9 @@ export interface Campaign {
 
 export interface FeaturedSource { id: string; author: string; title: string; year: string; url?: string; note?: Bi }
 export interface DossierQuote { text: string; fa: string; ref: string; source: string }
-export interface DossierSection { id: string; title: Bi; historical: BiParas; interpretation: BiParas; modern: BiParas; quotes?: DossierQuote[]; sources: string[]; /** ids into FeaturedKing.photos */ photos?: string[] }
+/** A modern popular tradition NOT found in the ancient sources: rendered in its own box, never as history. */
+export interface FolkTradition { title: Bi; story: BiParas; origin: BiParas; sources: string[] }
+export interface DossierSection { id: string; title: Bi; historical: BiParas; interpretation: BiParas; modern: BiParas; quotes?: DossierQuote[]; sources: string[]; /** ids into FeaturedKing.photos */ photos?: string[]; folk?: FolkTradition }
 export interface Synthesis { title: Bi; paras: BiParas; sources: string[] }
 
 export interface FeaturedKing {

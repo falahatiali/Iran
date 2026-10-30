@@ -72,3 +72,9 @@ darius-iii/reign-{fa,en}.{gif,mp4,webm,png}
   diagrams, rendered from this site's own /king/darius-iii page by scripts/render-campaign-clip.py --section reign.
   Coastlines: Natural Earth (public domain). Narrative after Arrian (tr. E. J. Chinnock), as cited on the page.
   Routes and battle layouts are approximate editorial sketches.
+
+darius-iii/battle-persian-gates-{fa,en}.{gif,mp4,webm,png}
+  Schematic five-phase diagram of the battle at the Persian Gates (winter 330 BCE), rendered from this site's own
+  /king/darius-iii page by scripts/render-campaign-clip.py --battle persian-gates. Narrative after Arrian 3.18
+  (tr. E. J. Chinnock), Diodorus 17.68 (tr. C. B. Welles) and Curtius 5.3-4 (tr. J. C. Rolfe), as cited on the page.
+  Terrain, positions and the exact site are editorial sketches; the site itself is disputed.

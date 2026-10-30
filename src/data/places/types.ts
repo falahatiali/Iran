@@ -9,7 +9,7 @@ export interface CommonsPhoto {
   src: string
   page: string
   author: string
-  license: 'CC0' | 'CC BY 2.0' | 'CC BY 3.0' | 'CC BY 4.0' | 'CC BY-SA 2.0' | 'CC BY-SA 3.0' | 'CC BY-SA 4.0' | 'Public domain'
+  license: 'CC0' | 'CC BY 2.0' | 'CC BY 3.0' | 'CC BY 4.0' | 'CC BY-SA 2.0' | 'CC BY-SA 3.0' | 'CC BY-SA 3.0 FR' | 'CC BY-SA 4.0' | 'Public domain'
   licenseUrl?: string
   caption: Bi
 }

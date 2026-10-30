@@ -15,7 +15,8 @@ const TYRE: Coord = [35.2, 33.27]
 const GAZA: Coord = [34.45, 31.5]
 const GAUGAMELA: Coord = [43.4, 36.6]
 const ARBELA: Coord = [44.01, 36.19]
-const PERSIAN_GATES: Coord = [51.7, 30.65]
+const PERSIAN_GATES: Coord = [51.7, 30.72]
+const GATES_CAMP: Coord = [51.45, 30.72]
 const CASPIAN_GATES: Coord = [52.6, 35.4]
 const HECATOMPYLUS: Coord = [54.1, 36.05]
 const HELLESPONT: Coord = [26.4, 40.2]
@@ -46,8 +47,9 @@ const campaign = [
   ev('egypt', -331, B('۳۳۲–۳۳۱', '332–331'), 'campaign', MEMPHIS, B('غزه و مصر', 'Gaza and Egypt'), B('پس از محاصرهٔ غزه، ساتراپ مصر بی‌جنگ تسلیم شد.', 'After the siege of Gaza, the satrap of Egypt surrendered without a fight.'), 'secure', ['arrian'], { route: [TYRE, GAZA, [32.55, 31.04], MEMPHIS] }),
   ev('gaugamela', -331, B('۱ اکتبر ۳۳۱', '1 October 331'), 'battle', GAUGAMELA, B('گوگمل', 'Gaugamela'), B('اسکندر از فرات و دجله گذشت. داریوش در گوگمل دوباره شکست خورد و گریخت.', 'Alexander crossed the Euphrates and the Tigris. Darius was beaten again at Gaugamela and fled.'), 'secure', ['arrian', 'diaries', 'ir-d3'], { route: [MEMPHIS, [34.4, 31.6], [36.2, 34.0], [38.25, 35.95], [41.0, 36.6], GAUGAMELA] }),
   ev('babylon', -331, B('اکتبر ۳۳۱', 'October 331'), 'admin', BABYLON, B('بابل و شوش', 'Babylon and Susa'), B('بابل و سپس شوش بی‌جنگ گشوده شدند؛ گزارش نجومی بابلی ورود اسکندر به بابل را ثبت کرده است.', 'Babylon and then Susa opened without a fight; a Babylonian astronomical diary records Alexander’s entry into Babylon.'), 'probable', ['diaries', 'arrian', 'ir-d3'], { route: [GAUGAMELA, ARBELA, [44.4, 34.5], BABYLON, SUSA] }),
-  ev('persian-gates', -330, B('زمستان ۳۳۱/۳۳۰', 'winter 331/330'), 'battle', PERSIAN_GATES, B('دروازه‌های پارس', 'The Persian Gates'), B('اریوبرزن در گذرگاه اسکندر را شکست داد، تنها شکست ثبت‌شدهٔ او به دست ایرانیان؛ اسکندر گذرگاه را دور زد.', 'Ariobarzanes defeated Alexander in the pass, his only recorded defeat at Persian hands; Alexander turned the pass.'), 'probable', ['arrian', 'curtius', 'ir-d3'], { route: [SUSA, [50.5, 31.0], PERSIAN_GATES], ...note('جای دقیق «دروازه‌های پارس» محل بحث است.', 'The exact site of the Persian Gates is debated.') }),
-  ev('persepolis', -330, B('ژانویه–مه ۳۳۰', 'January–May 330'), 'battle', PERSEPOLIS, B('تخت‌جمشید می‌سوزد', 'Persepolis burns'), B('اسکندر شهر پایین را غارت کرد، چهار ماه ماند و در مه صفه و کاخ‌ها را سوزاند.', 'Alexander sacked the lower city, stayed four months and in May burned the terrace and palaces.'), 'probable', ['arrian', 'diodorus', 'curtius', 'ir-d3'], { route: [PERSIAN_GATES, PERSEPOLIS], ...note('انگیزهٔ آتش‌سوزی (انتقام خشایارشا یا مستی) محل بحث است.', 'The motive for the fire (revenge for Xerxes, or a drunken revel) is debated.') }),
+  ev('gates-repulse', -330, B('زمستان ۳۳۰ (شاید ژانویه)', 'winter 330 (perhaps January)'), 'battle', PERSIAN_GATES, B('دروازه‌های پارس: اسکندر عقب رانده می‌شود', 'The Persian Gates: Alexander is driven back'), B('اریوبرزن، ساتراپ پارس، تنگه را با دیوار بست. مقدونیان وارد تنگه شدند و از بالای کوه زیر باران سنگ و تیر رفتند. اسکندر ناچار عقب نشست. این تنها شکست ثبت‌شدهٔ او به دست ایرانیان است.', 'Ariobarzanes, satrap of Persis, walled off the gorge. The Macedonians entered and were caught under stones and missiles from the heights. Alexander had to fall back: his only recorded defeat at Persian hands.'), 'probable', ['arrian', 'curtius', 'diodorus', 'ir-ariobarzanes'], { route: [SUSA, [50.5, 31.0], GATES_CAMP, PERSIAN_GATES], ...note('جای گذرگاه محل بحث است: استاین آن را در تنگ خاص می‌دانست؛ اسپک و لندرینگ در تنگ میران، شمال‌شرق یاسوج.', 'The site is debated: Stein put it at Tang-e Khas; Speck and Lendering in the Tang-e Meyran, north-east of Yasuj.') }),
+  ev('gates-turned', -330, B('چند روز بعد', 'a few days later'), 'battle', PERSIAN_GATES, B('راه کوهستانی و حمله از پشت', 'The mountain path and the attack from behind'), B('اسیرانی راهی کوهستانی نشان دادند. اسکندر کراتروس را در اردوگاه گذاشت و شبانه از میان برف، گذرگاه را دور زد. سپیده‌دم از پشت و از روبه‌رو با هم حمله شد و مدافعان در هم شکستند.', 'Prisoners showed a mountain path. Alexander left Craterus in camp and by night, through snow, turned the pass. At dawn he attacked from behind while Craterus attacked from the front, and the defenders broke.'), 'probable', ['arrian', 'curtius', 'diodorus', 'ir-ariobarzanes'], { route: [GATES_CAMP, [51.5, 30.86], [51.78, 30.85], [51.82, 30.74], PERSIAN_GATES], ...note('راهنما در آریان «اسیران» است؛ در دیودوروس و کورتیوس اسیری لوکیایی که سال‌ها چوپان بود. داستان یادآور افیالتس در ترموپیل است.', 'In Arrian the guides are “prisoners”; in Diodorus and Curtius a Lycian captive who had long been a herdsman. The story echoes Ephialtes at Thermopylae.') }),
+  ev('persepolis', -330, B('ژانویه–مه ۳۳۰', 'January–May 330'), 'battle', PERSEPOLIS, B('تخت‌جمشید می‌سوزد', 'Persepolis burns'), B('اسکندر شهر پایین را غارت کرد، چهار ماه ماند و در مه صفه و کاخ‌ها را سوزاند.', 'Alexander sacked the lower city, stayed four months and in May burned the terrace and palaces.'), 'probable', ['arrian', 'diodorus', 'curtius', 'ir-d3'], { route: [PERSIAN_GATES, [52.3, 30.3], PERSEPOLIS], ...note('انگیزهٔ آتش‌سوزی (انتقام خشایارشا یا مستی) محل بحث است.', 'The motive for the fire (revenge for Xerxes, or a drunken revel) is debated.') }),
   ev('pursuit', -330, B('ژوئیهٔ ۳۳۰', 'July 330'), 'campaign', HECATOMPYLUS, B('تعقیب و مرگ داریوش', 'The pursuit and Darius’ death'), B('اسکندر از هگمتانه و دروازه‌های کاسپین تاخت، اما داریوش را کشته یافت.', 'Alexander drove on through Ecbatana and the Caspian Gates but found Darius dead.'), 'probable', ['arrian', 'ir-d3'], { route: [PERSEPOLIS, [51.5, 32.5], ECBATANA, [51.4, 35.6], CASPIAN_GATES, HECATOMPYLUS] }),
 ]
 
@@ -125,6 +127,60 @@ const gaugamela: BattleDiagram = {
   ],
 }
 
+const persianGates: BattleDiagram = {
+  id: 'persian-gates',
+  title: { fa: 'دروازه‌های پارس، گام‌به‌گام (طرح‌وار)', en: 'The Persian Gates, step by step (schematic)' },
+  when: { fa: 'زمستان ۳۳۰ پ.م.', en: 'winter 330 BCE' },
+  land: ['M0 0 L100 0 L100 25 C80 27 70 26 60 27 C45 28 30 26 0 25 Z', 'M0 35 C30 34 45 33 60 34 C70 35 80 34 100 35 L100 60 L0 60 Z', 'M64.6 26.6 L66.4 26.6 L66.4 33.6 L64.6 33.6 Z'],
+  labels: [
+    { at: [30, 12], text: { fa: 'کوه‌های پوشیده از برف', en: 'Snow-covered mountains' } },
+    { at: [30, 52], text: { fa: 'کوه‌ها', en: 'Mountains' } },
+    { at: [12, 31], text: { fa: 'از سوی شوش', en: 'from Susa' }, tone: 'sea' },
+    { at: [86, 31], text: { fa: 'به سوی تخت‌جمشید', en: 'to Persepolis' }, tone: 'sea' },
+    { at: [66, 23], text: { fa: 'دیوار', en: 'Wall' } },
+  ],
+  phases: [
+    {
+      id: 'wall', title: { fa: 'تنگه بسته می‌شود', en: 'The gorge is closed' },
+      body: { fa: 'اریوبرزن تنگه را با دیواری از سنگ بست و اردوگاهش را پشت آن زد. سربازانش را روی بلندی‌های دو سوی تنگه گذاشت. اسکندر، که از راه کوهستان آمده بود، بی‌خبر وارد دره شد.', en: 'Ariobarzanes closed the gorge with a stone wall and camped behind it. He posted troops on the heights on both sides. Alexander, coming by the mountain road, marched into the valley unaware.' },
+      units: [P('ario', 'اریوبرزن', 'Ariobarzanes', [70, 30]), P('north', 'تیراندازان بالای کوه', 'Troops on the heights', [52, 20]), P('south', 'سنگ‌اندازان', 'Slingers and stone-throwers', [52, 40]), M('alex', 'اسکندر', 'Alexander', [14, 30])],
+      certainty: 'probable', certaintyNote: { fa: 'آریان ۴۰ هزار پیاده و ۷۰۰ سوار می‌گوید؛ کورتیوس و دیودوروس ۲۵ هزار. شهبازی همهٔ این ارقام را اغراق‌آمیز می‌داند.', en: 'Arrian gives 40,000 foot and 700 horse; Curtius and Diodorus 25,000. Shahbazi thinks all these figures inflated.' },
+      sources: ['arrian', 'curtius', 'diodorus', 'ir-ariobarzanes'],
+    },
+    {
+      id: 'repulse', title: { fa: 'حملهٔ روبه‌رو شکست می‌خورد', en: 'The frontal attack fails' },
+      body: { fa: 'مقدونیان تا نزدیک دیوار پیش رفتند. از بالا سنگ، تیر و نیزه بر سرشان بارید. بسیاری کشته و زخمی شدند. اسکندر دستور عقب‌نشینی داد و حتی کشته‌هایش را جا گذاشت.', en: 'The Macedonians pushed up close to the wall. Stones, arrows and javelins rained down from above. Many were killed or wounded. Alexander ordered a retreat and even left his dead behind.' },
+      units: [P('ario', 'اریوبرزن', 'Ariobarzanes', [70, 30]), P('north', 'تیراندازان بالای کوه', 'Troops on the heights', [50, 24]), P('south', 'سنگ‌اندازان', 'Slingers and stone-throwers', [50, 36]), M('alex', 'اسکندر', 'Alexander', [40, 30])],
+      arrows: [{ side: 'greek', path: [[14, 30], [56, 30]] }, { side: 'persian', path: [[50, 22], [44, 29]] }, { side: 'persian', path: [[50, 38], [44, 31]] }, { side: 'greek', path: [[54, 31], [24, 31]] }],
+      certainty: 'secure', certaintyNote: { fa: 'هر سه منبع اصلی این شکست را گزارش می‌کنند.', en: 'All three main sources report this repulse.' },
+      sources: ['arrian', 'curtius', 'diodorus'],
+    },
+    {
+      id: 'night', title: { fa: 'راه پنهان، شب و برف', en: 'The hidden path, night and snow' },
+      body: { fa: 'اسیرانی راهی کوهستانی را نشان دادند. اسکندر کراتروس را با بخشی از سپاه در اردوگاه گذاشت و گفت آتش‌ها را روشن نگه دارد. خودش شبانه با گروهی برگزیده از کوه بالا رفت. راه سخت و پر از برف بود.', en: 'Prisoners revealed a mountain path. Alexander left Craterus with part of the army in camp, keeping the fires burning. He himself climbed by night with a picked force. The way was hard and deep in snow.' },
+      units: [P('ario', 'اریوبرزن', 'Ariobarzanes', [70, 30]), P('north', 'نگهبانان', 'Pickets', [52, 22]), P('south', 'سنگ‌اندازان', 'Slingers and stone-throwers', [52, 38]), M('crat', 'کراتروس در اردوگاه', 'Craterus in camp', [18, 30]), M('alex', 'اسکندر', 'Alexander', [60, 6])],
+      arrows: [{ side: 'greek', path: [[20, 28], [26, 12], [44, 5], [60, 6]] }],
+      certainty: 'disputed', certaintyNote: { fa: 'آریان از «اسیران» می‌گوید؛ دیودوروس و کورتیوس از یک اسیر لوکیایی که سال‌ها در این کوه‌ها چوپانی کرده بود. لندرینگ می‌گوید داستان شبیه افیالتس در ترموپیل است.', en: 'Arrian speaks of “prisoners”; Diodorus and Curtius of a Lycian captive who had herded flocks in these mountains for years. Lendering notes the likeness to Ephialtes at Thermopylae.' },
+      sources: ['arrian', 'diodorus', 'curtius', 'livius-pg'],
+    },
+    {
+      id: 'dawn', title: { fa: 'سپیده‌دم: حمله از دو سو', en: 'Dawn: attack from two sides' },
+      body: { fa: 'اسکندر نگهبانان را غافلگیر کرد و از پشت به اردوگاه ایرانیان رسید. با صدای شیپور، کراتروس هم از روبه‌رو به دیوار حمله کرد. مدافعان میان دو سپاه گیر افتادند.', en: 'Alexander surprised the pickets and came down on the Persian camp from behind. At the trumpet signal, Craterus attacked the wall from the front. The defenders were caught between two forces.' },
+      units: [P('ario', 'اریوبرزن', 'Ariobarzanes', [68, 30]), P('south', 'سنگ‌اندازان', 'Slingers and stone-throwers', [58, 36]), M('alex', 'اسکندر', 'Alexander', [78, 26]), M('crat', 'کراتروس', 'Craterus', [56, 30])],
+      arrows: [{ side: 'greek', path: [[60, 6], [80, 14], [78, 26]] }, { side: 'greek', path: [[18, 30], [56, 30]] }],
+      certainty: 'probable', sources: ['arrian', 'curtius', 'ir-ariobarzanes'],
+    },
+    {
+      id: 'last', title: { fa: 'ایستادگی واپسین اریوبرزن', en: 'Ariobarzanes’ last stand' },
+      body: { fa: 'اریوبرزن با گروهی کوچک از حلقه بیرون زد. آریان می‌گوید او با چند سوار به کوه‌ها گریخت. کورتیوس می‌گوید او به سوی تخت‌جمشید رفت، اما نگهبانان شهر دروازه را به رویش بستند و او جنگید تا کشته شد.', en: 'Ariobarzanes broke out with a small band. Arrian says he escaped into the mountains with a few horsemen. Curtius says he made for Persepolis, but the city’s garrison shut the gates on him and he fought on until he was killed.' },
+      units: [P('ario', 'اریوبرزن', 'Ariobarzanes', [90, 20]), M('alex', 'اسکندر', 'Alexander', [78, 31]), M('crat', 'کراتروس', 'Craterus', [60, 30])],
+      arrows: [{ side: 'persian', path: [[70, 29], [80, 24], [90, 21]] }],
+      certainty: 'disputed', certaintyNote: { fa: 'دو روایت از پایان او هست: گریز (آریان ۳.۱۸.۹) یا مرگ در جنگ (کورتیوس ۵.۴.۳۳–۳۴). بوسورث کورتیوس را می‌پذیرد.', en: 'Two traditions of his end: escape (Arrian 3.18.9) or death fighting (Curtius 5.4.33–34). Bosworth accepts Curtius.' },
+      sources: ['arrian', 'curtius', 'bosworth1980', 'ir-ariobarzanes'],
+    },
+  ],
+}
+
 const dossier: DossierSection[] = [
   sec('sources', 'منابع: شاهی که تنها دشمنانش او را روایت کردند', 'Sources: a king told only by his enemies',
     [['از داریوش سوم هیچ کتیبه یا بنای شاهی ایرانی نمانده است. چند سند بابلی، از جمله فهرست شاهان اوروک و گزارشی نجومی که تاریخ گوگمل و ورود اسکندر به بابل را نشان می‌دهد، و مشاهده‌های نجومی که نام شخصی‌اش را دارد، هست. باقی از مورخان اسکندر است که سده‌ها بعد نوشتند: دیودوروس، آریان، کورتیوس، پلوتارک و یوستینوس. تنها منبع تصویری سودمند، به گفتهٔ بدیان، موزاییک اسکندر از پمپئی است.'], ['No Persian royal inscription or monument of Darius III survives. There are a few Babylonian documents, including the Uruk king list, an astronomical diary interpreted as dating Gaugamela and Alexander’s entry into Babylon, and astronomical observations that give his personal name. Everything else comes from Alexander historians writing centuries later: Diodorus, Arrian, Curtius, Plutarch and Justin. The only useful visual source, Badian says, is the Alexander Mosaic from Pompeii.']],
@@ -158,6 +214,60 @@ const dossier: DossierSection[] = [
     [['بدیان: داریوش با تصمیم به انتظار حمله، ابتکار را از دست داد. یک گزارش نجومی بابلی تاریخ نبرد را تأیید می‌کند؛ این یکی از اندک نقاطی است که روایت یونانی با سندی غیر یونانی سنجیده می‌شود.'], ['Badian: by deciding to wait for the attack, Darius gave up the initiative. A Babylonian astronomical diary confirms the date; it is one of the few points where the Greek narrative can be checked against a non-Greek record.']],
     [['برتری شمار و ثروت بدون انضباط و انعطاف، پیروزی نمی‌آورد.'], ['Superior numbers and wealth without discipline and flexibility do not bring victory.']],
     ['arrian', 'curtius', 'diodorus', 'diaries', 'ir-d3']),
+  sec('ariobarzanes', 'اریوبرزن و دروازه‌های پارس', 'Ariobarzanes and the Persian Gates',
+    [[
+      'پس از گوگمل، بابل و شوش بی‌جنگ تسلیم شدند. اما سر راه پارس، یعنی سرزمین اصلی هخامنشیان، یک نفر ایستاد: اریوبرزن، ساتراپ پارس. او در گوگمل هم فرماندهی بخشی از سپاه را داشت (آریان ۳.۸.۵).',
+      'زمستان ۳۳۰ پ.م. اسکندر سپاهش را دو بخش کرد. پارمنیون با بار و بنه از جادهٔ هموار رفت. خود اسکندر با نیروی سبک‌تر از راه کوهستان به سوی تخت‌جمشید رفت. اریوبرزن تنگه‌ای را که «دروازه‌های پارس» نامیده می‌شد با دیواری از سنگ بست.',
+      'مقدونیان بی‌خبر وارد تنگه شدند. ایرانیان از بالای کوه سنگ و تیر باراندند. اسکندر عقب نشست و حتی کشته‌هایش را جا گذاشت. این تنها شکستی است که منابع برای او در برابر ایرانیان ثبت کرده‌اند.',
+      'سپس اسیرانی راهی کوهستانی نشان دادند. در دیودوروس و کورتیوس، راهنما اسیری لوکیایی است که سال‌ها در این کوه‌ها چوپانی کرده بود. اسکندر شبانه، از میان برف، گذرگاه را دور زد. سپیده‌دم از پشت حمله کرد و کراتروس از روبه‌رو. مدافعان شکستند.',
+      'دربارهٔ پایان اریوبرزن دو روایت هست. آریان می‌گوید او با چند سوار به کوه‌ها گریخت. کورتیوس می‌گوید او با گروهی کوچک راه را باز کرد و به تخت‌جمشید رفت، اما نگهبانان شهر دروازه را بستند و او جنگید تا کشته شد. اسکندر چند روز بعد به تخت‌جمشید رسید.',
+    ], [
+      'After Gaugamela, Babylon and Susa surrendered without a fight. But on the road into Persis, the Achaemenid homeland, one man stood in the way: Ariobarzanes, satrap of Persis. He had also commanded troops at Gaugamela (Arrian 3.8.5).',
+      'In the winter of 330 BCE Alexander split his army. Parmenio took the baggage by the easier road. Alexander himself took the lighter troops over the mountains towards Persepolis. Ariobarzanes closed the gorge called the “Persian Gates” with a stone wall.',
+      'The Macedonians marched into the gorge unaware. The Persians showered them with stones and missiles from the heights. Alexander fell back and even left his dead behind. It is the only defeat the sources record for him at Persian hands.',
+      'Then prisoners revealed a mountain path. In Diodorus and Curtius the guide is a Lycian captive who had herded flocks in these mountains for years. Alexander turned the pass by night, through snow. At dawn he attacked from behind while Craterus attacked from the front. The defenders broke.',
+      'There are two accounts of Ariobarzanes’ end. Arrian says he escaped into the mountains with a few horsemen. Curtius says he cut his way out with a small band and made for Persepolis, but the garrison shut the gates and he fought on until he was killed. Alexander reached Persepolis a few days later.',
+    ]],
+    [[
+      'نکته‌های مورد اختلاف: (۱) شمار سپاه: آریان ۴۰ هزار پیاده و ۷۰۰ سوار، کورتیوس و دیودوروس ۲۵ هزار. شهبازی در ایرانیکا می‌گوید اریوبرزن نمی‌توانست بیش از نیرویی که به گوگمل برده بود گرد آورد و شاید ۷۰۰ کل نیروی او بوده است. (۲) جای گذرگاه: استاین (۱۹۴۰) آن را در تنگ خاص می‌دانست؛ اسپک (۲۰۰۲) و لندرینگ در تنگ میران، شمال‌شرق یاسوج. (۳) هویت او: شهبازی او را پسر ارتباز می‌داند، اما این یکی‌دانستن قطعی نیست. (۴) راهنما: «اسیران» در آریان، یک چوپان لوکیایی در دیودوروس و کورتیوس.',
+      'دربارهٔ مرگ او، بوسورث (۱۹۸۰) روایت کورتیوس را می‌پذیرد. برن (۱۹۷۳)، به نقل شهبازی، این نبرد را «ترموپیلی ایرانی» خوانده است که «مانند ترموپیل سقوط کرد». هِکِل (۱۹۸۰) جزئیات نبرد را در مقاله‌ای جدا بررسی کرده است.',
+    ], [
+      'Points in dispute: (1) Army size: Arrian gives 40,000 foot and 700 horse, Curtius and Diodorus 25,000. Shahbazi (Iranica) argues Ariobarzanes could hardly have raised more than he took to Gaugamela, and that 700 may have been his whole force. (2) The site: Stein (1940) put it at Tang-e Khas; Speck (2002) and Lendering at the Tang-e Meyran, north-east of Yasuj. (3) His identity: Shahbazi makes him a son of Artabazus, but the identification is not certain. (4) The guide: “prisoners” in Arrian, a Lycian herdsman in Diodorus and Curtius.',
+      'On his death, Bosworth (1980) accepts Curtius’ version. Burn (1973), as quoted by Shahbazi, called the battle “a Persian Thermopylae and like Thermopylae it fell”. Heckel (1980) studies the battle in a separate article.',
+    ]],
+    [[
+      'اریوبرزن برای دفاع از سرزمین خودش جنگید، نه برای غارت سرزمین دیگران. فرماندهٔ محلی که خانه و شهرش را می‌شناسد، حتی با نیروی کم، می‌تواند جلوی سپاهی بزرگ را بگیرد.',
+      'آریان از قول پارمنیون می‌گوید سوزاندن تخت‌جمشید درست نبود، چون «نابود کردن آنچه اکنون دارایی خود اوست» خردمندانه نیست. پیام ساده است: جنگ دارایی مردم را نابود می‌کند، حتی وقتی پیروز آن را از آنِ خود می‌داند.',
+    ], [
+      'Ariobarzanes fought to defend his own land, not to plunder anyone else’s. A local commander who knows his home ground can hold up a great army even with few men.',
+      'Arrian has Parmenio advise against burning Persepolis, since “it was not well to destroy what was now his own property”. The lesson is simple: war destroys people’s property, even when the victor counts it as his own.',
+    ]],
+    ['arrian', 'curtius', 'diodorus', 'ir-ariobarzanes', 'bosworth1980', 'heckel1980', 'stein1940', 'speck2002', 'livius-pg'], {
+      photos: ['gate-site', 'yasuj-statue', 'pg-1849'],
+      quotes: [
+        { text: 'found that Ariobarzanes, the viceroy of Persis, with 40,000 infantry and 700 cavalry, had built a wall across the pass, and had pitched his camp there near the wall to block Alexander’s passage.', fa: '[اسکندر] دید که اریوبرزن، فرمانروای پارس، با ۴۰ هزار پیاده و ۷۰۰ سوار، دیواری در گذرگاه ساخته و اردوگاهش را کنار دیوار زده است تا راه اسکندر را ببندد.', ref: 'Arrian, Anabasis 3.18.2, tr. E. J. Chinnock', source: 'arrian' },
+        { text: 'The Persians had a tremendous advantage because of the difficulty of the country, killed many and injured not a few.', fa: 'ایرانیان به خاطر سختی زمین برتری بزرگی داشتند؛ بسیاری را کشتند و شمار زیادی را زخمی کردند.', ref: 'Diodorus 17.68.2, tr. C. B. Welles (Loeb, 1963)', source: 'diodorus' },
+        { text: 'but Ariobarzanes himself, with a few horsemen, escaped into the mountains.', fa: 'اما خود اریوبرزن با چند سوار به کوه‌ها گریخت.', ref: 'Arrian, Anabasis 3.18.9, tr. E. J. Chinnock', source: 'arrian' },
+      ],
+      folk: {
+        title: { fa: 'یوتاب، خواهر اریوبرزن', en: 'Youtab, sister of Ariobarzanes' },
+        story: {
+          fa: ['در روایتی که امروز در ایران بسیار شنیده می‌شود، اریوبرزن خواهری به نام یوتاب داشت. می‌گویند یوتاب در کنار برادرش در دروازه‌های پارس جنگید و همراه او جان داد.'],
+          en: ['In a story widely told in Iran today, Ariobarzanes had a sister named Youtab. She is said to have fought beside her brother at the Persian Gates and to have died with him.'],
+        },
+        origin: {
+          fa: [
+            'هیچ‌کدام از منابع باستانی، یعنی آریان، کورتیوس، دیودوروس، پلوتارک و یوستینوس، از خواهری برای اریوبرزن یا از زنی جنگجو در این نبرد نام نمی‌برند. پس این روایت تاریخ نیست.',
+            'قدیمی‌ترین جایی که این نام را یافتیم کتاب عمومی کاوه فرخ، «سایه‌ها در صحرا» (۲۰۰۷، ص ۱۰۶)، است. او به «افسانه‌های ایرانی» اشاره می‌کند اما منبعی نمی‌آورد. شاید نام با «یوتاپا» (Iotapa) درآمیخته باشد: شاهزاده‌ای از آتروپاتن و خواهر شاهی به نام اریوبرزن دوم، که حدود سه سده بعد زندگی می‌کرد. کاسیوس دیو (۵۱.۱۶) از او یاد می‌کند. این پیوند حدس است.',
+          ],
+          en: [
+            'None of the ancient sources, Arrian, Curtius, Diodorus, Plutarch or Justin, mentions a sister of Ariobarzanes or a woman fighting in this battle. So the story is not history.',
+            'The earliest place we found the name is Kaveh Farrokh’s popular book Shadows in the Desert (2007, p. 106). He refers to “Iranian legends” but gives no source. The name may have been confused with Iotapa, a princess of Atropatene and sister of a king called Ariobarzanes II, who lived some three centuries later. Cassius Dio (51.16) mentions her. That link is a guess.',
+          ],
+        },
+        sources: ['farrokh2007'],
+      },
+    }),
   sec('end', 'پایان: زنجیر زرین', 'The end: golden fetters',
     [['داریوش به هگمتانه رفت تا وقت بخرد؛ اسکندر بابل، شوش و تخت‌جمشید را گرفت و در مه ۳۳۰ کاخ‌های تخت‌جمشید را سوزاند. چون اسکندر نزدیک شد، داریوش با چند نجیب‌زاده و نیرویی کوچک به شرق رفت. بسوس و نبرزن او را با زنجیر زرین بستند و نزدیک هکاتوم‌پولوس، پیش از رسیدن اسکندر، او را زخمی رها کردند. بسوس تاج برگرفت و نام اردشیر یافت.'], ['Darius went to Ecbatana to gain time; Alexander took Babylon, Susa and Persepolis and in May 330 burned the palaces of Persepolis. As Alexander approached, Darius moved east with a few nobles and a small force. Bessus and Nabarzanes bound him in golden fetters and, near Hecatompylus, left him stabbed before Alexander arrived. Bessus took the tiara and the name Artaxerxes.']],
     [['بدیان گمان می‌زند که شتاب اسکندر برای رسیدن به داریوشِ زنده، و اصرار توطئه‌گران بر جلوگیری از آن، نشان می‌دهد داریوش آماده بود اسکندر را برتر بشناسد و به او مشروعیت دهد. این گمان است و منابع نمی‌گویند.'], ['Badian suggests that Alexander’s haste to reach Darius alive, and the conspirators’ determination to prevent it, imply that Darius was ready to acknowledge Alexander as his superior and so give him legitimacy. This is a conjecture; the sources do not say so.']],
@@ -178,8 +288,8 @@ export const dariusIII: FeaturedKing = {
   reign: { fa: '۳۳۶–۳۳۰ پ.م.', en: '336–330 BCE' },
   title: { fa: 'داریوش سوم؛ ایسوس، گوگمل و پایان هخامنشیان', en: 'Darius III: Issus, Gaugamela and the end of the Achaemenids' },
   lede: {
-    fa: 'شاهی با تباری مبهم که بگوآس بر تخت نشاند، دو سال پیش از آمدن اسکندر. در ایسوس و گوگمل شکست خورد، خانواده‌اش اسیر شد و در زنجیر زرین به دست یارانش کشته شد. تنها دشمنانش او را روایت کرده‌اند؛ اینجا شواهد، داوری مورخان اسکندر و بازخوانی پژوهشگران را جدا می‌کنیم. لشکرکشی ۳۳۴–۳۳۰ را روی نقشهٔ متحرک و دو نبرد را گام‌به‌گام ببینید.',
-    en: 'A king of obscure origin put on the throne by Bagoas two years before Alexander came. He was beaten at Issus and Gaugamela, lost his family as captives and was killed in golden fetters by his own companions. Only his enemies told his story; here we separate the evidence, the Alexander historians’ verdict and modern scholars’ rereading. Follow the 334–330 campaign on the animated map and the two battles step by step.',
+    fa: 'شاهی با تباری مبهم که بگوآس بر تخت نشاند، دو سال پیش از آمدن اسکندر. در ایسوس و گوگمل شکست خورد، خانواده‌اش اسیر شد و در زنجیر زرین به دست یارانش کشته شد. تنها دشمنانش او را روایت کرده‌اند؛ اینجا شواهد، داوری مورخان اسکندر و بازخوانی پژوهشگران را جدا می‌کنیم. لشکرکشی ۳۳۴–۳۳۰ را روی نقشهٔ متحرک ببینید و سه نبرد را گام‌به‌گام: ایسوس، گوگمل و ایستادگی اریوبرزن در دروازه‌های پارس.',
+    en: 'A king of obscure origin put on the throne by Bagoas two years before Alexander came. He was beaten at Issus and Gaugamela, lost his family as captives and was killed in golden fetters by his own companions. Only his enemies told his story; here we separate the evidence, the Alexander historians’ verdict and modern scholars’ rereading. Follow the 334–330 campaign on the animated map, and three battles step by step: Issus, Gaugamela and Ariobarzanes’ stand at the Persian Gates.',
   },
   stats: [
     { n: { fa: '۶', en: '6' }, l: { fa: 'سال پادشاهی', en: 'years of reign' } },
@@ -201,7 +311,7 @@ export const dariusIII: FeaturedKing = {
       { name: B('هگمتانه', 'Ecbatana'), c: ECBATANA }, { name: B('هکاتوم‌پولوس', 'Hecatompylus'), c: HECATOMPYLUS },
     ],
     clip: clipFor('darius-iii'),
-    battles: [issus, gaugamela],
+    battles: [issus, gaugamela, persianGates],
   },
   shareImage: '/media/darius-iii/reign-en.png',
   dossier,
@@ -209,8 +319,8 @@ export const dariusIII: FeaturedKing = {
     fa: ['داریوش سوم شاهی دلیر اما بی‌تجربه در فرماندهی بزرگ بود که با مشروعیت ضعیف به قدرت رسید و در برابر یکی از بزرگ‌ترین فرماندهان تاریخ قرار گرفت. ایسوس و گوگمل را باخت، اما روایت بزدلی او بیشتر ساختهٔ مورخان اسکندر است تا شواهد.', 'از دید آزادی و مالکیت، فروپاشی او درسی ساختاری دارد: امپراتوری‌ای که همه چیز آن، از فرماندهی تا مشروعیت، به جان یک تن بسته بود، با شکست آن تن فرو ریخت. آریان خود می‌پذیرد که این شاه در امور مدنی خودکامه نبود؛ اما ساختاری که حق مردم را به ارادهٔ شاه می‌بست، نهادی برای ایستادگی پس از او نداشت.'],
     en: ['Darius III was a brave king, inexperienced in high command, who came to power with weak legitimacy and faced one of history’s greatest generals. He lost Issus and Gaugamela, but the story of his cowardice owes more to the Alexander historians than to the evidence.', 'Through the lens of liberty and property his fall has a structural lesson: an empire in which everything, from command to legitimacy, hung on one life collapsed when that man was defeated. Arrian himself concedes that this king was not arbitrary in civil matters; but a structure that tied people’s rights to the king’s will had no institutions to stand after him.'],
   }, sources: ['arrian', 'ir-d3'] },
-  sources: pick('arrian', 'curtius', 'diodorus', 'plut-alex', 'justin', 'diaries', 'ir-d3', 'ir-a4', 'briant-darius', 'briant', 'kuhrt'),
-  photos: photos('mosaic', 'mongez'),
+  sources: pick('arrian', 'curtius', 'diodorus', 'plut-alex', 'justin', 'diaries', 'ir-d3', 'ir-a4', 'ir-ariobarzanes', 'bosworth1980', 'heckel1980', 'stein1940', 'speck2002', 'livius-pg', 'farrokh2007', 'briant-darius', 'briant', 'kuhrt'),
+  photos: photos('mosaic', 'mongez', 'gate-site', 'yasuj-statue', 'pg-1849'),
   related: related(['artaxerxes-iv', 'اردشیر چهارم (ارسس)، پیشینیش', 'Artaxerxes IV (Arses), his predecessor'], ['artaxerxes-v', 'بسوس (اردشیر پنجم)', 'Bessus (Artaxerxes V)'], ['artaxerxes-iii', 'اردشیر سوم، حامی‌اش', 'Artaxerxes III, his patron']),
   wikipedia: 'https://en.wikipedia.org/wiki/Darius_III',
 }
