@@ -1,6 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { motion } from 'motion/react'
 import { range, shRange } from '../lib/format'
+import { nicknamesFor } from '../data/epithets'
 
 export interface RulerLike { id: string; name: string; latin: string; start: number; end: number | null; description?: string }
 
@@ -22,6 +23,11 @@ export function RulerCard({ r, accent, index }: { r: RulerLike; accent: string; 
         </Link>
       </h3>
       <p dir="ltr" className="text-xs tracking-wide text-turquoise-soft/80 text-right mt-1">{r.latin}</p>
+      {nicknamesFor(r.id).length > 0 && (
+        <p className="mt-2 flex flex-wrap gap-1.5 text-xs">
+          {nicknamesFor(r.id).map((e) => <span key={e.fa} title={e.meaning?.fa} className="rounded-full border border-gold/30 px-2.5 py-0.5 text-gold-bright/90">لقب: {e.fa}</span>)}
+        </p>
+      )}
       <p className="mt-3 inline-flex flex-wrap gap-2 text-sm">
         <span className="rounded-full bg-gold/15 text-gold-bright px-3 py-0.5">{range(r.start, r.end)}</span>
         {sh && <span className="rounded-full bg-turquoise/15 text-turquoise-soft px-3 py-0.5">{sh}</span>}

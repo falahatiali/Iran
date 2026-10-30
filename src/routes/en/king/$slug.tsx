@@ -5,6 +5,7 @@ import { isFeaturedKing } from '../../../data/featured/slugs'
 import { FeaturedDossier } from '../../../components/featured/FeaturedDossier'
 import { PageTransition } from '../../../components/Reveal'
 import { Shamseh } from '../../../components/Ornament'
+import { Epithets } from '../../../components/Epithets'
 import { kingAlternates, kingJsonLd, seo } from '../../../lib/seo'
 
 /** English mirror of a king page. Only featured kings have English content; others go to the Persian page. */
@@ -45,6 +46,7 @@ function KingPageEn() {
             <p className="text-turquoise-soft">{fk.dynastyName.en}</p>
             <h1 className="text-5xl md:text-7xl font-black mt-2 text-gilded leading-tight">{fk.name.en}</h1>
             <p className="text-ivory/60 mt-2" lang="fa" dir="rtl">{k.ruler.name}</p>
+            <Epithets id={k.ruler.id} locale="en" />
             <dl className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-3">
               <div className="glass rounded-2xl p-4"><dt className="text-xs text-ivory/50">Reign</dt><dd className="font-bold text-gold-bright mt-1">{fk.reign.en}</dd></div>
               <div className="glass rounded-2xl p-4"><dt className="text-xs text-ivory/50">Dynasty</dt><dd className="font-bold mt-1">{fk.dynastyName.en}</dd></div>

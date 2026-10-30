@@ -31,6 +31,37 @@ export const xerxesDossier: DossierSection[] = [
     sources: ['hdt', 'royal-inscr', 'iranica', 'briant', 'sancisi', 'kuhrt'],
   },
   {
+    id: 'death', title: { fa: 'قتل خشایارشا: پیش و پس از آن', en: 'The murder of Xerxes: before and after' },
+    historical: {
+      fa: [
+        'دربار سال‌های پایانی: پس از ۴۷۹ خشایارشا بیشتر در تخت‌جمشید و شوش ساخت‌وساز کرد. پسرانش داریوش (بزرگ‌ترین و ولیعهد)، ویشتاسپ (ساتراپ باختر) و اردشیر (جوان‌ترین، «هنوز پسربچه» به گفتهٔ یوستین) بودند و مادرشان آمستریس. نیرومندترین مرد دربار اردوان (آرتابانوس) بود، به گفتهٔ دیودور «هیرکانی‌تبار» و «فرماندهٔ نگهبانان شاهی»؛ عنوان ایرانی این مقام را هزاربد (hazarapat، یونانی: خیلیارخ) می‌دانند.',
+        'چهار روایت از قتل مانده است. کتسیاس (به نقل فوتیوس): اردوان و خواجه‌ای به نام آسپامیترس شاه را کشتند و اردشیر را قانع کردند که برادرش داریوش قاتل است؛ داریوش با آنکه «سخت انکار می‌کرد» کشته شد. دیودور (۱۱.۶۹): اردوان با میتریداتس، خواجه و پیشکار شاه، شبانه به خوابگاه رفت و شاه را کشت، سپس اردشیر را بر داریوش شوراند. یوستین (۳.۱): اردوان با «هفت پسر تنومندش» آمد؛ داریوش را خفته یافتند و کشتند. ارسطو (سیاست ۵.۱۳۱۱ب): اردوان داریوش را بی‌فرمان شاه به دار آویخته بود و از ترس بازخواست شاه را کشت.',
+        'پس از آن: توطئهٔ اردوان علیه اردشیر فاش شد و اردوان کشته شد (در یوستین با نیرنگ زره، در دیودور در کشمکش، در کتسیاس با نبردی که سه پسرش در آن مردند؛ آسپامیترس را با شکنجهٔ «قایق» کشتند). مانتون هفت ماه پادشاهی برای اردوان می‌شمارد. سپس ویشتاسپ یا ساتراپی دیگر در باختر شورید و در دو نبرد شکست خورد.',
+        'تاریخ: لوح BM 32234، گزارشی نجومی از ماه‌گرفتگی ۵ ژوئن ۴۶۵، در حاشیه می‌گوید خشایارشا را «پسرش» در ماه آب کشت، یعنی حدود ۴–۸ اوت ۴۶۵ (استولپر ۱۹۸۸). نخستین سال اردشیر در فهرست‌های بابلی از دسامبر ۴۶۵ آغاز می‌شود.',
+      ],
+      en: [
+        'The late court: after 479 Xerxes built mostly at Persepolis and Susa. His sons were Darius (the eldest and crown prince), Hystaspes (satrap of Bactria) and Artaxerxes (the youngest, “but a boy” according to Justin); their mother was Amestris. The most powerful man at court was Artabanus, “an Hyrcanian by birth” and “captain of the royal body-guard” in Diodorus. The Persian title of this office is usually taken to be hazarapat (Greek chiliarch).',
+        'Four versions survive. Ctesias (via Photius): Artabanus and the eunuch Aspamitres killed the king and persuaded Artaxerxes that his brother Darius had done it; Darius was put to death “although he vehemently denied”. Diodorus (11.69): Artabanus, with Mithridates the eunuch and chamberlain, entered the bedchamber at night and killed the king, then turned Artaxerxes against Darius. Justin (3.1): Artabanus came “accompanied by his seven stout sons”; Darius was found asleep and killed. Aristotle (Politics 5.1311b): Artabanus had hanged Darius against Xerxes’ order and killed the king fearing the charge.',
+        'Afterwards Artabanus’ plot against Artaxerxes was betrayed and he was killed: by the cuirass trick in Justin, in a struggle in Diodorus, and in Ctesias in a battle in which three of his sons fell (Aspamitres was “exposed in the trough”). Manetho counts a reign of seven months for Artabanus. Then Hystaspes, or another satrap, revolted in Bactria and was beaten in two battles.',
+        'The date: BM 32234, an astronomical report on the lunar eclipse of 5 June 465, notes that Xerxes was murdered by “his son” in the month Ab, i.e. about 4–8 August 465 (Stolper 1988). Artaxerxes’ first regnal year in Babylonian lists begins in December 465.',
+      ],
+    },
+    quotes: [
+      { text: 'Artabanus, an Hyrcanian by birth, who enjoyed the greatest influence at the court of King Xerxes and was captain of the royal body-guard, decided to slay Xerxes and transfer the kingship to himself. He communicated the plot to Mithridates the eunuch, who was the king’s chamberlain…', fa: 'اردوان، هیرکانی‌تبار، که در دربار خشایارشا بیشترین نفوذ را داشت و فرماندهٔ نگهبانان شاهی بود، تصمیم گرفت خشایارشا را بکشد و پادشاهی را به خود منتقل کند. او توطئه را با میتریداتس خواجه، پیشکار شاه، در میان گذاشت…', ref: 'Diodorus 11.69.1, tr. C. H. Oldfather', source: 'diodorus' },
+      { text: 'Artapanes killed Xerxes fearing the charge about Darius, because he had hanged him when Xerxes had ordered him not to but he had thought that he would forgive him because he would forget, as he had been at dinner.', fa: 'اردوان خشایارشا را از ترس اتهام دربارهٔ داریوش کشت، زیرا او را به دار آویخته بود با آنکه خشایارشا فرمان داده بود نکند، اما گمان کرده بود شاه می‌بخشد چون از یاد می‌برد، زیرا سر شام بوده است.', ref: 'Aristotle, Politics 5.1311b, tr. H. Rackham', source: 'aristotle' },
+      { text: 'On the fourteenth(?) day of the month Ab, Xerxes — his son murdered him.', fa: 'در روز چهاردهم(؟) ماه آب، خشایارشا را پسرش کشت.', ref: 'BM 32234, tr. C. B. F. Walker', source: 'bm32234' },
+    ],
+    interpretation: {
+      fa: ['همهٔ روایت‌های یونانی دیرهنگام‌اند و رنگ داستان درباری دارند: خواجهٔ دسیسه‌گر، فرزند فریب‌خورده، نیرنگ زره. تنها سند هم‌روزگار، لوح بابلی، از «پسرش» سخن می‌گوید و با آنها ناسازگار است؛ شاید منظور اردشیر باشد، شاید ولیعهد داریوش، و شاید نویسندهٔ بابلی خود روایت رسمی را بازتاب داده باشد. آنچه قطعی است الگوست: جانشینی در نظامی که قدرت و مالکیت دارایی شخص شاه است، قاعده‌ای شفاف ندارد و به خشونت حل می‌شود.'],
+      en: ['All the Greek versions are late and read like court romance: the scheming eunuch, the deceived son, the cuirass trick. The only contemporary document, the Babylonian tablet, speaks of “his son” and does not fit them; it may mean Artaxerxes, the crown prince Darius, or reflect an official story. What is certain is the pattern: in a system where power and property belong to the king’s person, succession has no transparent rule and is settled by violence.'],
+    },
+    modern: {
+      fa: ['قتل خشایارشا را امروز بیشتر از نمایشنامه‌ها و رمان‌ها می‌شناسند تا از لوح بابلی. درس کوچک آن روش است: پیش از باور یک داستان پرکشش، تنها سند هم‌روزگار را پیدا کنید.'],
+      en: ['Today the murder of Xerxes is known more from plays and novels than from the Babylonian tablet. Its small lesson is one of method: before believing a gripping story, find the one contemporary document.'],
+    },
+    sources: ['ctesias', 'diodorus', 'justin', 'aristotle', 'manetho', 'bm32234', 'stolper1988', 'kuhrt', 'briant', 'iranica'],
+  },
+  {
     id: 'revolts', title: { fa: 'مصر و بابل: سرکوب و افسانهٔ ویرانی', en: 'Egypt and Babylon: repression and the destruction myth' },
     historical: {
       fa: [

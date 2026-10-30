@@ -42,3 +42,9 @@ xerxes/war-{fa,en}.{gif,mp4,webm,png}
   Animated campaign map of Xerxes' Greek war (480-479 BCE), rendered from this site's own
   /king/xerxes-i page by scripts/render-campaign-clip.py. Coastlines: Natural Earth (public domain).
   Narrative after Herodotus (tr. A. D. Godley, 1920) and the modern works cited on the page.
+
+artaxerxes-i/reign-{fa,en}.{gif,mp4,webm,png}
+  Animated campaign map of war and peace in the west under Artaxerxes I (460-439 BCE), rendered
+  from this site's own /king/artaxerxes-i page by scripts/render-campaign-clip.py --section reign.
+  Coastlines: Natural Earth (public domain). Narrative after Thucydides (tr. T. Hobbes, 1843),
+  Diodorus (tr. C. H. Oldfather) and Ctesias (tr. J. H. Freese, 1920), as cited on the page.

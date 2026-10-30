@@ -5,6 +5,7 @@ import { FamilyTree } from '../../components/FamilyTree'
 import { Sources } from '../../components/Sources'
 import { PageTransition, Reveal } from '../../components/Reveal'
 import { Shamseh } from '../../components/Ornament'
+import { Epithets } from '../../components/Epithets'
 import { EventIcon } from '../../components/EventIcon'
 import { eventTypeNames, fa, range, shRange, year } from '../../lib/format'
 import { kingAlternates, kingJsonLd, seo } from '../../lib/seo'
@@ -49,6 +50,7 @@ function KingPage() {
             <p className="text-turquoise-soft">{d.name}</p>
             <h1 className="text-5xl md:text-7xl font-black mt-2 text-gilded leading-tight">{r.name}</h1>
             <p dir="ltr" className="text-right text-ivory/50 mt-2">{r.latin}</p>
+            <Epithets id={r.id} locale="fa" />
             <dl className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3">
               <div className="glass rounded-2xl p-4"><dt className="text-xs text-ivory/50">دوران فرمانروایی</dt><dd className="font-bold text-gold-bright mt-1">{range(r.start, r.end)}</dd></div>
               {sh && <div className="glass rounded-2xl p-4"><dt className="text-xs text-ivory/50">خورشیدی (تقریبی)</dt><dd className="font-bold text-turquoise-soft mt-1">{sh}</dd></div>}

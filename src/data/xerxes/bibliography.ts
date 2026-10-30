@@ -18,6 +18,11 @@ export const xerxesSources: FeaturedSource[] = [
   { id: 'cawkwell', author: 'G. Cawkwell', title: 'The Greek Wars: The Failure of Persia', year: '2005' },
   { id: 'lazenby', author: 'J. F. Lazenby', title: 'The Defence of Greece, 490–479 BC', year: '1993' },
   { id: 'sancisi', author: 'H. Sancisi-Weerdenburg', title: 'The personality of Xerxes, king of kings', year: '1989' },
+  { id: 'justin', author: 'Justin, tr. J. S. Watson', title: 'Epitome of Pompeius Trogus, book 3.1', year: '1853', url: 'https://www.attalus.org/translate/justin9.html', note: { fa: 'خلاصه‌ای لاتینی از قرن دوم–سوم میلادی؛ دیرهنگام.', en: 'A Latin epitome of the 2nd–3rd century CE; late.' } },
+  { id: 'aristotle', author: 'Aristotle, tr. H. Rackham', title: 'Politics 5.1311b (Loeb)', year: '1944' },
+  { id: 'manetho', author: 'Manetho, fr. 70 (Africanus), tr. W. G. Waddell', title: 'Manetho (Loeb Classical Library)', year: '1940' },
+  { id: 'bm32234', author: 'BM 32234 (LBAT *1419), tr. C. B. F. Walker', title: 'A Babylonian lunar-eclipse tablet recording Xerxes’ murder (in Kuhrt 2007; Sachs and Hunger, ADART V no. 4)', year: 'Walker 1997', note: { fa: 'تنها گواه بابلیِ هم‌روزگار دربارهٔ قتل.', en: 'The only contemporary Babylonian witness to the murder.' } },
+  { id: 'stolper1988', author: 'M. W. Stolper', title: 'Some ghost facts from Achaemenid Babylonian texts, Journal of Hellenic Studies 108', year: '1988' },
   { id: 'bm', author: 'British Museum', title: 'Collection online: Achaemenid objects and the Xerxes material', year: 'online', url: 'https://www.britishmuseum.org/collection' },
 ]
 

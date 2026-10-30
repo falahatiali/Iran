@@ -1,6 +1,7 @@
 import type { FeaturedKing } from './types'
 import { dariusEvents, dariusSources, dossier as dariusDossier, synthesis as dariusSynthesis } from '../darius'
 import { xerxesBattles, xerxesCampaign, xerxesDossier, xerxesEvents, xerxesPhotos, xerxesPlaces, xerxesSources, xerxesSynthesis } from '../xerxes'
+import { artaxerxesCampaign, artaxerxesDossier, artaxerxesEvents, artaxerxesPhotos, artaxerxesPlaces, artaxerxesSources, artaxerxesSynthesis } from '../artaxerxes'
 import { untashDossier, untashEvents, untashPhotos, untashSources, untashSynthesis } from '../untash'
 
 export * from './types'
@@ -84,7 +85,7 @@ const xerxes: FeaturedKing = {
   ],
   mapTitle: { fa: 'نقشهٔ متحرک: زندگی خشایارشا', en: 'Animated map: the life of Xerxes' },
   events: xerxesEvents,
-  span: [-518, -465],
+  span: [-518, -464],
   campaign: {
     id: 'war',
     title: { fa: 'جنگ یونان، گام‌به‌گام (۴۹۹–۴۷۹ پ.م.)', en: 'The Greek war, step by step (499–479 BCE)' },
@@ -112,8 +113,54 @@ const xerxes: FeaturedKing = {
   wikipedia: 'https://en.wikipedia.org/wiki/Xerxes_I',
 }
 
+const aclip = (ext: string) => ({ fa: `/media/artaxerxes-i/reign-fa.${ext}`, en: `/media/artaxerxes-i/reign-en.${ext}` })
+const artaxerxes: FeaturedKing = {
+  slug: 'artaxerxes-i',
+  name: { fa: 'اردشیر یکم (درازدست)', en: 'Artaxerxes I Longimanus' },
+  dynastyName: { fa: 'هخامنشیان', en: 'Achaemenids' },
+  reign: { fa: '۴۶۵–۴۲۴/۴۲۳ پ.م.', en: '465–424/423 BCE' },
+  title: { fa: 'اردشیر درازدست؛ شاه بزرگ، چهل سال میان جنگ و صلح', en: 'Artaxerxes Longhand: Great King, forty years between war and peace' },
+  lede: {
+    fa: 'پسر خشایارشا که پس از قتل پدر، با کشتن برادر و اردوان به تخت رسید و یونانیان او را «درازدست» خواندند. شورش مصر و ناوگان آتن را شکست داد، به روایت دیودور با آتن صلح کرد، تمیستوکلس را پناه داد، عزرا و نحمیا را (به روایت کتاب مقدس) به اورشلیم فرستاد و تالار صدستون را تمام کرد. بایگانی موراشو از دوران او بهترین شاهد زمین، اجاره و وام در جهان هخامنشی است. زندگی‌اش را به ترتیب و جنگ و صلح غرب را روی نقشهٔ متحرک ببینید، با شواهد، تفسیر و معنای امروز در سه لایهٔ جدا. هر جا منابع ناسازگارند، گفته‌ایم.',
+    en: 'The son of Xerxes who, after his father’s murder, took the throne by killing his brother and Artabanus, and whom the Greeks called “Long-handed”. He crushed the Egyptian revolt and the Athenian fleet, made peace with Athens according to Diodorus, sheltered Themistocles, sent Ezra and Nehemiah to Jerusalem (in the biblical account) and finished the Hall of a Hundred Columns. The Murašû archive from his reign is the best evidence for land, leases and credit in the Achaemenid world. Follow his life in order and the western war and peace on the animated map, with evidence, interpretation and modern meaning in three separate layers. Wherever the sources conflict, we say so.',
+  },
+  stats: [
+    { n: { fa: '۴۱', en: '41' }, l: { fa: 'سال پادشاهی (اسناد بابلی)', en: 'years of reign (Babylonian documents)' } },
+    { n: { fa: '۶', en: '6' }, l: { fa: 'سال جنگ مصر (توکودیدس)', en: 'years of the Egyptian war (Thucydides)' } },
+    { n: { fa: '~۷۳۰', en: '~730' }, l: { fa: 'لوح بایگانی موراشو', en: 'Murašû archive tablets' } },
+    { n: { fa: '۳', en: '3' }, l: { fa: 'شاه در سال پس از مرگش', en: 'kings in the year after his death' } },
+  ],
+  mapTitle: { fa: 'نقشهٔ متحرک: زندگی اردشیر یکم', en: 'Animated map: the life of Artaxerxes I' },
+  events: artaxerxesEvents,
+  span: [-465, -424],
+  campaign: {
+    id: 'reign',
+    title: { fa: 'جنگ و صلح در غرب، گام‌به‌گام (۴۶۰–۴۳۹ پ.م.)', en: 'War and peace in the west, step by step (460–439 BCE)' },
+    intro: {
+      fa: ['از شورش مصر و ناوگان آتن تا صلح کالیاس و ساموس. خط رنگی راه سپاه و خط آبی خط‌چین راه ناوگان است. هر گام می‌گوید قطعی، محتمل یا محل بحث است. ستون اصلی توکودیدس است، که آتنی بود.'],
+      en: ['From the Egyptian revolt and the Athenian fleet to the Peace of Callias and Samos. The coloured line is the army’s route and the dashed blue line the fleet’s. Each step says whether it is secure, probable or disputed. The spine is Thucydides, an Athenian.'],
+    },
+    events: artaxerxesCampaign,
+    span: [-460, -440],
+    view: [21.2, 28.6, 37.6, 40.4],
+    places: artaxerxesPlaces,
+    clip: { gif: aclip('gif'), mp4: aclip('mp4'), webm: aclip('webm'), poster: aclip('png'), width: 800, height: 298 },
+  },
+  shareImage: '/media/artaxerxes-i/reign-en.png',
+  dossier: artaxerxesDossier,
+  synthesis: artaxerxesSynthesis,
+  sources: artaxerxesSources,
+  photos: artaxerxesPhotos,
+  related: [
+    { href: { fa: '/king/xerxes-i', en: '/en/king/xerxes-i' }, label: { fa: 'خشایارشا، پدرش', en: 'Xerxes I, his father' } },
+    { href: { fa: '/king/darius-i', en: '/en/king/darius-i' }, label: { fa: 'داریوش بزرگ، پدربزرگش', en: 'Darius the Great, his grandfather' } },
+    { href: { fa: '/dynasty/achaemenids', en: '/dynasty/achaemenids' }, label: { fa: 'دودمان هخامنشی', en: 'The Achaemenid dynasty' } },
+  ],
+  wikipedia: 'https://en.wikipedia.org/wiki/Artaxerxes_I',
+}
+
 /** Registry keyed by ruler slug. Add an entry here to give any king the extended page. */
-export const featuredKings: Record<string, FeaturedKing> = { [untash.slug]: untash, [darius.slug]: darius, [xerxes.slug]: xerxes }
+export const featuredKings: Record<string, FeaturedKing> = { [untash.slug]: untash, [darius.slug]: darius, [xerxes.slug]: xerxes, [artaxerxes.slug]: artaxerxes }
 
 export function getFeaturedKing(slug: string): FeaturedKing | undefined {
   return Object.prototype.hasOwnProperty.call(featuredKings, slug) ? featuredKings[slug] : undefined

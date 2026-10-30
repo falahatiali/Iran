@@ -5,6 +5,7 @@ import type { Overview } from '../server/api'
 import { normalize } from '../lib/search'
 import { range, year } from '../lib/format'
 import { placeForEventTitle, places } from '../data/places'
+import { epithetSearchText, nicknamesFor } from '../data/epithets'
 
 type Hit =
   | { kind: 'dynasty'; key: string; label: string; sub: string; slug: string }
@@ -23,7 +24,7 @@ export function SearchDialog({ data, open, onClose }: { data: Overview; open: bo
     const all: (Hit & { hay: string })[] = []
     for (const d of data.dynasties) {
       all.push({ kind: 'dynasty', key: `d-${d.slug}`, label: d.name, sub: range(d.start, d.end), slug: d.slug, hay: normalize(`${d.name} ${d.latin}`) })
-      for (const r of d.rulers) all.push({ kind: 'ruler', key: `r-${r.id}`, label: r.name, sub: `${d.name} · ${range(r.start, r.end)}`, slug: r.id, hay: normalize(`${r.name} ${r.latin}`) })
+      for (const r of d.rulers) all.push({ kind: 'ruler', key: `r-${r.id}`, label: r.name, sub: [d.name, range(r.start, r.end), ...nicknamesFor(r.id).map((e) => `«${e.fa}»`)].join(' · '), slug: r.id, hay: normalize(`${r.name} ${r.latin} ${epithetSearchText(r.id)}`) })
     }
     for (const e of data.events) all.push({ kind: 'event', key: `e-${e.id}`, label: e.title, sub: `${names.get(e.dynastySlug)} · ${year(e.year)}`, slug: e.dynastySlug, hay: normalize(e.title) })
     for (const p of Object.values(places)) all.push({ kind: 'place', key: `pl-${p.slug}`, label: p.name.fa, sub: p.name.en, slug: p.slug, hay: normalize([p.name.fa, p.name.en, ...p.aliases].join(' ')) })

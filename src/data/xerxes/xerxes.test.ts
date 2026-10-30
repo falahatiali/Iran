@@ -20,9 +20,10 @@ function checkEvents(events: MapEvent[], lo: number, hi: number) {
 
 test('life events are chronological, sourced and inside the reign window', () => {
   assert.ok(xerxesEvents.length >= 10)
-  checkEvents(xerxesEvents, -518, -465)
+  checkEvents(xerxesEvents, -518, -464)
   assert.equal(xerxesEvents[0].id, 'birth')
-  assert.equal(xerxesEvents.at(-1)?.id, 'murder')
+  for (const id of ['murder', 'crown-prince', 'artabanus-fall', 'bactria']) assert.ok(xerxesEvents.some((e) => e.id === id), id)
+  assert.equal(xerxesEvents.find((e) => e.id === 'murder')?.certainty, 'disputed')
 })
 
 test('the Greek-war campaign runs from the Ionian revolt to the aftermath with fleet tracks', () => {
@@ -68,7 +69,7 @@ test('photos have Commons pages and licences; quotes cite a source and reference
 })
 
 test('dossier keeps three bilingual layers and covers the property-lens topics', () => {
-  for (const id of ['economy', 'markets', 'religion', 'army', 'law', 'freedoms']) assert.ok(dossier.some((d) => d.id === id), id)
+  for (const id of ['death', 'economy', 'markets', 'religion', 'army', 'law', 'freedoms']) assert.ok(dossier.some((d) => d.id === id), id)
   for (const s of dossier) {
     for (const layer of [s.historical, s.interpretation, s.modern]) {
       assert.ok(layer.fa.length > 0 && layer.en.length > 0, s.id)

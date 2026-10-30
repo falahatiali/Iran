@@ -2,6 +2,22 @@
 
 A running record of substantial product and research work. Older infrastructure notes live in git history.
 
+## 2026-10-30 — Xerxes' murder, Artaxerxes I Longhand, and royal epithets
+
+**Directive:** owner. Explain how Xerxes was killed and what came before and after; give Artaxerxes I (“Longhand”) a full dossier; add the kings' epithets and titles where a source names them.
+
+**Done in this pass**
+
+- Xerxes: new dossier section `death` (the late court, Artabanus the hazarapat, four versions: Ctesias via Photius, Diodorus 11.69, Justin 3.1, Aristotle *Politics* 1311b; Artabanus' fall; Bactria; the date from BM 32234, c. 4–8 August 465, after Stolper 1988). Life map gained `crown-prince`, `artabanus-fall` and `bactria`; `murder` is now flagged disputed (the tablet says “his son”, the Greeks say Artabanus; Aspamitres vs Mithridates). Sources added: Justin, Aristotle, Manetho fr. 70, BM 32234, Stolper 1988.
+- `/king/artaxerxes-i` and `/en/king/artaxerxes-i` are featured dossiers: a 14-step life map (accession 465 to death 424/423), an 11-step western campaign map (`reign`: Inaros, the Athenian fleet, Papremis, the White Wall, Spartan bribe, Megabyzus, Prosopitis, Mendes, Cimon at Cyprus, Callias, Samos) with fleet tracks, eleven three-layer sections (life, name and titles, accession, Egypt, the Callias peace, the court, Themistocles' three cities, Ezra and Nehemiah, the Murašû archive, buildings and A1Pa, the succession), seven Commons photos and a synthesis. Verbatim quotes only from A1Pa (Lecoq via Livius), Thucydides (Hobbes), Diodorus (Oldfather), Plutarch (Perrin) and Nehemiah (KJV).
+- Clip rendered with `scripts/render-campaign-clip.py … --section reign` to `public/media/artaxerxes-i/reign-{fa,en}.{gif,mp4,webm,png}`; the PNG is the og:image.
+- Epithets: `src/data/epithets.ts` keyed by ruler id (Persian form, original form and language, meaning, kind = official title / later byname / patronymic, source). Shown on king page headers (fa and en, `Epithets` component), as chips on dynasty ruler cards, and in search (hay and subtitle), so “درازدست” or “Longimanus” finds Artaxerxes I. Filled for Cyrus II, Darius I, Xerxes I, Artaxerxes I, Darius II, Artaxerxes II, Ardashir I, Shapur II, Bahram V, Khosrow I and Khosrow II. Tests in `src/data/epithets.test.ts`.
+- Disputed and flagged: who killed Xerxes; whether Artabanus reigned; the Bactrian leader; the Egyptian war's dates and ship numbers; the Peace of Callias; Megabyzus' revolt (Ctesias only); Ezra's date (Artaxerxes I or II); the Murašû family label on the Nippur replica; the tomb attribution; the reign length (40/41/42); the meaning of Longimanus.
+
+**Not filled (no source opened yet):** Mithridates II “the Great” and the Parthian “king of kings”; the meaning of Parvēz.
+
+**Next:** Shutruk-Nakhunte.
+
 ## 2026-10-30 — Xerxes I: life, the Greek war, battle diagrams and a GIF clip
 
 **Directive:** owner. Focus on Xerxes: everything known, his life in order, the Greek war in full, shown as an animation from beginning to end.

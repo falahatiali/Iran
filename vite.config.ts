@@ -11,7 +11,7 @@ export default defineConfig({
     tailwindcss(),
     tanstackStart({
       prerender: { enabled: true, crawlLinks: true, failOnError: true, filter: ({ path }) => !path.startsWith('/media/') },
-      pages: [{ path: '/' }, { path: '/cylinder' }, { path: '/en/cylinder' }, { path: '/archives' }, { path: '/en/archives' }, { path: '/en/king/untash-napirisha' }, { path: '/en/king/darius-i' }, { path: '/en/king/xerxes-i' }, { path: '/timeline' }, { path: '/about' }, { path: '/en/about' }, { path: '/place/bisotun' }, { path: '/en/place/bisotun' }],
+      pages: [{ path: '/' }, { path: '/cylinder' }, { path: '/en/cylinder' }, { path: '/archives' }, { path: '/en/archives' }, { path: '/en/king/untash-napirisha' }, { path: '/en/king/darius-i' }, { path: '/en/king/xerxes-i' }, { path: '/en/king/artaxerxes-i' }, { path: '/timeline' }, { path: '/about' }, { path: '/en/about' }, { path: '/place/bisotun' }, { path: '/en/place/bisotun' }],
     }),
     nitro(),
     viteReact(),
