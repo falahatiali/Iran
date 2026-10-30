@@ -60,3 +60,9 @@ artaxerxes-ii/reign-{fa,en}.{gif,mp4,webm,png}
   rendered from this site's own /king/artaxerxes-ii page by scripts/render-campaign-clip.py --section reign.
   Coastlines: Natural Earth (public domain). Narrative after Xenophon, Anabasis (tr. H. G. Dakyns),
   as cited on the page. Routes are approximate editorial sketches.
+
+artaxerxes-iii/reign-{fa,en}.{gif,mp4,webm,png}
+  Animated map of Artaxerxes III's campaigns, from the Cadusii to the reconquest of Egypt and Perinthus
+  (358-340 BCE), rendered from this site's own /king/artaxerxes-iii page by scripts/render-campaign-clip.py
+  --section reign. Coastlines: Natural Earth (public domain). Narrative after Diodorus (tr. C. H. Oldfather),
+  Justin and Arrian (tr. E. J. Chinnock), as cited on the page. Routes are approximate editorial sketches.
