@@ -194,3 +194,16 @@ See [RESEARCH_LOG.md](./RESEARCH_LOG.md) §13 for the source table.
 - Left out as unverified: Dio's account of the Arbela tombs (given only via the Livius note), details of the destruction of Seleucia in 165, Artabanus' regional base, and any Tabari quote.
 
 **Next king:** Ardashir I (Sasanian) (`ardashir-i`, 224–242 CE).
+
+## 2026-10-31 — Sasanians, batch 1: Ardashir I to Narseh
+
+**Done in this pass**
+
+- Featured: Ardashir I (`ardashir-i`) and Shapur I (`shapur-i`), each with a reign map and clip; Shapur I also has an animated Edessa battle diagram (fa/en GIF). Quotes are verbatim from published ŠKZ translations, with citations.
+- `CampaignMap.tsx` / `featured/types.ts`: optional `dy` place-label shift (the `left` flag mirrors in RTL); used to separate the Ctesiphon and Misiche labels on the Shapur I map.
+- `common.ts`: Satala and Ahvaz coordinates.
+- `short.ts`: Hormizd I, Bahram I, Bahram II and Bahram III. Flagged: the regnal chronology (Shahbazi vs Skjærvø/Weber) and Mani's death year (274 Henning vs 276 Weber). Bahram III's surrender comes from Paikuli; only his later fate is unknown.
+- `narseh.ts`: Narseh, covering Paikuli (NPi §4 and §91, tr. Skjærvø), Galerius (Callinicum 297, Osxa 298) and the Peace of Nisibis. Flagged: the treaty year (298 per Iranica vs 299). The clauses are not listed, because the treaty text does not survive; only Petros Patrikios' summary is mentioned.
+- All new photos come from Commons with verified licences and are recorded in `public/media/ATTRIBUTION.txt`.
+
+**Next king:** Hormizd II (`hormizd-ii`).
