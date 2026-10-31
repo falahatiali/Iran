@@ -186,3 +186,8 @@ Narseh page (/king/narseh)
 Hormizd II page (/king/hormizd-ii)
   relief-hormizd2: Diego Delso, CC BY 4.0. Source: https://commons.wikimedia.org/wiki/File:Relief_of_Hormizd_II_in_Naqsh-e_Rostam.jpg
   coin-hormizd2: Classical Numismatic Group, CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:Coin_of_Hormizd_II.jpg
+Shapur II page (/king/shapur-ii)
+  coin-shapur2: Osama Shukir Muhammed Amin, CC BY-SA 4.0. Source: https://commons.wikimedia.org/wiki/File:Silver_coin_of_Shapur_II,_309-379_CE,_from_Iraq,_Sulaymaniyah_Museum.jpg
+  amida-walls: Adam Jones, CC BY-SA 2.0. Source: https://commons.wikimedia.org/wiki/File:City_Wall_and_Battlements_-_Diyarbakir_-_Turkey_(5777328071).jpg
+  tb-ardashir2: Skot, CC BY-SA 4.0. Source: https://commons.wikimedia.org/wiki/File:Taq-e_Bostan_(Kermanshah)_–_Relief_of_the_Coronation_of_Ardashir_II.jpg
+  tb-small: Philippe Chavin, CC BY 2.5. Source: https://commons.wikimedia.org/wiki/File:Taq-e_Bostan_-_High-relief_Shapur_II_and_Shapur_III.jpg

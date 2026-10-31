@@ -43,8 +43,9 @@ test('Sasanian disputes are flagged; legends labelled; no excluded commentator i
   assert.ok(/Christensen/.test(text('ardashir-i')) && /Boyce/.test(text('ardashir-i')), 'Tansar dating dispute')
   assert.ok(by('ardashir-i')?.dossier.some((s) => s.folk && /legend/i.test(s.folk.origin.en.join(' '))), 'Kar-namag labelled as legend')
   assert.ok(has('shapur-i', /Huyse|Frye|ŠKZ|Roman/, 'edessa'))
+  assert.ok(by('shapur-ii')?.dossier.some((s) => s.folk && /tradition|legend/i.test(s.folk.origin.en.join(' '))), 'womb crowning labelled as tradition')
   assert.ok(has('narseh', /298/, 'nisibis'))
-  for (const slug of ['ardashir-i', 'shapur-i']) { const k = by(slug); if (k) assert.ok(k.campaign?.clip, slug) }
+  for (const slug of ['ardashir-i', 'shapur-i', 'shapur-ii']) { const k = by(slug); if (k) assert.ok(k.campaign?.clip, slug) }
   assert.match(sasSources.skz.url ?? '', /^https:\/\//)
   assert.equal(/jannatkhah|جنت.?خواه/i.test(JSON.stringify(sasanianKings)), false)
 })
