@@ -226,3 +226,6 @@ Khosrow I page (/king/khosrow-i)
   chess-met: Metropolitan Museum of Art, CC0. Source: https://commons.wikimedia.org/wiki/File:%22Buzurgmihr_Masters_the_Game_of_Chess%22,_Folio_from_a_Shahnama_(Book_of_Kings)_MET_DP159353.jpg
 Hormizd IV page (/king/hormizd-iv)
   coin-hormizd4: Classical Numismatic Group, CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:Coin_of_Hormizd_IV,_Darabgerd_mint.jpg
+Bahram VI Chobin page (/king/bahram-chobin)
+  coin-bahram6: Classical Numismatic Group, CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:Coin_of_Bahram_Chobin,_Susa_mint.jpg
+  bahram-saveh: Bgag (photo of a c. 1530 painting, Reza Abbasi Museum), CC BY-SA 4.0. Source: https://commons.wikimedia.org/wiki/File:Battle_of_Bahram_Chubina_with_Saveh_shah.jpg
