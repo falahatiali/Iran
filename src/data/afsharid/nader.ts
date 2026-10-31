@@ -104,7 +104,7 @@ export const nader: FeaturedKing = {
   events: naderEvents,
   span: [1688, 1747],
   lifeMap: { view: [42, 26, 80, 44], places: [
-    { name: B('دره‌گز', 'Darra Gaz'), c: P.DARRAGAZ, dy: -0.6 }, { name: B('مشهد', 'Mashhad'), c: P.MASHHAD, dy: 0.7 }, { name: B('مهماندوست', 'Mehmandust'), c: P.MEHMANDUST, left: true },
+    { name: B('دره‌گز', 'Darra Gaz'), c: P.DARRAGAZ, dy: -0.9 }, { name: B('مشهد', 'Mashhad'), c: P.MASHHAD, dy: 0.7 }, { name: B('مهماندوست', 'Mehmandust'), c: P.MEHMANDUST, left: true },
     { name: B('اصفهان', 'Isfahan'), c: P.ISFAHAN }, { name: B('مغان', 'Mughan'), c: P.MUGHAN, left: true }, { name: B('قندهار', 'Qandahar'), c: P.QANDAHAR },
     { name: B('کرنال', 'Karnal'), c: P.KARNAL, left: true }, { name: B('بخارا', 'Bukhara'), c: P.BUKHARA }, { name: B('دربند', 'Darband'), c: P.DARBAND },
     { name: B('نجف', 'Najaf'), c: P.NAJAF, left: true }, { name: B('ایروان', 'Yerevan'), c: P.YEREVAN, left: true },
@@ -115,11 +115,11 @@ export const nader: FeaturedKing = {
     intro: { fa: ['از هرات و مهماندوست تا گنجه، قندهار، کرنال و دهلی، سپس بخارا، داغستان، عراق و باغاورد. تاریخ‌ها از ایرانیکا (تاکر و پری) است؛ راه‌ها طرح‌وارند.'], en: ['From Herat and Mehmandust to Ganja, Qandahar, Karnal and Delhi, then Bukhara, Daghestan, Iraq and Baghavard. Dates follow Iranica (Tucker and Perry); the routes are sketches.'] },
     events: campaignEvents, span: [1729, 1747], view: [42, 26, 80, 44],
     places: [
-      { name: B('هرات', 'Herat'), c: P.HERAT }, { name: B('مشهد', 'Mashhad'), c: P.MASHHAD, dy: -0.6 }, { name: B('مهماندوست', 'Mehmandust'), c: P.MEHMANDUST, left: true },
+      { name: B('هرات', 'Herat'), c: P.HERAT }, { name: B('مشهد', 'Mashhad'), c: P.MASHHAD, dy: 0.9 }, { name: B('مهماندوست', 'Mehmandust'), c: P.MEHMANDUST, left: true },
       { name: B('اصفهان', 'Isfahan'), c: P.ISFAHAN }, { name: B('گنجه', 'Ganja'), c: P.GANJA, left: true }, { name: B('قندهار', 'Qandahar'), c: P.QANDAHAR },
       { name: B('کرنال', 'Karnal'), c: P.KARNAL, left: true, dy: -0.6 }, { name: B('دهلی', 'Delhi'), c: P.DELHI, dy: 0.7 }, { name: B('بخارا', 'Bukhara'), c: P.BUKHARA },
       { name: B('خیوه', 'Khiva'), c: P.KHIVA, left: true }, { name: B('دربند', 'Darband'), c: P.DARBAND }, { name: B('نجف', 'Najaf'), c: P.NAJAF, left: true },
-      { name: B('شیراز', 'Shiraz'), c: P.SHIRAZ }, { name: B('ایروان', 'Yerevan'), c: P.YEREVAN, left: true }, { name: B('خبوشان', 'Khabushan'), c: P.KHABUSHAN, dy: -0.6 },
+      { name: B('شیراز', 'Shiraz'), c: P.SHIRAZ }, { name: B('ایروان', 'Yerevan'), c: P.YEREVAN, left: true }, { name: B('خبوشان', 'Khabushan'), c: P.KHABUSHAN, left: true, dy: -0.6 },
     ],
     clip: { gif: B('/media/nader/campaigns-fa.gif', '/media/nader/campaigns-en.gif'), mp4: B('/media/nader/campaigns-fa.mp4', '/media/nader/campaigns-en.mp4'), webm: B('/media/nader/campaigns-fa.webm', '/media/nader/campaigns-en.webm'), poster: B('/media/nader/campaigns-fa.png', '/media/nader/campaigns-en.png'), width: 958, height: 356 },
   },
