@@ -210,7 +210,7 @@ export const sasSources: Record<string, FeaturedSource> = Object.fromEntries(([
   { id: 'ir-nehavand', author: 'C. E. Bosworth, Encyclopaedia Iranica', title: 'Nehāvand', year: '2017', url: IR('nehavand') },
   { id: 'ir-china15', author: 'M. Compareti, Encyclopaedia Iranica', title: 'China xv. The last Sasanians in China', year: '2009', url: IR('china-xv-the-last-sasanians-in-china') },
   { id: 'tabari5', author: 'al-Ṭabarī, tr. C. E. Bosworth', title: 'The History of al-Ṭabarī V: The Sāsānids, the Byzantines, the Lakhmids, and Yemen (Albany)', year: '1999', url: 'https://archive.org/details/vol.-5.-the-sasanids-the-byzantines-the-lakhmids-and-yemen' },
-  { id: 'tabari15', author: 'al-Ṭabarī, tr. R. S. Humphreys', title: 'The History of al-Ṭabarī XV: The Crisis of the Early Caliphate (Albany), pp. 78–90', year: '1990', url: 'https://archive.org/details/vol.-5.-the-sasanids-the-byzantines-the-lakhmids-and-yemen' },
+  { id: 'tabari15', author: 'al-Ṭabarī, tr. R. S. Humphreys', title: 'The History of al-Ṭabarī XV: The Crisis of the Early Caliphate (Albany), pp. 78–90', year: '1990' },
   { id: 'emrani', author: 'H. Emrani', title: '“Like Father, Like Daughter: Late Sasanian Imperial Ideology and the Rise of Bōrān to Power”, e-Sasanika 5', year: '2009' },
 ] as FeaturedSource[]).map((s) => [s.id, s]))
 
