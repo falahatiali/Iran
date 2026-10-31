@@ -161,3 +161,10 @@ Sasanian kings (src/data/sasanian), licences read from the Commons API on 2026-1
 ardashir-i/reign-{fa,en}.{gif,mp4,webm,png}
   Our own render of the campaign map on the /king/ardashir-i page by scripts/render-campaign-clip.py --section reign.
   Narrative after Herodian 6.2 (tr. Echols) and Encyclopaedia Iranica; coastlines Natural Earth (public domain).
+Shapur I page (/king/shapur-i)
+  coin-shapur1: Classical Numismatic Group, CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:Gold_coin_of_Shapur_I,_Ctesiphon_mint.jpg
+  nr-shapur: Carole Raddato, CC BY-SA 2.0. Source: https://commons.wikimedia.org/wiki/File:The_triumph_of_Shapur_I_over_the_Roman_emperors_Valerian_and_Philip_the_Arab,_Naqsh-e_Rostam,_Iran_(48098710736).jpg
+  bishapur3: Pentocelo, CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:Bishapur_III_relief_Shapur.JPG
+  mani-scroll: Unknown (13th century), Public domain. Source: https://commons.wikimedia.org/wiki/File:Sermon_on_Mani%27s_Teaching_of_Salvation._Cathayan_Manichaean_silk_painting,_13th-century.jpg
+- media/shapur-i/reign-*.{gif,mp4,webm,png} and battle-edessa-*: rendered from this site's own map and schematic data (coastlines: Natural Earth, public domain).
+

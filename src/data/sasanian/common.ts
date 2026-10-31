@@ -47,6 +47,8 @@ export const sasSources: Record<string, FeaturedSource> = Object.fromEntries(([
   { id: 'ir-firuzabad', author: 'D. Huff, Encyclopaedia Iranica', title: 'Fīrūzābād', year: '1999', url: IR('firuzabad') },
   { id: 'ir-shapur1', author: 'A. Sh. Shahbazi, Encyclopaedia Iranica', title: 'Šāpur I: History', year: '2002, updated 2018', url: IR('shapur-i') },
   { id: 'ir-bishapur', author: 'E. J. Keall, Encyclopaedia Iranica', title: 'Bīšāpūr', year: '1989', url: IR('bisapur') },
+  { id: 'ir-edessa', author: 'S. N. C. Lieu, Encyclopaedia Iranica', title: 'Edessa', year: '1997', url: IR('edessa') },
+  { id: 'henning-m3', author: 'W. B. Henning (tr.), quoted in Iranica “Mani”', title: 'Mani’s last journey (M 3), BSOAS 10, 1942, pp. 941–53', year: '1942', note: { fa: 'گزارش نوح‌زادگ، ترجمان مانی، از دیدار واپسین او با بهرام یکم؛ ایرانیکا آن را گزارشی «آگاه و درخور اعتماد» از یک شاهد می‌خواند.', en: 'The report of Nūḥzādag, Mani’s interpreter, on his last audience with Bahram I; Iranica calls it a “well-informed and trustworthy eyewitness report”.' } },
   { id: 'ir-mani', author: 'W. Sundermann, Encyclopaedia Iranica', title: 'Mani', year: '2009', url: IR('mani-founder-manicheism') },
   { id: 'ir-hormozd1', author: 'M. R. Shayegan, Encyclopaedia Iranica', title: 'Hormozd I', year: '2004', url: IR('hormozd-i') },
   { id: 'ir-bahram1', author: 'A. Sh. Shahbazi, Encyclopaedia Iranica', title: 'Bahrām I', year: '1988', url: IR('bahram-01') },
