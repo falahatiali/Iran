@@ -270,3 +270,14 @@ cyaxares (src/data/cyaxares, hotlinked from Wikimedia Commons):
 - File:Nineveh_-_Mashki_Gate.jpg — Omar Siddeeq Yousif, CC BY-SA 4.0
 - File:Iran_-_Hamadan_-_Hegmataneh_-_(Ecbatana)_-_panoramio.jpg — Alireza Javaheri, CC BY 3.0
 public/media/cyaxares/reign-{fa,en}.{gif,mp4,webm,png} — rendered from this site's own campaign map; coastlines Natural Earth (public domain).
+
+deioces (src/data/deioces, hotlinked from Wikimedia Commons):
+- File:Iran_-_Hamadan_-_Hegmataneh_-_(Ecbatana)_-_panoramio.jpg — Alireza Javaheri, CC BY 3.0
+- File:Sargon_II_and_dignitary.jpg — unknown Assyrian artist, public domain
+- File:Khorsabad_Salle_II_bas_relief_22_attaque_d'une_cité_mède.jpg — Eugène Flandin (1809–1899), public domain
+
+astyages (src/data/astyages, hotlinked from Wikimedia Commons):
+- File:Nabonidus_chronicle.jpg — ChrisO, CC BY-SA 3.0
+- File:Iran_-_Hamadan_-_Hegmataneh_-_(Ecbatana)_-_panoramio.jpg — Alireza Javaheri, CC BY 3.0
+- File:Pasargadae,_Irán,_2016-09-24,_DD_11.jpg — Diego Delso, CC BY-SA 4.0
+public/media/astyages/revolt-{fa,en}.{gif,mp4,webm,png} — rendered from this site's own campaign map; coastlines Natural Earth (public domain).

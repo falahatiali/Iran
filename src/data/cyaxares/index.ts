@@ -183,7 +183,7 @@ export const cyaxares: FeaturedKing = {
   sources: cyaxaresSources,
   photos: cyaxaresPhotos,
   related: [
-    { href: { fa: '/king/astyages', en: '/king/astyages' }, label: B('ایشتوویگو (آستیاگ)، پسرش', 'Astyages, his son') },
+    { href: { fa: '/king/astyages', en: '/en/king/astyages' }, label: B('ایشتوویگو (آستیاگ)، پسرش', 'Astyages, his son') },
     { href: { fa: '/king/cyrus-ii', en: '/king/cyrus-ii' }, label: B('کوروش بزرگ', 'Cyrus the Great') },
     { href: { fa: '/dynasty/medes', en: '/dynasty/medes' }, label: B('دودمان ماد', 'The Median dynasty') },
   ],

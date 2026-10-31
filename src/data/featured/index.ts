@@ -1,6 +1,8 @@
 import { shutrukNakhunte } from '../shutruk'
 import { shilhakInshushinak } from '../shilhak'
+import { deioces } from '../deioces'
 import { cyaxares } from '../cyaxares'
+import { astyages } from '../astyages'
 import type { FeaturedKing } from './types'
 import { dariusEvents, dariusSources, dossier as dariusDossier, synthesis as dariusSynthesis } from '../darius'
 import { xerxesBattles, xerxesCampaign, xerxesDossier, xerxesEvents, xerxesPhotos, xerxesPlaces, xerxesSources, xerxesSynthesis } from '../xerxes'
@@ -166,7 +168,7 @@ const artaxerxes: FeaturedKing = {
 }
 
 /** Registry keyed by ruler slug. Add an entry here to give any king the extended page. */
-export const featuredKings: Record<string, FeaturedKing> = { [untash.slug]: untash, [shutrukNakhunte.slug]: shutrukNakhunte, [shilhakInshushinak.slug]: shilhakInshushinak, [cyaxares.slug]: cyaxares, [darius.slug]: darius, [xerxes.slug]: xerxes, [artaxerxes.slug]: artaxerxes,
+export const featuredKings: Record<string, FeaturedKing> = { [untash.slug]: untash, [shutrukNakhunte.slug]: shutrukNakhunte, [shilhakInshushinak.slug]: shilhakInshushinak, [deioces.slug]: deioces, [cyaxares.slug]: cyaxares, [astyages.slug]: astyages, [darius.slug]: darius, [xerxes.slug]: xerxes, [artaxerxes.slug]: artaxerxes,
   ...Object.fromEntries(lateKings.map((k) => [k.slug, k])),
   ...Object.fromEntries(arsacidKings.map((k) => [k.slug, k])),
   ...Object.fromEntries(sasanianKings.map((k) => [k.slug, k])),
