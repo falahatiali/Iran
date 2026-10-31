@@ -8,7 +8,7 @@ import { shapurII } from './shapur2'
 import { bahramV } from './bahram5'
 import { ardashirII, bahramIV, shapurIII, yazdegerdI } from './short3'
 import { yazdegerdII } from './yazdegerd2'
-import { hormizdIII } from './short4'
+import { balash, hormizdIII } from './short4'
 import { perozI } from './peroz'
 
 export * from './common'
@@ -25,4 +25,4 @@ export * from './short4'
 export * from './peroz'
 
 /** Every Sasanian king with a page, in reign order. */
-export const sasanianKings: FeaturedKing[] = [ardashirI, shapurI, hormizdI, bahramI, bahramII, bahramIII, narseh, hormizdII, adurNarseh, shapurII, ardashirII, shapurIII, bahramIV, yazdegerdI, bahramV, yazdegerdII, hormizdIII, perozI]
+export const sasanianKings: FeaturedKing[] = [ardashirI, shapurI, hormizdI, bahramI, bahramII, bahramIII, narseh, hormizdII, adurNarseh, shapurII, ardashirII, shapurIII, bahramIV, yazdegerdI, bahramV, yazdegerdII, hormizdIII, perozI, balash]

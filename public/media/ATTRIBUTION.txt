@@ -212,3 +212,5 @@ Yazdegerd II page (/king/yazdegerd-ii)
 Peroz I page (/king/peroz-i)
   coin-peroz: Osama Shukir Muhammed Amin FRCP(Glasg), CC BY-SA 4.0. Source: https://commons.wikimedia.org/wiki/File:Coin_of_Peroz_I,_459-484_CE,_from_Iraq,_Sulaymaniyah_Museum.jpg
   plate-rams: Metropolitan Museum of Art, CC0. Source: https://commons.wikimedia.org/wiki/File:Plate_with_king_hunting_rams_MET_DT921.jpg
+Balash page (/king/balash)
+  coin-balash: Jona Lendering (Livius.org), CC0. Source: https://commons.wikimedia.org/wiki/File:Coin_of_Balash,_Iran_Museum.jpg
