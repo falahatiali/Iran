@@ -2,6 +2,7 @@ import { shutrukNakhunte } from '../shutruk'
 import { shilhakInshushinak } from '../shilhak'
 import { deioces } from '../deioces'
 import { cyaxares } from '../cyaxares'
+import { yaqub } from '../yaqub'
 import { astyages } from '../astyages'
 import type { FeaturedKing } from './types'
 import { dariusEvents, dariusSources, dossier as dariusDossier, synthesis as dariusSynthesis } from '../darius'
@@ -172,6 +173,7 @@ export const featuredKings: Record<string, FeaturedKing> = { [untash.slug]: unta
   ...Object.fromEntries(lateKings.map((k) => [k.slug, k])),
   ...Object.fromEntries(arsacidKings.map((k) => [k.slug, k])),
   ...Object.fromEntries(sasanianKings.map((k) => [k.slug, k])),
+  [yaqub.slug]: yaqub,
 }
 
 export function getFeaturedKing(slug: string): FeaturedKing | undefined {

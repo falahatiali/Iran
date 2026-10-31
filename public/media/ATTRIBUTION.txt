@@ -281,3 +281,8 @@ astyages (src/data/astyages, hotlinked from Wikimedia Commons):
 - File:Iran_-_Hamadan_-_Hegmataneh_-_(Ecbatana)_-_panoramio.jpg — Alireza Javaheri, CC BY 3.0
 - File:Pasargadae,_Irán,_2016-09-24,_DD_11.jpg — Diego Delso, CC BY-SA 4.0
 public/media/astyages/revolt-{fa,en}.{gif,mp4,webm,png} — rendered from this site's own campaign map; coastlines Natural Earth (public domain).
+
+yaqub-laith (Ya'qub b. Layth page)
+- Tomb_of_Ya'qub_ibn_al-Layth_al-Saffar.jpg — Borna253, CC BY-SA 4.0, Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Tomb_of_Ya%27qub_ibn_al-Layth_al-Saffar.jpg
+- Ancient_City_of_Gandhi_Shapour_01.jpg — Alireza.heydear, CC BY-SA 4.0, Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Ancient_City_of_Gandhi_Shapour_01.jpg
+- west-{fa,en} clips — rendered from the site's own campaign map (Natural Earth basemap, public domain).
