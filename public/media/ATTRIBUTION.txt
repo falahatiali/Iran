@@ -358,3 +358,7 @@ karim-khan (remote, Wikimedia Commons; licence read from the Commons API 2026-10
 - Portrait_of_Karim_Khan_Zand_-_Shiraz_(Iran)_-_Before_1779_-_Louvre_-_MAO_796.jpg — Mohammad Sadiq (photo) — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Portrait_of_Karim_Khan_Zand_-_Shiraz_(Iran)_-_Before_1779_-_Louvre_-_MAO_796.jpg
 - 2018-09-20_Iran,_Shiraz,_Arg_of_Karim_Khan.jpg — Laurens R. Krol — CC BY 4.0 — https://commons.wikimedia.org/wiki/File:2018-09-20_Iran,_Shiraz,_Arg_of_Karim_Khan.jpg
 - public/media/karim-khan/campaigns-* — clip rendered from this site's own map
+
+fath-ali (remote, Wikimedia Commons; licence read from the Commons API 2026-10-31)
+- Mihr_'Ali_(Iranian,_active_ca._1800-1830)._Portrait_of_Fath_'Ali_Shah_Qajar,_1815.jpg — Mihr ʿAli (Brooklyn Museum) — Public domain (no restrictions) — https://commons.wikimedia.org/wiki/File:Mihr_%27Ali_(Iranian,_active_ca._1800-1830)._Portrait_of_Fath_%27Ali_Shah_Qajar,_1815.jpg
+- public/media/fath-ali/campaigns-* — clip rendered from this site's own map
