@@ -264,3 +264,9 @@ Azarmidokht page (/king/azarmidokht)
 Yazdegerd III page (/king/yazdegerd-iii)
   coin-yazdegerd3: Classical Numismatic Group, CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:Coin_of_the_Sasanian_king_Yazdegerd_III%2C_651_mint.jpg
   qianling-envoys: Gary Todd, CC0. Source: https://commons.wikimedia.org/wiki/File:Headless_Statues_of_Foreign_Envoys_%289906472715%29.jpg
+
+cyaxares (src/data/cyaxares, hotlinked from Wikimedia Commons):
+- File:Fall_of_Nineveh_Chronicle_BM_21901.jpg — Zunkir, CC BY-SA 4.0
+- File:Nineveh_-_Mashki_Gate.jpg — Omar Siddeeq Yousif, CC BY-SA 4.0
+- File:Iran_-_Hamadan_-_Hegmataneh_-_(Ecbatana)_-_panoramio.jpg — Alireza Javaheri, CC BY 3.0
+public/media/cyaxares/reign-{fa,en}.{gif,mp4,webm,png} — rendered from this site's own campaign map; coastlines Natural Earth (public domain).
