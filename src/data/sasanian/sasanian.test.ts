@@ -51,8 +51,9 @@ test('Sasanian disputes are flagged; legends labelled; no excluded commentator i
   assert.ok(by('hormizd-iii')?.events.some((e) => e.id === 'help' && e.certainty === 'disputed'), 'Hephthalite help for Peroz flagged as legend')
   assert.ok(has('peroz-i', /Only Procopius/, 'trench') && by('peroz-i')?.campaign?.battles?.some((b) => b.id === 'trench' && b.phases.every((ph) => ph.certainty === 'disputed')), 'trench rests on Procopius and is flagged')
   assert.ok(by('balash')?.events.some((e) => e.id === 'chosen' && e.certainty === 'disputed'), 'Balash kinship to Peroz flagged')
+  assert.ok(by('kavad-i')?.events.some((e) => e.id === 'mazdak' && e.certainty === 'disputed') && has('kavad-i', /impossible/, 'mazdak') && (by('kavad-i')?.campaign?.battles?.length ?? 0) === 2, 'Mazdak flagged as hostile-sourced; Dara and Callinicum diagrams present')
   assert.ok(has('yazdegerd-ii', /exaggerated/, 'avarayr') && by('yazdegerd-ii')?.campaign?.battles?.some((b) => b.id === 'avarayr' && b.phases.length >= 4), 'Avarayr numbers flagged, diagram present')
-  for (const slug of ['ardashir-i', 'shapur-i', 'shapur-ii', 'bahram-v', 'yazdegerd-ii', 'peroz-i']) { const k = by(slug); if (k) assert.ok(k.campaign?.clip, slug) }
+  for (const slug of ['ardashir-i', 'shapur-i', 'shapur-ii', 'bahram-v', 'yazdegerd-ii', 'peroz-i', 'kavad-i']) { const k = by(slug); if (k) assert.ok(k.campaign?.clip, slug) }
   assert.match(sasSources.skz.url ?? '', /^https:\/\//)
   assert.equal(/jannatkhah|جنت.?خواه/i.test(JSON.stringify(sasanianKings)), false)
 })

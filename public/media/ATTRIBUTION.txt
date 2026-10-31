@@ -214,3 +214,6 @@ Peroz I page (/king/peroz-i)
   plate-rams: Metropolitan Museum of Art, CC0. Source: https://commons.wikimedia.org/wiki/File:Plate_with_king_hunting_rams_MET_DT921.jpg
 Balash page (/king/balash)
   coin-balash: Jona Lendering (Livius.org), CC0. Source: https://commons.wikimedia.org/wiki/File:Coin_of_Balash,_Iran_Museum.jpg
+Kavad I page (/king/kavad-i)
+  coin-kavad: Osama Shukir Muhammed Amin FRCP(Glasg), CC BY-SA 4.0. Source: https://commons.wikimedia.org/wiki/File:Silver_coin_of_Kavad_I,_reverse,_from_Iraq,_Sulaymaniyah_MUseum.jpg
+  dara-ruins: Carole Raddato, CC BY-SA 2.0. Source: https://commons.wikimedia.org/wiki/File:Anastasioupolis_(Mesopotamia),_Turkey.jpg
