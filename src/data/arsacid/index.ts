@@ -7,6 +7,7 @@ import { orodesII } from './orodes2'
 import { phraatesIV } from './phraates4'
 import { orodesIII, phraatesV, vononesI } from './late'
 import { artabanusII } from './artabanus2'
+import { gotarzesII, vardanesI, vononesII } from './brothers'
 
 export * from './common'
 export * from './short'
@@ -17,6 +18,7 @@ export * from './phraates4'
 export * from './orodes2'
 export * from './dark'
 export * from './artabanus2'
+export * from './brothers'
 
 /** Every Arsacid featured king done so far, in reign order. */
-export const arsacidKings: FeaturedKing[] = [arsacesI, arsacesII, phriapatius, phraatesI, mithridatesI, phraatesII, artabanusI, mithridatesII, gotarzesI, orodesI, sinatruces, phraatesIII, mithridatesIII, orodesII, phraatesIV, phraatesV, orodesIII, vononesI, artabanusII]
+export const arsacidKings: FeaturedKing[] = [arsacesI, arsacesII, phriapatius, phraatesI, mithridatesI, phraatesII, artabanusI, mithridatesII, gotarzesI, orodesI, sinatruces, phraatesIII, mithridatesIII, orodesII, phraatesIV, phraatesV, orodesIII, vononesI, artabanusII, vardanesI, gotarzesII, vononesII]
