@@ -91,6 +91,22 @@ export const ALBANIA: Coord = [47.0, 40.8]
 
 export const SAS = { fa: 'ساسانیان', en: 'Sasanians' }
 
+/** Places for Khosrow I, Hormizd IV and Bahram VI; approximate ones say so on the page. */
+export const PETRA: Coord = [41.75, 41.76]
+export const PHASIS: Coord = [41.67, 42.15]
+export const WEH_ANTIOCH: Coord = [44.55, 33.05]
+export const BUKHARA: Coord = [64.42, 39.77]
+export const BAYKAND: Coord = [64.13, 39.77]
+export const HERAT: Coord = [62.2, 34.35]
+export const SANAA: Coord = [44.2, 15.35]
+export const HADRAMAUT: Coord = [49.1, 14.55]
+export const UBULLA: Coord = [47.9, 30.4]
+export const GANZAK: Coord = [46.27, 36.98]
+export const NAHRAWAN: Coord = [44.75, 33.4]
+export const URMIA: Coord = [45.4, 37.6]
+export const DARBAND: Coord = [48.29, 42.06]
+export const QUMES: Coord = [54.2, 36.1]
+
 /** One bibliography for the Sasanian kings; each king lists the ids it uses. */
 export const sasSources: Record<string, FeaturedSource> = Object.fromEntries(([
   { id: 'skz', author: 'Shapur I, ŠKZ (Kaʿba-ye Zardošt), tr. R. N. Frye', title: 'The Inscription of Shapur I at Naqsh-e Rustam in Fars, in The History of Ancient Iran, Appendix 4', year: '1984', url: 'https://sites.uci.edu/sasanika/sapur-is-inscription-kaba-ye-zartost-skz/', note: { fa: 'گزارش خود شاپور از جنگ‌هایش، به سه زبان پارسی میانه، پارتی و یونانی، بر دیوار کعبهٔ زرتشت. منبعی هم‌روزگار، اما تبلیغ رسمی شاه.', en: 'Shapur’s own account of his wars, in Middle Persian, Parthian and Greek, on the walls of the Kaʿba-ye Zardošt. Contemporary, but royal propaganda.' } },
@@ -144,6 +160,20 @@ export const sasSources: Record<string, FeaturedSource> = Object.fromEntries(([
   { id: 'ir-kawad1', author: 'N. Schindel, Encyclopaedia Iranica', title: 'Kawād I: reign', year: '2013', url: IR('kawad-i-reign') },
   { id: 'ir-sasdyn', author: 'A. Sh. Shahbazi, Encyclopaedia Iranica', title: 'Sasanian dynasty', year: '2005', url: IR('sasanian-dynasty') },
   { id: 'ir-religions', author: 'P. G. Kreyenbroek, Encyclopaedia Iranica', title: 'Iran ix. Religions in Iran (1) Pre-Islamic', year: '2006', url: 'https://www.iranicaonline.org/articles/iran-ix1-religions-in-iran/iran-ix-religions-in-iran-1-pre-islamic-1-1-overview/' },
+  { id: 'procopius2', author: 'Procopius, tr. H. B. Dewing (Loeb)', title: 'History of the Wars 1.22–2.28', year: '1914', url: 'https://archive.org/details/procopius00procgoog', note: { fa: 'پروکوپیوس منشی بلیساریوس بود و خسرو را دشمن می‌داشت. گزارش او از انطاکیه را از دیگران شنیده بود.', en: 'Procopius was Belisarius’ secretary and hostile to Khosrow. He had his account of Antioch from others.' } },
+  { id: 'agathias2', author: 'Agathias, tr. J. D. Frendo', title: 'The Histories (CFHB 2A), book 2.28–2.31', year: '1975', url: 'https://archive.org/details/cfhb-11.1-nicetae-choniatae-historia', note: { fa: 'آگاثیاس ستایش خسرو را آشکارا نمی‌پذیرد؛ دیدگاه او دیدگاه یک رومی مسیحی است.', en: 'Agathias openly rejects the praise of Khosrow; his is the view of a Christian Roman.' } },
+  { id: 'ir-reforms', author: 'Z. Rubin, Encyclopaedia Iranica', title: 'Ḵosrow I ii. Reforms', year: '2009', url: 'https://www.iranicaonline.org/articles/kosrow/kosrow-i-ii-reforms/' },
+  { id: 'ir-byzir', author: 'A. Sh. Shahbazi, Encyclopaedia Iranica', title: 'Byzantine-Iranian relations', year: '1990', url: IR('byzantine-iranian-relations') },
+  { id: 'ir-hephthalites', author: 'A. D. H. Bivar, Encyclopaedia Iranica', title: 'Hephthalites', year: '2003', url: IR('hephthalites') },
+  { id: 'ir-abna', author: 'C. E. Bosworth, Encyclopaedia Iranica', title: 'Abnāʾ', year: '1983', url: IR('abna-term') },
+  { id: 'ir-gondesapur', author: 'L. Richter-Bernburg, Encyclopaedia Iranica', title: 'Gondēšāpur ii. History and medical school', year: '2002', url: 'https://www.iranicaonline.org/articles/gondesapur/gondesapur-ii-history-and-medical-school/' },
+  { id: 'ir-borzuya', author: 'Dj. Khaleghi-Motlagh, Encyclopaedia Iranica', title: 'Borzūya', year: '1989', url: IR('borzuya-also-burzoe-a-physician-of-the-time-of-kosrow-i') },
+  { id: 'ir-chess', author: 'B. Utas, Encyclopaedia Iranica', title: 'Chess i. The history of chess in Persia', year: '1991', url: 'https://www.iranicaonline.org/articles/chess/chess-i-the-history-of-chess-in-persia/' },
+  { id: 'siyasat', author: 'Nizam al-Mulk, tr. H. Darke', title: 'The Book of Government or Rules for Kings (Siyar al-muluk / Siyasat-nama), ch. 3', year: '1960', url: 'https://en.wikipedia.org/wiki/Siyasatnama', note: { fa: 'کتابی در آیین کشورداری از سدهٔ پنجم ه‍. (یازدهم م.)، پانصد سال پس از خسرو.', en: 'A mirror for princes of the 11th century, five hundred years after Khosrow.' } },
+  { id: 'nf-chain', author: 'Nāme-ye Farhangestān (APLL)', title: 'Consideration on the Story of Anūshiravān’s Chain of Justice in Persian Literature and Its Relation with Indian and Chinese Stories', year: 'n.d.', url: 'https://nf.apll.ir/article_253441_b87fe9216ebc4c8fa1f800aa60c21e78.pdf' },
+  { id: 'ir-hormozd4', author: 'A. Sh. Shahbazi, Encyclopaedia Iranica', title: 'Hormozd IV', year: '2004', url: IR('hormozd-iv') },
+  { id: 'ir-bahram6', author: 'A. Sh. Shahbazi, Encyclopaedia Iranica', title: 'Bahrām VI Čōbīn', year: '1988', url: 'https://www.iranicaonline.org/articles/bahram-the-name-of-six-sasanian-kings/bahram-vi/' },
+  { id: 'ir-khosrow2', author: 'J. Howard-Johnston, Encyclopaedia Iranica', title: 'Ḵosrow II', year: '2010', url: IR('khosrow-ii') },
 ] as FeaturedSource[]).map((s) => [s.id, s]))
 
 export const pick = (...ids: string[]): FeaturedSource[] => ids.map((id) => {
@@ -205,6 +235,13 @@ export const sasPhotos: Record<string, CommonsPhoto> = {
   'coin-jamasp': { id: 'coin-jamasp', src: u('thumb/b/b2/Coin_of_Jamasp%2C_497-499_CE%2C_from_Iraq%2C_Sulaymaniyah_Museum.jpg/960px-Coin_of_Jamasp%2C_497-499_CE%2C_from_Iraq%2C_Sulaymaniyah_Museum.jpg'), page: f('Coin_of_Jamasp,_497-499_CE,_from_Iraq,_Sulaymaniyah_Museum.jpg'), author: 'Osama Shukir Muhammed Amin FRCP(Glasg)', license: 'CC BY-SA 4.0', licenseUrl: BYSA4, caption: { fa: 'سکهٔ زاماسپ، ۴۹۷–۴۹۹ م.، موزهٔ سلیمانیه', en: 'A coin of Zamasp, 497–499 CE, Sulaymaniyah Museum' } },
   'coin-kavad': { id: 'coin-kavad', src: u('thumb/4/4f/Silver_coin_of_Kavad_I%2C_reverse%2C_from_Iraq%2C_Sulaymaniyah_MUseum.jpg/960px-Silver_coin_of_Kavad_I%2C_reverse%2C_from_Iraq%2C_Sulaymaniyah_MUseum.jpg'), page: f('Silver_coin_of_Kavad_I,_reverse,_from_Iraq,_Sulaymaniyah_MUseum.jpg'), author: 'Osama Shukir Muhammed Amin FRCP(Glasg)', license: 'CC BY-SA 4.0', licenseUrl: BYSA4, caption: { fa: 'پشت سکهٔ سیمین قباد یکم، با آتشدان و دو نگهبان، موزهٔ سلیمانیه', en: 'Reverse of a silver coin of Kavad I, with fire altar and two attendants, Sulaymaniyah Museum' } },
   'dara-ruins': { id: 'dara-ruins', src: u('thumb/f/f8/Anastasioupolis_%28Mesopotamia%29%2C_Turkey.jpg/960px-Anastasioupolis_%28Mesopotamia%29%2C_Turkey.jpg'), page: f('Anastasioupolis_(Mesopotamia),_Turkey.jpg'), author: 'Carole Raddato', license: 'CC BY-SA 2.0', licenseUrl: BYSA2, caption: { fa: 'ویرانه‌های دارا (آناستاسیوپولیس)، دژ مرزی روم، در ترکیهٔ امروز', en: 'Ruins of Dara (Anastasiopolis), the Roman frontier fortress, in modern Turkey' } },
+  'coin-khosrow1': cng('coin-khosrow1', 'd/df/Khosrow_I_Anushirvan%2C_Gundeshapur_mint.jpg', 'Khosrow_I_Anushirvan,_Gundeshapur_mint.jpg', 'سکهٔ خسرو یکم، ضرب جندی‌شاپور', 'A coin of Khosrow I, Gundeshapur mint'),
+  'taq-kasra': { id: 'taq-kasra', src: u('c/c0/Taq_Kasra_-_1934.jpg'), page: f('Taq_Kasra_-_1934.jpg'), author: 'Unknown (1934 photograph)', license: 'Public domain', caption: { fa: 'طاق کسری در تیسفون، عکس ۱۹۳۴. ساخت آن را به خسرو یکم نسبت می‌دهند، اما تاریخش محل بحث است', en: 'The Taq-e Kasra at Ctesiphon, photographed in 1934. It is often credited to Khosrow I, but its date is disputed' } },
+  'kalila-met': { id: 'kalila-met', src: u('thumb/f/f7/%22Kalila_and_Dimna_Discussing_Dimna%27s_Plans_to_Become_a_Confidante_of_the_Lion%22%2C_Folio_from_a_Kalila_wa_Dimna_MET_DP300729.jpg/960px-%22Kalila_and_Dimna_Discussing_Dimna%27s_Plans_to_Become_a_Confidante_of_the_Lion%22%2C_Folio_from_a_Kalila_wa_Dimna_MET_DP300729.jpg'), page: f('%22Kalila_and_Dimna_Discussing_Dimna%27s_Plans_to_Become_a_Confidante_of_the_Lion%22,_Folio_from_a_Kalila_wa_Dimna_MET_DP300729.jpg'), author: 'Metropolitan Museum of Art', license: 'CC0', caption: { fa: 'برگی از نسخه‌ای مصور از کلیله و دمنه: کلیله و دمنه دربارهٔ نقشهٔ دمنه برای نزدیک شدن به شیر سخن می‌گویند', en: 'A folio from an illustrated Kalila wa Dimna: Kalila and Dimna discuss Dimna’s plan to win the lion’s trust' } },
+  'chess-met': { id: 'chess-met', src: u('thumb/e/e5/%22Buzurgmihr_Masters_the_Game_of_Chess%22%2C_Folio_from_a_Shahnama_%28Book_of_Kings%29_MET_DP159353.jpg/960px-%22Buzurgmihr_Masters_the_Game_of_Chess%22%2C_Folio_from_a_Shahnama_%28Book_of_Kings%29_MET_DP159353.jpg'), page: f('%22Buzurgmihr_Masters_the_Game_of_Chess%22,_Folio_from_a_Shahnama_(Book_of_Kings)_MET_DP159353.jpg'), author: 'Metropolitan Museum of Art', license: 'CC0', caption: { fa: 'برگی از شاهنامه: بزرگمهر راز شطرنج را می‌گشاید (روایت، نه تاریخ)', en: 'A Shahnama folio: Buzurgmihr solves the riddle of chess (tradition, not history)' } },
+  'coin-hormizd4': cng('coin-hormizd4', '8/8e/Coin_of_Hormizd_IV%2C_Darabgerd_mint.jpg', 'Coin_of_Hormizd_IV,_Darabgerd_mint.jpg', 'سکهٔ هرمز چهارم، ضرب دارابگرد، ۵۸۷ م.', 'A coin of Hormizd IV, Darabgerd mint, 587 CE'),
+  'coin-bahram6': cng('coin-bahram6', '5/57/Coin_of_Bahram_Chobin%2C_Susa_mint.jpg', 'Coin_of_Bahram_Chobin,_Susa_mint.jpg', 'سکهٔ بهرام چوبین، ۵۹۰ م.؛ تاج کنگره‌دار با دو هلال', 'A coin of Bahram Chobin, 590 CE: the crenellated crown with two crescents'),
+  'bahram-saveh': { id: 'bahram-saveh', src: u('thumb/7/75/Battle_of_Bahram_Chubina_with_Saveh_shah.jpg/960px-Battle_of_Bahram_Chubina_with_Saveh_shah.jpg'), page: f('Battle_of_Bahram_Chubina_with_Saveh_shah.jpg'), author: 'Bgag (photo of a c. 1530 painting, Reza Abbasi Museum)', license: 'CC BY-SA 4.0', licenseUrl: BYSA4, caption: { fa: 'نگاره‌ای از مکتب تبریز (حدود ۱۵۳۰ م.): نبرد بهرام چوبین با «ساوه‌شاه»، موزهٔ رضا عباسی', en: 'A Tabriz-school painting (c. 1530): Bahram Chobin fights “Saveh Shah”, Reza Abbasi Museum' } },
 }
 export const photos = (...ids: string[]): CommonsPhoto[] => ids.map((id) => sasPhotos[id])
 
