@@ -286,3 +286,8 @@ yaqub-laith (Ya'qub b. Layth page)
 - Tomb_of_Ya'qub_ibn_al-Layth_al-Saffar.jpg — Borna253, CC BY-SA 4.0, Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Tomb_of_Ya%27qub_ibn_al-Layth_al-Saffar.jpg
 - Ancient_City_of_Gandhi_Shapour_01.jpg — Alireza.heydear, CC BY-SA 4.0, Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Ancient_City_of_Gandhi_Shapour_01.jpg
 - west-{fa,en} clips — rendered from the site's own campaign map (Natural Earth basemap, public domain).
+
+ismail-samani (Esma'il Samani page)
+- Samanid_Mausoleum,_Bukhara.jpg — Bgag, CC0, Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Samanid_Mausoleum,_Bukhara.jpg
+- Bukhara_Samanid_Mausoleum_1.jpg — Ymblanter, CC BY-SA 4.0, Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Bukhara_Samanid_Mausoleum_1.jpg
+- campaigns-{fa,en} clips — rendered from the site's own campaign map (Natural Earth basemap, public domain).
