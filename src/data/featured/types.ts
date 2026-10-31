@@ -67,7 +67,7 @@ export interface FeaturedSource { id: string; author: string; title: string; yea
 export interface DossierQuote { text: string; fa: string; ref: string; source: string }
 /** A modern popular tradition NOT found in the ancient sources: rendered in its own box, never as history. */
 export interface FolkTradition { title: Bi; story: BiParas; origin: BiParas; sources: string[] }
-export interface DossierSection { id: string; title: Bi; historical: BiParas; interpretation: BiParas; modern: BiParas; quotes?: DossierQuote[]; sources: string[]; /** ids into FeaturedKing.photos */ photos?: string[]; folk?: FolkTradition; /** an animated figure (e.g. a battle clip) shown after the quotes */ clip?: { media: CampaignClip; caption: Bi } }
+export interface DossierSection { id: string; title: Bi; historical: BiParas; interpretation: BiParas; modern: BiParas; quotes?: DossierQuote[]; sources: string[]; /** ids into FeaturedKing.photos */ photos?: string[]; folk?: FolkTradition; /** an animated figure (e.g. a battle clip) shown after the quotes */ clip?: { media: CampaignClip; caption: Bi }; /** an interactive figure shown after the quotes, in place of a clip */ embed?: 'carrhae'; /** a call-out link to a topic page */ link?: { href: Bi; label: Bi } }
 export interface Synthesis { title: Bi; paras: BiParas; sources: string[] }
 
 export interface FeaturedKing {

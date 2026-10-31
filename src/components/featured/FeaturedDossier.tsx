@@ -6,6 +6,7 @@ import { EvidenceBadge } from '../cylinder/EvidenceBadge'
 import { AnimatedClip } from './AnimatedClip'
 import { BattleDiagram } from './BattleDiagram'
 import { CampaignMap } from './CampaignMap'
+import { CarrhaeBattle } from '../carrhae/CarrhaeBattle'
 
 function Layer({ layer, paras, locale }: { layer: EvidenceLayer; paras: BiParas; locale: Locale }) {
   return (
@@ -86,7 +87,9 @@ export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: 
                 <footer className="mt-2 text-xs text-ivory/50">{q.ref} · <a href={`#src-${q.source}`} className="text-gold hover:underline">{author(q.source)}</a>{isFa && ` · ${t.quoteNote}`}</footer>
               </blockquote>
             ))}
-            {s.clip && <AnimatedClip clip={s.clip.media} caption={s.clip.caption} locale={locale} />}
+            {s.embed === 'carrhae' && <div className="mt-8"><CarrhaeBattle locale={locale} sources={king.sources} id={`${s.id}-battle`} /></div>}
+            {s.clip && !s.embed && <AnimatedClip clip={s.clip.media} caption={s.clip.caption} locale={locale} />}
+            {s.link && <p className="mt-6"><a href={s.link.href[locale]} className="glass rounded-full px-5 py-3 inline-flex items-center gap-2 min-h-11 font-bold text-gold-bright hover:border-gold">{s.link.label[locale]} <span aria-hidden="true">{isFa ? '←' : '→'}</span></a></p>}
             {s.photos && (
               <div className="mt-6 grid sm:grid-cols-2 gap-4">
                 {s.photos.map(photo).filter((x) => x !== undefined).map((ph) => (

@@ -5,6 +5,7 @@ import { getTimeline } from '../server/api'
 import { Breadcrumbs } from '../components/Breadcrumbs'
 import { PageTransition } from '../components/Reveal'
 import { EventIcon } from '../components/EventIcon'
+import { topicForEventTitle } from '../data/topics'
 import { ShareLink } from '../components/ShareLink'
 import { eraNames, eventTypeNames, fa, year } from '../lib/format'
 import { seo } from '../lib/seo'
@@ -110,6 +111,7 @@ function TimelinePage() {
                   <p className={`mt-1 ${e.importance === 'major' ? 'font-bold text-lg' : 'text-ivory/80'}`}>{e.title}</p>
                   {e.description && <p className="text-sm text-ivory/60 leading-7 mt-1">{e.description}</p>}
                   {(() => { const pl = placeForEventTitle(e.title); return pl && <Link to="/place/$slug" params={{ slug: pl.slug }} className="mt-2 inline-flex items-center min-h-11 text-sm text-gold hover:underline">صفحهٔ {pl.name.fa} ←</Link> })()}
+                  {(() => { const tp = topicForEventTitle(e.title); return tp && <a href={tp.path} className="mt-2 ms-4 inline-flex items-center min-h-11 text-sm text-gold hover:underline">صفحهٔ {tp.name} ←</a> })()}
                 </div>
               </motion.li>
             ))}

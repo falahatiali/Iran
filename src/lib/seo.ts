@@ -117,3 +117,9 @@ export function placeJsonLd(opts: { locale: 'fa' | 'en'; slug: string; name: str
     }),
   }
 }
+
+export const CARRHAE_ALTERNATES = [
+  { hrefLang: 'fa', path: '/battle/carrhae' },
+  { hrefLang: 'en', path: '/en/battle/carrhae' },
+  { hrefLang: 'x-default', path: '/battle/carrhae' },
+] as const

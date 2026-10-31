@@ -58,6 +58,8 @@ export function Header({ data }: { data: Overview }) {
                   : pathname === '/about' ? '/en/about'
                   : pathname.startsWith('/en/king/') ? pathname.slice(3)
                   : pathname.startsWith('/king/') && isFeaturedKing(pathname.slice(6)) ? `/en${pathname}`
+                  : pathname.startsWith('/en/battle/') ? pathname.slice(3)
+                  : pathname.startsWith('/battle/') ? `/en${pathname}`
                   : pathname === '/en/archives' ? '/archives'
                   : pathname === '/archives' ? '/en/archives'
                     : pathname.startsWith('/en') ? '/cylinder'

@@ -3,6 +3,7 @@ import { useRef, type KeyboardEvent, type PointerEvent, type WheelEvent } from '
 import type { EventType } from '../../data/types'
 import type { TimelineEvent } from '../../server/api'
 import { placeForEventTitle } from '../../data/places'
+import { topicForEventTitle } from '../../data/topics'
 import { eventTypeNames, fa, isCirca, year } from '../../lib/format'
 import { TIMELINE_MAX, TIMELINE_MIN } from '../../lib/searchSchema'
 import { EventIcon } from '../EventIcon'
@@ -167,6 +168,7 @@ export function TimelineChart({ dynasties, events, win, selected, onWindow, onSe
           <div className="mt-3 flex flex-wrap gap-2">
             <Link to="/dynasty/$slug" params={{ slug: selected.dynastySlug }} className={btn}>{selected.dynastyName}</Link>
             {(() => { const pl = placeForEventTitle(selected.title); return pl && <Link to="/place/$slug" params={{ slug: pl.slug }} className={btn}>صفحهٔ {pl.name.fa}</Link> })()}
+            {(() => { const tp = topicForEventTitle(selected.title); return tp && <a href={tp.path} className={btn}>صفحهٔ {tp.name}</a> })()}
             <button type="button" className={btn} onClick={() => onWindow(zoom({ from: selected.year - 50, to: selected.year + 50 }, 1), false)}>بزرگ‌نمایی روی این رویداد</button>
           </div>
         </article>

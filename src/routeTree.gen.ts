@@ -15,6 +15,7 @@ import { Route as ArchivesRouteImport } from './routes/archives'
 import { Route as CylinderRouteImport } from './routes/cylinder'
 import { Route as DariusRouteImport } from './routes/darius'
 import { Route as TimelineRouteImport } from './routes/timeline'
+import { Route as BattleCarrhaeRouteImport } from './routes/battle/carrhae'
 import { Route as DynastySlugRouteImport } from './routes/dynasty/$slug'
 import { Route as EnAboutRouteImport } from './routes/en/about'
 import { Route as EnArchivesRouteImport } from './routes/en/archives'
@@ -22,6 +23,7 @@ import { Route as EnCylinderRouteImport } from './routes/en/cylinder'
 import { Route as EnDariusRouteImport } from './routes/en/darius'
 import { Route as KingSlugRouteImport } from './routes/king/$slug'
 import { Route as PlaceSlugRouteImport } from './routes/place/$slug'
+import { Route as EnBattleCarrhaeRouteImport } from './routes/en/battle/carrhae'
 import { Route as EnKingSlugRouteImport } from './routes/en/king/$slug'
 import { Route as EnPlaceSlugRouteImport } from './routes/en/place/$slug'
 
@@ -53,6 +55,11 @@ const DariusRoute = DariusRouteImport.update({
 const TimelineRoute = TimelineRouteImport.update({
   id: '/timeline',
   path: '/timeline',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BattleCarrhaeRoute = BattleCarrhaeRouteImport.update({
+  id: '/battle/carrhae',
+  path: '/battle/carrhae',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DynastySlugRoute = DynastySlugRouteImport.update({
@@ -90,6 +97,11 @@ const PlaceSlugRoute = PlaceSlugRouteImport.update({
   path: '/place/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnBattleCarrhaeRoute = EnBattleCarrhaeRouteImport.update({
+  id: '/en/battle/carrhae',
+  path: '/en/battle/carrhae',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EnKingSlugRoute = EnKingSlugRouteImport.update({
   id: '/en/king/$slug',
   path: '/en/king/$slug',
@@ -108,6 +120,7 @@ export interface FileRoutesByFullPath {
   '/cylinder': typeof CylinderRoute
   '/darius': typeof DariusRoute
   '/timeline': typeof TimelineRoute
+  '/battle/carrhae': typeof BattleCarrhaeRoute
   '/dynasty/$slug': typeof DynastySlugRoute
   '/en/about': typeof EnAboutRoute
   '/en/archives': typeof EnArchivesRoute
@@ -115,6 +128,7 @@ export interface FileRoutesByFullPath {
   '/en/darius': typeof EnDariusRoute
   '/king/$slug': typeof KingSlugRoute
   '/place/$slug': typeof PlaceSlugRoute
+  '/en/battle/carrhae': typeof EnBattleCarrhaeRoute
   '/en/king/$slug': typeof EnKingSlugRoute
   '/en/place/$slug': typeof EnPlaceSlugRoute
 }
@@ -125,6 +139,7 @@ export interface FileRoutesByTo {
   '/cylinder': typeof CylinderRoute
   '/darius': typeof DariusRoute
   '/timeline': typeof TimelineRoute
+  '/battle/carrhae': typeof BattleCarrhaeRoute
   '/dynasty/$slug': typeof DynastySlugRoute
   '/en/about': typeof EnAboutRoute
   '/en/archives': typeof EnArchivesRoute
@@ -132,6 +147,7 @@ export interface FileRoutesByTo {
   '/en/darius': typeof EnDariusRoute
   '/king/$slug': typeof KingSlugRoute
   '/place/$slug': typeof PlaceSlugRoute
+  '/en/battle/carrhae': typeof EnBattleCarrhaeRoute
   '/en/king/$slug': typeof EnKingSlugRoute
   '/en/place/$slug': typeof EnPlaceSlugRoute
 }
@@ -143,6 +159,7 @@ export interface FileRoutesById {
   '/cylinder': typeof CylinderRoute
   '/darius': typeof DariusRoute
   '/timeline': typeof TimelineRoute
+  '/battle/carrhae': typeof BattleCarrhaeRoute
   '/dynasty/$slug': typeof DynastySlugRoute
   '/en/about': typeof EnAboutRoute
   '/en/archives': typeof EnArchivesRoute
@@ -150,6 +167,7 @@ export interface FileRoutesById {
   '/en/darius': typeof EnDariusRoute
   '/king/$slug': typeof KingSlugRoute
   '/place/$slug': typeof PlaceSlugRoute
+  '/en/battle/carrhae': typeof EnBattleCarrhaeRoute
   '/en/king/$slug': typeof EnKingSlugRoute
   '/en/place/$slug': typeof EnPlaceSlugRoute
 }
@@ -162,6 +180,7 @@ export interface FileRouteTypes {
     | '/cylinder'
     | '/darius'
     | '/timeline'
+    | '/battle/carrhae'
     | '/dynasty/$slug'
     | '/en/about'
     | '/en/archives'
@@ -169,6 +188,7 @@ export interface FileRouteTypes {
     | '/en/darius'
     | '/king/$slug'
     | '/place/$slug'
+    | '/en/battle/carrhae'
     | '/en/king/$slug'
     | '/en/place/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -179,6 +199,7 @@ export interface FileRouteTypes {
     | '/cylinder'
     | '/darius'
     | '/timeline'
+    | '/battle/carrhae'
     | '/dynasty/$slug'
     | '/en/about'
     | '/en/archives'
@@ -186,6 +207,7 @@ export interface FileRouteTypes {
     | '/en/darius'
     | '/king/$slug'
     | '/place/$slug'
+    | '/en/battle/carrhae'
     | '/en/king/$slug'
     | '/en/place/$slug'
   id:
@@ -196,6 +218,7 @@ export interface FileRouteTypes {
     | '/cylinder'
     | '/darius'
     | '/timeline'
+    | '/battle/carrhae'
     | '/dynasty/$slug'
     | '/en/about'
     | '/en/archives'
@@ -203,6 +226,7 @@ export interface FileRouteTypes {
     | '/en/darius'
     | '/king/$slug'
     | '/place/$slug'
+    | '/en/battle/carrhae'
     | '/en/king/$slug'
     | '/en/place/$slug'
   fileRoutesById: FileRoutesById
@@ -214,6 +238,7 @@ export interface RootRouteChildren {
   CylinderRoute: typeof CylinderRoute
   DariusRoute: typeof DariusRoute
   TimelineRoute: typeof TimelineRoute
+  BattleCarrhaeRoute: typeof BattleCarrhaeRoute
   DynastySlugRoute: typeof DynastySlugRoute
   EnAboutRoute: typeof EnAboutRoute
   EnArchivesRoute: typeof EnArchivesRoute
@@ -221,6 +246,7 @@ export interface RootRouteChildren {
   EnDariusRoute: typeof EnDariusRoute
   KingSlugRoute: typeof KingSlugRoute
   PlaceSlugRoute: typeof PlaceSlugRoute
+  EnBattleCarrhaeRoute: typeof EnBattleCarrhaeRoute
   EnKingSlugRoute: typeof EnKingSlugRoute
   EnPlaceSlugRoute: typeof EnPlaceSlugRoute
 }
@@ -267,6 +293,13 @@ declare module '@tanstack/react-router' {
       path: '/timeline'
       fullPath: '/timeline'
       preLoaderRoute: typeof TimelineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/battle/carrhae': {
+      id: '/battle/carrhae'
+      path: '/battle/carrhae'
+      fullPath: '/battle/carrhae'
+      preLoaderRoute: typeof BattleCarrhaeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dynasty/$slug': {
@@ -318,6 +351,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlaceSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/en/battle/carrhae': {
+      id: '/en/battle/carrhae'
+      path: '/en/battle/carrhae'
+      fullPath: '/en/battle/carrhae'
+      preLoaderRoute: typeof EnBattleCarrhaeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/en/king/$slug': {
       id: '/en/king/$slug'
       path: '/en/king/$slug'
@@ -342,6 +382,7 @@ const rootRouteChildren: RootRouteChildren = {
   CylinderRoute: CylinderRoute,
   DariusRoute: DariusRoute,
   TimelineRoute: TimelineRoute,
+  BattleCarrhaeRoute: BattleCarrhaeRoute,
   DynastySlugRoute: DynastySlugRoute,
   EnAboutRoute: EnAboutRoute,
   EnArchivesRoute: EnArchivesRoute,
@@ -349,6 +390,7 @@ const rootRouteChildren: RootRouteChildren = {
   EnDariusRoute: EnDariusRoute,
   KingSlugRoute: KingSlugRoute,
   PlaceSlugRoute: PlaceSlugRoute,
+  EnBattleCarrhaeRoute: EnBattleCarrhaeRoute,
   EnKingSlugRoute: EnKingSlugRoute,
   EnPlaceSlugRoute: EnPlaceSlugRoute,
 }
