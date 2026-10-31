@@ -21,9 +21,9 @@ function Layer({ layer, paras, locale }: { layer: EvidenceLayer; paras: BiParas;
 export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: Locale }) {
   const isFa = locale === 'fa'
   const t = isFa
-    ? { kicker: 'پروندهٔ ویژه', layers: 'سه لایهٔ جدا', dossier: 'پرونده', synthesis: 'جمع‌بندی', bib: 'کتاب‌شناسی', sources: 'منابع', quoteNote: 'ترجمهٔ انگلیسی منتشرشده؛ برگردان فارسی از ماست.', photoNote: 'همهٔ عکس‌ها از ویکی‌انبار (Wikimedia Commons) است؛ پروانه و پدیدآورنده در صفحهٔ هر پرونده بررسی شده است.',
+    ? { kicker: 'پروندهٔ ویژه', layers: 'سه لایهٔ جدا', dossier: 'پرونده', synthesis: 'جمع‌بندی', bib: 'کتاب‌شناسی', sources: 'منابع', quoteNote: 'ترجمهٔ انگلیسی منتشرشده؛ برگردان فارسی از ماست.', quoteNoteFr: 'ترجمهٔ فرانسوی منتشرشده؛ برگردان فارسی از ماست.', photoNote: 'همهٔ عکس‌ها از ویکی‌انبار (Wikimedia Commons) است؛ پروانه و پدیدآورنده در صفحهٔ هر پرونده بررسی شده است.',
         layersNote: 'هر بخش سه لایه دارد: «شواهد تاریخی» فقط آنچه منابع می‌گویند؛ «تفسیر فلسفی» خوانش ما با معیار مالکیت و آزادی؛ «معنای فرهنگی امروز». نقل‌قول‌ها فقط از ترجمه‌های منتشرشده و با ارجاع است.' }
-    : { kicker: 'Featured dossier', layers: 'Three separate layers', dossier: 'Dossier', synthesis: 'Synthesis', bib: 'Bibliography', sources: 'Sources', quoteNote: '', photoNote: 'All photos are from Wikimedia Commons; licence and author were checked on each file page.',
+    : { kicker: 'Featured dossier', layers: 'Three separate layers', dossier: 'Dossier', synthesis: 'Synthesis', bib: 'Bibliography', sources: 'Sources', quoteNote: '', quoteNoteFr: '', photoNote: 'All photos are from Wikimedia Commons; licence and author were checked on each file page.',
         layersNote: 'Each section has three layers: “Historical evidence” is only what the sources say; “Philosophical interpretation” is our reading by the standard of property and liberty; “Modern cultural meaning”. Quotations come only from published translations, with references.' }
   const photo = (id: string) => king.photos?.find((p) => p.id === id)
   const author = (id: string) => king.sources.find((x) => x.id === id)?.author ?? id
@@ -82,9 +82,9 @@ export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: 
             <Layer layer="historical" paras={s.historical} locale={locale} />
             {s.quotes?.map((q) => (
               <blockquote key={q.text} className="read border-gold/40 px-4 py-3 my-4 text-ivory/90" style={{ borderInlineStartWidth: 4, borderInlineStartStyle: 'solid' }}>
-                <p className="font-serif" dir="ltr" lang="en">{q.text}</p>
+                <p className="font-serif" dir="ltr" lang={q.lang ?? 'en'}>{q.text}</p>
                 {isFa && <p className="mt-2" dir="rtl" lang="fa">{q.fa}</p>}
-                <footer className="mt-2 text-xs text-ivory/50">{q.ref} · <a href={`#src-${q.source}`} className="text-gold hover:underline">{author(q.source)}</a>{isFa && ` · ${t.quoteNote}`}</footer>
+                <footer className="mt-2 text-xs text-ivory/50">{q.ref} · <a href={`#src-${q.source}`} className="text-gold hover:underline">{author(q.source)}</a>{isFa && ` · ${q.lang === 'fr' ? t.quoteNoteFr : t.quoteNote}`}</footer>
               </blockquote>
             ))}
             {s.embed === 'carrhae' && <div className="mt-8"><CarrhaeBattle locale={locale} sources={king.sources} id={`${s.id}-battle`} /></div>}
