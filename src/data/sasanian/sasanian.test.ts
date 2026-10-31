@@ -48,6 +48,7 @@ test('Sasanian disputes are flagged; legends labelled; no excluded commentator i
   assert.ok(by('bahram-v')?.dossier.some((s) => s.folk && /Haft Peykar/.test(s.folk.origin.en.join(' ')) && /tradition/i.test(s.folk.title.en)), 'Haft Peykar labelled as tradition')
   assert.ok(by('bahram-v')?.events.some((e) => e.id === 'lions' && e.certainty === 'disputed'), 'lions ordeal flagged')
   assert.ok(has('narseh', /298/, 'nisibis'))
+  assert.ok(by('hormizd-iii')?.events.some((e) => e.id === 'help' && e.certainty === 'disputed'), 'Hephthalite help for Peroz flagged as legend')
   assert.ok(has('yazdegerd-ii', /exaggerated/, 'avarayr') && by('yazdegerd-ii')?.campaign?.battles?.some((b) => b.id === 'avarayr' && b.phases.length >= 4), 'Avarayr numbers flagged, diagram present')
   for (const slug of ['ardashir-i', 'shapur-i', 'shapur-ii', 'bahram-v', 'yazdegerd-ii']) { const k = by(slug); if (k) assert.ok(k.campaign?.clip, slug) }
   assert.match(sasSources.skz.url ?? '', /^https:\/\//)
