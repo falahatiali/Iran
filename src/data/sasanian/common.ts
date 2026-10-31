@@ -76,6 +76,18 @@ export const ARBELA: Coord = [44.01, 36.19]
 /** The central Caucasus passes (Darial), the Huns' road south in 395. */
 export const CAUCASUS: Coord = [44.63, 42.75]
 export const CONSTANTINOPLE: Coord = [28.98, 41.01]
+/** Avarayr plain on the Tłmut (Zangmar) river, southeast of Maku; the exact field is not known, the marker is approximate. */
+export const AVARAYR: Coord = [44.75, 39.15]
+/** Qumes (Damghan). */
+export const DAMGHAN: Coord = [54.34, 36.17]
+export const RAY: Coord = [51.43, 35.59]
+export const BALKH: Coord = [66.9, 36.76]
+/** Dara (Anastasiopolis), near modern Oğuz, Mardin. */
+export const DARA: Coord = [40.94, 37.18]
+/** Martyropolis (Silvan). */
+export const MARTYROPOLIS: Coord = [41.0, 38.14]
+/** Caucasian Albania, around the lower Kura. */
+export const ALBANIA: Coord = [47.0, 40.8]
 
 export const SAS = { fa: 'ساسانیان', en: 'Sasanians' }
 
@@ -119,6 +131,19 @@ export const sasSources: Record<string, FeaturedSource> = Object.fromEntries(([
   { id: 'ir-hira', author: 'C. E. Bosworth, Encyclopaedia Iranica', title: 'Ḥira', year: '2003', url: IR('hira') },
   { id: 'ir-kidarites', author: 'F. Grenet, Encyclopaedia Iranica', title: 'Kidarites', year: '2022', url: IR('kidarites') },
   { id: 'ir-haftpeykar', author: 'F. de Blois, Encyclopaedia Iranica', title: 'Haft Peykar', year: '2002', url: IR('haft-peykar') },
+  { id: 'ir-yazdegerd2', author: 'T. Daryaee, Encyclopaedia Iranica', title: 'Yazdegerd II', year: '2000', url: IR('yazdgerd-ii') },
+  { id: 'ir-avarayr', author: 'R. H. Hewsen, Encyclopaedia Iranica', title: 'Avarayr', year: '1987', url: IR('avarayr') },
+  { id: 'ir-elise', author: 'R. W. Thomson, Encyclopaedia Iranica', title: 'Ełišē', year: '1998', url: IR('elise') },
+  { id: 'ir-mamikonean', author: 'N. Garsoïan, Encyclopaedia Iranica', title: 'Mamikonean family', year: '2000', url: IR('mamikonean') },
+  { id: 'elishe', author: 'Elishe, tr. R. W. Thomson', title: 'History of Vardan and the Armenian War (Harvard Armenian Texts and Studies 5)', year: '1982', url: 'https://archive.org/details/eghishe-vardan-1982', note: { fa: 'تامسون (ایرانیکا) می‌گوید کتاب الیشه احتمالاً بازنویسیِ سدهٔ ششمِ تاریخ غزار است و روایتی ادبی و آراسته دارد. شماره‌ها در قلاب، صفحه‌های متن ارمنی‌اند.', en: 'Thomson (Iranica) says Elishe’s book is probably a 6th-century rewriting of Łazar and is literary and elaborate. Numbers in brackets are pages of the Armenian edition.' } },
+  { id: 'lazar', author: 'Łazar Pʿarpecʿi, tr. R. W. Thomson (Appendix to Elishe, 1982)', title: 'The Armenian War according to Łazar Pʿarpecʿi', year: '1982', url: 'https://archive.org/details/eghishe-vardan-1982', note: { fa: 'غزار حدود ۵۰۰ م. نوشت. تامسون یادآوری می‌کند متنی که مانده میان سده‌های دوازدهم و پانزدهم بازنویسی شده است.', en: 'Łazar wrote around 500. Thomson notes that the surviving text was rewritten between the 12th and 15th centuries.' } },
+  { id: 'ir-hormozd3', author: 'A. Sh. Shahbazi, Encyclopaedia Iranica', title: 'Hormozd III', year: '2004', url: IR('hormozd-iii') },
+  { id: 'ir-peroz', author: 'K. Schippmann, Encyclopaedia Iranica', title: 'Fīrūz (Pērōz) I', year: '1999', url: 'https://www.iranicaonline.org/articles/peroz/i-history/' },
+  { id: 'ir-balas', author: 'M. L. Chaumont, Encyclopaedia Iranica', title: 'Balāš, Sasanian king of kings', year: '1988', url: 'https://www.iranicaonline.org/articles/balas/viii-balas-sasanian-king-of-kings/' },
+  { id: 'ir-jamasp', author: 'J. K. Choksy, Encyclopaedia Iranica', title: 'Jāmāsp I: reign', year: '2008', url: 'https://www.iranicaonline.org/articles/jamasp-2/jamasp-i-reign/' },
+  { id: 'ir-kawad1', author: 'N. Schindel, Encyclopaedia Iranica', title: 'Kawād I: reign', year: '2013', url: IR('kawad-i-reign') },
+  { id: 'ir-sasdyn', author: 'A. Sh. Shahbazi, Encyclopaedia Iranica', title: 'Sasanian dynasty', year: '2005', url: IR('sasanian-dynasty') },
+  { id: 'ir-religions', author: 'P. G. Kreyenbroek, Encyclopaedia Iranica', title: 'Iran ix. Religions in Iran (1) Pre-Islamic', year: '2006', url: 'https://www.iranicaonline.org/articles/iran-ix1-religions-in-iran/iran-ix-religions-in-iran-1-pre-islamic-1-1-overview/' },
 ] as FeaturedSource[]).map((s) => [s.id, s]))
 
 export const pick = (...ids: string[]): FeaturedSource[] => ids.map((id) => {
@@ -172,6 +197,8 @@ export const sasPhotos: Record<string, CommonsPhoto> = {
   'plate-azadeh': { id: 'plate-azadeh', src: u('thumb/e/e5/Plate_with_a_hunting_scene_from_the_tale_of_Bahram_Gur_and_Azadeh_MET_DT1634.jpg/960px-Plate_with_a_hunting_scene_from_the_tale_of_Bahram_Gur_and_Azadeh_MET_DT1634.jpg'), page: f('Plate_with_a_hunting_scene_from_the_tale_of_Bahram_Gur_and_Azadeh_MET_DT1634.jpg'), author: 'Metropolitan Museum of Art', license: 'CC0', caption: { fa: 'بشقاب سیمین ساسانی با صحنهٔ شکار از داستان بهرام گور و آزاده، موزهٔ متروپولیتن', en: 'A Sasanian silver plate with a hunting scene from the tale of Bahram Gur and Azadeh, Metropolitan Museum of Art' } },
   'lions-crown': { id: 'lions-crown', src: u('5/51/Bahram_Gur_Slays_Two_Lions_and_Gains_the_Crown.jpeg'), page: f('Bahram_Gur_Slays_Two_Lions_and_Gains_the_Crown.jpeg'), author: 'Anonymous (Safavid), Museum of Fine Arts, Boston', license: 'Public domain', caption: { fa: 'نگارهٔ صفوی از شاهنامه: بهرام گور دو شیر را می‌کشد و تاج را برمی‌دارد (روایت، نه تاریخ)', en: 'A Safavid Shahnameh painting: Bahram Gur kills two lions and takes the crown (tradition, not history)' } },
   'blue-pavilion': { id: 'blue-pavilion', src: u('thumb/3/32/%22Bahram_Gur_in_the_Blue_Pavilion%22%2C_Folio_from_Khamsa_%28Quintet%29_of_Nizami_MET_DP277218.jpg/960px-%22Bahram_Gur_in_the_Blue_Pavilion%22%2C_Folio_from_Khamsa_%28Quintet%29_of_Nizami_MET_DP277218.jpg'), page: f('%22Bahram_Gur_in_the_Blue_Pavilion%22,_Folio_from_Khamsa_(Quintet)_of_Nizami_MET_DP277218.jpg'), author: 'Metropolitan Museum of Art', license: 'CC0', caption: { fa: '«بهرام گور در گنبد پیروزه‌گون»، برگی از خمسهٔ نظامی (هفت‌پیکر)، موزهٔ متروپولیتن', en: '“Bahram Gur in the Blue Pavilion”, a folio from Nizami’s Khamsa (Haft Peykar), Metropolitan Museum of Art' } },
+  'coin-yazdegerd2': { id: 'coin-yazdegerd2', src: u('8/8e/Coin_of_Yazdegerd_II%2C_uncertain_mint.jpg'), page: f('Coin_of_Yazdegerd_II,_uncertain_mint.jpg'), author: 'Classical Numismatic Group (uploaded by LouisAragon)', license: 'CC BY-SA 2.5', licenseUrl: 'https://creativecommons.org/licenses/by-sa/2.5', caption: { fa: 'دینار زر یزدگرد دوم با نوشتهٔ تازهٔ «مزداپرست، بغ، کی»', en: 'A gold dinar of Yazdegerd II with the new legend “Mazda-worshipping majesty, the Kayanid”' } },
+  'avarayr-1569': { id: 'avarayr-1569', src: u('7/72/Yeghishe%2C_Vasn_Vardanay_ew_Hayoc_paterazmin%2C_1569_%28Matenadaran%2C_Ms._1920%2C_no._250v.%29.jpg'), page: f('Yeghishe,_Vasn_Vardanay_ew_Hayoc_paterazmin,_1569_(Matenadaran,_Ms._1920,_no._250v.).jpg'), author: 'Baghesh (1569), Matenadaran Ms. 1920', license: 'Public domain', caption: { fa: 'نبرد آوارایر در نسخهٔ مصور کتاب الیشه، ۱۵۶۹ م.، ماتناداران ایروان؛ هزار سال پس از نبرد کشیده شده است', en: 'The battle of Avarayr in an illuminated copy of Elishe’s book, 1569, Matenadaran, Yerevan; painted over a thousand years after the battle' } },
 }
 export const photos = (...ids: string[]): CommonsPhoto[] => ids.map((id) => sasPhotos[id])
 
