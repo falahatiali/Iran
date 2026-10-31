@@ -191,3 +191,13 @@ Shapur II page (/king/shapur-ii)
   amida-walls: Adam Jones, CC BY-SA 2.0. Source: https://commons.wikimedia.org/wiki/File:City_Wall_and_Battlements_-_Diyarbakir_-_Turkey_(5777328071).jpg
   tb-ardashir2: Skot, CC BY-SA 4.0. Source: https://commons.wikimedia.org/wiki/File:Taq-e_Bostan_(Kermanshah)_–_Relief_of_the_Coronation_of_Ardashir_II.jpg
   tb-small: Philippe Chavin, CC BY 2.5. Source: https://commons.wikimedia.org/wiki/File:Taq-e_Bostan_-_High-relief_Shapur_II_and_Shapur_III.jpg
+Ardashir II page (/king/ardashir-ii)
+  tb-ardashir2: Skot, CC BY-SA 4.0. Source: https://commons.wikimedia.org/wiki/File:Taq-e_Bostan_(Kermanshah)_–_Relief_of_the_Coronation_of_Ardashir_II.jpg
+  coin-ardashir2: Classical Numismatic Group, LLC, CC BY 4.0. Source: https://commons.wikimedia.org/wiki/File:Drachm_of_Ardashir_II_-_Bishapur.jpg
+Shapur III page (/king/shapur-iii)
+  tb-small: Philippe Chavin, CC BY 2.5. Source: https://commons.wikimedia.org/wiki/File:Taq-e_Bostan_-_High-relief_Shapur_II_and_Shapur_III.jpg
+  coin-shapur3: Classical Numismatic Group, CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:Coin_of_the_Sasanian_king_Shapur_III,_Sindh_mint.jpg
+Bahram IV page (/king/bahram-iv)
+  coin-bahram4: Metropolitan Museum of Art, CC0. Source: https://commons.wikimedia.org/wiki/File:Drachm_of_Bahram_IV_ca_CE_388–99.jpg
+Yazdegerd I page (/king/yazdegerd-i)
+  coin-yazdegerd1: Classical Numismatic Group, CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:Coin_of_Yazdegerd_I,_Gurgan_or_Qum_mint.jpg

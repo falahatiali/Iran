@@ -71,6 +71,11 @@ export const ADUR_GUSNASP: Coord = [47.24, 36.6]
 export const SELEUCIA: Coord = [44.52, 33.1]
 export const ISFAHAN: Coord = [51.67, 32.65]
 export const THEODOSIOPOLIS: Coord = [41.27, 39.9]
+/** Arbela (Erbil), seat of Adiabene (Ḥadyab). */
+export const ARBELA: Coord = [44.01, 36.19]
+/** The central Caucasus passes (Darial), the Huns' road south in 395. */
+export const CAUCASUS: Coord = [44.63, 42.75]
+export const CONSTANTINOPLE: Coord = [28.98, 41.01]
 
 export const SAS = { fa: 'ساسانیان', en: 'Sasanians' }
 
@@ -108,6 +113,7 @@ export const sasSources: Record<string, FeaturedSource> = Object.fromEntries(([
   { id: 'overlaet2', author: 'B. Overlaet', title: 'Ahura Mazda and Shapur II? A note on Taq-i Bustan I, the investiture of Ardashir II (379–383), Iranica Antiqua 47', year: '2012', url: 'https://doi.org/10.2143/ia.47.0.2141964' },
   { id: 'ir-bahram4', author: 'O. Klíma, Encyclopaedia Iranica', title: 'Bahrām IV', year: '1988', url: 'https://www.iranicaonline.org/articles/bahram-the-name-of-six-sasanian-kings/bahram-iv/' },
   { id: 'ir-yazdegerd1', author: 'A. Sh. Shahbazi, Encyclopaedia Iranica', title: 'Yazdegerd I', year: '2003', url: IR('yazdegerd-i') },
+  { id: 'sasanika-stbn', author: 'Sasanika (UC Irvine)', title: 'Šāpūr II & Šāpūr III’s Inscription, Ṭāq-e Bustān (ŠTBn-I & II): transcription and translation', year: 'n.d.', url: 'https://sites.uci.edu/sasanika/sapur-ii-sapur-iiis-inscription-%e1%b9%adaq-e-bustan-stbn-i-ii/' },
   { id: 'procopius', author: 'Procopius, tr. H. B. Dewing (Loeb)', title: 'History of the Wars 1.2', year: '1914', url: 'https://archive.org/details/procopius00procgoog' },
   { id: 'ir-bahram5', author: 'O. Klíma, Encyclopaedia Iranica', title: 'Bahrām V Gōr', year: '1988', url: 'https://www.iranicaonline.org/articles/bahram-the-name-of-six-sasanian-kings/bahram-v/' },
   { id: 'ir-hira', author: 'C. E. Bosworth, Encyclopaedia Iranica', title: 'Ḥira', year: '2003', url: IR('hira') },
