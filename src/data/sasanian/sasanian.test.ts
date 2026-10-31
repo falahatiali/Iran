@@ -57,6 +57,7 @@ test('Sasanian disputes are flagged; legends labelled; no excluded commentator i
   const folk = (slug: string, re: RegExp) => by(slug)?.dossier.some((s) => s.folk && re.test(s.folk.title.en) && /legend|tradition/i.test(s.folk.origin.en.join(' '))) ?? false
   assert.ok(folk('khosrow-i', /chess/) && folk('khosrow-i', /chain of justice/) && folk('khosrow-i', /herb/), 'Khosrow I chess, Borzuya tale and chain of justice labelled')
   assert.ok(by('khosrow-i')?.events.some((e) => e.id === 'hephthalites' && e.certainty === 'disputed') && /alleged|unproven/.test(text('khosrow-i')) && by('khosrow-i')?.campaign?.battles?.some((b) => b.id === 'antioch'), 'Hephthalite date and Gondeshapur academy flagged; Antioch diagram present')
+  assert.ok(by('hormizd-iv')?.events.some((e) => e.id === 'accession' && e.certainty === 'disputed') && /chronologically impossible/.test(text('hormizd-iv')), 'Hormizd IV Turkish-mother story flagged')
   for (const slug of ['ardashir-i', 'shapur-i', 'shapur-ii', 'bahram-v', 'yazdegerd-ii', 'peroz-i', 'kavad-i', 'khosrow-i']) { const k = by(slug); if (k) assert.ok(k.campaign?.clip, slug) }
   assert.match(sasSources.skz.url ?? '', /^https:\/\//)
   assert.equal(/jannatkhah|جنت.?خواه/i.test(JSON.stringify(sasanianKings)), false)
