@@ -353,3 +353,8 @@ nader (remote, Wikimedia Commons; licence read from the Commons API 2026-10-31)
 - Kalat_Naderi_Sun_Palace_Dome.jpg — Leopeji — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Kalat_Naderi_Sun_Palace_Dome.jpg
 - Tomb_of_Nader_Shah_-_Mashhad_1.jpg — Mohammad Taaghi — CC BY 4.0 — https://commons.wikimedia.org/wiki/File:Tomb_of_Nader_Shah_-_Mashhad_1.jpg
 - public/media/nader/campaigns-* — clip rendered from this site's own map
+
+karim-khan (remote, Wikimedia Commons; licence read from the Commons API 2026-10-31)
+- Portrait_of_Karim_Khan_Zand_-_Shiraz_(Iran)_-_Before_1779_-_Louvre_-_MAO_796.jpg — Mohammad Sadiq (photo) — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Portrait_of_Karim_Khan_Zand_-_Shiraz_(Iran)_-_Before_1779_-_Louvre_-_MAO_796.jpg
+- 2018-09-20_Iran,_Shiraz,_Arg_of_Karim_Khan.jpg — Laurens R. Krol — CC BY 4.0 — https://commons.wikimedia.org/wiki/File:2018-09-20_Iran,_Shiraz,_Arg_of_Karim_Khan.jpg
+- public/media/karim-khan/campaigns-* — clip rendered from this site's own map

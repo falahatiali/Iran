@@ -13,6 +13,7 @@ import { timur } from '../timurid'
 import { uzunHasan } from '../turkmen'
 import { abbasI, ismailI } from '../safavid'
 import { nader } from '../afsharid'
+import { karimKhan } from '../zand'
 import { ismail } from '../ismail'
 import { astyages } from '../astyages'
 import type { FeaturedKing } from './types'
@@ -198,6 +199,7 @@ export const featuredKings: Record<string, FeaturedKing> = { [untash.slug]: unta
   [ismailI.slug]: ismailI,
   [abbasI.slug]: abbasI,
   [nader.slug]: nader,
+  [karimKhan.slug]: karimKhan,
   [ghazan.slug]: ghazan,
 }
 
