@@ -150,3 +150,14 @@ artabanus-iv/reign-{fa,en}.{gif,mp4,webm,png}
   Narrative after Herodian 4.10–15 and 6.2 (tr. Echols) and Encyclopaedia Iranica; coastlines Natural Earth (public domain).
 artabanus-iv/battle-nisibis-{fa,en}.{gif,mp4,webm,png}
   Our own render of the schematic Nisibis diagram (--battle nisibis); positions are editorial, after Herodian 4.15.
+
+Sasanian kings (src/data/sasanian), licences read from the Commons API on 2026-10-31:
+  coin-ardashir1: Numisbids, Public domain. Source: https://commons.wikimedia.org/wiki/File:Coin_of_Ardashir_I.jpg
+  coin-ardashir-papak: Unknown (Wikimedia Commons), Public domain. Source: https://commons.wikimedia.org/wiki/File:Coin_of_Ardashir_I_and_Papak.jpg
+  nr-ardashir: Perri.G, CC BY-SA 4.0. Source: https://commons.wikimedia.org/wiki/File:171206yd_Naqsh-e_Rostam_Investiture_d%27Ardashir_Ier.jpg
+  firuzabad-relief: Pentocelo, CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:Relief_Ardachir_Ist_(Firuzabad_II)_V1_(cropped).JPG
+  ardashir-palace: Julia Maudlin, CC BY 2.0. Source: https://commons.wikimedia.org/wiki/File:3rd-Century_Palace_of_Ardashir,_Firuzabad,_Iran_(10059050404).jpg
+
+ardashir-i/reign-{fa,en}.{gif,mp4,webm,png}
+  Our own render of the campaign map on the /king/ardashir-i page by scripts/render-campaign-clip.py --section reign.
+  Narrative after Herodian 6.2 (tr. Echols) and Encyclopaedia Iranica; coastlines Natural Earth (public domain).
