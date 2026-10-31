@@ -337,3 +337,12 @@ uzun-hasan (remote, Wikimedia Commons; licence read from the Commons API 2026-10
 - Kabood_(Blue)_mosque,_Tabriz,_Iran.jpg — Hameddaeipic — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Kabood_(Blue)_mosque,_Tabriz,_Iran.jpg
 - Uzun_Hasan_inscription_(South_iwan_of_the_courtyard_of_the_Jameh_Mosque_of_Isfahan).jpg — Diego Delso, Ghazalyegane — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Uzun_Hasan_inscription_(South_iwan_of_the_courtyard_of_the_Jameh_Mosque_of_Isfahan).jpg
 - public/media/uzun-hasan/campaigns-* — clip rendered from this site's own map
+
+ismail-i and abbas-i (remote, Wikimedia Commons; licence read from the Commons API 2026-10-31)
+- Shah_Ismail_at_the_Battle_of_Chaldiran._Chehel_Sotoun,_19th_century.jpg — unknown Iranian painter, Chehel Sotun — Public domain — https://commons.wikimedia.org/wiki/File:Shah_Ismail_at_the_Battle_of_Chaldiran._Chehel_Sotoun,_19th_century.jpg
+- Portrait_of_Shah_Ismail_I._Inscribed_"Ismael_Sophy_Rex_Pers"._Painted_by_Cristofano_dell'Altissimo,_dated_1552-1568.jpg — Cristofano dell'Altissimo — Public domain — https://commons.wikimedia.org/wiki/File:Portrait_of_Shah_Ismail_I._Inscribed_%22Ismael_Sophy_Rex_Pers%22._Painted_by_Cristofano_dell%27Altissimo,_dated_1552-1568.jpg
+- The_Court_of_Gayumars.jpg — attributed to Sultan Muhammad — Public domain — https://commons.wikimedia.org/wiki/File:The_Court_of_Gayumars.jpg
+- Shah_Tahmasp_(circa_1647_painting,_Chehel_Sotun).jpg — unknown Iranian painter, c. 1647 — Public domain — https://commons.wikimedia.org/wiki/File:Shah_Tahmasp_(circa_1647_painting,_Chehel_Sotun).jpg
+- Portrait_of_Shah_‘Abbas_I._Attributed_to_Bishandas,_circa_1617.jpg — attributed to Bishandas — Public domain — https://commons.wikimedia.org/wiki/File:Portrait_of_Shah_%E2%80%98Abbas_I._Attributed_to_Bishandas,_circa_1617.jpg
+- Naghshe_jahan_01.jpg — Pedram forouzanfar — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Naghshe_jahan_01.jpg
+- public/media/ismail-i/campaigns-*, public/media/ismail-i/battle-chaldiran-*, public/media/abbas-i/campaigns-* — clips rendered from this site's own maps and diagram
