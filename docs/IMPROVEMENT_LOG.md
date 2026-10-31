@@ -227,7 +227,7 @@ See [RESEARCH_LOG.md](./RESEARCH_LOG.md) §13 for the source table.
 
 - Featured: Yazdegerd II (`yazdegerd-ii`), with a reign clip and an animated Avarayr (451) battle diagram (fa/en GIF), after Elishe (tr. Thomson) and Łazar Pʿarpecʿi. Flagged: the army sizes and Elishe's date and Maccabean framing.
 - Fix: removed the unsupported claim that the treaty of Nvarsak (484) gave the Armenians religious freedom. The page now says only what Chaumont reports: Balash made peace with Vahan Mamikonian and made him marzban.
-- `short4.ts`: Hormizd III, Balash and Zamasp (`jamasp`). Flagged: the Hephthalite help for Peroz (legend per Shahbazi), whether Balash was Peroz's brother or son, and Zamasp's fate (pardoned, blinded or executed).
+- `short4.ts`: Hormizd III, Balash and Zamasp (`jamasp`). Flagged: the Hephthalite help for Peroz (labelled as tradition), whether Balash was Peroz's brother or son, and Zamasp's fate (pardoned, blinded or executed).
 - Featured: Peroz I (`peroz-i`), with a reign clip and an animated Hephthalite trench diagram. Every trench phase is marked disputed because it rests on Procopius alone. Procopius 1.3–1.4 is quoted verbatim, including his own doubt about the pearl. The famine's scale is also flagged.
 - Featured: Kavad I (`kavad-i`), with a reign clip and animated Dara (530) and Callinicum (531) diagrams, after Procopius 1.13–1.18. The Mazdak section names every source as hostile or outside, sets out the scholars' dispute (Shahbazi, Kreyenbroek, Schindel, Gaube) and keeps the property-rights reading separate, as our own. Amida (503) is covered with Procopius 1.7 verbatim.
 - `common.ts`: Avarayr, Damghan, Ray, Balkh, Dara, Martyropolis and Albania coordinates.
