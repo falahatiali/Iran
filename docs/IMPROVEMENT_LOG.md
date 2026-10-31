@@ -169,3 +169,28 @@ See [RESEARCH_LOG.md](./RESEARCH_LOG.md) §13 for the source table.
 - Left out as unverified: Dio's account of Tiridates in Rome, Vologesocerta's founding, Pacorus II and Decebalus, and any quote from Dio or the Hou Hanshu.
 
 **Next king:** Vologases IV (`vologases-iv`, 147–191 CE).
+
+## 2026-10-31 — Parthians, batch 4 (last): Vologases IV to Artabanus IV
+
+**Done in this pass**
+
+- `common.ts`: new coordinates (Hormozgan near Golpayegan, Edessa, Syria, Firuzabad), new sources (Herodian/Echols on Livius, Iranica "Ardašīr I") and coins for Vologases IV, Osroes II, Vologases V, Vologases VI and Artabanus IV (CNG CC BY-SA 3.0, Gdr public domain), with licences read from the Commons API.
+- `vologases4.ts`: Vologases IV (the war of 161–166, Seleucia and Ctesiphon at the end of 165 or early 166, the epidemic) and Osroes II, a coin-only king newly added to `classical.ts`.
+- `severan.ts`: Vologases V (Severus' war of 195–199, the sack of Ctesiphon on 28 January 198, Hatra, the new provinces, Pāpak's revolt) and Vologases VI (the split with Artabanus).
+- Featured: Artabanus IV (`artabanus4.ts`), with a reign map from 213 to 224 and a clip, and an animated four-phase Nisibis diagram with fa and en clips. Sections cover Caracalla's proposal, Nisibis and Hormozgan.
+- Verbatim quotes only from Echols' Herodian (3.9.11–12, 4.10.4, 4.11.5, 4.14.6, 4.15.4, 6.2.7). Cassius Dio (LacusCurtius) could not be fetched; nothing is quoted from him, and his version is reached only through Iranica.
+- Flagged:
+  - Herodian vs Iranica on the proposal: Herodian has Artabanus accept, followed by the massacre, while Iranica has him refuse.
+  - The massacre's site.
+  - Nisibis: Herodian calls it a draw, but Iranica reads it as a Roman defeat (50 million denarii).
+  - The 28 April 224 date (Nöldeke, "probably").
+  - Hormozgan's site.
+  - The 226 coronation.
+  - The order of Ctesiphon and Hatra in 198 (Herodian vs Iranica/Dio), and Herodian's "Artabanus" for Vologases V.
+  - The Vologases numbering in Iranica's "Ardašīr I".
+  - The end dates of Vologases IV, V and VI, and the 227/228 coin of Vologases VI.
+  - The Antonine Plague link.
+  - Osroes II's existence beyond coins.
+- Left out as unverified: Dio's account of the Arbela tombs (given only via the Livius note), details of the destruction of Seleucia in 165, Artabanus' regional base, and any Tabari quote.
+
+**Next king:** Ardashir I (Sasanian) (`ardashir-i`, 224–242 CE).
