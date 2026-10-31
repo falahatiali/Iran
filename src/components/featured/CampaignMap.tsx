@@ -4,6 +4,7 @@ import { BASEMAP, LAND_PATH } from '../../data/basemap'
 import type { Certainty, Coord, EventKind, FeaturedSource, MapEvent } from '../../data/featured/types'
 import type { Locale } from '../../lib/i18n'
 import { fa as faNum } from '../../lib/format'
+import { CERTAINTY_LABEL } from '../../lib/certainty'
 
 const K = (BASEMAP.scale * Math.PI) / 180
 export const project = ([lon, lat]: Coord): [number, number] => [BASEMAP.width / 2 + (lon - BASEMAP.center[0]) * K, BASEMAP.height / 2 - (lat - BASEMAP.center[1]) * K]
@@ -14,10 +15,7 @@ const KIND_LABEL: Record<Locale, Record<EventKind, string>> = {
   fa: { battle: 'نبرد', campaign: 'لشکرکشی', building: 'ساخت‌وساز', admin: 'اداره و اقتصاد', religion: 'دین' },
   en: { battle: 'Battle', campaign: 'Campaign', building: 'Building', admin: 'Administration & economy', religion: 'Religion' },
 }
-const CERT: Record<Locale, Record<Certainty, string>> = {
-  fa: { secure: 'استوار (منبع هم‌زمان)', probable: 'محتمل', disputed: 'محل بحث' },
-  en: { secure: 'Secure (contemporary source)', probable: 'Probable', disputed: 'Disputed' },
-}
+const CERT = CERTAINTY_LABEL
 const CERT_TONE: Record<Certainty, string> = { secure: 'border-turquoise/50 text-turquoise-soft', probable: 'border-gold/50 text-gold-bright', disputed: 'border-crimson/60 text-ivory' }
 
 const PLACES: { name: { fa: string; en: string }; c: Coord }[] = [
