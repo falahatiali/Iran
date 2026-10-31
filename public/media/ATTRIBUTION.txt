@@ -322,3 +322,11 @@ hulagu and ghazan (remote, Wikimedia Commons; licence read from the Commons API 
 - GhazanConversionToIslam.JPG — manuscript of Rashid al-Din's Jami' al-tawarikh (BnF Suppl. persan 1113 f. 239r), 14th century — Public domain — https://commons.wikimedia.org/wiki/File:GhazanConversionToIslam.JPG
 - GhazanSeal1302LetterToBonifaceVIII.JPG — chancery of Ghazan, 1302 — Public domain — https://commons.wikimedia.org/wiki/File:GhazanSeal1302LetterToBonifaceVIII.JPG
 - public/media/hulagu/campaigns-* — clip rendered from this site's own map
+
+timur (remote, Wikimedia Commons; licence read from the Commons API 2026-10-31)
+- Portrait_of_Timur_(d.1405),_as_commissioned_by_his_grandson_Ibrahim_Sultan_in_the_1436_Zafarnama.jpg — painter of the 1436 Zafarnama — Public domain — https://commons.wikimedia.org/wiki/File:Portrait_of_Timur_(d.1405),_as_commissioned_by_his_grandson_Ibrahim_Sultan_in_the_1436_Zafarnama.jpg
+- Battle_between_Timur_and_Toqtamish_Khan_in_18_June_1391._Zafarnama_of_1436,_facing_folios_208v-207r.jpg — painter of the 1436 Zafarnama — Public domain — https://commons.wikimedia.org/wiki/File:Battle_between_Timur_and_Toqtamish_Khan_in_18_June_1391._Zafarnama_of_1436,_facing_folios_208v-207r.jpg
+- Gur-e_Amir_01.jpg — Bgag — CC0 — https://commons.wikimedia.org/wiki/File:Gur-e_Amir_01.jpg
+- Goharshad_Mosque_Maqsura_Iwan.jpg — Goudarz.memar — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Goharshad_Mosque_Maqsura_Iwan.jpg
+- Ulugh_Beg_observatory.JPG — Alaexis — CC BY-SA 2.5 — https://commons.wikimedia.org/wiki/File:Ulugh_Beg_observatory.JPG
+- public/media/timur/campaigns-* — clip rendered from this site's own map
