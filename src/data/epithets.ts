@@ -85,6 +85,16 @@ export const epithets: Record<string, Epithet[]> = {
   'khosrow-i': [
     { fa: 'انوشیروان', en: 'Anushirvan', original: 'anōšag-ruwān', lang: 'Middle Persian', meaning: { fa: '«دارای روان جاودان»؛ لقبی پس از مرگ، برای جدا کردن او از خسرو دوم', en: '“of immortal soul”, a posthumous epithet that distinguished him from Khosrow II' }, kind: 'nickname', source: { label: 'Encyclopaedia Iranica, “Ḵosrow I”; C. J. Brunner, “Anōšag-ruwān”', url: IR('kosrow') } },
   ],
+  'agha-mohammad': [
+    { fa: 'آقا', en: 'Āḡā', original: 'āḡā', lang: 'Persian', meaning: { fa: 'لقبی که معمولاً به خواجه‌های بلندپایهٔ دربار می‌دادند؛ عادل‌شاه افشار او را در کودکی اخته کرده بود', en: 'a title commonly given to senior court eunuchs; Adel Shah Afshar had him castrated as a boy' }, kind: 'nickname', source: { label: 'J. R. Perry, “Āḡā Moḥammad Khan Qājār”, Encyclopaedia Iranica', url: IR('aga-mohammad-khan') } },
+    { fa: 'پیران ویسه', en: 'Pīrān-e Vēsa', lang: 'Persian', meaning: { fa: 'گفته می‌شود کریم‌خان زند او را چنین می‌خواند، به یاد رایزن خردمند افراسیاب در شاهنامه', en: 'Karim Khan Zand is said to have called him this, after Afrasiab’s wise counsellor in the Shahnameh' }, kind: 'nickname', source: { label: 'J. R. Perry, “Āḡā Moḥammad Khan Qājār”, Encyclopaedia Iranica', url: IR('aga-mohammad-khan') } },
+  ],
+  'fath-ali': [
+    { fa: 'باباخان', en: 'Bābā Khan', lang: 'Persian', meaning: { fa: 'نام دومش که تا بر تخت نشستن در ۱۷۹۷ با آن شناخته می‌شد', en: 'his second name, by which he was known until his accession in 1797' }, kind: 'nickname', source: { label: 'A. Amanat, “Fatḥ-ʿAlī Shah Qājār”, Encyclopaedia Iranica', url: IR('fath-ali-shah') } },
+    { fa: 'جهانبانی', en: 'Jahānbānī', original: 'jahānbānī', lang: 'Persian', meaning: { fa: '«نگهبان جهان»؛ لقبی که در ۱۷۹۲–۱۷۹۳ با حکومت فارس گرفت، در برابر «جهانسوز»، لقب پدرش', en: '“guardian of the world”, given with the governorship of Fars in 1792–93, in contrast to his father’s title jahānsūz, “world-burner”' }, kind: 'title', source: { label: 'A. Amanat, “Fatḥ-ʿAlī Shah Qājār”, Encyclopaedia Iranica', url: IR('fath-ali-shah') } },
+    { fa: 'شاهنشاه', en: 'Šāhanšāh (King of Kings)', original: 'šāhanšāh', lang: 'Persian', meaning: { fa: 'وقایع‌نگاران دربار او را چنین خواندند؛ نشان جایگاه او بالای پسرانش که آن‌ها هم «شاه» خوانده می‌شدند', en: 'how his court chroniclers addressed him, marking his rank above his sons, who were also styled shah' }, kind: 'title', source: { label: 'A. Amanat, “Fatḥ-ʿAlī Shah Qājār”, Encyclopaedia Iranica', url: IR('fath-ali-shah') } },
+    { fa: 'خاقان', en: 'Ḵāqān', original: 'ḵāqān', lang: 'Turko-Mongolian', meaning: { fa: '«سرور همهٔ ایل‌ها»؛ لقبی که با نامش یکی شد و تخلص شعری او هم بود', en: '“supreme chief of all tribes”; it became almost synonymous with his name and was also his pen name as a poet' }, kind: 'title', source: { label: 'A. Amanat, “Fatḥ-ʿAlī Shah Qājār”, Encyclopaedia Iranica', url: IR('fath-ali-shah') } },
+  ],
   'khosrow-ii': [
     { fa: 'پرویز', en: 'Parvēz', original: 'Parvēz', lang: 'Middle/New Persian', kind: 'nickname', source: { label: 'J. Howard-Johnston, “Ḵosrow II”, Encyclopaedia Iranica', url: IR('khosrow-ii') } },
   ],

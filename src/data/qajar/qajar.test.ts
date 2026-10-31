@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
-import { fathAli, qjPhotos, qjSourceIds } from './index'
+import { aghaMohammad, fathAli, qjPhotos, qjSourceIds } from './index'
 
 const filled = (s: string | undefined) => typeof s === 'string' && s.trim().length > 0
 
-for (const king of [fathAli]) {
+for (const king of [aghaMohammad, fathAli]) {
   test(`${king.slug} events are ordered, sourced, bilingual and hedged`, () => {
     for (const list of [king.events, king.campaign?.events ?? []]) {
       for (let i = 1; i < list.length; i++) assert.ok(list[i].year >= list[i - 1].year, list[i].id)
@@ -42,9 +42,38 @@ test('treaty quotes come from the published Hurewitz translation', () => {
 })
 
 test('quotes cite a listed source', () => {
-  for (const k of [fathAli]) for (const s of k.dossier) for (const q of s.quotes ?? []) assert.ok(qjSourceIds.has(q.source) && filled(q.text) && filled(q.fa), s.id)
+  for (const k of [aghaMohammad, fathAli]) for (const s of k.dossier) for (const q of s.quotes ?? []) assert.ok(qjSourceIds.has(q.source) && filled(q.text) && filled(q.fa), s.id)
 })
 
 test('photos carry Commons pages and licences', () => {
   for (const p of qjPhotos) assert.ok(p.page.startsWith('https://commons.wikimedia.org/wiki/File:') && p.src.startsWith('https://upload.wikimedia.org/') && p.licenseUrl, p.id)
+})
+
+test('Agha Mohammad Khan: conflicting dates are flagged, not smoothed over', () => {
+  const e = (id: string) => aghaMohammad.events.find((x) => x.id === id)!
+  assert.equal(e('tehran').certainty, 'disputed')
+  assert.match(e('tehran').certaintyNote!.en, /21 March 1786.*1788–89/)
+  assert.match(e('tiflis').certaintyNote!.en, /September 1795.*1210\/1796/)
+  assert.match(e('killed').certaintyNote!.en, /17 June 1797.*May 1797/)
+  assert.equal(fathAli.events.find((x) => x.id === 'amk-killed')!.certainty, 'probable')
+})
+
+test('Agha Mohammad Khan: Kerman and Tiflis are reported with the source’s numbers, and the eye legend is not repeated', () => {
+  const kerman = aghaMohammad.dossier.find((s) => s.id === 'kerman')!
+  assert.ok(kerman.quotes?.some((q) => /20,000 women and children/.test(q.text) && q.source === 'iranica-aga-mohammad-khan'))
+  assert.match(kerman.interpretation.en.join(' '), /arbitrary coercion/)
+  assert.match(kerman.interpretation.en.join(' '), /not in our sources/)
+  assert.ok(aghaMohammad.dossier.find((s) => s.id === 'caucasus')!.quotes?.some((q) => /15,000/.test(q.text)))
+})
+
+test('the Agha Mohammad Khan article is credited to Perry, not Hambly', () => {
+  const s = aghaMohammad.sources.find((x) => x.id === 'iranica-aga-mohammad-khan')!
+  assert.match(s.author, /Perry/)
+  for (const k of [aghaMohammad, fathAli]) for (const sec of k.dossier) for (const q of sec.quotes ?? []) assert.doesNotMatch(q.ref, /Hambly/)
+})
+
+test('campaign clip covers Tehran, Kerman, Tiflis, Mashhad and Shusha in order', () => {
+  const ids = aghaMohammad.campaign!.events.map((e) => e.id)
+  const want = ['c-tehran', 'c-kerman', 'c-tiflis', 'c-mashhad', 'c-shusha2']
+  assert.deepEqual(ids.filter((id) => want.includes(id)), want)
 })

@@ -31,7 +31,8 @@ export const sources: Source[] = [
   { id: 'iranica-esmail-safavi', title: 'Esmāʿīl I Ṣafawī i. Biography, Encyclopædia Iranica', author: 'R. M. Savory', kind: 'reference', url: 'https://www.iranicaonline.org/articles/esmail-i-safawi/esmail-i-safawi-i-biography/' },
   { id: 'iranica-tahmasp-i', title: 'Ṭahmāsp I, Encyclopædia Iranica', author: 'C. P. Mitchell', kind: 'reference', url: 'https://www.iranicaonline.org/articles/tahmasp-i/' },
   { id: 'iranica-karim-khan', title: 'Karim Khan Zand, Encyclopædia Iranica', author: 'J. R. Perry', kind: 'reference', url: 'https://www.iranicaonline.org/articles/karim-khan-zand/' },
-  { id: 'iranica-aga-mohammad-khan', title: 'Āḡā Moḥammad Khan Qājār, Encyclopædia Iranica', author: 'G. R. G. Hambly', kind: 'reference', url: 'https://www.iranicaonline.org/articles/aga-mohammad-khan/' },
+  { id: 'iranica-aga-mohammad-khan', title: 'Āḡā Moḥammad Khan Qājār, Encyclopædia Iranica', author: 'J. R. Perry', kind: 'reference', url: 'https://www.iranicaonline.org/articles/aga-mohammad-khan/' },
+  { id: 'iranica-georgia-ii', title: 'Georgia ii. History of Iranian-Georgian Relations, Encyclopædia Iranica', author: 'K. Hitchins', kind: 'reference', url: 'https://www.iranicaonline.org/articles/georgia-ii-history/' },
   { id: 'iranica-fath-ali-shah', title: 'Fatḥ-ʿAlī Shah Qājār, Encyclopædia Iranica', author: 'A. Amanat', kind: 'reference', url: 'https://www.iranicaonline.org/articles/fath-ali-shah/' },
   { id: 'iranica-golestan', title: 'Golestan Treaty, Encyclopædia Iranica', kind: 'reference', url: 'https://www.iranicaonline.org/articles/golestan-treaty/' },
   { id: 'hurewitz-1956', title: 'Diplomacy in the Near and Middle East: A Documentary Record, vol. I', author: 'J. C. Hurewitz, 1956', kind: 'primary', url: 'https://archive.org/details/diplomacyinnearm1956hure' },
@@ -98,7 +99,7 @@ export const dynastySources: Record<string, string[]> = {
   hotakis: ['chi', 'iranica'],
   afsharids: ['iranica-afsharids', 'iranica-nader-shah', 'chi'],
   zands: ['iranica-zand-dynasty', 'iranica-karim-khan', 'chi'],
-  qajars: ['amanat', 'abrahamian', 'iranica', 'iranica-aga-mohammad-khan', 'iranica-fath-ali-shah', 'iranica-golestan', 'hurewitz-1956'],
+  qajars: ['iranica-aga-mohammad-khan', 'iranica-fath-ali-shah', 'iranica-georgia-ii', 'iranica-golestan', 'hurewitz-1956', 'amanat', 'abrahamian', 'iranica'],
   pahlavis: ['abrahamian', 'amanat', 'iranica'],
   'islamic-republic': ['abrahamian', 'news-2026'],
 }
