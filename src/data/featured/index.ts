@@ -5,6 +5,8 @@ import { cyaxares } from '../cyaxares'
 import { yaqub } from '../yaqub'
 import { adud } from '../adud'
 import { mahmud } from '../mahmud'
+import { alpArslan } from '../alp'
+import { malikShah } from '../malikshah'
 import { ismail } from '../ismail'
 import { astyages } from '../astyages'
 import type { FeaturedKing } from './types'
@@ -180,6 +182,8 @@ export const featuredKings: Record<string, FeaturedKing> = { [untash.slug]: unta
   [ismail.slug]: ismail,
   [adud.slug]: adud,
   [mahmud.slug]: mahmud,
+  [alpArslan.slug]: alpArslan,
+  [malikShah.slug]: malikShah,
 }
 
 export function getFeaturedKing(slug: string): FeaturedKing | undefined {

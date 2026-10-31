@@ -301,3 +301,11 @@ mahmud (remote, Wikimedia Commons; licence read from the Commons API 2026-10-31)
 - Entrance_of_Mahmoud_(_998-1030)_Mausoleum,_Ghazni_,_Afghanistan._Frédéric_Gadmer,_1928.jpg — Frédéric Gadmer — Public domain — https://commons.wikimedia.org/wiki/File:Entrance_of_Mahmoud_(_998-1030)_Mausoleum,_Ghazni_,_Afghanistan._Fr%C3%A9d%C3%A9ric_Gadmer,_1928.jpg
 - Somnath_temple_ruins_(1869).jpg — D. H. Sykes — Public domain — https://commons.wikimedia.org/wiki/File:Somnath_temple_ruins_(1869).jpg
 - public/media/mahmud/campaigns-* — clip rendered from this site's own map
+
+alp-arslan (remote, Wikimedia Commons; licence read from the Commons API 2026-10-31)
+- Ruines_de_Mélazqerd_après_le_tremblement_de_terre_du_30_avril_1903.jpg — Fernand Grenard — Public domain — https://commons.wikimedia.org/wiki/File:Ruines_de_M%C3%A9lazqerd_apr%C3%A8s_le_tremblement_de_terre_du_30_avril_1903.jpg
+- 131_Bataille_de_Malazgirt.jpg — Rohan Master — Public domain — https://commons.wikimedia.org/wiki/File:131_Bataille_de_Malazgirt.jpg
+- public/media/alp-arslan/campaigns-* — clip rendered from this site's own map
+
+malik-shah-i (remote, Wikimedia Commons; licence read from the Commons API 2026-10-31)
+- Assassination_of_Nizam_al-Mulk.jpg — unknown painter, 14th century — Public domain — https://commons.wikimedia.org/wiki/File:Assassination_of_Nizam_al-Mulk.jpg
