@@ -378,3 +378,9 @@ naser-al-din (remote, Wikimedia Commons; licence read from the Commons API 2026-
 - Fin_Garden,_or_Bagh-e_Fin.jpg — reibai — CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Fin_Garden,_or_Bagh-e_Fin.jpg
 - Representatives_of_the_First_Iranian_Parliament_WDL11288.png — unknown photographer (World Digital Library) — Public domain — https://commons.wikimedia.org/wiki/File:Representatives_of_the_First_Iranian_Parliament_WDL11288.png
 - public/media/naser-al-din/campaigns-* — clip rendered from this site's own map
+
+reza-shah (remote, Wikimedia Commons; licence read from the Commons API 2026-10-31)
+- Reza_Shah_portrait.jpg — unknown photographer — Public domain — https://commons.wikimedia.org/wiki/File:Reza_Shah_portrait.jpg
+- Reza_shah_coronation.jpg — unknown photographer — Public domain — https://commons.wikimedia.org/wiki/File:Reza_shah_coronation.jpg
+- Veresk_bridge,_Tehran_-_Sari_Railway.jpg — ninara — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File:Veresk_bridge,_Tehran_-_Sari_Railway.jpg
+- public/media/reza-shah/campaigns-* — clip rendered from this site's own map
