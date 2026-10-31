@@ -209,3 +209,6 @@ Bahram V page (/king/bahram-v)
 Yazdegerd II page (/king/yazdegerd-ii)
   coin-yazdegerd2: Classical Numismatic Group (uploaded by LouisAragon), CC BY-SA 2.5. Source: https://commons.wikimedia.org/wiki/File:Coin_of_Yazdegerd_II,_uncertain_mint.jpg
   avarayr-1569: Baghesh (1569), Matenadaran Ms. 1920, Public domain. Source: https://commons.wikimedia.org/wiki/File:Yeghishe,_Vasn_Vardanay_ew_Hayoc_paterazmin,_1569_(Matenadaran,_Ms._1920,_no._250v.).jpg
+Peroz I page (/king/peroz-i)
+  coin-peroz: Osama Shukir Muhammed Amin FRCP(Glasg), CC BY-SA 4.0. Source: https://commons.wikimedia.org/wiki/File:Coin_of_Peroz_I,_459-484_CE,_from_Iraq,_Sulaymaniyah_Museum.jpg
+  plate-rams: Metropolitan Museum of Art, CC0. Source: https://commons.wikimedia.org/wiki/File:Plate_with_king_hunting_rams_MET_DT921.jpg
