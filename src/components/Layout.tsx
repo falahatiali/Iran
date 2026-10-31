@@ -36,6 +36,7 @@ export function Header({ data }: { data: Overview }) {
         { to: '/archives', label: 'بایگانی تخت‌جمشید' },
         { to: '/king/$slug', params: { slug: 'darius-i' }, label: 'داریوش بزرگ' },
         { to: '/timeline', label: 'گاه‌شمار' },
+        { to: '/kings', label: 'فرمانروایان' },
         { to: '/about', label: 'درباره و روش‌شناسی' },
       ] as const
   return (
@@ -115,6 +116,7 @@ export function Footer() {
           <Link to="/cylinder" className="hover:text-gold py-2 inline-block min-h-11">استوانهٔ کوروش</Link>
           <Link to="/archives" className="hover:text-gold py-2 inline-block min-h-11">بایگانی تخت‌جمشید</Link>
           <Link to="/timeline" className="hover:text-gold py-2 inline-block min-h-11">گاه‌شمار سراسری</Link>
+          <Link to="/kings" className="hover:text-gold py-2 inline-block min-h-11">فرمانروایان در یک نگاه</Link>
           <Link to="/about" className="hover:text-gold py-2 inline-block min-h-11">روش‌شناسی و منابع</Link>
         </nav>
         <p className="leading-7">متن تحت مجوز MIT. خطوط نقشه از Natural Earth (مالکیت عمومی). قلم وزیرمتن از صابر راستی‌کردار (OFL).</p>
