@@ -8,6 +8,8 @@ export interface Source {
 
 export const sources: Source[] = [
   { id: 'iranica', title: 'Encyclopædia Iranica', author: 'ed. E. Yarshater et al.', kind: 'reference', url: 'https://www.iranicaonline.org/' },
+  { id: 'iranica-antiochus', title: 'Antiochus (thirteen kings of the Seleucid dynasty), Encyclopædia Iranica', author: 'J. D. Bing and J. Sievers, 1986, updated 2015', kind: 'reference', url: 'https://www.iranicaonline.org/articles/antiochus-1-thirteen-kings-of-the-seleucid-dynasty/' },
+  { id: 'iranica-seleucid', title: 'Seleucid Empire, Encyclopædia Iranica', kind: 'reference', url: 'https://www.iranicaonline.org/articles/seleucid-empire/' },
   { id: 'chi', title: 'The Cambridge History of Iran (7 vols.)', author: 'Cambridge University Press, 1968–1991', kind: 'reference' },
   { id: 'herodotus', title: 'تاریخ (Histories)', author: 'هرودوت', kind: 'primary' },
   { id: 'behistun', title: 'کتیبه‌ی بیستون', author: 'داریوش بزرگ', kind: 'primary', url: 'https://www.livius.org/sources/content/behistun-persian-text/' },
@@ -33,7 +35,7 @@ export const dynastySources: Record<string, string[]> = {
   elam: ['potts', 'iranica', 'chi'],
   medes: ['herodotus', 'iranica', 'chi'],
   achaemenids: ['herodotus', 'behistun', 'cyrus-cylinder', 'persepolis-tablets', 'briant', 'iranica'],
-  seleucids: ['chi', 'iranica'],
+  seleucids: ['iranica-antiochus', 'iranica-seleucid', 'chi', 'iranica'],
   parthians: ['chi', 'iranica'],
   sasanians: ['tabari', 'shahnameh', 'daryaee', 'iranica'],
   tahirids: ['bosworth', 'tabari', 'iranica'],
