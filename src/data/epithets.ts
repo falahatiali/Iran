@@ -52,6 +52,12 @@ export const epithets: Record<string, Epithet[]> = {
     { fa: 'گسترش‌دهندهٔ پادشاهی', en: 'Who has enlarged the kingdom', lang: 'Elamite', kind: 'title', source: { label: 'Elamite inscription on the Naram-Sin stele (Louvre Sb 4), tr. M. Van De Mieroop, A History of the Ancient Near East (2015), p. 199' } },
     { fa: 'سرور سرزمین ایلام', en: 'Lord of the land of Elam', lang: 'Elamite', kind: 'title', source: { label: 'Elamite inscription on the Naram-Sin stele (Louvre Sb 4), tr. M. Van De Mieroop, A History of the Ancient Near East (2015), p. 199' } },
   ],
+  'shilhak-inshushinak': [
+    { fa: 'شاه انشان و شوش', en: 'King of Anshan and Susa', lang: 'Elamite', meaning: { fa: 'عنوان رسمی او در آجرنوشته‌هایش («roi d’Anzan et de Suze» در ترجمهٔ لوور)', en: 'his official style in his brick texts (“roi d’Anzan et de Suze” in the Louvre translation)' }, kind: 'title', source: { label: 'Brick, Louvre Sb 20714 (IRS 39), Elamite; French translation in the Louvre collections record', url: 'https://collections.louvre.fr/en/ark:/53355/cl010130070' } },
+    { fa: 'بندهٔ محبوب کیریریشا و اینشوشیناک', en: 'Beloved servant of Kiririsha and Inshushinak', lang: 'Elamite', kind: 'title', source: { label: 'Brick, Louvre Sb 20714 (IRS 39), Elamite; French translation in the Louvre collections record', url: 'https://collections.louvre.fr/en/ark:/53355/cl010130070' } },
+    { fa: 'گسترش‌دهندهٔ پادشاهی', en: 'Enlarger of the kingdom', lang: 'Elamite', meaning: { fa: '«agrandisseur du royaume» در ترجمهٔ لوور؛ همان لقب پدرش', en: '“agrandisseur du royaume” in the Louvre translation; the same title his father used' }, kind: 'title', source: { label: 'Brick, Louvre Sb 1619, Elamite; French translation in the Louvre collections record', url: 'https://collections.louvre.fr/en/ark:/53355/cl010129981' } },
+    { fa: 'پسر شوتروک‌ناخونته', en: 'Son of Shutruk-Nakhunte', lang: 'Elamite', kind: 'patronymic', source: { label: 'Brick, Louvre Sb 1619, Elamite; French translation in the Louvre collections record', url: 'https://collections.louvre.fr/en/ark:/53355/cl010129981' } },
+  ],
   'cyrus-ii': [
     { fa: 'شاه بزرگ', en: 'Great King', original: 'šarru rabû', lang: 'Akkadian', meaning: { fa: 'از عنوان‌های او در استوانهٔ کوروش («شاه جهان، شاه بزرگ، شاه توانا…»)', en: 'one of his titles on the Cyrus Cylinder (“king of the universe, the great king, the powerful king…”)' }, kind: 'title', source: { label: 'Cyrus Cylinder, BM 90920, tr. I. Finkel (British Museum)', url: 'https://www.britishmuseum.org/collection/object/W_1880-0617-1941' } },
   ],
