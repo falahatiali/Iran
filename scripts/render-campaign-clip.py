@@ -71,11 +71,11 @@ async def main():
             crop = f'crop={w}:{h}:{x}:{y},scale={o.width}:-2:flags=lanczos'
             vcrop = f'crop={w}:{h}:{x}:{y},scale={o.video_width}:-2:flags=lanczos'
             base = os.path.join(o.out, f'battle-{o.battle}-{loc}' if o.battle else f'{o.section}-{loc}')
-            clip = ['-ss', f'{start:.2f}', '-t', f'{dur:.2f}', '-i', video]
+            # Stop 0.8 s early in every format: the last frames catch the page tearing down (grey).
+            clip = ['-ss', f'{start:.2f}', '-t', f'{max(0.5, dur - 0.8):.2f}', '-i', video]
             ff(*clip, '-vf', f'{vcrop},fps=24', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '26', '-movflags', '+faststart', '-an', base + '.mp4')
             ff(*clip, '-vf', f'{vcrop},fps=24', '-c:v', 'libvpx-vp9', '-b:v', '0', '-crf', '38', '-an', base + '.webm')
-            gclip = ['-ss', f'{start:.2f}', '-t', f'{max(0.5, dur - 0.4):.2f}', '-i', video]  # drop the teardown frame
-            ff(*gclip, '-vf', f'{crop},fps={o.fps},split[a][b];[a]palettegen=max_colors=64:stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=4:diff_mode=rectangle', base + '.gif')
+            ff(*clip, '-vf', f'{crop},fps={o.fps},split[a][b];[a]palettegen=max_colors=64:stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=4:diff_mode=rectangle', base + '.gif')
             ff('-i', os.path.join(wd, 'poster.png'), '-vf', f'scale={o.video_width}:-2:flags=lanczos', base + '.png')
             print(loc, {k: os.path.getsize(base + k) for k in ('.gif', '.mp4', '.webm', '.png')}, f'{w}x{h}', f'{dur:.1f}s')
 
