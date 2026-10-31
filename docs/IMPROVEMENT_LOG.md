@@ -153,3 +153,19 @@ See [RESEARCH_LOG.md](./RESEARCH_LOG.md) §13 for the source table.
 - Left out as unverified: Surena's personal name, any epithet for Phraates IV beyond the coins, Tacitus quoted verbatim.
 
 **Next king:** Artabanus II (`artabanus-ii`, 12–38 CE).
+
+## 2026-10-31 — Parthians, batch 3: Artabanus II to Vologases III
+
+**Done in this pass**
+
+- Carrhae perf: the pages never load the GIFs. They play MP4/WebM with a poster, and the GIFs (including the new 640px share copy) are download links only.
+- `common.ts`: new coordinates (Nehardea, Nisibis, Cilicia, the Arsanias, Hatra, Spasinou Charax, Vologesocerta, the Alans), new sources (Tacitus *Annals*/Church & Brodribb, Josephus *Antiquities*/Whiston, Iranica "Artabanus iii", Boyce "Gōdarz", Kellens "Avesta", Kahrstedt 1950, Dąbrowa 1983, Hou Hanshu/Hill) and coin and relief photos (CNG CC BY-SA 3.0, Gdr public domain, Lendering CC0), with licences checked.
+- Featured: Artabanus II (`artabanus2.ts`). Sections cover his origin, Rome and the "lands of Cyrus" letter, the king and the nobles, Asineus and Anileus, the two exiles and Izates, and Seleucia's senate.
+- `brothers.ts`: Vardanes I, Gotarzes II (Meherdates, Mount Sambulos, the Bisotun "Gotarzes" relief) and Vonones II.
+- Featured: Vologases I (`vologases1.ts`). Sections cover Armenia 52–63, Rhandeia, the crown at Nero's statue, Vardanes II inside, and the Avesta tradition.
+- `second-century.ts`: Pacorus II (with Artabanus III and the Han envoy/gift inside), Osroes I (Trajan's war, Hatra, Hadrian) and Vologases III (with Le Rider's Vologases II inside, and the Alans).
+- Verbatim quotes only from Church & Brodribb's Tacitus and Whiston's Josephus, each checked against the Wikisource or Gutenberg text. Dio and the Hou Hanshu are paraphrased or reached through Iranica.
+- Flagged: who succeeded Artabanus II (Vardanes or Gotarzes), how Gotarzes was related to him, the date of the bridge meeting (Tiberius or Caligula), Tacitus vs Josephus on the exiles, the causes of the Seleucia revolt, the Bisotun relief as Gotarzes II (Herzfeld vs Chaumont), the Shahnameh Gōdarz link (legend), Vonones II as king of Media or Armenia and whether he reigned at all, the Charinda/Sindes and Sambulos sites, the "yoke" rumour, the "Valaxš" of the Avesta as Vologases I, the date of Vologases I's death, Le Rider's Vologases II/III numbering, Tiaozhi = Characene, "Manqu" = Pacorus, and the Parthians blocking Gan Ying.
+- Left out as unverified: Dio's account of Tiridates in Rome, Vologesocerta's founding, Pacorus II and Decebalus, and any quote from Dio or the Hou Hanshu.
+
+**Next king:** Vologases IV (`vologases-iv`, 147–191 CE).
