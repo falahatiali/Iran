@@ -276,3 +276,30 @@ See [RESEARCH_LOG.md](./RESEARCH_LOG.md) §13 for the source table.
 - Not verified: page numbers in Potts 1999 (only the chapter is cited).
 
 **Next king:** Deioces (`deioces`), the first Median king. He is known only from Herodotus, so the page must be labelled as Herodotus’ tradition, with the Assyrian “Daiukku” evidence kept separate.
+
+*Correction (2026-10-31): this “Next king” line is out of date. Deioces, Cyaxares and Astyages were done in later passes (see below), and the program then moved on through the post-Islamic dynasties.*
+
+## 2026-10-31 — Catch-up: passes recorded only in commit messages
+
+These passes were committed without a log entry. Each one is listed here with its commit, so the log matches the history again.
+
+- Elam and the Medes: 11 sourced Elamite rulers from Awan to the last Neo-Elamite king, and sourced Median entries with Herodotus’ tradition labelled (`0dd193d`). Featured Cyaxares, with the Nineveh campaign from ABC 3 (`cb7ca99`). Featured Deioces and Astyages, with the Assyrian and Babylonian evidence kept apart (`cb872ab`).
+- Seleucids: sourced descriptions; Antiochus V–VII and Alexander Balas added; the dynasty now ends at 129 BCE (`c7c929b`).
+- Tahirids (`424fb91`), Saffarids with featured Yaʿqub b. Layth (`38d27da`), Samanids with featured Esmaʿil (`eacd5c9`), Ziyarids (`d212831`), Buyids with featured ʿAdud al-Dawla (`fcd799d`), Ghaznavids with featured Mahmud (`1cd66ff`), Seljuks with Alp Arslan, Manzikert and Malikshah (`4e31e7a`), Khwarazmshahs (`2719e36`), Ilkhanids with Hulagu and Ghazan (`26e38da`), Timurids with Timur, Shahrukh, Gowharshad and Ulugh Beg (`040f128`), Qara Qoyunlu and Aq Qoyunlu with featured Uzun Hasan (`bed6b0f`).
+- Safavids with featured Ismail I and Abbas I (`0e84a8f`), Afsharids with featured Nader Shah (`853aef1`), Zands with featured Karim Khan (`48d9ca5`).
+- Qajars I: first Agha Mohammad Khan and Fath-Ali Shah work, the Russo-Persian wars, and the Golestan and Turkmanchay texts from Hurewitz (`0bb5f05`).
+- Map and media fixes along the way: `cf92b39`, `990fba1`, `466afc1`, `8daf192`, `d6ac4d9`, `32f1b98`, `0c0c61b`.
+
+## 2026-10-31 — Qajars II: Agha Mohammad Khan featured
+
+**Done in this pass**
+
+- Featured: Agha Mohammad Khan Qajar (`agha-mohammad`). The page has 16 life events, a life map, a campaign map and clip (fa/en) running Tehran → Shiraz → Kerman → Bam → Ardabil → Shusha → Tiflis → Moghan → Mashhad → Shusha, and epithet chips (Āḡā; Pīrān-e Vēsa, marked “is said”). Sections cover his castration and years as a hostage in Shiraz, Tehran as the new capital, Shiraz and Kerman (the 1794 massacre and blindings, reported with Perry’s figures; the popular “counted eyes” story is not repeated because it is not in our sources), Lotf-Ali Khan’s end, the Caucasus and the sack of Tiflis, property and the treasury, the state (army, religion, law), and his murder at Shusha. Each section keeps the evidence, our reading and modern memory apart. The property section is clearly labelled as our reading.
+- Images (all Wikimedia Commons, licences read from the Commons API): the V&A portrait (c. 1840), a portrait dated 1795 (via Sotheby’s; the date is the catalogue’s), three folios of Saba’s *Shahanshahnameh* (British Library, I.O. Islamic 3442) captioned as court art, and a Rasht gold coin (CC BY-SA 2.5).
+- Fixes: the Iranica article “Āḡā Moḥammad Khan Qājār” is by J. R. Perry. It had been credited to Hambly, and this is now corrected everywhere. Hitchins’ “Georgia ii” (Iranica) was added as a source. On the Fath-Ali page, the date disputes are now flagged: Tehran accession 1786 (Amanat) vs 1788–89 (Perry); Tiflis September 1795 (Hitchins) vs spring 1796 (Perry); death 17 June 1797 (Perry) vs May 1797 (Amanat).
+- Epithets: Agha Mohammad Khan (Āḡā; Pīrān-e Vēsa). Fath-Ali Shah: Bābā Khan, Jahānbānī, Šāhanšāh, Ḵāqān (all from Amanat, Iranica).
+- The Qajar dynasty entry was rewritten: sourced summary and ruler descriptions, plus 1792 Shiraz, 1794 Kerman, 1796 coronation and Mashhad, and the 1797 murder.
+- Tests: date-dispute flags, Kerman and Tiflis figures with their source, Perry (not Hambly) attribution, and the campaign order. The prerender crawler now includes `/king/agha-mohammad` and `/en/king/agha-mohammad`.
+- Not verified: Hambly’s chapters in *CHI* VII were not consulted directly; the 1795 date on the Sotheby’s portrait; the name “Krtsanisi” (it is not in Perry or Hitchins and is used here as the conventional name of the battle).
+
+**Next king:** Fath-Ali Shah (`fath-ali`) enrichment (court art, the princes’ system, the 1804–13 and 1826–28 wars as campaign clips), then Mohammad Shah (`mohammad-shah`).
