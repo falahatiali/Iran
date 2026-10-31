@@ -86,7 +86,7 @@ export function CampaignMap({ events, sources, locale, label, view, places, stam
     else if (e.key === ' ' && e.target === e.currentTarget) { e.preventDefault(); setPlaying((p) => !p) }
   }
 
-  const year = (y: number) => (isFa ? `${faNum(-y)} پ.م.` : `${-y} BCE`)
+  const year = (y: number) => (y < 0 ? (isFa ? `${faNum(-y)} پ.م.` : `${-y} BCE`) : (isFa ? `${faNum(y)} م` : `${y} CE`))
   const [x, y] = project(ev.coord)
   const srcName = (id: string) => sources.find((s) => s.id === id)
   const t = isFa

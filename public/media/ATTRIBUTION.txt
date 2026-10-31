@@ -315,3 +315,10 @@ ala-al-din-muhammad and jalal-al-din (remote, Wikimedia Commons; licence read fr
 - Genghis_Khan's_sermon_to_the_people_of_Bukhara.jpg — unknown painter, 1397–1398 — Public domain — https://commons.wikimedia.org/wiki/File:Genghis_Khan%27s_sermon_to_the_people_of_Bukhara.jpg
 - Jalal_al-Din_Khwarazm-Shah_crossing_the_rapid_Indus_river,_escaping_Chinggis_Khan_and_his_army.jpg — Banwari Khurd and Dharm Das, c. 1596–1600 — Public domain — https://commons.wikimedia.org/wiki/File:Jalal_al-Din_Khwarazm-Shah_crossing_the_rapid_Indus_river,_escaping_Chinggis_Khan_and_his_army.jpg
 - public/media/ala-al-din-muhammad/campaigns-* — clip rendered from this site's own map
+
+hulagu and ghazan (remote, Wikimedia Commons; licence read from the Commons API 2026-10-31)
+- Fall_Of_Baghdad_(Diez_Albums).jpg — 14th-century painter (Diez Albums) — Public domain — https://commons.wikimedia.org/wiki/File:Fall_Of_Baghdad_(Diez_Albums).jpg
+- HulaguAndDokuzKathun.JPG — manuscript of Rashid al-Din's Jami' al-tawarikh, 14th century — Public domain — https://commons.wikimedia.org/wiki/File:HulaguAndDokuzKathun.JPG
+- GhazanConversionToIslam.JPG — manuscript of Rashid al-Din's Jami' al-tawarikh (BnF Suppl. persan 1113 f. 239r), 14th century — Public domain — https://commons.wikimedia.org/wiki/File:GhazanConversionToIslam.JPG
+- GhazanSeal1302LetterToBonifaceVIII.JPG — chancery of Ghazan, 1302 — Public domain — https://commons.wikimedia.org/wiki/File:GhazanSeal1302LetterToBonifaceVIII.JPG
+- public/media/hulagu/campaigns-* — clip rendered from this site's own map
