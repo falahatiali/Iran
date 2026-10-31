@@ -201,3 +201,8 @@ Bahram IV page (/king/bahram-iv)
   coin-bahram4: Metropolitan Museum of Art, CC0. Source: https://commons.wikimedia.org/wiki/File:Drachm_of_Bahram_IV_ca_CE_388–99.jpg
 Yazdegerd I page (/king/yazdegerd-i)
   coin-yazdegerd1: Classical Numismatic Group, CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:Coin_of_Yazdegerd_I,_Gurgan_or_Qum_mint.jpg
+Bahram V page (/king/bahram-v)
+  coin-bahram5: CNG Coins, CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:Vahrām_(Bahram)_V_CE_420-438_AV_Dinar_23mm_7.08_g_Sind_mint.jpg
+  lions-crown: Anonymous (Safavid), Museum of Fine Arts, Boston, Public domain. Source: https://commons.wikimedia.org/wiki/File:Bahram_Gur_Slays_Two_Lions_and_Gains_the_Crown.jpeg
+  blue-pavilion: Metropolitan Museum of Art, CC0. Source: https://commons.wikimedia.org/wiki/File:%22Bahram_Gur_in_the_Blue_Pavilion%22,_Folio_from_Khamsa_(Quintet)_of_Nizami_MET_DP277218.jpg
+  plate-azadeh: Metropolitan Museum of Art, CC0. Source: https://commons.wikimedia.org/wiki/File:Plate_with_a_hunting_scene_from_the_tale_of_Bahram_Gur_and_Azadeh_MET_DT1634.jpg
