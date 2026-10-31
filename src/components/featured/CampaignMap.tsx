@@ -140,7 +140,7 @@ export function CampaignMap({ events, sources, locale, label, view, places, stam
               {!reduce && <motion.circle cx={x} cy={y} r={7 * k} fill="none" stroke={KIND_COLOR[ev.kind]} strokeWidth={1.5 * k} animate={{ r: [7 * k, 16 * k], opacity: [0.9, 0] }} transition={{ repeat: Infinity, duration: 1.8 }} />}
               <circle cx={x} cy={y} r={6 * k} fill={KIND_COLOR[ev.kind]} stroke="#0a1636" strokeWidth={1.5 * k} />
             </motion.g>
-            <text x={isFa ? vb.x + vb.w - 16 * k : vb.x + 16 * k} y={vb.y + 34 * k} textAnchor={isFa ? 'end' : 'start'} fill="#f2d68b" fontSize={(stamp === 'when' ? 20 : 26) * k} fontWeight="900">{stamp === 'when' ? ev.when[locale] : year(ev.year)}</text>
+            <text x={isFa ? vb.x + vb.w - 16 * k : vb.x + 16 * k} y={vb.y + 34 * k} textAnchor="start" direction={isFa ? 'rtl' : 'ltr'} fill="#f2d68b" fontSize={(stamp === 'when' ? 20 : 26) * k} fontWeight="900">{stamp === 'when' ? ev.when[locale] : year(ev.year)}</text>
           </svg>
           <figcaption className="text-xs text-ivory/50 mt-2 px-1">
             {isFa ? 'مسیرها طرح ویراستاری و تقریبی‌اند، نه ردّ دقیق جغرافیایی. خطوط ساحلی: Natural Earth (مالکیت عمومی).' : 'Routes are approximate editorial sketches, not exact tracks. Coastlines: Natural Earth (public domain).'}

@@ -123,7 +123,7 @@ export const alpArslan: FeaturedKing = {
   name: B('آلپ ارسلان', 'Alp Arslan'),
   dynastyName: B('سلجوقیان', 'The Seljuks'),
   reign: B('۱۰۶۳–۱۰۷۲ م', '1063–1072 CE'),
-  title: B('آلپ ارسلان؛ ملازگرد و سلطانی که به مصر می‌رفت', 'Alp Arslan: Manzikert, and a sultan heading for Egypt'),
+  title: B('آلپ ارسلان؛ ملازگرد و امپراتور اسیر', 'Alp Arslan: Manzikert and a captured emperor'),
   lede: B(
     'برادرزادهٔ طغرل که با وزیرش نظام‌الملک دولت سلجوقی را از خراسان تا ارمنستان گسترد. در ملازگرد امپراتور بیزانس را اسیر کرد، هرچند به گفتهٔ کاهن قصد نابودی بیزانس را نداشت. لشکرکشی را روی نقشه و نبرد را گام‌به‌گام دنبال کنید.',
     'Tughril’s nephew who, with his vizier Nizam al-Mulk, spread Seljuk rule from Khorasan to Armenia. At Manzikert he captured the Byzantine emperor, though Cahen doubts he meant to destroy Byzantium. Follow the campaign on the map and the battle step by step.',
