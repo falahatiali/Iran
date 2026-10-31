@@ -131,7 +131,7 @@ export const ismailI: FeaturedKing = {
   mapTitle: B('نقشهٔ متحرک: زندگی و لشکرکشی‌ها', 'Animated map: life and campaigns'),
   events: ismailEvents,
   span: [1487, 1524],
-  lifeMap: { view: [38, 30, 66, 43], places: [
+  lifeMap: { view: [38, 30, 68, 43], places: [
     { name: B('اردبیل', 'Ardabil'), c: P.ARDABIL }, { name: B('لاهیجان', 'Lahijan'), c: P.LAHIJAN, dy: 0.7 }, { name: B('ارزنجان', 'Erzincan'), c: P.ERZINCAN, left: true },
     { name: B('تبریز', 'Tabriz'), c: P.TABRIZ, dy: 0.7 }, { name: B('چالدران', 'Chaldiran'), c: P.CHALDIRAN, left: true }, { name: B('بغداد', 'Baghdad'), c: P.BAGHDAD },
     { name: B('مرو', 'Merv'), c: P.MERV }, { name: B('غجدوان', 'Ghijduvan'), c: P.GHIJDUVAN, left: true },
