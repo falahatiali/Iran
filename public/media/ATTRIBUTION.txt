@@ -239,3 +239,6 @@ Kavad II page (/king/kavad-ii)
   coin-kavad2: Classical Numismatic Group, CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:Coin_of_the_Sasanian_king_Kavadh_II%2C_minted_at_Ray_in_628.jpg
 Ardashir III page (/king/ardashir-iii)
   coin-ardashir3: Daderot, CC0. Source: https://commons.wikimedia.org/wiki/File:Ardashir_III_coin_-_Arthur_M._Sackler_Gallery_-_DSC05899.JPG
+Boran page (/king/boran)
+  coin-boran: Classical Numismatic Group, CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:Coin_of_Boran%2C_minted_at_Arrajan_in_630.jpg
+  coin-boran-berlin: Reinhard Saczewski (Münzkabinett, Berlin), Public domain. Source: https://commons.wikimedia.org/wiki/File:Sasaniden-_K%C3%B6nigin_Buran_-_M%C3%BCnzkabinett%2C_Berlin_-_5505275.jpg
