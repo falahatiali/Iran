@@ -384,3 +384,8 @@ reza-shah (remote, Wikimedia Commons; licence read from the Commons API 2026-10-
 - Reza_shah_coronation.jpg — unknown photographer — Public domain — https://commons.wikimedia.org/wiki/File:Reza_shah_coronation.jpg
 - Veresk_bridge,_Tehran_-_Sari_Railway.jpg — ninara — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File:Veresk_bridge,_Tehran_-_Sari_Railway.jpg
 - public/media/reza-shah/campaigns-* — clip rendered from this site's own map
+
+mohammad-reza-shah (remote, Wikimedia Commons; licence read from the Commons API 2026-10-31)
+- Mohammad_Reza_Pahlavi_in_1973.jpg — Royal Court of Iran — Public domain — https://commons.wikimedia.org/wiki/File:Mohammad_Reza_Pahlavi_in_1973.jpg
+- Portrait_of_Mohammad_Mosaddegh_-_circa_1952.jpg — iichs.ir — Public domain — https://commons.wikimedia.org/wiki/File:Portrait_of_Mohammad_Mosaddegh_-_circa_1952.jpg
+- public/media/mohammad-reza-shah/campaigns-* — clip rendered from this site's own map

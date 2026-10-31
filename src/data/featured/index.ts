@@ -15,7 +15,7 @@ import { abbasI, ismailI } from '../safavid'
 import { nader } from '../afsharid'
 import { karimKhan } from '../zand'
 import { aghaMohammad, fathAli, naserAlDin } from '../qajar'
-import { rezaShah } from '../pahlavi'
+import { mohammadReza, rezaShah } from '../pahlavi'
 import { ismail } from '../ismail'
 import { astyages } from '../astyages'
 import type { FeaturedKing } from './types'
@@ -206,6 +206,7 @@ export const featuredKings: Record<string, FeaturedKing> = { [untash.slug]: unta
   [fathAli.slug]: fathAli,
   [naserAlDin.slug]: naserAlDin,
   [rezaShah.slug]: rezaShah,
+  [mohammadReza.slug]: mohammadReza,
   [ghazan.slug]: ghazan,
 }
 

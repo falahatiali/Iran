@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
-import { rezaShah, pvPhotos, pvSourceIds } from './index'
+import { mohammadReza, rezaShah, pvPhotos, pvSourceIds } from './index'
 
 const filled = (s: string | undefined) => typeof s === 'string' && s.trim().length > 0
 
-for (const king of [rezaShah]) {
+for (const king of [rezaShah, mohammadReza]) {
   test(`${king.slug} events are ordered, sourced, bilingual and hedged`, () => {
     for (const list of [king.events, king.campaign?.events ?? []]) {
       for (let i = 1; i < list.length; i++) assert.ok(list[i].year >= list[i - 1].year, list[i].id)
@@ -32,7 +32,7 @@ for (const king of [rezaShah]) {
 
 
 test('quotes cite a listed source', () => {
-  for (const k of [rezaShah]) for (const s of k.dossier) for (const q of s.quotes ?? []) assert.ok(pvSourceIds.has(q.source) && filled(q.text) && filled(q.fa), s.id)
+  for (const k of [rezaShah, mohammadReza]) for (const s of k.dossier) for (const q of s.quotes ?? []) assert.ok(pvSourceIds.has(q.source) && filled(q.text) && filled(q.fa), s.id)
 })
 
 test('photos carry Commons pages and licences', () => {
@@ -48,4 +48,12 @@ test('Reza Shah: disputes are flagged, not smoothed over', () => {
   assert.match(e('iran-name').certaintyNote!.en, /1934.*1935/)
   assert.equal(e('abdication').certainty, 'disputed')
   assert.match(rezaShah.dossier.find((s) => s.id === 'reforms')!.interpretation.en.join(' '), /dictatorial behaviour subverted/)
+})
+
+test('Mohammad Reza Shah: the coup framing, Rex and Black Friday are flagged', () => {
+  const e = (id: string) => [...mohammadReza.events, ...mohammadReza.campaign!.events].find((x) => x.id === id)!
+  assert.equal(e('coup').certainty, 'disputed')
+  assert.match(e('coup').certaintyNote!.en, /MI6.*concurrence of the shah.*American and British backing/)
+  assert.match(e('black-friday').certaintyNote!.en, /164.*8,000/)
+  assert.equal(e('rex').certainty, 'disputed')
 })
