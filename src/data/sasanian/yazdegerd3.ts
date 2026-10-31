@@ -114,7 +114,7 @@ export const yazdegerdIII: FeaturedKing = {
         ['Morony lists the explanations offered for the fall: class and religious strife, the absence of popular support for an elitist regime, conflict among the nobles, dynastic instability and the cost of the long war with Byzantium. Some 4,000 Iranian soldiers joined the victors. A state its people see no gain in keeping stands alone on the hard day. This is our reading.']],
       ['ir-arab2', 'ir-qadesiya'], {
         quotes: [{ text: 'Lewental argued (pp. 315-26) that, although subsequent memory has telescoped the conquest of Iran into this one battle, Qādesiya was not conclusive', fa: 'لونتال استدلال کرد که هرچند حافظهٔ بعدی گشودن ایران را در این یک نبرد فشرده کرده است، قادسیه قطعی نبود.', ref: 'D. G. Lewental, “Qādesiya, battle of”, Encyclopaedia Iranica (2014)', source: 'ir-qadesiya' }],
-        clip: { media: battleClipFor('yazdegerd-iii', 'qadisiyyah', 992, 454), caption: B('قادسیه، گام‌به‌گام (طرح‌وار)', 'Qadisiyyah, step by step (schematic)') },
+        clip: { media: battleClipFor('yazdegerd-iii', 'qadisiyyah', 992, 491), caption: B('قادسیه، گام‌به‌گام (طرح‌وار)', 'Qadisiyyah, step by step (schematic)') },
       }),
     sec('ctesiphon', 'افتادن تیسفون', 'The fall of Ctesiphon',
       [['پس از قادسیه سعد به مداین رسید. پادگان به‌اردشیر، در کرانهٔ باختری دجله، آن را رها کرد و پل شناور را برید، اما مسلمانان از رود گذشتند. یزدگرد خانواده‌اش را به حلوان فرستاد و گریخت. سعد بیشتر گنج شاهی را گرفت و مردم کاخ سفید با پرداخت باج امان یافتند.'],
