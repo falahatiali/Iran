@@ -72,7 +72,7 @@ export function CarrhaePage({ locale }: { locale: Locale }) {
             <p className="mt-2 text-ivory/70 max-w-3xl">{isFa ? 'یازده گام، از راه بیابان تا کوه‌های سیناکا. پخش کنید، یا با دکمه‌ها و کلیدهای پیکان گام‌به‌گام پیش بروید. هر گام می‌گوید روایتش قطعی، محتمل یا محل بحث است.' : 'Eleven steps, from the desert road to the Sinnaca hills. Press play, or step through with the buttons or the arrow keys. Each step says whether its account is secure, probable or disputed.'}</p>
             <div className="mt-6"><CarrhaeBattle locale={locale} sources={carrhaeSources} /></div>
             <p className="mt-3 text-sm text-ivory/60">{t.clip}{' '}
-              <a href={page.clip.mp4[locale]} download className="text-gold hover:underline">MP4</a> · <a href={page.clip.webm[locale]} download className="text-gold hover:underline">WebM</a> · <a href={page.clip.gif[locale]} download className="text-gold hover:underline">GIF</a>
+              <a href={page.clip.mp4[locale]} download className="text-gold hover:underline">MP4</a> · <a href={page.clip.webm[locale]} download className="text-gold hover:underline">WebM</a> · <a href={page.clip.gifSmall[locale]} download className="text-gold hover:underline">{isFa ? 'GIF سبک (۶۴۰ پیکسل، برای اشتراک)' : 'light GIF (640px, for sharing)'}</a> · <a href={page.clip.gif[locale]} download className="text-gold hover:underline">{isFa ? 'GIF کامل (۱۲۸۰، حدود ۸ مگابایت)' : 'full GIF (1280px, about 8 MB)'}</a>
             </p>
             {battleQuotes.map((q) => <Quote key={q.ref} q={q} />)}
           </section>

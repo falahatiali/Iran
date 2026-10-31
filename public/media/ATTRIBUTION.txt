@@ -122,7 +122,7 @@ phraates-iv/reign-{fa,en}.{gif,mp4,webm,png}
   Plutarch, Antony 37-50, Justin 42.5, Res Gestae 29 and Encyclopaedia Iranica (Chaumont; Olbrycht), as cited on the
   page. Routes are editorial sketches; Phraaspa's site is unknown. Coastlines: Natural Earth (public domain).
 
-carrhae/battle-{fa,en}.{gif,mp4,webm,png}
+carrhae/battle-{fa,en}.{gif,mp4,webm,png}, battle-{fa,en}-640.gif (640px share copy)
   Original animation by this project (same licence as the site). Eleven schematic phases of the Battle of Carrhae
   (53 BCE) after Plutarch, Crassus 17-31 and Encyclopaedia Iranica ("Carrhae"), as cited on /battle/carrhae.
   Rendered frame by frame from the page's own diagram by scripts/render-carrhae-clip.py. Positions are editorial,

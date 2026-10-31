@@ -234,6 +234,8 @@ export const page = {
   description: B('نبرد حران (۵۳ پ.م.): نمایش متحرک گام‌به‌گام، نقشهٔ لشکرکشی، شمار سپاه‌ها و اختلاف منابع، چرا پارتیان پیروز شدند، مرگ کراسوس و پیامدها، با نقل مستقیم پلوتارک.', 'The Battle of Carrhae (53 BCE): a step-by-step animated battle, the campaign map, the numbers and their disputes, why the Parthians won, the death of Crassus and the aftermath, with Plutarch quoted verbatim.'),
   clip: {
     gif: { fa: '/media/carrhae/battle-fa.gif', en: '/media/carrhae/battle-en.gif' },
+    /** a light 640px GIF for sharing in chats */
+    gifSmall: { fa: '/media/carrhae/battle-fa-640.gif', en: '/media/carrhae/battle-en-640.gif' },
     mp4: { fa: '/media/carrhae/battle-fa.mp4', en: '/media/carrhae/battle-en.mp4' },
     webm: { fa: '/media/carrhae/battle-fa.webm', en: '/media/carrhae/battle-en.webm' },
     poster: { fa: '/media/carrhae/battle-fa.png', en: '/media/carrhae/battle-en.png' },
