@@ -235,3 +235,17 @@ See [RESEARCH_LOG.md](./RESEARCH_LOG.md) §13 for the source table.
 - All new photos come from Commons with verified licences and are recorded in `public/media/ATTRIBUTION.txt`.
 
 **Next king:** Khosrow I (`khosrow-i`).
+
+## 2026-10-31 — Sasanians, batch 4: Khosrow I to Bahram VI Chobin
+
+**Done in this pass**
+
+- Checked the dark gap at the bottom of the Kavad I fa screenshot. It was not a page bug: the reveal-on-scroll sections had not fired before the full-page shot. The screenshot script now scrolls through the page first, and the shots were retaken.
+- Featured: Khosrow I Anushirvan (`khosrow-i`), with a reign clip (including the schematic sea route to Yemen) and an animated diagram of the capture of Antioch (540) after Procopius 2.8. The tax reform and land survey section gives the scholars' dispute (Grignaschi vs Rubin) and keeps the property-rights reading separate, as our own. Other sections cover the Endless Peace (532), the Lazic War, the Hephthalites and Turks, and the Athenian philosophers (Agathias 2.28–2.31 verbatim). Flagged: the date of the Hephthalite defeat (Bivar vs Shahbazi) and the Gondēšāpur "academy", which Iranica calls unproven. The Borzuya herb tale and chess are labelled as tradition, and the chain of justice as legend (Siyasatnama); tests check all three labels.
+- `classical.ts`: the Khosrow I summary no longer mentions a Gondēšāpur university. The Bahram Chobin summary now reads "a king from outside the Sasanian house" instead of "the only non-Sasanian king of this period".
+- Hormizd IV (`hormizd-iv`): a short page with the Menander and Nöldeke judgments quoted from Shahbazi's Iranica article. Flagged: the Turkish-khagan mother (Shahbazi calls it chronologically impossible) and Khosrow II's part in his father's murder.
+- Featured: Bahram VI Chobin (`bahram-chobin`), with a reign clip (the 588–589 eastern victory, the march on Ctesiphon and the flight east) and an animated diagram of the final battle of 591. Flagged: the chain-and-spindle story (Theophylact's Albania version), the date of the coronation (summer 590 vs Nowruz 591) and the place and length of the final battle (Urmia and three days vs Ganzak and one day, Shahbazi vs Howard-Johnston). The Bahrām Čōbīn-nāma section is labelled as a literary tradition.
+- `common.ts`: coordinates for Petra, Phasis, Weh-Antioch, Bukhara, Baykand, Herat, Sanaa, Hadramaut, Ubulla, Ganzak (approximate), Nahrawan, Urmia, Darband and Qumes.
+- All new photos come from Commons with verified licences and are recorded in `public/media/ATTRIBUTION.txt`.
+
+**Next king:** Khosrow II (`khosrow-ii`).
