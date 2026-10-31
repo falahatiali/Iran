@@ -61,7 +61,7 @@ export const inWindow = (r: Reign, w: { from: number; to: number }, now: number)
 // ---- URL state -------------------------------------------------------------
 
 export interface KingsSearch { a?: string; b?: string; from?: number; to?: number }
-export const KINGS_DEFAULTS: Required<KingsSearch> = { a: '', b: '', from: -1400, to: TIMELINE_MAX }
+export const KINGS_DEFAULTS: Required<KingsSearch> = { a: '', b: '', from: -2200, to: TIMELINE_MAX }
 
 const ID = /^[a-z0-9-]{1,48}$/
 const asId = (v: unknown) => (typeof v === 'string' && ID.test(v) ? v : '')
