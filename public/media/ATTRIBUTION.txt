@@ -229,3 +229,9 @@ Hormizd IV page (/king/hormizd-iv)
 Bahram VI Chobin page (/king/bahram-chobin)
   coin-bahram6: Classical Numismatic Group, CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:Coin_of_Bahram_Chobin,_Susa_mint.jpg
   bahram-saveh: Bgag (photo of a c. 1530 painting, Reza Abbasi Museum), CC BY-SA 4.0. Source: https://commons.wikimedia.org/wiki/File:Battle_of_Bahram_Chubina_with_Saveh_shah.jpg
+Khosrow II page (/king/khosrow-ii)
+  coin-khosrow2-590: Classical Numismatic Group, CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:Coin_of_Khosrow_II_in_590.jpg
+  coin-khosrow2-facing: Classical Numismatic Group, CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:Coin_of_Khosrow_II_facing%2C_613_mint.jpg
+  takht-soleyman: Stefan Bschorer, CC BY-SA 4.0. Source: https://commons.wikimedia.org/wiki/File:Takht-e_Soleym%C4%81n_overview.jpg
+  tb-khosrow2: Philippe Chavin, CC BY 2.5. Source: https://commons.wikimedia.org/wiki/File:Taq-e_Bostan_-_High-relief_of_Anahita%2C_Khosro_II%2C_Ahura_Mazda.jpg
+  tb-boar: Philippe Chavin, CC BY 2.5. Source: https://commons.wikimedia.org/wiki/File:Taq-e_Bostan_-_Low-relief_the_boar_hunt.jpg

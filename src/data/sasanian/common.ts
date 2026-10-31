@@ -106,6 +106,30 @@ export const NAHRAWAN: Coord = [44.75, 33.4]
 export const URMIA: Coord = [45.4, 37.6]
 export const DARBAND: Coord = [48.29, 42.06]
 export const QUMES: Coord = [54.2, 36.1]
+export const JERUSALEM: Coord = [35.23, 31.78]
+export const ALEXANDRIA: Coord = [29.92, 31.2]
+export const CHALCEDON: Coord = [29.03, 40.99]
+export const ANCYRA: Coord = [32.85, 39.93]
+export const CAESAREA_CAP: Coord = [35.48, 38.73]
+export const AMASEIA: Coord = [35.83, 40.65]
+export const LAKE_VAN: Coord = [42.9, 38.6]
+export const TIFLIS: Coord = [44.8, 41.7]
+export const NINEVEH: Coord = [43.15, 36.36]
+/** Dastgerd, Khosrow II's palace on the Diyala road; the exact site is approximate. */
+export const DASTGERD: Coord = [45.0, 33.9]
+export const SHAHRAZUR: Coord = [45.9, 35.3]
+/** Dhu Qar, a watering place near Kufa; approximate. */
+export const DHU_QAR: Coord = [44.6, 31.5]
+/** Qadisiyyah, south-west of Kufa on the desert edge; approximate. */
+export const QADISIYYAH: Coord = [44.47, 31.7]
+export const JALULA: Coord = [45.17, 34.27]
+export const HOLWAN: Coord = [45.86, 34.46]
+export const NAHAVAND: Coord = [48.37, 34.19]
+export const SHUSHTAR: Coord = [48.85, 32.05]
+export const ZARANJ: Coord = [61.87, 30.96]
+export const SUYAB: Coord = [75.2, 42.8]
+export const BABYLON: Coord = [44.42, 32.54]
+export const NISIBIS_HISN: Coord = [41.2, 37.07]
 
 /** One bibliography for the Sasanian kings; each king lists the ids it uses. */
 export const sasSources: Record<string, FeaturedSource> = Object.fromEntries(([
@@ -174,6 +198,20 @@ export const sasSources: Record<string, FeaturedSource> = Object.fromEntries(([
   { id: 'ir-hormozd4', author: 'A. Sh. Shahbazi, Encyclopaedia Iranica', title: 'Hormozd IV', year: '2004', url: IR('hormozd-iv') },
   { id: 'ir-bahram6', author: 'A. Sh. Shahbazi, Encyclopaedia Iranica', title: 'Bahrām VI Čōbīn', year: '1988', url: 'https://www.iranicaonline.org/articles/bahram-the-name-of-six-sasanian-kings/bahram-vi/' },
   { id: 'ir-khosrow2', author: 'J. Howard-Johnston, Encyclopaedia Iranica', title: 'Ḵosrow II', year: '2010', url: IR('khosrow-ii') },
+  { id: 'ir-sasart', author: 'P. O. Harper, Encyclopaedia Iranica', title: 'Art in Iran v. Sasanian art', year: '1986', url: IR('art-in-iran-v-sasanian') },
+  { id: 'ir-duqar', author: 'E. Landau-Tasseron, Encyclopaedia Iranica', title: 'Ḏū Qār', year: '1996', url: IR('du-qar') },
+  { id: 'ir-barbad', author: 'A. Tafażżolī, Encyclopaedia Iranica', title: 'Bārbad', year: '1988', url: IR('barbad-minstrel') },
+  { id: 'ir-kawad2', author: 'N. Schindel, Encyclopaedia Iranica', title: 'Kawād II', year: '2022', url: IR('kawad-ii') },
+  { id: 'ir-ardashir3', author: 'A. Sh. Shahbazi, Encyclopaedia Iranica', title: 'Ardašīr III', year: '1986', url: IR('ardasir-iii') },
+  { id: 'ir-boran', author: 'M. L. Chaumont, Encyclopaedia Iranica', title: 'Bōrān', year: '1989', url: IR('boran-pers') },
+  { id: 'ir-azarmig', author: 'Ph. Gignoux, Encyclopaedia Iranica', title: 'Āzarmīgduxt', year: '1987', url: IR('azarmigduxt') },
+  { id: 'ir-arab2', author: 'M. Morony, Encyclopaedia Iranica', title: 'Arab ii. Arab conquest of Iran', year: '1986', url: IR('arab-ii') },
+  { id: 'ir-qadesiya', author: 'D. G. Lewental, Encyclopaedia Iranica', title: 'Qādesiya, battle of', year: '2014', url: IR('qadesiya-battle') },
+  { id: 'ir-nehavand', author: 'C. E. Bosworth, Encyclopaedia Iranica', title: 'Nehāvand', year: '2017', url: IR('nehavand') },
+  { id: 'ir-china15', author: 'M. Compareti, Encyclopaedia Iranica', title: 'China xv. The last Sasanians in China', year: '2009', url: IR('china-xv-the-last-sasanians-in-china') },
+  { id: 'tabari5', author: 'al-Ṭabarī, tr. C. E. Bosworth', title: 'The History of al-Ṭabarī V: The Sāsānids, the Byzantines, the Lakhmids, and Yemen (Albany)', year: '1999', url: 'https://archive.org/details/vol.-5.-the-sasanids-the-byzantines-the-lakhmids-and-yemen' },
+  { id: 'tabari15', author: 'al-Ṭabarī, tr. R. S. Humphreys', title: 'The History of al-Ṭabarī XV: The Crisis of the Early Caliphate (Albany), pp. 78–90', year: '1990', url: 'https://archive.org/details/vol.-5.-the-sasanids-the-byzantines-the-lakhmids-and-yemen' },
+  { id: 'emrani', author: 'H. Emrani', title: '“Like Father, Like Daughter: Late Sasanian Imperial Ideology and the Rise of Bōrān to Power”, e-Sasanika 5', year: '2009' },
 ] as FeaturedSource[]).map((s) => [s.id, s]))
 
 export const pick = (...ids: string[]): FeaturedSource[] => ids.map((id) => {
@@ -217,6 +255,19 @@ export const sasPhotos: Record<string, CommonsPhoto> = {
   'coin-hormizd2': cng('coin-hormizd2', 'a/a0/Coin_of_Hormizd_II.jpg', 'Coin_of_Hormizd_II.jpg', 'سکهٔ هرمز دوم با تاج شاهین', 'A coin of Hormizd II with the falcon crown'),
   'coin-shapur2': { id: 'coin-shapur2', src: u('thumb/5/5f/Silver_coin_of_Shapur_II%2C_309-379_CE%2C_from_Iraq%2C_Sulaymaniyah_Museum.jpg/960px-Silver_coin_of_Shapur_II%2C_309-379_CE%2C_from_Iraq%2C_Sulaymaniyah_Museum.jpg'), page: f('Silver_coin_of_Shapur_II,_309-379_CE,_from_Iraq,_Sulaymaniyah_Museum.jpg'), author: 'Osama Shukir Muhammed Amin', license: 'CC BY-SA 4.0', licenseUrl: BYSA4, caption: { fa: 'درهم سیمین شاپور دوم، موزهٔ سلیمانیه', en: 'A silver drachm of Shapur II, Sulaymaniyah Museum' } },
   'amida-walls': { id: 'amida-walls', src: u('thumb/7/75/City_Wall_and_Battlements_-_Diyarbakir_-_Turkey_%285777328071%29.jpg/960px-City_Wall_and_Battlements_-_Diyarbakir_-_Turkey_%285777328071%29.jpg'), page: f('City_Wall_and_Battlements_-_Diyarbakir_-_Turkey_(5777328071).jpg'), author: 'Adam Jones', license: 'CC BY-SA 2.0', licenseUrl: BYSA2, caption: { fa: 'باروی دیاربکر (آمیدای کهن). بیشتر دیوار امروزی از بازسازی‌های پس از سدهٔ چهارم است.', en: 'The walls of Diyarbakır (ancient Amida). Most of today’s wall comes from rebuildings after the 4th century.' } },
+  'coin-khosrow2-590': cng('coin-khosrow2-590', '5/5a/Coin_of_Khosrow_II_in_590.jpg', 'Coin_of_Khosrow_II_in_590.jpg', 'سکهٔ خسرو دوم از سال ۵۹۰، سال گریز؛ هنوز بی تاج بالدار', 'A coin of Khosrow II from 590, the year of his flight; still without the winged crown'),
+  'coin-khosrow2-facing': cng('coin-khosrow2-facing', '2/26/Coin_of_Khosrow_II_facing%2C_613_mint.jpg', 'Coin_of_Khosrow_II_facing%2C_613_mint.jpg', 'درهم ویژهٔ خسرو دوم با چهرهٔ روبه‌رو، ضرب ۶۱۳؛ این سکه‌ها پیروزی‌های غرب را جشن می‌گرفتند', 'A special drachm of Khosrow II with a facing bust, struck in 613; such coins celebrated the victories in the west'),
+  'tb-khosrow2': { id: 'tb-khosrow2', src: u('thumb/c/ce/Taq-e_Bostan_-_High-relief_of_Anahita%2C_Khosro_II%2C_Ahura_Mazda.jpg/960px-Taq-e_Bostan_-_High-relief_of_Anahita%2C_Khosro_II%2C_Ahura_Mazda.jpg'), page: f('Taq-e_Bostan_-_High-relief_of_Anahita%2C_Khosro_II%2C_Ahura_Mazda.jpg'), author: 'Philippe Chavin', license: 'CC BY 2.5', licenseUrl: BY25, caption: { fa: 'ایوان بزرگ طاق بستان: دیهیم‌ستانی میان اهورامزدا و آناهیتا، و سوار زره‌پوش در پایین', en: 'The large grotto at Taq-e Bostan: an investiture between Ohrmazd and Anahita, with the armoured horseman below' } },
+  'tb-boar': { id: 'tb-boar', src: u('thumb/a/a8/Taq-e_Bostan_-_Low-relief_the_boar_hunt.jpg/960px-Taq-e_Bostan_-_Low-relief_the_boar_hunt.jpg'), page: f('Taq-e_Bostan_-_Low-relief_the_boar_hunt.jpg'), author: 'Philippe Chavin', license: 'CC BY 2.5', licenseUrl: BY25, caption: { fa: 'شکار گراز در نیزارهای ایوان بزرگ طاق بستان؛ شاه در قایق کمان می‌کشد', en: 'The boar hunt in the marshes, large grotto at Taq-e Bostan; the king draws his bow in a boat' } },
+  'takht-soleyman': { id: 'takht-soleyman', src: u('thumb/4/4a/Takht-e_Soleym%C4%81n_overview.jpg/960px-Takht-e_Soleym%C4%81n_overview.jpg'), page: f('Takht-e_Soleym%C4%81n_overview.jpg'), author: 'Stefan Bschorer', license: 'CC BY-SA 4.0', licenseUrl: BYSA4, caption: { fa: 'تخت سلیمان، جای آتشکدهٔ آذرگشنسپ که هراکلیوس در ۶۲۴ غارت کرد', en: 'Takht-e Soleyman, site of the Adur Gushnasp fire temple that Heraclius sacked in 624' } },
+  'coin-kavad2': cng('coin-kavad2', '3/32/Coin_of_the_Sasanian_king_Kavadh_II%2C_minted_at_Ray_in_628.jpg', 'Coin_of_the_Sasanian_king_Kavadh_II%2C_minted_at_Ray_in_628.jpg', 'سکهٔ قباد دوم، ضرب ری در ۶۲۸', 'A coin of Kavad II, struck at Ray in 628'),
+  'coin-ardashir3': { id: 'coin-ardashir3', src: u('thumb/0/06/Ardashir_III_coin_-_Arthur_M._Sackler_Gallery_-_DSC05899.JPG/960px-Ardashir_III_coin_-_Arthur_M._Sackler_Gallery_-_DSC05899.JPG'), page: f('Ardashir_III_coin_-_Arthur_M._Sackler_Gallery_-_DSC05899.JPG'), author: 'Daderot', license: 'CC0', caption: { fa: 'سکهٔ اردشیر سوم در گالری آرتور سکلر، واشنگتن', en: 'A coin of Ardashir III in the Arthur M. Sackler Gallery, Washington' } },
+  'coin-boran': cng('coin-boran', 'b/b7/Coin_of_Boran%2C_minted_at_Arrajan_in_630.jpg', 'Coin_of_Boran%2C_minted_at_Arrajan_in_630.jpg', 'سکهٔ پوراندخت، ضرب ارجان در ۶۳۰؛ با تاج بالدار پدرش', 'A coin of Boran, struck at Arrajan in 630, with her father’s winged crown'),
+  'coin-boran-berlin': { id: 'coin-boran-berlin', src: u('thumb/9/94/Sasaniden-_K%C3%B6nigin_Buran_-_M%C3%BCnzkabinett%2C_Berlin_-_5505275.jpg/960px-Sasaniden-_K%C3%B6nigin_Buran_-_M%C3%BCnzkabinett%2C_Berlin_-_5505275.jpg'), page: f('Sasaniden-_K%C3%B6nigin_Buran_-_M%C3%BCnzkabinett%2C_Berlin_-_5505275.jpg'), author: 'Reinhard Saczewski (Münzkabinett, Berlin)', license: 'Public domain', caption: { fa: 'سکهٔ پوراندخت در موزهٔ سکهٔ برلین', en: 'A coin of Boran in the Münzkabinett, Berlin' } },
+  'coin-azarmidokht': { id: 'coin-azarmidokht', src: u('thumb/4/48/Drachm_of_Azarmidukht.jpg/960px-Drachm_of_Azarmidukht.jpg'), page: f('Drachm_of_Azarmidukht.jpg'), author: 'Classical Numismatic Group, LLC', license: 'CC BY 4.0', licenseUrl: BY4, caption: { fa: 'درهم آذرمی‌دخت؛ چهرهٔ روی سکه چهرهٔ پدرش خسرو دوم است', en: 'A drachm of Azarmidokht; the bust on it is her father Khosrow II’s' } },
+  'coin-hormizd6': { id: 'coin-hormizd6', src: u('5/56/Coin_of_either_Hormizd_V_or_Hormizd_VI%2C_minted_in_Veh-az-Amid-Kav%C4%81d.jpg'), page: f('Coin_of_either_Hormizd_V_or_Hormizd_VI%2C_minted_in_Veh-az-Amid-Kav%C4%81d.jpg'), author: 'Classical Numismatic Group (uploaded by LouisAragon)', license: 'CC BY-SA 2.5', licenseUrl: 'https://creativecommons.org/licenses/by-sa/2.5', caption: { fa: 'سکهٔ هرمز پنجم یا ششم، سال دوم (۶۳۱/۶۳۲)', en: 'A coin of Hormizd V or VI, regnal year 2 (631/2)' } },
+  'coin-yazdegerd3': cng('coin-yazdegerd3', '1/1c/Coin_of_the_Sasanian_king_Yazdegerd_III%2C_651_mint.jpg', 'Coin_of_the_Sasanian_king_Yazdegerd_III%2C_651_mint.jpg', 'سکهٔ یزدگرد سوم، ضرب ۶۵۱، سال مرگش', 'A coin of Yazdegerd III, struck in 651, the year of his death'),
+  'qianling-envoys': { id: 'qianling-envoys', src: u('thumb/c/c3/Headless_Statues_of_Foreign_Envoys_%289906472715%29.jpg/960px-Headless_Statues_of_Foreign_Envoys_%289906472715%29.jpg'), page: f('Headless_Statues_of_Foreign_Envoys_%289906472715%29.jpg'), author: 'Gary Todd', license: 'CC0', caption: { fa: 'پیکره‌های بی‌سر فرستادگان بیگانه در آرامگاه چیان‌لینگ؛ کومپارتی می‌گوید پیکرهٔ پیروز در میان این‌هاست (این عکس او را جدا نشان نمی‌دهد)', en: 'The headless statues of foreign envoys at the Qianling tomb; Compareti says Peroz’s statue is among them (this photo does not single him out)' } },
   'tb-small': { id: 'tb-small', src: u('thumb/e/ed/Taq-e_Bostan_-_High-relief_Shapur_II_and_Shapur_III.jpg/960px-Taq-e_Bostan_-_High-relief_Shapur_II_and_Shapur_III.jpg'), page: f('Taq-e_Bostan_-_High-relief_Shapur_II_and_Shapur_III.jpg'), author: 'Philippe Chavin', license: 'CC BY 2.5', licenseUrl: BY25, caption: { fa: 'ایوان کوچک طاق بستان: دو شاه ایستاده که کتیبه‌ها آنان را شاپور دوم و شاپور سوم می‌نامند', en: 'The small grotto at Taq-e Bostan: two standing kings whom the inscriptions name as Shapur II and Shapur III' } },
   'tb-ardashir2': { id: 'tb-ardashir2', src: u('thumb/7/76/Taq-e_Bostan_%28Kermanshah%29_%E2%80%93_Relief_of_the_Coronation_of_Ardashir_II.jpg/960px-Taq-e_Bostan_%28Kermanshah%29_%E2%80%93_Relief_of_the_Coronation_of_Ardashir_II.jpg'), page: f('Taq-e_Bostan_(Kermanshah)_–_Relief_of_the_Coronation_of_Ardashir_II.jpg'), author: 'Skot', license: 'CC BY-SA 4.0', licenseUrl: BYSA4, caption: { fa: 'نقش دیهیم‌ستانی اردشیر دوم در طاق بستان: در میان اردشیر، در راست کسی با تاج شاپور دوم که حلقهٔ شاهی را می‌دهد، در چپ مهر بر گل نیلوفر؛ زیر پای دو شاه، رومی افتاده‌ای', en: 'Ardashir II’s investiture relief at Taq-e Bostan: Ardashir in the centre, on the right a figure in Shapur II’s crown handing him the ring, on the left Mithra on a lotus; beneath the two kings lies a fallen Roman' } },
   'coin-ardashir2': { id: 'coin-ardashir2', src: u('thumb/e/e3/Drachm_of_Ardashir_II_-_Bishapur.jpg/960px-Drachm_of_Ardashir_II_-_Bishapur.jpg'), page: f('Drachm_of_Ardashir_II_-_Bishapur.jpg'), author: 'Classical Numismatic Group, LLC', license: 'CC BY 4.0', licenseUrl: BY4, caption: { fa: 'درهم اردشیر دوم، ضرب بیشاپور؛ تاج گنبدی اردشیر یکم', en: 'A drachm of Ardashir II, Bishapur mint, with Ardashir I’s domed crown' } },
