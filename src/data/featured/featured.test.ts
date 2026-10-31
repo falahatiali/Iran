@@ -25,3 +25,15 @@ test('featured slug list matches the registry and every slug is a real ruler', (
     }
   }
 })
+
+test('every campaign map window is a real box that contains its event markers', () => {
+  for (const [slug, k] of Object.entries(featuredKings)) {
+    if (!k.campaign) continue
+    const [lon0, lat0, lon1, lat1] = k.campaign.view
+    assert.ok(lon0 < lon1 && lat0 < lat1, `${slug}: view must be [lonMin, latMin, lonMax, latMax]`)
+    for (const e of k.campaign.events) {
+      const [lon, lat] = e.coord
+      assert.ok(lon >= lon0 && lon <= lon1 && lat >= lat0 && lat <= lat1, `${slug}/${e.id} marker outside view`)
+    }
+  }
+})

@@ -95,7 +95,7 @@ export const yazdegerdIII: FeaturedKing = {
       fa: ['جنگ‌ها و گریز یزدگرد به روایت مورونی (ایرانیکا). راه‌ها طرح‌وارند. تاریخ قادسیه و نهاوند و چگونگی مرگ یزدگرد محل بحث است. نمودارهای قادسیه و نهاوند زیر نقشه آمده‌اند.'],
       en: ['The wars and Yazdegerd’s flight as told by Morony (Iranica). The routes are schematic. The dates of Qadisiyyah and Nahavand and the manner of Yazdegerd’s death are disputed. Diagrams of Qadisiyyah and Nahavand are below the map.'],
     },
-    events: EVENTS, span: [632, 679], view: [40, 26, 38, 22],
+    events: EVENTS, span: [632, 679], view: [41, 27, 79, 44.5],
     places: [
       { name: B('تیسفون', 'Ctesiphon'), c: CTESIPHON, left: true }, { name: B('نهاوند', 'Nahavand'), c: NAHAVAND, dy: -1.3 }, { name: B('استخر', 'Istakhr'), c: ISTAKHR, dy: 1.3 },
       { name: B('مرو', 'Marw'), c: MARV, dy: -1.3 }, { name: B('زرنج', 'Zaranj'), c: ZARANJ, dy: 1.3 }, { name: B('سوی‌آب', 'Suyab'), c: SUYAB, dy: -1.3 },
