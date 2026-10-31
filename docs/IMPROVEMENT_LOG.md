@@ -249,3 +249,17 @@ See [RESEARCH_LOG.md](./RESEARCH_LOG.md) §13 for the source table.
 - All new photos come from Commons with verified licences and are recorded in `public/media/ATTRIBUTION.txt`.
 
 **Next king:** Khosrow II (`khosrow-ii`).
+
+## 2026-10-31 — Sasanians, batch 5: Khosrow II to Yazdegerd III (Sasanian program complete)
+
+**Done in this pass**
+
+- Featured: Khosrow II Parviz (`khosrow-ii`), with a reign clip of the 602–628 war and an animated Nineveh (627) diagram (fa/en). Sections cover his flight to Byzantium and Maurice, the war, Nineveh, Hira and Dhi Qar, Taq-e Bostan, Shirin and Barbad (labelled as tradition), and his fall and death. Flagged: the war's start date, the date of Dhi Qar, and the dating of the Taq-e Bostan iwan.
+- `short5.ts`: Kavad II Sheroe, Ardashir III and Shahrbaraz.
+- Boran (`boran`): a featured-level page on her rise, justice measures and coins. Flagged: the vizier's name (Tabari vs Sebeos) and the True Cross return.
+- Azarmidokht (`azarmidokht`): her page, with the 630–632 claimants grouped. Flagged: the two Tabari accounts of her death and the numbering of Hormizd V/VI.
+- Featured: Yazdegerd III (`yazdegerd-iii`), with a reign clip (Ctesiphon to Marw, then Zaranj and Suyab) and animated Qadisiyyah and Nahavand diagrams (fa/en). Sections cover Qadisiyyah, the fall of Ctesiphon, Nahavand, the flight east and death near Marw, and Peroz and Narseh in China. Flagged: the dates of both battles (Morony, Pourshariati, Bosworth), Tabari's conflicting accounts of the death, his age at accession, and the two Tang histories on Peroz. Verbatim quotes come from Lewental (Iranica) and Tabari XV (tr. Humphreys).
+- `scripts/render-campaign-clip.py`: the battle-phase counter is now read from "Phase N / M" only. A date like 636/637 had been read as 637 phases, which made the render hang.
+- All new photos come from Commons with verified licences and are recorded in `public/media/ATTRIBUTION.txt`.
+
+**The Sasanian program is complete, from Ardashir I to Yazdegerd III.**
