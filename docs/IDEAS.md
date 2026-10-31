@@ -14,3 +14,11 @@ Bold product ideas recorded during daily improvement runs. None of these are pro
 - **Disputed-number widget:** a small UI that shows Herzfeld’s 30,000 vs Stolper’s 20–25k side by side, because the interesting fact is the disagreement.
 - **PFA Project live shelf:** when a stable OCHRE or ISAC project URL is verified, embed a “what is still unpublished” counter sourced from that page, never guessed.
 - **Liberty/property dossier v1:** Locke, Bastiat, and the Cylinder lines on houses, yoke, return, and cult — labeled interpretation, never mixed with the Akkadian wording.
+
+## 2026-10-31
+
+- **Reign-ribbon layers:** let `/kings` overlay the existing timeline events (battles, treaties) as small ticks above each dynasty lane, so a visitor sees *what happened during* a reign without leaving the ribbon. Same data, no new claims.
+- **“Who was alive at the same time?”:** pick a year on `/kings` and list every ruler in office that year across all dynasties (for example, the rival Parthian claimants), with the overlap explained in plain Persian.
+- **Elamite women in their own inscriptions:** a short page on the royal women Middle Elamite texts actually name (Nahhunte-utu in Shilhak-Inshushinak’s dedications, his daughter Bar-Uli on the British Museum chalcedony), quoting only published translations and keeping Vallat’s family reconstruction flagged as disputed.
+- **EKI 54 place-list explorer:** the long list of about 250 place names on Shilhak-Inshushinak’s Susa stele, shown as a list with only the identifications scholars agree on placed on the map, and every uncertain one left off the map and labelled.
+- **Dynasty length vs reign length chart:** a small multiples view showing the average reign per dynasty from our own data, with a note on why ancient figures (Herodotus’ Median years, Elamite “c.” dates) are weaker evidence than coin-dated ones.

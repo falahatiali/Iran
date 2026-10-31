@@ -263,3 +263,16 @@ See [RESEARCH_LOG.md](./RESEARCH_LOG.md) §13 for the source table.
 - All new photos come from Commons with verified licences and are recorded in `public/media/ATTRIBUTION.txt`.
 
 **The Sasanian program is complete, from Ardashir I to Yazdegerd III.**
+
+## 2026-10-31 — Shilhak-Inshushinak, and a new rulers-at-a-glance page
+
+**Done in this pass**
+
+- Featured: Shilhak-Inshushinak (`shilhak-inshushinak`), the Middle Elamite king after Shutruk-Nakhunte and Kutir-Nakhunte. The page has a dossier, a timeline of ten events, an animated campaign clip (fa/en) of the raids towards the Diyala, Babylonia and Arrapha/Nuzi, and epithets from his own inscriptions (King of Anshan and Susa; beloved servant of Kiririsha and Inshushinak; enlarger of the kingdom; son of Shutruk-Nakhunte). Sections cover the sources, his life, titles, campaigns (no army account survives; the page says so), building (the rebuilt “grove” temples and the Liyan quote), religion (the Sit-shamshi bronze), law (the Kuk-kirmash quote, with our reading clearly marked as interpretation), economy and family.
+- Sources: Vallat (Encyclopaedia Iranica, “Elam i” and “Susa ii”), Basello 2016, Potts 1999 (ch. 7), König 1965 (EKI 32–59), Vallat 1985, Harper et al. 1992 (no. 87), Gautier 1909, Louvre collection records (the Sit-shamshi Sb 2743, the stele Sb 147 = EKI 48, and the inscribed bricks Sb 1619 and Sb 20714) and British Museum records (the Bar-Uli chalcedony; Liyan).
+- Quotes are the Louvre’s published French translations, marked `lang: 'fr'`. The Persian renderings are ours, and the page says so. The dossier model now supports French and German translations in quotes.
+- Flagged on the page: the reign dates (c. 1150–1120 vs 1140–1120), the order and placing of the EKI 54 place list, Vallat’s brother–sister marriage reconstruction (disputed), the numbering of Kutir-Nakhunte II/III, the Bar-Uli object’s findspot, and the Susa campaign step (disputed). The Louvre brick Sb 11945 is captioned neutrally as an inscribed brick.
+- New feature: `/kings` (“فرمانروایان ایران در یک نگاه”), a reign ribbon of all 216 rulers in 24 dynasty lanes. It has era presets, zoom and pan, and it packs overlapping reigns (rival claimants) into separate rows. Featured dossiers are marked ★. Tapping two bars (or picking from two lists) opens a comparison card with both reigns on one axis, each reign’s length, epithet chips, and the overlap or gap in years (counted with no year 0). The state lives in the URL (`?a=&b=&from=&to=`), so a comparison can be shared. A “longest reigns in our data” list marks early dates as traditional and approximate. Pure helpers live in `src/lib/reigns.ts` and are tested. The page is in the nav, the footer, the sitemap and the prerender list.
+- Not verified: page numbers in Potts 1999 (only the chapter is cited).
+
+**Next king:** Deioces (`deioces`), the first Median king. He is known only from Herodotus, so the page must be labelled as Herodotus’ tradition, with the Assyrian “Daiukku” evidence kept separate.
