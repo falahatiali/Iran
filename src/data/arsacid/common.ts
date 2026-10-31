@@ -55,6 +55,15 @@ export const PHRAASPA: Coord = [46.24, 37.39]
 export const ARAXES: Coord = [45.6, 38.94]
 export const ATROPATENE: Coord = [46.3, 38.07]
 
+export const NEHARDEA: Coord = [43.78, 33.37]
+export const NISIBIS: Coord = [41.22, 37.07]
+export const CILICIA_ANAZ: Coord = [35.9, 37.25]
+export const ARSANIAS: Coord = [40.6, 38.75]
+export const HATRA: Coord = [42.72, 35.59]
+export const SPASINOU: Coord = [47.6, 30.6]
+export const VOLOGESOCERTA: Coord = [44.3, 32.9]
+export const ALANS: Coord = [45.5, 42.3]
+
 export const PAR = { fa: 'اشکانیان', en: 'Arsacids (Parthians)' }
 
 /** One bibliography for the Arsacid kings; each king lists the ids it uses. */
@@ -105,6 +114,14 @@ export const parSources: Record<string, FeaturedSource> = Object.fromEntries(([
   { id: 'pliny', author: 'Pliny the Elder, tr. J. Bostock & H. T. Riley', title: 'Natural History 6.18 (6.47): Margiana', year: '1855' },
   { id: 'florus', author: 'Florus, tr. E. S. Forster', title: 'Epitome of Roman History 1.46, 2.19–20', year: '1929' },
   { id: 'dubs', author: 'H. H. Dubs', title: 'A Roman City in Ancient China', year: '1957', note: { fa: 'خاستگاه نظریهٔ «رومیان لیچیان»؛ نظریه‌ای مدرن که در منابع باستانی نیست.', en: 'The origin of the “Romans of Liqian” theory: a modern idea not found in the ancient sources.' } },
+  { id: 'tac-ann', author: 'Tacitus, tr. A. J. Church & W. J. Brodribb', title: 'Annals 6.31–44, 11.8–10, 12.10–14, 12.44–51, 13.6–9, 13.34–41, 14.23–26, 15.1–31', year: '1876', url: 'https://en.wikisource.org/wiki/The_Annals_(Tacitus)', note: { fa: 'پیوسته‌ترین روایت پارت در سدهٔ یکم میلادی؛ نگاهی رومی و از پایتخت، با داوری‌های اخلاقی تند دربارهٔ «بربرها».', en: 'The fullest account of Parthia in the first century CE; a Roman view from the capital, with harsh moral judgements on “barbarians”.' } },
+  { id: 'josephus-ant', author: 'Flavius Josephus, tr. W. Whiston', title: 'Antiquities of the Jews 18.4.4–5, 18.9.1–9, 20.2–4', year: '1737', url: 'https://www.gutenberg.org/ebooks/2848', note: { fa: 'از نگاه یهودیان بابل و آدیابنه؛ داستان‌هایش زنده‌اند اما گاه با تاسیتوس جور درنمی‌آیند.', en: 'Seen from the Jews of Babylonia and Adiabene; vivid stories, sometimes at odds with Tacitus.' } },
+  { id: 'ir-artabanus3', author: 'K. Schippmann, Encyclopaedia Iranica', title: 'Artabanus (Arsacid kings) iii. Artabanus III', year: '1986, updated 2013', url: 'https://www.iranicaonline.org/articles/artabanus-parth/artabanus-arsacid-kings-iii-artabanus-iii/', note: { fa: 'ایرانیکا این مدعی دههٔ ۸۰ میلادی را «اردوان سوم» می‌نامد.', en: 'Iranica calls this pretender of the 80s CE “Artabanus III”.' } },
+  { id: 'ir-godarz', author: 'M. Boyce, Encyclopaedia Iranica', title: 'Gōdarz i. Historical figures', year: '2001, updated 2014', url: 'https://www.iranicaonline.org/articles/godarz/godarz-i-historical-figures/' },
+  { id: 'ir-avesta', author: 'J. Kellens, Encyclopaedia Iranica', title: 'Avesta i. Survey of the history and contents of the book', year: '1987', url: 'https://www.iranicaonline.org/articles/avesta-holy-book/' },
+  { id: 'kahrstedt', author: 'U. Kahrstedt', title: 'Artabanos III. und seine Erben', year: '1950' },
+  { id: 'dabrowa1983', author: 'E. Dąbrowa', title: 'La politique de l’État parthe à l’égard de Rome, d’Artaban II à Vologèse I (ca 11 – ca 79 de n. è.)', year: '1983' },
+  { id: 'hou-hanshu', author: 'Fan Ye, tr. J. E. Hill', title: 'Hou Hanshu 88 (The Western Regions), in Through the Jade Gate to Rome', year: '2009', note: { fa: 'تاریخ رسمی هان پسین؛ اینجا تنها بازگفته می‌شود.', en: 'The official history of the Later Han; paraphrased here only.' } },
   { id: 'overtoom', author: 'N. L. Overtoom', title: 'Reign of Arrows: The Rise of the Parthian Empire in the Hellenistic Middle East', year: '2020' },
 ] as FeaturedSource[]).map((s) => [s.id, s]))
 
@@ -120,7 +137,7 @@ const BYSA3 = 'https://creativecommons.org/licenses/by-sa/3.0'
 const BYSA4 = 'https://creativecommons.org/licenses/by-sa/4.0'
 const cng = (id: string, path: string, name: string, fa: string, en: string): CommonsPhoto =>
   ({ id, src: u(path), page: f(name), author: 'Classical Numismatic Group', license: 'CC BY-SA 3.0', licenseUrl: BYSA3, caption: { fa, en } })
-/** Wikimedia Commons photos; licence and author read from the Commons API on 2026-10-30 (batch 1) and 2026-10-31 (batch 2). */
+/** Wikimedia Commons photos; licence and author read from the Commons API on 2026-10-30 (batch 1) and 2026-10-31 (batches 2 and 3). */
 export const parPhotos: Record<string, CommonsPhoto> = {
   'coin-arsaces1': cng('coin-arsaces1', 'd/d0/Coin_of_Arsaces_I_%281%29%2C_Nisa_mint.jpg', 'Coin_of_Arsaces_I_(1),_Nisa_mint.jpg', 'درهم ضرب نسا که به ارشک یکم نسبت می‌دهند: سر بی‌ریش با کلاه نرم (کوربسیا) و کماندار نشسته در پشت. انتساب سکه‌های نخستین میان ارشک یکم و دوم محل بحث است', 'A Nisa drachm attributed to Arsaces I: a beardless head in a soft cap (kyrbasia), a seated archer on the reverse. Which early coins belong to Arsaces I or II is debated'),
   'coin-arsaces2': cng('coin-arsaces2', 'f/f6/Coin_of_Arsaces_II%2C_Ray_mint.jpg', 'Coin_of_Arsaces_II,_Ray_mint.jpg', 'سکهٔ منسوب به ارشک دوم، ضرب ری', 'A coin attributed to Arsaces II, Rhagae (Ray) mint'),
@@ -146,6 +163,19 @@ export const parPhotos: Record<string, CommonsPhoto> = {
   'coin-orodes3': { id: 'coin-orodes3', src: u('a/a4/Orodes_III_coin.png'), page: f('Orodes_III_coin.png'), author: 'Classical Numismatic Group', license: 'CC BY-SA 3.0', licenseUrl: BYSA3, caption: { fa: 'درهم منسوب به ارد سوم', en: 'A drachm attributed to Orodes III' } },
   'coin-vonones1': cng('coin-vonones1', '8/81/Tetradrachm_of_Vonones_I%2C_Seleucia_mint.jpg', 'Tetradrachm_of_Vonones_I,_Seleucia_mint.jpg', 'چهاردرهمی ونن یکم، ضرب سلوکیه', 'A tetradrachm of Vonones I, Seleucia mint'),
   'coin-vonones1-nike': { id: 'coin-vonones1-nike', src: u('e/e1/Coin_of_Vonones_I_of_Parthia.jpg'), page: f('Coin_of_Vonones_I_of_Parthia.jpg'), author: 'Gdr at en.wikipedia', license: 'Public domain', caption: { fa: 'درهم ونن یکم، ضرب هگمتانه، با نوشتهٔ «شاه ونن، پیروز بر اردوان» در پشت؛ سکه‌ای که پیروزی نخستش را جار می‌زند', en: 'An Ecbatana drachm of Vonones I whose reverse reads “King Vonones, victor over Artabanus”: a coin that trumpets his first victory' } },
+  'coin-artabanus2': cng('coin-artabanus2', '3/38/Coin_of_Artabanus_II%2C_minted_at_Seleucia_in_27_AD.jpg', 'Coin_of_Artabanus_II,_minted_at_Seleucia_in_27_AD.jpg', 'چهاردرهمی اردوان دوم، ضرب سلوکیه در ۲۷ م.', 'A tetradrachm of Artabanus II, struck at Seleucia in 27 CE'),
+  'coin-artabanus2-d': { id: 'coin-artabanus2-d', src: u('4/4c/Coin_of_Artabanus_II_of_Parthia.jpg'), page: f('Coin_of_Artabanus_II_of_Parthia.jpg'), author: 'Gdr at en.wikipedia', license: 'Public domain', caption: { fa: 'درهم اردوان دوم', en: 'A drachm of Artabanus II' } },
+  'coin-vardanes1': cng('coin-vardanes1', 'f/fa/Coin_of_Vardanes_I_%28cropped%2C_1%29%2C_Seleucia_mint.jpg', 'Coin_of_Vardanes_I_(cropped,_1),_Seleucia_mint.jpg', 'چهاردرهمی وردان یکم، ضرب سلوکیه', 'A tetradrachm of Vardanes I, Seleucia mint'),
+  'coin-gotarzes2': cng('coin-gotarzes2', 'a/af/Tetradrachm_of_Gotarzes_II%2C_minted_in_49.jpg', 'Tetradrachm_of_Gotarzes_II,_minted_in_49.jpg', 'چهاردرهمی گودرز دوم، ضرب ۴۹ م.', 'A tetradrachm of Gotarzes II, struck in 49 CE'),
+  'coin-meherdates': cng('coin-meherdates', 'd/dd/Coin_of_Meherdates%2C_Parthian_contender_against_Gotarzes_II.jpg', 'Coin_of_Meherdates,_Parthian_contender_against_Gotarzes_II.jpg', 'سکه‌ای که به مهرداد (مهرداتس)، مدعی گودرز دوم، نسبت می‌دهند؛ انتساب محل بحث است', 'A coin attributed to Meherdates, the rival of Gotarzes II; the attribution is debated'),
+  'bisotun-gotarzes': { id: 'bisotun-gotarzes', src: u('5/57/Behistun%2C_Parthian_relief_of_Gotarzes_II.jpg'), page: f('Behistun,_Parthian_relief_of_Gotarzes_II.jpg'), author: 'Jona Lendering (Livius.org)', license: 'CC0', caption: { fa: 'نقش برجستهٔ پارتی بیستون با نوشتهٔ یونانی «گودرز گئوپوثروس»: سواری با نیزه دشمن را فرو می‌اندازد. اینکه این گودرز همان گودرز دوم است محل بحث است.', en: 'The Parthian relief at Bisotun with the Greek label “Gotarzes Geopothros”: a lancer unhorses a foe. Whether this Gotarzes is Gotarzes II is debated.' } },
+  'coin-vonones2': cng('coin-vonones2', 'c/c4/Coin_of_Vonones_II%2C_minted_at_Hamadan.jpg', 'Coin_of_Vonones_II,_minted_at_Hamadan.jpg', 'درهم ونن دوم، ضرب هگمتانه (همدان)', 'A drachm of Vonones II, Ecbatana (Hamadan) mint'),
+  'coin-vologases1': cng('coin-vologases1', '9/9f/Coin_of_Vologases_I%2C_minted_at_Seleucia_in_51_or_52.jpg', 'Coin_of_Vologases_I,_minted_at_Seleucia_in_51_or_52.jpg', 'چهاردرهمی بلاش یکم، ضرب سلوکیه در ۵۱ یا ۵۲ م.', 'A tetradrachm of Vologases I, struck at Seleucia in 51 or 52 CE'),
+  'coin-vologases1-tiara': cng('coin-vologases1-tiara', '3/35/Coin_of_Vologases_I_wearing_a_tiara.jpg', 'Coin_of_Vologases_I_wearing_a_tiara.jpg', 'درهم بلاش یکم با کلاه بلند (تیارا)', 'A drachm of Vologases I wearing the tiara'),
+  'coin-pacorus2': cng('coin-pacorus2', 'f/f4/Coin_of_a_young_Pacorus_II%2C_minted_in_78_or_79_at_Seleucia.jpg', 'Coin_of_a_young_Pacorus_II,_minted_in_78_or_79_at_Seleucia.jpg', 'پاکور دوم جوان، چهاردرهمی ضرب سلوکیه در ۷۸ یا ۷۹ م.', 'A young Pacorus II, tetradrachm struck at Seleucia in 78 or 79 CE'),
+  'coin-pacorus2-late': cng('coin-pacorus2-late', '8/8c/Late_coin_of_Pacorus_II_with_beard_and_tiara.jpg', 'Late_coin_of_Pacorus_II_with_beard_and_tiara.jpg', 'سکهٔ دیرین پاکور دوم، با ریش و کلاه بلند', 'A late coin of Pacorus II, bearded and in the tiara'),
+  'coin-osroes1': { id: 'coin-osroes1', src: u('d/d5/Coin_of_Osroes_I_of_Parthia.jpg'), page: f('Coin_of_Osroes_I_of_Parthia.jpg'), author: 'Gdr at en.wikipedia', license: 'Public domain', caption: { fa: 'درهم خسرو یکم اشکانی', en: 'A drachm of Osroes I' } },
+  'coin-vologases3': { id: 'coin-vologases3', src: u('1/1a/Coin_of_Vologases_III_of_Parthia.jpg'), page: f('Coin_of_Vologases_III_of_Parthia.jpg'), author: 'Gdr at en.wikipedia', license: 'Public domain', caption: { fa: 'درهم بلاش سوم', en: 'A drachm of Vologases III' } },
 }
 export const photos = (...ids: string[]): CommonsPhoto[] => ids.map((id) => parPhotos[id])
 
