@@ -135,3 +135,12 @@ Commons photos shown on /battle/carrhae (linked from Wikimedia Commons, not stor
   harran-houses: Dosseman, CC BY-SA 4.0. Source: https://commons.wikimedia.org/wiki/File:Harran_Beehive_houses_200.jpg
   harran-ruins: Hamdigumus, CC0. Source: https://commons.wikimedia.org/wiki/File:Harran_Üniversitesi_Kalıntıları_2015-1.jpg
   coin-orodes2, surena-statue: as recorded for the Orodes II page.
+
+Parthian batch 4 coins (licences read from the Commons API on 2026-10-31):
+  coin-vologases4: Classical Numismatic Group, CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:Tetradrachm_of_Vologases_IV,_minted_at_Seleucia_in_153.jpg
+  coin-osroes2: Classical Numismatic Group, CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:OsroesIIcoin.png
+  coin-vologases5: Classical Numismatic Group, CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:Tetradrachm_of_Vologases_V,_minted_at_Seleucia_in_192_or_193.jpg
+  coin-vologases5-d: Classical Numismatic Group, CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:Coin_of_Vologases_V,_Ecbatana_mint.jpg
+  coin-vologases6: Gdr at en.wikipedia, Public domain. Source: https://commons.wikimedia.org/wiki/File:Coin_of_Vologases_VI_of_Parthia.jpg
+  coin-artabanus4: Classical Numismatic Group, CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:Drachm_of_Artabanus_IV,_Hamadan_mint.jpg
+  coin-artabanus4-b: Classical Numismatic Group, CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:Drachm_of_Artabanus_IV_(2),_Hamadan_mint.jpg

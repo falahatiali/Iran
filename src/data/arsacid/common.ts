@@ -63,6 +63,11 @@ export const HATRA: Coord = [42.72, 35.59]
 export const SPASINOU: Coord = [47.6, 30.6]
 export const VOLOGESOCERTA: Coord = [44.3, 32.9]
 export const ALANS: Coord = [45.5, 42.3]
+/** Hormozgan (Hormazǰān): Iranica places the battle near modern Golpayegan, between Isfahan and Nahavand. */
+export const HORMOZGAN: Coord = [50.29, 33.45]
+export const EDESSA: Coord = [38.79, 37.15]
+export const SYRIA: Coord = [37.2, 35.0]
+export const FIRUZABAD: Coord = [52.53, 28.84]
 
 export const PAR = { fa: 'اشکانیان', en: 'Arsacids (Parthians)' }
 
@@ -122,6 +127,8 @@ export const parSources: Record<string, FeaturedSource> = Object.fromEntries(([
   { id: 'kahrstedt', author: 'U. Kahrstedt', title: 'Artabanos III. und seine Erben', year: '1950' },
   { id: 'dabrowa1983', author: 'E. Dąbrowa', title: 'La politique de l’État parthe à l’égard de Rome, d’Artaban II à Vologèse I (ca 11 – ca 79 de n. è.)', year: '1983' },
   { id: 'hou-hanshu', author: 'Fan Ye, tr. J. E. Hill', title: 'Hou Hanshu 88 (The Western Regions), in Through the Jade Gate to Rome', year: '2009', note: { fa: 'تاریخ رسمی هان پسین؛ اینجا تنها بازگفته می‌شود.', en: 'The official history of the Later Han; paraphrased here only.' } },
+  { id: 'herodian', author: 'Herodian, tr. E. C. Echols', title: 'History of the Roman Empire 3.9, 4.10–11, 4.14–15, 6.2', year: '1961', url: 'https://www.livius.org/sources/content/herodian-s-roman-history/', note: { fa: 'هم‌روزگار رخدادها، اما ادیب‌تر از دقیق؛ گاه نام‌ها و ترتیب رخدادها را درهم می‌کند.', en: 'A contemporary, but more rhetorical than exact; he sometimes confuses names and the order of events.' } },
+  { id: 'ir-ardashir', author: 'J. Wiesehöfer, Encyclopaedia Iranica', title: 'Ardašīr I i. History', year: '1986, updated 2011', url: IR('ardasir-i') },
   { id: 'overtoom', author: 'N. L. Overtoom', title: 'Reign of Arrows: The Rise of the Parthian Empire in the Hellenistic Middle East', year: '2020' },
 ] as FeaturedSource[]).map((s) => [s.id, s]))
 
@@ -137,7 +144,7 @@ const BYSA3 = 'https://creativecommons.org/licenses/by-sa/3.0'
 const BYSA4 = 'https://creativecommons.org/licenses/by-sa/4.0'
 const cng = (id: string, path: string, name: string, fa: string, en: string): CommonsPhoto =>
   ({ id, src: u(path), page: f(name), author: 'Classical Numismatic Group', license: 'CC BY-SA 3.0', licenseUrl: BYSA3, caption: { fa, en } })
-/** Wikimedia Commons photos; licence and author read from the Commons API on 2026-10-30 (batch 1) and 2026-10-31 (batches 2 and 3). */
+/** Wikimedia Commons photos; licence and author read from the Commons API on 2026-10-30 (batch 1) and 2026-10-31 (batches 2, 3 and 4). */
 export const parPhotos: Record<string, CommonsPhoto> = {
   'coin-arsaces1': cng('coin-arsaces1', 'd/d0/Coin_of_Arsaces_I_%281%29%2C_Nisa_mint.jpg', 'Coin_of_Arsaces_I_(1),_Nisa_mint.jpg', 'درهم ضرب نسا که به ارشک یکم نسبت می‌دهند: سر بی‌ریش با کلاه نرم (کوربسیا) و کماندار نشسته در پشت. انتساب سکه‌های نخستین میان ارشک یکم و دوم محل بحث است', 'A Nisa drachm attributed to Arsaces I: a beardless head in a soft cap (kyrbasia), a seated archer on the reverse. Which early coins belong to Arsaces I or II is debated'),
   'coin-arsaces2': cng('coin-arsaces2', 'f/f6/Coin_of_Arsaces_II%2C_Ray_mint.jpg', 'Coin_of_Arsaces_II,_Ray_mint.jpg', 'سکهٔ منسوب به ارشک دوم، ضرب ری', 'A coin attributed to Arsaces II, Rhagae (Ray) mint'),
@@ -176,6 +183,13 @@ export const parPhotos: Record<string, CommonsPhoto> = {
   'coin-pacorus2-late': cng('coin-pacorus2-late', '8/8c/Late_coin_of_Pacorus_II_with_beard_and_tiara.jpg', 'Late_coin_of_Pacorus_II_with_beard_and_tiara.jpg', 'سکهٔ دیرین پاکور دوم، با ریش و کلاه بلند', 'A late coin of Pacorus II, bearded and in the tiara'),
   'coin-osroes1': { id: 'coin-osroes1', src: u('d/d5/Coin_of_Osroes_I_of_Parthia.jpg'), page: f('Coin_of_Osroes_I_of_Parthia.jpg'), author: 'Gdr at en.wikipedia', license: 'Public domain', caption: { fa: 'درهم خسرو یکم اشکانی', en: 'A drachm of Osroes I' } },
   'coin-vologases3': { id: 'coin-vologases3', src: u('1/1a/Coin_of_Vologases_III_of_Parthia.jpg'), page: f('Coin_of_Vologases_III_of_Parthia.jpg'), author: 'Gdr at en.wikipedia', license: 'Public domain', caption: { fa: 'درهم بلاش سوم', en: 'A drachm of Vologases III' } },
+  'coin-vologases4': cng('coin-vologases4', '5/52/Tetradrachm_of_Vologases_IV%2C_minted_at_Seleucia_in_153.jpg', 'Tetradrachm_of_Vologases_IV,_minted_at_Seleucia_in_153.jpg', 'چهاردرهمی بلاش چهارم، ضرب سلوکیه در ۱۵۳ م.', 'A tetradrachm of Vologases IV, Seleucia mint, 153 CE'),
+  'coin-osroes2': { id: 'coin-osroes2', src: u('3/33/OsroesIIcoin.png'), page: f('OsroesIIcoin.png'), author: 'Classical Numismatic Group', license: 'CC BY-SA 3.0', licenseUrl: BYSA3, caption: { fa: 'سکه‌ای که به خسرو دوم نسبت می‌دهند؛ انتساب بر پایهٔ رده‌بندی سکه‌هاست', en: 'A coin attributed to Osroes II; the attribution rests on coin classification' } },
+  'coin-vologases5': cng('coin-vologases5', '2/27/Tetradrachm_of_Vologases_V%2C_minted_at_Seleucia_in_192_or_193.jpg', 'Tetradrachm_of_Vologases_V,_minted_at_Seleucia_in_192_or_193.jpg', 'چهاردرهمی بلاش پنجم، ضرب سلوکیه در ۱۹۲ یا ۱۹۳ م.', 'A tetradrachm of Vologases V, Seleucia mint, 192 or 193 CE'),
+  'coin-vologases5-d': cng('coin-vologases5-d', 'd/d8/Coin_of_Vologases_V%2C_Ecbatana_mint.jpg', 'Coin_of_Vologases_V,_Ecbatana_mint.jpg', 'درهم بلاش پنجم، ضرب هگمتانه', 'A drachm of Vologases V, Ecbatana mint'),
+  'coin-vologases6': { id: 'coin-vologases6', src: u('5/54/Coin_of_Vologases_VI_of_Parthia.jpg'), page: f('Coin_of_Vologases_VI_of_Parthia.jpg'), author: 'Gdr at en.wikipedia', license: 'Public domain', caption: { fa: 'چهاردرهمی بلاش ششم؛ پشت سکه شاه نشسته را نشان می‌دهد که از تیخه دیهیم می‌گیرد. تاریخ ۵۳۹ سلوکی، برابر ۲۲۷–۲۲۸ م.', en: 'A tetradrachm of Vologases VI; the reverse shows the enthroned king receiving a diadem from Tyche. Dated 539 of the Seleucid era, 227–228 CE.' } },
+  'coin-artabanus4': cng('coin-artabanus4', '9/9d/Drachm_of_Artabanus_IV%2C_Hamadan_mint.jpg', 'Drachm_of_Artabanus_IV,_Hamadan_mint.jpg', 'درهم اردوان چهارم، ضرب هگمتانه (همدان)', 'A drachm of Artabanus IV, Ecbatana (Hamadan) mint'),
+  'coin-artabanus4-b': cng('coin-artabanus4-b', '4/43/Drachm_of_Artabanus_IV_%282%29%2C_Hamadan_mint.jpg', 'Drachm_of_Artabanus_IV_(2),_Hamadan_mint.jpg', 'درهم دیگری از اردوان چهارم، ضرب هگمتانه', 'Another drachm of Artabanus IV, Ecbatana mint'),
 }
 export const photos = (...ids: string[]): CommonsPhoto[] => ids.map((id) => parPhotos[id])
 
