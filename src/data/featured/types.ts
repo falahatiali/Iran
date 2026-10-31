@@ -58,7 +58,7 @@ export interface Campaign {
   /** map window [lonMin, latMin, lonMax, latMax] */
   view: [number, number, number, number]
   /** left: draw the label on the west side of the dot */
-  places?: { name: Bi; c: Coord; left?: boolean }[]
+  places?: { name: Bi; c: Coord; left?: boolean; /** vertical label shift, in label heights (negative = up) */ dy?: number }[]
   clip?: CampaignClip
   battles?: BattleDiagram[]
 }

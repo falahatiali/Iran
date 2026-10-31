@@ -53,7 +53,7 @@ const stepMs = (reduce: boolean | null) => {
 
 export function CampaignMap({ events, sources, locale, label, view, places, stamp = 'year' }: {
   events: MapEvent[]; sources: FeaturedSource[]; locale: Locale; label?: string
-  view?: [number, number, number, number]; places?: { name: { fa: string; en: string }; c: Coord; left?: boolean }[]; stamp?: 'year' | 'when'
+  view?: [number, number, number, number]; places?: { name: { fa: string; en: string }; c: Coord; left?: boolean; dy?: number }[]; stamp?: 'year' | 'when'
 }) {
   const isFa = locale === 'fa'
   const uid = useId().replace(/:/g, '')
@@ -61,7 +61,7 @@ export function CampaignMap({ events, sources, locale, label, view, places, stam
   const k = vb.w / BASEMAP.width
   /** zoomed maps get larger place labels: fewer, more important names */
   const lf = view ? 13 : 9
-  const labels: { name: { fa: string; en: string }; c: Coord; left?: boolean }[] = places ?? PLACES
+  const labels: { name: { fa: string; en: string }; c: Coord; left?: boolean; dy?: number }[] = places ?? PLACES
   const reduce = useReducedMotion()
   const [i, setI] = useState(0)
   const [playing, setPlaying] = useState(false)
@@ -112,7 +112,7 @@ export function CampaignMap({ events, sources, locale, label, view, places, stam
             {labels.map((p) => { const [px, py] = project(p.c); return (
               <g key={p.name.en} aria-hidden="true">
                 <circle cx={px} cy={py} r={(view ? 2.6 : 1.8) * k} fill="#f5f0e6" fillOpacity=".6" />
-                <text x={p.left ? px - 4 * k : px + 4 * k} y={py + (lf + 1) * k} textAnchor={p.left ? 'end' : 'start'} fill="#f5f0e6" fillOpacity=".6" fontSize={lf * k}>{p.name[locale]}</text>
+                <text x={p.left ? px - 4 * k : px + 4 * k} y={py + (lf + 1) * k + (p.dy ?? 0) * lf * k} textAnchor={p.left ? 'end' : 'start'} fill="#f5f0e6" fillOpacity=".6" fontSize={lf * k}>{p.name[locale]}</text>
               </g>
             ) })}
             {events.slice(0, i).map((e) => (

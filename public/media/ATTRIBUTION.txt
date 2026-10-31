@@ -168,3 +168,14 @@ Shapur I page (/king/shapur-i)
   mani-scroll: Unknown (13th century), Public domain. Source: https://commons.wikimedia.org/wiki/File:Sermon_on_Mani%27s_Teaching_of_Salvation._Cathayan_Manichaean_silk_painting,_13th-century.jpg
 - media/shapur-i/reign-*.{gif,mp4,webm,png} and battle-edessa-*: rendered from this site's own map and schematic data (coastlines: Natural Earth, public domain).
 
+Hormizd I page (/king/hormizd-i)
+  coin-hormizd1: Classical Numismatic Group, CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:Coin_of_Hormizd_I.jpg
+Bahram I page (/king/bahram-i)
+  coin-bahram1: Classical Numismatic Group, CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:Coin_of_Bahram_I,_Hamadan_mint.jpg
+  bishapur-bahram1: Pentocelo, CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:Bishapur_V_relief_Bahram_Ist.JPG
+Bahram II page (/king/bahram-ii)
+  coin-bahram2: Classical Numismatic Group, CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:Bahram_II,_with_Queen_and_Prince.jpg
+  kartir-knrb: Philippe Chavin (Simorg), CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:Naqsh-e_Rajab_-_Kartir_inscription.jpg
+  nr-bahram2: Carole Raddato, CC BY-SA 2.0. Source: https://commons.wikimedia.org/wiki/File:The_Double_Equestrian_Relief_of_Bahram_II_(AD_276-293),_Naqsh-e_Rostam,_Iran_(48098713136).jpg
+Bahram III page (/king/bahram-iii)
+  paikuli-block: Osama Shukir Muhammed Amin, CC BY-SA 4.0. Source: https://commons.wikimedia.org/wiki/File:Stone_block_with_Paikuli_inscription.JPG

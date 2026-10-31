@@ -27,6 +27,9 @@ export const CILICIA: Coord = [35.3, 37.0]
 export const MESENE: Coord = [47.5, 31.0]
 /** Paikuli pass, between Qasr-e Shirin and Sulaymaniyah (Iraq). */
 export const PAIKULI: Coord = [45.62, 35.08]
+export const SATALA: Coord = [39.66, 40.02]
+/** Hormozd-Ardašēr (Sūq al-Ahwāz), modern Ahvaz. */
+export const AHVAZ: Coord = [48.67, 31.32]
 /** Narseh's camp at Osḫa in Armenia Major, east of Erzurum, where Galerius surprised him. */
 export const OSXA: Coord = [41.6, 39.95]
 /** Callinicum (Raqqa). */

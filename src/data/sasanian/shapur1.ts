@@ -3,11 +3,10 @@
  * Verbatim: ŠKZ (tr. Frye 1984, via Sasanika). Paraphrased: Iranica (Shahbazi “Šāpur I”, Lieu “Edessa”, Keall “Bīšāpūr”, Sundermann “Mani”).
  * The ŠKZ is Shapur's own account; where Roman writers differ, the page says so.
  */
-import type { BattleDiagram, BattleUnit, Bi, Coord, FeaturedKing } from '../featured/types'
-import { ANTIOCH, ARMENIA, BARBALISSOS, BISHAPUR, CAPPADOCIA, CARRHAE, CILICIA, CTESIPHON, DURA, EDESSA, GUNDESHAPUR, ISTAKHR, MISICHE, NISIBIS, SAMOSATA, SAS, battleClipFor, clipFor, ev, note, photos, pick, related, sec } from './common'
+import type { BattleDiagram, BattleUnit, Bi, FeaturedKing } from '../featured/types'
+import { ANTIOCH, ARMENIA, BARBALISSOS, BISHAPUR, CAPPADOCIA, CARRHAE, CILICIA, CTESIPHON, DURA, EDESSA, GUNDESHAPUR, ISTAKHR, MISICHE, NISIBIS, SAMOSATA, SAS, SATALA, battleClipFor, clipFor, ev, note, photos, pick, related, sec } from './common'
 
 const B = (fa: string, en: string): Bi => ({ fa, en })
-const SATALA: Coord = [39.66, 40.02]
 
 const EDESSA_NOTE = note('شاپور در کتیبه می‌گوید والرین را «با دست خود» در نبردی بزرگ اسیر کرد. نویسندگان رومی شکست را به بیماری و خیانت هم‌پیمانان نسبت دادند و گفتند امپراتور پیر در گفت‌وگوی آتش‌بس فریب خورد و در میدان نبرد گرفتار نشد. جای نبرد را تنها «آن سوی حران و ادسا» می‌دانیم.', 'In the inscription Shapur says he took Valerian prisoner “with our own hands” in a great battle. Roman writers blamed disease and the treachery of allies, and said the aged emperor was tricked during truce talks and not taken in battle. We know the site only as “beyond Carrhae and Edessa”.')
 
@@ -125,7 +124,7 @@ export const shapurI: FeaturedKing = {
     },
     events: EVENTS, span: [240, 270], view: [33, 27.5, 55, 41.5],
     places: [
-      { name: B('تیسفون', 'Ctesiphon'), c: CTESIPHON, left: true }, { name: B('مسیخه (پیروز شاپور)', 'Misiche (Peroz-Shapur)'), c: MISICHE }, { name: B('بربالیسوس', 'Barbalissos'), c: BARBALISSOS },
+      { name: B('تیسفون', 'Ctesiphon'), c: CTESIPHON }, { name: B('مسیخه', 'Misiche'), c: MISICHE, dy: -2.5 }, { name: B('بربالیسوس', 'Barbalissos'), c: BARBALISSOS },
       { name: B('انطاکیه', 'Antioch'), c: ANTIOCH, left: true }, { name: B('ادسا', 'Edessa'), c: EDESSA, left: true }, { name: B('نصیبین', 'Nisibis'), c: NISIBIS },
       { name: B('ساتالا', 'Satala'), c: SATALA }, { name: B('گندی‌شاپور', 'Gundeshapur'), c: GUNDESHAPUR }, { name: B('بیشاپور', 'Bishapur'), c: BISHAPUR }, { name: B('ارمنستان', 'Armenia'), c: ARMENIA },
     ],
