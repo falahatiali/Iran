@@ -105,7 +105,7 @@ export const adud: FeaturedKing = {
     places: [
       { name: B('شیراز', 'Shiraz'), c: SHIRAZ }, { name: B('اصفهان', 'Isfahan'), c: ISFAHAN },
       { name: B('کرمان', 'Kerman'), c: KERMAN }, { name: B('بغداد', 'Baghdad'), c: BAGHDAD },
-      { name: B('موصل', 'Mosul'), c: MOSUL }, { name: B('همدان', 'Hamadan'), c: HAMADAN },
+      { name: B('موصل', 'Mosul'), c: MOSUL, dy: 0.8 }, { name: B('همدان', 'Hamadan'), c: HAMADAN },
     ],
     clip: { gif: B('/media/adud-al-dawla/campaigns-fa.gif', '/media/adud-al-dawla/campaigns-en.gif'), mp4: B('/media/adud-al-dawla/campaigns-fa.mp4', '/media/adud-al-dawla/campaigns-en.mp4'), webm: B('/media/adud-al-dawla/campaigns-fa.webm', '/media/adud-al-dawla/campaigns-en.webm'), poster: B('/media/adud-al-dawla/campaigns-fa.png', '/media/adud-al-dawla/campaigns-en.png'), width: 958, height: 356 },
   },

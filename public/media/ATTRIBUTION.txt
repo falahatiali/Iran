@@ -296,3 +296,8 @@ adud-al-dawla (remote, Wikimedia Commons; licence read from the Commons API 2026
 - Band_Amir_by_Eugène_Flandin.jpg — Eugène Flandin — Public domain — https://commons.wikimedia.org/wiki/File:Band_Amir_by_Eug%C3%A8ne_Flandin.jpg
 - Inscription_of_Adud_al-Dawla_in_Persepolis.jpg — medieval-islamic-history.com — CC0 — https://commons.wikimedia.org/wiki/File:Inscription_of_Adud_al-Dawla_in_Persepolis.jpg
 - public/media/adud-al-dawla/campaigns-* — clip rendered from this site's own map
+
+mahmud (remote, Wikimedia Commons; licence read from the Commons API 2026-10-31)
+- Entrance_of_Mahmoud_(_998-1030)_Mausoleum,_Ghazni_,_Afghanistan._Frédéric_Gadmer,_1928.jpg — Frédéric Gadmer — Public domain — https://commons.wikimedia.org/wiki/File:Entrance_of_Mahmoud_(_998-1030)_Mausoleum,_Ghazni_,_Afghanistan._Fr%C3%A9d%C3%A9ric_Gadmer,_1928.jpg
+- Somnath_temple_ruins_(1869).jpg — D. H. Sykes — Public domain — https://commons.wikimedia.org/wiki/File:Somnath_temple_ruins_(1869).jpg
+- public/media/mahmud/campaigns-* — clip rendered from this site's own map
