@@ -183,3 +183,6 @@ Narseh page (/king/narseh)
   coin-narseh: American Numismatic Society, CC0. Source: https://commons.wikimedia.org/wiki/File:Coin_of_Narseh,_obverse.jpg
   paikuli-bust: Osama Shukir Muhammed Amin, CC BY-SA 4.0. Source: https://commons.wikimedia.org/wiki/File:14._Bust_of_the_Sasanian_king_Narseh_(1_of_5)_once_decorated_the_king%27s_monumental_tower_at_the_Paikuli_Pass_(so-called_Paikuli_Tower),_Sulaymaniyah,_Iraqi_Kurdistan._Built_by_Narseh,_c._293_CE._Sulaymaniyah_Museum,_Iraqi_Kurdistan.jpg
   paikuli-block: Osama Shukir Muhammed Amin, CC BY-SA 4.0. Source: https://commons.wikimedia.org/wiki/File:Stone_block_with_Paikuli_inscription.JPG
+Hormizd II page (/king/hormizd-ii)
+  relief-hormizd2: Diego Delso, CC BY 4.0. Source: https://commons.wikimedia.org/wiki/File:Relief_of_Hormizd_II_in_Naqsh-e_Rostam.jpg
+  coin-hormizd2: Classical Numismatic Group, CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:Coin_of_Hormizd_II.jpg

@@ -35,6 +35,42 @@ export const OSXA: Coord = [41.6, 39.95]
 /** Callinicum (Raqqa). */
 export const CALLINICUM: Coord = [39.02, 35.95]
 export const ARMENIA: Coord = [44.0, 39.6]
+/** Īḏaj (modern Izeh) in Khuzestan, near Hormizd II's district of Wahišt-Hormoz. */
+export const IDAJ: Coord = [49.87, 31.83]
+/** The Syrian desert edge, for Balʿami's story of a raid on the Arabs of Syria. */
+export const SYRIA_DESERT: Coord = [37.5, 33.0]
+/** Hajar (al-Ḥasā) and al-Ḵaṭṭ, the Bahrain coast. */
+export const HAJAR: Coord = [49.6, 25.4]
+export const YAMAMA: Coord = [46.8, 24.2]
+/** Ḥira, the Lakhmid seat, 7 km from modern Najaf. */
+export const HIRA: Coord = [44.4, 31.98]
+export const AMIDA: Coord = [40.23, 37.91]
+export const SINGARA: Coord = [41.86, 36.33]
+/** Bezabde, on the Tigris near Cizre. */
+export const BEZABDE: Coord = [42.19, 37.33]
+/** Sumere (Samarra), Ammianus 25.6.4. */
+export const SAMARRA: Coord = [43.87, 34.2]
+/** Maranga, on the Tigris north of Ctesiphon; the exact site is unknown, the marker is approximate. */
+export const MARANGA: Coord = [44.2, 33.75]
+/** Circesium, where Julian crossed the Khabur into Persian land. */
+export const CIRCESIUM: Coord = [40.42, 35.17]
+/** Pirisabora (Anbar). */
+export const PIRISABORA: Coord = [43.68, 33.4]
+export const TAQ_E_BOSTAN: Coord = [47.13, 34.39]
+export const SUSA_KARKHA: Coord = [48.25, 32.2]
+export const NISHAPUR: Coord = [58.8, 36.21]
+/** Gurgan (Hyrcania). */
+export const HYRCANIA: Coord = [54.43, 36.84]
+export const MARV: Coord = [61.83, 37.66]
+export const NISA: Coord = [58.2, 38.0]
+/** Kušmēhan, near Marv; the exact site is unknown. */
+export const KUSMEHAN: Coord = [62.3, 37.3]
+/** Ādur Gušnasp at Takht-e Soleyman. */
+export const ADUR_GUSNASP: Coord = [47.24, 36.6]
+/** Seleucia, beside Ctesiphon (Council of 410). */
+export const SELEUCIA: Coord = [44.52, 33.1]
+export const ISFAHAN: Coord = [51.67, 32.65]
+export const THEODOSIOPOLIS: Coord = [41.27, 39.9]
 
 export const SAS = { fa: 'ساسانیان', en: 'Sasanians' }
 
@@ -60,6 +96,22 @@ export const sasSources: Record<string, FeaturedSource> = Object.fromEntries(([
   { id: 'ir-narseh', author: 'U. Weber, Encyclopaedia Iranica', title: 'Narseh', year: '2016', url: IR('narseh') },
   { id: 'ir-kartir', author: 'P. O. Skjærvø, Encyclopaedia Iranica', title: 'Kartir', year: '2011', url: IR('kartir'), note: { fa: 'ترجمهٔ بخش‌هایی از کتیبه‌های کرتیر در این مقاله آمده است.', en: 'The article translates passages from Kartir’s inscriptions.' } },
   { id: 'cmc', author: 'A. Henrichs & L. Koenen (via Iranica)', title: 'Cologne Mani Codex 18', year: '1970–1975', note: { fa: 'زندگی‌نامهٔ یونانی مانی؛ تاریخ تاج‌گذاری شاپور و گشودن هترا را می‌دهد. اینجا تنها از راه ایرانیکا.', en: 'A Greek life of Mani; it dates Shapur’s crowning and the fall of Hatra. Used here only through Iranica.' } },
+  { id: 'ir-hormozd2', author: 'A. Sh. Shahbazi, Encyclopaedia Iranica', title: 'Hormozd II', year: '2004', url: IR('hormozd-ii') },
+  { id: 'ir-adurnarseh', author: 'A. Tafażżolī, Encyclopaedia Iranica', title: 'Ādur Narseh', year: '1983', url: IR('adur-narseh') },
+  { id: 'ir-shapur2', author: 'T. Daryaee, Encyclopaedia Iranica', title: 'Šāpur II', year: '2009', url: IR('shapur-ii') },
+  { id: 'ammianus', author: 'Ammianus Marcellinus, tr. J. C. Rolfe (Loeb, 1935–1940)', title: 'Res Gestae, books 18–25 (LacusCurtius)', year: '1935–1940', url: 'https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Ammian/home.html', note: { fa: 'آمیانوس افسری رومی بود که خود در آمیدا (۳۵۹ م.) و در لشکرکشی ژولیان (۳۶۳ م.) حاضر بود. شاهد عینی است، اما از سوی روم.', en: 'Ammianus was a Roman officer who was himself present at Amida (359) and on Julian’s campaign (363). An eyewitness, but on the Roman side.' } },
+  { id: 'agathias', author: 'Agathias, tr. J. D. Frendo', title: 'The Histories (CFHB 2A), book 4.25–27', year: '1975', url: 'https://archive.org/details/cfhb-11.1-nicetae-choniatae-historia', note: { fa: 'آگاثیاس (سدهٔ ششم م.) فهرست شاهان ساسانی را، به گفتهٔ خودش، از سالنامه‌های شاهی ایران گرفت.', en: 'Agathias (6th century) took his list of Sasanian kings, by his own account, from the Persian royal annals.' } },
+  { id: 'ir-jovian', author: 'E. Kettenhofen, Encyclopaedia Iranica', title: 'Jovian', year: '2009', url: IR('jovian') },
+  { id: 'ir-ardashir2', author: 'A. Sh. Shahbazi, Encyclopaedia Iranica', title: 'Ardašīr II', year: '1986', url: IR('ardasir-ii-sasanian-king') },
+  { id: 'overlaet', author: 'B. Overlaet', title: 'Ardashir II or Shapur III? Reflections on the identity of a king in the smaller grotto at Taq-i Bustan, Iranica Antiqua 46, pp. 235–50', year: '2011', url: 'https://doi.org/10.2143/IA.46.0.2084421' },
+  { id: 'overlaet2', author: 'B. Overlaet', title: 'Ahura Mazda and Shapur II? A note on Taq-i Bustan I, the investiture of Ardashir II (379–383), Iranica Antiqua 47', year: '2012', url: 'https://doi.org/10.2143/ia.47.0.2141964' },
+  { id: 'ir-bahram4', author: 'O. Klíma, Encyclopaedia Iranica', title: 'Bahrām IV', year: '1988', url: 'https://www.iranicaonline.org/articles/bahram-the-name-of-six-sasanian-kings/bahram-iv/' },
+  { id: 'ir-yazdegerd1', author: 'A. Sh. Shahbazi, Encyclopaedia Iranica', title: 'Yazdegerd I', year: '2003', url: IR('yazdegerd-i') },
+  { id: 'procopius', author: 'Procopius, tr. H. B. Dewing (Loeb)', title: 'History of the Wars 1.2', year: '1914', url: 'https://archive.org/details/procopius00procgoog' },
+  { id: 'ir-bahram5', author: 'O. Klíma, Encyclopaedia Iranica', title: 'Bahrām V Gōr', year: '1988', url: 'https://www.iranicaonline.org/articles/bahram-the-name-of-six-sasanian-kings/bahram-v/' },
+  { id: 'ir-hira', author: 'C. E. Bosworth, Encyclopaedia Iranica', title: 'Ḥira', year: '2003', url: IR('hira') },
+  { id: 'ir-kidarites', author: 'F. Grenet, Encyclopaedia Iranica', title: 'Kidarites', year: '2022', url: IR('kidarites') },
+  { id: 'ir-haftpeykar', author: 'F. de Blois, Encyclopaedia Iranica', title: 'Haft Peykar', year: '2002', url: IR('haft-peykar') },
 ] as FeaturedSource[]).map((s) => [s.id, s]))
 
 export const pick = (...ids: string[]): FeaturedSource[] => ids.map((id) => {
@@ -71,6 +123,8 @@ export const pick = (...ids: string[]): FeaturedSource[] => ids.map((id) => {
 const u = (path: string) => `https://upload.wikimedia.org/wikipedia/commons/${path}`
 const f = (name: string) => `https://commons.wikimedia.org/wiki/File:${name}`
 const BY2 = 'https://creativecommons.org/licenses/by/2.0'
+const BY25 = 'https://creativecommons.org/licenses/by/2.5'
+const BY4 = 'https://creativecommons.org/licenses/by/4.0'
 const BYSA2 = 'https://creativecommons.org/licenses/by-sa/2.0'
 const BYSA3 = 'https://creativecommons.org/licenses/by-sa/3.0'
 const BYSA4 = 'https://creativecommons.org/licenses/by-sa/4.0'
@@ -97,6 +151,20 @@ export const sasPhotos: Record<string, CommonsPhoto> = {
   'coin-narseh': { id: 'coin-narseh', src: u('thumb/3/33/Coin_of_Narseh%2C_obverse.jpg/960px-Coin_of_Narseh%2C_obverse.jpg'), page: f('Coin_of_Narseh,_obverse.jpg'), author: 'American Numismatic Society', license: 'CC0', caption: { fa: 'سکهٔ نرسی (روی سکه)', en: 'A coin of Narseh (obverse)' } },
   'paikuli-bust': { id: 'paikuli-bust', src: u('thumb/2/2a/14._Bust_of_the_Sasanian_king_Narseh_%281_of_5%29_once_decorated_the_king%27s_monumental_tower_at_the_Paikuli_Pass_%28so-called_Paikuli_Tower%29%2C_Sulaymaniyah%2C_Iraqi_Kurdistan._Built_by_Narseh%2C_c._293_CE._Sulaymaniyah_Museum%2C_Iraqi_Kurdistan.jpg/960px-thumbnail.jpg'), page: f('14._Bust_of_the_Sasanian_king_Narseh_(1_of_5)_once_decorated_the_king%27s_monumental_tower_at_the_Paikuli_Pass_(so-called_Paikuli_Tower),_Sulaymaniyah,_Iraqi_Kurdistan._Built_by_Narseh,_c._293_CE._Sulaymaniyah_Museum,_Iraqi_Kurdistan.jpg'), author: 'Osama Shukir Muhammed Amin', license: 'CC BY-SA 4.0', licenseUrl: BYSA4, caption: { fa: 'نیم‌تنهٔ سنگی نرسی از برج پایکولی، موزهٔ سلیمانیه', en: 'A stone bust of Narseh from the Paikuli tower, Sulaymaniyah Museum' } },
   'paikuli-block': { id: 'paikuli-block', src: u('thumb/e/ee/Stone_block_with_Paikuli_inscription.JPG/960px-Stone_block_with_Paikuli_inscription.JPG'), page: f('Stone_block_with_Paikuli_inscription.JPG'), author: 'Osama Shukir Muhammed Amin', license: 'CC BY-SA 4.0', licenseUrl: BYSA4, caption: { fa: 'سنگی از کتیبهٔ پایکولی', en: 'A block of the Paikuli inscription' } },
+  'relief-hormizd2': { id: 'relief-hormizd2', src: u('thumb/a/a2/Relief_of_Hormizd_II_in_Naqsh-e_Rostam.jpg/960px-Relief_of_Hormizd_II_in_Naqsh-e_Rostam.jpg'), page: f('Relief_of_Hormizd_II_in_Naqsh-e_Rostam.jpg'), author: 'Diego Delso', license: 'CC BY 4.0', licenseUrl: BY4, caption: { fa: 'نقش سوارکاری هرمز دوم در نقش رستم: شاه با نیزه سواری زره‌پوش را از اسب می‌اندازد', en: 'Hormizd II’s equestrian relief at Naqsh-e Rostam: the king unhorses an armoured rider with his lance' } },
+  'coin-hormizd2': cng('coin-hormizd2', 'a/a0/Coin_of_Hormizd_II.jpg', 'Coin_of_Hormizd_II.jpg', 'سکهٔ هرمز دوم با تاج شاهین', 'A coin of Hormizd II with the falcon crown'),
+  'coin-shapur2': { id: 'coin-shapur2', src: u('thumb/5/5f/Silver_coin_of_Shapur_II%2C_309-379_CE%2C_from_Iraq%2C_Sulaymaniyah_Museum.jpg/960px-Silver_coin_of_Shapur_II%2C_309-379_CE%2C_from_Iraq%2C_Sulaymaniyah_Museum.jpg'), page: f('Silver_coin_of_Shapur_II,_309-379_CE,_from_Iraq,_Sulaymaniyah_Museum.jpg'), author: 'Osama Shukir Muhammed Amin', license: 'CC BY-SA 4.0', licenseUrl: BYSA4, caption: { fa: 'درهم سیمین شاپور دوم، موزهٔ سلیمانیه', en: 'A silver drachm of Shapur II, Sulaymaniyah Museum' } },
+  'amida-walls': { id: 'amida-walls', src: u('thumb/7/75/City_Wall_and_Battlements_-_Diyarbakir_-_Turkey_%285777328071%29.jpg/960px-City_Wall_and_Battlements_-_Diyarbakir_-_Turkey_%285777328071%29.jpg'), page: f('City_Wall_and_Battlements_-_Diyarbakir_-_Turkey_(5777328071).jpg'), author: 'Adam Jones', license: 'CC BY-SA 2.0', licenseUrl: BYSA2, caption: { fa: 'باروی دیاربکر (آمیدای کهن). بیشتر دیوار امروزی از بازسازی‌های پس از سدهٔ چهارم است.', en: 'The walls of Diyarbakır (ancient Amida). Most of today’s wall comes from rebuildings after the 4th century.' } },
+  'tb-small': { id: 'tb-small', src: u('thumb/e/ed/Taq-e_Bostan_-_High-relief_Shapur_II_and_Shapur_III.jpg/960px-Taq-e_Bostan_-_High-relief_Shapur_II_and_Shapur_III.jpg'), page: f('Taq-e_Bostan_-_High-relief_Shapur_II_and_Shapur_III.jpg'), author: 'Philippe Chavin', license: 'CC BY 2.5', licenseUrl: BY25, caption: { fa: 'ایوان کوچک طاق بستان: دو شاه ایستاده که کتیبه‌ها آنان را شاپور دوم و شاپور سوم می‌نامند', en: 'The small grotto at Taq-e Bostan: two standing kings whom the inscriptions name as Shapur II and Shapur III' } },
+  'tb-ardashir2': { id: 'tb-ardashir2', src: u('thumb/7/76/Taq-e_Bostan_%28Kermanshah%29_%E2%80%93_Relief_of_the_Coronation_of_Ardashir_II.jpg/960px-Taq-e_Bostan_%28Kermanshah%29_%E2%80%93_Relief_of_the_Coronation_of_Ardashir_II.jpg'), page: f('Taq-e_Bostan_(Kermanshah)_–_Relief_of_the_Coronation_of_Ardashir_II.jpg'), author: 'Skot', license: 'CC BY-SA 4.0', licenseUrl: BYSA4, caption: { fa: 'نقش دیهیم‌ستانی اردشیر دوم در طاق بستان: در میان اردشیر، در راست کسی با تاج شاپور دوم که حلقهٔ شاهی را می‌دهد، در چپ مهر بر گل نیلوفر؛ زیر پای دو شاه، رومی افتاده‌ای', en: 'Ardashir II’s investiture relief at Taq-e Bostan: Ardashir in the centre, on the right a figure in Shapur II’s crown handing him the ring, on the left Mithra on a lotus; beneath the two kings lies a fallen Roman' } },
+  'coin-ardashir2': { id: 'coin-ardashir2', src: u('thumb/e/e3/Drachm_of_Ardashir_II_-_Bishapur.jpg/960px-Drachm_of_Ardashir_II_-_Bishapur.jpg'), page: f('Drachm_of_Ardashir_II_-_Bishapur.jpg'), author: 'Classical Numismatic Group, LLC', license: 'CC BY 4.0', licenseUrl: BY4, caption: { fa: 'درهم اردشیر دوم، ضرب بیشاپور؛ تاج گنبدی اردشیر یکم', en: 'A drachm of Ardashir II, Bishapur mint, with Ardashir I’s domed crown' } },
+  'coin-shapur3': cng('coin-shapur3', 'a/ab/Coin_of_the_Sasanian_king_Shapur_III%2C_Sindh_mint.jpg', 'Coin_of_the_Sasanian_king_Shapur_III,_Sindh_mint.jpg', 'سکهٔ شاپور سوم، ضرب سند', 'A coin of Shapur III, Sind mint'),
+  'coin-bahram4': { id: 'coin-bahram4', src: u('thumb/3/38/Drachm_of_Bahram_IV_ca_CE_388%E2%80%9399.jpg/960px-Drachm_of_Bahram_IV_ca_CE_388%E2%80%9399.jpg'), page: f('Drachm_of_Bahram_IV_ca_CE_388–99.jpg'), author: 'Metropolitan Museum of Art', license: 'CC0', caption: { fa: 'درهم بهرام چهارم با تاج بال‌دار، موزهٔ متروپولیتن', en: 'A drachm of Bahram IV with the winged crown, Metropolitan Museum of Art' } },
+  'coin-yazdegerd1': cng('coin-yazdegerd1', '6/60/Coin_of_Yazdegerd_I%2C_Gurgan_or_Qum_mint.jpg', 'Coin_of_Yazdegerd_I,_Gurgan_or_Qum_mint.jpg', 'سکهٔ یزدگرد یکم؛ تاج گنبدی با کنگره و هلال ماه', 'A coin of Yazdegerd I: the domed crown with merlons and a crescent moon'),
+  'coin-bahram5': { id: 'coin-bahram5', src: u('7/7d/Vahr%C4%81m_%28Bahram%29_V_CE_420-438_AV_Dinar_23mm_7.08_g_Sind_mint.jpg'), page: f('Vahrām_(Bahram)_V_CE_420-438_AV_Dinar_23mm_7.08_g_Sind_mint.jpg'), author: 'CNG Coins', license: 'CC BY-SA 3.0', licenseUrl: BYSA3, caption: { fa: 'دینار زر بهرام پنجم، ضرب سند', en: 'A gold dinar of Bahram V, Sind mint' } },
+  'plate-azadeh': { id: 'plate-azadeh', src: u('thumb/e/e5/Plate_with_a_hunting_scene_from_the_tale_of_Bahram_Gur_and_Azadeh_MET_DT1634.jpg/960px-Plate_with_a_hunting_scene_from_the_tale_of_Bahram_Gur_and_Azadeh_MET_DT1634.jpg'), page: f('Plate_with_a_hunting_scene_from_the_tale_of_Bahram_Gur_and_Azadeh_MET_DT1634.jpg'), author: 'Metropolitan Museum of Art', license: 'CC0', caption: { fa: 'بشقاب سیمین ساسانی با صحنهٔ شکار از داستان بهرام گور و آزاده، موزهٔ متروپولیتن', en: 'A Sasanian silver plate with a hunting scene from the tale of Bahram Gur and Azadeh, Metropolitan Museum of Art' } },
+  'lions-crown': { id: 'lions-crown', src: u('5/51/Bahram_Gur_Slays_Two_Lions_and_Gains_the_Crown.jpeg'), page: f('Bahram_Gur_Slays_Two_Lions_and_Gains_the_Crown.jpeg'), author: 'Anonymous (Safavid), Museum of Fine Arts, Boston', license: 'Public domain', caption: { fa: 'نگارهٔ صفوی از شاهنامه: بهرام گور دو شیر را می‌کشد و تاج را برمی‌دارد (روایت، نه تاریخ)', en: 'A Safavid Shahnameh painting: Bahram Gur kills two lions and takes the crown (tradition, not history)' } },
+  'blue-pavilion': { id: 'blue-pavilion', src: u('thumb/3/32/%22Bahram_Gur_in_the_Blue_Pavilion%22%2C_Folio_from_Khamsa_%28Quintet%29_of_Nizami_MET_DP277218.jpg/960px-%22Bahram_Gur_in_the_Blue_Pavilion%22%2C_Folio_from_Khamsa_%28Quintet%29_of_Nizami_MET_DP277218.jpg'), page: f('%22Bahram_Gur_in_the_Blue_Pavilion%22,_Folio_from_Khamsa_(Quintet)_of_Nizami_MET_DP277218.jpg'), author: 'Metropolitan Museum of Art', license: 'CC0', caption: { fa: '«بهرام گور در گنبد پیروزه‌گون»، برگی از خمسهٔ نظامی (هفت‌پیکر)، موزهٔ متروپولیتن', en: '“Bahram Gur in the Blue Pavilion”, a folio from Nizami’s Khamsa (Haft Peykar), Metropolitan Museum of Art' } },
 }
 export const photos = (...ids: string[]): CommonsPhoto[] => ids.map((id) => sasPhotos[id])
 
