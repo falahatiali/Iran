@@ -144,3 +144,9 @@ Parthian batch 4 coins (licences read from the Commons API on 2026-10-31):
   coin-vologases6: Gdr at en.wikipedia, Public domain. Source: https://commons.wikimedia.org/wiki/File:Coin_of_Vologases_VI_of_Parthia.jpg
   coin-artabanus4: Classical Numismatic Group, CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:Drachm_of_Artabanus_IV,_Hamadan_mint.jpg
   coin-artabanus4-b: Classical Numismatic Group, CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:Drachm_of_Artabanus_IV_(2),_Hamadan_mint.jpg
+
+artabanus-iv/reign-{fa,en}.{gif,mp4,webm,png}
+  Our own render of the campaign map on the /king/artabanus-iv page by scripts/render-campaign-clip.py --section reign.
+  Narrative after Herodian 4.10–15 and 6.2 (tr. Echols) and Encyclopaedia Iranica; coastlines Natural Earth (public domain).
+artabanus-iv/battle-nisibis-{fa,en}.{gif,mp4,webm,png}
+  Our own render of the schematic Nisibis diagram (--battle nisibis); positions are editorial, after Herodian 4.15.

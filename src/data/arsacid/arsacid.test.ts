@@ -44,7 +44,9 @@ test('Arsacid disputes are flagged; no excluded commentator is named', () => {
   assert.ok(has('mithridates-ii', /Friyapat/, 'accession'))
   assert.ok(has('gotarzes-i', /Mithridates IV/, 'demetrius'))
   assert.ok(has('mithridates-iii', /Olbrycht/, 'expelled'))
-  for (const slug of ['mithridates-i', 'mithridates-ii']) { const k = by(slug); if (k) assert.ok(k.campaign?.clip, slug) }
+  assert.ok(has('artabanus-iv', /Herodian/, 'proposal') && has('artabanus-iv', /Herodian/, 'nisibis') && has('artabanus-iv', /Nöldeke/, 'hormozgan'))
+  assert.ok(has('vologases-v', /Dio/, 'hatra'))
+  for (const slug of ['mithridates-i', 'mithridates-ii', 'artabanus-iv']) { const k = by(slug); if (k) assert.ok(k.campaign?.clip, slug) }
   assert.match(parSources.justin.url ?? '', /^https:\/\//)
   assert.equal(/jannatkhah|جنت.?خواه/i.test(JSON.stringify(arsacidKings)), false)
 })
