@@ -70,7 +70,7 @@ export const dynastySources: Record<string, string[]> = {
   buyids: ['iranica-buyids', 'iranica-azod', 'iranica-iran-islamic', 'chi'],
   ghaznavids: ['iranica-ghaznavids', 'iranica-mahmud', 'bayhaqi', 'bosworth'],
   seljuks: ['iranica-dandanqan', 'iranica-alp', 'iranica-malekshah', 'iranica-nizam', 'iranica-sanjar', 'iranica-tekish', 'chi'],
-  khwarazmshahs: ['iranica-anushtigin', 'iranica-tekish', 'iranica-muhammad-kh', 'iranica-otrar', 'iranica-jalal', 'juvayni', 'chi'],
+  khwarazmshahs: ['iranica-anushtigin', 'iranica-tekish', 'iranica-sanjar', 'iranica-muhammad-kh', 'iranica-otrar', 'iranica-jalal', 'juvayni', 'chi'],
   ilkhanids: ['rashid', 'juvayni', 'chi', 'iranica'],
   timurids: ['chi', 'bosworth', 'iranica'],
   turkmens: ['bosworth', 'iranica'],
