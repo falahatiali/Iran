@@ -346,3 +346,10 @@ ismail-i and abbas-i (remote, Wikimedia Commons; licence read from the Commons A
 - Portrait_of_Shah_‘Abbas_I._Attributed_to_Bishandas,_circa_1617.jpg — attributed to Bishandas — Public domain — https://commons.wikimedia.org/wiki/File:Portrait_of_Shah_%E2%80%98Abbas_I._Attributed_to_Bishandas,_circa_1617.jpg
 - Naghshe_jahan_01.jpg — Pedram forouzanfar — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Naghshe_jahan_01.jpg
 - public/media/ismail-i/campaigns-*, public/media/ismail-i/battle-chaldiran-*, public/media/abbas-i/campaigns-* — clips rendered from this site's own maps and diagram
+
+nader (remote, Wikimedia Commons; licence read from the Commons API 2026-10-31)
+- Contemporary_portrait_of_Nader_Shah._Artist_unknown,_created_in_ca._1740_in_Iran_(cropped).jpg — unknown author — Public domain — https://commons.wikimedia.org/wiki/File:Contemporary_portrait_of_Nader_Shah._Artist_unknown,_created_in_ca._1740_in_Iran_(cropped).jpg
+- Nadir_Shah_at_the_sack_of_Delhi_-_Battle_scene_with_Nader_Shah_on_horseback,_possibly_by_Muhammad_Ali_ibn_Abd_al-Bayg_ibn_Ali_Quli_Jabbadar,_mid-18th_century,_Museum_of_Fine_Arts,_Boston.jpg — possibly Muhammad Ali ibn Abd al-Bayg Jabbadar — Public domain — https://commons.wikimedia.org/wiki/File:Nadir_Shah_at_the_sack_of_Delhi_-_Battle_scene_with_Nader_Shah_on_horseback,_possibly_by_Muhammad_Ali_ibn_Abd_al-Bayg_ibn_Ali_Quli_Jabbadar,_mid-18th_century,_Museum_of_Fine_Arts,_Boston.jpg
+- Kalat_Naderi_Sun_Palace_Dome.jpg — Leopeji — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Kalat_Naderi_Sun_Palace_Dome.jpg
+- Tomb_of_Nader_Shah_-_Mashhad_1.jpg — Mohammad Taaghi — CC BY 4.0 — https://commons.wikimedia.org/wiki/File:Tomb_of_Nader_Shah_-_Mashhad_1.jpg
+- public/media/nader/campaigns-* — clip rendered from this site's own map
