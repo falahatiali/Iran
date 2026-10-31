@@ -212,6 +212,7 @@ See [RESEARCH_LOG.md](./RESEARCH_LOG.md) §13 for the source table.
 
 **Done in this pass**
 
+- `short2.ts`: Hormizd II (`hormizd-ii`) and Adur-Narseh (`adur-narseh`).
 - Featured: Shapur II (`shapur-ii`), with a reign clip and an animated battle diagram of Julian's 363 campaign (fa/en GIF). The womb-crowning story is labelled as tradition.
 - `short3.ts`: Ardashir II, Shapur III, Bahram IV and Yazdegerd I. Quotes are verbatim from Agathias (tr. Frendo), Procopius (tr. Dewing) and the Sasanika ŠTBn-II translation. Flagged: the Armenian partition date (Shahbazi vs Klíma) and Yazdegerd I's guardianship of Theodosius II (Agathias doubts it). Items found only on Wikipedia were left out, including Shapur III's tent story.
 - Featured: Bahram V Gur (`bahram-v`), with a reign clip and an animated Kušmēhan battle diagram. Flagged: the lions-and-crown ordeal, the identity of the eastern enemy (Klíma vs Grenet) and the date of the Anatolius embassy (Dewing's margin gives 441, under Yazdegerd II). The Haft Peykar section is labelled as tradition, and tests check both labels.
