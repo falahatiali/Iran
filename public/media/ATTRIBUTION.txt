@@ -371,3 +371,10 @@ agha-mohammad (remote, Wikimedia Commons; licence read from the Commons API 2026
 - Capture_of_Tiflis_and_defeat_of_the_Russians_by_Agha_Muhammad_Shah._Folio_from_the_Shahinshahnama_of_Fath_'Ali_Khan_Saba,_dated_1810.jpg — Shahanshahnameh of Fath-Ali Khan Saba (British Library, I.O. Islamic 3442) — Public domain — https://commons.wikimedia.org/wiki/File:Capture_of_Tiflis_and_defeat_of_the_Russians_by_Agha_Muhammad_Shah._Folio_from_the_Shahinshahnama_of_Fath_%27Ali_Khan_Saba,_dated_1810.jpg
 - Coin_of_Agha_Mohammad_Khan_Qajar,_struck_at_the_Rasht_mint.jpg — Classical Numismatic Group (uploaded by LouisAragon) — CC BY-SA 2.5 — https://commons.wikimedia.org/wiki/File:Coin_of_Agha_Mohammad_Khan_Qajar,_struck_at_the_Rasht_mint.jpg
 - public/media/agha-mohammad/campaigns-* — clip rendered from this site's own map
+
+naser-al-din (remote, Wikimedia Commons; licence read from the Commons API 2026-10-31)
+- Photo_portrait_of_Naser-al_Din_Shah_Qajar_in_1873.jpg — Eugene de Blois — CC0 — https://commons.wikimedia.org/wiki/File:Photo_portrait_of_Naser-al_Din_Shah_Qajar_in_1873.jpg
+- Portrait_of_Amir_Kabir_-_Hossein_Arjangi_(Mir_Mosavvar)_-_Golestan_Palace.jpg — Mir Hossein Arjangi (Mir Mosavvar) — Public domain — https://commons.wikimedia.org/wiki/File:Portrait_of_Amir_Kabir_-_Hossein_Arjangi_(Mir_Mosavvar)_-_Golestan_Palace.jpg
+- Fin_Garden,_or_Bagh-e_Fin.jpg — reibai — CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Fin_Garden,_or_Bagh-e_Fin.jpg
+- Representatives_of_the_First_Iranian_Parliament_WDL11288.png — unknown photographer (World Digital Library) — Public domain — https://commons.wikimedia.org/wiki/File:Representatives_of_the_First_Iranian_Parliament_WDL11288.png
+- public/media/naser-al-din/campaigns-* — clip rendered from this site's own map

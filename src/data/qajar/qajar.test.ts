@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
-import { aghaMohammad, fathAli, qjPhotos, qjSourceIds } from './index'
+import { aghaMohammad, fathAli, naserAlDin, qjPhotos, qjSourceIds } from './index'
 
 const filled = (s: string | undefined) => typeof s === 'string' && s.trim().length > 0
 
-for (const king of [aghaMohammad, fathAli]) {
+for (const king of [aghaMohammad, fathAli, naserAlDin]) {
   test(`${king.slug} events are ordered, sourced, bilingual and hedged`, () => {
     for (const list of [king.events, king.campaign?.events ?? []]) {
       for (let i = 1; i < list.length; i++) assert.ok(list[i].year >= list[i - 1].year, list[i].id)
@@ -42,7 +42,7 @@ test('treaty quotes come from the published Hurewitz translation', () => {
 })
 
 test('quotes cite a listed source', () => {
-  for (const k of [aghaMohammad, fathAli]) for (const s of k.dossier) for (const q of s.quotes ?? []) assert.ok(qjSourceIds.has(q.source) && filled(q.text) && filled(q.fa), s.id)
+  for (const k of [aghaMohammad, fathAli, naserAlDin]) for (const s of k.dossier) for (const q of s.quotes ?? []) assert.ok(qjSourceIds.has(q.source) && filled(q.text) && filled(q.fa), s.id)
 })
 
 test('photos carry Commons pages and licences', () => {
@@ -69,11 +69,17 @@ test('Agha Mohammad Khan: Kerman and Tiflis are reported with the source’s num
 test('the Agha Mohammad Khan article is credited to Perry, not Hambly', () => {
   const s = aghaMohammad.sources.find((x) => x.id === 'iranica-aga-mohammad-khan')!
   assert.match(s.author, /Perry/)
-  for (const k of [aghaMohammad, fathAli]) for (const sec of k.dossier) for (const q of sec.quotes ?? []) assert.doesNotMatch(q.ref, /Hambly/)
+  for (const k of [aghaMohammad, fathAli, naserAlDin]) for (const sec of k.dossier) for (const q of sec.quotes ?? []) assert.doesNotMatch(q.ref, /Hambly/)
 })
 
 test('campaign clip covers Tehran, Kerman, Tiflis, Mashhad and Shusha in order', () => {
   const ids = aghaMohammad.campaign!.events.map((e) => e.id)
   const want = ['c-tehran', 'c-kerman', 'c-tiflis', 'c-mashhad', 'c-shusha2']
   assert.deepEqual(ids.filter((id) => want.includes(id)), want)
+})
+
+test('Naser al-Din page flags the tobacco and constitution disputes', () => {
+  assert.equal(naserAlDin.events.find((e) => e.id === 'concession')!.certainty, 'disputed')
+  assert.match(naserAlDin.events.find((e) => e.id === 'fatwa')!.certaintyNote!.en, /outright forgery/)
+  assert.match(naserAlDin.dossier.find((s) => s.id === 'constitution')!.interpretation.en.join(' '), /do not agree about the farmān of 5 August/)
 })
