@@ -96,3 +96,42 @@ export const balash: FeaturedKing = {
   related: related(['peroz-i', 'پیروز یکم، برادرش', 'Peroz I, his brother'], ['kavad-i', 'قباد یکم، برادرزاده و جانشینش', 'Kavad I, his nephew and successor']),
   wikipedia: 'https://en.wikipedia.org/wiki/Balash',
 }
+
+const KAVAD_EXILE = note(
+  'چگونگی بازگشت تاج محل بحث است. آگاثیاس و دینوری می‌گویند زاماسپ کناره گرفت و بخشوده شد؛ پروکوپیوس می‌گوید شاید کور شد؛ الیاس نصیبینی (سدهٔ یازدهم) می‌گوید قباد او را کشت. چوکسی سخن الیاس را آمیختن سرنوشت زاماسپ با کیفر بزرگان شورشی می‌داند.',
+  'How the crown changed hands is disputed. Agathias and Dinavari say Zamasp abdicated and was pardoned; Procopius says he was probably blinded; Elias of Nisibis (11th century) says Kavad executed him. Choksy thinks Elias confused Zamasp’s fate with Kavad’s punishment of the rebel nobles.')
+
+export const jamasp: FeaturedKing = {
+  slug: 'jamasp', name: B('زاماسپ', 'Zamasp'), dynastyName: SAS,
+  reign: B('۴۹۶–۴۹۸/۴۹۹ م.', '496–498/9 CE'),
+  title: B('زاماسپ؛ شاه میان دو پادشاهی برادر', 'Zamasp: the king between his brother’s two reigns'),
+  lede: B(
+    'زاماسپ (جاماسپ)، پسر پیروز، پس از برکناری برادرش قباد به دست بزرگان و موبدان شاه شد. سه سال بعد، چون قباد با سپاه هپتالی بازگشت، زاماسپ به جنگ نرفت و تاج را واگذاشت.',
+    'Zamasp (Jāmāsp), son of Peroz, was made king when the nobles and priests deposed his brother Kavad. Three years later, when Kavad came back with Hephthalite troops, Zamasp did not fight and gave up the crown.'),
+  stats: [{ n: B('۳', '3'), l: B('سال پادشاهی', 'years of reign') }],
+  mapTitle: B('نقشه: پادشاهی زاماسپ', 'Map: the reign of Zamasp'),
+  span: [496, 499],
+  events: [
+    ev('raised', 496, B('۴۹۶ م. (یا آغاز ۴۹۷ م.)', '496 CE (or early 497 CE)'), 'admin', CTESIPHON, B('برآمدن به تخت', 'Raised to the throne'), B('شورش بزرگان و موبدان، که از دگرگونی‌های اجتماعی و دینی خشمگین بودند، قباد را برکنار و زندانی کرد و زاماسپ را شاهنشاه ساخت. آگاثیاس می‌گوید او را برای خوی آرام و دادگرش برگزیدند.', 'A rising of nobles and priests, angered by social and religious changes, deposed and imprisoned Kavad and made Zamasp king of kings. Agathias says he was chosen for his calm and fair disposition.'), 'secure', ['ir-jamasp', 'ir-kawad1']),
+    ev('synod', 497, B('۴۹۷ م.', '497 CE'), 'religion', CTESIPHON, B('انجمن کلیسا و زناشویی کشیشان', 'Church synod and clerical marriage'), B('سند انجمن کلیسای ایران در ۴۹۷ م. زاماسپ را «آرام و مهربان» می‌خواند. او از جاثلیق بابای در روا داشتن زناشویی کشیشان پشتیبانی کرد.', 'The record of the Persian church’s synod of 497 calls Zamasp “peaceful and kind”. He supported the catholicos Bābay on allowing the clergy to marry.'), 'secure', ['ir-kawad1']),
+    ev('end', 499, B('پایان ۴۹۸ یا آغاز ۴۹۹ م.', 'late 498 or early 499 CE'), 'admin', CTESIPHON, B('واگذاری تاج', 'The crown given up'), B('قباد با سپاه هپتالی بازگشت. زاماسپ، که شاید می‌دانست پشتیبانی کافی ندارد، به جنگ نرفت و تاج را واگذاشت.', 'Kavad came back with Hephthalite troops. Zamasp, probably aware he lacked support, did not fight and gave up the crown.'), 'disputed', ['ir-jamasp', 'ir-kawad1', 'procopius'], KAVAD_EXILE),
+  ],
+  dossier: [
+    sec('reign', 'سه سال در روزگار آشوب', 'Three years in a time of turmoil',
+      [['پیش از پادشاهی زاماسپ، نفوذ مزدکیان رو به افزایش بود، قبیله‌های عرب به آسورستان می‌تاختند، ارمنیان شوریده بودند و رابطه با روم بدتر می‌شد. قحطی هم مردم را می‌آزرد. در سکه‌هایش نام او «جام» نوشته شده است و از پادشاهی او شمارهٔ سال پادشاهی به شیوه‌ای یکسان پشت سکه‌ها آمد. سکهٔ زرینی از او نمی‌شناسیم.'],
+        ['Before Zamasp’s reign Mazdakite influence was growing, Arab tribes raided Asōristān, the Armenians were in revolt and relations with Rome were worsening. Famine also brought hardship. His coins give his name as “Jām”, and his reign standardized the regnal-year notation on coin reverses. No gold coin of his is known.']],
+      [['چوکسی نبود سکهٔ زر را شاید از کمبود فلز در آن روزگار سخت می‌داند. طبری به اشتباه پادشاهی او را شش سال می‌نویسد. نام «جام» شاید او را به جمشید پیوند می‌داد؛ این هم حدس چوکسی است.'],
+        ['Choksy suggests the lack of gold coins may reflect a shortage of bullion in hard times. Ṭabari wrongly gives him six years. The name “Jām” may have linked him with Jamšid; that too is Choksy’s guess.']],
+      [['شاهی که بزرگان برای آرام کردن کشور برگزیدند، سه سال بعد بی‌جنگ کنار رفت. نپذیرفتن جنگ داخلی، هرچه انگیزه‌اش بود، جان بسیاری را نگه داشت. این برداشت ماست.'],
+        ['A king the nobles chose to calm the realm stepped aside three years later without a fight. Refusing civil war, whatever the motive, spared many lives. This is our reading.']],
+      ['ir-jamasp', 'ir-kawad1'], { photos: ['coin-jamasp'] }),
+  ],
+  synthesis: { title: B('جمع‌بندی', 'Synthesis'), paras: {
+    fa: ['زاماسپ سه سال، میان دو پادشاهی برادرش قباد، شاه بود. منابع او را آرام و مهربان می‌خوانند. این‌که پس از بازگشت قباد بخشوده، کور یا کشته شد، محل بحث است.'],
+    en: ['Zamasp reigned for three years between his brother Kavad’s two reigns. The sources call him calm and kind. Whether he was pardoned, blinded or killed after Kavad’s return is disputed.'],
+  }, sources: ['ir-jamasp', 'ir-kawad1'] },
+  sources: pick('ir-jamasp', 'ir-kawad1', 'procopius'),
+  photos: photos('coin-jamasp'),
+  related: related(['kavad-i', 'قباد یکم، برادرش', 'Kavad I, his brother'], ['peroz-i', 'پیروز یکم، پدرش', 'Peroz I, his father']),
+  wikipedia: 'https://en.wikipedia.org/wiki/Jamasp',
+}

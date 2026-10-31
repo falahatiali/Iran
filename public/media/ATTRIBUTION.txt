@@ -217,3 +217,5 @@ Balash page (/king/balash)
 Kavad I page (/king/kavad-i)
   coin-kavad: Osama Shukir Muhammed Amin FRCP(Glasg), CC BY-SA 4.0. Source: https://commons.wikimedia.org/wiki/File:Silver_coin_of_Kavad_I,_reverse,_from_Iraq,_Sulaymaniyah_MUseum.jpg
   dara-ruins: Carole Raddato, CC BY-SA 2.0. Source: https://commons.wikimedia.org/wiki/File:Anastasioupolis_(Mesopotamia),_Turkey.jpg
+Zamasp page (/king/jamasp)
+  coin-jamasp: Osama Shukir Muhammed Amin FRCP(Glasg), CC BY-SA 4.0. Source: https://commons.wikimedia.org/wiki/File:Coin_of_Jamasp,_497-499_CE,_from_Iraq,_Sulaymaniyah_Museum.jpg
