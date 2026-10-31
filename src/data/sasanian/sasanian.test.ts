@@ -63,7 +63,8 @@ test('Sasanian disputes are flagged; legends labelled; no excluded commentator i
   assert.ok(['kavad-ii', 'ardashir-iii', 'shahrbaraz'].every((s) => by(s)) && by('ardashir-iii')?.events.some((e) => e.id === 'fall' && e.certainty === 'disputed' && /630/.test(e.certaintyNote?.en ?? '')), 'Kavad II, Ardashir III, Shahrbaraz pages with the 629/630 dispute flagged')
   assert.ok(by('boran')?.events.some((e) => e.id === 'embassy' && e.certainty === 'disputed' && /Kavad II/.test(e.certaintyNote?.en ?? '')) && (by('boran')?.dossier?.length ?? 0) >= 4, 'Boran: featured-level dossier, True Cross dispute flagged')
   assert.ok(by('azarmidokht')?.dossier?.some((d) => d.id === 'claimants' && /Hormizd/.test(d.historical.en.join(' ')) && /Khosrow IV/.test(d.historical.en.join(' '))) && by('azarmidokht')?.events.some((e) => e.id === 'kisra' && e.certainty === 'disputed'), 'Azarmidokht: claimants grouped, order flagged')
-  for (const slug of ['ardashir-i', 'shapur-i', 'shapur-ii', 'bahram-v', 'yazdegerd-ii', 'peroz-i', 'kavad-i', 'khosrow-i', 'bahram-chobin', 'khosrow-ii']) { const k = by(slug); if (k) assert.ok(k.campaign?.clip, slug) }
+  assert.ok(['qadisiyyah', 'nahavand'].every((id) => by('yazdegerd-iii')?.campaign?.battles?.some((b) => b.id === id)) && by('yazdegerd-iii')?.events.some((e) => e.id === 'death' && e.certainty === 'disputed') && by('yazdegerd-iii')?.dossier?.some((d) => d.id === 'china'), 'Yazdegerd III: two diagrams, death accounts flagged, sons in China')
+  for (const slug of ['ardashir-i', 'shapur-i', 'shapur-ii', 'bahram-v', 'yazdegerd-ii', 'peroz-i', 'kavad-i', 'khosrow-i', 'bahram-chobin', 'khosrow-ii', 'yazdegerd-iii']) { const k = by(slug); if (k) assert.ok(k.campaign?.clip, slug) }
   assert.match(sasSources.skz.url ?? '', /^https:\/\//)
   assert.equal(/jannatkhah|جنت.?خواه/i.test(JSON.stringify(sasanianKings)), false)
 })

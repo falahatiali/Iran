@@ -31,7 +31,7 @@ async def record(url, section, step_ms, workdir, chrome, battle=None):
             await pg.evaluate('(el) => el.scrollIntoView({block: "center", behavior: "instant"})', await fig.element_handle())
             await pg.wait_for_timeout(2000)
             box = await fig.bounding_box()
-            phases = int(await pg.evaluate('(el) => (el.innerText.match(/[/] *([0-9\u06f0-\u06f9]+)/) || [0, "0"])[1].replace(/[\u06f0-\u06f9]/g, (d) => d.charCodeAt(0) - 0x6f0)', await fig.element_handle()))
+            phases = int(await pg.evaluate('(el) => (el.innerText.match(/(?:Phase|مرحله) *[0-9\u06f0-\u06f9]+ *[/] *([0-9\u06f0-\u06f9]+)/) || [0, "0"])[1].replace(/[\u06f0-\u06f9]/g, (d) => d.charCodeAt(0) - 0x6f0)', await fig.element_handle()))
             await fig.get_by_role('button', name=re.compile('^(Play|پخش)$')).click()
             start = time.monotonic() - t0
             await pg.wait_for_timeout(phases * 4200 + 2500)

@@ -245,3 +245,6 @@ Boran page (/king/boran)
 Azarmidokht page (/king/azarmidokht)
   coin-azarmidokht: Classical Numismatic Group, LLC, CC BY 4.0. Source: https://commons.wikimedia.org/wiki/File:Drachm_of_Azarmidukht.jpg
   coin-hormizd6: Classical Numismatic Group (uploaded by LouisAragon), CC BY-SA 2.5. Source: https://commons.wikimedia.org/wiki/File:Coin_of_either_Hormizd_V_or_Hormizd_VI%2C_minted_in_Veh-az-Amid-Kav%C4%81d.jpg
+Yazdegerd III page (/king/yazdegerd-iii)
+  coin-yazdegerd3: Classical Numismatic Group, CC BY-SA 3.0. Source: https://commons.wikimedia.org/wiki/File:Coin_of_the_Sasanian_king_Yazdegerd_III%2C_651_mint.jpg
+  qianling-envoys: Gary Todd, CC0. Source: https://commons.wikimedia.org/wiki/File:Headless_Statues_of_Foreign_Envoys_%289906472715%29.jpg
