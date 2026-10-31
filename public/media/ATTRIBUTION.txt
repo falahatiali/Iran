@@ -291,3 +291,8 @@ ismail-samani (Esma'il Samani page)
 - Samanid_Mausoleum,_Bukhara.jpg — Bgag, CC0, Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Samanid_Mausoleum,_Bukhara.jpg
 - Bukhara_Samanid_Mausoleum_1.jpg — Ymblanter, CC BY-SA 4.0, Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Bukhara_Samanid_Mausoleum_1.jpg
 - campaigns-{fa,en} clips — rendered from the site's own campaign map (Natural Earth basemap, public domain).
+
+adud-al-dawla (remote, Wikimedia Commons; licence read from the Commons API 2026-10-31)
+- Band_Amir_by_Eugène_Flandin.jpg — Eugène Flandin — Public domain — https://commons.wikimedia.org/wiki/File:Band_Amir_by_Eug%C3%A8ne_Flandin.jpg
+- Inscription_of_Adud_al-Dawla_in_Persepolis.jpg — medieval-islamic-history.com — CC0 — https://commons.wikimedia.org/wiki/File:Inscription_of_Adud_al-Dawla_in_Persepolis.jpg
+- public/media/adud-al-dawla/campaigns-* — clip rendered from this site's own map
