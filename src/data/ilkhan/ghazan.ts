@@ -59,6 +59,11 @@ export const ghazan: FeaturedKing = {
   mapTitle: B('نقشهٔ متحرک: زندگی و لشکرکشی‌ها', 'Animated map: life and campaigns'),
   events: ghazanEvents,
   span: [1295, 1318],
+  lifeMap: { view: [33, 29, 56, 42], places: [
+    { name: B('تبریز', 'Tabriz'), c: P.TABRIZ }, { name: B('قزوین', 'Qazvin'), c: P.QAZVIN }, { name: B('بغداد', 'Baghdad'), c: P.BAGHDAD, left: true },
+    { name: B('موصل', 'Mosul'), c: P.MOSUL, left: true }, { name: B('حلب', 'Aleppo'), c: P.ALEPPO, left: true }, { name: B('دمشق', 'Damascus'), c: P.DAMASCUS, left: true },
+    { name: B('قراباغ', 'Qarabagh'), c: P.QARABAGH },
+  ] },
   dossier: ghazanDossier,
   synthesis: { title: B('جمع‌بندی: شاه مسلمان، دولت مغول', 'Synthesis: a Muslim king, a Mongol state'), paras: {
     fa: [

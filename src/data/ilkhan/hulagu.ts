@@ -67,6 +67,11 @@ export const hulagu: FeaturedKing = {
   mapTitle: B('نقشهٔ متحرک: زندگی و لشکرکشی‌ها', 'Animated map: life and campaigns'),
   events: hulaguEvents,
   span: [1253, 1265],
+  lifeMap: { view: [33, 29, 68, 45], places: [
+    { name: B('شبرغان', 'Shibarghan'), c: P.SHIBARGHAN, left: true }, { name: B('الموت', 'Alamut'), c: P.ALAMUT }, { name: B('همدان', 'Hamadan'), c: P.HAMADAN },
+    { name: B('بغداد', 'Baghdad'), c: P.BAGHDAD, left: true }, { name: B('مراغه', 'Maragheh'), c: P.MARAGHEH }, { name: B('تبریز', 'Tabriz'), c: P.TABRIZ, dy: -0.6 },
+    { name: B('حلب', 'Aleppo'), c: P.ALEPPO, left: true }, { name: B('عین جالوت', 'Ain Jalut'), c: P.AIN_JALUT, left: true, dy: 0.6 },
+  ] },
   campaign: {
     id: 'campaigns',
     title: B('لشکرکشی‌های هولاکو: از الموت تا عین جالوت (۱۲۵۶–۱۲۶۳ م)', 'Hulagu’s campaigns: from Alamut to ‘Ain Jalut (1256–1263 CE)'),

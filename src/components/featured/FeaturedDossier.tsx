@@ -53,7 +53,7 @@ export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: 
 
       <section id="map" className="scroll-mt-24 mt-14">
         <h2 className="text-3xl font-black text-gilded mb-4">{king.mapTitle[locale]}</h2>
-        <CampaignMap events={king.events} sources={king.sources} locale={locale} label={king.mapTitle[locale]} />
+        <CampaignMap events={king.events} sources={king.sources} locale={locale} label={king.mapTitle[locale]} view={king.lifeMap?.view} places={king.lifeMap?.places} />
       </section>
 
       {c && (

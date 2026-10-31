@@ -77,6 +77,12 @@ export const timur: FeaturedKing = {
   mapTitle: B('نقشهٔ متحرک: زندگی و لشکرکشی‌ها', 'Animated map: life and campaigns'),
   events: timurEvents,
   span: [1336, 1405],
+  lifeMap: { view: [29, 24, 80, 48], places: [
+    { name: B('کش', 'Kesh'), c: P.KESH, dy: 0.6 }, { name: B('سمرقند', 'Samarqand'), c: P.SAMARQAND, dy: -0.6 }, { name: B('بلخ', 'Balkh'), c: P.BALKH },
+    { name: B('هرات', 'Herat'), c: P.HERAT, left: true }, { name: B('اصفهان', 'Isfahan'), c: P.ISFAHAN }, { name: B('بغداد', 'Baghdad'), c: P.BAGHDAD, left: true },
+    { name: B('رود ترک', 'Terek'), c: P.TEREK, left: true }, { name: B('دهلی', 'Delhi'), c: P.DELHI, left: true }, { name: B('دمشق', 'Damascus'), c: P.DAMASCUS, left: true },
+    { name: B('آنکارا', 'Ankara'), c: P.ANKARA }, { name: B('اترار', 'Otrar'), c: P.OTRAR },
+  ] },
   campaign: {
     id: 'campaigns',
     title: B('لشکرکشی‌های تیمور: از هرات تا آنکارا (۱۳۸۱–۱۴۰۵ م)', 'Timur’s campaigns: from Herat to Ankara (1381–1405 CE)'),

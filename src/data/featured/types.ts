@@ -84,6 +84,8 @@ export interface FeaturedKing {
   events: MapEvent[]
   /** year window the map events must fall inside */
   span: [number, number]
+  /** view and labels for the life map; without it the map shows the ancient default */
+  lifeMap?: Pick<Campaign, 'view' | 'places'>
   dossier: DossierSection[]
   synthesis: Synthesis
   sources: FeaturedSource[]
