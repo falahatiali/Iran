@@ -389,3 +389,19 @@ mohammad-reza-shah (remote, Wikimedia Commons; licence read from the Commons API
 - Mohammad_Reza_Pahlavi_in_1973.jpg — Royal Court of Iran — Public domain — https://commons.wikimedia.org/wiki/File:Mohammad_Reza_Pahlavi_in_1973.jpg
 - Portrait_of_Mohammad_Mosaddegh_-_circa_1952.jpg — iichs.ir — Public domain — https://commons.wikimedia.org/wiki/File:Portrait_of_Mohammad_Mosaddegh_-_circa_1952.jpg
 - public/media/mohammad-reza-shah/campaigns-* — clip rendered from this site's own map
+
+cyrus-ii (local webp in public/media/cyrus/; licence read from the Commons API 2026-11-02; resized and converted to webp)
+- tomb.webp ← Pasargadae, Irán, 2016-09-24, DD 02.jpg — Diego Delso — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Pasargadae,_Ir%C3%A1n,_2016-09-24,_DD_02.jpg
+- tomb2.webp ← CyrustheGreatTomb 22059.jpg — Truth Seeker — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:CyrustheGreatTomb_22059.jpg
+- flandin-tomb.webp ← Passargade. Tombeau dit de Cyrus. (Façades, coupe).jpg — Eugène Flandin — Public domain — https://commons.wikimedia.org/wiki/File:Passargade._Tombeau_dit_de_Cyrus._(Fa%C3%A7ades,_coupe).jpg
+- porter-tomb.webp ← Tomb of Cyrus by Ker Porter.jpg — Robert Ker Porter — Public domain — https://commons.wikimedia.org/wiki/File:Tomb_of_Cyrus_by_Ker_Porter.jpg
+- sevruguin-tomb.webp ← Gezelschap poserend op de graftombe van Cyrus II de Grote in Pasargadae Graftombe Cyrus, keizer van Perzië, bij Morghab, provincie Fars, waarvan Perzië is afgeleid, ± 550 v.C. gestorven (titel op object), RP-F-F01048-BD.jpg — Rijksmuseum — CC0 — https://commons.wikimedia.org/wiki/File:Gezelschap_poserend_op_de_graftombe_van_Cyrus_II_de_Grote_in_Pasargadae_Graftombe_Cyrus,_keizer_van_Perzi%C3%AB,_bij_Morghab,_provincie_Fars,_waarvan_Perzi%C3%AB_is_afgeleid,_%C2%B1_550_v.C._gestorven_(titel_op_object),_RP-F-F01048-BD.jpg
+- winged-porter.webp ← Four wings,Porter.jpg — R. Ker Porter, (died 1842 r.) — Public domain — https://commons.wikimedia.org/wiki/File:Four_wings,Porter.jpg
+- winged-texier.webp ← Four wings,Texier.jpg — Félix Marie Charles Texier — Public domain — https://commons.wikimedia.org/wiki/File:Four_wings,Texier.jpg
+- gate-r.webp ← The entrance hall (Gate R), Pasargadae, the first capital of the Achaemenid Empire, Iran (48835447103).jpg — Carole Raddato from Frankfurt, Germany — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File:The_entrance_hall_(Gate_R),_Pasargadae,_the_first_capital_of_the_Achaemenid_Empire,_Iran_(48835447103).jpg
+- palace-s.webp ← Palace S of Cyrus inscription.jpg — Carole Raddato — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File:Palace_S_of_Cyrus_inscription.jpg
+- pasargadae-1.webp ← Pasargadae, the first capital of the Achaemenid Empire, Iran (48835447933).jpg — Carole Raddato from Frankfurt, Germany — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File:Pasargadae,_the_first_capital_of_the_Achaemenid_Empire,_Iran_(48835447933).jpg
+- pasargadae-2.webp ← Pasargadae, the first capital of the Achaemenid Empire, Iran (48835448013).jpg — Carole Raddato from Frankfurt, Germany — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File:Pasargadae,_the_first_capital_of_the_Achaemenid_Empire,_Iran_(48835448013).jpg
+- tall-takht.webp ← Tall-e Takht, Pasargadae.jpg — Bernard Gagnon — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Tall-e_Takht,_Pasargadae.jpg
+- public/media/cyrus/conquests-* — clip rendered from this site's own map
+- the tomb reconstruction on /king/cyrus-ii is our own SVG drawing
