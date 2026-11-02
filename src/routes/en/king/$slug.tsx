@@ -2,7 +2,7 @@ import { createFileRoute, redirect } from '@tanstack/react-router'
 import { getRuler } from '../../../server/api'
 import { getFeaturedKing } from '../../../data/featured'
 import { isFeaturedKing } from '../../../data/featured/slugs'
-import { FeaturedDossier } from '../../../components/featured/FeaturedDossier'
+import { FeaturedDossier, FeaturedHero } from '../../../components/featured/FeaturedDossier'
 import { PageTransition } from '../../../components/Reveal'
 import { Shamseh } from '../../../components/Ornament'
 import { Epithets } from '../../../components/Epithets'
@@ -32,6 +32,21 @@ function KingPageEn() {
   return (
     <PageTransition>
       <article lang="en" dir="ltr">
+        {fk?.hero ? (
+          <FeaturedHero king={fk} locale="en" name={fk.name.en} kicker={`${fk.dynastyName.en} · ${fk.reign.en}`} accent={k.dynasty.accent}
+            crumbs={<nav aria-label="Breadcrumb" className="text-sm text-ivory/60 mb-6">
+              <a href="/" className="hover:text-gold inline-block py-2 min-h-11">Home</a>
+              <span className="text-gold/50 mx-2" aria-hidden="true">/</span>
+              <a href={`/dynasty/${k.dynasty.slug}`} hrefLang="fa" className="hover:text-gold inline-block py-2 min-h-11">{fk.dynastyName.en}</a>
+              <span className="text-gold/50 mx-2" aria-hidden="true">/</span>
+              <span aria-current="page">{fk.name.en}</span>
+            </nav>}
+            facts={<dl className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-3">
+              <div className="glass rounded-2xl p-4"><dt className="text-xs text-ivory/50">Reign</dt><dd className="font-bold text-gold-bright mt-1">{fk.reign.en}</dd></div>
+              <div className="glass rounded-2xl p-4"><dt className="text-xs text-ivory/50">Dynasty</dt><dd className="font-bold mt-1">{fk.dynastyName.en}</dd></div>
+              <div className="glass rounded-2xl p-4"><dt className="text-xs text-ivory/50">Persian page</dt><dd className="mt-1"><a href={`/king/${k.ruler.id}`} hrefLang="fa" className="text-gold hover:underline min-h-11 inline-flex items-center">فارسی</a></dd></div>
+            </dl>} />
+        ) : (
         <header className="relative overflow-hidden border-b border-gold/15">
           <div className="absolute inset-0" style={{ background: `radial-gradient(700px 380px at 80% 10%, ${k.dynasty.accent}66, transparent 70%)` }} />
           <Shamseh className="absolute -right-12 -top-12 sm:-right-24 sm:-top-24 w-64 h-64 sm:w-96 sm:h-96 opacity-15" spin />
@@ -54,6 +69,7 @@ function KingPageEn() {
             </dl>
           </div>
         </header>
+        )}
         <div className="mx-auto max-w-5xl px-4 py-14">
           <FeaturedDossier king={fk} locale="en" />
         </div>

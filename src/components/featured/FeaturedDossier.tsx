@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import type { EvidenceLayer } from '../../data/research/types'
 import type { BiParas, FeaturedKing, Person } from '../../data/featured/types'
 import type { CommonsPhoto } from '../../data/places/types'
@@ -56,6 +57,36 @@ function PersonCard({ p, photo, author, locale }: { p: Person; photo?: CommonsPh
   )
 }
 
+/** Full-width page header for a featured king with a `hero` portrait: replaces the standard king header. */
+export function FeaturedHero({ king, locale, crumbs, facts, accent, name, kicker }: { king: FeaturedKing; locale: Locale; crumbs: ReactNode; facts: ReactNode; accent: string; name: string; kicker: string }) {
+  const ph = king.hero ? king.photos?.find((p) => p.id === king.hero) : undefined
+  return (
+    <header lang={locale} dir={locale === 'fa' ? 'rtl' : 'ltr'} className="relative overflow-hidden border-b border-gold/20">
+      <div className="absolute inset-0" style={{ background: `radial-gradient(900px 520px at 75% 20%, ${accent}55, transparent 70%), linear-gradient(180deg, transparent 60%, rgb(5 8 20 / 0.9))` }} />
+      <div className="relative mx-auto max-w-6xl px-4 pt-10 pb-12 md:pt-14 md:pb-16">
+        {crumbs}
+        <div className="mt-6 grid gap-8 md:gap-12 md:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] items-center">
+          <div className="order-2 md:order-1">
+            <p className="text-turquoise-soft tracking-wide">{kicker}</p>
+            <h1 className="text-5xl md:text-7xl font-black mt-3 text-gilded leading-[1.25]">{name}</h1>
+            <p className="text-2xl md:text-3xl font-bold text-gold-bright/90 mt-4 leading-[1.5] first-letter:uppercase">{king.title[locale].split(/[؛:]/).slice(1).join(':').trim() || king.title[locale]}</p>
+            <p className="read mt-6 text-ivory/85 read-lede">{king.lede[locale]}</p>
+          </div>
+          {ph && (
+            <figure className="order-1 md:order-2 mx-auto w-full max-w-sm md:max-w-none">
+              <div className="rounded-[2rem] p-1.5 bg-gradient-to-b from-gold/70 via-gold/20 to-gold/60 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)]">
+                <img src={ph.src} alt={ph.caption[locale]} decoding="async" fetchPriority="high" className="w-full aspect-[4/5] object-cover object-top rounded-[1.7rem]" />
+              </div>
+              <figcaption className="mt-3 text-xs text-ivory/65 leading-6 text-center">{ph.caption[locale]} · <Credit ph={ph} /></figcaption>
+            </figure>
+          )}
+        </div>
+        {facts}
+      </div>
+    </header>
+  )
+}
+
 /** Extended dossier rendered inside a king page when the ruler has a `featuredKings` entry. */
 export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: Locale }) {
   const isFa = locale === 'fa'
@@ -68,23 +99,21 @@ export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: 
   const author = (id: string) => king.sources.find((x) => x.id === id)?.author ?? id
   const c = king.campaign
   const hero = king.hero ? photo(king.hero) : undefined
+  const top = !!hero
   const toc = [['map', king.mapTitle[locale]], ...(c ? [[c.id, c.title[locale]]] : []), ['layers', t.layers], ...king.dossier.map((d) => [d.id, d.title[locale]]), ['synthesis', t.synthesis], ['bibliography', t.bib]]
 
   return (
     <div lang={locale} dir={isFa ? 'rtl' : 'ltr'} className="space-y-0">
       <section aria-labelledby="fk-h">
-        <div className={hero ? 'grid gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] items-start' : ''}>
+        {top ? (
+          <h2 id="fk-h" className="text-3xl md:text-4xl font-black text-gilded leading-[1.3]">{t.kicker}</h2>
+        ) : (<>
+        <div>
           <div>
             <p className="text-sm text-turquoise-soft">{t.kicker}</p>
             <h2 id="fk-h" className="text-3xl md:text-5xl font-black text-gilded leading-[1.3] mt-2">{king.title[locale]}</h2>
             <p className="read mt-5 text-ivory/80 read-lede">{king.lede[locale]}</p>
           </div>
-          {hero && (
-            <figure className="glass rounded-3xl overflow-hidden border-gold/40 shadow-2xl md:row-span-2">
-              <img src={hero.src} alt={hero.caption[locale]} decoding="async" fetchPriority="high" className="w-full aspect-[4/5] object-cover object-top" />
-              <figcaption className="p-3 text-xs text-ivory/65 leading-6">{hero.caption[locale]} · <Credit ph={hero} /></figcaption>
-            </figure>
-          )}
         </div>
         <dl className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3">
           {king.stats.map((s) => (
@@ -94,6 +123,7 @@ export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: 
             </div>
           ))}
         </dl>
+        </>)}
         <nav aria-label={isFa ? 'بخش‌های پرونده' : 'Dossier contents'} className="mt-8">
           <ul className="flex flex-wrap gap-2 text-sm">
             {toc.map(([id, label]) => <li key={id}><a href={`#${id}`} className="glass rounded-full px-4 py-2 inline-flex min-h-11 items-center hover:border-gold">{label}</a></li>)}

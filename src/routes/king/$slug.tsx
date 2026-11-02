@@ -11,7 +11,7 @@ import { eventTypeNames, fa, range, shRange, year } from '../../lib/format'
 import { kingAlternates, kingJsonLd, seo } from '../../lib/seo'
 import { getFeaturedKing } from '../../data/featured'
 import { placesForKing } from '../../data/places'
-import { FeaturedDossier } from '../../components/featured/FeaturedDossier'
+import { FeaturedDossier, FeaturedHero } from '../../components/featured/FeaturedDossier'
 
 export const Route = createFileRoute('/king/$slug')({
   loader: ({ params }) => getRuler({ data: params.slug }),
@@ -42,6 +42,16 @@ function KingPage() {
   return (
     <PageTransition>
       <article>
+        {featured?.hero ? (
+          <FeaturedHero king={featured} locale="fa" name={r.name} kicker={`${d.name} · ${range(r.start, r.end)}`} accent={d.accent}
+            crumbs={<Breadcrumbs items={[{ label: d.name, to: '/dynasty/$slug', params: { slug: d.slug } }, { label: r.name }]} />}
+            facts={<dl className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3">
+              <div className="glass rounded-2xl p-4"><dt className="text-xs text-ivory/50">دوران فرمانروایی</dt><dd className="font-bold text-gold-bright mt-1">{range(r.start, r.end)}</dd></div>
+              {sh && <div className="glass rounded-2xl p-4"><dt className="text-xs text-ivory/50">خورشیدی (تقریبی)</dt><dd className="font-bold text-turquoise-soft mt-1">{sh}</dd></div>}
+              <div className="glass rounded-2xl p-4"><dt className="text-xs text-ivory/50">مدت</dt><dd className="font-bold mt-1">{years > 0 ? `${fa(years)} سال` : 'کمتر از یک سال'}</dd></div>
+              <div className="glass rounded-2xl p-4"><dt className="text-xs text-ivory/50">دودمان</dt><dd className="font-bold mt-1"><Link to="/dynasty/$slug" params={{ slug: d.slug }} className="hover:text-gold inline-block py-2 min-h-11">{d.name}</Link></dd></div>
+            </dl>} />
+        ) : (
         <header className="relative overflow-hidden border-b border-gold/15">
           <div className="absolute inset-0" style={{ background: `radial-gradient(700px 380px at 20% 10%, ${d.accent}66, transparent 70%)` }} />
           <Shamseh className="absolute -left-12 -top-12 sm:-left-24 sm:-top-24 w-64 h-64 sm:w-96 sm:h-96 opacity-15" spin />
@@ -59,6 +69,7 @@ function KingPage() {
             </dl>
           </div>
         </header>
+        )}
 
         <div className="mx-auto max-w-5xl px-4 py-14 space-y-14">
           <Reveal>
