@@ -1,5 +1,8 @@
 import assert from 'node:assert/strict'
+import { existsSync } from 'node:fs'
+import { join } from 'node:path'
 import { test } from 'node:test'
+import { rzPhotos } from './reza-photos'
 import { mohammadReza, rezaShah, pvPhotos, pvSourceIds } from './index'
 
 const filled = (s: string | undefined) => typeof s === 'string' && s.trim().length > 0
@@ -19,10 +22,12 @@ for (const king of [rezaShah, mohammadReza]) {
   })
 
   test(`${king.slug} dossier keeps three layers, resolves refs and labels our reading`, () => {
-    const ids = new Set(pvPhotos.map((p) => p.id))
+    const ids = new Set((king.photos ?? []).map((p) => p.id))
+    if (king.hero) assert.ok(ids.has(king.hero), 'hero')
     for (const s of king.dossier ?? []) {
       for (const id of s.photos ?? []) assert.ok(ids.has(id), `${s.id} → ${id}`)
       for (const src of s.sources) assert.ok(pvSourceIds.has(src), `${s.id} → ${src}`)
+      for (const p of s.people ?? []) { assert.ok(filled(p.name.fa) && filled(p.bio.en) && filled(p.fate.fa) && p.sources.every((x) => pvSourceIds.has(x)), p.id); if (p.photo) assert.ok(ids.has(p.photo), p.photo) }
       for (const layer of [s.historical, s.interpretation, s.modern]) assert.ok(layer.fa.length === layer.en.length && layer.fa.every(filled), s.id)
     }
     assert.match(king.dossier?.find((s) => s.id === 'property')?.interpretation.en.join(' ') ?? '', /This is our reading/)
@@ -37,6 +42,10 @@ test('quotes cite a listed source', () => {
 
 test('photos carry Commons pages and licences', () => {
   for (const p of pvPhotos) assert.ok(p.page.startsWith('https://commons.wikimedia.org/wiki/File:') && p.src.startsWith('https://upload.wikimedia.org/') && p.licenseUrl, p.id)
+  for (const p of rzPhotos) {
+    assert.ok(p.page.startsWith('https://commons.wikimedia.org/wiki/File:') && p.src.startsWith('/media/reza-shah/') && p.licenseUrl, p.id)
+    assert.ok(existsSync(join('public', p.src)), p.src)
+  }
 })
 
 

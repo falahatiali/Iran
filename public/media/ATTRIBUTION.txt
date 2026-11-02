@@ -385,6 +385,35 @@ reza-shah (remote, Wikimedia Commons; licence read from the Commons API 2026-10-
 - Veresk_bridge,_Tehran_-_Sari_Railway.jpg — ninara — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File:Veresk_bridge,_Tehran_-_Sari_Railway.jpg
 - public/media/reza-shah/campaigns-* — clip rendered from this site's own map
 
+reza-shah, expanded page (local webp in public/media/reza-shah/, licence and author read from the Commons API 2026-11-03)
+- public/media/reza-shah/portrait-1938.webp — Reza Shah Pahlavi portrait (1938).jpg — Samuel Johnson Woolf, Public domain — https://commons.wikimedia.org/wiki/File:Reza_Shah_Pahlavi_portrait_(1938).jpg
+- public/media/reza-shah/sardar-sepah-1925.webp — Sardâr Sepah (Reza Chah Pahlavi) - btv1b53143606q.jpg — Agence Rol (BnF Gallica), Public domain — https://commons.wikimedia.org/wiki/File:Sard%C3%A2r_Sepah_(Reza_Chah_Pahlavi)_-_btv1b53143606q.jpg
+- public/media/reza-shah/cossack-kermanshah.webp — رضاخان در زمان فرماندهی نیروهای قزاق در کرمانشاه.jpg — Unknown author, Public domain — https://commons.wikimedia.org/wiki/File:%D8%B1%D8%B6%D8%A7%D8%AE%D8%A7%D9%86_%D8%AF%D8%B1_%D8%B2%D9%85%D8%A7%D9%86_%D9%81%D8%B1%D9%85%D8%A7%D9%86%D8%AF%D9%87%DB%8C_%D9%86%DB%8C%D8%B1%D9%88%D9%87%D8%A7%DB%8C_%D9%82%D8%B2%D8%A7%D9%82_%D8%AF%D8%B1_%DA%A9%D8%B1%D9%85%D8%A7%D9%86%D8%B4%D8%A7%D9%87.jpg
+- public/media/reza-shah/cossack-brigade-1909.webp — Persian Cossack Brigade.jpg — Unknown author, Public domain — https://commons.wikimedia.org/wiki/File:Persian_Cossack_Brigade.jpg
+- public/media/reza-shah/takes-throne-1925.webp — Reza Shah takes the throne.jpg — Unknown author, Public domain — https://commons.wikimedia.org/wiki/File:Reza_Shah_takes_the_throne.jpg
+- public/media/reza-shah/coronation-1926.webp — Reza shah coronation.jpg — Unknown author, Public domain — https://commons.wikimedia.org/wiki/File:Reza_shah_coronation.jpg
+- public/media/reza-shah/railway-last-bolt.webp — رضا شاه آخرین پیچ راه‌آهن سراسری ایران را می‌بندد.jpg — Unknown author, Public domain — https://commons.wikimedia.org/wiki/File:%D8%B1%D8%B6%D8%A7_%D8%B4%D8%A7%D9%87_%D8%A2%D8%AE%D8%B1%DB%8C%D9%86_%D9%BE%DB%8C%DA%86_%D8%B1%D8%A7%D9%87%E2%80%8C%D8%A2%D9%87%D9%86_%D8%B3%D8%B1%D8%A7%D8%B3%D8%B1%DB%8C_%D8%A7%DB%8C%D8%B1%D8%A7%D9%86_%D8%B1%D8%A7_%D9%85%DB%8C%E2%80%8C%D8%A8%D9%86%D8%AF%D8%AF.jpg
+- public/media/reza-shah/reza-train-1937.webp — Reza Shah train.jpg — Unknown author, Public domain — https://commons.wikimedia.org/wiki/File:Reza_Shah_train.jpg
+- public/media/reza-shah/veresk.webp — VERESK Bridge - panoramio.jpg — Alireza Shakernia, CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:VERESK_Bridge_-_panoramio.jpg
+- public/media/reza-shah/law-faculty-1939.webp — University of Tehran Faculty of Law 1318.jpg — Unknown author, Public domain — https://commons.wikimedia.org/wiki/File:University_of_Tehran_Faculty_of_Law_1318.jpg
+- public/media/reza-shah/ferdowsi-congress-1934.webp — Ferdowsi millenary congress.jpg — Unknown author, Public domain — https://commons.wikimedia.org/wiki/File:Ferdowsi_millenary_congress.jpg
+- public/media/reza-shah/iran-bastan.webp — Národní muzeum Íránu.jpg — Ondřej Žváček, CC BY 2.5 — https://commons.wikimedia.org/wiki/File:N%C3%A1rodn%C3%AD_muzeum_%C3%8Dr%C3%A1nu.jpg
+- public/media/reza-shah/family-1936.webp — Rezaschahwifedaughters.jpg — Unknown author, Public domain — https://commons.wikimedia.org/wiki/File:Rezaschahwifedaughters.jpg
+- public/media/reza-shah/johannesburg-1942.webp — Reza Shah in exile in Johannesburg in 1942.jpg — Unknown author, Public domain — https://commons.wikimedia.org/wiki/File:Reza_Shah_in_exile_in_Johannesburg_in_1942.jpg
+- public/media/reza-shah/tomb-rey.webp — RezaShahBozorgTombRay1.jpg — Bellavista1, Public domain — https://commons.wikimedia.org/wiki/File:RezaShahBozorgTombRay1.jpg
+- public/media/reza-shah/funeral-1950.webp — Reza Shah's funeral 2.jpg — www.econapress.com, Public domain — https://commons.wikimedia.org/wiki/File:Reza_Shah%27s_funeral_2.jpg
+- public/media/reza-shah/tabriz-1941.webp — Soviet tankmen of the 6th Armoured Division drive through the streets of Tabriz (2).jpg — Unknown author, Public domain — https://commons.wikimedia.org/wiki/File:Soviet_tankmen_of_the_6th_Armoured_Division_drive_through_the_streets_of_Tabriz_(2).jpg
+- public/media/reza-shah/c-foroughi.webp — Foroughi PM1314.jpg — Unknown author, Public domain — https://commons.wikimedia.org/wiki/File:Foroughi_PM1314.jpg
+- public/media/reza-shah/c-davar.webp — AliAkbar Davar Justice Minister 1306.jpg — Unknown author, Public domain — https://commons.wikimedia.org/wiki/File:AliAkbar_Davar_Justice_Minister_1306.jpg
+- public/media/reza-shah/c-teymourtash.webp — Abdolhossein Teymourtash.jpg — Unknown author, Public domain — https://commons.wikimedia.org/wiki/File:Abdolhossein_Teymourtash.jpg
+- public/media/reza-shah/c-firouz.webp — Firouz Nosrat-ed-Dowleh III.png — npg.org.uk, Public domain — https://commons.wikimedia.org/wiki/File:Firouz_Nosrat-ed-Dowleh_III.png
+- public/media/reza-shah/c-taqizadeh.webp — Hassan Taqizadeh 2.jpg — IICHS, Public domain — https://commons.wikimedia.org/wiki/File:Hassan_Taqizadeh_2.jpg
+- public/media/reza-shah/c-hedayat.webp — Mehdi Qoli Hedayat.jpg — Unknown author, Public domain — https://commons.wikimedia.org/wiki/File:Mehdi_Qoli_Hedayat.jpg
+- public/media/reza-shah/c-sardar-asad.webp — Sardar Assad.jpg — Unknown author, Public domain — https://commons.wikimedia.org/wiki/File:Sardar_Assad.jpg
+- public/media/reza-shah/c-hekmat.webp — Ali Asghar Hekmat.jpg — Unknown author, Public domain — https://commons.wikimedia.org/wiki/File:Ali_Asghar_Hekmat.jpg
+- public/media/reza-shah/c-zia.webp — SeyyedZiaTabatabai.jpg — Unknown author, Public domain — https://commons.wikimedia.org/wiki/File:SeyyedZiaTabatabai.jpg
+- public/media/reza-shah/c-mansur.webp — Mansorolmolk.jpg — Unknown author, Public domain — https://commons.wikimedia.org/wiki/File:Mansorolmolk.jpg
+
 mohammad-reza-shah (remote, Wikimedia Commons; licence read from the Commons API 2026-10-31)
 - Mohammad_Reza_Pahlavi_in_1973.jpg — Royal Court of Iran — Public domain — https://commons.wikimedia.org/wiki/File:Mohammad_Reza_Pahlavi_in_1973.jpg
 - Portrait_of_Mohammad_Mosaddegh_-_circa_1952.jpg — iichs.ir — Public domain — https://commons.wikimedia.org/wiki/File:Portrait_of_Mohammad_Mosaddegh_-_circa_1952.jpg

@@ -1,5 +1,6 @@
 import type { EvidenceLayer } from '../../data/research/types'
-import type { BiParas, FeaturedKing } from '../../data/featured/types'
+import type { BiParas, FeaturedKing, Person } from '../../data/featured/types'
+import type { CommonsPhoto } from '../../data/places/types'
 import type { Locale } from '../../lib/i18n'
 import { Reveal } from '../Reveal'
 import { EvidenceBadge } from '../cylinder/EvidenceBadge'
@@ -18,6 +19,43 @@ function Layer({ layer, paras, locale }: { layer: EvidenceLayer; paras: BiParas;
   )
 }
 
+function Credit({ ph }: { ph: CommonsPhoto }) {
+  return <><a href={ph.page} className="text-gold hover:underline" rel="noopener noreferrer" target="_blank">{ph.author}</a>, {ph.licenseUrl ? <a href={ph.licenseUrl} className="hover:underline" rel="license noopener noreferrer" target="_blank">{ph.license}</a> : ph.license}</>
+}
+
+const fateLabel: Record<Person['fateKind'], { fa: string; en: string; cls: string }> = {
+  natural: { fa: 'درگذشت طبیعی', en: 'Natural death', cls: 'border-turquoise-soft/50 text-turquoise-soft' },
+  killed: { fa: 'کشته در زندان یا بازداشت', en: 'Killed in prison or custody', cls: 'border-red-400/60 text-red-300' },
+  suicide: { fa: 'خودکشی', en: 'Suicide', cls: 'border-amber-300/60 text-amber-200' },
+  exile: { fa: 'تبعید', en: 'Exile', cls: 'border-sky-300/50 text-sky-200' },
+  dismissed: { fa: 'برکناری', en: 'Dismissed', cls: 'border-ivory/40 text-ivory/70' },
+}
+
+function PersonCard({ p, photo, author, locale }: { p: Person; photo?: CommonsPhoto; author: (id: string) => string; locale: Locale }) {
+  const f = fateLabel[p.fateKind]
+  return (
+    <article id={`person-${p.id}`} className="glass rounded-3xl overflow-hidden flex flex-col scroll-mt-24">
+      {photo
+        ? <img src={photo.src} alt={photo.caption[locale]} loading="lazy" decoding="async" className="w-full aspect-[4/5] object-cover object-top bg-black/30" />
+        : <div aria-hidden="true" className="w-full aspect-[4/5] grid place-items-center bg-gradient-to-b from-gold/10 to-black/30 text-7xl font-black text-gold/60">{p.name[locale].slice(0, 1)}</div>}
+      <div className="p-5 flex-1 flex flex-col">
+        <h3 className="text-xl font-black text-gold-bright leading-[1.5]">{p.name[locale]}</h3>
+        <p className="text-xs text-ivory/55 mt-1">{p.years[locale]}</p>
+        <p className="text-sm text-turquoise-soft mt-2 leading-7">{p.role[locale]}</p>
+        <p className="read mt-3 text-ivory/85 text-[0.95rem]">{p.bio[locale]}</p>
+        <div className="mt-auto pt-4">
+          <p className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold ${f.cls}`}>{f[locale]}</p>
+          <p className="mt-2 text-sm text-ivory/75 leading-7">{p.fate[locale]}</p>
+          <p className="mt-3 text-xs text-ivory/45 leading-6">
+            {locale === 'fa' ? 'منابع' : 'Sources'}: {p.sources.map((id, k) => <span key={id}>{k > 0 && ' · '}<a href={`#src-${id}`} className="text-gold hover:underline">{author(id)}</a></span>)}
+            {photo && <> · {locale === 'fa' ? 'عکس' : 'Photo'}: <Credit ph={photo} /></>}
+          </p>
+        </div>
+      </div>
+    </article>
+  )
+}
+
 /** Extended dossier rendered inside a king page when the ruler has a `featuredKings` entry. */
 export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: Locale }) {
   const isFa = locale === 'fa'
@@ -29,14 +67,25 @@ export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: 
   const photo = (id: string) => king.photos?.find((p) => p.id === id)
   const author = (id: string) => king.sources.find((x) => x.id === id)?.author ?? id
   const c = king.campaign
+  const hero = king.hero ? photo(king.hero) : undefined
   const toc = [['map', king.mapTitle[locale]], ...(c ? [[c.id, c.title[locale]]] : []), ['layers', t.layers], ...king.dossier.map((d) => [d.id, d.title[locale]]), ['synthesis', t.synthesis], ['bibliography', t.bib]]
 
   return (
     <div lang={locale} dir={isFa ? 'rtl' : 'ltr'} className="space-y-0">
       <section aria-labelledby="fk-h">
-        <p className="text-sm text-turquoise-soft">{t.kicker}</p>
-        <h2 id="fk-h" className="text-3xl md:text-5xl font-black text-gilded leading-[1.3] mt-2">{king.title[locale]}</h2>
-        <p className="read mt-5 text-ivory/80 read-lede">{king.lede[locale]}</p>
+        <div className={hero ? 'grid gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] items-start' : ''}>
+          <div>
+            <p className="text-sm text-turquoise-soft">{t.kicker}</p>
+            <h2 id="fk-h" className="text-3xl md:text-5xl font-black text-gilded leading-[1.3] mt-2">{king.title[locale]}</h2>
+            <p className="read mt-5 text-ivory/80 read-lede">{king.lede[locale]}</p>
+          </div>
+          {hero && (
+            <figure className="glass rounded-3xl overflow-hidden border-gold/40 shadow-2xl md:row-span-2">
+              <img src={hero.src} alt={hero.caption[locale]} decoding="async" fetchPriority="high" className="w-full aspect-[4/5] object-cover object-top" />
+              <figcaption className="p-3 text-xs text-ivory/65 leading-6">{hero.caption[locale]} · <Credit ph={hero} /></figcaption>
+            </figure>
+          )}
+        </div>
         <dl className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3">
           {king.stats.map((s) => (
             <div key={s.n.en + s.l.en} className="glass rounded-2xl p-4 flex flex-col-reverse">
@@ -81,6 +130,17 @@ export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: 
             <p className="text-sm text-turquoise-soft">{t.dossier} · {isFa ? (n + 1).toLocaleString('fa-IR') : n + 1}</p>
             <h2 className="text-3xl font-black text-gilded mt-1 leading-[1.4]">{s.title[locale]}</h2>
             <Layer layer="historical" paras={s.historical} locale={locale} />
+            {s.timeline && (
+              <ol className="mt-6 border-gold/30 space-y-4" style={{ borderInlineStartWidth: 2, borderInlineStartStyle: 'solid', paddingInlineStart: '1.25rem' }}>
+                {s.timeline.map((x) => (
+                  <li key={x.when.en} className="relative">
+                    <span aria-hidden="true" className="absolute top-2 size-3 rounded-full bg-gold" style={{ insetInlineStart: '-1.65rem' }} />
+                    <p className="text-sm font-bold text-gold-bright">{x.when[locale]}</p>
+                    <p className="read text-ivory/85">{x.text[locale]}</p>
+                  </li>
+                ))}
+              </ol>
+            )}
             {s.quotes?.map((q) => (
               <blockquote key={q.text} className="read border-gold/40 px-4 py-3 my-4 text-ivory/90" style={{ borderInlineStartWidth: 4, borderInlineStartStyle: 'solid' }}>
                 <p className="font-serif" dir="ltr" lang={q.lang ?? 'en'}>{q.text}</p>
@@ -92,13 +152,18 @@ export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: 
             {s.embed === 'cyrus-tomb' && <div className="mt-8"><CyrusTombReconstruction locale={locale} /></div>}
             {s.clip && !s.embed && <AnimatedClip clip={s.clip.media} caption={s.clip.caption} locale={locale} />}
             {s.link && <p className="mt-6"><a href={s.link.href[locale]} className="glass rounded-full px-5 py-3 inline-flex items-center gap-2 min-h-11 font-bold text-gold-bright hover:border-gold">{s.link.label[locale]} <span aria-hidden="true">{isFa ? '←' : '→'}</span></a></p>}
+            {s.people && (
+              <div className="mt-8 grid sm:grid-cols-2 xl:grid-cols-3 gap-5">
+                {s.people.map((p) => <PersonCard key={p.id} p={p} photo={p.photo ? photo(p.photo) : undefined} author={author} locale={locale} />)}
+              </div>
+            )}
             {s.photos && (
-              <div className="mt-6 grid sm:grid-cols-2 gap-4">
+              <div className={`mt-6 grid gap-4 ${s.wide ? '' : 'sm:grid-cols-2'}`}>
                 {s.photos.map(photo).filter((x) => x !== undefined).map((ph) => (
                   <figure key={ph.id} className="glass rounded-2xl overflow-hidden">
-                    <img src={ph.src} alt={ph.caption[locale]} loading="lazy" decoding="async" className="w-full h-64 object-cover object-top" />
+                    <img src={ph.src} alt={ph.caption[locale]} loading="lazy" decoding="async" className={s.wide ? 'w-full max-h-[40rem] object-contain bg-black/40' : 'w-full h-64 object-cover object-top'} />
                     <figcaption className="p-3 text-sm text-ivory/70">
-                      {ph.caption[locale]} · <a href={ph.page} className="text-gold hover:underline" rel="noopener noreferrer" target="_blank">{ph.author}</a>, {ph.licenseUrl ? <a href={ph.licenseUrl} className="hover:underline" rel="license noopener noreferrer" target="_blank">{ph.license}</a> : ph.license}
+                      {ph.caption[locale]} · <Credit ph={ph} />
                     </figcaption>
                   </figure>
                 ))}

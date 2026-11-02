@@ -8,6 +8,7 @@ export const P = {
   MASHHAD: [59.6, 36.3] as Coord, BANDAR_SHAH: [54.08, 36.9] as Coord, KASHMAR: [58.46, 35.24] as Coord, TABRIZ: [46.29, 38.08] as Coord,
   ABADAN: [48.3, 30.35] as Coord, QOM: [50.88, 34.64] as Coord, PERSEPOLIS: [52.89, 29.93] as Coord, ISFAHAN: [51.67, 32.65] as Coord,
   SARI: [53.06, 36.56] as Coord, VERESK: [52.98, 35.9] as Coord,
+  ALASHT: [52.84, 36.07] as Coord, REY: [51.43, 35.59] as Coord, TUS: [59.52, 36.48] as Coord, SEMNAN: [53.39, 35.58] as Coord, BANDAR_SHAHPUR: [49.08, 30.43] as Coord,
 }
 
 const IR = 'Encyclopaedia Iranica'
@@ -23,7 +24,44 @@ export const pvSources: FeaturedSource[] = [
   { id: 'iranica-chronology-4', author: `E. Yarshater, ${IR}`, title: 'Chronology of Iranian History, Part 4 (1974–1999)', year: 'online edition', url: ir('chronology-of-iranian-history-part-4'), note: B('حزب رستاخیز، تقویم شاهنشاهی و روزشمار انقلاب ۱۹۷۸–۱۹۷۹.', 'The Rastakhiz party, the imperial calendar and a day-by-day account of the revolution of 1978–1979.') },
   { id: 'iranica-coup-1953', author: `M. J. Gasiorowski, ${IR}`, title: 'Coup d’état of 1332 Š./1953', year: '1993', url: ir('coup-detat-1953'), note: B('نخست‌وزیری مصدق، ملی شدن نفت و کودتای ۲۸ مرداد، با تکیه بر اسناد بریتانیا و آمریکا.', 'Mosaddeq’s premiership, oil nationalisation and the coup of 19 August 1953, drawing on British and American records.') },
 ]
-export const pvSourceIds = new Set(pvSources.map((s) => s.id))
+const wp = (title: string) => `https://en.wikipedia.org/wiki/${title}`
+/** Sources added for the expanded Reza Shah page (read 2026-11-03). Books marked “further reading” are listed, not quoted. */
+export const rzSources: FeaturedSource[] = [
+  { id: 'iranica-coup-1921', author: `N. Shambayati, ${IR}`, title: 'Coup d’état of 1299/1921', year: '1993', url: ir('coup-detat-of-1299-1921'), note: B('کودتا، نقش آیرونساید و نخستین روزهای قدرت.', 'The coup, Ironside’s role and the first days in power.') },
+  { id: 'iranica-courts-viii', author: `A. Sheikholeslami, ${IR}`, title: 'Courts and courtiers viii. In the reign of Reżā Shah Pahlavī', year: '1993', url: ir('courts-and-courtiers-viii'), note: B('دربار رضاشاه و جایگاه تیمورتاش.', 'Reza Shah’s court and Teymourtash’s place in it.') },
+  { id: 'iranica-davar', author: `B. Aqeli, ${IR}`, title: 'Dāvar, ʿAlī-Akbar', year: '1994', url: ir('davar-ali-akbar') },
+  { id: 'iranica-forughi', author: `F. Azimi, ${IR}`, title: 'Forūḡī, Moḥammad-ʿAlī Ḏokāʾ-al-Molk i. Biography', year: '1999', url: 'https://www.iranicaonline.org/articles/forugi-mohammad-ali/' },
+  { id: 'iranica-sardar-asad', author: IR, title: 'Baḵtīārī v.(5) Jaʿfarqolī Khan Sardār(-e) Asʿad III', year: '1988', url: 'https://www.iranicaonline.org/articles/baktiari/' },
+  { id: 'iranica-excavations', author: `D. Stronach, ${IR}`, title: 'Excavations i. In Persia', year: '1998', url: ir('excavations-i'), note: B('پایان انحصار حفاری فرانسه (۱۹۲۷)، قانون حفظ آثار عتیقه (۱۹۳۰) و موزهٔ ایران باستان.', 'The end of the French excavation monopoly (1927), the 1930 antiquities law and the Iran Bastan Museum.') },
+  { id: 'iranica-education-xvii', author: IR, title: 'Education xvii. Higher education', year: 'online edition', url: ir('education-xvii-higher-education'), note: B('قانون دانشگاه (۱۹۳۴) و گشایش دانشگاه تهران (۱۹۳۵).', 'The university law (1934) and the opening of the University of Tehran (1935).') },
+  { id: 'iranica-firuz-maryam', author: `M. Behrooz, ${IR}`, title: 'Firuz, Maryam', year: '2017', url: ir('firuz-maryam'), note: B('برای قانون نام خانوادگی و خاندان فیروز.', 'For the surname requirement and the Firuz family.') },
+  { id: 'iranica-education-xix', author: IR, title: 'Education xix. Teachers’ training colleges', year: 'online edition', url: ir('education-xix-teachers-training-colleges'), note: B('برای عیسی صدیق و دانشسرای عالی.', 'For Isa Sadiq and the Teachers’ College.') },
+  { id: 'bakhash-teymourtash', author: 'S. Bakhash', title: 'Iran’s Man for all Seasons: The Rise and Fall of Taymourtash, Iranian Studies', year: '2025', url: 'https://doi.org/10.1017/irn.2024.65' },
+  { id: 'wp-reza-shah', author: 'Wikipedia', title: 'Reza Shah', year: 'read 2026-11-03', url: wp('Reza_Shah'), note: B('برای تاریخ‌های زندگی، تبعید و لقب‌ها؛ منبع دست‌دوم.', 'For dates of life, exile and titles; a secondary source.') },
+  { id: 'wp-railway', author: 'Wikipedia', title: 'Trans-Iranian Railway', year: 'read 2026-11-03', url: wp('Trans-Iranian_Railway') },
+  { id: 'wp-veresk', author: 'Wikipedia', title: 'Veresk Bridge', year: 'read 2026-11-03', url: wp('Veresk_Bridge') },
+  { id: 'wp-mausoleum', author: 'Wikipedia', title: 'Mausoleum of Reza Shah', year: 'read 2026-11-03', url: wp('Mausoleum_of_Reza_Shah') },
+  { id: 'wp-museum', author: 'Wikipedia', title: 'National Museum of Iran', year: 'read 2026-11-03', url: wp('National_Museum_of_Iran') },
+  { id: 'wp-bank-melli', author: 'Wikipedia', title: 'Bank Melli Iran', year: 'read 2026-11-03', url: wp('Bank_Melli_Iran') },
+  { id: 'wp-kashf', author: 'Wikipedia', title: 'Kashf-e hijab', year: 'read 2026-11-03', url: wp('Kashf-e_hijab') },
+  { id: 'wp-goharshad', author: 'Wikipedia', title: 'Goharshad Mosque rebellion', year: 'read 2026-11-03', url: wp('Goharshad_Mosque_rebellion') },
+  { id: 'wp-invasion', author: 'Wikipedia', title: 'Anglo-Soviet invasion of Iran', year: 'read 2026-11-03', url: wp('Anglo-Soviet_invasion_of_Iran') },
+  { id: 'wp-teymourtash', author: 'Wikipedia', title: 'Abdolhossein Teymourtash', year: 'read 2026-11-03', url: wp('Abdolhossein_Teymourtash') },
+  { id: 'wp-firouz', author: 'Wikipedia', title: 'Firouz Nosrat-ed-Dowleh III', year: 'read 2026-11-03', url: wp('Firouz_Nosrat-ed-Dowleh_III') },
+  { id: 'wp-taqizadeh', author: 'Wikipedia', title: 'Hassan Taqizadeh', year: 'read 2026-11-03', url: wp('Hassan_Taqizadeh') },
+  { id: 'wp-hedayat', author: 'Wikipedia', title: 'Mehdi Qoli Hedayat', year: 'read 2026-11-03', url: wp('Mehdi_Qoli_Hedayat') },
+  { id: 'wp-hekmat', author: 'Wikipedia', title: 'Ali-Asghar Hekmat', year: 'read 2026-11-03', url: wp('Ali-Asghar_Hekmat') },
+  { id: 'wp-zia', author: 'Wikipedia', title: 'Zia ol Din Tabatabaee', year: 'read 2026-11-03', url: wp('Zia_ol_Din_Tabatabaee') },
+  { id: 'wp-mansur', author: 'Wikipedia', title: 'Ali Mansur', year: 'read 2026-11-03', url: wp('Ali_Mansur') },
+  { id: 'cronin-1997', author: 'S. Cronin', title: 'The Army and the Creation of the Pahlavi State in Iran, 1910–1926', year: '1997', note: B('برای مطالعهٔ بیشتر؛ در این صفحه نقل نشده است.', 'Further reading; not quoted on this page.') },
+  { id: 'abrahamian-2008', author: 'E. Abrahamian', title: 'A History of Modern Iran', year: '2008', note: B('برای مطالعهٔ بیشتر؛ در این صفحه نقل نشده است.', 'Further reading; not quoted on this page.') },
+  { id: 'ghani-1998', author: 'C. Ghani', title: 'Iran and the Rise of Reza Shah: From Qajar Collapse to Pahlavi Power', year: '1998', note: B('برای مطالعهٔ بیشتر؛ در این صفحه نقل نشده است.', 'Further reading; not quoted on this page.') },
+  { id: 'katouzian-2000', author: 'H. Katouzian', title: 'State and Society in Iran: The Eclipse of the Qajars and the Emergence of the Pahlavis', year: '2000', note: B('برای مطالعهٔ بیشتر؛ در این صفحه نقل نشده است.', 'Further reading; not quoted on this page.') },
+  { id: 'wilber-1975', author: 'D. N. Wilber', title: 'Riza Shah Pahlavi: The Resurrection and Reconstruction of Iran', year: '1975', note: B('برای مطالعهٔ بیشتر؛ در این صفحه نقل نشده است.', 'Further reading; not quoted on this page.') },
+  { id: 'atabaki-zurcher-2004', author: 'T. Atabaki and E. J. Zürcher (eds.)', title: 'Men of Order: Authoritarian Modernization under Atatürk and Reza Shah', year: '2004', note: B('برای مطالعهٔ بیشتر؛ در این صفحه نقل نشده است.', 'Further reading; not quoted on this page.') },
+]
+
+export const pvSourceIds = new Set([...pvSources, ...rzSources].map((s) => s.id))
 
 const f = (name: string) => `https://commons.wikimedia.org/wiki/File:${name}`
 const PD = 'https://commons.wikimedia.org/wiki/Commons:Public_domain'
