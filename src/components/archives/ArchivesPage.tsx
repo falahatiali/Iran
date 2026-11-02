@@ -10,6 +10,7 @@ import { Divider } from '../Ornament'
 import { EvidenceBadge } from '../cylinder/EvidenceBadge'
 import { CiteButton } from '../CiteButton'
 import { RationExplorer } from './RationExplorer'
+import { PersepolisSite, persepolisNav } from './PersepolisSite'
 
 export function ArchivesPage({ locale, data }: { locale: Locale; data: ArchivesProject }) {
   const isFa = locale === 'fa'
@@ -95,6 +96,7 @@ export function ArchivesPage({ locale, data }: { locale: Locale; data: ArchivesP
         <nav aria-label={isFa ? 'بخش‌های صفحه' : 'On this page'} className="mb-16">
           <ul className="flex flex-wrap gap-2 text-sm">
             {([
+              ...persepolisNav(isFa),
               ['layers', t.layers],
               ['discovery', t.discover],
               ['explorer', t.explorer],
@@ -112,6 +114,8 @@ export function ArchivesPage({ locale, data }: { locale: Locale; data: ArchivesP
             ))}
           </ul>
         </nav>
+
+        <PersepolisSite locale={locale} />
 
         <section id="layers" aria-labelledby="layers-h" className="mb-16">
           <h2 id="layers-h" className="text-2xl font-bold text-gold mb-4">{t.layers}</h2>

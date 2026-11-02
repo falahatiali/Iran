@@ -56,9 +56,11 @@ export function CyrusTombReconstruction({ locale }: { locale: Locale }) {
           <text x={W - 36} y={(GROUND + apex) / 2}>{t.total}</text>
           <line x1={CX - (13.35 * S) / 2} y1={GROUND + 14} x2={CX + (13.35 * S) / 2} y2={GROUND + 14} stroke="#c9a85c" />
           <text x={CX} y={GROUND + 32} textAnchor="middle">{t.plinth}</text>
-          <text x={CX + doorW} y={top - doorH / 2}>{t.door}</text>
-          <text x={CX + 18} y={wallTop - 16}>{t.rosette}</text>
-          <text x={12} y={top + 30}>{t.tiers}</text>
+          <line x1={CX + doorW / 2} y1={top - doorH / 2} x2={CX + cw + 14} y2={top - doorH / 2} stroke="#c9a85c" />
+          <text x={CX + cw + 18} y={top - doorH / 2 + 4}>{t.door}</text>
+          <line x1={CX + 12} y1={wallTop - 8} x2={CX + cw + 30} y2={wallTop - 40} stroke="#c9a85c" />
+          <text x={CX + cw + 34} y={wallTop - 36}>{t.rosette}</text>
+          <text x={12} y={60}>{t.tiers.split(/ (?=and|و )/)[0]}</text><text x={12} y={78}>{t.tiers.split(/ (?=and|و )/)[1]}</text>
           <text x={12} y={wallTop + 20}>{t.chamber}</text>
         </g>
       </svg>

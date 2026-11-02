@@ -405,3 +405,20 @@ cyrus-ii (local webp in public/media/cyrus/; licence read from the Commons API 2
 - tall-takht.webp ← Tall-e Takht, Pasargadae.jpg — Bernard Gagnon — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Tall-e_Takht,_Pasargadae.jpg
 - public/media/cyrus/conquests-* — clip rendered from this site's own map
 - the tomb reconstruction on /king/cyrus-ii is our own SVG drawing
+
+archives / Persepolis (local webp in public/media/persepolis/{key}-640|1200.webp; licence read from the Commons API 2026-11-02)
+- hero ← Persepolis - Apadana 01.jpg — Bernard Gagnon — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Persepolis_-_Apadana_01.jpg
+- gate ← Persepolis – Gate of All Nations 01.jpg — Skot — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Persepolis_%E2%80%93_Gate_of_All_Nations_01.jpg
+- tachara ← 2018-09-21 Iran, Persepolis, Tachara (from the southeast).jpg — Laurens R. Krol — CC BY 4.0 — https://commons.wikimedia.org/wiki/File:2018-09-21_Iran,_Persepolis,_Tachara_(from_the_southeast).jpg
+- hundred ← Hall of Hundred Columns (Throne Hall), Persepolis.jpg — Carole Raddato — CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File:Hall_of_Hundred_Columns_(Throne_Hall),_Persepolis.jpg
+- stairs ← Persepolis stairs of the Apadana relief.jpg — Phillip Maiwald (Nikopol) — CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Persepolis_stairs_of_the_Apadana_relief.jpg
+- flandin ← Persepolis , view the ruins 1 by Eugène Flandin.jpg — Eugène Flandin — Public domain — https://commons.wikimedia.org/wiki/File:Persepolis_,_view_the_ruins_1_by_Eug%C3%A8ne_Flandin.jpg
+- coste ← Persepolis rendering old.jpg — Flandin and Coste — Public domain — https://commons.wikimedia.org/wiki/File:Persepolis_rendering_old.jpg
+- chipiez ← Persepolis vue d'oiseau Chipiez.jpg — Charles Chipiez — Public domain — https://commons.wikimedia.org/wiki/File:Persepolis_vue_d%27oiseau_Chipiez.jpg
+- chipiez-apadana ← Persepolis Reconstruction Apadana Chipiez.jpg — Charles Chipiez — Public domain — https://commons.wikimedia.org/wiki/File:Persepolis_Reconstruction_Apadana_Chipiez.jpg
+- sevruguin ← Groep mannen poserend bij de Poort van alle Naties (Poort van Xerxes) in Persepolis Persepolis (titel op object), RP-F-F01048-AI.jpg — Rijksmuseum — CC0 — https://commons.wikimedia.org/wiki/File:Groep_mannen_poserend_bij_de_Poort_van_alle_Naties_(Poort_van_Xerxes)_in_Persepolis_Persepolis_(titel_op_object),_RP-F-F01048-AI.jpg
+- sevruguin2 ← Gezicht op ruïnes van Persepolis, RP-F-F01048-AD.jpg — Rijksmuseum — CC0 — https://commons.wikimedia.org/wiki/File:Gezicht_op_ru%C3%AFnes_van_Persepolis,_RP-F-F01048-AD.jpg
+- pfa ← Persepolis Fortification Archive Tablets.jpg — Pfa16 — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Persepolis_Fortification_Archive_Tablets.jpg
+- tomb-a3 ← Persepolis - Tomb of Artaxerxes III 01.jpg — Bernard Gagnon — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Persepolis_-_Tomb_of_Artaxerxes_III_01.jpg
+- aase-death.m4a ← Peer Gynt Suite No. 1, Op. 46 - II. Aase's Death.ogg — Edvard Grieg, performed by Musopen Symphony Orchestra — CC0 — https://commons.wikimedia.org/wiki/File:Peer_Gynt_Suite_No._1,_Op._46_-_II._Aase%27s_Death.ogg (transcoded to AAC)
+- the terrace plan on /archives is our own schematic SVG
