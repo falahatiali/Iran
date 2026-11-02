@@ -2,5 +2,6 @@
 export interface Topic { path: string; name: string }
 const TOPICS: Record<string, Topic> = {
   'نبرد حران (کارهه)': { path: '/battle/carrhae', name: 'نبرد حران' },
+  'کودتای ۲۸ مرداد': { path: '/event/28-mordad', name: '۲۸ مرداد' },
 }
 export const topicForEventTitle = (title: string): Topic | undefined => TOPICS[title]

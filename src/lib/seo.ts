@@ -123,3 +123,9 @@ export const CARRHAE_ALTERNATES = [
   { hrefLang: 'en', path: '/en/battle/carrhae' },
   { hrefLang: 'x-default', path: '/battle/carrhae' },
 ] as const
+
+export const MORDAD_ALTERNATES = [
+  { hrefLang: 'fa', path: '/event/28-mordad' },
+  { hrefLang: 'en', path: '/en/event/28-mordad' },
+  { hrefLang: 'x-default', path: '/event/28-mordad' },
+] as const

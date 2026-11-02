@@ -451,3 +451,21 @@ archives / Persepolis (local webp in public/media/persepolis/{key}-640|1200.webp
 - tomb-a3 ← Persepolis - Tomb of Artaxerxes III 01.jpg — Bernard Gagnon — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Persepolis_-_Tomb_of_Artaxerxes_III_01.jpg
 - aase-death.m4a ← Peer Gynt Suite No. 1, Op. 46 - II. Aase's Death.ogg — Edvard Grieg, performed by Musopen Symphony Orchestra — CC0 — https://commons.wikimedia.org/wiki/File:Peer_Gynt_Suite_No._1,_Op._46_-_II._Aase%27s_Death.ogg (transcoded to AAC)
 - the terrace plan on /archives is our own schematic SVG
+
+event / 28 Mordad 1332 (local webp in public/media/mordad28/{key}.webp; licence tags read from the Commons wikitext 2026-11-03)
+- mosaddeq.webp ← Dr Mohammad Mosaddeq (cropped).jpg — International News Photos, 1951 — PD-US-not renewed / PD-no notice — https://commons.wikimedia.org/wiki/File:Dr_Mohammad_Mosaddeq_(cropped).jpg
+- zahedi.webp ← Fazlollah Zahedi.jpg — unknown — PD-Iran — https://commons.wikimedia.org/wiki/File:Fazlollah_Zahedi.jpg
+- nasiri.webp ← Nematollah Nassiri portrait.jpg — unknown — PD-Iran — https://commons.wikimedia.org/wiki/File:Nematollah_Nassiri_portrait.jpg
+- behbahani.webp ← AyatollahBehbahani.jpg — unknown — PD-old-70-expired — https://commons.wikimedia.org/wiki/File:AyatollahBehbahani.jpg
+- kashani.webp ← Kashani.jpg — Taraqqi magazine, Oct 1953 — PD-Iran — https://commons.wikimedia.org/wiki/File:Kashani.jpg
+- roosevelt.webp ← Kermit Roosevelt Jr. in Tehran in 1953.jpg — CIA (declassified 2014) — PD-USGov-CIA — https://commons.wikimedia.org/wiki/File:Kermit_Roosevelt_Jr._in_Tehran_in_1953.jpg
+- fatemi.webp ← HosseinFatemi2.jpg — Associated Press, 16 Aug 1953 — PD-no notice — https://commons.wikimedia.org/wiki/File:HosseinFatemi2.jpg
+- shah-zahedi.webp ← Shah Zahedi.jpg — unknown (Farhad) — PD-Iran — https://commons.wikimedia.org/wiki/File:Shah_Zahedi.jpg
+- henderson.webp ← MossadeghHenderson.jpg — unknown — PD-Iran — https://commons.wikimedia.org/wiki/File:MossadeghHenderson.jpg
+- tanks-ferdowsi.webp ← 1953 Iranian coup d'état by Stephen Langlie (1).png — Stephen Langlie, USAF/MAAG — PD-USGov-Military-Air Force — https://commons.wikimedia.org/wiki/File:1953_Iranian_coup_d%27%C3%A9tat_by_Stephen_Langlie_(1).png
+- tanks.webp ← Operationajax.jpg — unknown — PD-Iran — https://commons.wikimedia.org/wiki/File:Operationajax.jpg
+- zahedi-radio.webp ← تصویر منتشرشده در کتاب ۲۸ مرداد ۱۳۳۲ (21).jpg — unknown (book «۲۸ مرداد») — PD-scan|PD-Iran — https://commons.wikimedia.org/wiki/File:%D8%AA%D8%B5%D9%88%DB%8C%D8%B1_%D9%85%D9%86%D8%AA%D8%B4%D8%B1%D8%B4%D8%AF%D9%87_%D8%AF%D8%B1_%DA%A9%D8%AA%D8%A7%D8%A8_%DB%B2%DB%B8_%D9%85%D8%B1%D8%AF%D8%A7%D8%AF_%DB%B1%DB%B3%DB%B3%DB%B2_(21).jpg
+- kakh.webp ← تصویر منتشرشده در کتاب ۲۸ مرداد ۱۳۳۲ (07).jpg — unknown (book «۲۸ مرداد») — PD-scan|PD-Iran — https://commons.wikimedia.org/wiki/File:%D8%AA%D8%B5%D9%88%DB%8C%D8%B1_%D9%85%D9%86%D8%AA%D8%B4%D8%B1%D8%B4%D8%AF%D9%87_%D8%AF%D8%B1_%DA%A9%D8%AA%D8%A7%D8%A8_%DB%B2%DB%B8_%D9%85%D8%B1%D8%AF%D8%A7%D8%AF_%DB%B1%DB%B3%DB%B3%DB%B2_(07).jpg
+- trial.webp ← Military trial of Dr. Mohammad Mosaddegh.jpg — unknown — PD-Iran — https://commons.wikimedia.org/wiki/File:Military_trial_of_Dr._Mohammad_Mosaddegh.jpg
+- zahedi-papers.webp ← Handwriting of Zahedi Papers, Hoover Institution.jpg — Zahedi papers, Hoover Institution — PD-scan|PD-text — https://commons.wikimedia.org/wiki/File:Handwriting_of_Zahedi_Papers,_Hoover_Institution.jpg
+- mosavar.webp ← TMMosavar28Mordad-2.jpg — Tehran Mosavar magazine, Aug 1953 — PD-scan|PD-Iran — https://commons.wikimedia.org/wiki/File:TMMosavar28Mordad-2.jpg

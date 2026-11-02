@@ -22,9 +22,11 @@ import { Route as EnAboutRouteImport } from './routes/en/about'
 import { Route as EnArchivesRouteImport } from './routes/en/archives'
 import { Route as EnCylinderRouteImport } from './routes/en/cylinder'
 import { Route as EnDariusRouteImport } from './routes/en/darius'
+import { Route as Event28MordadRouteImport } from './routes/event/28-mordad'
 import { Route as KingSlugRouteImport } from './routes/king/$slug'
 import { Route as PlaceSlugRouteImport } from './routes/place/$slug'
 import { Route as EnBattleCarrhaeRouteImport } from './routes/en/battle/carrhae'
+import { Route as EnEvent28MordadRouteImport } from './routes/en/event/28-mordad'
 import { Route as EnKingSlugRouteImport } from './routes/en/king/$slug'
 import { Route as EnPlaceSlugRouteImport } from './routes/en/place/$slug'
 
@@ -93,6 +95,11 @@ const EnDariusRoute = EnDariusRouteImport.update({
   path: '/en/darius',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Event28MordadRoute = Event28MordadRouteImport.update({
+  id: '/event/28-mordad',
+  path: '/event/28-mordad',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const KingSlugRoute = KingSlugRouteImport.update({
   id: '/king/$slug',
   path: '/king/$slug',
@@ -106,6 +113,11 @@ const PlaceSlugRoute = PlaceSlugRouteImport.update({
 const EnBattleCarrhaeRoute = EnBattleCarrhaeRouteImport.update({
   id: '/en/battle/carrhae',
   path: '/en/battle/carrhae',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnEvent28MordadRoute = EnEvent28MordadRouteImport.update({
+  id: '/en/event/28-mordad',
+  path: '/en/event/28-mordad',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EnKingSlugRoute = EnKingSlugRouteImport.update({
@@ -133,9 +145,11 @@ export interface FileRoutesByFullPath {
   '/en/archives': typeof EnArchivesRoute
   '/en/cylinder': typeof EnCylinderRoute
   '/en/darius': typeof EnDariusRoute
+  '/event/28-mordad': typeof Event28MordadRoute
   '/king/$slug': typeof KingSlugRoute
   '/place/$slug': typeof PlaceSlugRoute
   '/en/battle/carrhae': typeof EnBattleCarrhaeRoute
+  '/en/event/28-mordad': typeof EnEvent28MordadRoute
   '/en/king/$slug': typeof EnKingSlugRoute
   '/en/place/$slug': typeof EnPlaceSlugRoute
 }
@@ -153,9 +167,11 @@ export interface FileRoutesByTo {
   '/en/archives': typeof EnArchivesRoute
   '/en/cylinder': typeof EnCylinderRoute
   '/en/darius': typeof EnDariusRoute
+  '/event/28-mordad': typeof Event28MordadRoute
   '/king/$slug': typeof KingSlugRoute
   '/place/$slug': typeof PlaceSlugRoute
   '/en/battle/carrhae': typeof EnBattleCarrhaeRoute
+  '/en/event/28-mordad': typeof EnEvent28MordadRoute
   '/en/king/$slug': typeof EnKingSlugRoute
   '/en/place/$slug': typeof EnPlaceSlugRoute
 }
@@ -174,9 +190,11 @@ export interface FileRoutesById {
   '/en/archives': typeof EnArchivesRoute
   '/en/cylinder': typeof EnCylinderRoute
   '/en/darius': typeof EnDariusRoute
+  '/event/28-mordad': typeof Event28MordadRoute
   '/king/$slug': typeof KingSlugRoute
   '/place/$slug': typeof PlaceSlugRoute
   '/en/battle/carrhae': typeof EnBattleCarrhaeRoute
+  '/en/event/28-mordad': typeof EnEvent28MordadRoute
   '/en/king/$slug': typeof EnKingSlugRoute
   '/en/place/$slug': typeof EnPlaceSlugRoute
 }
@@ -196,9 +214,11 @@ export interface FileRouteTypes {
     | '/en/archives'
     | '/en/cylinder'
     | '/en/darius'
+    | '/event/28-mordad'
     | '/king/$slug'
     | '/place/$slug'
     | '/en/battle/carrhae'
+    | '/en/event/28-mordad'
     | '/en/king/$slug'
     | '/en/place/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -216,9 +236,11 @@ export interface FileRouteTypes {
     | '/en/archives'
     | '/en/cylinder'
     | '/en/darius'
+    | '/event/28-mordad'
     | '/king/$slug'
     | '/place/$slug'
     | '/en/battle/carrhae'
+    | '/en/event/28-mordad'
     | '/en/king/$slug'
     | '/en/place/$slug'
   id:
@@ -236,9 +258,11 @@ export interface FileRouteTypes {
     | '/en/archives'
     | '/en/cylinder'
     | '/en/darius'
+    | '/event/28-mordad'
     | '/king/$slug'
     | '/place/$slug'
     | '/en/battle/carrhae'
+    | '/en/event/28-mordad'
     | '/en/king/$slug'
     | '/en/place/$slug'
   fileRoutesById: FileRoutesById
@@ -257,9 +281,11 @@ export interface RootRouteChildren {
   EnArchivesRoute: typeof EnArchivesRoute
   EnCylinderRoute: typeof EnCylinderRoute
   EnDariusRoute: typeof EnDariusRoute
+  Event28MordadRoute: typeof Event28MordadRoute
   KingSlugRoute: typeof KingSlugRoute
   PlaceSlugRoute: typeof PlaceSlugRoute
   EnBattleCarrhaeRoute: typeof EnBattleCarrhaeRoute
+  EnEvent28MordadRoute: typeof EnEvent28MordadRoute
   EnKingSlugRoute: typeof EnKingSlugRoute
   EnPlaceSlugRoute: typeof EnPlaceSlugRoute
 }
@@ -357,6 +383,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnDariusRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/event/28-mordad': {
+      id: '/event/28-mordad'
+      path: '/event/28-mordad'
+      fullPath: '/event/28-mordad'
+      preLoaderRoute: typeof Event28MordadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/king/$slug': {
       id: '/king/$slug'
       path: '/king/$slug'
@@ -376,6 +409,13 @@ declare module '@tanstack/react-router' {
       path: '/en/battle/carrhae'
       fullPath: '/en/battle/carrhae'
       preLoaderRoute: typeof EnBattleCarrhaeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/event/28-mordad': {
+      id: '/en/event/28-mordad'
+      path: '/en/event/28-mordad'
+      fullPath: '/en/event/28-mordad'
+      preLoaderRoute: typeof EnEvent28MordadRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/en/king/$slug': {
@@ -409,9 +449,11 @@ const rootRouteChildren: RootRouteChildren = {
   EnArchivesRoute: EnArchivesRoute,
   EnCylinderRoute: EnCylinderRoute,
   EnDariusRoute: EnDariusRoute,
+  Event28MordadRoute: Event28MordadRoute,
   KingSlugRoute: KingSlugRoute,
   PlaceSlugRoute: PlaceSlugRoute,
   EnBattleCarrhaeRoute: EnBattleCarrhaeRoute,
+  EnEvent28MordadRoute: EnEvent28MordadRoute,
   EnKingSlugRoute: EnKingSlugRoute,
   EnPlaceSlugRoute: EnPlaceSlugRoute,
 }

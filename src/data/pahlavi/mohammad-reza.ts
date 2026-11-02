@@ -97,7 +97,9 @@ const mrsDossier: DossierSection[] = [
     ], [
       'This is our reading: 19 August 1953 is still one of the most contested days in modern Iranian history, and each reader’s view of it is often tied to their judgement of the whole reign.',
     ]],
-    [...CO, ...Y6, ...C3], { photos: ['mosaddeq-1952'], quotes: [
+    [...CO, ...Y6, ...C3], { photos: ['mosaddeq-1952'],
+      link: { href: { fa: '/event/28-mordad', en: '/en/event/28-mordad' }, label: { fa: '۲۸ مرداد ساعت‌به‌ساعت: بازیگران، اسناد و دوازده روایت در برابر شواهد', en: '19 August 1953 hour by hour: the cast, the documents and twelve stories against the evidence' } },
+      quotes: [
       { text: 'conceived by MI6 [the British Intelligence Service] and delivered by CIA', fa: '«MI6 [سرویس اطلاعاتی بریتانیا] طراحی کرد و CIA اجرا کرد.»', ref: 'M. J. Gasiorowski, “Coup d’état of 1332 Š./1953”, Encyclopaedia Iranica, quoting P. Wright, p. 259', source: 'iranica-coup-1953' },
       { text: 'Eventually, a coup inspired and aided by the British and the Americans was conceived with the concurrence of the shah, who dismissed Moṣaddeq as prime minister, but Moṣaddeq ignored the royal decree and had the shah’s envoy arrested.', fa: '«سرانجام کودتایی با الهام و یاری بریتانیا و آمریکا و با موافقت شاه طراحی شد؛ شاه مصدق را از نخست‌وزیری برکنار کرد، اما مصدق فرمان شاهانه را نادیده گرفت و فرستادهٔ شاه را بازداشت کرد.»', ref: 'E. Yarshater, “Iran ii. Iranian history (2) Islamic period, page 6”, Encyclopaedia Iranica', source: 'yarshater-iran-p6' },
     ] }),
