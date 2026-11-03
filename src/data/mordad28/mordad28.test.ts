@@ -23,3 +23,16 @@ test('cast and timeline photos exist in the photo list', () => {
 test('never names the excluded commentator', () => {
   assert.doesNotMatch(JSON.stringify({ days, cast, myths, views, documents, mordadSources }), /جنت|Jannat/i)
 })
+
+test('ported dossier keeps five chapters, both languages, and leaves the withheld name out', async () => {
+  const { dossierChapters, dossierIndex, essay, withheld } = await import('./dossier')
+  assert.deepEqual(dossierChapters.map((c) => c.n), [1, 2, 3, 4, 5])
+  assert.doesNotMatch(JSON.stringify({ dossierChapters, dossierIndex, essay }), /جنت|Jannat/i)
+  for (const c of dossierChapters) for (const b of c.blocks) {
+    const parts = b.t === 'ul' ? b.items : b.t === 'quote' ? [b.text, b.cite] : [b.text]
+    for (const x of parts) assert.ok(x.fa.trim() && x.en.trim(), `${c.n}`)
+  }
+  assert.equal(dossierIndex.rows.length, 6)
+  assert.equal(dossierIndex.timeline.length, 5)
+  assert.ok(withheld.some((w) => w.includes('chapter 6')))
+})

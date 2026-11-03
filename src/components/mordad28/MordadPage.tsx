@@ -3,6 +3,7 @@ import { cast, days, documents, facts, mordadSources, myths, page, photo, photos
 import type { Locale } from '../../lib/i18n'
 import { PageTransition, Reveal } from '../Reveal'
 import { Shamseh } from '../Ornament'
+import { MordadDossier } from './MordadDossier'
 
 const CERT: Record<Certainty, { fa: string; en: string; tone: string }> = {
   secure: { fa: 'قطعی', en: 'Secure', tone: 'border-turquoise/50 bg-turquoise/10 text-turquoise-soft' },
@@ -33,7 +34,7 @@ export function MordadPage({ locale }: { locale: Locale }) {
       <h2 id={`${id}-h`} className="text-3xl md:text-4xl font-black text-gilded">{children}</h2>
     </header>
   )
-  const nav: [string, string][] = [['days', t.days], ['cast', t.cast], ['myths', t.myths], ['debate', t.debate], ['documents', t.docs], ['reading', t.reading], ['gallery', t.gallery], ['sources', t.bib]]
+  const nav: [string, string][] = [['dossier', isFa ? 'پرونده' : 'Dossier'], ['compare', isFa ? 'جدول مقایسه' : 'Comparison'], ['timeline', isFa ? 'تایم‌لاین' : 'Timeline'], ['essay', isFa ? 'جستار' : 'Essay'], ['days', t.days], ['cast', t.cast], ['myths', t.myths], ['debate', t.debate], ['documents', t.docs], ['reading', t.reading], ['gallery', t.gallery], ['sources', t.bib]]
   const hero = photo('tanks-ferdowsi') as MordadPhoto
   const mrsHref = isFa ? '/king/mohammad-reza-shah#mosaddeq' : '/en/king/mohammad-reza-shah#mosaddeq'
 
@@ -69,6 +70,8 @@ export function MordadPage({ locale }: { locale: Locale }) {
         <SectionNav items={nav} label={isFa ? 'بخش‌های صفحه' : 'Page sections'} />
 
         <div className="mx-auto max-w-6xl px-4 py-12 grid grid-cols-[minmax(0,1fr)] gap-20">
+          <MordadDossier locale={locale} />
+
           <section id="days" aria-labelledby="days-h" className="scroll-mt-28">
             <H2 id="days" kicker={isFa ? 'از کلاردشت تا خیابان کاخ' : 'From Kelardasht to Kakh Street'}>{t.days}</H2>
             <DayTimeline locale={locale} Chips={Chips} t={t} />
