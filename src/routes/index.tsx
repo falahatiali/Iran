@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'motion/react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Shamseh, Divider } from '../components/Ornament'
 import { Reveal } from '../components/Reveal'
+import { DariusPrayerTeaser } from '../components/darius/DariusPrayer'
 import { ShareLink } from '../components/ShareLink'
 import { eraNames, fa, range } from '../lib/format'
 import { normalize } from '../lib/search'
@@ -97,6 +98,7 @@ function Home() {
   return (
     <>
       <Hero totals={data.totals} />
+      <DariusPrayerTeaser />
       <section id="eras" aria-labelledby="eras-h" className="mx-auto max-w-7xl px-4 pt-16">
         <Reveal><h2 id="eras-h" className="text-3xl md:text-4xl font-black text-center">نمایه‌ی دوران‌ها</h2></Reveal>
         <Divider />

@@ -9,6 +9,7 @@ import { AnimatedClip } from './AnimatedClip'
 import { BattleDiagram } from './BattleDiagram'
 import { CampaignMap } from './CampaignMap'
 import { MongolInvasion } from '../khwarazm/MongolInvasion'
+import { DariusPrayer } from '../darius/DariusPrayer'
 import { CarrhaeBattle } from '../carrhae/CarrhaeBattle'
 import { CyrusTombReconstruction } from '../cyrus/CyrusTombReconstruction'
 
@@ -159,6 +160,7 @@ export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: 
 
       {king.dossier.map((s, n) => (
         <Reveal key={s.id}>
+          {king.slug === 'darius-i' && n === Math.floor(king.dossier.length / 2) && <DariusPrayer locale={locale} />}
           <section id={s.id} className="scroll-mt-24 mt-16">
             <p className="text-sm text-turquoise-soft">{t.dossier} · {isFa ? (n + 1).toLocaleString('fa-IR') : n + 1}</p>
             <h2 className="text-3xl font-black text-gilded mt-1 leading-[1.4]">{s.title[locale]}</h2>
