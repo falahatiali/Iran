@@ -8,6 +8,7 @@ import { EvidenceBadge } from '../cylinder/EvidenceBadge'
 import { AnimatedClip } from './AnimatedClip'
 import { BattleDiagram } from './BattleDiagram'
 import { CampaignMap } from './CampaignMap'
+import { MongolInvasion } from '../khwarazm/MongolInvasion'
 import { CarrhaeBattle } from '../carrhae/CarrhaeBattle'
 import { CyrusTombReconstruction } from '../cyrus/CyrusTombReconstruction'
 
@@ -100,7 +101,7 @@ export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: 
   const c = king.campaign
   const hero = king.hero ? photo(king.hero) : undefined
   const top = !!hero
-  const toc = [['map', king.mapTitle[locale]], ...(c ? [[c.id, c.title[locale]]] : []), ['layers', t.layers], ...king.dossier.map((d) => [d.id, d.title[locale]]), ['synthesis', t.synthesis], ['bibliography', t.bib]]
+  const toc = [...(king.slug === 'jalal-al-din' ? [['mongol-invasion', locale === 'fa' ? 'یورش مغول' : 'The Mongol invasion']] : []), ['map', king.mapTitle[locale]], ...(c ? [[c.id, c.title[locale]]] : []), ['layers', t.layers], ...king.dossier.map((d) => [d.id, d.title[locale]]), ['synthesis', t.synthesis], ['bibliography', t.bib]]
 
   return (
     <div lang={locale} dir={isFa ? 'rtl' : 'ltr'} className="space-y-0">
@@ -130,6 +131,8 @@ export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: 
           </ul>
         </nav>
       </section>
+
+      {king.slug === 'jalal-al-din' && <MongolInvasion locale={locale} />}
 
       <section id="map" className="scroll-mt-24 mt-14">
         <h2 className="text-3xl font-black text-gilded mb-4">{king.mapTitle[locale]}</h2>

@@ -51,6 +51,8 @@ export const muhammadDossier: DossierSection[] = [
     ['boyle-chi', 'iranica-muhammad-kh']),
 ]
 
+for (const s of muhammadDossier) if (s.id === 'otrar' || s.id === 'invasion') s.link = { href: { fa: '/king/jalal-al-din#mongol-invasion', en: '/en/king/jalal-al-din#mongol-invasion' }, label: B('یکی از روزهای تلخ: یورش مغول', 'A bitter day: the Mongol invasion') }
+
 export const muhammadKh: FeaturedKing = {
   slug: 'ala-al-din-muhammad',
   name: B('سلطان محمد خوارزمشاه', 'Muhammad II of Khwarazm'),
@@ -98,6 +100,7 @@ export const muhammadKh: FeaturedKing = {
   sources: khwSources,
   photos: khwPhotos,
   related: [
+    { href: { fa: '/king/jalal-al-din#mongol-invasion', en: '/en/king/jalal-al-din#mongol-invasion' }, label: B('یکی از روزهای تلخ: یورش مغول', 'A bitter day: the Mongol invasion') },
     { href: { fa: '/dynasty/khwarazmshahs', en: '/dynasty/khwarazmshahs' }, label: B('دودمان خوارزمشاهی', 'The Khwarazmshah dynasty') },
     { href: { fa: '/king/jalal-al-din', en: '/en/king/jalal-al-din' }, label: B('جلال‌الدین و نبرد سند', 'Jalal al-Din and the Indus') },
   ],

@@ -37,3 +37,18 @@ test('Otrar is flagged as disputed and the Indus as probable', () => {
 test('photos carry Commons pages and licences', () => {
   for (const p of khwPhotos) assert.ok(p.page.startsWith('https://commons.wikimedia.org/wiki/File:') && p.src.startsWith('https://upload.wikimedia.org/') && p.licenseUrl, p.id)
 })
+
+test('Mongol invasion section is sourced, flagged and licensed', async () => {
+  const { chapters, claims, mongol, mongolPhotos, mongolSources, quotes } = await import('./mongol')
+  const ids = new Set(mongolSources.map((s) => s.id))
+  for (const c of chapters) {
+    for (const s of c.sources) assert.ok(ids.has(s), `${c.id} → ${s}`)
+    if (c.certainty !== 'secure') assert.ok(filled(c.note?.fa) && filled(c.note?.en), c.id)
+  }
+  for (const q of Object.values(quotes)) assert.ok(ids.has(q.source) && /p\./.test(q.ref), q.ref)
+  for (const c of claims) assert.ok(ids.has(c.source))
+  assert.equal(chapters.find((c) => c.id === 'gurganj')!.certainty, 'disputed')
+  assert.match(mongol.lens.en, /^This is our reading/)
+  assert.match(mongol.lens.fa, /^این برداشت ماست/)
+  for (const p of mongolPhotos) assert.ok(p.page.startsWith('https://commons.wikimedia.org/wiki/File:') && p.licenseUrl && p.src.startsWith('/media/jalal-al-din/'), p.id)
+})
