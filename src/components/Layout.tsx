@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import type { Overview } from '../server/api'
 import { localeFromPath } from '../lib/i18n'
 import { SearchDialog } from './Search'
+import { openConsent } from './ConsentBanner'
+import { gaEnabled } from '../lib/analytics'
 import { Shamseh } from './Ornament'
 import { isFeaturedKing } from '../data/featured/slugs'
 
@@ -108,6 +110,7 @@ export function BackToTop() {
 }
 
 export function Footer() {
+  const isEn = useRouterState({ select: (s) => s.location.pathname }).startsWith('/en')
   return (
     <footer className="mt-24 border-t border-gold/15 bg-lapis/30">
       <div className="mx-auto max-w-7xl px-4 py-10 grid gap-6 md:grid-cols-3 text-sm text-ivory/60">
@@ -118,6 +121,7 @@ export function Footer() {
           <Link to="/timeline" className="hover:text-gold py-2 inline-block min-h-11">گاه‌شمار سراسری</Link>
           <Link to="/kings" className="hover:text-gold py-2 inline-block min-h-11">فرمانروایان در یک نگاه</Link>
           <Link to="/about" className="hover:text-gold py-2 inline-block min-h-11">روش‌شناسی و منابع</Link>
+          {gaEnabled() && <button type="button" onClick={openConsent} className="hover:text-gold py-2 min-h-11 text-start">{isEn ? 'Cookie settings' : 'تنظیمات کوکی'}</button>}
         </nav>
         <p className="leading-7">متن تحت مجوز MIT. خطوط نقشه از Natural Earth (مالکیت عمومی). قلم وزیرمتن از صابر راستی‌کردار (OFL).</p>
       </div>

@@ -40,6 +40,12 @@ export function AboutPage({ locale }: { locale: Locale }) {
           <Divider />
           <h2 id="methodology" className="text-3xl font-black text-gilded scroll-mt-24">{isFa ? 'روش‌شناسی' : 'Methodology'}</h2>
           {methodology.map((b) => <Block key={b.id} b={b} locale={locale} />)}
+          <section id="privacy" aria-labelledby="privacy-h" className="scroll-mt-24">
+            <h2 id="privacy-h" className="text-xl font-bold text-gold">{isFa ? 'حریم خصوصی و کوکی‌ها' : 'Privacy and cookies'}</h2>
+            <p className="read mt-3 text-ivory/85">{isFa
+              ? 'این سایت از Google Analytics 4 استفاده می‌کند تا بدانیم کدام صفحه‌ها خوانده می‌شوند. هیچ تبلیغی نداریم و سیگنال‌های تبلیغاتی و Google signals خاموش‌اند. تا وقتی «قبول» را نزنید، کوکی آماری گذاشته نمی‌شود (Consent Mode گوگل در حالت «رد» می‌ماند). انتخاب شما فقط در مرورگر خودتان ذخیره می‌شود و هر وقت خواستید می‌توانید آن را از پیوند «تنظیمات کوکی» در پانویس عوض کنید.'
+              : 'This site uses Google Analytics 4 to learn which pages are read. There are no ads, and advertising signals and Google signals are off. Until you press “Accept”, no analytics cookie is set (Google Consent Mode stays at “denied”). Your choice is stored only in your own browser, and you can change it at any time with the “Cookie settings” link in the footer.'}</p>
+          </section>
           <section aria-labelledby="refs-h">
             <h2 id="refs-h" className="text-xl font-bold text-gold">{isFa ? 'منابع این صفحه' : 'References'}</h2>
             <ol className="mt-3 space-y-2 text-sm leading-7 text-ivory/70" dir="ltr">

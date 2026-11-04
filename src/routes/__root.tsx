@@ -1,6 +1,6 @@
 import { HeadContent, Link, Outlet, Scripts, createRootRoute, useRouter, useRouterState } from '@tanstack/react-router'
 import { MotionConfig } from 'motion/react'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import appCss from '../styles/app.css?url'
 import { getOverview } from '../server/api'
 import { BackToTop, Footer, Header } from '../components/Layout'
@@ -8,6 +8,7 @@ import { Shamseh } from '../components/Ornament'
 import { ReadingTool } from '../components/ReadingTool'
 import { READING_BOOT_SCRIPT } from '../lib/reading'
 import { GA_ID, gaEnabled, trackPageView } from '../lib/analytics'
+import { ConsentBanner } from '../components/ConsentBanner'
 
 export const Route = createRootRoute({
   loader: () => getOverview(),
@@ -84,6 +85,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         {children}
+        <ClientConsent isEn={isEn} />
         <Scripts />
       </body>
     </html>
@@ -113,4 +115,10 @@ function NotFound() {
       <Link to="/" className="mt-8 glass rounded-full px-6 py-3 hover:border-gold min-h-11">بازگشت به خانه</Link>
     </section>
   )
+}
+
+function ClientConsent({ isEn }: { isEn: boolean }) {
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+  return mounted && gaEnabled() ? <ConsentBanner locale={isEn ? 'en' : 'fa'} /> : null
 }
