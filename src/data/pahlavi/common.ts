@@ -13,6 +13,7 @@ export const P = {
 
 const IR = 'Encyclopaedia Iranica'
 const ir = (slug: string) => `https://www.iranicaonline.org/articles/${slug}/`
+const wp = (title: string) => `https://en.wikipedia.org/wiki/${title}`
 export const pvSources: FeaturedSource[] = [
   { id: 'yarshater-iran-p5', author: `E. Yarshater, ${IR}`, title: 'Iran ii. Iranian history (2) Islamic period, page 5: the coup of 1921 and Reza Shah', year: '2004', url: ir('iran-ii2-islamic-period-page-5'), note: B('ستون اصلی صفحهٔ رضاشاه: کودتا، اصلاحات، شخصیت و خطاها. لحن یارشاطر ستایش‌آمیز است؛ از این رو نقدهای مقاله‌های دیگر ایرانیکا را کنارش می‌گذاریم.', 'The spine of the Reza Shah page: the coup, the reforms, his character and his errors. Yarshater’s tone is admiring, so we set the criticism in other Iranica articles beside it.') },
   { id: 'yarshater-iran-p6', author: `E. Yarshater, ${IR}`, title: 'Iran ii. Iranian history (2) Islamic period, page 6: Mohammad Reza Shah', year: '2004', url: ir('iran-ii2-islamic-period-page-6'), note: B('جنگ جهانی دوم، استعفای رضاشاه و پادشاهی محمدرضاشاه.', 'The Second World War, Reza Shah’s abdication and the reign of Mohammad Reza Shah.') },
@@ -23,8 +24,29 @@ export const pvSources: FeaturedSource[] = [
   { id: 'iranica-administration-vii', author: `A. Sheikholeslami, ${IR}`, title: 'Administration in Iran vii. Pahlavi period', year: '1983, updated 2018', url: ir('administration-vii-pahlavi'), note: B('دیوان‌سالاری، راه‌آهن و رابطهٔ دولت با خاندان پهلوی؛ نگاهی انتقادی‌تر از یارشاطر.', 'The bureaucracy, the railway and the state’s relation to the Pahlavi household; a more critical view than Yarshater’s.') },
   { id: 'iranica-chronology-4', author: `E. Yarshater, ${IR}`, title: 'Chronology of Iranian History, Part 4 (1974–1999)', year: 'online edition', url: ir('chronology-of-iranian-history-part-4'), note: B('حزب رستاخیز، تقویم شاهنشاهی و روزشمار انقلاب ۱۹۷۸–۱۹۷۹.', 'The Rastakhiz party, the imperial calendar and a day-by-day account of the revolution of 1978–1979.') },
   { id: 'iranica-coup-1953', author: `M. J. Gasiorowski, ${IR}`, title: 'Coup d’état of 1332 Š./1953', year: '1993', url: ir('coup-detat-1953'), note: B('نخست‌وزیری مصدق، ملی شدن نفت و کودتای ۲۸ مرداد، با تکیه بر اسناد بریتانیا و آمریکا.', 'Mosaddeq’s premiership, oil nationalisation and the coup of 19 August 1953, drawing on British and American records.') },
+  { id: 'wp-mrs', author: 'Wikipedia', title: 'Mohammad Reza Pahlavi', year: 'read 2026-11-04', url: wp('Mohammad_Reza_Pahlavi') },
+  { id: 'wp-crisis-1946', author: 'Wikipedia', title: 'Iran crisis of 1946', year: 'read 2026-11-04', url: wp('Iran_crisis_of_1946') },
+  { id: 'wp-qavam', author: 'Wikipedia', title: 'Ahmad Qavam', year: 'read 2026-11-04', url: wp('Ahmad_Qavam') },
+  { id: 'wp-ala', author: 'Wikipedia', title: 'Hossein Ala’', year: 'read 2026-11-04', url: wp('Hossein_Ala%27') },
+  { id: 'wp-white-revolution', author: 'Wikipedia', title: 'White Revolution', year: 'read 2026-11-04', url: wp('White_Revolution') },
+  { id: 'wp-f14', author: 'Wikipedia', title: 'Grumman F-14 Tomcat (Iran section)', year: 'read 2026-11-04', url: wp('Grumman_F-14_Tomcat') },
+  { id: 'wp-sabet', author: 'Wikipedia', title: 'Habib Sabet', year: 'read 2026-11-04', url: wp('Habib_Sabet') },
+  { id: 'wp-khayami', author: 'Wikipedia', title: 'Mahmoud Khayami', year: 'read 2026-11-04', url: wp('Mahmoud_Khayami') },
+  { id: 'wp-ebtehaj', author: 'Wikipedia', title: 'Abol Hassan Ebtehaj', year: 'read 2026-11-04', url: wp('Abol_Hassan_Ebtehaj') },
+  { id: 'wp-golha', author: 'Wikipedia', title: 'Golha (radio programmes)', year: 'read 2026-11-04', url: wp('Golha') },
+  { id: 'wp-banan', author: 'Wikipedia', title: 'Gholam-Hossein Banan', year: 'read 2026-11-04', url: wp('Gholam-Hossein_Banan') },
+  { id: 'wp-delkash', author: 'Wikipedia', title: 'Delkash', year: 'read 2026-11-04', url: wp('Delkash') },
+  { id: 'wp-shajarian', author: 'Wikipedia', title: 'Mohammad-Reza Shajarian', year: 'read 2026-11-04', url: wp('Mohammad-Reza_Shajarian') },
+  { id: 'wp-googoosh', author: 'Wikipedia', title: 'Googoosh', year: 'read 2026-11-04', url: wp('Googoosh') },
+  { id: 'wp-shiraz-festival', author: 'Wikipedia', title: 'Shiraz Arts Festival', year: 'read 2026-11-04', url: wp('Shiraz_Arts_Festival') },
+  { id: 'wp-kanoon', author: 'Wikipedia', title: 'Institute for the Intellectual Development of Children and Young Adults', year: 'read 2026-11-04', url: wp('Institute_for_the_Intellectual_Development_of_Children_and_Young_Adults') },
+  { id: 'wp-forough', author: 'Wikipedia', title: 'Forugh Farrokhzad', year: 'read 2026-11-04', url: wp('Forugh_Farrokhzad') },
+  { id: 'wp-shamlou', author: 'Wikipedia', title: 'Ahmad Shamlou', year: 'read 2026-11-04', url: wp('Ahmad_Shamlou') },
+  { id: 'wp-sepehri', author: 'Wikipedia', title: 'Sohrab Sepehri', year: 'read 2026-11-04', url: wp('Sohrab_Sepehri') },
+  { id: 'frus-1974-61', author: 'U.S. Department of State, Office of the Historian', title: 'FRUS 1969–1976, vol. XXVII, doc. 61: Telegram from the Embassy in Iran (Helms), June 1974', year: '1974', url: 'https://history.state.gov/historicaldocuments/frus1969-76v27/d61' },
+  { id: 'nyt-1975-grumman', author: 'The New York Times', title: 'Has Grumman Pulled Out of Its Tailspin?', year: '19 January 1975', url: 'https://www.nytimes.com/1975/01/19/archives/has-grumman-pulled-out-of-its-tailspin-grumman-saga.html' },
+  { id: 'nyt-1975-melli', author: 'The New York Times', title: 'Iran’s Government-Held Bank Grows and Lends Worldwide', year: '23 June 1975', url: 'https://www.nytimes.com/1975/06/23/archives/irans-governmentheld-bank-grows-and-lends-worldwide-at-irans.html' },
 ]
-const wp = (title: string) => `https://en.wikipedia.org/wiki/${title}`
 /** Sources added for the expanded Reza Shah page (read 2026-11-03). Books marked “further reading” are listed, not quoted. */
 export const rzSources: FeaturedSource[] = [
   { id: 'iranica-coup-1921', author: `N. Shambayati, ${IR}`, title: 'Coup d’état of 1299/1921', year: '1993', url: ir('coup-detat-of-1299-1921'), note: B('کودتا، نقش آیرونساید و نخستین روزهای قدرت.', 'The coup, Ironside’s role and the first days in power.') },

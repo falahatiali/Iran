@@ -402,9 +402,9 @@ const rezaDossier: DossierSection[] = [
       'Even Yarshater, who praises his record, writes of the “autocratic arbitrariness” that stifled free criticism in his later years, when fear of him replaced the earlier admiration.',
     ]],
     [[
-      'این برداشت ماست: دولتی که بر یک تن تکیه داشت، با رفتن او بی‌پناه ماند؛ همان‌گونه که ۱۹۴۱ نشان داد.',
+      'این برداشت ماست: این کاستی، در برابر کارنامهٔ سازندگی او، کوتاه اما واقعی است.',
     ], [
-      'This is our reading: a state that rested on one man was left defenceless when he went, as 1941 showed.',
+      'This is our reading: beside his record of building, this flaw is brief but real.',
     ]],
     [...YA, ...C3]),
   sec('property', 'زمین، دولت و خاندان', 'Land, state and household',
@@ -421,9 +421,9 @@ const rezaDossier: DossierSection[] = [
       'This is our reading: in this period the line between the state’s property and the shah’s property grew faint. The same state that ended foreigners’ privileges let the shah take peasants’ land at a nominal price.',
     ]],
     [[
-      'این برداشت ماست: پرسش «مال دولت از آنِ کیست؟» پس از او هم ماند و در دوره‌های بعد بارها دوباره پیش آمد.',
+      'این برداشت ماست: این پرسش پس از او هم ماند.',
     ], [
-      'This is our reading: the question “whose is the state’s property?” outlived him and returned again and again in later periods.',
+      'This is our reading: the question outlived him.',
     ]],
     [...YA, ...AD, ...C3], { quotes: [
       { text: 'Superficially, the bureaucracy existed within the framework set by the Majlis; in practice, it was an extension of the Pahlavi household.', fa: '«در ظاهر، دیوان‌سالاری در چارچوبی بود که مجلس تعیین کرده بود؛ در عمل، دنبالهٔ خاندان پهلوی بود.»', ref: 'A. Sheikholeslami, “Administration in Iran vii. Pahlavi period”, Encyclopaedia Iranica', source: 'iranica-administration-vii' },

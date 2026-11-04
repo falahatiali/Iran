@@ -114,5 +114,11 @@ body {
 p.read + p.read { margin-top: var(--read-gap); }
 blockquote.read p + p { margin-top: 0.6em; }
 li.read + li.read, .read > li + li { margin-top: 0.4em; }
+/* Long-form body text is justified in both scripts; English also hyphenates. Headings, buttons, nav, captions,
+   tables, centred blocks and the consent banner keep their own alignment (opt out with .no-justify). */
+p.read, li.read, .read > li, blockquote.read p { text-align: justify; text-justify: inter-word; }
+p.read:lang(en), li.read:lang(en), .read:lang(en) > li, blockquote.read:lang(en) p { hyphens: auto; }
+.text-center .read, .read.text-center, .text-center.read > li { text-align: center; }
+.no-justify .read, .read.no-justify, .no-justify .read > li { text-align: start; hyphens: manual; }
 @keyframes fadein { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .animate-\[fadein_\.5s_ease_both\] { animation: none; } }

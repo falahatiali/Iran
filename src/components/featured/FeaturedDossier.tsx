@@ -12,6 +12,7 @@ import { MongolInvasion } from '../khwarazm/MongolInvasion'
 import { DariusPrayer } from '../darius/DariusPrayer'
 import { CarrhaeBattle } from '../carrhae/CarrhaeBattle'
 import { CyrusTombReconstruction } from '../cyrus/CyrusTombReconstruction'
+import { MrsEconomyChart } from '../pahlavi/MrsEconomyChart'
 
 function Layer({ layer, paras, locale }: { layer: EvidenceLayer; paras: BiParas; locale: Locale }) {
   return (
@@ -185,6 +186,7 @@ export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: 
             ))}
             {s.embed === 'carrhae' && <div className="mt-8"><CarrhaeBattle locale={locale} sources={king.sources} id={`${s.id}-battle`} /></div>}
             {s.embed === 'cyrus-tomb' && <div className="mt-8"><CyrusTombReconstruction locale={locale} /></div>}
+            {s.embed === 'mrs-economy' && <div className="mt-8"><MrsEconomyChart locale={locale} /></div>}
             {s.clip && !s.embed && <AnimatedClip clip={s.clip.media} caption={s.clip.caption} locale={locale} />}
             {s.link && <p className="mt-6"><a href={s.link.href[locale]} className="glass rounded-full px-5 py-3 inline-flex items-center gap-2 min-h-11 font-bold text-gold-bright hover:border-gold">{s.link.label[locale]} <span aria-hidden="true">{isFa ? '←' : '→'}</span></a></p>}
             {s.people && (

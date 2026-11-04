@@ -484,3 +484,13 @@ event / 28 Mordad 1332 (local webp in public/media/mordad28/{key}.webp; licence 
 - qanat.webp ← L’intérieur d’un qanat en iran.jpg — NAEINSUN — CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:L%E2%80%99int%C3%A9rieur_d%E2%80%99un_qanat_en_iran.jpg
 - juvayni-ms.webp ← Tārīkh-i Jahān-Gushā - The History of The World Conqueror A.H. 689 A.D. 1290 - Suppl. Pers. 205 - Bibliothèque Nationale de France.jpg — 13th century artist — Public domain — https://commons.wikimedia.org/wiki/File:T%C4%81r%C4%ABkh-i_Jah%C4%81n-Gush%C4%81_-_The_History_of_The_World_Conqueror_A.H._689_A.D._1290_-_Suppl._Pers._205_-_Biblioth%C3%A8que_Nationale_de_France.jpg
 - urgench.webp ← Kunya-Urgench-130381.jpg — Roland Lin — CC BY-SA 3.0 igo — https://commons.wikimedia.org/wiki/File:Kunya-Urgench-130381.jpg
+
+mohammad-reza-shah (local webp copies; licence read from the Commons API 2026-11-04)
+- portrait-1973.webp ← Shah Mohammad Reza Pahlavi, 1973.jpg — Ghazarians — Public domain — https://commons.wikimedia.org/wiki/File:Shah_Mohammad_Reza_Pahlavi,_1973.jpg
+- f14-1975.webp ← Grumman F-14A 3-863 Iranian AF 1975 (mfr via RJF) (17109327976).jpg — San Diego Air & Space Museum Archives — Public domain — https://commons.wikimedia.org/wiki/File:Grumman_F-14A_3-863_Iranian_AF_1975_(mfr_via_RJF)_(17109327976).jpg
+- ala.webp ← Hossein Ala'.jpg — Unknown author — Public domain — https://commons.wikimedia.org/wiki/File:Hossein_Ala%27.jpg
+- qavam-moscow.webp ← Qavam-moscow.jpg — موسسه مطالعات و پژوهش های سیاسی — Public domain — https://commons.wikimedia.org/wiki/File:Qavam-moscow.jpg
+- women-vote-1963.webp ← Iranian women voting during White Revolution.jpg — Unknown author — Public domain — https://commons.wikimedia.org/wiki/File:Iranian_women_voting_during_White_Revolution.jpg
+- forough.webp ← Forough Farrokhzad, 1960s.jpg — Unknown author — Public domain — https://commons.wikimedia.org/wiki/File:Forough_Farrokhzad,_1960s.jpg
+- shiraz-festival.webp ← Shiraz Arts Festival by Bahman Jalali.jpg — Bahman Jalali — Public domain — https://commons.wikimedia.org/wiki/File:Shiraz_Arts_Festival_by_Bahman_Jalali.jpg
+- coronation-1967.webp ← Mohammad Pahlavi Coronation.jpg — Unknown author — Public domain — https://commons.wikimedia.org/wiki/File:Mohammad_Pahlavi_Coronation.jpg

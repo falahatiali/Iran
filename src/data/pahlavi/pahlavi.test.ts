@@ -66,3 +66,15 @@ test('Mohammad Reza Shah: the coup framing, Rex and Black Friday are flagged', (
   assert.match(e('black-friday').certaintyNote!.en, /164.*8,000/)
   assert.equal(e('rex').certainty, 'disputed')
 })
+
+test('Mohammad Reza Shah: local photos exist, are public domain and are attributed', async () => {
+  const { mrsPhotos } = await import('./mrs-photos')
+  const { existsSync, readFileSync } = await import('node:fs')
+  const attribution = readFileSync('public/media/ATTRIBUTION.txt', 'utf8')
+  for (const p of mrsPhotos) {
+    assert.match(p.src, /^\/media\/mohammad-reza-shah\/[\w-]+\.webp$/)
+    assert.ok(existsSync(`public${p.src}`), p.src)
+    assert.equal(p.license, 'Public domain')
+    assert.ok(attribution.includes(p.src.split('/').pop()!), p.id)
+  }
+})
