@@ -1,4 +1,4 @@
-import { HeadContent, Link, Outlet, Scripts, createRootRoute, useRouterState } from '@tanstack/react-router'
+import { HeadContent, Link, Outlet, Scripts, createRootRoute, useRouter, useRouterState } from '@tanstack/react-router'
 import { MotionConfig } from 'motion/react'
 import { useEffect } from 'react'
 import appCss from '../styles/app.css?url'
@@ -7,6 +7,7 @@ import { BackToTop, Footer, Header } from '../components/Layout'
 import { Shamseh } from '../components/Ornament'
 import { ReadingTool } from '../components/ReadingTool'
 import { READING_BOOT_SCRIPT } from '../lib/reading'
+import { GA_ID, gaEnabled, trackPageView } from '../lib/analytics'
 
 export const Route = createRootRoute({
   loader: () => getOverview(),
@@ -34,6 +35,15 @@ export const Route = createRootRoute({
 function RootDocument({ children }: { children: React.ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname })
   const isEn = pathname.startsWith('/en')
+  const router = useRouter()
+  useEffect(() => {
+    if (!gaEnabled()) return
+    return router.subscribe('onResolved', (e) => {
+      // the initial load is counted by the config call; only count real client-side moves
+      if (!e.fromLocation || e.fromLocation.href === e.toLocation.href) return
+      requestAnimationFrame(() => trackPageView(e.toLocation.href))
+    })
+  }, [router])
   useEffect(() => {
     // One-time reload guard for stale chunk/asset errors after deployment
     const handleChunkError = (event: ErrorEvent | PromiseRejectionEvent) => {
@@ -69,6 +79,8 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <script dangerouslySetInnerHTML={{ __html: READING_BOOT_SCRIPT }} />
         <HeadContent />
+        {gaEnabled() && <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />}
+        {gaEnabled() && <script src="/ga-init.js" data-ga-id={GA_ID} />}
       </head>
       <body>
         {children}
