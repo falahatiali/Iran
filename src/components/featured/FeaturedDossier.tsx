@@ -14,12 +14,64 @@ import { CarrhaeBattle } from '../carrhae/CarrhaeBattle'
 import { CyrusTombReconstruction } from '../cyrus/CyrusTombReconstruction'
 import { MrsEconomyChart } from '../pahlavi/MrsEconomyChart'
 
+/** Turn `[label](href)` markers in dossier body text into gold underlined links. */
+function withInlineLinks(text: string): ReactNode {
+  const parts: ReactNode[] = []
+  const re = /\[([^\]]+)\]\(([^)]+)\)/g
+  let last = 0
+  let m: RegExpExecArray | null
+  let i = 0
+  while ((m = re.exec(text))) {
+    if (m.index > last) parts.push(text.slice(last, m.index))
+    parts.push(<a key={i++} href={m[2]} className="font-semibold text-gold underline decoration-gold/50 underline-offset-4 hover:decoration-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold">{m[1]}</a>)
+    last = m.index + m[0].length
+  }
+  if (last < text.length) parts.push(text.slice(last))
+  return parts.length ? parts : text
+}
+
 function Layer({ layer, paras, locale }: { layer: EvidenceLayer; paras: BiParas; locale: Locale }) {
   return (
     <div className="mt-5">
       <EvidenceBadge layer={layer} locale={locale} />
-      {paras[locale].map((p, n) => <p key={n} className="read mt-3 text-ivory/85">{p}</p>)}
+      {paras[locale].map((p, n) => <p key={n} className="read mt-3 text-ivory/85">{withInlineLinks(p)}</p>)}
     </div>
+  )
+}
+
+type TopicLink = NonNullable<FeaturedKing['dossier'][number]['link']>
+
+/** Wide call-out that a section points to a dedicated topic page (not an in-page jump). */
+function TopicPageCard({ link, locale }: { link: TopicLink; locale: Locale }) {
+  const isFa = locale === 'fa'
+  const kicker = link.kicker?.[locale] ?? (isFa ? 'صفحهٔ ویژه' : 'Dedicated page')
+  const open = isFa ? 'باز کردن صفحه' : 'Open page'
+  return (
+    <a
+      href={link.href[locale]}
+      className="group mt-8 flex flex-col overflow-hidden rounded-2xl border border-gold/45 bg-gradient-to-br from-lapis/55 via-lapis/35 to-[#0b1638]/80 shadow-[0_0_0_1px_rgba(217,180,90,0.12)] transition hover:border-gold hover:shadow-[0_0_28px_rgba(217,180,90,0.18)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold sm:flex-row"
+      aria-label={`${kicker}: ${link.label[locale]}. ${open}`}
+    >
+      {link.thumb && (
+        <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden bg-night/60 sm:aspect-auto sm:w-40 md:w-48">
+          <img src={link.thumb} alt={link.thumbAlt?.[locale] ?? ''} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]" loading="lazy" width={384} height={288} />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-night/50 to-transparent sm:bg-gradient-to-l sm:from-transparent sm:to-night/20" />
+        </div>
+      )}
+      <div className="flex flex-1 items-center gap-4 px-5 py-5 sm:px-6 sm:py-6">
+        <div className="min-w-0 flex-1">
+          <p className="text-[0.7rem] font-bold tracking-[0.14em] text-gold uppercase">{kicker}</p>
+          <p className="mt-1.5 text-lg font-black leading-snug text-gold-bright sm:text-xl">{link.label[locale]}</p>
+          {link.blurb && <p className="mt-2 text-sm leading-relaxed text-ivory/75">{link.blurb[locale]}</p>}
+        </div>
+        <span
+          aria-hidden="true"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-gold/50 bg-gold/10 text-xl text-gold-bright transition group-hover:bg-gold/25 group-hover:translate-x-0 rtl:group-hover:-translate-x-0.5 ltr:group-hover:translate-x-0.5"
+        >
+          {isFa ? '←' : '→'}
+        </span>
+      </div>
+    </a>
   )
 }
 
@@ -188,7 +240,7 @@ export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: 
             {s.embed === 'cyrus-tomb' && <div className="mt-8"><CyrusTombReconstruction locale={locale} /></div>}
             {s.embed === 'mrs-economy' && <div className="mt-8"><MrsEconomyChart locale={locale} /></div>}
             {s.clip && !s.embed && <AnimatedClip clip={s.clip.media} caption={s.clip.caption} locale={locale} />}
-            {s.link && <p className="mt-6"><a href={s.link.href[locale]} className="glass rounded-full px-5 py-3 inline-flex items-center gap-2 min-h-11 font-bold text-gold-bright hover:border-gold">{s.link.label[locale]} <span aria-hidden="true">{isFa ? '←' : '→'}</span></a></p>}
+            {s.link && <TopicPageCard link={s.link} locale={locale} />}
             {s.people && (
               <div className="mt-8 grid sm:grid-cols-2 xl:grid-cols-3 gap-5">
                 {s.people.map((p) => <PersonCard key={p.id} p={p} photo={p.photo ? photo(p.photo) : undefined} author={author} locale={locale} />)}

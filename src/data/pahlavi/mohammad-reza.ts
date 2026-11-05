@@ -125,9 +125,9 @@ const mrsDossier: DossierSection[] = [
     ] }),
   sec('mosaddeq', 'مصدق، نفت و ۲۸ مرداد', 'Mosaddeq, oil and 19 August 1953',
     [[
-      'در آوریل ۱۹۵۱ مصدق نخست‌وزیر شد و صنعت نفت ملی شد. در اوت ۱۹۵۳ شاه مصدق را برکنار کرد، مصدق نپذیرفت و شاه کشور را ترک کرد. در ۱۹ اوت مصدق سرنگون شد و شاه بازگشت. در ۱۹۵۴ قرارداد کنسرسیوم امضا شد و نفت دوباره جریان یافت.',
+      'در آوریل ۱۹۵۱ [مصدق](/event/28-mordad) نخست‌وزیر شد و صنعت نفت ملی شد. در اوت ۱۹۵۳ شاه مصدق را برکنار کرد، مصدق نپذیرفت و شاه کشور را ترک کرد. در ۱۹ اوت مصدق سرنگون شد و شاه بازگشت. در ۱۹۵۴ قرارداد کنسرسیوم امضا شد و نفت دوباره جریان یافت.',
     ], [
-      'In April 1951 Mosaddeq became prime minister and the oil industry was nationalised. In August 1953 the shah dismissed Mosaddeq, Mosaddeq refused to go and the shah left the country. On 19 August Mosaddeq fell and the shah returned. In 1954 the consortium agreement was signed and oil flowed again.',
+      'In April 1951 [Mosaddeq](/en/event/28-mordad) became prime minister and the oil industry was nationalised. In August 1953 the shah dismissed Mosaddeq, Mosaddeq refused to go and the shah left the country. On 19 August Mosaddeq fell and the shah returned. In 1954 the consortium agreement was signed and oil flowed again.',
     ]],
     [[
       'نقش بیگانگان و شاه در این روز را منابع ایرانیکا با واژه‌های گوناگون می‌گویند (بنگرید به یادداشت رویداد و صفحهٔ ۲۸ مرداد).',
@@ -140,7 +140,17 @@ const mrsDossier: DossierSection[] = [
       'This is our reading: 19 August 1953 is still one of the most contested days in modern Iranian history; its own page sets the narratives beside the evidence.',
     ]],
     [...CO, ...Y6, ...C3], { photos: ['mosaddeq-1952'],
-      link: { href: { fa: '/event/28-mordad', en: '/en/event/28-mordad' }, label: { fa: '۲۸ مرداد ساعت‌به‌ساعت: بازیگران، اسناد و روایت‌ها در برابر شواهد', en: '19 August 1953 hour by hour: the cast, the documents and the narratives against the evidence' } } }),
+      link: {
+        href: { fa: '/event/28-mordad', en: '/en/event/28-mordad' },
+        kicker: { fa: 'صفحهٔ ویژه', en: 'Dedicated page' },
+        label: { fa: '۲۸ مرداد ساعت‌به‌ساعت', en: '19 August 1953, hour by hour' },
+        blurb: {
+          fa: 'بازیگران، اسناد و روایت‌ها را در برابر شواهد بخوانید؛ صفحه‌ای جداگانه از این پرونده.',
+          en: 'The cast, the documents and the narratives against the evidence — a page of its own.',
+        },
+        thumb: '/media/mordad28/mosaddeq.webp',
+        thumbAlt: { fa: 'محمد مصدق، ۱۹۵۱', en: 'Mohammad Mosaddeq, 1951' },
+      } }),
   sec('white-revolution', 'انقلاب سفید: زمین، دانش و رأی زنان', 'The White Revolution: land, learning and women’s vote',
     [[
       'انقلاب سفید ۱۹ اصل داشت که در شانزده سال آمد؛ شش اصل نخست در ۹ ژانویهٔ ۱۹۶۳ اعلام شد و در ۲۶ ژانویهٔ ۱۹۶۳ به همه‌پرسی رفت.',
