@@ -494,3 +494,16 @@ mohammad-reza-shah (local webp copies; licence read from the Commons API 2026-11
 - forough.webp ← Forough Farrokhzad, 1960s.jpg — Unknown author — Public domain — https://commons.wikimedia.org/wiki/File:Forough_Farrokhzad,_1960s.jpg
 - shiraz-festival.webp ← Shiraz Arts Festival by Bahman Jalali.jpg — Bahman Jalali — Public domain — https://commons.wikimedia.org/wiki/File:Shiraz_Arts_Festival_by_Bahman_Jalali.jpg
 - coronation-1967.webp ← Mohammad Pahlavi Coronation.jpg — Unknown author — Public domain — https://commons.wikimedia.org/wiki/File:Mohammad_Pahlavi_Coronation.jpg
+
+event / 2,500-year celebrations of the Persian monarchy, 1971 (local webp in public/media/jashn2500/{key}.webp; licence tags read from the Commons wikitext 2026-11-09)
+- speech.webp ← KyrosCeremonies.jpg — unknown photographer — PD-Iran — https://commons.wikimedia.org/wiki/File:KyrosCeremonies.jpg
+- tent-city.webp ← ZeltPersepolis.jpg — unknown photographer — PD-Iran — https://commons.wikimedia.org/wiki/File:ZeltPersepolis.jpg
+- reception.webp ← EmpfangPersepolis.jpg — unknown photographer — PD-Iran — https://commons.wikimedia.org/wiki/File:EmpfangPersepolis.jpg
+- pasargadae-1.webp ← ShahanshahiIran2500YearsPasargad1.jpg — unknown photographer — PD-Iran — https://commons.wikimedia.org/wiki/File:ShahanshahiIran2500YearsPasargad1.jpg
+- pasargadae-7.webp ← ShahanshahiIran2500YearsPasargad7.jpg — unknown photographer — PD-Iran — https://commons.wikimedia.org/wiki/File:ShahanshahiIran2500YearsPasargad7.jpg
+- ceremony.webp ← ShahanshahAriamehrFest2500ShahanshahiIran.jpg — unknown photographer — PD-Iran — https://commons.wikimedia.org/wiki/File:ShahanshahAriamehrFest2500ShahanshahiIran.jpg
+- shahyad-opening.webp ← ShahyadAryamehrOpening24Mehr1350.jpg — Bellavista — PD-Iran — https://commons.wikimedia.org/wiki/File:ShahyadAryamehrOpening24Mehr1350.jpg
+- shahyad-aerial.webp ← Azadi Square & Azadi Tower, aerial view 1971.jpg — unknown photographer — PD-Iran — https://commons.wikimedia.org/wiki/File:Azadi_Square_%26_Azadi_Tower,_aerial_view_1971.jpg
+- parade.webp ← 2500 year celebration (3).jpg — Government of Iran — PD-Iran — https://commons.wikimedia.org/wiki/File:2500_year_celebration_(3).jpg
+- guests.webp ← ShahanshahiIran2500YearsGuest16m.jpg — unknown photographer — PD-Iran — https://commons.wikimedia.org/wiki/File:ShahanshahiIran2500YearsGuest16m.jpg
+- shahyad-build.webp ← Construction of the Azadi Tower.jpg — unknown photographer — PD-Iran — https://commons.wikimedia.org/wiki/File:Construction_of_the_Azadi_Tower.jpg

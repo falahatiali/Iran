@@ -129,3 +129,9 @@ export const MORDAD_ALTERNATES = [
   { hrefLang: 'en', path: '/en/event/28-mordad' },
   { hrefLang: 'x-default', path: '/event/28-mordad' },
 ] as const
+
+export const JASHN2500_ALTERNATES = [
+  { hrefLang: 'fa', path: '/event/jashn-2500' },
+  { hrefLang: 'en', path: '/en/event/jashn-2500' },
+  { hrefLang: 'x-default', path: '/event/jashn-2500' },
+] as const

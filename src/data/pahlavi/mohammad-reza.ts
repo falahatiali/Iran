@@ -237,6 +237,37 @@ const mrsDossier: DossierSection[] = [
       'This is our reading: Golha is still played in Iranian homes.',
     ]],
     ['wp-golha', 'wp-banan', 'wp-delkash', 'wp-shajarian', 'wp-googoosh', 'wp-shiraz-festival', 'wp-kanoon', 'wp-forough', 'wp-shamlou', 'wp-sepehri'], { photos: ['mrs-forough', 'mrs-shiraz-festival'] }),
+  sec('jashn-2500', 'جشن‌های ۲۵۰۰ ساله شاهنشاهی', 'The 2,500-year celebrations of the monarchy',
+    [[
+      'در اکتبر ۱۹۷۱ جشن ۲۵۰۰ سالهٔ پادشاهی ایران برگزار شد. آیین گشایش در ۱۲ اکتبر بر سر آرامگاه کوروش در پاسارگاد بود. گردهمایی اصلی در تخت جمشید شکل گرفت و گاه‌شمار ایرانیکا می‌نویسد ۶۹ سران کشورها یا نمایندگانشان در آن شرکت کردند.',
+      'در ۱۶ اکتبر برج شهیاد آریامهر، طرح حسین امانت، در تهران گشوده شد و استوانهٔ کوروش، که موزهٔ بریتانیا به امانت داده بود، در موزهٔ درون برج به نمایش درآمد.',
+    ], [
+      'In October 1971 the 2,500th anniversary of the Persian monarchy was marked. The opening ceremony was held on 12 October at Cyrus’s tomb in Pasargadae. The main gatherings were at Persepolis, and the Iranica chronology records that 69 heads of state or their representatives took part.',
+      'On 16 October the Shahyad Aryamehr monument, designed by Hossein Amanat, was opened in Tehran, and the Cyrus Cylinder, on loan from the British Museum, was displayed in the museum inside the tower.',
+    ]],
+    [[
+      `${OUR}این جشن ایران کهن را پیش چشم جهان آورد و پیوند میان کوروش و ایران امروز را بیان کرد. شهیاد هنوز در تهران ایستاده است.`,
+    ], [
+      `${OUR_EN}these celebrations set Iran’s ancient past before the world and stated the link between Cyrus and Iran today. Shahyad still stands in Tehran.`,
+    ]],
+    [[
+      'این برداشت ماست: روزشمار، مهمانان و میراث این جشن را در صفحه‌ای جداگانه آورده‌ایم.',
+    ], [
+      'This is our reading: a dedicated page sets out the days, the guests and what remained of these celebrations.',
+    ]],
+    [...C3, 'nyt-1971-10-13', 'steele-2014'], {
+      link: {
+        href: { fa: '/event/jashn-2500', en: '/en/event/jashn-2500' },
+        kicker: { fa: 'صفحهٔ ویژه', en: 'Dedicated page' },
+        label: { fa: 'جشن‌های ۲۵۰۰ ساله شاهنشاهی', en: 'The 2,500-year celebrations' },
+        blurb: {
+          fa: 'از سخن پاسارگاد تا شهر چادری تخت جمشید، رژه، کنگرهٔ ایران‌شناسی و گشایش شهیاد.',
+          en: 'From the speech at Pasargadae to the tent city at Persepolis, the parade, the congress of Iranology and the opening of Shahyad.',
+        },
+        thumb: '/media/jashn2500/speech.webp',
+        thumbAlt: { fa: 'آیین ۱۲ اکتبر ۱۹۷۱ بر سر آرامگاه کوروش', en: 'The ceremony of 12 October 1971 at Cyrus’s tomb' },
+      },
+    }),
   sec('freedoms', 'آزادی پوشش و شیوهٔ زندگی', 'Freedom of dress and way of life',
     [[
       'منع حجاب رضاشاه پنج سال (۱۹۳۶–۱۹۴۱) اجرا شد؛ پس از آن، به گفتهٔ منابع، زنان تا انقلاب ۱۹۷۹ چهل سال آزاد بودند هر گونه که می‌خواهند بپوشند. در دوران محمدرضاشاه پوشیدن چادر یا روسری جرم نبود.',
