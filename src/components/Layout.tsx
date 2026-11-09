@@ -113,19 +113,98 @@ export function BackToTop() {
 
 export function Footer() {
   const isEn = useRouterState({ select: (s) => s.location.pathname }).startsWith('/en')
+  const t = isEn
+    ? {
+        brand: 'Iran History',
+        blurb: 'A free, sourced reference for the history of Iran, from Elam to today.',
+        explore: 'Explore',
+        events: 'Key events',
+        about: 'About this site',
+        license: 'Text under the MIT licence. Map lines from Natural Earth (public domain). Vazirmatn typeface by Saber Rastikerdar (OFL).',
+        cookies: 'Cookie settings',
+        exploreAria: 'Footer links',
+        eventsAria: 'Key events',
+      }
+    : {
+        brand: 'تاریخ ایران',
+        blurb: 'مرجعی آزاد و منبع‌دار برای تاریخ ایران، از ایلام تا امروز.',
+        explore: 'گشت‌وگذار',
+        events: 'رویدادهای کلیدی',
+        about: 'دربارهٔ سایت',
+        license: 'متن تحت مجوز MIT. خطوط نقشه از Natural Earth (مالکیت عمومی). قلم وزیرمتن از صابر راستی‌کردار (OFL).',
+        cookies: 'تنظیمات کوکی',
+        exploreAria: 'پیوندهای پانویس',
+        eventsAria: 'رویدادهای کلیدی',
+      }
+  const explore = isEn
+    ? [
+        { href: '/en/cylinder', label: 'Cyrus Cylinder' },
+        { href: '/en/archives', label: 'Persepolis archives' },
+        { href: '/timeline', label: 'Timeline' },
+        { href: '/kings', label: 'Rulers at a glance' },
+        { href: '/en/about', label: 'Method and sources' },
+      ]
+    : [
+        { href: '/cylinder', label: 'استوانهٔ کوروش' },
+        { href: '/archives', label: 'بایگانی تخت‌جمشید' },
+        { href: '/timeline', label: 'گاه‌شمار سراسری' },
+        { href: '/kings', label: 'فرمانروایان در یک نگاه' },
+        { href: '/about', label: 'روش‌شناسی و منابع' },
+      ]
+  const events = isEn
+    ? [
+        { href: '/en/event/28-mordad', title: '19 August 1953', kicker: '28 Mordad 1332' },
+        { href: '/en/event/jashn-2500', title: 'The 2,500-year celebrations', kicker: 'October 1971' },
+      ]
+    : [
+        { href: '/event/28-mordad', title: '۲۸ مرداد ۱۳۳۲', kicker: 'کودتای ۱۹۵۳' },
+        { href: '/event/jashn-2500', title: 'جشن‌های ۲۵۰۰ ساله', kicker: 'مهر ۱۳۵۰' },
+      ]
   return (
-    <footer className="mt-24 border-t border-gold/15 bg-lapis/30">
-      <div className="mx-auto max-w-7xl px-4 py-10 grid gap-6 md:grid-cols-3 text-sm text-ivory/60">
-        <div><p className="text-gilded font-black text-lg">تاریخ ایران</p><p className="mt-2 leading-7">مرجعی آزاد و منبع‌دار برای تاریخ ایران، از ایلام تا امروز.</p></div>
-        <nav aria-label="پیوندهای پانویس" className="flex flex-col gap-2">
-          <Link to="/cylinder" className="hover:text-gold py-2 inline-block min-h-11">استوانهٔ کوروش</Link>
-          <Link to="/archives" className="hover:text-gold py-2 inline-block min-h-11">بایگانی تخت‌جمشید</Link>
-          <Link to="/timeline" className="hover:text-gold py-2 inline-block min-h-11">گاه‌شمار سراسری</Link>
-          <Link to="/kings" className="hover:text-gold py-2 inline-block min-h-11">فرمانروایان در یک نگاه</Link>
-          <Link to="/about" className="hover:text-gold py-2 inline-block min-h-11">روش‌شناسی و منابع</Link>
-          {gaEnabled() && <button type="button" onClick={openConsent} className="hover:text-gold py-2 min-h-11 text-start">{isEn ? 'Cookie settings' : 'تنظیمات کوکی'}</button>}
-        </nav>
-        <p className="leading-7">متن تحت مجوز MIT. خطوط نقشه از Natural Earth (مالکیت عمومی). قلم وزیرمتن از صابر راستی‌کردار (OFL).</p>
+    <footer className="mt-24 relative border-t border-gold/20 bg-gradient-to-b from-lapis/25 via-[#0a1733] to-[#070f24]">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-l from-transparent via-gold/60 to-transparent" aria-hidden="true" />
+      <div className="mx-auto max-w-7xl px-4 pt-14 pb-10">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 text-sm text-ivory/65">
+          <div>
+            <p className="flex items-center gap-2.5 text-gilded font-black text-lg">
+              <Shamseh className="size-8 opacity-90" />
+              <span>{t.brand}</span>
+            </p>
+            <p className="mt-4 leading-8 max-w-xs">{t.blurb}</p>
+          </div>
+          <nav aria-label={t.exploreAria}>
+            <p className="text-[0.7rem] font-bold tracking-[0.18em] uppercase text-gold mb-4">{t.explore}</p>
+            <ul className="flex flex-col">
+              {explore.map((l) => (
+                <li key={l.href}>
+                  <a href={l.href} className="hover:text-gold py-2 inline-block min-h-11 transition-colors">{l.label}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <nav aria-label={t.eventsAria}>
+            <p className="text-[0.7rem] font-bold tracking-[0.18em] uppercase text-gold mb-4">{t.events}</p>
+            <ul className="flex flex-col gap-2">
+              {events.map((e) => (
+                <li key={e.href}>
+                  <a href={e.href} className="group block rounded-2xl border border-gold/15 bg-night/20 px-4 py-3 hover:border-gold/50 hover:bg-gold/5 transition-colors min-h-11">
+                    <span className="block text-[0.7rem] font-bold tracking-wide text-turquoise-soft">{e.kicker}</span>
+                    <span className="mt-1 block font-black text-gold-bright group-hover:text-gold">{e.title}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <div>
+            <p className="text-[0.7rem] font-bold tracking-[0.18em] uppercase text-gold mb-4">{t.about}</p>
+            <p className="leading-8">{t.license}</p>
+            {gaEnabled() && (
+              <button type="button" onClick={openConsent} className="hover:text-gold mt-4 py-2 min-h-11 text-start">
+                {t.cookies}
+              </button>
+            )}
+          </div>
+        </div>
       </div>
     </footer>
   )
