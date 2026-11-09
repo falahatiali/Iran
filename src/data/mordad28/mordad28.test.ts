@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { existsSync } from 'node:fs'
 import { test } from 'node:test'
-import { cast, days, documents, mordadSources, myths, photos, views } from '.'
+import { analysisNoteIds, analysisSections, analysisTexts, cast, days, documents, mordadSources, myths, photos, reading, tadayyoniListen, views } from '.'
 
 const ids = new Set(mordadSources.map((s) => s.id))
 const items = [...days.flatMap((d) => d.moments), ...cast, ...myths, ...views, ...documents]
@@ -21,7 +21,8 @@ test('cast and timeline photos exist in the photo list', () => {
 })
 
 test('never names the excluded commentator', () => {
-  assert.doesNotMatch(JSON.stringify({ days, cast, myths, views, documents, mordadSources }), /جنت|Jannat/i)
+  assert.doesNotMatch(JSON.stringify({ days, cast, myths, views, documents, mordadSources, reading, analysisSections }), /جنت|Jannat/i)
+  assert.doesNotMatch(analysisTexts().join('\n'), /جنت|Jannat/i)
 })
 
 test('ported dossier keeps five chapters, both languages, and leaves the withheld name out', async () => {
@@ -35,4 +36,33 @@ test('ported dossier keeps five chapters, both languages, and leaves the withhel
   assert.equal(dossierIndex.rows.length, 6)
   assert.equal(dossierIndex.timeline.length, 5)
   assert.ok(withheld.some((w) => w.includes('chapter 6')))
+})
+
+test('site reading no longer says every side has a dirty record, or that the day was neither foreign nor national', () => {
+  const fa = reading.fa.join(' ')
+  const en = reading.en.join(' ')
+  assert.doesNotMatch(fa, /کار صددرصد بیگانه/)
+  assert.doesNotMatch(fa, /هیچ طرف کارنامهٔ پاکی ندارد/)
+  assert.doesNotMatch(en, /no side has a clean record/i)
+  assert.doesNotMatch(en, /100% foreign/)
+  assert.match(fa, /محمدرضاشاه/)
+  assert.match(en, /Mohammad Reza Shah/)
+})
+
+test('analysis essay has twelve sections and footnotes that resolve to the bibliography', () => {
+  assert.equal(analysisSections.length, 12)
+  assert.deepEqual(analysisSections.map((s) => s.n), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+  const ids = new Set(mordadSources.map((s) => s.id))
+  for (const [n, id] of Object.entries(analysisNoteIds)) {
+    assert.ok(ids.has(id), `${n} -> ${id}`)
+  }
+  const notes = [...analysisTexts().join(' ').matchAll(/\[(\d+)\]/g)].map((m) => Number(m[1]))
+  assert.ok(notes.length > 20)
+  for (const n of notes) {
+    assert.ok(analysisNoteIds[n] && ids.has(analysisNoteIds[n]), `footnote ${n}`)
+  }
+  assert.equal(tadayyoniListen.href, 'https://t.me/Garajetadayoni/10513')
+  for (const href of ['https://t.me/Garajetadayoni/6217', 'https://t.me/Garajetadayoni/5688', 'https://t.me/Garajetadayoni/4282', 'https://t.me/Garajetadayoni/4184', 'https://t.me/Garajetadayoni/10513']) {
+    assert.ok(mordadSources.some((s) => s.url === href), href)
+  }
 })

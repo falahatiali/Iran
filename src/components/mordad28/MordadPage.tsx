@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from 'react'
-import { cast, days, documents, facts, mordadSources, myths, page, photo, photos, reading, views, type Certainty, type MordadPhoto, type Verdict } from '../../data/mordad28'
+import { cast, days, documents, facts, mordadSources, myths, page, photo, photos, views, type Certainty, type MordadPhoto, type Verdict } from '../../data/mordad28'
 import type { Locale } from '../../lib/i18n'
 import { PageTransition, Reveal } from '../Reveal'
 import { Shamseh } from '../Ornament'
 import { MordadDossier } from './MordadDossier'
+import { MordadAnalysis } from './MordadAnalysis'
 
 const CERT: Record<Certainty, { fa: string; en: string; tone: string }> = {
   secure: { fa: 'قطعی', en: 'Secure', tone: 'border-turquoise/50 bg-turquoise/10 text-turquoise-soft' },
@@ -34,7 +35,7 @@ export function MordadPage({ locale }: { locale: Locale }) {
       <h2 id={`${id}-h`} className="text-3xl md:text-4xl font-black text-gilded">{children}</h2>
     </header>
   )
-  const nav: [string, string][] = [['dossier', isFa ? 'پرونده' : 'Dossier'], ['compare', isFa ? 'جدول مقایسه' : 'Comparison'], ['timeline', isFa ? 'تایم‌لاین' : 'Timeline'], ['essay', isFa ? 'جستار' : 'Essay'], ['days', t.days], ['cast', t.cast], ['myths', t.myths], ['debate', t.debate], ['documents', t.docs], ['reading', t.reading], ['gallery', t.gallery], ['sources', t.bib]]
+  const nav: [string, string][] = [['dossier', isFa ? 'پرونده' : 'Dossier'], ['compare', isFa ? 'جدول مقایسه' : 'Comparison'], ['timeline', isFa ? 'تایم‌لاین' : 'Timeline'], ['essay', isFa ? 'جستار' : 'Essay'], ['days', t.days], ['cast', t.cast], ['myths', t.myths], ['debate', t.debate], ['documents', t.docs], ['analysis', isFa ? 'تحلیل ما' : 'Our analysis'], ['reading', t.reading], ['gallery', t.gallery], ['sources', t.bib]]
   const hero = photo('tanks-ferdowsi') as MordadPhoto
   const mrsHref = isFa ? '/king/mohammad-reza-shah#mosaddeq' : '/en/king/mohammad-reza-shah#mosaddeq'
 
@@ -152,15 +153,7 @@ export function MordadPage({ locale }: { locale: Locale }) {
             </section>
           </Reveal>
 
-          <Reveal>
-            <section id="reading" aria-labelledby="reading-h" className="scroll-mt-28">
-              <div className="rounded-3xl p-6 md:p-8 border-2 border-dashed border-gold/50" style={{ background: 'linear-gradient(135deg, rgba(217,180,90,.12), rgba(15,31,75,.55))' }}>
-                <p className="inline-flex items-center gap-2 rounded-full bg-gold/15 border border-gold/50 px-3 py-1 text-xs font-bold text-gold-bright"><span aria-hidden="true">✎</span>{t.ourReading}</p>
-                <h2 id="reading-h" className="mt-3 text-3xl font-black text-gilded">{t.reading}</h2>
-                {reading[locale].map((p, k) => <p key={k} className="read mt-4 text-ivory/90 max-w-4xl">{p}</p>)}
-              </div>
-            </section>
-          </Reveal>
+          <MordadAnalysis locale={locale} />
 
           <Reveal>
             <section id="gallery" aria-labelledby="gallery-h" className="scroll-mt-28">

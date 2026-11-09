@@ -7,6 +7,7 @@
 import type { Bi, BiParas } from '../featured/types'
 
 export * from './sources'
+export * from './analysis'
 
 const B = (fa: string, en: string): Bi => ({ fa, en })
 const P = (fa: string[], en: string[]): BiParas => ({ fa, en })
@@ -179,11 +180,13 @@ export const documents: Doc[] = [
 /* ---------- our reading ---------- */
 
 export const reading = P([
-  'این برداشت ماست: ۲۸ مرداد نه «کار صددرصد بیگانه» بود و نه «قیام خودجوش ملی». شواهد نشان می‌دهد سیا و MI6 طراحی کردند و پول دادند، و ایرانیان، از شاه و ارتش تا روحانیان، لوطی‌ها و مردم دلسرد، آن را به نتیجه رساندند.',
-  'از دریچهٔ آزادی و حاکمیت قانون، هیچ طرف کارنامهٔ پاکی ندارد: اختیارات ویژه و همه‌پرسی بی‌رأی مخفی، فرمانی که در خارج نوشته شد و در نیمه‌شب رسید، جمعیت اجیر، و اعدام و زندانی که پس از آن آمد. هر روایتی که فقط یک طرف را می‌بیند، تاریخ را به ابزار سیاست امروز بدل می‌کند.',
+  'مصدق را نباید بیرون از معیارهایی گذاشت که خودش با آن‌ها دیگران را می‌سنجید. دولت او باید با نتیجهٔ سیاست نفتی، کیفیت پاسخ‌گویی به مجلس و توان حفظ ائتلاف سیاسی ارزیابی شود. به باور ما، تمرکز قدرت و حرکت به سوی انحلال مجلس موجود، به فرسایش دستاوردهای مشروطه کمک کرد؛ و حیثیتی‌شدن اختلاف نفت، امکان انعطاف سیاسی را محدود ساخت.',
+  'ما از اهمیت محمدرضاشاه در حفظ محور پادشاهی و جهت‌گیری کشور به سوی همکاری اقتصادی و امنیتی با جهان دفاع می‌کنیم. این دفاع، با شناخت خطر شوروی و فرصت‌های بازگشت درآمد نفت معنا پیدا می‌کند؛ نه با ادعای قطعیت دربارهٔ آینده‌ای که رخ نداده است.',
+  '۲۸ مرداد برای ما پایان مسئولیت مصدق نیست. وجود عملیات خارجی، تصمیم‌های نخست‌وزیر را درست نمی‌کند؛ همان‌طور که خطاهای او، اجازهٔ حذف اسناد آن عملیات را نمی‌دهد. تاریخ ایران زمانی آموزنده می‌شود که بتوانیم هم از انتخاب سیاسی خود دفاع کنیم و هم در برابر سند پاسخ‌گو بمانیم.',
 ], [
-  'This is our reading: 19 August was neither “100% foreign” nor a “spontaneous national uprising”. The evidence shows that the CIA and MI6 planned and paid, and Iranians, from the shah and the army to clerics, street gangs and disillusioned citizens, carried it through.',
-  'Through the lens of liberty and the rule of law, no side has a clean record: emergency powers and a referendum without a secret ballot; a decree drafted abroad and delivered at midnight; hired crowds; and the executions and prison terms that followed. Any story that sees only one side turns history into a tool of today’s politics.',
+  'Mosaddeq should not be placed beyond the standards by which he judged others. His government should be assessed by the results of its oil policy, the quality of its accountability to the Majles, and its ability to hold a political coalition together. In our view, the concentration of power and the move toward dissolving the sitting Majles helped erode the achievements of constitutionalism; and turning the oil dispute into a question of honour limited political flexibility.',
+  'We defend Mohammad Reza Shah’s importance in preserving the axis of monarchy and steering the country toward economic and security cooperation with the world. That defence is meaningful in light of the Soviet danger and the chance to restore oil revenue; not by claiming certainty about a future that did not happen.',
+  'For us, 28 Mordad is not the end of Mosaddeq’s responsibility. The existence of a foreign operation does not make the prime minister’s decisions right; just as his errors do not allow the documents of that operation to be erased. Iran’s history becomes instructive when we can defend our own political choice and still remain answerable to the evidence.',
 ])
 
 /* ---------- images ---------- */
