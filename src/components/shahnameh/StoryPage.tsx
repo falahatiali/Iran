@@ -133,7 +133,7 @@ export function StoryPage({ story }: { story: Story }) {
           <div className="shn-codex mt-12">
             {story.sections.map((section) => (
               <Reveal key={section.id}>
-                <section aria-labelledby={section.id} className="mt-10 first:mt-0">
+                <section aria-labelledby={section.id}>
                   <h2 id={section.id} className="text-2xl md:text-3xl font-black text-gold-bright">{section.title}</h2>
                   {section.paragraphs.map((p) => (
                     <p key={p.slice(0, 28)} className="read mt-4 text-ivory/88">{p}</p>

@@ -191,3 +191,11 @@
   .shn-node:hover,
   .shn-node:focus-visible { transform: none; }
 }
+
+.shn-codex section > :is(h2, h3):first-child {
+  margin-top: 4rem;
+}
+
+.shn-codex > *:first-child section > :is(h2, h3):first-child {
+  margin-top: 0;
+}
