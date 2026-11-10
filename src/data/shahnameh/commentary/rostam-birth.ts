@@ -2,7 +2,7 @@ import type { StoryPoemCommentary } from './types'
 
 export const rostamBirthCommentary = {
   "slug": "rostam-birth",
-  "status": "complete",
+  "status": "in-progress",
   "notes": {
     "1402:1": {
       "meaning": "بسی بر این روزگار برنیامد که سرو آزاده به بار آمد."

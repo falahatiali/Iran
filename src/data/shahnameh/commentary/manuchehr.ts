@@ -2,7 +2,7 @@ import type { StoryPoemCommentary } from './types'
 
 export const manuchehrCommentary = {
   "slug": "manuchehr",
-  "status": "complete",
+  "status": "in-progress",
   "notes": {
     "1369:1": {
       "meaning": "بر این نیز چندی برآمد و شاه به شبستان ایرج نگریست."

@@ -2,7 +2,7 @@ import type { StoryPoemCommentary } from './types'
 
 export const haftKhanCommentary = {
   "slug": "haft-khan",
-  "status": "complete",
+  "status": "in-progress",
   "notes": {
     "1434:1": {
       "meaning": "پس پهلو نیمروز گرد گیتی‌فروز از پیش پدر برون رفت."

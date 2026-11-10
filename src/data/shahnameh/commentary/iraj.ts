@@ -2,7 +2,7 @@ import type { StoryPoemCommentary } from './types'
 
 export const irajCommentary = {
   "slug": "iraj",
-  "status": "complete",
+  "status": "in-progress",
   "notes": {
     "1362:1": {
       "meaning": "چون کار نهان آشکار شد، فریدون جهان را به سه بهره کرد.",

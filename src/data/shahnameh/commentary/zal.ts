@@ -2,7 +2,7 @@ import type { StoryPoemCommentary } from './types'
 
 export const zalCommentary = {
   "slug": "zal",
-  "status": "complete",
+  "status": "in-progress",
   "notes": {
     "1379:1": {
       "meaning": "اکنون داستانی شگفت از گفتهٔ باستان می‌پیوندم."
