@@ -191,6 +191,46 @@ test('complete commentaries explain every couplet and in-progress ones stay labe
   }
 })
 
+function normalizePersianTokens(s: string): string[] {
+  const normalized = s
+    .replace(/ي/g, 'ی')
+    .replace(/ك/g, 'ک')
+    .replace(/\u200c/g, ' ')
+    .replace(/[^\u0600-\u06FFa-zA-Z0-9\s]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+  return normalized ? normalized.split(' ') : []
+}
+
+function tokenJaccard(a: string, b: string): number {
+  const left = new Set(normalizePersianTokens(a))
+  const right = new Set(normalizePersianTokens(b))
+  if (left.size === 0 || right.size === 0) return 0
+  let inter = 0
+  for (const token of left) if (right.has(token)) inter += 1
+  return inter / (left.size + right.size - inter)
+}
+
+test('complete commentary meanings are not near-copies of their verses', () => {
+  const failures: string[] = []
+  for (const slug of POEM_SLUGS) {
+    const commentary = getCommentary(slug)
+    if (commentary.status !== 'complete') continue
+    const poem = readPoem(slug)
+    for (const section of poem.poems) {
+      for (const c of section.couplets) {
+        const note = commentary.notes[noteKey(section.ganjoorId, c.n)]
+        if (!note) continue
+        const j = tokenJaccard(`${c.a} ${c.b}`, note.meaning)
+        if (j >= 0.6) {
+          failures.push(`${slug} ${section.ganjoorId}:${c.n} j=${j.toFixed(3)}`)
+        }
+      }
+    }
+  }
+  assert.equal(failures.length, 0, failures.join('\n'))
+})
+
 test('story URLs open the full poem from ?view=poem, #poem, or a verse deep link', async () => {
   const { parseStoryViewSearch, storyViewFromLocation } = await import('./storyView')
   assert.equal(storyViewFromLocation('?view=poem', ''), 'poem')
