@@ -15,6 +15,7 @@ import { rostamEsfandiarCommentary } from './rostam-esfandiar'
 import { rostamShaghadCommentary } from './rostam-shaghad'
 import { bizhanManizhehCommentary } from './bizhan-manizheh'
 import { bahramGurCommentary } from './bahram-gur'
+import { anushirvanCommentary } from './anushirvan'
 
 const bySlug: Record<string, StoryPoemCommentary> = {
   keyumars: keyumarsCommentary,
@@ -33,6 +34,7 @@ const bySlug: Record<string, StoryPoemCommentary> = {
   'rostam-esfandiar': rostamEsfandiarCommentary,
   'rostam-shaghad': rostamShaghadCommentary,
   'bahram-gur': bahramGurCommentary,
+  anushirvan: anushirvanCommentary,
 }
 
 export type { GlossaryEntry, StoryPoemCommentary, VerseNote } from './types'
