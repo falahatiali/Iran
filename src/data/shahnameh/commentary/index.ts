@@ -13,6 +13,7 @@ import { sohrabCommentary } from './sohrab'
 import { zahhakCommentary } from './zahhak'
 import { rostamEsfandiarCommentary } from './rostam-esfandiar'
 import { rostamShaghadCommentary } from './rostam-shaghad'
+import { bizhanManizhehCommentary } from './bizhan-manizheh'
 
 const bySlug: Record<string, StoryPoemCommentary> = {
   keyumars: keyumarsCommentary,
@@ -27,6 +28,7 @@ const bySlug: Record<string, StoryPoemCommentary> = {
   'rostam-birth': rostamBirthCommentary,
   'haft-khan': haftKhanCommentary,
   sohrab: sohrabCommentary,
+  'bizhan-manizheh': bizhanManizhehCommentary,
   'rostam-esfandiar': rostamEsfandiarCommentary,
   'rostam-shaghad': rostamShaghadCommentary,
 }
