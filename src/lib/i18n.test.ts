@@ -18,4 +18,8 @@ test('siblingLocalePath mirrors paired topic pages including property', () => {
   assert.equal(siblingLocalePath('/en/event/28-mordad'), '/event/28-mordad')
   assert.equal(siblingLocalePath('/king/cyrus-ii'), '/en/king/cyrus-ii')
   assert.equal(siblingLocalePath('/en/king/cyrus-ii'), '/king/cyrus-ii')
+  assert.equal(siblingLocalePath('/shahnameh'), '/en/shahnameh')
+  assert.equal(siblingLocalePath('/en/shahnameh'), '/shahnameh')
+  assert.equal(siblingLocalePath('/shahnameh/rostam-esfandiar'), '/en/shahnameh')
+  assert.equal(siblingLocalePath('/en/shahnameh/foo'), '/shahnameh/foo')
 })

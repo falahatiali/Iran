@@ -39,6 +39,8 @@ export function siblingLocalePath(pathname: string): string {
   if (path.startsWith('/event/')) return `/en${path}`
   if (path.startsWith('/en/battle/')) return path.slice(3)
   if (path.startsWith('/battle/')) return `/en${path}`
+  if (path === '/en/shahnameh' || path.startsWith('/en/shahnameh/')) return path.replace(/^\/en/, '')
+  if (path === '/shahnameh' || path.startsWith('/shahnameh/')) return '/en/shahnameh'
   if (path.startsWith('/en')) return '/cylinder'
   return '/en/cylinder'
 }

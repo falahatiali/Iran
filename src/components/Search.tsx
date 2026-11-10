@@ -37,6 +37,7 @@ export function SearchDialog({ data, open, onClose }: { data: Overview; open: bo
     all.push({ kind: 'page', key: 'p-about', label: en ? 'About and methodology' : 'درباره و روش‌شناسی', sub: en ? 'How this site works' : 'روش کار این سایت', slug: 'about', hay: normalize('درباره روش‌شناسی about methodology magi magic مالکیت') })
     all.push({ kind: 'page', key: 'p-mordad', label: en ? '28 Mordad 1332 / 19 August 1953' : '۲۸ مرداد ۱۳۳۲', sub: en ? 'The 1953 coup' : 'کودتای ۱۹۵۳', slug: '28-mordad', hay: normalize('28 مرداد کودتا مصدق 1953 coup Mosaddeq Mordad') })
     all.push({ kind: 'page', key: 'p-jashn', label: en ? 'The 2,500-year celebrations' : 'جشن‌های ۲۵۰۰ ساله', sub: en ? 'October 1971' : 'مهر ۱۳۵۰', slug: 'jashn-2500', hay: normalize('جشنهای 2500 ساله Persepolis 1971 celebrations jashn') })
+    all.push({ kind: 'page', key: 'p-shahnameh', label: en ? 'Shahnameh' : 'شاهنامه', sub: en ? 'Ferdowsi’s Book of Kings' : 'فردوسی · Shahnameh', slug: 'shahnameh', hay: normalize('شاهنامه فردوسی کیومرث هوشنگ تهمورث جمشید ضحاک فریدون کاوه ایرج منوچهر زال سیمرغ رستم سهراب سیاوش Ferdowsi Shahnameh') })
     return all
   }, [data, en])
   const nq = normalize(q)
@@ -55,6 +56,7 @@ export function SearchDialog({ data, open, onClose }: { data: Overview; open: bo
       else if (h.slug === 'about') void navigate({ to: en ? '/en/about' : '/about' })
       else if (h.slug === '28-mordad') void navigate({ to: en ? '/en/event/28-mordad' : '/event/28-mordad' })
       else if (h.slug === 'jashn-2500') void navigate({ to: en ? '/en/event/jashn-2500' : '/event/jashn-2500' })
+      else if (h.slug === 'shahnameh') void navigate({ to: en ? '/en/shahnameh' : '/shahnameh' })
       else void navigate({ to: en ? '/en/cylinder' : '/cylinder' })
     }
     else if (h.kind === 'place') void navigate({ to: '/place/$slug', params: { slug: h.slug } })

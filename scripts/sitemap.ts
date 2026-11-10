@@ -5,6 +5,7 @@ import { dynasties } from '../src/data/dynasties'
 import { FEATURED_KING_SLUGS } from '../src/data/featured/slugs'
 import { places } from '../src/data/places'
 import { resolvePublicSiteUrl } from '../src/lib/siteUrl'
+import { shahnamehSitemapPaths } from '../src/data/shahnameh'
 
 /** Local `.env` files (Vite loads these; `tsx` does not). Never invent a placeholder. */
 function loadDotenv() {
@@ -31,7 +32,7 @@ const host = resolvePublicSiteUrl({
   appDomain: process.env.APP_DOMAIN,
   strict: true,
 })
-const paths = ['/', '/cylinder', '/en/cylinder', '/archives', '/en/archives', '/event/28-mordad', '/en/event/28-mordad', '/event/jashn-2500', '/en/event/jashn-2500', '/timeline', '/kings', '/about', '/en/about', '/property', '/en/property', ...dynasties.map((d) => `/dynasty/${d.slug}`), ...dynasties.flatMap((d) => d.rulers.map((r) => `/king/${r.id}`)), ...FEATURED_KING_SLUGS.map((s) => `/en/king/${s}`), ...Object.keys(places).flatMap((s) => [`/place/${s}`, `/en/place/${s}`])]
+const paths = ['/', '/cylinder', '/en/cylinder', '/archives', '/en/archives', '/event/28-mordad', '/en/event/28-mordad', '/event/jashn-2500', '/en/event/jashn-2500', ...shahnamehSitemapPaths(), '/timeline', '/kings', '/about', '/en/about', '/property', '/en/property', ...dynasties.map((d) => `/dynasty/${d.slug}`), ...dynasties.flatMap((d) => d.rulers.map((r) => `/king/${r.id}`)), ...FEATURED_KING_SLUGS.map((s) => `/en/king/${s}`), ...Object.keys(places).flatMap((s) => [`/place/${s}`, `/en/place/${s}`])]
 const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${paths.map((p) => `  <url><loc>${host}${p}</loc></url>`).join('\n')}\n</urlset>\n`
 const pub = path.resolve(import.meta.dirname, '../public')
 fs.writeFileSync(path.join(pub, 'sitemap.xml'), xml)

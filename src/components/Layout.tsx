@@ -25,17 +25,19 @@ export function Header({ data }: { data: Overview }) {
   const links = locale === 'en'
     ? [
         { to: '/', label: 'Home' },
+        { to: '/en/shahnameh', label: 'Shahnameh', special: true },
         { to: '/cylinder', label: 'Cyrus Cylinder' },
-        { to: '/archives', label: 'Persepolis archives' },
-        { to: '/en/king/$slug', params: { slug: 'darius-i' }, label: 'Darius the Great' },
+        { to: '/archives', label: 'Persepolis archives', compact: true },
+        { to: '/en/king/$slug', params: { slug: 'darius-i' }, label: 'Darius the Great', compact: true },
         { to: '/timeline', label: 'Timeline' },
         { to: '/en/about', label: 'About' },
       ] as const
     : [
         { to: '/', label: 'خانه' },
+        { to: '/shahnameh', label: 'شاهنامه', special: true },
         { to: '/cylinder', label: 'استوانهٔ کوروش' },
-        { to: '/archives', label: 'بایگانی تخت‌جمشید' },
-        { to: '/king/$slug', params: { slug: 'darius-i' }, label: 'داریوش بزرگ' },
+        { to: '/archives', label: 'بایگانی تخت‌جمشید', compact: true },
+        { to: '/king/$slug', params: { slug: 'darius-i' }, label: 'داریوش بزرگ', compact: true },
         { to: '/timeline', label: 'گاه‌شمار' },
         { to: '/kings', label: 'فرمانروایان' },
         { to: '/about', label: 'درباره و روش‌شناسی' },
@@ -48,7 +50,18 @@ export function Header({ data }: { data: Overview }) {
           <Link to="/" className="flex items-center gap-2 font-black text-lg min-h-11"><Shamseh className="size-8" /><span className="text-gilded">{locale === 'en' ? 'Iran History' : 'تاریخ ایران'}</span></Link>
           <nav aria-label={locale === 'en' ? 'Main navigation' : 'ناوبری اصلی'} className="hidden md:flex items-center gap-1">
             {links.map((l) => (
-              <Link key={l.label} to={l.to} params={'params' in l ? l.params : undefined} activeOptions={{ exact: true }} className="rounded-full px-4 py-3 text-sm text-ivory/75 hover:text-gold transition-colors min-h-11" activeProps={{ className: 'bg-gold/15 !text-gold-bright' }}>{l.label}</Link>
+              <Link
+                key={l.label}
+                to={l.to}
+                params={'params' in l ? l.params : undefined}
+                activeOptions={{ exact: true }}
+                className={`rounded-full px-4 py-3 text-sm transition-colors min-h-11 ${
+                  'special' in l && l.special
+                    ? 'border border-gold/50 text-gold-bright bg-gold/10 hover:bg-gold/20'
+                    : 'text-ivory/75 hover:text-gold'
+                } ${'compact' in l && l.compact ? 'hidden lg:inline-flex' : ''}`}
+                activeProps={{ className: 'bg-gold/15 !text-gold-bright' }}
+              >{l.label}</Link>
             ))}
           </nav>
           <div className="flex items-center gap-2">
@@ -125,6 +138,7 @@ export function Footer() {
       }
   const explore = isEn
     ? [
+        { href: '/en/shahnameh', label: 'Shahnameh' },
         { href: '/en/cylinder', label: 'Cyrus Cylinder' },
         { href: '/en/archives', label: 'Persepolis archives' },
         { href: '/timeline', label: 'Timeline' },
@@ -133,6 +147,7 @@ export function Footer() {
         { href: '/en/about', label: 'Method and sources' },
       ]
     : [
+        { href: '/shahnameh', label: 'شاهنامه' },
         { href: '/cylinder', label: 'استوانهٔ کوروش' },
         { href: '/archives', label: 'بایگانی تخت‌جمشید' },
         { href: '/timeline', label: 'گاه‌شمار سراسری' },

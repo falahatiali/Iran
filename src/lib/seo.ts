@@ -141,3 +141,9 @@ export const JASHN2500_ALTERNATES = [
   { hrefLang: 'en', path: '/en/event/jashn-2500' },
   { hrefLang: 'x-default', path: '/event/jashn-2500' },
 ] as const
+
+export const SHAHNAMEH_ALTERNATES = [
+  { hrefLang: 'fa', path: '/shahnameh' },
+  { hrefLang: 'en', path: '/en/shahnameh' },
+  { hrefLang: 'x-default', path: '/shahnameh' },
+] as const
