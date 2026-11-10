@@ -3,6 +3,7 @@ import { motion } from 'motion/react'
 import { useEffect, useMemo, useState, type ReactNode } from 'react'
 import { catalog, eras, getCommentary, isStory, neighbors, photoById, sourcesFor, storyPhoto, type CatalogEntry, type Story } from '../../data/shahnameh'
 import { storyViewFromLocation, type StoryView } from '../../data/shahnameh/storyView'
+import { poemCtaLabel, poemTabLabel } from '../../data/shahnameh/poemLabel'
 import { loadStoryPoem } from '../../data/shahnameh/poems/load'
 import type { StoryPoemText } from '../../data/shahnameh/poems/types'
 import { Reveal } from '../Reveal'
@@ -111,12 +112,11 @@ function useReadingProgress() {
 
 
 function OpenPoemCard({ coupletCount, onOpen }: { coupletCount?: number; onOpen: () => void }) {
-  const count = coupletCount != null ? `${coupletCount.toLocaleString('fa-IR')} بیت` : null
   return (
     <button type="button" onClick={onOpen} className="shn-poem-cta mt-8">
       <p className="text-[0.7rem] font-bold tracking-[0.22em] text-gold">شعر کامل فردوسی</p>
       <p className="mt-2 text-2xl md:text-3xl font-black text-gold-bright leading-snug">
-        {count ? `شعر کامل را بخوانید · ${count}` : 'شعر کامل این داستان را بخوانید'}
+        {coupletCount != null ? poemCtaLabel(coupletCount) : 'شعر کامل این داستان را بخوانید'}
       </p>
       <p className="read mt-3 text-ivory/80 no-justify">همهٔ بیت‌های این داستان را با معنی به زبان امروز بخوانید. نقل از گنجور، چاپ مسکو.</p>
       <span className="mt-5 inline-flex min-h-11 items-center rounded-full bg-gold px-5 py-2 font-bold text-night">رفتن به شعر کامل</span>
@@ -125,7 +125,7 @@ function OpenPoemCard({ coupletCount, onOpen }: { coupletCount?: number; onOpen:
 }
 
 export function StoryPage({ story }: { story: Story }) {
-  const photo = storyPhoto(story)!
+  const photo = storyPhoto(story)
   const era = eras.find((e) => e.id === story.era)
   const { prev, next } = neighbors(story.slug)
   const sources = sourcesFor(story.sources)
@@ -258,6 +258,7 @@ export function StoryPage({ story }: { story: Story }) {
           )}
         </section>
       )}
+      {photo ? (
       <section className="shn-rail-card" aria-labelledby="rail-art-h">
         <p className="shn-rail-kicker">نگاره</p>
         <h2 id="rail-art-h" className="sr-only">{photo.titleFa}</h2>
@@ -266,6 +267,7 @@ export function StoryPage({ story }: { story: Story }) {
         </button>
         <p className="mt-2 text-xs text-ivory/55">{photo.titleFa}</p>
       </section>
+      ) : null}
     </div>
   )
 
@@ -276,26 +278,39 @@ export function StoryPage({ story }: { story: Story }) {
           <aside className="shn-rail shn-rail-start" aria-label="ناوبری داستان">{startRail}</aside>
           <article className="shn-reading">
             {crumb(story)}
-            <header className="mt-8 lg:grid lg:grid-cols-[minmax(0,18rem)_minmax(0,1fr)] min-[1400px]:block lg:gap-10 lg:items-start">
-              <TazhibFrame className="overflow-hidden relative min-[1400px]:hidden">
-                <button type="button" onClick={() => setOpen(true)} className="block w-full text-right focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold" aria-label={`بزرگ کردن نگارهٔ ${photo.titleFa}`}>
-                  <Miniature photo={photo} priority className="w-full aspect-[5/4] sm:aspect-[4/3] lg:aspect-[3/4] object-cover object-[center_28%]" sizes="(max-width: 1024px) 92vw, 320px" />
-                </button>
-                <button type="button" onClick={() => setOpen(true)} className="shn-folio-btn rounded-full bg-night/75 border border-gold/40 px-3 py-1.5 text-xs text-gold-bright min-h-11">نگاه نزدیک</button>
-              </TazhibFrame>
-              <div className="mt-8 lg:mt-2 min-[1400px]:mt-0">
+            <header className={photo ? 'shn-story-hero shn-story-hero-has-art' : 'shn-story-hero'}>
+              {photo ? (
+                <TazhibFrame className="shn-story-hero-art">
+                  <button type="button" onClick={() => setOpen(true)} className="block w-full text-right focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold" aria-label={`بزرگ کردن نگارهٔ ${photo.titleFa}`}>
+                    <Miniature photo={photo} priority className="shn-story-hero-img" sizes="(max-width: 1023px) 92vw, (max-width: 1399px) 18rem, 280px" />
+                  </button>
+                  <button type="button" onClick={() => setOpen(true)} className="shn-folio-btn rounded-full bg-night/75 border border-gold/40 px-3 py-1.5 text-xs text-gold-bright min-h-11">نگاه نزدیک</button>
+                </TazhibFrame>
+              ) : (
+                <div className="shn-story-emblem" aria-hidden="true">
+                  <p className="shn-rail-kicker">{era?.title}</p>
+                  <p className="mt-3 text-3xl font-black text-gold-bright">{story.title}</p>
+                  {story.verses[0] ? (
+                    <blockquote className="mt-5 text-ivory/85">
+                      <p className="font-black leading-relaxed">{story.verses[0].lines[0]}</p>
+                      <p className="font-black leading-relaxed mt-1">{story.verses[0].lines[1]}</p>
+                    </blockquote>
+                  ) : null}
+                </div>
+              )}
+              <div className="shn-story-hero-copy">
                 <p className="text-[0.7rem] font-bold tracking-[0.2em] text-turquoise-soft">{era?.kicker} · {era?.title} · حدود {story.readingMinutes} دقیقه مطالعه</p>
                 <h1 className="mt-3 text-4xl md:text-6xl font-black text-gilded leading-tight">{story.title}</h1>
                 <p className="mt-2 text-lg text-gold">{story.epithet}</p>
                 <p className="read read-lede mt-6 text-ivory/90">{story.lede}</p>
               </div>
             </header>
-            <FolioLightbox photo={photo} open={open} onClose={() => setOpen(false)} />
+            {photo ? <FolioLightbox photo={photo} open={open} onClose={() => setOpen(false)} /> : null}
 
             <div id="poem" className="shn-tabs" role="tablist" aria-label="روایت یا شعر کامل">
               <button type="button" role="tab" id="tab-tale" aria-controls="panel-tale" aria-selected={tab === 'tale'} onClick={() => selectTab('tale')}>روایت</button>
               <button type="button" role="tab" id="tab-poem" aria-controls="panel-poem" aria-selected={tab === 'poem'} onClick={() => selectTab('poem')}>
-                {poem ? `شعر کامل · ${poem.coupletCount.toLocaleString('fa-IR')} بیت` : 'شعر کامل'}
+                {poem ? poemTabLabel(poem.coupletCount) : 'شعر کامل'}
               </button>
             </div>
 
@@ -376,9 +391,11 @@ export function StoryPage({ story }: { story: Story }) {
                       </li>
                     ))}
                   </ol>
+                  {photo ? (
                   <div className="mt-6">
                     <PhotoCredit photo={photo} />
                   </div>
+                  ) : null}
                 </section>
 
                 <OpenPoemCard coupletCount={poem?.coupletCount} onOpen={() => selectTab('poem', { scroll: true })} />

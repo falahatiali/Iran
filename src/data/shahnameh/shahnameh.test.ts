@@ -19,6 +19,7 @@ import {
   storyPhoto,
 } from './index'
 import type { StoryPoemText } from './poems/types'
+import { poemCtaLabel, poemTabLabel } from './poemLabel'
 
 const filled = (s: string | undefined) => typeof s === 'string' && s.trim().length > 0
 
@@ -244,6 +245,17 @@ test('story URLs open the full poem from ?view=poem, #poem, or a verse deep link
   assert.deepEqual(parseStoryViewSearch({ view: 'poem' }), { view: 'poem' })
   assert.deepEqual(parseStoryViewSearch({ view: 'tale' }), {})
   assert.deepEqual(parseStoryViewSearch({}), {})
+})
+
+test('the poem tab labels Hushang as «شعر کامل · ۳۸ بیت», not ۳۸۰', async () => {
+  const hushang = await loadStoryPoem('hushang')
+  assert.ok(hushang)
+  assert.equal(hushang.coupletCount, 38)
+  const visible = poemTabLabel(38).replace(/\u200f/g, '')
+  assert.equal(visible, 'شعر کامل · ۳۸ بیت')
+  assert.equal(poemTabLabel(hushang.coupletCount).replace(/\u200f/g, ''), 'شعر کامل · ۳۸ بیت')
+  assert.ok(!visible.includes('۳۸۰'))
+  assert.equal(poemCtaLabel(38).replace(/\u200f/g, ''), 'شعر کامل را بخوانید · ۳۸ بیت')
 })
 
 test('loadStoryPoem dynamically imports the Ganjoor text used on the story page', async () => {

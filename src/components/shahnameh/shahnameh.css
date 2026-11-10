@@ -220,6 +220,56 @@
     grid-template-columns: 16.5rem minmax(36rem, 1fr) 16.5rem;
   }
 }
+
+/* Story hero: painting beside the title only while it is actually shown.
+   A 2-column grid must never outlive the art, or the unused track becomes
+   an empty gap (title stuck in one half of the reading column). */
+.shn-story-hero { margin-top: 2rem; }
+.shn-story-hero-copy { margin-top: 2rem; }
+.shn-story-hero-art {
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(180deg, rgb(228 195 106 / .14), rgb(7 13 31 / .4));
+}
+.shn-story-hero-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 5 / 4;
+  object-fit: cover;
+  object-position: center 28%;
+}
+.shn-story-emblem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 14rem;
+  padding: 1.5rem 1.35rem;
+  border-radius: 2rem;
+  border: 1px solid rgb(228 195 106 / .42);
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 30%, rgb(228 195 106 / .2), transparent 62%),
+    linear-gradient(180deg, rgb(22 32 58 / .72), rgb(10 16 34 / .55));
+  text-align: center;
+}
+@media (min-width: 640px) {
+  .shn-story-hero-img { aspect-ratio: 4 / 3; }
+}
+@media (min-width: 1024px) and (max-width: 1399.98px) {
+  .shn-story-hero-has-art {
+    display: grid;
+    grid-template-columns: minmax(14rem, 18rem) minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: start;
+  }
+  .shn-story-hero-has-art > .shn-story-hero-copy { margin-top: 0.5rem; }
+  .shn-story-hero-img { aspect-ratio: 3 / 4; }
+}
+@media (min-width: 1400px) {
+  .shn-story-hero-art { display: none; }
+  .shn-story-hero-copy { margin-top: 0; }
+}
+
 .shn-reading { min-width: 0; }
 .shn-rail { display: none; }
 @media (min-width: 1024px) {
