@@ -39,9 +39,9 @@ export function LandingPage() {
           <TazhibCorner className="absolute top-6 right-6 size-20 md:size-28 z-10 hidden sm:block" />
           <TazhibCorner className="absolute top-6 left-6 size-20 md:size-28 z-10 hidden sm:block -scale-x-100" />
           <div className="relative z-10 mx-auto max-w-5xl px-4 pt-28 pb-24 text-center">
-            <p className="text-[0.75rem] font-bold tracking-[0.28em] text-gold">{landing.kicker}</p>
+            <p className="shn-hero-kicker text-[0.75rem] font-bold tracking-[0.28em]">{landing.kicker}</p>
             <h1 className="shn-title text-gilded mt-4">{landing.title}</h1>
-            <p className="mt-6 text-xl md:text-2xl text-ivory/85 font-medium">از کیومرث تا افق تاریخ، برای خانواده و کودک</p>
+            <p className="shn-hero-sub mt-6 text-xl md:text-2xl font-medium">از کیومرث تا افق تاریخ، برای خانواده و کودک</p>
             <blockquote className="shn-verse mx-auto mt-10 max-w-xl rounded-3xl px-6 py-6">
               <p className="text-xl md:text-2xl font-black leading-relaxed">{SHAHNAMEH_OPENING[0]}</p>
               <p className="text-xl md:text-2xl font-black leading-relaxed mt-1">{SHAHNAMEH_OPENING[1]}</p>
@@ -76,7 +76,7 @@ export function LandingPage() {
         <Reveal>
           <section aria-labelledby="cards-h" className="mx-auto max-w-6xl px-4 mt-24">
             <h2 id="cards-h" className="text-center text-3xl font-black text-gilded">دفتر داستان‌ها</h2>
-            <p className="read mx-auto mt-4 text-center text-ivory/75 no-justify">{readyStories.length} داستان آماده است؛ بقیه با همان دقت، یکی‌یکی می‌آیند.</p>
+            <p className="read mx-auto mt-4 text-center text-ivory/75 no-justify">{readyStories.length} داستان آماده است{catalog.some((e) => e.status === 'soon') ? '؛ بقیه با همان دقت، یکی‌یکی می‌آیند.' : '.'}</p>
             <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {catalog.map((entry) => {
                 const photo = storyPhoto(entry)

@@ -24,13 +24,14 @@ function Node({ entry }: { entry: CatalogEntry }) {
         {entry.status === 'soon' && (
           <span className="mt-2 inline-block rounded-full border border-gold/30 px-2.5 py-0.5 text-[0.65rem] text-gold">به‌زودی</span>
         )}
+        <span className="shn-node-extra text-[0.7rem] leading-5 text-ivory/70">{entry.summary}</span>
       </span>
     </>
   )
-  const cls = 'w-[7.5rem] sm:w-36 shrink-0 flex flex-col items-center group focus-visible:outline-none'
+  const cls = 'shn-node w-[7.5rem] sm:w-36 shrink-0 flex flex-col items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 rounded-3xl'
   if (isStory(entry)) {
     return (
-      <Link to="/shahnameh/$slug" params={{ slug: entry.slug }} className={`${cls} hover:-translate-y-1 transition-transform`}>
+      <Link to="/shahnameh/$slug" params={{ slug: entry.slug }} className={cls}>
         {inner}
       </Link>
     )

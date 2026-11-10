@@ -16,7 +16,7 @@ export function EnglishLanding() {
           <p className="mt-5 text-center text-ivory/80 text-lg">{landing.descriptionEn}</p>
           {hero && (
             <TazhibFrame className="overflow-hidden mt-10">
-              <Miniature photo={hero} priority className="w-full aspect-[4/5] object-cover object-top" sizes="768px" />
+              <Miniature photo={hero} priority className="w-full aspect-[4/3] object-cover object-top" sizes="768px" />
             </TazhibFrame>
           )}
           <div className="mt-10 space-y-5">
