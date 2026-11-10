@@ -45,7 +45,7 @@
   --ease-silk: cubic-bezier(.2,.8,.2,1);
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 8rem; }
 html, body { overflow-x: clip; }
 body {
   @apply bg-night text-ivory font-sans antialiased;
@@ -122,3 +122,7 @@ p.read:lang(en), li.read:lang(en), .read:lang(en) > li, blockquote.read:lang(en)
 .no-justify .read, .read.no-justify, .no-justify .read > li { text-align: start; hyphens: manual; }
 @keyframes fadein { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .animate-\[fadein_\.5s_ease_both\] { animation: none; } }
+
+@media (max-width: 640px) {
+  body { background-attachment: scroll; }
+}

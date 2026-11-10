@@ -48,11 +48,11 @@ function Hero({ totals }: { totals: { dynasties: number; rulers: number; events:
           ))}
         </motion.dl>
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.3 }} className="mt-10 flex flex-wrap justify-center gap-3">
-          <a href="#eras" className="rounded-full bg-gradient-to-l from-gold to-[#b8862f] text-night font-bold px-7 py-3 hover:shadow-[0_0_30px_#d9b45a80] transition-shadow">آغاز سفر</a>
-          <Link to="/cylinder" className="glass rounded-full px-7 py-3 hover:border-gold">استوانهٔ کوروش</Link>
-          <Link to="/king/$slug" params={{ slug: 'darius-i' }} className="glass rounded-full px-7 py-3 hover:border-gold">داریوش بزرگ</Link>
-          <Link to="/archives" className="glass rounded-full px-7 py-3 hover:border-gold">بایگانی تخت‌جمشید</Link>
-          <Link to="/timeline" className="glass rounded-full px-7 py-3 hover:border-gold">گاه‌شمار سراسری</Link>
+          <a href="#eras" className="rounded-full bg-gradient-to-l from-gold to-[#b8862f] text-night font-bold px-7 py-3 min-h-11 inline-flex items-center hover:shadow-[0_0_30px_#d9b45a80] transition-shadow">آغاز سفر</a>
+          <Link to="/cylinder" className="glass rounded-full px-7 py-3 min-h-11 inline-flex items-center hover:border-gold">استوانهٔ کوروش</Link>
+          <Link to="/king/$slug" params={{ slug: 'darius-i' }} className="glass rounded-full px-7 py-3 min-h-11 inline-flex items-center hover:border-gold">داریوش بزرگ</Link>
+          <Link to="/archives" className="glass rounded-full px-7 py-3 min-h-11 inline-flex items-center hover:border-gold">بایگانی تخت‌جمشید</Link>
+          <Link to="/timeline" className="glass rounded-full px-7 py-3 min-h-11 inline-flex items-center hover:border-gold">گاه‌شمار سراسری</Link>
         </motion.div>
       </motion.div>
       <motion.span aria-hidden="true" animate={{ y: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 2 }} className="absolute bottom-8 text-gold/60 text-2xl">⌄</motion.span>
@@ -145,7 +145,7 @@ function Home() {
       </div>
 
       <div className="mx-auto max-w-7xl px-4">
-        {filtered.length === 0 && <p className="text-center py-20 text-ivory/50">نتیجه‌ای برای «{q}» یافت نشد.</p>}
+        {filtered.length === 0 && <p className="text-center py-20 text-ivory/70">نتیجه‌ای برای «{q}» یافت نشد.</p>}
         {filtered.map((d, i) => (
           <section key={d.slug} id={`d-${d.slug}`} data-dyn aria-labelledby={`h-${d.slug}`} className="scroll-mt-32 py-16 border-b border-gold/10">
             <Reveal>

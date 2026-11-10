@@ -46,10 +46,10 @@ function KingPage() {
           <FeaturedHero king={featured} locale="fa" name={r.name} kicker={`${d.name} · ${range(r.start, r.end)}`} accent={d.accent}
             crumbs={<Breadcrumbs items={[{ label: d.name, to: '/dynasty/$slug', params: { slug: d.slug } }, { label: r.name }]} />}
             facts={<dl className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3">
-              <div className="glass rounded-2xl p-4"><dt className="text-xs text-ivory/50">دوران فرمانروایی</dt><dd className="font-bold text-gold-bright mt-1">{range(r.start, r.end)}</dd></div>
-              {sh && <div className="glass rounded-2xl p-4"><dt className="text-xs text-ivory/50">خورشیدی (تقریبی)</dt><dd className="font-bold text-turquoise-soft mt-1">{sh}</dd></div>}
-              <div className="glass rounded-2xl p-4"><dt className="text-xs text-ivory/50">مدت</dt><dd className="font-bold mt-1">{years > 0 ? `${fa(years)} سال` : 'کمتر از یک سال'}</dd></div>
-              <div className="glass rounded-2xl p-4"><dt className="text-xs text-ivory/50">دودمان</dt><dd className="font-bold mt-1"><Link to="/dynasty/$slug" params={{ slug: d.slug }} className="hover:text-gold inline-block py-2 min-h-11">{d.name}</Link></dd></div>
+              <div className="glass rounded-2xl p-4"><dt className="text-xs text-ivory/65">دوران فرمانروایی</dt><dd className="font-bold text-gold-bright mt-1">{range(r.start, r.end)}</dd></div>
+              {sh && <div className="glass rounded-2xl p-4"><dt className="text-xs text-ivory/65">خورشیدی (تقریبی)</dt><dd className="font-bold text-turquoise-soft mt-1">{sh}</dd></div>}
+              <div className="glass rounded-2xl p-4"><dt className="text-xs text-ivory/65">مدت</dt><dd className="font-bold mt-1">{years > 0 ? `${fa(years)} سال` : 'کمتر از یک سال'}</dd></div>
+              <div className="glass rounded-2xl p-4"><dt className="text-xs text-ivory/65">دودمان</dt><dd className="font-bold mt-1"><Link to="/dynasty/$slug" params={{ slug: d.slug }} className="hover:text-gold inline-block py-2 min-h-11">{d.name}</Link></dd></div>
             </dl>} />
         ) : (
         <header className="relative overflow-hidden border-b border-gold/15">
@@ -62,10 +62,10 @@ function KingPage() {
             <p dir="ltr" className="text-right text-ivory/50 mt-2">{r.latin}</p>
             <Epithets id={r.id} locale="fa" />
             <dl className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3">
-              <div className="glass rounded-2xl p-4"><dt className="text-xs text-ivory/50">دوران فرمانروایی</dt><dd className="font-bold text-gold-bright mt-1">{range(r.start, r.end)}</dd></div>
-              {sh && <div className="glass rounded-2xl p-4"><dt className="text-xs text-ivory/50">خورشیدی (تقریبی)</dt><dd className="font-bold text-turquoise-soft mt-1">{sh}</dd></div>}
-              <div className="glass rounded-2xl p-4"><dt className="text-xs text-ivory/50">مدت</dt><dd className="font-bold mt-1">{years > 0 ? `${fa(years)} سال` : 'کمتر از یک سال'}</dd></div>
-              <div className="glass rounded-2xl p-4"><dt className="text-xs text-ivory/50">دودمان</dt><dd className="font-bold mt-1"><Link to="/dynasty/$slug" params={{ slug: d.slug }} className="hover:text-gold inline-block py-2 min-h-11">{d.name}</Link></dd></div>
+              <div className="glass rounded-2xl p-4"><dt className="text-xs text-ivory/65">دوران فرمانروایی</dt><dd className="font-bold text-gold-bright mt-1">{range(r.start, r.end)}</dd></div>
+              {sh && <div className="glass rounded-2xl p-4"><dt className="text-xs text-ivory/65">خورشیدی (تقریبی)</dt><dd className="font-bold text-turquoise-soft mt-1">{sh}</dd></div>}
+              <div className="glass rounded-2xl p-4"><dt className="text-xs text-ivory/65">مدت</dt><dd className="font-bold mt-1">{years > 0 ? `${fa(years)} سال` : 'کمتر از یک سال'}</dd></div>
+              <div className="glass rounded-2xl p-4"><dt className="text-xs text-ivory/65">دودمان</dt><dd className="font-bold mt-1"><Link to="/dynasty/$slug" params={{ slug: d.slug }} className="hover:text-gold inline-block py-2 min-h-11">{d.name}</Link></dd></div>
             </dl>
           </div>
         </header>
@@ -75,7 +75,7 @@ function KingPage() {
           <Reveal>
             <section aria-labelledby="bio-h">
               <h2 id="bio-h" className="text-2xl font-bold text-gold mb-4">زندگی‌نامه</h2>
-              <p className="text-xl leading-10 text-ivory/90">{r.description}</p>
+              <p className="read read-lede text-ivory/90">{r.description}</p>
               {r.id === 'cyrus-ii' && (
                 <p className="mt-4">
                   <Link to="/cylinder" className="text-gold hover:underline min-h-11 inline-flex items-center">صفحهٔ پرچم: استوانهٔ کوروش (BM 90920)</Link>
@@ -109,7 +109,7 @@ function KingPage() {
                       <span className="absolute -right-[1.95rem] top-1.5 size-3.5 rounded-full ring-4 ring-night" style={{ background: d.accent }} aria-hidden="true" />
                       <span className="text-xs text-turquoise-soft"><EventIcon type={e.type} /> {eventTypeNames[e.type]} · {year(e.year)}</span>
                       <p className={e.importance === 'major' ? 'font-bold text-lg' : 'text-ivory/80'}>{e.title}</p>
-                      {e.description && <p className="text-sm text-ivory/60 leading-7">{e.description}</p>}
+                      {e.description && <p className="read mt-1 text-ivory/75">{e.description}</p>}
                     </li>
                   </Reveal>
                 ))}
@@ -127,14 +127,14 @@ function KingPage() {
           <nav aria-label="فرمانروای پیشین و پسین" className="grid sm:grid-cols-2 gap-4">
             {k.predecessor ? (
               <Link to="/king/$slug" params={{ slug: k.predecessor.id }} className="glass rounded-2xl p-5 hover:border-gold transition-colors group">
-                <span className="text-xs text-ivory/50">→ پیشین</span><span className="block text-xl font-bold mt-1 group-hover:text-gold-bright">{k.predecessor.name}</span>
-                <span className="text-xs text-ivory/50">{range(k.predecessor.start, k.predecessor.end)}</span>
+                <span className="text-xs text-ivory/65">→ پیشین</span><span className="block text-xl font-bold mt-1 group-hover:text-gold-bright">{k.predecessor.name}</span>
+                <span className="text-xs text-ivory/65">{range(k.predecessor.start, k.predecessor.end)}</span>
               </Link>
             ) : <span />}
             {k.successor && (
               <Link to="/king/$slug" params={{ slug: k.successor.id }} className="glass rounded-2xl p-5 text-left hover:border-gold transition-colors group">
-                <span className="text-xs text-ivory/50">پسین ←</span><span className="block text-xl font-bold mt-1 group-hover:text-gold-bright">{k.successor.name}</span>
-                <span className="text-xs text-ivory/50">{range(k.successor.start, k.successor.end)}</span>
+                <span className="text-xs text-ivory/65">پسین ←</span><span className="block text-xl font-bold mt-1 group-hover:text-gold-bright">{k.successor.name}</span>
+                <span className="text-xs text-ivory/65">{range(k.successor.start, k.successor.end)}</span>
               </Link>
             )}
           </nav>

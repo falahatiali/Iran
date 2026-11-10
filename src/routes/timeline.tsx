@@ -117,7 +117,7 @@ function TimelinePage() {
             ))}
           </AnimatePresence>
         </ol>
-        {list.length === 0 && <p className="text-center py-16 text-ivory/50">نتیجه‌ای برای این پالایه یافت نشد.</p>}
+        {list.length === 0 && <p className="text-center py-16 text-ivory/70">نتیجه‌ای برای این پالایه یافت نشد.</p>}
       </div>
     </PageTransition>
   )
