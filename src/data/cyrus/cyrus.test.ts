@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import { cyrusDossier as dossier, cyrusEvents, cyrus as king, cyrusPhotos, cyrusSourceIds } from './index'
+import { dynasties } from '../dynasties'
 
 const filled = (s: string | undefined) => typeof s === 'string' && s.trim().length > 0
 
@@ -45,4 +46,10 @@ test('the biography flags its myths and labels its reading', () => {
   assert.match(sec('titles').interpretation.en.join(' '), /novel, not history/)
   assert.equal(sec('tomb').embed, 'cyrus-tomb')
   for (const id of ['lineage', 'babylon', 'judeans', 'death', 'tomb', 'garden', 'inside', 'alexander', 'form', 'later']) assert.ok(sec(id), id)
+})
+
+test('the English style of Cyrus II is “the Great”, not a typo', () => {
+  const row = dynasties.flatMap((d) => d.rulers).find((r) => r.id === 'cyrus-ii')
+  assert.equal(row?.latin, 'Cyrus II the Great')
+  assert.doesNotMatch(row?.latin ?? '', /Greet/)
 })
