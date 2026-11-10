@@ -12,6 +12,12 @@ import { rostamBirth } from './stories/rostam-birth'
 import { haftKhan } from './stories/haft-khan'
 import { sohrab } from './stories/sohrab'
 import { siyavash } from './stories/siyavash'
+import { kayKhosrow } from './stories/kay-khosrow'
+import { bizhanManizheh } from './stories/bizhan-manizheh'
+import { rostamEsfandiar } from './stories/rostam-esfandiar'
+import { rostamShaghad } from './stories/rostam-shaghad'
+import { bahramGur } from './stories/bahram-gur'
+import { anushirvan } from './stories/anushirvan'
 import { photoById } from './photos'
 import { shahnamehSources } from './sources'
 
@@ -22,76 +28,10 @@ export { shahnamehSources, sourceById } from './sources'
 export const readyStories: Story[] = [
   keyumars, hushang, tahmuras, jamshid, zahhak, fereydun, iraj,
   manuchehr, zal, rostamBirth, haftKhan, sohrab, siyavash,
+  kayKhosrow, bizhanManizheh, rostamEsfandiar, rostamShaghad, bahramGur, anushirvan,
 ]
 
-export const comingSoon: SoonStory[] = [
-  {
-    slug: 'kay-khosrow',
-    era: 'kayanian',
-    order: 14,
-    status: 'soon',
-    title: 'کیخسرو',
-    titleEn: 'Kay Khosrow',
-    epithet: 'پسر سیاوش',
-    summary: 'کیخسرو از توران به ایران بازمی‌گردد، کین پدر را می‌ستاند و سرانجام از پادشاهی کناره می‌گیرد.',
-    summaryEn: 'Kay Khosrow returns from Turan, avenges Siyavash, and later renounces the throne.',
-  },
-  {
-    slug: 'bizhan-manizheh',
-    era: 'kayanian',
-    order: 15,
-    status: 'soon',
-    title: 'بیژن و منیژه',
-    titleEn: 'Bizhan and Manizheh',
-    epithet: 'عشق در چاه',
-    summary: 'بیژن در توران به چاه می‌افتد و منیژه، دختر افراسیاب، او را پنهانی یاری می‌کند تا رستم از راه برسد.',
-    summaryEn: 'Bizhan is thrown into a pit in Turan; Manizheh keeps him alive until Rostam comes.',
-  },
-  {
-    slug: 'rostam-esfandiar',
-    era: 'kayanian',
-    order: 16,
-    status: 'soon',
-    title: 'رستم و اسفندیار',
-    titleEn: 'Rostam and Esfandiar',
-    epithet: 'نبرد دو رویین‌تن',
-    summary: 'اسفندیار برای تاج، به زابل می‌آید و رستم ناگزیر با شاهزاده‌ای رویین‌تن روبه‌رو می‌شود.',
-    summaryEn: 'Esfandiar rides to Zabol for the crown and meets Rostam in a tragic duel.',
-  },
-  {
-    slug: 'rostam-shaghad',
-    era: 'kayanian',
-    order: 17,
-    status: 'soon',
-    title: 'رستم و شغاد',
-    titleEn: 'The death of Rostam',
-    epithet: 'چاه برادر',
-    summary: 'شغاد در شکارگاه چاهی می‌کند و جهان‌پهلوان با رخش در دام برادر می‌افتد.',
-    summaryEn: 'Rostam and Rakhsh fall into a pit dug by his half-brother Shaghad.',
-  },
-  {
-    slug: 'bahram-gur',
-    era: 'sasanian',
-    order: 18,
-    status: 'soon',
-    title: 'بهرام گور',
-    titleEn: 'Bahram Gur',
-    epithet: 'شکار و داد',
-    summary: 'بهرام گور در بخش تاریخی شاهنامه با شکار، بزم و داوری‌هایش چهره‌ای زنده می‌یابد.',
-    summaryEn: 'Bahram Gur, in the more historical stretch of the epic, is remembered for the hunt and for royal justice.',
-  },
-  {
-    slug: 'anushirvan',
-    era: 'sasanian',
-    order: 19,
-    status: 'soon',
-    title: 'انوشیروان',
-    titleEn: 'Anushirvan',
-    epithet: 'دادگر',
-    summary: 'کسری نوشین‌روان در شاهنامه چهرهٔ شهریاری است که نامش با داد پیوند خورده است.',
-    summaryEn: 'Khosrow Anushirvan appears in the Shahnameh as a king whose name is bound to justice.',
-  },
-]
+export const comingSoon: SoonStory[] = []
 
 export const catalog: CatalogEntry[] = [...readyStories, ...comingSoon].sort((a, b) => a.order - b.order)
 
@@ -109,16 +49,16 @@ export const eras: EraInfo[] = [
     title: 'کیانیان',
     titleEn: 'The Kayanian age',
     kicker: 'عصر پهلوانان',
-    blurb: 'از منوچهر تا رستم و سیاوش: روزگار پهلوانان، سیمرغ، هفت‌خوان و تراژدی‌های بزرگ پدر و پسر.',
-    blurbEn: 'From Manuchehr to Rostam and Siyavash: the heroic age of the Simorgh, the seven labours, and the great tragedies.',
+    blurb: 'از منوچهر تا مرگ رستم: روزگار پهلوانان، سیمرغ، هفت‌خوان، کین کیخسرو و تراژدی‌های بزرگ.',
+    blurbEn: 'From Manuchehr to the death of Rostam: the heroic age of the Simorgh, the seven labours, Kay Khosrow’s revenge, and the great tragedies.',
   },
   {
     id: 'sasanian',
     title: 'ساسانیان',
     titleEn: 'The historical age',
     kicker: 'نزدیک به تاریخ',
-    blurb: 'فردوسی در پایان کتاب به پادشاهی‌هایی می‌رسد که با حافظهٔ تاریخی ایران نزدیک‌ترند. این داستان‌ها را به‌زودی می‌آوریم.',
-    blurbEn: 'Towards the end Ferdowsi reaches reigns closer to Iran’s historical memory. Those stories are coming next.',
+    blurb: 'فردوسی در پایان کتاب به پادشاهی‌هایی می‌رسد که با حافظهٔ تاریخی ایران نزدیک‌ترند. بهرام گور و نوشین‌روان در این بخش‌اند.',
+    blurbEn: 'Towards the end Ferdowsi reaches reigns closer to Iran’s historical memory, including Bahram Gur and Anushirvan.',
   },
 ]
 

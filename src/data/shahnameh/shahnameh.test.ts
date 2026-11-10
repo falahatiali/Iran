@@ -17,11 +17,12 @@ import {
 
 const filled = (s: string | undefined) => typeof s === 'string' && s.trim().length > 0
 
-test('thirteen stories are ready, in order from Keyumars to Siyavash', () => {
-  assert.equal(readyStories.length, 13)
+test('nineteen stories are ready, in order from Keyumars to Anushirvan', () => {
+  assert.equal(readyStories.length, 19)
   assert.deepEqual(readyStories.map((s) => s.slug), [
     'keyumars', 'hushang', 'tahmuras', 'jamshid', 'zahhak', 'fereydun', 'iraj',
     'manuchehr', 'zal', 'rostam-birth', 'haft-khan', 'sohrab', 'siyavash',
+    'kay-khosrow', 'bizhan-manizheh', 'rostam-esfandiar', 'rostam-shaghad', 'bahram-gur', 'anushirvan',
   ])
   const orders = catalog.map((e) => e.order)
   assert.deepEqual(orders, [...orders].sort((a, b) => a - b))
@@ -57,6 +58,18 @@ test('verses are exact couplets cited to Ganjoor', () => {
   assert.ok(kaveh.verses.some((v) => v.lines[1] === 'که شاها منم کاوهٔ دادخواه'))
   const sohrab = getStory('sohrab')!
   assert.ok(sohrab.verses.some((v) => v.lines[0] === 'اگر تندبادی براید ز کنج'))
+  const kay = getStory('kay-khosrow')!
+  assert.ok(kay.verses.some((v) => v.lines[1] === 'ز چشم مهان شاه شد ناپدید'))
+  const bizhan = getStory('bizhan-manizheh')!
+  assert.ok(bizhan.verses.some((v) => v.lines[0] === 'شبی چون شبه روی شسته به قیر'))
+  const esf = getStory('rostam-esfandiar')!
+  assert.ok(esf.verses.some((v) => v.lines[0] === 'بزد تیر بر چشم اسفندیار'))
+  const shaghad = getStory('rostam-shaghad')!
+  assert.ok(shaghad.verses.some((v) => v.lines[0] === 'درخت و برادر بهم بر بدوخت'))
+  const bahram = getStory('bahram-gur')!
+  assert.ok(bahram.verses.some((v) => v.lines[0] === 'نخواهم خراج از جهان هفت سال'))
+  const kasra = getStory('anushirvan')!
+  assert.ok(kasra.verses.some((v) => v.lines[0] === 'اگر پادشا را بود پیشه داد'))
 })
 
 test('the landing opening couplet matches Ganjoor’s first line', () => {
@@ -91,7 +104,7 @@ test('previous and next walk the catalog, and unknown slugs are missing', () => 
   const lastReady = neighbors('siyavash')
   assert.equal(lastReady.prev?.slug, 'sohrab')
   assert.equal(lastReady.next?.slug, 'kay-khosrow')
-  assert.ok(comingSoon.length >= 4)
+  assert.equal(neighbors('anushirvan').next, undefined)
   assert.ok(comingSoon.every((s) => s.status === 'soon'))
 })
 
@@ -100,7 +113,8 @@ test('sitemap lists the landing pages and every ready story', () => {
   assert.ok(paths.includes('/shahnameh'))
   assert.ok(paths.includes('/en/shahnameh'))
   for (const s of readyStories) assert.ok(paths.includes(`/shahnameh/${s.slug}`), s.slug)
-  assert.ok(!paths.includes('/shahnameh/kay-khosrow'))
+  assert.ok(paths.includes('/shahnameh/kay-khosrow'))
+  assert.ok(paths.includes('/shahnameh/anushirvan'))
 })
 
 test('stories only cite sources that exist in the bibliography', () => {
