@@ -7,6 +7,7 @@ import { fereydunCommentary } from './fereydun'
 import { irajCommentary } from './iraj'
 import { manuchehrCommentary } from './manuchehr'
 import { zalCommentary } from './zal'
+import { rostamBirthCommentary } from './rostam-birth'
 import { zahhakCommentary } from './zahhak'
 
 const bySlug: Record<string, StoryPoemCommentary> = {
@@ -19,6 +20,7 @@ const bySlug: Record<string, StoryPoemCommentary> = {
   iraj: irajCommentary,
   manuchehr: manuchehrCommentary,
   zal: zalCommentary,
+  'rostam-birth': rostamBirthCommentary,
 }
 
 export type { GlossaryEntry, StoryPoemCommentary, VerseNote } from './types'
