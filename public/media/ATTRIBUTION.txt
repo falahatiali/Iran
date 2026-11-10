@@ -507,3 +507,35 @@ event / 2,500-year celebrations of the Persian monarchy, 1971 (local webp in pub
 - parade.webp ← 2500 year celebration (3).jpg — Government of Iran — PD-Iran — https://commons.wikimedia.org/wiki/File:2500_year_celebration_(3).jpg
 - guests.webp ← ShahanshahiIran2500YearsGuest16m.jpg — unknown photographer — PD-Iran — https://commons.wikimedia.org/wiki/File:ShahanshahiIran2500YearsGuest16m.jpg
 - shahyad-build.webp ← Construction of the Azadi Tower.jpg — unknown photographer — PD-Iran — https://commons.wikimedia.org/wiki/File:Construction_of_the_Azadi_Tower.jpg
+
+event / Shahnameh manuscript paintings (local webp in public/media/shahnameh/{id}.webp and {id}-800.webp; licence read from the Commons API 2026-11-10)
+- gayumars-court.webp ← The Court of Gayumars.jpg — Attributed to Sultan Muhammad — Public domain — https://commons.wikimedia.org/wiki/File:The_Court_of_Gayumars.jpg
+  manuscript: شاهنامهٔ شاه‌تهماسب، حدود ۱۵۲۲–۱۵۲۵
+- hushang-sadeh.webp ← "The Feast of Sada", Folio 22v from the Shahnama (Book of Kings) of Shah Tahmasp MET DP260189.jpg — Sultan Muhammad — CC0 — https://commons.wikimedia.org/wiki/File:%22The_Feast_of_Sada%22%2C_Folio_22v_from_the_Shahnama_%28Book_of_Kings%29_of_Shah_Tahmasp_MET_DP260189.jpg
+  manuscript: شاهنامهٔ شاه‌تهماسب، حدود ۱۵۲۵؛ موزهٔ متروپولیتن
+- tahmuras-divs.webp ← "Tahmuras Defeats the Divs", Folio 23v from the Shahnama (Book of Kings) of Shah Tahmasp MET DP255635.jpg — Sultan Muhammad — CC0 — https://commons.wikimedia.org/wiki/File:%22Tahmuras_Defeats_the_Divs%22%2C_Folio_23v_from_the_Shahnama_%28Book_of_Kings%29_of_Shah_Tahmasp_MET_DP255635.jpg
+  manuscript: شاهنامهٔ شاه‌تهماسب، حدود ۱۵۲۵؛ موزهٔ متروپولیتن
+- jamshid-court.webp ← "The Court of Jamshid", Folio 24v from the Shahnama (Book of Kings) of Shah Tahmasp.jpg — anonymous (Shahnameh of Shah Tahmasp) — Public domain — https://commons.wikimedia.org/wiki/File:%22The_Court_of_Jamshid%22%2C_Folio_24v_from_the_Shahnama_%28Book_of_Kings%29_of_Shah_Tahmasp.jpg
+  manuscript: شاهنامهٔ شاه‌تهماسب، حدود ۱۵۲۵
+- zahhak-folio.webp ← Folio 26v from the Shahnama of Shah Tahmasp TMoCA.jpg — Shahnameh of Shah Tahmasp atelier — Public domain — https://commons.wikimedia.org/wiki/File:Folio_26v_from_the_Shahnama_of_Shah_Tahmasp_TMoCA.jpg
+  manuscript: شاهنامهٔ شاه‌تهماسب، حدود ۱۵۲۵؛ موزهٔ هنرهای معاصر تهران
+- kaveh-folio.webp ← Folio 31v from the Shahnama of Shah Tahmasp TMoCA.jpg — Shahnameh of Shah Tahmasp atelier — Public domain — https://commons.wikimedia.org/wiki/File:Folio_31v_from_the_Shahnama_of_Shah_Tahmasp_TMoCA.jpg
+  manuscript: شاهنامهٔ شاه‌تهماسب، حدود ۱۵۲۵؛ موزهٔ هنرهای معاصر تهران
+- fereydun-zahhak.webp ← Faridun strikes Zahhak with the ox-headed mace.jpg — Attributed to Sultan Muhammad — Public domain — https://commons.wikimedia.org/wiki/File:Faridun_strikes_Zahhak_with_the_ox-headed_mace.jpg
+  manuscript: شاهنامهٔ شاه‌تهماسب، حدود ۱۵۲۵
+- iraj-murder.webp ← The murder of Iraj by his brothers Tur and Salm.jpg — Attributed to Murad Daylami — Public domain — https://commons.wikimedia.org/wiki/File:The_murder_of_Iraj_by_his_brothers_Tur_and_Salm.jpg
+  manuscript: شاهنامه، حدود ۱۵۷۶؛ کتابخانهٔ چستر بیتی
+- manuchehr-embrace.webp ← "Faridun Embraces Manuchihr", Folio 59v from the Shahnama (Book of Kings) of Shah Tahmasp MET DP107121.jpg — Qadimi / Sultan Muhammad — CC0 — https://commons.wikimedia.org/wiki/File:%22Faridun_Embraces_Manuchihr%22%2C_Folio_59v_from_the_Shahnama_%28Book_of_Kings%29_of_Shah_Tahmasp_MET_DP107121.jpg
+  manuscript: شاهنامهٔ شاه‌تهماسب، حدود ۱۵۲۵؛ موزهٔ متروپولیتن
+- zal-simurgh.webp ← "Zal in the Simurgh's Nest", Folio from a Shahnama (Book of Kings) MET DP108551.jpg — Ilkhanid painter (Great Mongol Shahnameh circle) — CC0 — https://commons.wikimedia.org/wiki/File:%22Zal_in_the_Simurgh%27s_Nest%22%2C_Folio_from_a_Shahnama_%28Book_of_Kings%29_MET_DP108551.jpg
+  manuscript: شاهنامه، حدود ۱۳۳۰–۱۳۴۰؛ موزهٔ متروپولیتن
+- rostam-birth.webp ← "Birth of Rustam", Folio from a Shahnama (Book of Kings) MET DT214815.jpg — Safavid painter — CC0 — https://commons.wikimedia.org/wiki/File:%22Birth_of_Rustam%22%2C_Folio_from_a_Shahnama_%28Book_of_Kings%29_MET_DT214815.jpg
+  manuscript: شاهنامه، حدود ۱۵۶۰–۱۵۸۰؛ موزهٔ متروپولیتن
+- rostam-white-div.webp ← "Rustam Slays the White Div", Folio from a Shahnama (Book of Kings) MET DP215760.jpg — Safavid painter — CC0 — https://commons.wikimedia.org/wiki/File:%22Rustam_Slays_the_White_Div%22%2C_Folio_from_a_Shahnama_%28Book_of_Kings%29_MET_DP215760.jpg
+  manuscript: شاهنامه، حدود ۱۵۶۰–۱۵۸۰؛ موزهٔ متروپولیتن
+- rostam-sohrab.webp ← Firdawsi - Rustam Mortally Wounds Suhrab - Walters W600115A - Full Page.jpg — Safavid painter — Public domain — https://commons.wikimedia.org/wiki/File:Firdawsi_-_Rustam_Mortally_Wounds_Suhrab_-_Walters_W600115A_-_Full_Page.jpg
+  manuscript: شاهنامه، سدهٔ ۱۶؛ موزهٔ والترز W.600
+- siyavash-fire.webp ← "The Fire Ordeal of Siyavush", Folio from a Shahnama (Book of Kings) of Firdausi MET DP164658.jpg — Turkmen/Aqqoyunlu painter — CC0 — https://commons.wikimedia.org/wiki/File:%22The_Fire_Ordeal_of_Siyavush%22%2C_Folio_from_a_Shahnama_%28Book_of_Kings%29_of_Firdausi_MET_DP164658.jpg
+  manuscript: شاهنامه، ۱۴۸۲؛ موزهٔ متروپولیتن
+- baysonghor-page.webp ← Baysonghori Shahnameh 1.jpg — Herat atelier of Baysonghor — Public domain — https://commons.wikimedia.org/wiki/File:Baysonghori_Shahnameh_1.jpg
+  manuscript: شاهنامهٔ بایسنغری، ۸۳۳ ق / ۱۴۳۰؛ کاخ گلستان
