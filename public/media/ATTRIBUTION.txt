@@ -539,3 +539,16 @@ event / Shahnameh manuscript paintings (local webp in public/media/shahnameh/{id
   manuscript: شاهنامه، ۱۴۸۲؛ موزهٔ متروپولیتن
 - baysonghor-page.webp ← Baysonghori Shahnameh 1.jpg — Herat atelier of Baysonghor — Public domain — https://commons.wikimedia.org/wiki/File:Baysonghori_Shahnameh_1.jpg
   manuscript: شاهنامهٔ بایسنغری، ۸۳۳ ق / ۱۴۳۰؛ کاخ گلستان
+
+- kaykhosrow-battle.webp ← Battle between Kay Khusraw and Afrasiyab (Sackler Gallery 1986.175). Shahnama, 1493-94, Gilan.jpg — Gilan workshop — Public domain — https://commons.wikimedia.org/wiki/File:Battle_between_Kay_Khusraw_and_Afrasiyab_(Sackler_Gallery_1986.175)._Shahnama,_1493-94,_Gilan.jpg
+  manuscript: شاهنامه، گیلان، ۱۴۹۳–۱۴۹۴؛ گالری Sackler
+- bizhan-pit.webp ← "Rustam rescues Bizhan from the Pit", Folio from a Shahnama (Book of Kings) MET DP215759.jpg — Safavid painter — CC0 — https://commons.wikimedia.org/wiki/File:%22Rustam_rescues_Bizhan_from_the_Pit%22,_Folio_from_a_Shahnama_(Book_of_Kings)_MET_DP215759.jpg
+  manuscript: شاهنامه، حدود ۱۵۶۰–۱۵۸۰؛ موزهٔ متروپولیتن
+- rostam-esfandiar.webp ← Rustam Shoots Isfandiyar in the Eyes, folio from the Great Ilkhanid Shahnama.jpg — Unknown artist (Great Mongol Shahnameh) — Public domain — https://commons.wikimedia.org/wiki/File:Rustam_Shoots_Isfandiyar_in_the_Eyes,_folio_from_the_Great_Ilkhanid_Shahnama.jpg
+  manuscript: شاهنامهٔ بزرگ ایلخانی، حدود ۱۳۳۵
+- rostam-shaghad.webp ← "Rustam Shoots His Half-brother Shaghad through a Plane Tree", Folio from a Shahnama (Book of Kings) of Firdausi MET DP215676.jpg — Turkmen/Aqqoyunlu painter — CC0 — https://commons.wikimedia.org/wiki/File:%22Rustam_Shoots_His_Half-brother_Shaghad_through_a_Plane_Tree%22,_Folio_from_a_Shahnama_(Book_of_Kings)_of_Firdausi_MET_DP215676.jpg
+  manuscript: شاهنامه، ۸۸۷ ق / ۱۴۸۲؛ موزهٔ متروپولیتن
+- bahram-onagers.webp ← "Bahram Gur Pins the Coupling Onagers", Folio 568r from the Shahnama (Book of Kings) of Shah Tahmasp MET DP107175.jpg — Mir Sayyid Ali — CC0 — https://commons.wikimedia.org/wiki/File:%22Bahram_Gur_Pins_the_Coupling_Onagers%22,_Folio_568r_from_the_Shahnama_(Book_of_Kings)_of_Shah_Tahmasp_MET_DP107175.jpg
+  manuscript: شاهنامهٔ شاه‌تهماسب، حدود ۱۵۳۰–۱۵۳۵؛ موزهٔ متروپولیتن
+- bozorgmehr-chess.webp ← "Buzurjmihr Masters the Hindu Game of Chess", Folio 639v from the Shahnama (Book of Kings) of Shah Tahmasp MET DP107184.jpg — Shahnameh of Shah Tahmasp atelier — CC0 — https://commons.wikimedia.org/wiki/File:%22Buzurjmihr_Masters_the_Hindu_Game_of_Chess%22,_Folio_639v_from_the_Shahnama_(Book_of_Kings)_of_Shah_Tahmasp_MET_DP107184.jpg
+  manuscript: شاهنامهٔ شاه‌تهماسب، برگ ۶۳۹پ، حدود ۱۵۳۰–۱۵۳۵؛ موزهٔ متروپولیتن
