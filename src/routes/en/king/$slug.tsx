@@ -72,6 +72,20 @@ function KingPageEn() {
         )}
         <div className="mx-auto max-w-5xl px-4 py-14">
           <FeaturedDossier king={fk} locale="en" />
+          <nav aria-label="Previous and next ruler" className="mt-14 grid sm:grid-cols-2 gap-4">
+            {k.predecessor ? (
+              <a href={isFeaturedKing(k.predecessor.id) ? `/en/king/${k.predecessor.id}` : `/king/${k.predecessor.id}`} className="glass rounded-2xl p-5 hover:border-gold transition-colors group min-h-11">
+                <span className="text-xs text-ivory/65">← Previous</span>
+                <span className="block text-xl font-bold mt-1 group-hover:text-gold-bright">{k.predecessor.latin}</span>
+              </a>
+            ) : <span />}
+            {k.successor && (
+              <a href={isFeaturedKing(k.successor.id) ? `/en/king/${k.successor.id}` : `/king/${k.successor.id}`} className="glass rounded-2xl p-5 text-end hover:border-gold transition-colors group min-h-11">
+                <span className="text-xs text-ivory/65">Next →</span>
+                <span className="block text-xl font-bold mt-1 group-hover:text-gold-bright">{k.successor.latin}</span>
+              </a>
+            )}
+          </nav>
         </div>
       </article>
     </PageTransition>

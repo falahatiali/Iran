@@ -3,6 +3,7 @@ import { propertyHero, propertyRefs, propertySections } from '../data/property/c
 import type { AboutBlock } from '../data/about/content'
 import { PageTransition, Reveal } from './Reveal'
 import { Divider, Shamseh } from './Ornament'
+import { SectionNav } from './SectionNav'
 
 function Block({ b, locale }: { b: AboutBlock; locale: Locale }) {
   return (
@@ -48,10 +49,18 @@ export function PropertyPage({ locale }: { locale: Locale }) {
             </nav>
             <p className="text-turquoise-soft">{propertyHero.kicker[locale]}</p>
             <h1 className="mt-3 text-4xl md:text-6xl font-black text-gilded leading-[1.3]">{propertyHero.title[locale]}</h1>
-            <p className="mt-8 text-xl leading-10 text-ivory/85">{propertyHero.lede[locale]}</p>
+            <p className="read read-lede mt-8 text-ivory/85">{propertyHero.lede[locale]}</p>
             <p className="mt-6"><a href={isFa ? '/en/property' : '/property'} hrefLang={isFa ? 'en' : 'fa'} className="glass rounded-full px-5 py-2 inline-flex items-center min-h-11 hover:border-gold">{isFa ? 'English' : 'فارسی'}</a></p>
           </div>
         </header>
+        <SectionNav
+          label={isFa ? 'بخش‌های صفحه' : 'Page sections'}
+          items={[
+            ...propertySections.map((b) => [b.id, b.title[locale]] as const),
+            ['related-h', isFa ? 'پیوندهای مرتبط' : 'Related pages'] as const,
+            ['refs-h', isFa ? 'منابع' : 'References'] as const,
+          ]}
+        />
         <div className="mx-auto max-w-3xl px-4 py-14 space-y-14">
           {propertySections.map((b) => <Block key={b.id} b={b} locale={locale} />)}
           <Divider />

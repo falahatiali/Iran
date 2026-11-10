@@ -3,6 +3,7 @@ import { facts, jashnSources, page, photo, photos, reading, sections, timeline, 
 import type { Locale } from '../../lib/i18n'
 import { PageTransition, Reveal } from '../Reveal'
 import { Shamseh } from '../Ornament'
+import { SectionNav } from '../SectionNav'
 
 export function JashnPage({ locale }: { locale: Locale }) {
   const isFa = locale === 'fa'
@@ -206,20 +207,4 @@ function ReadingProgress() {
     on(); window.addEventListener('scroll', on, { passive: true }); return () => window.removeEventListener('scroll', on)
   }, [])
   return <div aria-hidden="true" className="fixed top-0 inset-x-0 z-50 h-1 bg-transparent"><div className="h-full bg-gradient-to-r from-turquoise via-gold to-crimson" style={{ width: `${(p * 100).toFixed(1)}%` }} /></div>
-}
-
-function SectionNav({ items, label }: { items: [string, string][]; label: string }) {
-  const [active, setActive] = useState(items[0][0])
-  useEffect(() => {
-    const obs = new IntersectionObserver((es) => { for (const e of es) if (e.isIntersecting) setActive(e.target.id) }, { rootMargin: '-30% 0px -60% 0px' })
-    for (const [id] of items) { const el = document.getElementById(id); if (el) obs.observe(el) }
-    return () => obs.disconnect()
-  }, [items])
-  return (
-    <nav aria-label={label} className="sticky top-16 z-30 border-b border-gold/15 bg-night/85 backdrop-blur">
-      <ol className="mx-auto max-w-6xl px-4 flex gap-1 overflow-x-auto [scrollbar-width:none]">
-        {items.map(([id, l]) => <li key={id} className="shrink-0"><a href={`#${id}`} aria-current={active === id ? 'true' : undefined} className={`inline-flex items-center min-h-11 px-3 text-sm border-b-2 ${active === id ? 'border-gold text-gold-bright' : 'border-transparent text-ivory/60 hover:text-ivory'}`}>{l}</a></li>)}
-      </ol>
-    </nav>
-  )
 }

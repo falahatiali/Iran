@@ -4,6 +4,7 @@ import type { BiParas, FeaturedKing, Person } from '../../data/featured/types'
 import type { CommonsPhoto } from '../../data/places/types'
 import type { Locale } from '../../lib/i18n'
 import { Reveal } from '../Reveal'
+import { SectionNav } from '../SectionNav'
 import { EvidenceBadge } from '../cylinder/EvidenceBadge'
 import { AnimatedClip } from './AnimatedClip'
 import { BattleDiagram } from './BattleDiagram'
@@ -130,7 +131,7 @@ export function FeaturedHero({ king, locale, crumbs, facts, accent, name, kicker
           {ph && (
             <figure className="order-1 md:order-2 mx-auto w-full max-w-sm md:max-w-none">
               <div className="rounded-[2rem] p-1.5 bg-gradient-to-b from-gold/70 via-gold/20 to-gold/60 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)]">
-                <img src={ph.src} alt={ph.caption[locale]} decoding="async" fetchPriority="high" className="w-full aspect-[4/5] object-cover object-top rounded-[1.7rem]" />
+                <img src={ph.src} alt={ph.caption[locale]} decoding="async" fetchPriority="high" width={800} height={1000} className="w-full aspect-[4/5] object-cover object-top rounded-[1.7rem]" />
               </div>
               <figcaption className="mt-3 text-xs text-ivory/65 leading-6 text-center">{ph.caption[locale]} · <Credit ph={ph} /></figcaption>
             </figure>
@@ -179,11 +180,9 @@ export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: 
           ))}
         </dl>
         </>)}
-        <nav aria-label={isFa ? 'بخش‌های پرونده' : 'Dossier contents'} className="mt-8">
-          <ul className="flex flex-wrap gap-2 text-sm">
-            {toc.map(([id, label]) => <li key={id}><a href={`#${id}`} className="glass rounded-full px-4 py-2 inline-flex min-h-11 items-center hover:border-gold">{label}</a></li>)}
-          </ul>
-        </nav>
+        <div className="mt-8 -mx-4 md:mx-0">
+          <SectionNav items={toc as [string, string][]} label={isFa ? 'بخش‌های پرونده' : 'Dossier contents'} />
+        </div>
       </section>
 
       {king.slug === 'jalal-al-din' && <MongolInvasion locale={locale} />}

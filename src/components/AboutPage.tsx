@@ -2,6 +2,7 @@ import type { Locale } from '../lib/i18n'
 import { aboutHero, aboutRefs, methodology, purpose, type AboutBlock } from '../data/about/content'
 import { PageTransition, Reveal } from './Reveal'
 import { Divider, Shamseh } from './Ornament'
+import { SectionNav } from './SectionNav'
 
 function Block({ b, locale }: { b: AboutBlock; locale: Locale }) {
   return (
@@ -30,10 +31,20 @@ export function AboutPage({ locale }: { locale: Locale }) {
             </nav>
             <p className="text-turquoise-soft">{aboutHero.kicker[locale]}</p>
             <h1 className="mt-3 text-4xl md:text-6xl font-black text-gilded leading-[1.3]">{aboutHero.title[locale]}</h1>
-            <p className="mt-8 text-xl leading-10 text-ivory/85">{aboutHero.lede[locale]}</p>
+            <p className="read read-lede mt-8 text-ivory/85">{aboutHero.lede[locale]}</p>
             <p className="mt-6"><a href={isFa ? '/en/about' : '/about'} hrefLang={isFa ? 'en' : 'fa'} className="glass rounded-full px-5 py-2 inline-flex items-center min-h-11 hover:border-gold">{isFa ? 'English' : 'فارسی'}</a></p>
           </div>
         </header>
+        <SectionNav
+          label={isFa ? 'بخش‌های صفحه' : 'Page sections'}
+          items={[
+            ...purpose.map((b) => [b.id, b.title[locale]] as const),
+            ['methodology', isFa ? 'روش‌شناسی' : 'Methodology'] as const,
+            ...methodology.map((b) => [b.id, b.title[locale]] as const),
+            ['privacy', isFa ? 'حریم خصوصی' : 'Privacy'] as const,
+            ['refs-h', isFa ? 'منابع' : 'References'] as const,
+          ]}
+        />
         <div className="mx-auto max-w-3xl px-4 py-14 space-y-14">
           <h2 className="text-3xl font-black text-gilded">{isFa ? 'هدف' : 'Purpose'}</h2>
           {purpose.map((b) => <Block key={b.id} b={b} locale={locale} />)}
@@ -41,13 +52,13 @@ export function AboutPage({ locale }: { locale: Locale }) {
           <h2 id="methodology" className="text-3xl font-black text-gilded scroll-mt-24">{isFa ? 'روش‌شناسی' : 'Methodology'}</h2>
           {methodology.map((b) => <Block key={b.id} b={b} locale={locale} />)}
           <section id="privacy" aria-labelledby="privacy-h" className="scroll-mt-24">
-            <h2 id="privacy-h" className="text-xl font-bold text-gold">{isFa ? 'حریم خصوصی و کوکی‌ها' : 'Privacy and cookies'}</h2>
+            <h2 id="privacy-h" className="text-2xl font-black text-gold-bright">{isFa ? 'حریم خصوصی و کوکی‌ها' : 'Privacy and cookies'}</h2>
             <p className="read mt-3 text-ivory/85">{isFa
               ? 'این سایت از Google Analytics 4 استفاده می‌کند تا بدانیم کدام صفحه‌ها خوانده می‌شوند. هیچ تبلیغی نداریم و سیگنال‌های تبلیغاتی و Google signals خاموش‌اند. تا وقتی «قبول» را نزنید، کوکی آماری گذاشته نمی‌شود (Consent Mode گوگل در حالت «رد» می‌ماند). انتخاب شما فقط در مرورگر خودتان ذخیره می‌شود و هر وقت خواستید می‌توانید آن را از پیوند «تنظیمات کوکی» در پانویس عوض کنید.'
               : 'This site uses Google Analytics 4 to learn which pages are read. There are no ads, and advertising signals and Google signals are off. Until you press “Accept”, no analytics cookie is set (Google Consent Mode stays at “denied”). Your choice is stored only in your own browser, and you can change it at any time with the “Cookie settings” link in the footer.'}</p>
           </section>
           <section aria-labelledby="refs-h">
-            <h2 id="refs-h" className="text-xl font-bold text-gold">{isFa ? 'منابع این صفحه' : 'References'}</h2>
+            <h2 id="refs-h" className="text-2xl font-black text-gold-bright">{isFa ? 'منابع این صفحه' : 'References'}</h2>
             <ol className="mt-3 space-y-2 text-sm leading-7 text-ivory/70" dir="ltr">
               {aboutRefs.map((r) => <li key={r.id} className="text-left">{r.text} {r.url && <a href={r.url} className="text-gold hover:underline break-all" rel="noopener noreferrer" target="_blank">{r.url}</a>}</li>)}
             </ol>

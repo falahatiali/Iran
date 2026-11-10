@@ -2,12 +2,11 @@ import { Link, useRouterState } from '@tanstack/react-router'
 import { motion, useScroll, useSpring } from 'motion/react'
 import { useEffect, useState } from 'react'
 import type { Overview } from '../server/api'
-import { localeFromPath } from '../lib/i18n'
+import { localeFromPath, siblingLocalePath } from '../lib/i18n'
 import { SearchDialog } from './Search'
 import { openConsent } from './ConsentBanner'
 import { gaEnabled } from '../lib/analytics'
 import { Shamseh } from './Ornament'
-import { isFeaturedKing } from '../data/featured/slugs'
 
 export function Header({ data }: { data: Overview }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname })
@@ -43,34 +42,19 @@ export function Header({ data }: { data: Overview }) {
       ] as const
   return (
     <>
-      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:right-2 focus:z-[60] glass rounded-lg px-6 py-3 min-w-11 min-h-11">پرش به محتوا</a>
+      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:right-2 focus:z-[60] glass rounded-lg px-6 py-3 min-w-11 min-h-11">{locale === 'en' ? 'Skip to content' : 'پرش به محتوا'}</a>
       <header className="sticky top-0 z-40 border-b border-gold/15 bg-night/70 backdrop-blur-xl">
         <div className="mx-auto max-w-7xl flex items-center justify-between gap-4 px-4 h-16">
           <Link to="/" className="flex items-center gap-2 font-black text-lg min-h-11"><Shamseh className="size-8" /><span className="text-gilded">{locale === 'en' ? 'Iran History' : 'تاریخ ایران'}</span></Link>
-          <nav aria-label="ناوبری اصلی" className="hidden md:flex items-center gap-1">
+          <nav aria-label={locale === 'en' ? 'Main navigation' : 'ناوبری اصلی'} className="hidden md:flex items-center gap-1">
             {links.map((l) => (
               <Link key={l.label} to={l.to} params={'params' in l ? l.params : undefined} activeOptions={{ exact: true }} className="rounded-full px-4 py-3 text-sm text-ivory/75 hover:text-gold transition-colors min-h-11" activeProps={{ className: 'bg-gold/15 !text-gold-bright' }}>{l.label}</Link>
             ))}
           </nav>
           <div className="flex items-center gap-2">
             <a
-              href={
-                pathname.startsWith('/en/place/') ? pathname.slice(3)
-                  : pathname.startsWith('/place/') ? `/en${pathname}`
-                  : pathname === '/en/about' ? '/about'
-                  : pathname === '/about' ? '/en/about'
-                  : pathname.startsWith('/en/king/') ? pathname.slice(3)
-                  : pathname.startsWith('/king/') && isFeaturedKing(pathname.slice(6)) ? `/en${pathname}`
-                  : pathname.startsWith('/en/event/') ? pathname.slice(3)
-                  : pathname.startsWith('/event/') ? `/en${pathname}`
-                  : pathname.startsWith('/en/battle/') ? pathname.slice(3)
-                  : pathname.startsWith('/battle/') ? `/en${pathname}`
-                  : pathname === '/en/archives' ? '/archives'
-                  : pathname === '/archives' ? '/en/archives'
-                    : pathname.startsWith('/en') ? '/cylinder'
-                      : '/en/cylinder'
-              }
-              className="hidden sm:inline-flex glass rounded-full px-4 py-2 text-sm hover:border-gold min-h-11 items-center"
+              href={siblingLocalePath(pathname)}
+              className="inline-flex glass rounded-full px-3 sm:px-4 py-2 text-sm hover:border-gold min-h-11 items-center"
               hrefLang={pathname.startsWith('/en') ? 'fa' : 'en'}
               title={pathname.startsWith('/en') ? 'نسخهٔ فارسی' : 'English'}
             >
@@ -83,7 +67,7 @@ export function Header({ data }: { data: Overview }) {
           </div>
         </div>
         {menu && (
-          <nav id="mobile-nav" aria-label="ناوبری موبایل" className="md:hidden border-t border-gold/15 px-4 py-2 flex flex-col">
+          <nav id="mobile-nav" aria-label={locale === 'en' ? 'Mobile navigation' : 'ناوبری موبایل'} className="md:hidden border-t border-gold/15 px-4 py-2 flex flex-col">
             {links.map((l) => <Link key={l.label} to={l.to} params={'params' in l ? l.params : undefined} onClick={() => setMenu(false)} className="py-3 text-ivory/80 min-h-11 flex items-center">{l.label}</Link>)}
           </nav>
         )}
@@ -95,24 +79,27 @@ export function Header({ data }: { data: Overview }) {
 }
 
 export function BackToTop() {
+  const isEn = useRouterState({ select: (s) => s.location.pathname.startsWith('/en') })
   const [show, setShow] = useState(false)
   useEffect(() => {
-    const f = () => setShow(window.scrollY > 800)
+    const f = () => setShow(window.scrollY > 640)
     window.addEventListener('scroll', f, { passive: true }); f()
     return () => window.removeEventListener('scroll', f)
   }, [])
   return (
     <motion.button
-      aria-label="بازگشت به بالا" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      aria-label={isEn ? 'Back to top' : 'بازگشت به بالا'}
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       initial={false} animate={{ opacity: show ? 1 : 0, scale: show ? 1 : 0.6, pointerEvents: show ? 'auto' : 'none' }}
       whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.92 }}
-      className="fixed bottom-6 right-6 z-40 hidden sm:grid place-items-center size-12 rounded-full bg-gradient-to-br from-gold to-[#9c6f1f] text-night text-xl font-black shadow-lg shadow-gold/30"
+      className="fixed bottom-24 right-4 sm:bottom-6 sm:right-6 z-40 grid place-items-center size-12 rounded-full bg-gradient-to-br from-gold to-[#9c6f1f] text-night text-xl font-black shadow-lg shadow-gold/30"
     >↑</motion.button>
   )
 }
 
 export function Footer() {
-  const isEn = useRouterState({ select: (s) => s.location.pathname }).startsWith('/en')
+  const pathname = useRouterState({ select: (s) => s.location.pathname })
+  const isEn = pathname.startsWith('/en')
   const t = isEn
     ? {
         brand: 'Iran History',
@@ -189,7 +176,7 @@ export function Footer() {
             <ul className="flex flex-col gap-2">
               {events.map((e) => (
                 <li key={e.href}>
-                  <a href={e.href} className="group block rounded-2xl border border-gold/15 bg-night/20 px-4 py-3 hover:border-gold/50 hover:bg-gold/5 transition-colors min-h-11">
+                  <a href={e.href} aria-current={pathname === e.href ? 'page' : undefined} className={`group block rounded-2xl border px-4 py-3 hover:border-gold/50 hover:bg-gold/5 transition-colors min-h-11 ${pathname === e.href ? 'border-gold/60 bg-gold/10' : 'border-gold/15 bg-night/20'}`}>
                     <span className="block text-[0.7rem] font-bold tracking-wide text-turquoise-soft">{e.kicker}</span>
                     <span className="mt-1 block font-black text-gold-bright group-hover:text-gold">{e.title}</span>
                   </a>

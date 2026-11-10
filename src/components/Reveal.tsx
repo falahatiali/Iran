@@ -17,7 +17,7 @@ export function Reveal({ children, delay = 0, className, y = 28 }: { children: R
 
 export function PageTransition({ children }: { children: ReactNode }) {
   return (
-    <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: [0.2, 0.8, 0.2, 1] }}>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.45, ease: [0.2, 0.8, 0.2, 1] }}>
       {children}
     </motion.div>
   )
