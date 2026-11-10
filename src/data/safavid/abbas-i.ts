@@ -40,14 +40,14 @@ export const abbasDossier: DossierSection[] = [
     [['عباس سپاهی دائمی از غلامان ساخت: گرجی‌ها، ارمنی‌ها و چرکس‌های مسیحی که در جنگ‌های قفقاز اسیر شده، مسلمان شده و برای دربار و دیوان پرورده شده بودند. تا پایان پادشاهی او غلامان حدود یک‌پنجم مقام‌های بالای دیوانی را داشتند.', 'یک غلام گرجی، الله‌وردی‌خان، در کشتن مرشدقلی‌خان استاجلو، همان امیری که عباس را به تخت رسانده بود، همدست شد.'],
      ['Abbas built a standing army of ghulams: Georgian, Armenian and Circassian Christians taken captive in the Caucasus wars, converted to Islam and trained for the household and the administration. By the end of his reign ghulams held about one fifth of the high administrative posts.', 'A Georgian ghulam, Allahverdi Khan, took part in killing Morshed-qoli Khan Ostajlu, the very amir who had put Abbas on the throne.']],
     [['سیوری می‌نویسد وفاداری غلامان به شخص شاه بود، نه به ایل؛ پس شاه در برابر قزلباشان پشتیبانی تازه یافت. این همان راهی است که تهماسب با کوچاندن اسیران قفقازی آغاز کرده بود.'], ['Savory writes that the ghulams’ loyalty was to the shah, not to a tribe, so the shah gained a new support against the Qizilbash. It continued what Tahmasp had begun by moving Caucasian captives into Iran.']],
-    [['سپاهی که تنها به یک نفر وفادار است، کشور را تا زمانی نگه می‌دارد که آن یک نفر توانا باشد.'], ['An army loyal to one man holds a country only as long as that man is able.']],
+    [['سیوری می‌گوید وفاداری غلامان به شخص شاه بود. این سپاه تا وقتی شاه توانا بود کشور را نگاه داشت و اصفهان را ممکن کرد.'], ['Savory says the ghulams’ loyalty was to the person of the shah. That army held the country and made Isfahan possible while the shah himself was able.']],
     S, { photos: ['abbas-bishandas'], quotes: [{ text: 'The loyalty of the ḡolāms was to person of the shah, not to a tribe', fa: 'وفاداری غلامان به شخص شاه بود، نه به یک ایل.', ref: 'Savory, “ʿAbbās I”, Encyclopaedia Iranica', source: 'iranica-abbas-i' }] }),
-  sec('property', 'زمین‌های خاصه: درآمد امروز، هزینهٔ فردا', 'Crown lands: income today, cost tomorrow',
+  sec('property', 'زمین‌های خاصه و درآمد سپاه', 'Crown lands and the army’s pay',
     [['برای پرداخت مزد سپاه تازه، عباس ولایت‌های بیشتری را از زمین «ممالک» (دولتی، در دست امیران قزلباش) به زمین «خاصه» (شاهی) برگرداند. در این ولایت‌ها کارگزاران شاه مالیات را می‌گرفتند و یکسره به خزانه می‌فرستادند. متی می‌گوید غلامان حاکم این ولایت‌ها شدند. در ۱۶۱۹ صدور ابریشم هم انحصار شاه شد.', 'سیوری این راه‌حل را «در کوتاه‌مدت کارآمد» می‌داند و می‌افزاید که در درازمدت یکی از علت‌های اصلی زوال صفویان شد؛ چون جانشینان آن را گسترش دادند، توازن قزلباش و غلام به هم خورد و سپاه ناتوان شد.'],
      ['To pay the new army, Abbas turned more provinces from “state” (mamalek) land, held by Qizilbash amirs, into “crown” (khassa) land. There royal intendants collected the taxes and sent them straight to the treasury. Matthee says ghulams became governors of these provinces. In 1619 the export of silk also became a royal monopoly.', 'Savory calls this solution effective in the short term and adds that in the long run it became one of the principal causes of Safavid decline: extended by his successors, it upset the balance between Qizilbash and ghulam troops and weakened the army.']],
     [['برداشت ما این است: عباس درآمد را از دست امیران بیرون آورد و به خزانهٔ شاه برد، اما کسی را جای آنان نگذاشت که به آبادی زمین دلبسته باشد. کارگزاری که چند سال بر یک ولایت است، سود را می‌گیرد و هزینهٔ آینده را نمی‌پردازد. ما این را از سخن سیوری دربارهٔ زوال برداشت کرده‌ایم؛ خود او این سازوکار را چنین شرح نمی‌دهد.'],
      ['This is our reading: Abbas moved revenue out of the amirs’ hands and into the shah’s treasury, but put no one in their place with a stake in the land’s long-term upkeep. An intendant who holds a province for a few years takes the income and does not pay for the future. We draw this from Savory’s remark on decline; he does not spell out this mechanism himself.']],
-    [['وقتی دارایی یکسره به دولت می‌رسد و کسی مالک بلندمدت آن نیست، درآمد امروز ممکن است بهای ضعف فردا باشد.'], ['When property flows straight to the state and no one owns it for the long term, today’s income can be paid for with tomorrow’s weakness.']],
+    [['سیوری کارآمدی کوتاه‌مدت این راه را می‌پذیرد و گسترش بعدی آن را از علت‌های زوال صفویان می‌شمارد. این داوری اوست، نه همهٔ داستان پادشاهی عباس.'], ['Savory accepts that the measure worked in the short term and counts its later extension among the causes of Safavid decline. That is his judgement, not the whole story of Abbas’s reign.']],
     SM, { quotes: [{ text: 'in the long run it constituted one of the principal causes of Safavid decline', fa: 'در درازمدت یکی از علت‌های اصلی زوال صفویان شد.', ref: 'Savory, “ʿAbbās I”, Encyclopaedia Iranica', source: 'iranica-abbas-i' }] }),
   sec('isfahan', 'اصفهان', 'Isfahan',
     [['عباس پس از ۱۵۹۸ پایتخت را از قزوین به اصفهان برد. خیابان چهارباغ به میدان شاه (نقش جهان) می‌رسید و گرد آن کاخ عالی‌قاپو، مسجد شیخ لطف‌الله و مسجد شاه (آغاز ۱۶۱۱) و بازار قیصریه ساخته شد. هزاران پیشه‌ور ارمنی از جلفای آذربایجان به جلفای نو در کنار زاینده‌رود کوچانده شدند.', 'سیوری می‌گوید از زمان ساختن بغداد به دست منصور عباسی، در جهان اسلام چنین شهرسازی جامعی دیده نشده بود.'],
@@ -65,7 +65,7 @@ export const abbasDossier: DossierSection[] = [
     [['عباس دیگر پسرانش را با للهٔ قزلباش به ولایت‌ها نفرستاد و آنان را در حرم نگه داشت. از ترس توطئه یکی از پسرانش را کشت و دو تن را کور کرد؛ دو پسر دیگر پیش از او مرده بودند. جانشینش نوه‌اش صفی بود.'],
      ['Abbas stopped sending his sons to the provinces with Qizilbash guardians and kept them in the harem. Fearing plots, he had one son executed and two blinded; two others had died before him. His successor was his grandson Safi.']],
     [['سیوری می‌گوید شاهزادگانی که در حرم بزرگ شدند تجربهٔ کشورداری نداشتند و این شیوه «بی‌گمان یکی از علت‌های اصلی زوال صفویان» بود.'], ['Savory says princes raised in the harem had no experience of government and that this practice was “undoubtedly one of the major causes of Safavid decline”.']],
-    [['دولتی که نگذارد جانشین پیش از رسیدن به قدرت کاری بیاموزد، توانایی خود را با یک نفر به گور می‌برد.'], ['A state that lets no heir learn the work before he rules buries its competence with one man.']],
+    [['سیوری نگه‌داشتن شاهزادگان در حرم را از علت‌های اصلی ضعف جانشینان می‌داند. خود عباس با همین سامان سرزمین‌های از دست رفته را پس گرفت و پایتختی تازه ساخت.'], ['Savory counts keeping the princes in the harem among the main causes of his successors’ weakness. Abbas himself, with the same system, won back the lost lands and built a new capital.']],
     S, { quotes: [{ text: 'This practice was undoubtedly one of the major causes of Safavid decline.', fa: 'این شیوه بی‌گمان یکی از علت‌های اصلی زوال صفویان بود.', ref: 'Savory, “ʿAbbās I”, Encyclopaedia Iranica', source: 'iranica-abbas-i' }] }),
 ]
 
@@ -76,8 +76,8 @@ export const abbasI: FeaturedKing = {
   reign: B('۱۵۸۸–۱۶۲۹ م', '1588–1629 CE'),
   title: B('شاه عباس؛ سپاه تازه، پایتخت تازه', 'Shah Abbas: a new army, a new capital'),
   lede: B(
-    'در هفده‌سالگی شاه کشوری آشفته شد که عثمانی و ازبک بخش‌هایی از آن را گرفته بودند. با سپاهی از غلامان قفقازی و درآمد زمین‌های شاهی سرزمین‌ها را پس گرفت، اصفهان را پایتخت کرد و پرتغالی‌ها را از هرمز راند. همان اصلاحات، به گفتهٔ سیوری، در درازمدت از علت‌های زوال صفویان شد.',
-    'At seventeen he became shah of a country in turmoil, parts of it held by the Ottomans and Uzbeks. With an army of Caucasian ghulams paid from crown lands he won the lost lands back, made Isfahan his capital and drove the Portuguese from Hormuz. The same reforms, Savory says, became in the long run causes of Safavid decline.',
+    'در هفده‌سالگی شاه کشوری آشفته شد که عثمانی و ازبک بخش‌هایی از آن را گرفته بودند. با سپاهی از غلامان قفقازی و درآمد زمین‌های شاهی سرزمین‌ها را پس گرفت، اصفهان را پایتخت کرد و پرتغالی‌ها را از هرمز راند.',
+    'At seventeen he became shah of a country in turmoil, parts of it held by the Ottomans and Uzbeks. With an army of Caucasian ghulams paid from crown lands he won the lost lands back, made Isfahan his capital and drove the Portuguese from Hormuz.',
   ),
   stats: [
     { n: B('۴۱ سال', '41 years'), l: B('پادشاهی (خورشیدی)', 'reign (solar years)') },
@@ -107,14 +107,14 @@ export const abbasI: FeaturedKing = {
   },
   shareImage: '/media/abbas-i/campaigns-en.png',
   dossier: abbasDossier,
-  synthesis: { title: B('جمع‌بندی: نیرومندی کوتاه، بهای بلند', 'Synthesis: strength now, a long bill later'), paras: {
+  synthesis: { title: B('جمع‌بندی: بازپس‌گیری ایران و ساختن اصفهان', 'Synthesis: winning Iran back and building Isfahan'), paras: {
     fa: [
-      'شاه عباس با غلامان، زمین‌های شاهی و انحصار ابریشم دولتی ساخت که درآمد و سپاه را در دست شاه گرد می‌آورد. با همین ابزارها سرزمین‌های از دست رفته را پس گرفت و اصفهان را ساخت.',
-      'سیوری دو کار او، گسترش زمین‌های خاصه و نگه‌داشتن شاهزادگان در حرم، را از علت‌های اصلی زوال صفویان می‌شمارد. نود و سه سال پس از مرگ او، اصفهان به دست افغان‌ها افتاد.',
+      'شاه عباس با سپاه غلامان و درآمد زمین‌های شاهی سرزمین‌های از دست رفته را از ازبک و عثمانی پس گرفت، اصفهان را پایتخت کرد و پرتغالی‌ها را از هرمز راند. میدان نقش جهان و بندرعباس هنوز یادگار آن سامان‌اند.',
+      'سیوری دو تصمیم او، گسترش زمین‌های خاصه و نگه‌داشتن شاهزادگان در حرم، را از علت‌های بعدی ضعف صفویان می‌شمارد. این داوری منبع است و در جای خود آمده است؛ کارنامهٔ خود عباس با پس‌گرفتن ایران و ساختن پایتخت تازه تعریف می‌شود.',
     ],
     en: [
-      'With ghulams, crown lands and the silk monopoly, Shah Abbas built a state that gathered revenue and army into the shah’s hands. With those tools he won back the lost lands and built Isfahan.',
-      'Savory counts two of his measures, the spread of crown lands and the confinement of princes in the harem, among the principal causes of Safavid decline. Ninety-three years after his death, Isfahan fell to the Afghans.',
+      'With the ghulam army and the revenue of crown lands, Shah Abbas won back the lost territories from the Uzbeks and the Ottomans, made Isfahan his capital and drove the Portuguese from Hormuz. Naqsh-e Jahan and Bandar Abbas still stand as the mark of that order.',
+      'Savory counts two of his decisions, the spread of crown lands and the confinement of princes in the harem, among the later causes of Safavid weakness. That is a sourced judgement and is given its place; Abbas’s own record is defined by winning Iran back and building a new capital.',
     ],
   }, sources: SM },
   sources: sfSources,

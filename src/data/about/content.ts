@@ -19,11 +19,11 @@ export const purpose: AboutBlock[] = [
     paras: {
       fa: [
         'تاریخ ایران را بیشتر به صورت فهرست شاهان، جنگ‌ها و دودمان‌ها نوشته‌اند: چه کسی بر تخت نشست، چه کسی شکست خورد. ما می‌خواهیم پرسش دیگری بپرسیم: کشاورز، بازرگان، صنعتگر و زن و مرد عادی در زیر این تخت‌ها چه داشتند؟ آیا می‌توانستند آنچه با کار خود ساخته بودند نگه دارند، بفروشند، به ارث بگذارند؟ آیا قراردادشان اجرا می‌شد؟ آیا کسی جز خودشان به خاطر کارشان کیفر می‌دید؟',
-        'این پرسش‌ها تاریخ را کوچک نمی‌کنند؛ آن را انسانی می‌کنند. از گل‌نبشته‌های تخت‌جمشید که مزد زنان کارگر را ثبت کرده‌اند تا قراردادهای بازرگانان بابل در دوران هخامنشی، از وقف‌نامه‌ها و بازارهای سده‌های میانه تا مشروطه، تاریخ ایران پر از شواهدی است که با این عینک تازه معنا پیدا می‌کنند.',
+        'این پرسش‌ها تاریخ را کوچک نمی‌کنند؛ آن را انسانی می‌کنند. از گل‌نبشته‌های تخت‌جمشید که مزد زنان کارگر را ثبت کرده‌اند تا قراردادهای بازرگانان بابل در دوران هخامنشی، از کتاب ساسانی هزار داوری تا وقف‌نامه‌ها و بازارهای سده‌های میانه و مشروطه، تاریخ ایران پر از شواهدی است که با این عینک تازه معنا پیدا می‌کنند. صفحهٔ «حقوق مالکیت در تاریخ ایران» همین اسناد را یک‌جا گرد آورده است.',
       ],
       en: [
         'Iranian history has mostly been written as a list of kings, wars and dynasties: who took the throne, who fell. We ask a different question: what did the farmer, merchant, craftsman, and ordinary woman and man beneath those thrones actually have? Could they keep, sell and bequeath what their work produced? Were their contracts enforced? Was anyone punished for their deeds other than themselves?',
-        'These questions do not shrink history; they make it human. From the Persepolis tablets recording the wages of women workers to the contracts of Babylonian merchants under the Achaemenids, from the endowment deeds and bazaars of the middle ages to the Constitutional Revolution, Iran’s past is full of evidence that gains meaning through this lens.',
+        'These questions do not shrink history; they make it human. From the Persepolis tablets recording the wages of women workers to the contracts of Babylonian merchants under the Achaemenids, from the Sasanian Book of a Thousand Judgements to the endowment deeds and bazaars of the middle ages and the Constitutional Revolution, Iran’s past is full of evidence that gains meaning through this lens. The page “Property rights in the history of Iran” gathers those documents in one place.',
       ],
     },
   },
@@ -103,6 +103,22 @@ export const methodology: AboutBlock[] = [
     },
   },
   {
+    id: 'magic',
+    title: { fa: 'مغ، جادو و آنچه منابع می‌گویند', en: 'Magi, “magic”, and what the sources say' },
+    paras: {
+      fa: [
+        'واژهٔ اروپایی magic از لاتین magia و یونانی mageia / magos آمده است. ایرانیکا («مغان») می‌گوید صورت پارسی باستان این واژه magu- است (بابلی maguš، یونانی magos، لاتین magus) و در دورهٔ ماد، هخامنشی، اشکانی و ساسانی تنها نام ثبت‌شدهٔ روحانیان غرب ایران بوده است. در دورهٔ ساسانی رئیس روحانیان موبَد خوانده می‌شد، از *magu-pati- «سالار مغان».',
+        'معنای اروپایی «جادو» تحولی یونانی و لاتینی است، نه معنای اصلی واژهٔ ایرانی. وقتی بیستون گئومات را maguš می‌خواند، او را روحانی می‌نامد، نه جادوگر به معنای بعدی اروپایی.',
+        'متون زرتشتی جادوگری را جدا و نکوهیده می‌شمارند. در اوستا yātu (و جفت آن pairikā) برای جادوگر و جادوگرزن به کار رفته و با نیروهای اهریمنی پیوند دارد؛ صورت پارسی میانه jādūg است. ایرانیکا («جادو i») همین جدایی را میان آیین مغان و جادوی نکوهیده نگاه می‌دارد. پس «مغ» و «جادوگر» در منابع ایرانی یک چیز نیستند.',
+      ],
+      en: [
+        'The European word magic comes from Latin magia and Greek mageia / magos. Encyclopaedia Iranica (“Magi”) says the Old Persian form is magu- (Babylonian maguš, Greek magos, Latin magus), the only recorded designation of the priests of the western Iranians in the Median, Achaemenid, Parthian and Sasanian periods. In Sasanian times the superior priest was called mowbed, from *magu-pati- “chief of the Magi”.',
+        'The European sense “sorcery” is a Greek and Latin semantic shift, not the original Iranian meaning. When Behistun calls Gaumata a maguš, it names him a Magus — a priest — not a “magician” in the later European sense.',
+        'Zoroastrian texts treat sorcery separately and condemn it. In the Avesta yātu (paired with pairikā) denotes the sorcerer and sorceress and is tied to Ahrimanian forces; the Middle Persian form is jādūg. Iranica (“MAGIC i”) keeps that distinction between the cult of the Magi and condemned sorcery. In the Iranian sources a Magus and a sorcerer are not the same thing.',
+      ],
+    },
+  },
+  {
     id: 'corrections',
     title: { fa: 'سیاست اصلاح', en: 'Corrections policy' },
     paras: {
@@ -119,4 +135,7 @@ export const aboutRefs: AboutRef[] = [
   { id: 'motadel', text: 'D. Motadel, “Iran and the Aryan myth”, in A. Ansari (ed.), Perceptions of Iran (2014).', url: 'https://www.davidmotadel.com/wp-content/uploads/2016/08/MotadelAryans.pdf' },
   { id: 'kent', text: 'R. G. Kent, Old Persian: Grammar, Texts, Lexicon (1953), DNa §2.' },
   { id: 'philosophy', text: 'Project charter: docs/FOUNDATIONAL_PHILOSOPHY.md', url: 'https://github.com/falahatiali/Iran/blob/main/docs/FOUNDATIONAL_PHILOSOPHY.md' },
+  { id: 'iranica-magi', text: 'M. A. Dandamayev, “Magi”, Encyclopaedia Iranica.', url: 'https://www.iranicaonline.org/articles/magi/' },
+  { id: 'iranica-magic', text: 'A. Panaino, “Magic i. Magical elements in the Avesta and Nērang literature”, Encyclopaedia Iranica (2005, updated 2012).', url: 'https://www.iranicaonline.org/articles/magic/magic-i-magical-elements-in-the-avesta-and-nerang-literature/' },
+  { id: 'property-page', text: 'صفحهٔ حقوق مالکیت در تاریخ ایران / Property rights in the history of Iran', url: '/property' },
 ]

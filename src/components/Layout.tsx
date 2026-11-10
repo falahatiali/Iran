@@ -142,6 +142,7 @@ export function Footer() {
         { href: '/en/archives', label: 'Persepolis archives' },
         { href: '/timeline', label: 'Timeline' },
         { href: '/kings', label: 'Rulers at a glance' },
+        { href: '/en/property', label: 'Property rights' },
         { href: '/en/about', label: 'Method and sources' },
       ]
     : [
@@ -149,6 +150,7 @@ export function Footer() {
         { href: '/archives', label: 'بایگانی تخت‌جمشید' },
         { href: '/timeline', label: 'گاه‌شمار سراسری' },
         { href: '/kings', label: 'فرمانروایان در یک نگاه' },
+        { href: '/property', label: 'حقوق مالکیت' },
         { href: '/about', label: 'روش‌شناسی و منابع' },
       ]
   const events = isEn

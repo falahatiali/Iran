@@ -7,12 +7,12 @@ export const dossier: DossierSection[] = [
     title: { fa: 'رسیدن به قدرت و مشروعیت', en: 'Rise to power and legitimacy' },
     historical: {
       fa: [
-        'داریوش پسر ویشتاسپ از شاخه‌ای فرعی از هخامنشیان بود، نه وارث مستقیم کوروش. در ۵۲۲ پ.م. پس از مرگ کمبوجیه، با شش نجیب‌زادهٔ پارسی کسی را کشت که بیستون او را گئوماتِ مغ می‌خواند که به دروغ خود را بردیا برادر کمبوجیه نامیده بود.',
+        'داریوش پسر ویشتاسپ از شاخه‌ای فرعی از هخامنشیان بود، نه وارث مستقیم کوروش. در ۵۲۲ پ.م. پس از مرگ کمبوجیه، با شش نجیب‌زادهٔ پارسی کسی را کشت که بیستون او را گئوماتِ مغ می‌خواند که به دروغ خود را بردیا برادر کمبوجیه نامیده بود. واژهٔ پارسی باستان maguš در اصل نام روحانیان غرب ایران است، نه «جادوگر» به معنای بعدی اروپایی که از یونانی magos ساخته شد.',
         'سپس تقریباً سراسر شاهنشاهی شورید: ایلام، بابل (دو بار)، ماد، ارمنستان، پارت، مرو، سکاها و حتی خود پارس. بیستون می‌گوید داریوش در «یک سال» نوزده نبرد کرد و نُه شاه را گرفت. او برای مشروعیت به سه چیز تکیه کرد: تبار مشترک از هخامنش، خواست اهورامزدا، و تقابل «راستی» با «دروغ» (drauga).',
         'داریوش با آتوسا و آرتیستونه دختران کوروش و نیز دختر بردیا ازدواج کرد؛ پیوندی که ادعایش را به خاندان کوروش گره زد.',
       ],
       en: [
-        'Darius son of Vištāspa came from a collateral branch of the Achaemenids, not Cyrus’s direct line. In 522 BCE, after Cambyses’ death, he and six Persian nobles killed the man Behistun calls Gaumata the Magus, who had falsely claimed to be Bardiya, Cambyses’ brother.',
+        'Darius son of Vištāspa came from a collateral branch of the Achaemenids, not Cyrus’s direct line. In 522 BCE, after Cambyses’ death, he and six Persian nobles killed the man Behistun calls Gaumata the Magus, who had falsely claimed to be Bardiya, Cambyses’ brother. Old Persian maguš originally named the priests of the western Iranians, not a “magician” in the later European sense that grew out of Greek magos.',
         'Almost the whole empire then revolted: Elam, Babylon (twice), Media, Armenia, Parthia, Margiana, the Saka and Persis itself. Behistun says Darius fought nineteen battles and took nine kings “in one and the same year.” He rested his legitimacy on three things: shared descent from Achaemenes, the will of Ahuramazda, and the opposition of “truth” to “the Lie” (drauga).',
         'He married Cyrus’s daughters Atossa and Artystone and a daughter of Bardiya, tying his claim to Cyrus’s house.',
       ],
@@ -20,18 +20,18 @@ export const dossier: DossierSection[] = [
     interpretation: {
       fa: [
         'از نگاه حقوق مالکیت، پرسش بنیادین این است: «تاج» مال کیست؟ در منطق بیستون، پادشاهی میراثی است که از خاندان «ربوده» شده و داریوش آن را «بازگردانده». این همان زبان اعادهٔ مال غصبی است. حتی بیستون می‌گوید گئومات کشتزارها، گله‌ها، بردگان و خانه‌هایی را که از مردم گرفته بود، داریوش به آنان بازگرداند (DB §۱۴). یعنی داریوش مشروعیت خود را بر این ادعا بنا کرد که مالکیت ربوده‌شده را به صاحبانش بازمی‌گرداند.',
-        'اما همین متن نشان می‌دهد مشروعیت از رضایت نمی‌آمد. نوزده نبرد یعنی بخش بزرگی از رعایا به این حکومت تن نمی‌دادند. حکومتی که با شمشیر بنا شده باشد، برای ماندن باید ثابت کند غارتگرِ گذرا نیست و نظم پایدار می‌آورد. داستان بقیهٔ دوران داریوش، داستان همین گذار است.',
+        'نوزده نبرد نشان می‌دهد که در آن سال بسیاری این جانشینی را نپذیرفتند. بقیهٔ پادشاهی داریوش داستان ساختن سامانی است که پس از آن سالِ شورش پایدار ماند.',
       ],
       en: [
         'Through a property-rights lens, the foundational question is: whose is the crown? In Behistun’s logic the kingship is an inheritance “taken away” from the family and “restored” by Darius — the language of recovering stolen property. Behistun even claims Darius gave back to the people the pastures, herds, household slaves and houses Gaumata had taken (DB §14): he built his legitimacy on restitution.',
-        'Yet the same text shows legitimacy did not come from consent. Nineteen battles mean much of the empire refused this government. A regime founded by the sword must then show it is not a passing plunderer but a source of durable order. The rest of Darius’s reign is the story of that transition.',
+        'Nineteen battles show that in that year many did not accept this accession. The rest of Darius’s reign is the story of building an order that lasted after that year of revolt.',
       ],
     },
     modern: {
-      fa: ['بیستون نخستین «روایت رسمی» بلند ایرانی است و یادآور می‌شود که تاریخ را پیروزان می‌نویسند. خوانندهٔ امروز می‌تواند هم به هوش سیاسی داریوش احترام بگذارد و هم بپرسد صدای شکست‌خوردگان کجاست.'],
-      en: ['Behistun is the first long Iranian “official narrative” and a reminder that winners write history. A reader today can respect Darius’s political skill and still ask where the voices of the defeated are.'],
+      fa: ['بیستون نخستین روایت رسمی بلند ایرانی است که برای ما مانده. آن را باید روایت پیروز دانست: گزارش خود داریوش از سالی که تقریباً سراسر شاهنشاهی شورید و سپس آرام شد.'],
+      en: ['Behistun is the first long official Iranian narrative that survives for us. It should be read as the winner’s account: Darius’s own report of a year in which almost the whole empire rose and was then brought back to order.'],
     },
-    sources: ['kent1953', 'schmitt1991', 'herodotus', 'briant2002', 'iranica-darius'],
+    sources: ['kent1953', 'schmitt1991', 'herodotus', 'briant2002', 'iranica-darius', 'iranica-magi'],
   },
   {
     id: 'administration',
@@ -81,21 +81,21 @@ export const dossier: DossierSection[] = [
     },
     interpretation: {
       fa: [
-        'لقب «کاسب» در دهان اشراف پارسی تحقیرآمیز بود، اما از نگاه اقتصاد سیاسی تعریف است. داریوش به جای غارت بی‌قاعده، خراج سالانهٔ معین گذاشت. اقتصاددان منکور اولسون (۱۹۹۳) میان «راهزن سرگردان» که هرچه بتواند می‌برد و «راهزن ساکن» که چون خود را صاحب درآمد آینده می‌بیند، به سود خود مالیات را محدود و پیش‌بینی‌پذیر می‌کند، تمایز گذاشت. اصلاح خراج داریوش نمونه‌ای کلاسیک از این گذار است. رقم ثابت یعنی هر اضافه‌تولید مال تولیدکننده می‌ماند، و این انگیزهٔ سرمایه‌گذاری و تولید می‌سازد.',
-        'سکه و وزنهٔ استاندارد هزینهٔ معامله را کم می‌کنند: سنجیدن عیار و وزن، کار هر بار هر بازار نیست. این کالای عمومی واقعی است که حتی سنت لیبرال کلاسیک (از اسمیت تا میزس) برای کارکرد دولت در تضمین پول سالم می‌پذیرد، هرچند میزس هشدار می‌دهد همان دولت می‌تواند پول را نیز خراب کند.',
-        'اما خراج، به تعبیر باستیا، «غارت قانونی» است: انتقال اجباری ثروت از تولیدکننده به حاکم، هرچند منظم. پارس معاف بود و دیگران می‌پرداختند؛ یعنی یک قوم بر دیگران امتیاز مالیاتی داشت. لوح‌های تخت‌جمشید هم دوپهلو هستند: کار مزدی با تفاوت مهارت و حقوق زنان، واقعیتی شگفت برای جهان باستان است، اما کورتش‌ها اغلب کارگران وابسته، گاه اسیران جنگی کوچانده بودند؛ آزادی ترک کار و جابه‌جایی آنان روشن نیست. پس «مزد» اینجا به معنای قرارداد آزاد امروزی نیست، و ادعای اینکه «همهٔ تخت‌جمشید با کار آزاد ساخته شد» به همان اندازهٔ اسطورهٔ «بردگان ساختند» ساده‌سازی است.',
+        'لقب «کاسب» در دهان اشراف پارسی تحقیرآمیز بود؛ کاری که داریوش کرد این بود که گرفتن بی‌قاعده را به خراج سالانهٔ معین بدل کند. رقم ثابت یعنی آنچه کشاورز بیش از نرخ معین به دست آورد از آنِ اوست، و این خود انگیزهٔ کاشتن و ساختن می‌دهد.',
+        'سکه و وزنهٔ استاندارد هزینهٔ معامله را کم می‌کنند: سنجیدن عیار و وزن دیگر کار هر بار هر بازار نیست. این خدمت عمومی واقعی است و راه را برای بازرگانی دورتر هموار می‌کند.',
+        'پارس از خراج معاف بود و دیگران می‌پرداختند؛ هرودوت این امتیاز سرزمین حاکم را ثبت کرده است. لوح‌های تخت‌جمشید هم باید دقیق خوانده شوند: کار مزدی با تفاوت مهارت و حقوق زنان برای جهان باستان چشمگیر است، اما کورتش‌ها اغلب کارگران وابسته بودند و گاه از اسیران کوچانده؛ آزادی ترک کار روشن نیست. پس «مزد» اینجا قرارداد آزاد امروزی نیست، و ادعای اینکه «همهٔ تخت‌جمشید با کار آزاد ساخته شد» به همان اندازهٔ اسطورهٔ «بردگان ساختند» ساده‌سازی است.',
       ],
       en: [
-        'The nickname “huckster” was an aristocratic sneer, but in political economy it is a compliment. Instead of arbitrary plunder Darius set a fixed annual tribute. The economist Mancur Olson (1993) distinguished the “roving bandit,” who takes all he can, from the “stationary bandit,” who, seeing himself as owner of future revenue, limits and regularises taxation in his own interest. Darius’s tribute reform is a textbook case of that transition. A fixed sum means every extra unit produced stays with the producer — an incentive to invest and produce.',
-        'Standard coin and weights cut transaction costs: assaying weight and purity no longer has to be repeated at every market. This is a genuine public good that even the classical-liberal tradition (from Smith to Mises) grants to a state guaranteeing sound money — though Mises warns the same state can debase it.',
-        'Yet tribute is, in Bastiat’s term, “legal plunder”: a compulsory transfer from producer to ruler, however orderly. Persis was exempt while others paid — one people held a tax privilege over the rest. The Persepolis tablets are double-edged too: wage work with skill differentials and women’s pay is remarkable for antiquity, but kurtaš were often dependent workers, sometimes deported captives, whose freedom to quit or move is unclear. “Wages” here are not today’s free contract, and the claim that “Persepolis was built entirely by free labour” simplifies as much as the myth that “slaves built it.”',
+        'The nickname “huckster” was an aristocratic sneer; what Darius did was turn irregular taking into a stated annual tribute. A fixed sum means whatever the farmer produces above that rate remains his — an incentive to plant and to build.',
+        'Standard coin and weights cut the cost of trade: weight and purity no longer have to be assayed afresh at every market. That is a real public service, and it made longer-distance commerce easier.',
+        'Persis was exempt while others paid; Herodotus records that privilege of the ruling land. The Persepolis tablets also need a careful reading: wage work with skill differentials and women’s pay is remarkable for antiquity, but kurtaš were often dependent workers, sometimes deported captives, whose freedom to quit is unclear. “Wages” here are not today’s free contract, and the claim that “Persepolis was built entirely by free labour” simplifies as much as the myth that “slaves built it.”',
       ],
     },
     modern: {
-      fa: ['از داریوش می‌توان یک درس روشن گرفت: پیش‌بینی‌پذیری مالیات و پول سالم، حتی زیر حکومتی غیردموکراتیک، تولید را تشویق می‌کند. اما مشروعیت مالیات به رضایت مالیات‌دهنده بستگی دارد، چیزی که شاهنشاهی هرگز ادعایش را نکرد.'],
-      en: ['One clear lesson from Darius: predictable taxes and sound money encourage production, even under undemocratic rule. But the legitimacy of a tax depends on the consent of those taxed — something the empire never claimed.'],
+      fa: ['از داریوش می‌توان این را آموخت: مالیاتی که از پیش دانسته است، و پولی که عیارش روشن است، تولید و دادوستد را آسان می‌کند. شرح قراردادها و لوح‌ها در صفحهٔ حقوق مالکیت آمده است.'],
+      en: ['One lesson from Darius is that a tax known in advance, and money of a stated standard, makes production and trade easier. The contracts and tablets are set out on the property-rights page.'],
     },
-    sources: ['herodotus', 'iranica-daric', 'bm-daric', 'hallock1969', 'cameron1948', 'brosius1996', 'henkelman2008', 'olson1993'],
+    sources: ['herodotus', 'iranica-daric', 'bm-daric', 'hallock1969', 'cameron1948', 'brosius1996', 'henkelman2008'],
   },
   {
     id: 'markets',
@@ -131,6 +131,7 @@ export const dossier: DossierSection[] = [
       en: ['Modern economics confirms what Babylonian merchants knew: written contracts, reliable courts and safe roads are the cheapest infrastructure of wealth. But property held at the ruler’s pleasure can be lost on the day of his anger.'],
     },
     sources: ['herodotus', 'abraham2004', 'stolper1985', 'hallock1969', 'brosius1996', 'kuhrt2007', 'briant2002'],
+    link: { href: { fa: '/property', en: '/en/property' }, label: { fa: 'حقوق مالکیت در تاریخ ایران', en: 'Property rights in the history of Iran' } },
   },
   {
     id: 'religion',
@@ -178,11 +179,11 @@ export const dossier: DossierSection[] = [
     },
     interpretation: {
       fa: [
-        'ارتش داریوش نشان می‌دهد شاهنشاهی هم شبکهٔ تجارت بود و هم ماشین زور. هزینهٔ این ماشین را خراج می‌پرداخت، و خراج را ارتش تضمین می‌کرد: چرخه‌ای که در آن امنیت جاده و بازار با همان شمشیری خریده می‌شد که اگر لازم بود، شهر شورشی را ویران می‌کرد.',
+        'ارتش داریوش از راه‌ها و منزل‌هایی که بازرگانی به آن‌ها وابسته بود پاسداری می‌کرد، و هزینهٔ آن از خراج می‌آمد. بیستون نیز مجازات سخت شورشیان را ثبت کرده است. هر دو سوی این سامان در اسناد او هست.',
         'زمین در برابر خدمت، سرباز را به ذی‌نفع نظم بدل می‌کرد: کسی که زمینی برای از دست دادن دارد، کمتر می‌شورد. این همان پیوند مالکیت و ثبات است، اما مالکیتی مشروط که قدرت را در دست شاه نگه می‌داشت.',
       ],
       en: [
-        'Darius’s army shows the empire was both a trade network and a machine of force. Tribute paid for the machine, and the machine secured the tribute: a cycle in which the safety of road and market was bought with the same sword that could raze a rebellious city.',
+        'Darius’s army guarded the roads and stations on which trade depended, and tribute paid for that army. Behistun also records the severe punishment of rebels. Both sides of the order are in his own documents.',
         'Land-for-service turned soldiers into stakeholders: someone with land to lose is less likely to revolt. That is the link between property and stability — but a conditional property that kept power in the king’s hand.',
       ],
     },
@@ -208,11 +209,11 @@ export const dossier: DossierSection[] = [
     interpretation: {
       fa: [
         'DNb یکی از کهن‌ترین بیان‌های اصل «برابری در برابر داوری» و «شنیدن هر دو طرف» (audi alteram partem) است، و نیز اصل تناسب کیفر با آسیب. اینها ستون‌های حقوق فردی‌اند: فرد را مسئول کار خودش می‌دانند، نه خانواده یا قومش. اما DNb تعهد اخلاقی شاه است، نه حقی که فرد بتواند علیه شاه مطالبه کند. «من نمی‌خواهم» به معنای «تو حق داری» نیست.',
-        'و شواهد خلاف را باید کامل گفت: مثله کردن مخالفان سیاسی، کوچاندن جمعی، و برده‌داری با هر خوانشی از آزادی فردی ناسازگارند. کیفر جمعی شهرهای شورشی درست همان «تنبیه افراد به خاطر کار دیگران» است که چارچوب ما محکوم می‌کند. پس داوری صادقانه این است: داریوش ایدهٔ «عدالت برای توانا و ناتوان» را بر سنگ نوشت، اما آن را برای هر کسی که وفاداری‌اش را زیر سؤال می‌برد، به حالت تعلیق درمی‌آورد.',
+        'بیستون، نوشتهٔ همین شاه، مثله کردن و بر دار کردن رهبران شورشی را ثبت می‌کند. هرودوت از کوچاندن مردم برخی شهرهای شورشی سخن می‌گوید و قراردادهای فروش برده از دوران او مانده است. DNb آرمان شنیدن هر دو طرف و آسیب‌ندیدن ناتوان و توانا را بیان می‌کند؛ مجازات شورشیان نیز بخشی از کارنامهٔ اوست. هر دو متن از آنِ خود او هستند.',
       ],
       en: [
         'DNb is one of the oldest statements of equality before judgment and of hearing both sides (audi alteram partem), and of punishment proportional to harm. These are pillars of individual rights: they hold a person responsible for his own deeds, not those of his family or people. But DNb is the king’s moral self-commitment, not a right an individual could claim against the king. “It is not my wish” is not “you have a right.”',
-        'And the counter-evidence must be stated in full: mutilating political opponents, mass deportation and slavery are incompatible with any reading of individual liberty. The collective punishment of rebel cities is exactly the “punishing individuals for the acts of others” our framework condemns. The honest verdict: Darius carved the idea of justice for strong and weak in stone, but suspended it for anyone who questioned his loyalty.',
+        'Behistun, written by the same king, records the mutilation and impalement of rebel leaders. Herodotus reports the deportation of people from some rebellious cities, and slave-sale contracts survive from his reign. DNb states the ideal of hearing both sides and wishing no harm to the weak or the strong; the punishment of rebels is also part of his record. Both texts are his own.',
       ],
     },
     modern: {
@@ -240,10 +241,10 @@ export const dossier: DossierSection[] = [
     },
     interpretation: {
       fa: [
-        'DSf بیش از همه، ستایش تقسیم کار است: هر مردم آنچه را بهتر می‌داند می‌آورد و می‌سازد. این تصویر نزدیک به ایدهٔ اسمیتی مزیت و تخصص است، اما سازمان‌دهنده نه بازار، بلکه شاه است. ثروت از سراسر جهان شناخته‌شده به یک کاخ جریان یافت؛ پرسش مالکیت این است که سهم سازندگان از آنچه ساختند چه بود؟ جیره و دستمزد واقعی بود و مهارت پاداش داشت؛ اما مالک ارزش نهایی، شاه بود.',
+        'DSf بیش از همه ستایش تقسیم کار است: هر مردم آنچه را بهتر می‌داند می‌آورد و می‌سازد. جیره و دستمزد واقعی بود و مهارت پاداش داشت. کاخ‌ها کارهای شاهی بودند؛ سهم سازندگان را همین لوح‌های جیره روشن می‌کنند، نه شعار «کار آزاد» یا «کار برده».',
       ],
       en: [
-        'Above all, DSf celebrates division of labour: each people brings and makes what it does best. The picture is close to Smith’s idea of specialisation and advantage — but the organiser is the king, not the market. Wealth from the known world flowed into one palace; the property question is what share the builders kept. Rations and wages were real and skill was rewarded; but the owner of the final value was the king.',
+        'Above all, DSf celebrates a division of labour: each people brings and makes what it does best. Rations and wages were real and skill was rewarded. The palaces were royal works; the tablets of rations, not the slogans of “free labour” or “slave labour”, show what share the builders received.',
       ],
     },
     modern: {
@@ -281,22 +282,18 @@ export const dossier: DossierSection[] = [
 
 /** Closing synthesis essay (interpretation layer only). */
 export const synthesis: Synthesis = {
-  title: { fa: 'جمع‌بندی: «راهزن ساکن» یا نگهبان مالکیت؟ نظم داریوش با عینک حقوق مالکیت', en: 'Synthesis: “stationary bandit” or guardian of property? Darius’s order through a property-rights lens' },
+  title: { fa: 'جمع‌بندی: نظم داریوش و حقوق مالکیت', en: 'Synthesis: Darius’s order and property rights' },
   paras: {
     fa: [
-      'داریوش با زور به قدرت رسید و با زور آن را نگه داشت. اما آنچه او را از بسیاری فاتحان جدا می‌کند، این است که پس از پیروزی، غارت را به قاعده بدل کرد. خراج سالانهٔ معین، سکه و وزنهٔ استاندارد، راه‌ها و منزل‌ها، بایگانی‌های مکتوب و احترام به قانون‌های محلی، همه یک کارکرد داشتند: نامطمئنی را کم کنند. و نامطمئنی، بزرگ‌ترین دشمن مالکیت است. کشاورزی که نمی‌داند فردا چه از او گرفته می‌شود، نمی‌کارد؛ بازرگانی که نمی‌داند قراردادش اجرا می‌شود، وام نمی‌دهد.',
-      'شواهد نشان می‌دهد این پیش‌بینی‌پذیری واقعاً به کار افتاد: بنگاه‌های بابلی در دوران داریوش رونق داشتند، قراردادها با سال‌های پادشاهی او تاریخ می‌خوردند، کار مزدی با تفاوت مهارت و حتی حقوق زنان ثبت می‌شد، و زمین‌های خدمتی به ارث می‌رسید و گرو گذاشته می‌شد. این یک «نظم مالکیت» واقعی است، شاید پیشرفته‌ترین نظم فراقومی جهان تا آن زمان.',
-      'اما این نظم دو مرز بنیادین داشت. نخست، مالکیت از بالا جاری می‌شد: شاه مالک نهایی زمین فتح‌شده بود و حق‌ها را در برابر وفاداری و خدمت می‌بخشید. مالکیت حق طبیعی فرد پیش از دولت (لاک) نبود، امتیازی در درون دولت بود. دوم، هیچ نهادی شاه را محدود نمی‌کرد. DNb تعهدی اخلاقی است که شاه به خود می‌دهد، و بیستون نشان می‌دهد چه بر سر کسی می‌آمد که این تعهد را آزمایش می‌کرد. خراج، به تعبیر باستیا، غارت قانونی بود؛ کوچاندن و کیفر جمعی، نفی مسئولیت فردی.',
-      'پس پاسخ صادقانه به پرسش ما چنین است: داریوش نگهبان مالکیت بود تا جایی که مالکیت در خدمت پایداری شاهنشاهی بود. او فهمید که رعیت ثروتمند و قرارداد محترم، خراج بیشتر و شورش کمتر می‌آورد؛ این همان منطق «راهزن ساکن» اولسون است. نمی‌توانیم بگوییم مالکیت خصوصی «شاهنشاهی را ساخت»؛ ارتش، جغرافیا، مشروعیت دینی و پیوند اقوام نیز علت بودند، و شواهد علّی برای ادعایی تک‌عاملی نداریم. اما می‌توانیم بگوییم بخش پایدار میراث او، دقیقاً همان بخش‌هایی است که از مالکیت و قرارداد محافظت کردند، و بخش ناپایدار، همان‌هایی که بر زور تکیه داشتند.',
-      'درس امروز: آنچه داریوش به عنوان لطف شاهی داد، یعنی امنیت مالکیت، قرارداد اجراشدنی و عدالت برای توانا و ناتوان، باید حق باشد، نه لطف؛ و برای آنکه حق باشد، باید نهادی وجود داشته باشد که حتی شاه را محدود کند. داریوش نیمهٔ نخست این معادله را ساخت. نیمهٔ دوم را تاریخ بعدی باید می‌ساخت.',
+      'داریوش پس از سالی پر از شورش، سامان اداری‌ای ساخت که از او ماند: ساتراپی‌ها، خراج معین، سکه و وزنه، راه‌ها، بایگانی و احترام به قانون قرارداد محلی. پیش‌بینی‌پذیری دشمن نامطمئنی است، و نامطمئنی دشمن کاشتن و وام دادن.',
+      'شواهد این سامان واقعی است: بنگاه‌های بابلی در سال‌های او رونق داشتند و قراردادها به نام او تاریخ می‌خوردند؛ لوح‌های تخت‌جمشید مزد و جیره، از جمله سهم زنان، را ثبت کرده‌اند؛ و زمین خدمتی بعدها به ارث می‌رسید و به رهن می‌رفت. بیستون می‌گوید او کشتزارها، گله‌ها، خانه‌ها و افراد خانگی را که گئومات گرفته بود به صاحبانشان بازگرداند.',
+      'منابع از حق فردی به معنای امروزی در برابر شاه سخن نمی‌گویند. DNb معیار خود او برای دادگری است؛ بیستون مجازات سخت رهبران شورشی را ثبت می‌کند. خراج اجباری بود و پارس از آن معاف. این برداشت ماست: پایدارترین بخش میراث او همان بخشی است که مالکیت، قرارداد و پرداخت را پیش‌بینی‌پذیر کرد.',
     ],
     en: [
-      'Darius took power by force and kept it by force. What sets him apart from many conquerors is that after victory he turned plunder into rule. Fixed annual tribute, standard coins and weights, roads and stations, written archives and respect for local law all did one thing: reduce uncertainty. And uncertainty is the greatest enemy of property. A farmer who does not know what will be taken tomorrow does not plant; a merchant who does not know whether his contract will be enforced does not lend.',
-      'The evidence shows this predictability worked: Babylonian firms flourished under Darius, contracts were dated by his regnal years, wage labour with skill differentials and even women’s pay was recorded, and service land was inherited and pledged. That is a real property order — perhaps the most developed multi-ethnic one in the world to that date.',
-      'But it had two fundamental limits. First, property flowed from above: the king was the ultimate owner of conquered land and granted rights in return for loyalty and service. Property was not a natural right of the individual prior to the state (Locke) but a privilege within it. Second, no institution constrained the king. DNb is a moral commitment the king makes to himself, and Behistun shows what happened to anyone who tested it. Tribute was, in Bastiat’s term, legal plunder; deportation and collective punishment denied individual responsibility.',
-      'So the honest answer to our question is: Darius was a guardian of property insofar as property served the stability of the empire. He understood that rich subjects and respected contracts bring more tribute and fewer revolts — Olson’s logic of the stationary bandit. We cannot say private property “built the empire”: the army, geography, religious legitimacy and the integration of peoples were causes too, and we lack causal evidence for a single-factor claim. But we can say the durable part of his legacy is exactly the part that protected property and contract, and the fragile part is the part that relied on force.',
-      'The lesson today: what Darius gave as royal favour — secure property, enforceable contracts, justice for strong and weak — must be a right, not a favour; and for it to be a right there must be an institution that binds even the king. Darius built the first half of that equation. Later history had to build the second.',
+      'After a year of revolts Darius built an administration that outlived him: satrapies, a stated tribute, coin and weights, roads, archives and respect for local contract law. Predictability is the enemy of uncertainty, and uncertainty is the enemy of planting and of lending.',
+      'The evidence for that order is real: Babylonian firms flourished in his years and contracts were dated by his name; the Persepolis tablets record pay and rations, including women’s shares; and service land was later inherited and pledged. Behistun says he restored the pastures, herds, houses and household people that Gaumata had taken.',
+      'The sources do not describe a modern individual right against the king. DNb is his own standard of justice; Behistun records the severe punishment of rebel leaders. Tribute was compulsory, and Persis was exempt. This is our reading: the most lasting part of his legacy is the part that made property, contract and payment predictable.',
     ],
   },
-  sources: ['olson1993', 'abraham2004', 'stolper1985', 'hallock1969', 'livius-dnb', 'kent1953', 'briant2002', 'kuhrt2007'],
+  sources: ['abraham2004', 'stolper1985', 'hallock1969', 'livius-dnb', 'kent1953', 'briant2002', 'kuhrt2007'],
 }

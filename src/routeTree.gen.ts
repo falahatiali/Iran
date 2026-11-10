@@ -15,6 +15,7 @@ import { Route as ArchivesRouteImport } from './routes/archives'
 import { Route as CylinderRouteImport } from './routes/cylinder'
 import { Route as DariusRouteImport } from './routes/darius'
 import { Route as KingsRouteImport } from './routes/kings'
+import { Route as PropertyRouteImport } from './routes/property'
 import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as BattleCarrhaeRouteImport } from './routes/battle/carrhae'
 import { Route as DynastySlugRouteImport } from './routes/dynasty/$slug'
@@ -22,6 +23,7 @@ import { Route as EnAboutRouteImport } from './routes/en/about'
 import { Route as EnArchivesRouteImport } from './routes/en/archives'
 import { Route as EnCylinderRouteImport } from './routes/en/cylinder'
 import { Route as EnDariusRouteImport } from './routes/en/darius'
+import { Route as EnPropertyRouteImport } from './routes/en/property'
 import { Route as Event28MordadRouteImport } from './routes/event/28-mordad'
 import { Route as EventJashn2500RouteImport } from './routes/event/jashn-2500'
 import { Route as KingSlugRouteImport } from './routes/king/$slug'
@@ -62,6 +64,11 @@ const KingsRoute = KingsRouteImport.update({
   path: '/kings',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PropertyRoute = PropertyRouteImport.update({
+  id: '/property',
+  path: '/property',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TimelineRoute = TimelineRouteImport.update({
   id: '/timeline',
   path: '/timeline',
@@ -95,6 +102,11 @@ const EnCylinderRoute = EnCylinderRouteImport.update({
 const EnDariusRoute = EnDariusRouteImport.update({
   id: '/en/darius',
   path: '/en/darius',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnPropertyRoute = EnPropertyRouteImport.update({
+  id: '/en/property',
+  path: '/en/property',
   getParentRoute: () => rootRouteImport,
 } as any)
 const Event28MordadRoute = Event28MordadRouteImport.update({
@@ -150,6 +162,7 @@ export interface FileRoutesByFullPath {
   '/cylinder': typeof CylinderRoute
   '/darius': typeof DariusRoute
   '/kings': typeof KingsRoute
+  '/property': typeof PropertyRoute
   '/timeline': typeof TimelineRoute
   '/battle/carrhae': typeof BattleCarrhaeRoute
   '/dynasty/$slug': typeof DynastySlugRoute
@@ -157,6 +170,7 @@ export interface FileRoutesByFullPath {
   '/en/archives': typeof EnArchivesRoute
   '/en/cylinder': typeof EnCylinderRoute
   '/en/darius': typeof EnDariusRoute
+  '/en/property': typeof EnPropertyRoute
   '/event/28-mordad': typeof Event28MordadRoute
   '/event/jashn-2500': typeof EventJashn2500Route
   '/king/$slug': typeof KingSlugRoute
@@ -174,6 +188,7 @@ export interface FileRoutesByTo {
   '/cylinder': typeof CylinderRoute
   '/darius': typeof DariusRoute
   '/kings': typeof KingsRoute
+  '/property': typeof PropertyRoute
   '/timeline': typeof TimelineRoute
   '/battle/carrhae': typeof BattleCarrhaeRoute
   '/dynasty/$slug': typeof DynastySlugRoute
@@ -181,6 +196,7 @@ export interface FileRoutesByTo {
   '/en/archives': typeof EnArchivesRoute
   '/en/cylinder': typeof EnCylinderRoute
   '/en/darius': typeof EnDariusRoute
+  '/en/property': typeof EnPropertyRoute
   '/event/28-mordad': typeof Event28MordadRoute
   '/event/jashn-2500': typeof EventJashn2500Route
   '/king/$slug': typeof KingSlugRoute
@@ -199,6 +215,7 @@ export interface FileRoutesById {
   '/cylinder': typeof CylinderRoute
   '/darius': typeof DariusRoute
   '/kings': typeof KingsRoute
+  '/property': typeof PropertyRoute
   '/timeline': typeof TimelineRoute
   '/battle/carrhae': typeof BattleCarrhaeRoute
   '/dynasty/$slug': typeof DynastySlugRoute
@@ -206,6 +223,7 @@ export interface FileRoutesById {
   '/en/archives': typeof EnArchivesRoute
   '/en/cylinder': typeof EnCylinderRoute
   '/en/darius': typeof EnDariusRoute
+  '/en/property': typeof EnPropertyRoute
   '/event/28-mordad': typeof Event28MordadRoute
   '/event/jashn-2500': typeof EventJashn2500Route
   '/king/$slug': typeof KingSlugRoute
@@ -225,6 +243,7 @@ export interface FileRouteTypes {
     | '/cylinder'
     | '/darius'
     | '/kings'
+    | '/property'
     | '/timeline'
     | '/battle/carrhae'
     | '/dynasty/$slug'
@@ -232,6 +251,7 @@ export interface FileRouteTypes {
     | '/en/archives'
     | '/en/cylinder'
     | '/en/darius'
+    | '/en/property'
     | '/event/28-mordad'
     | '/event/jashn-2500'
     | '/king/$slug'
@@ -249,6 +269,7 @@ export interface FileRouteTypes {
     | '/cylinder'
     | '/darius'
     | '/kings'
+    | '/property'
     | '/timeline'
     | '/battle/carrhae'
     | '/dynasty/$slug'
@@ -256,6 +277,7 @@ export interface FileRouteTypes {
     | '/en/archives'
     | '/en/cylinder'
     | '/en/darius'
+    | '/en/property'
     | '/event/28-mordad'
     | '/event/jashn-2500'
     | '/king/$slug'
@@ -273,6 +295,7 @@ export interface FileRouteTypes {
     | '/cylinder'
     | '/darius'
     | '/kings'
+    | '/property'
     | '/timeline'
     | '/battle/carrhae'
     | '/dynasty/$slug'
@@ -280,6 +303,7 @@ export interface FileRouteTypes {
     | '/en/archives'
     | '/en/cylinder'
     | '/en/darius'
+    | '/en/property'
     | '/event/28-mordad'
     | '/event/jashn-2500'
     | '/king/$slug'
@@ -298,6 +322,7 @@ export interface RootRouteChildren {
   CylinderRoute: typeof CylinderRoute
   DariusRoute: typeof DariusRoute
   KingsRoute: typeof KingsRoute
+  PropertyRoute: typeof PropertyRoute
   TimelineRoute: typeof TimelineRoute
   BattleCarrhaeRoute: typeof BattleCarrhaeRoute
   DynastySlugRoute: typeof DynastySlugRoute
@@ -305,6 +330,7 @@ export interface RootRouteChildren {
   EnArchivesRoute: typeof EnArchivesRoute
   EnCylinderRoute: typeof EnCylinderRoute
   EnDariusRoute: typeof EnDariusRoute
+  EnPropertyRoute: typeof EnPropertyRoute
   Event28MordadRoute: typeof Event28MordadRoute
   EventJashn2500Route: typeof EventJashn2500Route
   KingSlugRoute: typeof KingSlugRoute
@@ -360,6 +386,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KingsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/property': {
+      id: '/property'
+      path: '/property'
+      fullPath: '/property'
+      preLoaderRoute: typeof PropertyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/timeline': {
       id: '/timeline'
       path: '/timeline'
@@ -407,6 +440,13 @@ declare module '@tanstack/react-router' {
       path: '/en/darius'
       fullPath: '/en/darius'
       preLoaderRoute: typeof EnDariusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/property': {
+      id: '/en/property'
+      path: '/en/property'
+      fullPath: '/en/property'
+      preLoaderRoute: typeof EnPropertyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/event/28-mordad': {
@@ -482,6 +522,7 @@ const rootRouteChildren: RootRouteChildren = {
   CylinderRoute: CylinderRoute,
   DariusRoute: DariusRoute,
   KingsRoute: KingsRoute,
+  PropertyRoute: PropertyRoute,
   TimelineRoute: TimelineRoute,
   BattleCarrhaeRoute: BattleCarrhaeRoute,
   DynastySlugRoute: DynastySlugRoute,
@@ -489,6 +530,7 @@ const rootRouteChildren: RootRouteChildren = {
   EnArchivesRoute: EnArchivesRoute,
   EnCylinderRoute: EnCylinderRoute,
   EnDariusRoute: EnDariusRoute,
+  EnPropertyRoute: EnPropertyRoute,
   Event28MordadRoute: Event28MordadRoute,
   EventJashn2500Route: EventJashn2500Route,
   KingSlugRoute: KingSlugRoute,

@@ -21,7 +21,7 @@ export const dariusSources: FeaturedSource[] = [
   { id: 'briant2003', author: 'P. Briant', title: 'Histoire et archéologie d’un texte: la Lettre de Darius à Gadatas entre Perses, Grecs et Romains', year: '2003' },
   { id: 'ezra', author: 'Hebrew Bible', title: 'Ezra 5–6', year: 'c. 4th c. BCE (composition debated)' },
   { id: 'lichtheim1980', author: 'M. Lichtheim', title: 'Ancient Egyptian Literature III (statue of Udjahorresnet, Vatican 22690)', year: '1980' },
-  { id: 'olson1993', author: 'M. Olson', title: 'Dictatorship, Democracy, and Development, American Political Science Review 87(3)', year: '1993' },
+  { id: 'iranica-magi', author: 'M. A. Dandamayev, Encyclopaedia Iranica', title: 'Magi', year: '2012', url: 'https://www.iranicaonline.org/articles/magi/' },
   { id: 'bm-daric', author: 'British Museum', title: 'Gold daric and silver siglos of the Achaemenid empire (collection online)', year: '—' },
 ]
 

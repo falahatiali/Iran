@@ -95,6 +95,12 @@ export const ABOUT_ALTERNATES = [
   { hrefLang: 'x-default', path: '/about' },
 ] as const
 
+export const PROPERTY_ALTERNATES = [
+  { hrefLang: 'fa', path: '/property' },
+  { hrefLang: 'en', path: '/en/property' },
+  { hrefLang: 'x-default', path: '/property' },
+] as const
+
 export const placeAlternates = (slug: string) => [
   { hrefLang: 'fa', path: `/place/${slug}` },
   { hrefLang: 'en', path: `/en/place/${slug}` },

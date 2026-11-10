@@ -237,9 +237,9 @@ const rezaDossier: DossierSection[] = [
       'Yarshater judges his record very large. The same author writes that the shah’s dictatorial behaviour subverted the results of the Constitutional movement. We give both judgements under the author’s name.',
     ]],
     [[
-      'این برداشت ماست: بسیاری از نهادهایی که ایرانیان امروز می‌شناسند، مانند دانشگاه تهران و راه‌آهن شمال–جنوب، در این دوره ساخته شدند؛ اما دولتی که ساخت، از مردم نمی‌پرسید.',
+      'این برداشت ماست: بسیاری از نهادهایی که ایرانیان امروز می‌شناسند، مانند دانشگاه تهران و راه‌آهن شمال–جنوب، در همین دوره بنیاد گذاشته شدند.',
     ], [
-      'This is our reading: many institutions Iranians know today, such as the University of Tehran and the north–south railway, were built in this period; but the state that built them did not ask the people.',
+      'This is our reading: many institutions Iranians know today, such as the University of Tehran and the north–south railway, were founded in this period.',
     ]],
     [...YA, ...AD, 'iranica-army-vi', 'iranica-firuz-maryam'], { quotes: [
       { text: 'It is difficult to find in the long Persian history another monarch, with the possible exception of Cyrus, Darius I, and the Sasanid Ardašir I, who achieved so much in so little time.', fa: '«در تاریخ دراز ایران دشوار است پادشاه دیگری بیابیم، شاید جز کوروش و داریوش یکم و اردشیر ساسانی، که در زمانی چنین کوتاه این‌همه کار کرده باشد.»', ref: YQ, source: 'yarshater-iran-p5' },
@@ -280,9 +280,9 @@ const rezaDossier: DossierSection[] = [
       'Iranica sees the main criticism of Davar in his keeping the power to intervene in court judgments and remove disobedient judges; the 1931 amendment of Article 82 of the constitution weakened judges’ independence.',
     ]],
     [[
-      'این برداشت ماست: دادگستری نو بیگانگان را زیر قانون ایران آورد، اما شاه را نه.',
+      'این برداشت ماست: دادگستری نو بیگانگان را زیر قانون ایران آورد و یکی از پایدارترین میراث این دوره شد.',
     ], [
-      'This is our reading: the new judiciary put foreigners under Iranian law, but not the shah.',
+      'This is our reading: the new judiciary put foreigners under Iranian law and became one of the lasting bequests of the period.',
     ]],
     ['iranica-davar', ...YA, ...C2, 'wp-bank-melli'], { photos: ['rz-c-davar'], quotes: [
       { text: 'Dāvar was a capable, ambitious, and courageous statesman, devoted to his work.', fa: '«داور دولتمردی کاردان، بلندپرواز و دلیر بود و دل در کار خود داشت.»', ref: 'B. Aqeli, “Dāvar, ʿAlī-Akbar”, Encyclopaedia Iranica', source: 'iranica-davar' },
@@ -376,35 +376,35 @@ const rezaDossier: DossierSection[] = [
       'Their fates mirror the last years of the reign: Teymourtash, Sardar As‘ad and Firouz were killed in custody, Davar took his own life, and Foroughi and Hedayat were pushed aside.',
     ]],
     [[
-      'یارشاطر می‌نویسد شاه دست‌کم تا سال‌های پایانی به آنان مسئولیت می‌سپرد، تا آنکه «خودکامگی» او انتقاد آزاد را خفه کرد. شیخ‌الاسلامی از هدایت نقل می‌کند که شاه دربارهٔ وزیر دربارش می‌گفت: «تیمور از جانب من سخن می‌گوید.»',
+      'یارشاطر می‌نویسد شاه دست‌کم تا سال‌های پایانی به آنان مسئولیت می‌سپرد و در سال‌های بعد فضای انتقاد تنگ شد. شیخ‌الاسلامی از هدایت نقل می‌کند که شاه دربارهٔ وزیر دربارش می‌گفت: «تیمور از جانب من سخن می‌گوید.»',
     ], [
-      'Yarshater writes that the shah gave them responsibility at least until his later years, when his “autocratic arbitrariness” stifled free criticism. Sheikholeslami quotes Hedayat that the shah said of his court minister: “Teymur speaks for me.”',
+      'Yarshater writes that the shah gave them responsibility at least until his later years, when the room for free criticism narrowed. Sheikholeslami quotes Hedayat that the shah said of his court minister: “Teymur speaks for me.”',
     ]],
     [[
-      'این برداشت ماست: دولت نو را این مردان ساختند و بیشترشان بهای آن را با جان یا جایگاه خود پرداختند.',
+      'این برداشت ماست: دولت نو را این مردان ساختند. منابع همچنین مرگ چند تن از آنان را در بازداشت، یا کنار رفتنشان را، ثبت کرده‌اند.',
     ], [
-      'This is our reading: these men built the new state, and most of them paid for it with their lives or their positions.',
+      'This is our reading: these men built the new state. The sources also record that several of them later died in custody or left office.',
     ]],
     [...YA, 'iranica-courts-viii', ...C3], { people: companions, quotes: [
       { text: 'Reza Shah was not afraid to gather around him better educated men than himself but of proven patriotism and ability, like Mehdi-qoli Hedāyat, Taqizādeh, Foruḡi, ʿAbd-al-Ḥosayn Teymurtāš, ʿAli-Akbar Dāvar, and Firuz, and to relegate important responsibilities to them', fa: '«رضاشاه نمی‌ترسید مردانی درس‌خوانده‌تر از خود اما با میهن‌دوستی و کاردانیِ آزموده را گرد خود آورد، چون مهدی‌قلی هدایت، تقی‌زاده، فروغی، عبدالحسین تیمورتاش، علی‌اکبر داور و فیروز، و کارهای مهم را به آنان بسپارد.»', ref: YQ, source: 'yarshater-iran-p5' },
       { text: 'Teymurtāš and Dāvar were known as the main architects of the Pahlavi state.', fa: '«تیمورتاش و داور را معماران اصلی دولت پهلوی می‌دانستند.»', ref: YQ, source: 'yarshater-iran-p5' },
       { text: 'For my part, I have seen nothing but sincere devotion to the Pahlavī ruler by Sardār Asʿad, and I have my doubts about how he was characterized.', fa: '«من از سردار اسعد جز وفاداری صادقانه به شاه پهلوی ندیده‌ام و در آنچه دربارهٔ او گفتند تردید دارم.» (هدایت)', ref: 'Hedayat, quoted in “Baḵtīārī v.(5) Sardār Asʿad III”, Encyclopaedia Iranica', source: 'iranica-sardar-asad' },
     ] }),
-  sec('repression', 'خودکامگی: مجلس، مطبوعات و مخالفان', 'Autocracy: parliament, press and opponents',
+  sec('repression', 'مجلس، مطبوعات و مخالفان', 'Parliament, the press and opponents',
     [[
       'مجلس در این سال‌ها فرمان‌پذیر شد و مطبوعات آزاد خاموش. تیمورتاش (۱۹۳۳)، سردار اسعد (۱۹۳۴) و فیروز (۱۹۳۷) در بند جان باختند و مدرس (۱۹۳۷) در بازداشت پلیس در کاشمر کشته شد.',
     ], [
       'In these years the Majles became obedient and the free press silent. Teymourtash (1933), Sardar As‘ad (1934) and Firouz (1937) died in custody, and Modarres (1937) was murdered in police custody in Kashmar.',
     ]],
     [[
-      'یارشاطر هم که کارنامهٔ او را می‌ستاید، از «خودکامگی» او می‌نویسد که انتقاد آزاد را خفه کرد و ترس را جای ستایش پیشین نشاند.',
+      'یارشاطر، که کارنامهٔ سازندگی او را می‌ستاید، می‌نویسد در سال‌های پایانی فضای انتقاد آزاد تنگ شد.',
     ], [
-      'Even Yarshater, who praises his record, writes of the “autocratic arbitrariness” that stifled free criticism in his later years, when fear of him replaced the earlier admiration.',
+      'Yarshater, who praises his record of building, writes that in the later years the room for free criticism narrowed.',
     ]],
     [[
-      'این برداشت ماست: این کاستی، در برابر کارنامهٔ سازندگی او، کوتاه اما واقعی است.',
+      'این برداشت ماست: این رویدادها بخشی از کارنامهٔ اوست و در منابع آمده‌اند؛ اندازهٔ آن‌ها را نباید از کارنامهٔ سازندگی‌اش بزرگ‌تر کرد.',
     ], [
-      'This is our reading: beside his record of building, this flaw is brief but real.',
+      'This is our reading: these events are part of his record and stand in the sources; they should not be made to outweigh what he built.',
     ]],
     [...YA, ...C3]),
   sec('property', 'زمین، دولت و خاندان', 'Land, state and household',
@@ -416,9 +416,9 @@ const rezaDossier: DossierSection[] = [
       'Sheikholeslami writes that the bureaucracy stood within the framework of the Majles on the surface, but in practice was an extension of the Pahlavi household.',
     ]],
     [[
-      'این برداشت ماست: در این دوره مرز میان دارایی دولت و دارایی شاه کم‌رنگ شد. همان دولتی که امتیاز بیگانگان را برچید، زمین رعیت را با بهای ناچیز به شاه داد.',
+      'این برداشت ماست: یارشاطر خرید زمین‌های گسترده در مازندران را با بهایی «کم از مصادره» ثبت کرده است و می‌افزاید که شاه خود زندگی ساده‌ای داشت. گاه‌شمار ایرانیکا می‌گوید محمدرضاشاه بعدها بیشتر این زمین‌ها را بازگرداند. مرز دارایی شخصی و دارایی دولت در این دوره همیشه روشن نبود.',
     ], [
-      'This is our reading: in this period the line between the state’s property and the shah’s property grew faint. The same state that ended foreigners’ privileges let the shah take peasants’ land at a nominal price.',
+      'This is our reading: Yarshater records large land purchases in Mazandaran at prices “little short of confiscatory”, and adds that the shah himself lived simply. The Iranica chronology says Mohammad Reza Shah later returned most of these lands. The line between the ruler’s private estate and the state’s property was not always clear in this period.',
     ]],
     [[
       'این برداشت ماست: این پرسش پس از او هم ماند.',
@@ -520,8 +520,8 @@ export const rezaShah: FeaturedKing = {
   reign: B('۱۹۲۵–۱۹۴۱ م', '1925–1941 CE'),
   title: B('رضاشاه پهلوی؛ سازندهٔ ایران نو', 'Reza Shah Pahlavi: the builder of modern Iran'),
   lede: B(
-    'سربازی از کوهستان سوادکوه که از بریگاد قزاق تا تخت پادشاهی بالا رفت. در شانزده سال ارتش، دادگستری، راه‌آهن سراسری و دانشگاه تهران را ساخت، امتیازهای بیگانگان را برچید و نام «ایران» را در جهان استوار کرد؛ و هم‌زمان مجلس را خاموش کرد و یاران خود را به زندان و مرگ سپرد. در شهریور ۱۳۲۰، پس از اشغال ایران، به سود پسرش کناره گرفت و در تبعید درگذشت.',
-    'A soldier from the Savadkuh highlands who rose from the Cossack Brigade to the throne. In sixteen years he built an army, a judiciary, the Trans-Iranian Railway and the University of Tehran, ended foreign privileges and fixed the name “Iran” before the world; and at the same time he silenced parliament and sent some of his own companions to prison and death. In September 1941, after Iran was occupied, he abdicated in favour of his son and died in exile.',
+    'سربازی از کوهستان سوادکوه که از بریگاد قزاق تا تخت پادشاهی بالا رفت. در شانزده سال ارتش، دادگستری، راه‌آهن سراسری و دانشگاه تهران را ساخت، امتیازهای بیگانگان را برچید و نام «ایران» را در جهان استوار کرد. منابع همین دوره از تنگ شدن فضای مجلس و مطبوعات و مرگ چند تن از نزدیکانش در بازداشت نیز سخن می‌گویند. در شهریور ۱۳۲۰، پس از اشغال ایران، به سود پسرش کناره گرفت و در تبعید درگذشت.',
+    'A soldier from the Savadkuh highlands who rose from the Cossack Brigade to the throne. In sixteen years he built an army, a judiciary, the Trans-Iranian Railway and the University of Tehran, ended foreign privileges and fixed the name “Iran” before the world. The sources for the same years also record a narrower room for the Majles and the press, and the death in custody of several men close to him. In September 1941, after Iran was occupied, he abdicated in favour of his son and died in exile.',
   ),
   hero: 'rz-portrait-1938',
   stats: [
@@ -546,16 +546,16 @@ export const rezaShah: FeaturedKing = {
   },
   shareImage: '/media/reza-shah/campaigns-en.png',
   dossier: rezaDossier,
-  synthesis: { title: B('جمع‌بندی: سازنده‌ای بزرگ، فرمانروایی خودکامه', 'Synthesis: a great builder, an autocratic ruler'), paras: {
+  synthesis: { title: B('جمع‌بندی: سازندهٔ ایران نو', 'Synthesis: the builder of modern Iran'), paras: {
     fa: [
       'رضاشاه کشوری پراکنده، با دولتی تهی‌دست و ارتشی پاره‌پاره، را تحویل گرفت و دولتی متمرکز با ارتش، دادگستری، بانک، مدرسه، دانشگاه و راه‌آهن به جا گذاشت. امتیازهای قضایی بیگانگان را برچید، انحصار باستان‌شناسی فرانسه را پایان داد و نام «ایران» را بر زبان جهان نشاند. یارشاطر می‌نویسد در تاریخ دراز ایران، جز کوروش و داریوش و اردشیر، کمتر پادشاهی در زمانی چنین کوتاه این‌همه کار کرده است.',
-      'همان منابع می‌گویند او مجلس را بی‌اثر کرد، مطبوعات را خاموش کرد، زمین‌های مازندران را با بهایی «کم از مصادره» گرفت و بسیاری از سازندگان دولت نو، از تیمورتاش تا سردار اسعد و فیروز، در بند او جان باختند. کشف حجاب و گوهرشاد زخمی ماندگار بر جامعه گذاشت.',
-      'در شهریور ۱۳۲۰ ارتشی که پایهٔ قدرتش بود در برابر اشغال دوام نیاورد و او ناچار به استعفا شد؛ اما کشور از هم نپاشید و نهادهایی که ساخته بود، از راه‌آهن تا دانشگاه، تا امروز برپا مانده‌اند.',
+      'همان منابع مرگ چند تن از سازندگان دولت نو را در بازداشت ثبت کرده‌اند و از تنگ شدن فضای مجلس و مطبوعات در سال‌های پایانی سخن می‌گویند. یارشاطر خرید زمین در مازندران را نیز با بهایی «کم از مصادره» آورده است. این‌ها در پرونده مانده‌اند؛ اساس کارنامهٔ او نهادهایی است که ساخت و تا امروز برپا هستند.',
+      'در شهریور ۱۳۲۰ کشور اشغال شد و او ناچار به استعفا گردید؛ اما کشور از هم نپاشید و راه‌آهن، دانشگاه، دادگستری و بانکی که بنیاد گذاشته بود برجای ماند.',
     ],
     en: [
       'Reza Shah took over a fragmented country with a penniless state and a scattered army, and left a centralised state with an army, courts, a national bank, schools, a university and a railway. He ended the extraterritorial rights of foreigners and the French monopoly on archaeology, and set the name “Iran” in the world’s usage. Yarshater writes that in Iran’s long history, apart from Cyrus, Darius and Ardashir, few monarchs achieved so much in so little time.',
-      'The same sources say he emptied the Majles of force, silenced the press, took land in Mazandaran at prices “little short of confiscatory”, and that many builders of the new state, from Teymourtash to Sardar As‘ad and Firouz, died in his custody. Unveiling and Gowharshad left lasting wounds on society.',
-      'In August 1941 the army that was the base of his power did not hold against the invasion, and he was forced to abdicate; but the country did not fall apart, and the institutions he built, from the railway to the university, still stand today.',
+      'The same sources record the death in custody of several builders of the new state, and a narrower room for the Majles and the press in the later years. Yarshater also notes land purchases in Mazandaran at prices “little short of confiscatory”. Those facts remain in the file; the core of his record is the institutions he built, which still stand.',
+      'In August 1941 the country was occupied and he was forced to abdicate; but it did not fall apart, and the railway, the university, the courts and the bank he founded remained.',
     ],
   }, sources: [...YA, ...AD, ...FE, ...C3] },
   sources: [...pvSources, ...rzSources],
