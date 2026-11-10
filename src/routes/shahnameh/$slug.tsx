@@ -1,9 +1,12 @@
-import { createFileRoute, notFound } from '@tanstack/react-router'
+import { createFileRoute, notFound, stripSearchParams } from '@tanstack/react-router'
 import { ComingSoonPage, StoryPage } from '../../components/shahnameh/StoryPage'
 import { getEntry, isStory, photoById } from '../../data/shahnameh'
+import { parseStoryViewSearch } from '../../data/shahnameh/storyView'
 import { seo } from '../../lib/seo'
 
 export const Route = createFileRoute('/shahnameh/$slug')({
+  validateSearch: parseStoryViewSearch,
+  search: { middlewares: [stripSearchParams({})] },
   loader: ({ params }) => {
     const entry = getEntry(params.slug)
     if (!entry) throw notFound()

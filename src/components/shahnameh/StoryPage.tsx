@@ -1,7 +1,8 @@
-import { Link } from '@tanstack/react-router'
+import { Link, useNavigate, useSearch } from '@tanstack/react-router'
 import { motion } from 'motion/react'
 import { useEffect, useMemo, useState, type ReactNode } from 'react'
 import { catalog, eras, getCommentary, isStory, neighbors, photoById, sourcesFor, storyPhoto, type CatalogEntry, type Story } from '../../data/shahnameh'
+import { storyViewFromLocation, type StoryView } from '../../data/shahnameh/storyView'
 import { loadStoryPoem } from '../../data/shahnameh/poems/load'
 import type { StoryPoemText } from '../../data/shahnameh/poems/types'
 import { Reveal } from '../Reveal'
@@ -108,6 +109,21 @@ function useReadingProgress() {
   return value
 }
 
+
+function OpenPoemCard({ coupletCount, onOpen }: { coupletCount?: number; onOpen: () => void }) {
+  const count = coupletCount != null ? `${coupletCount.toLocaleString('fa-IR')} بیت` : null
+  return (
+    <button type="button" onClick={onOpen} className="shn-poem-cta mt-8">
+      <p className="text-[0.7rem] font-bold tracking-[0.22em] text-gold">شعر کامل فردوسی</p>
+      <p className="mt-2 text-2xl md:text-3xl font-black text-gold-bright leading-snug">
+        {count ? `شعر کامل را بخوانید · ${count}` : 'شعر کامل این داستان را بخوانید'}
+      </p>
+      <p className="read mt-3 text-ivory/80 no-justify">همهٔ بیت‌های این داستان را با معنی به زبان امروز بخوانید. نقل از گنجور، چاپ مسکو.</p>
+      <span className="mt-5 inline-flex min-h-11 items-center rounded-full bg-gold px-5 py-2 font-bold text-night">رفتن به شعر کامل</span>
+    </button>
+  )
+}
+
 export function StoryPage({ story }: { story: Story }) {
   const photo = storyPhoto(story)!
   const era = eras.find((e) => e.id === story.era)
@@ -115,16 +131,40 @@ export function StoryPage({ story }: { story: Story }) {
   const sources = sourcesFor(story.sources)
   const commentary = getCommentary(story.slug)
   const [open, setOpen] = useState(false)
-  const [tab, setTab] = useState<'tale' | 'poem'>('tale')
+  const search = useSearch({ from: '/shahnameh/$slug' })
+  const navigate = useNavigate({ from: '/shahnameh/$slug' })
+  const [tab, setTab] = useState<StoryView>(search.view === 'poem' ? 'poem' : 'tale')
   const [poem, setPoem] = useState<StoryPoemText | null>(null)
   const [drawer, setDrawer] = useState<null | 'nav' | 'side'>(null)
   const [visibleKeys, setVisibleKeys] = useState<string[]>([])
+  const [scrollToPoem, setScrollToPoem] = useState(false)
   const progress = useReadingProgress()
 
   useEffect(() => {
-    const hash = window.location.hash
-    if (hash.startsWith('#v-') || hash.startsWith('#scene-')) setTab('poem')
+    const next = storyViewFromLocation(window.location.search, window.location.hash)
+    setTab(next)
+    if (window.location.hash === '#poem') setScrollToPoem(true)
   }, [])
+
+  useEffect(() => {
+    if (search.view === 'poem') setTab('poem')
+  }, [search.view])
+
+  useEffect(() => {
+    if (tab !== 'poem' || !scrollToPoem) return
+    document.getElementById('poem')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    setScrollToPoem(false)
+  }, [tab, scrollToPoem])
+
+  const selectTab = (next: StoryView, opts?: { scroll?: boolean }) => {
+    setTab(next)
+    if (opts?.scroll && next === 'poem') setScrollToPoem(true)
+    void navigate({
+      search: next === 'poem' ? { view: 'poem' } : {},
+      replace: true,
+      resetScroll: false,
+    })
+  }
 
   useEffect(() => {
     let cancelled = false
@@ -252,13 +292,15 @@ export function StoryPage({ story }: { story: Story }) {
             </header>
             <FolioLightbox photo={photo} open={open} onClose={() => setOpen(false)} />
 
-            <div className="shn-tabs mt-10" role="tablist" aria-label="روایت یا شعر کامل">
-              <button type="button" role="tab" aria-selected={tab === 'tale'} onClick={() => setTab('tale')}>روایت</button>
-              <button type="button" role="tab" aria-selected={tab === 'poem'} onClick={() => setTab('poem')}>شعر کامل</button>
+            <div id="poem" className="shn-tabs" role="tablist" aria-label="روایت یا شعر کامل">
+              <button type="button" role="tab" id="tab-tale" aria-controls="panel-tale" aria-selected={tab === 'tale'} onClick={() => selectTab('tale')}>روایت</button>
+              <button type="button" role="tab" id="tab-poem" aria-controls="panel-poem" aria-selected={tab === 'poem'} onClick={() => selectTab('poem')}>
+                {poem ? `شعر کامل · ${poem.coupletCount.toLocaleString('fa-IR')} بیت` : 'شعر کامل'}
+              </button>
             </div>
 
             {tab === 'tale' ? (
-              <div className="shn-codex mt-10">
+              <div id="panel-tale" role="tabpanel" aria-labelledby="tab-tale" className="shn-codex mt-10">
                 {story.sections.map((section) => (
                   <Reveal key={section.id}>
                     <section aria-labelledby={section.id}>
@@ -289,6 +331,7 @@ export function StoryPage({ story }: { story: Story }) {
                         </figure>
                       ))}
                     </div>
+                    <OpenPoemCard coupletCount={poem?.coupletCount} onOpen={() => selectTab('poem', { scroll: true })} />
                   </section>
                 </Reveal>
 
@@ -337,13 +380,15 @@ export function StoryPage({ story }: { story: Story }) {
                     <PhotoCredit photo={photo} />
                   </div>
                 </section>
+
+                <OpenPoemCard coupletCount={poem?.coupletCount} onOpen={() => selectTab('poem', { scroll: true })} />
               </div>
             ) : poem ? (
-              <div className="mt-10">
+              <div id="panel-poem" role="tabpanel" aria-labelledby="tab-poem" className="mt-10">
                 <PoemReader slug={story.slug} poem={poem} commentary={commentary} onVisibleKeys={setVisibleKeys} />
               </div>
             ) : (
-              <p className="read mt-10 text-ivory/70">در حال آوردن متن کامل از گنجور…</p>
+              <p id="panel-poem" role="tabpanel" aria-labelledby="tab-poem" className="read mt-10 text-ivory/70">در حال آوردن متن کامل از گنجور…</p>
             )}
 
             <Neighbors prev={prev} next={next} />

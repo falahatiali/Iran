@@ -11,6 +11,7 @@ import {
   neighbors,
   noteKey,
   photos,
+  loadStoryPoem,
   POEM_SLUGS,
   readyStories,
   shahnamehSitemapPaths,
@@ -188,4 +189,30 @@ test('complete commentaries explain every couplet and in-progress ones stay labe
       assert.equal(commentary.status, 'in-progress', slug)
     }
   }
+})
+
+test('story URLs open the full poem from ?view=poem, #poem, or a verse deep link', async () => {
+  const { parseStoryViewSearch, storyViewFromLocation } = await import('./storyView')
+  assert.equal(storyViewFromLocation('?view=poem', ''), 'poem')
+  assert.equal(storyViewFromLocation('view=poem', ''), 'poem')
+  assert.equal(storyViewFromLocation('', '#poem'), 'poem')
+  assert.equal(storyViewFromLocation('', '#v-1398-12'), 'poem')
+  assert.equal(storyViewFromLocation('', '#scene-1398'), 'poem')
+  assert.equal(storyViewFromLocation('', '#cast-h'), 'tale')
+  assert.equal(storyViewFromLocation('?view=tale', ''), 'tale')
+  assert.equal(storyViewFromLocation('', ''), 'tale')
+  assert.deepEqual(parseStoryViewSearch({ view: 'poem' }), { view: 'poem' })
+  assert.deepEqual(parseStoryViewSearch({ view: 'tale' }), {})
+  assert.deepEqual(parseStoryViewSearch({}), {})
+})
+
+test('loadStoryPoem dynamically imports the Ganjoor text used on the story page', async () => {
+  const zahhak = await loadStoryPoem('zahhak')
+  assert.ok(zahhak)
+  assert.equal(zahhak.slug, 'zahhak')
+  assert.equal(zahhak.coupletCount, 195)
+  assert.ok(zahhak.poems.length >= 1)
+  assert.equal(zahhak.poems.reduce((n, section) => n + section.couplets.length, 0), 195)
+  assert.match(zahhak.poems[0].couplets[0].a, /\S/)
+  assert.equal(await loadStoryPoem('no-such-story'), undefined)
 })
