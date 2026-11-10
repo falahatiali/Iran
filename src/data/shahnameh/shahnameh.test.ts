@@ -5,15 +5,19 @@ import {
   SHAHNAMEH_OPENING,
   catalog,
   comingSoon,
+  getCommentary,
   getEntry,
   getStory,
   neighbors,
+  noteKey,
   photos,
+  POEM_SLUGS,
   readyStories,
   shahnamehSitemapPaths,
   shahnamehSources,
   storyPhoto,
 } from './index'
+import type { StoryPoemText } from './poems/types'
 
 const filled = (s: string | undefined) => typeof s === 'string' && s.trim().length > 0
 
@@ -126,5 +130,62 @@ test('stories only cite sources that exist in the bibliography', () => {
 })
 
 test('never names the excluded commentator', () => {
-  assert.doesNotMatch(JSON.stringify({ catalog, readyStories, shahnamehSources }), /جنت|Jannat/i)
+  assert.doesNotMatch(JSON.stringify({ catalog, readyStories, shahnamehSources, poems: POEM_SLUGS.map(readPoem) }), /جنت|Jannat/i)
+})
+
+
+const strip = (s: string) => s.replace(/[\u200c\u200d]/g, '').replace(/\s+/g, ' ').trim()
+
+function readPoem(slug: string): StoryPoemText {
+  return JSON.parse(readFileSync(new URL(`./poems/${slug}.json`, import.meta.url), 'utf8')) as StoryPoemText
+}
+
+test('every ready story has a fetched Ganjoor poem with complete couplets', () => {
+  assert.deepEqual([...POEM_SLUGS], readyStories.map((s) => s.slug))
+  for (const slug of POEM_SLUGS) {
+    const poem = readPoem(slug)
+    assert.equal(poem.slug, slug)
+    assert.equal(poem.source, 'https://api.ganjoor.net')
+    assert.match(poem.edition, /مسکو/)
+    assert.ok(poem.poems.length >= 1, slug)
+    assert.equal(poem.coupletCount, poem.poems.reduce((n, p) => n + p.couplets.length, 0), slug)
+    for (const section of poem.poems) {
+      assert.match(section.url, /^https:\/\/ganjoor\.net\/ferdousi\/shahname\//)
+      assert.match(section.apiUrl, /^https:\/\/api\.ganjoor\.net\/api\/ganjoor\/poem\/\d+$/)
+      assert.ok(section.ganjoorId > 0, section.url)
+      assert.equal(section.couplets.length, section.coupletCount, section.url)
+      section.couplets.forEach((c, i) => {
+        assert.equal(c.n, i + 1, `${section.url}:${c.n}`)
+        assert.ok(strip(c.a).length > 0 && strip(c.b).length > 0, `${section.url}:${c.n}`)
+      })
+    }
+  }
+})
+
+test('quoted highlight verses appear in the fetched full poem', () => {
+  for (const story of readyStories) {
+    const poem = readPoem(story.slug)
+    const hay = poem.poems.flatMap((p) => p.couplets.map((c) => `${strip(c.a)}|${strip(c.b)}`))
+    for (const v of story.verses) {
+      const needle = `${strip(v.lines[0])}|${strip(v.lines[1])}`
+      assert.ok(hay.includes(needle), `${story.slug} missing «${v.lines[0]}»`)
+    }
+  }
+})
+
+test('complete commentaries explain every couplet and in-progress ones stay labelled', () => {
+  for (const slug of POEM_SLUGS) {
+    const poem = readPoem(slug)
+    const commentary = getCommentary(slug)
+    if (commentary.status === 'complete') {
+      for (const section of poem.poems) {
+        for (const c of section.couplets) {
+          const note = commentary.notes[noteKey(section.ganjoorId, c.n)]
+          assert.ok(note && strip(note.meaning).length > 12, `${slug} ${section.ganjoorId}:${c.n}`)
+        }
+      }
+    } else {
+      assert.equal(commentary.status, 'in-progress', slug)
+    }
+  }
 })
