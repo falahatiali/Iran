@@ -31,6 +31,7 @@ export const Route = createRootRoute({
   shellComponent: RootDocument,
   component: RootLayout,
   notFoundComponent: NotFound,
+  errorComponent: RootError,
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {
@@ -107,12 +108,25 @@ function RootLayout() {
 }
 
 function NotFound() {
+  const isEn = useRouterState({ select: (s) => s.location.pathname.startsWith('/en') })
   return (
     <section className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4 py-24">
       <Shamseh className="size-32 opacity-70" spin />
-      <h1 className="text-5xl font-black text-gilded mt-6">۴۰۴</h1>
-      <p className="mt-4 text-ivory/70">این برگ از تاریخ گم شده است.</p>
-      <Link to="/" className="mt-8 glass rounded-full px-6 py-3 hover:border-gold min-h-11">بازگشت به خانه</Link>
+      <h1 className="text-5xl font-black text-gilded mt-6">404</h1>
+      <p className="mt-4 text-ivory/75">{isEn ? 'This leaf of the history is missing.' : 'این برگ از تاریخ گم شده است.'}</p>
+      <Link to="/" className="mt-8 glass rounded-full px-6 py-3 hover:border-gold min-h-11 inline-flex items-center">{isEn ? 'Back home' : 'بازگشت به خانه'}</Link>
+    </section>
+  )
+}
+
+function RootError() {
+  const isEn = useRouterState({ select: (s) => s.location.pathname.startsWith('/en') })
+  return (
+    <section className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4 py-24">
+      <Shamseh className="size-32 opacity-70" />
+      <h1 className="text-4xl font-black text-gilded mt-6">{isEn ? 'Something went wrong' : 'خطایی رخ داد'}</h1>
+      <p className="read mt-4 text-ivory/75">{isEn ? 'Please try again in a moment. If it continues, come back later.' : 'لطفاً کمی بعد دوباره تلاش کنید. اگر ادامه داشت، بعداً بازگردید.'}</p>
+      <a href="/" className="mt-8 glass rounded-full px-6 py-3 hover:border-gold min-h-11 inline-flex items-center">{isEn ? 'Back home' : 'بازگشت به خانه'}</a>
     </section>
   )
 }

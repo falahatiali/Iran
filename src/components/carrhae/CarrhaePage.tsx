@@ -53,7 +53,7 @@ export function CarrhaePage({ locale }: { locale: Locale }) {
               <p className="mt-6"><a href={isFa ? '/en/battle/carrhae' : '/battle/carrhae'} hrefLang={isFa ? 'en' : 'fa'} className="glass rounded-full px-5 py-2 inline-flex items-center min-h-11 hover:border-gold">{t.other}</a></p>
             </div>
             <figure className="glass rounded-3xl overflow-hidden hidden md:block">
-              <img src={crassus.src} alt={crassus.caption[locale]} className="w-full h-80 object-cover object-top" decoding="async" />
+              <img src={crassus.src} alt={crassus.caption[locale]} className="w-full h-80 object-cover object-top" decoding="async" loading="lazy" />
               <figcaption className="p-3 text-xs text-ivory/60">{crassus.caption[locale]} · <a href={crassus.page} className="text-gold hover:underline" target="_blank" rel="noopener noreferrer">{crassus.author}</a>, <a href={crassus.licenseUrl} rel="license noopener noreferrer" target="_blank" className="hover:underline">{crassus.license}</a></figcaption>
             </figure>
           </div>

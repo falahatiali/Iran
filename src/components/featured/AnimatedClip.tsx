@@ -26,7 +26,7 @@ export function AnimatedClip({ clip, caption, locale }: { clip: CampaignClip; ca
       <video ref={ref} controls muted playsInline loop preload={reduce ? 'none' : 'metadata'} poster={clip.poster[locale]} width={clip.width} height={clip.height} aria-label={caption[locale]} className="w-full h-auto rounded-2xl">
         <source src={clip.webm[locale]} type="video/webm" />
         <source src={clip.mp4[locale]} type="video/mp4" />
-        <img src={clip.poster[locale]} alt={caption[locale]} width={clip.width} height={clip.height} className="w-full h-auto rounded-2xl" />
+        <img src={clip.poster[locale]} alt={caption[locale]} width={clip.width} height={clip.height} loading="lazy" decoding="async" className="w-full h-auto rounded-2xl" />
       </video>
       <figcaption className="mt-3 text-sm text-ivory/70 leading-7">
         {caption[locale]}{' '}
