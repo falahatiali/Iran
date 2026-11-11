@@ -9,9 +9,9 @@ export const anushirvan: Story = {
   titleEn: 'Anushirvan',
   epithet: 'داد و بوزرجمهر',
   epithetEn: 'Justice and Bozorgmehr',
-  summary: 'کسری نوشین‌روان با سخن داد بر تخت می‌نشیند، بوزرجمهر را در مرو می‌یابد و راز تخت شطرنج هند را می‌گشاید.',
-  summaryEn: 'Kasra Anushirvan crowns himself with a speech on justice, finds Bozorgmehr in Merv, and solves the riddle of Indian chess.',
-  lede: 'در پایان شاهنامه، کسری نوشین‌روان چهرهٔ شهریاری است که نامش با داد گره خورده است. کنار او نوجوانی از مرو می‌بالد: بوزرجمهر، که خواب شاه را می‌گزارد و بازی شطرنج را می‌گشاید.',
+  summary: 'کسری نوشین‌روان با سخن داد بر تخت می‌نشیند و بوزرجمهر را در مرو می‌یابد؛ همین بوزرجمهر راز تخت شطرنجی را که از هند آمده است می‌گشاید.',
+  summaryEn: 'Kasra Anushirvan is crowned with a speech on justice and finds Bozorgmehr in Merv, who goes on to solve the riddle of Indian chess.',
+  lede: 'در بخش تاریخی شاهنامه، کسری نوشین‌روان چهرهٔ شهریاری است که نامش با داد گره خورده است. کنار او نوجوانی از مرو می‌بالد: بوزرجمهر، که خواب شاه را می‌گزارد و بازی شطرنج را می‌گشاید.',
   readingMinutes: 7,
   heroId: 'bozorgmehr-chess',
   sections: [
