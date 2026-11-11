@@ -41,6 +41,8 @@ export const sources: Source[] = [
   { id: 'iranica-barmakids', title: 'Barmakids, Encyclopædia Iranica', kind: 'reference', url: 'https://www.iranicaonline.org/articles/barmakids/' },
   { id: 'iranica-harun', title: 'Hārun al-Rašid, Encyclopædia Iranica', kind: 'reference', url: 'https://www.iranicaonline.org/articles/harun-al-rasid/' },
   { id: 'iranica-babak', title: 'Bābak Ḵorrami, Encyclopædia Iranica', kind: 'reference', url: 'https://www.iranicaonline.org/articles/babak-korrami/' },
+  { id: 'iranica-pahlavi-yarshater', title: 'Iran ii. Iranian History (2) Islamic Period, page 5: the coup of 1921 and Reza Shah, Encyclopædia Iranica', author: 'E. Yarshater', kind: 'reference', url: 'https://www.iranicaonline.org/articles/iran-ii2-islamic-period-page-5/' },
+  { id: 'iranica-chronology-3', title: 'Chronology of Iranian History, Part 3 (1933–1973), Encyclopædia Iranica', author: 'E. Yarshater', kind: 'reference', url: 'https://www.iranicaonline.org/articles/chronology-of-iranian-history-part-3/' },
   { id: 'iranica-mozaffarids', title: 'Mozaffarids, Encyclopædia Iranica', kind: 'reference', url: 'https://www.iranicaonline.org/articles/mozaffarids/' },
   { id: 'iranica-sarbedars', title: 'Sarbedārs, Encyclopædia Iranica', kind: 'reference', url: 'https://www.iranicaonline.org/articles/sarbedars/' },
   { id: 'iranica-kaykavus', title: 'Kaykāvus b. Eskandar, Encyclopædia Iranica', kind: 'reference', url: 'https://www.iranicaonline.org/articles/kaykavus-onsor-maali/' },
@@ -151,7 +153,7 @@ export const dynastySources: Record<string, string[]> = {
   afsharids: ['iranica-afsharids', 'iranica-nader-shah', 'chi'],
   zands: ['iranica-zand-dynasty', 'iranica-karim-khan', 'chi'],
   qajars: ['iranica-aga-mohammad-khan', 'iranica-fath-ali-shah', 'iranica-georgia-ii', 'iranica-golestan', 'hurewitz-1956', 'iranica-amir-kabir', 'iranica-shirazi', 'iranica-constitutional-ii', 'amanat', 'abrahamian', 'iranica'],
-  pahlavis: ['abrahamian', 'amanat', 'iranica'],
+  pahlavis: ['iranica-pahlavi-yarshater', 'iranica-chronology-3', 'abrahamian', 'amanat', 'iranica'],
   'islamic-republic': ['abrahamian', 'news-2026'],
 }
 
