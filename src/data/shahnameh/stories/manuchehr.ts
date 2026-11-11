@@ -9,7 +9,7 @@ export const manuchehr: Story = {
   titleEn: 'Manuchehr',
   epithet: 'کین‌خواه ایرج',
   epithetEn: 'Avenger of Iraj',
-  summary: 'منوچهر، از نسل ایرج، کین نیایشاه را از سلم و تور بازمی‌ستاند و با داد و آیین بر تخت می‌نشیند. در روزگار او داستان زال آغاز می‌شود.',
+  summary: 'منوچهر، از نسل ایرج، کین نیای خود، ایرج، را از سلم و تور بازمی‌ستاند و با داد و آیین بر تخت می‌نشیند. در روزگار او داستان زال آغاز می‌شود.',
   summaryEn: 'Manuchehr avenges Iraj, takes the throne, and the heroic age begins under his reign.',
   lede: 'داغ ایرج در خانهٔ فریدون ماند تا از نسل او پسری برآمد که هم دین داشت و هم فرهٔ ایزدی: منوچهر.',
   readingMinutes: 6,

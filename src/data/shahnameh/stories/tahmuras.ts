@@ -9,7 +9,7 @@ export const tahmuras: Story = {
   titleEn: 'Tahmuras',
   epithet: 'دیوبند',
   epithetEn: 'The binder of demons',
-  summary: 'تهمورث دیوبند پشم‌ریسی و رام کردن جانوران را می‌آموزد، دیوان را می‌بندد و در برابر جانشان نزدیک به سی گونه دبیره را از ایشان فرامی‌گیرد.',
+  summary: 'تهمورث دیوبند پشم‌ریسی و رام کردن جانوران را به مردم می‌آموزد، دیوان را می‌بندد و در برابر جانشان نزدیک به سی گونه دبیره را از ایشان فرامی‌گیرد.',
   summaryEn: 'Tahmuras, called Divband, binds the demons and learns many scripts from them in exchange for their lives.',
   lede: 'پسر هوشنگ، تهمورث، به دیوبند نامدار شد. او جهان را از بدی شست و از دل دشمن، دانش بیرون کشید.',
   readingMinutes: 7,
