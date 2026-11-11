@@ -1201,7 +1201,7 @@ export const rostamEsfandiarCommentary = {
         },
         {
           "word": "ستام",
-          "meaning": "افزار و آرايش زرین دهان و سر اسب"
+          "meaning": "افزار و آرایش زرین دهان و سر اسب"
         }
       ]
     },
