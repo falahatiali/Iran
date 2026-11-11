@@ -53,6 +53,12 @@ export const SITE_PAGES: readonly SitePage[] = [
     keywords: 'جشنهای 2500 ساله Persepolis 1971 celebrations jashn',
   },
   {
+    key: 'mashruteh', searchable: true,
+    fa: { path: '/event/mashruteh', label: 'انقلاب مشروطه', sub: '۱۲۸۴ تا ۱۲۹۰ خورشیدی' },
+    en: { path: '/en/event/mashruteh', label: 'The Constitutional Revolution', sub: '1905–1911' },
+    keywords: 'انقلاب مشروطه مشروطیت مجلس شورای ملی مظفرالدین شاه محمدعلی شاه ستارخان باقرخان بهبهانی طباطبایی Constitutional Revolution Mashruteh Majles 1906',
+  },
+  {
     key: 'property', searchable: true,
     fa: { path: '/property', label: 'حقوق مالکیت در تاریخ ایران', sub: 'لوح‌ها، قراردادها، هزار داوری' },
     en: { path: '/en/property', label: 'Property rights in the history of Iran', sub: 'Tablets, contracts, Mādayān ī hazār dādestān' },

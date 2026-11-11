@@ -27,6 +27,7 @@ import { Route as EnPropertyRouteImport } from './routes/en/property'
 import { Route as EnShahnamehRouteImport } from './routes/en/shahnameh'
 import { Route as Event28MordadRouteImport } from './routes/event/28-mordad'
 import { Route as EventJashn2500RouteImport } from './routes/event/jashn-2500'
+import { Route as EventMashrutehRouteImport } from './routes/event/mashruteh'
 import { Route as KingSlugRouteImport } from './routes/king/$slug'
 import { Route as PlaceSlugRouteImport } from './routes/place/$slug'
 import { Route as ShahnamehIndexRouteImport } from './routes/shahnameh/index'
@@ -34,6 +35,7 @@ import { Route as ShahnamehSlugRouteImport } from './routes/shahnameh/$slug'
 import { Route as EnBattleCarrhaeRouteImport } from './routes/en/battle/carrhae'
 import { Route as EnEvent28MordadRouteImport } from './routes/en/event/28-mordad'
 import { Route as EnEventJashn2500RouteImport } from './routes/en/event/jashn-2500'
+import { Route as EnEventMashrutehRouteImport } from './routes/en/event/mashruteh'
 import { Route as EnKingSlugRouteImport } from './routes/en/king/$slug'
 import { Route as EnPlaceSlugRouteImport } from './routes/en/place/$slug'
 
@@ -127,6 +129,11 @@ const EventJashn2500Route = EventJashn2500RouteImport.update({
   path: '/event/jashn-2500',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EventMashrutehRoute = EventMashrutehRouteImport.update({
+  id: '/event/mashruteh',
+  path: '/event/mashruteh',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const KingSlugRoute = KingSlugRouteImport.update({
   id: '/king/$slug',
   path: '/king/$slug',
@@ -162,6 +169,11 @@ const EnEventJashn2500Route = EnEventJashn2500RouteImport.update({
   path: '/en/event/jashn-2500',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnEventMashrutehRoute = EnEventMashrutehRouteImport.update({
+  id: '/en/event/mashruteh',
+  path: '/en/event/mashruteh',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EnKingSlugRoute = EnKingSlugRouteImport.update({
   id: '/en/king/$slug',
   path: '/en/king/$slug',
@@ -192,6 +204,7 @@ export interface FileRoutesByFullPath {
   '/en/shahnameh': typeof EnShahnamehRoute
   '/event/28-mordad': typeof Event28MordadRoute
   '/event/jashn-2500': typeof EventJashn2500Route
+  '/event/mashruteh': typeof EventMashrutehRoute
   '/king/$slug': typeof KingSlugRoute
   '/place/$slug': typeof PlaceSlugRoute
   '/shahnameh/$slug': typeof ShahnamehSlugRoute
@@ -199,6 +212,7 @@ export interface FileRoutesByFullPath {
   '/en/battle/carrhae': typeof EnBattleCarrhaeRoute
   '/en/event/28-mordad': typeof EnEvent28MordadRoute
   '/en/event/jashn-2500': typeof EnEventJashn2500Route
+  '/en/event/mashruteh': typeof EnEventMashrutehRoute
   '/en/king/$slug': typeof EnKingSlugRoute
   '/en/place/$slug': typeof EnPlaceSlugRoute
 }
@@ -221,6 +235,7 @@ export interface FileRoutesByTo {
   '/en/shahnameh': typeof EnShahnamehRoute
   '/event/28-mordad': typeof Event28MordadRoute
   '/event/jashn-2500': typeof EventJashn2500Route
+  '/event/mashruteh': typeof EventMashrutehRoute
   '/king/$slug': typeof KingSlugRoute
   '/place/$slug': typeof PlaceSlugRoute
   '/shahnameh/$slug': typeof ShahnamehSlugRoute
@@ -228,6 +243,7 @@ export interface FileRoutesByTo {
   '/en/battle/carrhae': typeof EnBattleCarrhaeRoute
   '/en/event/28-mordad': typeof EnEvent28MordadRoute
   '/en/event/jashn-2500': typeof EnEventJashn2500Route
+  '/en/event/mashruteh': typeof EnEventMashrutehRoute
   '/en/king/$slug': typeof EnKingSlugRoute
   '/en/place/$slug': typeof EnPlaceSlugRoute
 }
@@ -251,6 +267,7 @@ export interface FileRoutesById {
   '/en/shahnameh': typeof EnShahnamehRoute
   '/event/28-mordad': typeof Event28MordadRoute
   '/event/jashn-2500': typeof EventJashn2500Route
+  '/event/mashruteh': typeof EventMashrutehRoute
   '/king/$slug': typeof KingSlugRoute
   '/place/$slug': typeof PlaceSlugRoute
   '/shahnameh/$slug': typeof ShahnamehSlugRoute
@@ -258,6 +275,7 @@ export interface FileRoutesById {
   '/en/battle/carrhae': typeof EnBattleCarrhaeRoute
   '/en/event/28-mordad': typeof EnEvent28MordadRoute
   '/en/event/jashn-2500': typeof EnEventJashn2500Route
+  '/en/event/mashruteh': typeof EnEventMashrutehRoute
   '/en/king/$slug': typeof EnKingSlugRoute
   '/en/place/$slug': typeof EnPlaceSlugRoute
 }
@@ -282,6 +300,7 @@ export interface FileRouteTypes {
     | '/en/shahnameh'
     | '/event/28-mordad'
     | '/event/jashn-2500'
+    | '/event/mashruteh'
     | '/king/$slug'
     | '/place/$slug'
     | '/shahnameh/$slug'
@@ -289,6 +308,7 @@ export interface FileRouteTypes {
     | '/en/battle/carrhae'
     | '/en/event/28-mordad'
     | '/en/event/jashn-2500'
+    | '/en/event/mashruteh'
     | '/en/king/$slug'
     | '/en/place/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -311,6 +331,7 @@ export interface FileRouteTypes {
     | '/en/shahnameh'
     | '/event/28-mordad'
     | '/event/jashn-2500'
+    | '/event/mashruteh'
     | '/king/$slug'
     | '/place/$slug'
     | '/shahnameh/$slug'
@@ -318,6 +339,7 @@ export interface FileRouteTypes {
     | '/en/battle/carrhae'
     | '/en/event/28-mordad'
     | '/en/event/jashn-2500'
+    | '/en/event/mashruteh'
     | '/en/king/$slug'
     | '/en/place/$slug'
   id:
@@ -340,6 +362,7 @@ export interface FileRouteTypes {
     | '/en/shahnameh'
     | '/event/28-mordad'
     | '/event/jashn-2500'
+    | '/event/mashruteh'
     | '/king/$slug'
     | '/place/$slug'
     | '/shahnameh/$slug'
@@ -347,6 +370,7 @@ export interface FileRouteTypes {
     | '/en/battle/carrhae'
     | '/en/event/28-mordad'
     | '/en/event/jashn-2500'
+    | '/en/event/mashruteh'
     | '/en/king/$slug'
     | '/en/place/$slug'
   fileRoutesById: FileRoutesById
@@ -370,6 +394,7 @@ export interface RootRouteChildren {
   EnShahnamehRoute: typeof EnShahnamehRoute
   Event28MordadRoute: typeof Event28MordadRoute
   EventJashn2500Route: typeof EventJashn2500Route
+  EventMashrutehRoute: typeof EventMashrutehRoute
   KingSlugRoute: typeof KingSlugRoute
   PlaceSlugRoute: typeof PlaceSlugRoute
   ShahnamehSlugRoute: typeof ShahnamehSlugRoute
@@ -377,6 +402,7 @@ export interface RootRouteChildren {
   EnBattleCarrhaeRoute: typeof EnBattleCarrhaeRoute
   EnEvent28MordadRoute: typeof EnEvent28MordadRoute
   EnEventJashn2500Route: typeof EnEventJashn2500Route
+  EnEventMashrutehRoute: typeof EnEventMashrutehRoute
   EnKingSlugRoute: typeof EnKingSlugRoute
   EnPlaceSlugRoute: typeof EnPlaceSlugRoute
 }
@@ -509,6 +535,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EventJashn2500RouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/event/mashruteh': {
+      id: '/event/mashruteh'
+      path: '/event/mashruteh'
+      fullPath: '/event/mashruteh'
+      preLoaderRoute: typeof EventMashrutehRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/king/$slug': {
       id: '/king/$slug'
       path: '/king/$slug'
@@ -558,6 +591,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnEventJashn2500RouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/en/event/mashruteh': {
+      id: '/en/event/mashruteh'
+      path: '/en/event/mashruteh'
+      fullPath: '/en/event/mashruteh'
+      preLoaderRoute: typeof EnEventMashrutehRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/en/king/$slug': {
       id: '/en/king/$slug'
       path: '/en/king/$slug'
@@ -594,6 +634,7 @@ const rootRouteChildren: RootRouteChildren = {
   EnShahnamehRoute: EnShahnamehRoute,
   Event28MordadRoute: Event28MordadRoute,
   EventJashn2500Route: EventJashn2500Route,
+  EventMashrutehRoute: EventMashrutehRoute,
   KingSlugRoute: KingSlugRoute,
   PlaceSlugRoute: PlaceSlugRoute,
   ShahnamehSlugRoute: ShahnamehSlugRoute,
@@ -601,9 +642,19 @@ const rootRouteChildren: RootRouteChildren = {
   EnBattleCarrhaeRoute: EnBattleCarrhaeRoute,
   EnEvent28MordadRoute: EnEvent28MordadRoute,
   EnEventJashn2500Route: EnEventJashn2500Route,
+  EnEventMashrutehRoute: EnEventMashrutehRoute,
   EnKingSlugRoute: EnKingSlugRoute,
   EnPlaceSlugRoute: EnPlaceSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}

@@ -139,6 +139,8 @@ export const MORDAD_ALTERNATES = pageAlternates('mordad28')
 
 export const JASHN2500_ALTERNATES = pageAlternates('jashn2500')
 
+export const MASHRUTEH_ALTERNATES = pageAlternates('mashruteh')
+
 export const SHAHNAMEH_ALTERNATES = pageAlternates('shahnameh')
 
 /** schema.org WebSite for the home page, with the timeline search as its SearchAction. */
