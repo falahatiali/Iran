@@ -7,17 +7,20 @@ import { DariusPrayerTeaser } from '../components/darius/DariusPrayer'
 import { ShareLink } from '../components/ShareLink'
 import { eraNames, fa, range } from '../lib/format'
 import { normalize } from '../lib/search'
-import { seo } from '../lib/seo'
+import { seo, websiteJsonLd } from '../lib/seo'
 import { HOME_DEFAULTS, filterByQuery, hasNonDefaultSearch, homeSearchSchema, type HomeSearch } from '../lib/searchSchema'
 import { useDraftQuery } from '../lib/useDraftQuery'
 
 export const Route = createFileRoute('/')({
   validateSearch: (search: Record<string, unknown>): HomeSearch => homeSearchSchema.parse(search),
   search: { middlewares: [stripSearchParams(HOME_DEFAULTS)] },
-  head: ({ match }) => seo({
-    title: 'تاریخ ایران',
-    description: 'تاریخ ایران از ایلام و هخامنشیان تا امروز: همه‌ی دودمان‌ها و پادشاهان به ترتیب زمانی، با رویدادها، شجره‌نامه و منابع.',
-    noindex: hasNonDefaultSearch({ ...HOME_DEFAULTS, ...match.search }, HOME_DEFAULTS),
+  head: ({ match }) => ({
+    ...seo({
+      title: 'تاریخ ایران',
+      description: 'تاریخ ایران از ایلام و هخامنشیان تا امروز: همه‌ی دودمان‌ها و پادشاهان به ترتیب زمانی، با رویدادها، شجره‌نامه و منابع.',
+      noindex: hasNonDefaultSearch({ ...HOME_DEFAULTS, ...match.search }, HOME_DEFAULTS),
+    }),
+    scripts: [websiteJsonLd()],
   }),
   component: Home,
 })

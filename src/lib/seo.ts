@@ -140,3 +140,23 @@ export const MORDAD_ALTERNATES = pageAlternates('mordad28')
 export const JASHN2500_ALTERNATES = pageAlternates('jashn2500')
 
 export const SHAHNAMEH_ALTERNATES = pageAlternates('shahnameh')
+
+/** schema.org WebSite for the home page, with the timeline search as its SearchAction. */
+export function websiteJsonLd() {
+  return {
+    type: 'application/ld+json',
+    children: JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: SITE_NAME,
+      alternateName: 'Iran History',
+      url: SITE_URL,
+      inLanguage: 'fa',
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: { '@type': 'EntryPoint', urlTemplate: `${SITE_URL}/timeline?q={search_term_string}` },
+        'query-input': 'required name=search_term_string',
+      },
+    }),
+  }
+}

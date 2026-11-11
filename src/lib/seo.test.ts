@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
-import { DEFAULT_OG_IMAGE, SITE_URL, clampDescription, seo } from './seo'
+import { DEFAULT_OG_IMAGE, SITE_URL, clampDescription, seo, websiteJsonLd } from './seo'
 import { dynasties } from '../data/dynasties'
 import { places } from '../data/places'
 import { featuredKings } from '../data/featured'
@@ -51,4 +51,11 @@ test('every dynasty, ruler and place has a non-empty description for its page', 
     for (const r of d.rulers) assert.ok(r.description.trim().length > 0, `ruler ${r.id}`)
   }
   for (const p of Object.values(places)) for (const l of ['fa', 'en'] as const) assert.ok(p.lede[l].trim().length > 20, `place ${p.slug} ${l}`)
+})
+
+test('the home page WebSite JSON-LD points its search at the timeline', () => {
+  const ld = JSON.parse(websiteJsonLd().children)
+  assert.equal(ld['@type'], 'WebSite')
+  assert.equal(ld.url, SITE_URL)
+  assert.equal(ld.potentialAction.target.urlTemplate, `${SITE_URL}/timeline?q={search_term_string}`)
 })
