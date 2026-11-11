@@ -2991,7 +2991,7 @@ export const bizhanManizhehCommentary = {
       "glossary": [
         {
           "word": "گرازه",
-          "meaning": "گرازه‌پسر گودرز، از پهلوانان ایران"
+          "meaning": "از پهلوانان نامدار ایران که خاندانی از سواران به نام او خوانده می‌شد"
         },
         {
           "word": "فروهل",
