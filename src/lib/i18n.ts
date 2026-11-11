@@ -1,4 +1,5 @@
 import { isFeaturedKing } from '../data/featured/slugs'
+import { PAGE_PAIRS } from './sitePages'
 
 export type Locale = 'fa' | 'en'
 
@@ -14,12 +15,7 @@ export function altArchivesPath(locale: Locale): string {
   return locale === 'fa' ? '/en/archives' : '/archives'
 }
 
-const PAIRED: readonly [string, string][] = [
-  ['/about', '/en/about'],
-  ['/property', '/en/property'],
-  ['/archives', '/en/archives'],
-  ['/cylinder', '/en/cylinder'],
-]
+const PAIRED = PAGE_PAIRS
 
 /** The same page in the other language, or a sensible fallback when no mirror exists. */
 export function siblingLocalePath(pathname: string): string {

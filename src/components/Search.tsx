@@ -7,11 +7,14 @@ import { localeFromPath } from '../lib/i18n'
 import { range, year } from '../lib/format'
 import { placeForEventTitle, places } from '../data/places'
 import { epithetSearchText, nicknamesFor } from '../data/epithets'
+import { isFeaturedKing } from '../data/featured/slugs'
+import { SITE_PAGES } from '../lib/sitePages'
 
 type Hit =
   | { kind: 'dynasty'; key: string; label: string; sub: string; slug: string }
   | { kind: 'ruler'; key: string; label: string; sub: string; slug: string }
   | { kind: 'event'; key: string; label: string; sub: string; slug: string }
+  /** for pages, `slug` holds the target path */
   | { kind: 'page'; key: string; label: string; sub: string; slug: string }
   | { kind: 'place'; key: string; label: string; sub: string; slug: string }
 
@@ -30,14 +33,12 @@ export function SearchDialog({ data, open, onClose }: { data: Overview; open: bo
       for (const r of d.rulers) all.push({ kind: 'ruler', key: `r-${r.id}`, label: en ? r.latin : r.name, sub: [en ? d.latin : d.name, range(r.start, r.end), ...nicknamesFor(r.id).map((e) => `«${en ? e.en : e.fa}»`)].join(' · '), slug: r.id, hay: normalize(`${r.name} ${r.latin} ${epithetSearchText(r.id)}`) })
     }
     for (const e of data.events) all.push({ kind: 'event', key: `e-${e.id}`, label: e.title, sub: `${names.get(e.dynastySlug)} · ${year(e.year)}`, slug: e.dynastySlug, hay: normalize(e.title) })
-    for (const p of Object.values(places)) all.push({ kind: 'place', key: `pl-${p.slug}`, label: p.name.fa, sub: p.name.en, slug: p.slug, hay: normalize([p.name.fa, p.name.en, ...p.aliases].join(' ')) })
-    all.push({ kind: 'page', key: 'p-cylinder', label: en ? 'The Cyrus Cylinder' : 'استوانهٔ کوروش', sub: 'BM 90920 · Cyrus Cylinder', slug: 'cylinder', hay: normalize('استوانه کوروش Cyrus Cylinder BM 90920 منشور کتیبه بابل') })
-    all.push({ kind: 'page', key: 'p-archives', label: en ? 'Persepolis Fortification and Treasury archives' : 'بایگانی بارو و خزانهٔ تخت‌جمشید', sub: 'Persepolis Fortification · Treasury', slug: 'archives', hay: normalize('بایگانی بارو خزانه تخت‌جمشید Persepolis Fortification Treasury Hallock جیره الواح') })
-    all.push({ kind: 'page', key: 'p-property', label: en ? 'Property rights in the history of Iran' : 'حقوق مالکیت در تاریخ ایران', sub: en ? 'Tablets, contracts, Mādayān ī hazār dādestān' : 'لوح‌ها، قراردادها، هزار داوری', slug: 'property', hay: normalize('حقوق مالکیت property rights هزار داوری MHD Persepolis tablets Murashu Egibi') })
-    all.push({ kind: 'page', key: 'p-about', label: en ? 'About and methodology' : 'درباره و روش‌شناسی', sub: en ? 'How this site works' : 'روش کار این سایت', slug: 'about', hay: normalize('درباره روش‌شناسی about methodology magi magic مالکیت') })
-    all.push({ kind: 'page', key: 'p-mordad', label: en ? '28 Mordad 1332 / 19 August 1953' : '۲۸ مرداد ۱۳۳۲', sub: en ? 'The 1953 coup' : 'کودتای ۱۹۵۳', slug: '28-mordad', hay: normalize('28 مرداد کودتا مصدق 1953 coup Mosaddeq Mordad') })
-    all.push({ kind: 'page', key: 'p-jashn', label: en ? 'The 2,500-year celebrations' : 'جشن‌های ۲۵۰۰ ساله', sub: en ? 'October 1971' : 'مهر ۱۳۵۰', slug: 'jashn-2500', hay: normalize('جشنهای 2500 ساله Persepolis 1971 celebrations jashn') })
-    all.push({ kind: 'page', key: 'p-shahnameh', label: en ? 'Shahnameh' : 'شاهنامه', sub: en ? 'Ferdowsi’s Book of Kings' : 'فردوسی · Shahnameh', slug: 'shahnameh', hay: normalize('شاهنامه فردوسی کیومرث هوشنگ تهمورث جمشید ضحاک فریدون کاوه ایرج منوچهر زال سیمرغ رستم سهراب سیاوش Ferdowsi Shahnameh') })
+    for (const p of Object.values(places)) all.push({ kind: 'place', key: `pl-${p.slug}`, label: en ? p.name.en : p.name.fa, sub: en ? p.name.fa : p.name.en, slug: p.slug, hay: normalize([p.name.fa, p.name.en, ...p.aliases].join(' ')) })
+    for (const p of SITE_PAGES) {
+      if (!p.searchable) continue
+      const view = en && p.en ? p.en : p.fa
+      all.push({ kind: 'page', key: `p-${p.key}`, label: view.label, sub: view.sub, slug: view.path, hay: normalize([p.fa.label, p.en?.label ?? '', p.keywords ?? ''].join(' ')) })
+    }
     return all
   }, [data, en])
   const nq = normalize(q)
@@ -49,17 +50,12 @@ export function SearchDialog({ data, open, onClose }: { data: Overview; open: bo
 
   const go = (h: Hit) => {
     onClose()
-    if (h.kind === 'ruler') void navigate({ to: '/king/$slug', params: { slug: h.slug } })
-    else if (h.kind === 'page') {
-      if (h.slug === 'archives') void navigate({ to: en ? '/en/archives' : '/archives' })
-      else if (h.slug === 'property') void navigate({ to: en ? '/en/property' : '/property' })
-      else if (h.slug === 'about') void navigate({ to: en ? '/en/about' : '/about' })
-      else if (h.slug === '28-mordad') void navigate({ to: en ? '/en/event/28-mordad' : '/event/28-mordad' })
-      else if (h.slug === 'jashn-2500') void navigate({ to: en ? '/en/event/jashn-2500' : '/event/jashn-2500' })
-      else if (h.slug === 'shahnameh') void navigate({ to: en ? '/en/shahnameh' : '/shahnameh' })
-      else void navigate({ to: en ? '/en/cylinder' : '/cylinder' })
+    if (h.kind === 'ruler') {
+      if (en && isFeaturedKing(h.slug)) void navigate({ to: '/en/king/$slug', params: { slug: h.slug } })
+      else void navigate({ to: '/king/$slug', params: { slug: h.slug } })
     }
-    else if (h.kind === 'place') void navigate({ to: '/place/$slug', params: { slug: h.slug } })
+    else if (h.kind === 'page') void navigate({ href: h.slug })
+    else if (h.kind === 'place') void navigate(en ? { to: '/en/place/$slug', params: { slug: h.slug } } : { to: '/place/$slug', params: { slug: h.slug } })
     else if (h.kind === 'event') {
       const pl = placeForEventTitle(h.label)
       if (pl) void navigate({ to: '/place/$slug', params: { slug: pl.slug } })

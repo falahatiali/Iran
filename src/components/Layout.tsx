@@ -26,8 +26,8 @@ export function Header({ data }: { data: Overview }) {
     ? [
         { to: '/', label: 'Home' },
         { to: '/en/shahnameh', label: 'Shahnameh', special: true },
-        { to: '/cylinder', label: 'Cyrus Cylinder' },
-        { to: '/archives', label: 'Persepolis archives', compact: true },
+        { to: '/en/cylinder', label: 'Cyrus Cylinder' },
+        { to: '/en/archives', label: 'Persepolis archives', compact: true },
         { to: '/en/king/$slug', params: { slug: 'darius-i' }, label: 'Darius the Great', compact: true },
         { to: '/timeline', label: 'Timeline' },
         { to: '/en/about', label: 'About' },
@@ -159,10 +159,12 @@ export function Footer() {
     ? [
         { href: '/en/event/28-mordad', title: '19 August 1953', kicker: '28 Mordad 1332' },
         { href: '/en/event/jashn-2500', title: 'The 2,500-year celebrations', kicker: 'October 1971' },
+        { href: '/en/battle/carrhae', title: 'The Battle of Carrhae', kicker: '53 BCE' },
       ]
     : [
         { href: '/event/28-mordad', title: '۲۸ مرداد ۱۳۳۲', kicker: 'کودتای ۱۹۵۳' },
         { href: '/event/jashn-2500', title: 'جشن‌های ۲۵۰۰ ساله', kicker: 'مهر ۱۳۵۰' },
+        { href: '/battle/carrhae', title: 'نبرد حران', kicker: '۵۳ پیش از میلاد' },
       ]
   return (
     <footer className="mt-24 relative border-t border-gold/20 bg-gradient-to-b from-lapis/25 via-[#0a1733] to-[#070f24]">

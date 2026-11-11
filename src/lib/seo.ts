@@ -1,4 +1,5 @@
 import { resolvePublicSiteUrl } from './siteUrl'
+import { pageAlternates } from './sitePages'
 
 const viteEnv = (import.meta.env ?? {}) as { VITE_SITE_URL?: string; MODE?: string }
 
@@ -51,17 +52,9 @@ export function seo({
   }
 }
 
-export const CYLINDER_ALTERNATES = [
-  { hrefLang: 'fa', path: '/cylinder' },
-  { hrefLang: 'en', path: '/en/cylinder' },
-  { hrefLang: 'x-default', path: '/cylinder' },
-] as const
+export const CYLINDER_ALTERNATES = pageAlternates('cylinder')
 
-export const ARCHIVES_ALTERNATES = [
-  { hrefLang: 'fa', path: '/archives' },
-  { hrefLang: 'en', path: '/en/archives' },
-  { hrefLang: 'x-default', path: '/archives' },
-] as const
+export const ARCHIVES_ALTERNATES = pageAlternates('archives')
 
 /** fa/en/x-default alternates for a king that has an English mirror (featured kings). */
 export function kingAlternates(slug: string) {
@@ -89,17 +82,9 @@ export function kingJsonLd(opts: { locale: 'fa' | 'en'; slug: string; headline: 
   }
 }
 
-export const ABOUT_ALTERNATES = [
-  { hrefLang: 'fa', path: '/about' },
-  { hrefLang: 'en', path: '/en/about' },
-  { hrefLang: 'x-default', path: '/about' },
-] as const
+export const ABOUT_ALTERNATES = pageAlternates('about')
 
-export const PROPERTY_ALTERNATES = [
-  { hrefLang: 'fa', path: '/property' },
-  { hrefLang: 'en', path: '/en/property' },
-  { hrefLang: 'x-default', path: '/property' },
-] as const
+export const PROPERTY_ALTERNATES = pageAlternates('property')
 
 export const placeAlternates = (slug: string) => [
   { hrefLang: 'fa', path: `/place/${slug}` },
@@ -124,26 +109,10 @@ export function placeJsonLd(opts: { locale: 'fa' | 'en'; slug: string; name: str
   }
 }
 
-export const CARRHAE_ALTERNATES = [
-  { hrefLang: 'fa', path: '/battle/carrhae' },
-  { hrefLang: 'en', path: '/en/battle/carrhae' },
-  { hrefLang: 'x-default', path: '/battle/carrhae' },
-] as const
+export const CARRHAE_ALTERNATES = pageAlternates('carrhae')
 
-export const MORDAD_ALTERNATES = [
-  { hrefLang: 'fa', path: '/event/28-mordad' },
-  { hrefLang: 'en', path: '/en/event/28-mordad' },
-  { hrefLang: 'x-default', path: '/event/28-mordad' },
-] as const
+export const MORDAD_ALTERNATES = pageAlternates('mordad28')
 
-export const JASHN2500_ALTERNATES = [
-  { hrefLang: 'fa', path: '/event/jashn-2500' },
-  { hrefLang: 'en', path: '/en/event/jashn-2500' },
-  { hrefLang: 'x-default', path: '/event/jashn-2500' },
-] as const
+export const JASHN2500_ALTERNATES = pageAlternates('jashn2500')
 
-export const SHAHNAMEH_ALTERNATES = [
-  { hrefLang: 'fa', path: '/shahnameh' },
-  { hrefLang: 'en', path: '/en/shahnameh' },
-  { hrefLang: 'x-default', path: '/shahnameh' },
-] as const
+export const SHAHNAMEH_ALTERNATES = pageAlternates('shahnameh')
