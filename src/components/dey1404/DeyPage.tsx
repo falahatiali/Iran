@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from 'react'
-import { deySources, hero, manifesto, nameNote, NAME_SOURCES, otherLists, pillars, stats, story, tolls, type NameRow } from '../../data/dey1404'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { closing, deySources, hero, manifesto, nameNote, NAME_SOURCES, otherLists, pillars, PROVINCE_COUNTS, PROVINCE_TILES, stats, story, tolls, UNKNOWN_PROVINCE, type NameRow } from '../../data/dey1404'
 import { PageTransition, Reveal } from '../Reveal'
 
 const FA = '۰۱۲۳۴۵۶۷۸۹'
@@ -47,10 +47,104 @@ function Chips({ ids }: { ids: string[] }) {
   )
 }
 
-function NameWall() {
+const toNum = (v: string) => (/^[۰-۹٬]+$/.test(v) ? +v.replace(/٬/g, '').replace(/[۰-۹]/g, (d) => String(FA.indexOf(d))) : null)
+
+/** Counts up once when it scrolls into view; the server and reduced-motion readers get the final figure. */
+function Tally({ value }: { value: string }) {
+  const target = toNum(value)
+  const ref = useRef<HTMLSpanElement>(null)
+  const [shown, setShown] = useState(value)
+  useEffect(() => {
+    const el = ref.current
+    if (target === null || !el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    let raf = 0
+    const io = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return
+      io.disconnect()
+      const t0 = performance.now(), dur = 2200
+      const step = (t: number) => {
+        const k = Math.min(1, (t - t0) / dur), eased = 1 - Math.pow(1 - k, 3)
+        setShown(fa(Math.round(target * eased)))
+        if (k < 1) raf = requestAnimationFrame(step)
+      }
+      raf = requestAnimationFrame(step)
+    }, { threshold: 0.4 })
+    io.observe(el)
+    return () => { io.disconnect(); cancelAnimationFrame(raf) }
+  }, [target])
+  return <span ref={ref} aria-label={value}>{shown}</span>
+}
+
+function ProvinceGrid({ value, onPick }: { value: string; onPick: (p: string) => void }) {
+  const max = Math.max(...Object.values(PROVINCE_COUNTS))
+  return (
+    <div>
+      <div dir="ltr" className="dey-tiles mx-auto grid max-w-3xl grid-cols-7 gap-1.5 sm:gap-2" role="group" aria-label="شمار جان‌باختگان به تفکیک استان">
+        {PROVINCE_TILES.map(([p, c, r]) => {
+          const n = PROVINCE_COUNTS[p] ?? 0
+          const k = n ? 0.18 + 0.82 * Math.sqrt(n / max) : 0
+          return (
+            <button key={p} type="button" onClick={() => onPick(value === p ? '' : p)} disabled={!n} aria-pressed={value === p}
+              title={`${p}: ${fa(n)}`} style={{ gridColumn: c + 1, gridRow: r + 1, ['--k' as string]: k }}
+              className={`dey-tile ${value === p ? 'dey-tile-on' : ''}`}>
+              <span className="block break-words text-[0.58rem] leading-tight sm:text-xs" dir="rtl">{p}</span>
+              <span className="block text-sm font-black sm:text-lg">{fa(n)}</span>
+            </button>
+          )
+        })}
+      </div>
+      <p className="mt-3 text-center text-xs text-ivory/45">نقشهٔ کاشی‌ای تقریبی؛ شدت رنگ نسبت به شمار ثبت‌شده است. استان {fa(UNKNOWN_PROVINCE)} نفر در گزارش نامعلوم است. روی هر استان بزنید تا نام‌هایش را ببینید.</p>
+    </div>
+  )
+}
+
+function NameCard({ row, onOpen }: { row: NameRow; onOpen: (r: NameRow) => void }) {
+  const [name, age, prov, date, , city] = row
+  return (
+    <li className="dey-name">
+      <button type="button" className="block w-full text-start" onClick={() => onOpen(row)} aria-haspopup="dialog">
+        <span className="dey-flame" aria-hidden="true" />
+        <span className="block font-bold text-ivory/95 leading-snug">{name}</span>
+        <span className="block text-[0.72rem] text-ivory/45">{[age && `${age} ساله`, city ?? prov, date].filter(Boolean).join(' · ')}</span>
+      </button>
+    </li>
+  )
+}
+
+/** One shared dialog for every name: who, where, when, which source and how sure. */
+function NameDialog({ row, onClose }: { row: NameRow | null; onClose: () => void }) {
+  const ref = useRef<HTMLDialogElement>(null)
+  useEffect(() => { if (row && !ref.current?.open) ref.current?.showModal() }, [row])
+  const [name, age, prov, date, g, city, note] = row ?? ['', null, null, null, 1]
+  const src = NAME_SOURCES[g]
+  const srcUrl = deySources.find((s) => s.id === src.source)?.url
+  return (
+    <dialog ref={ref} className="dey-dialog" aria-labelledby="dey-dialog-h" onClose={onClose} onClick={(e) => { if (e.target === e.currentTarget) e.currentTarget.close() }}>
+      {row && (
+        <div className="p-7 text-center">
+          <span className="dey-flame dey-flame-lg" aria-hidden="true" />
+          <h4 id="dey-dialog-h" className="mt-5 text-2xl font-black text-rose-50">{name}</h4>
+          <dl className="mt-5 grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-start text-sm">
+            <dt className="text-ivory/45">سن</dt><dd className="text-ivory/90">{age ? `${age} ساله` : 'ثبت نشده'}</dd>
+            <dt className="text-ivory/45">استان</dt><dd className="text-ivory/90">{prov ?? 'ثبت نشده'}</dd>
+            {city && <><dt className="text-ivory/45">شهر</dt><dd className="text-ivory/90">{city}</dd></>}
+            <dt className="text-ivory/45">{g === 3 ? 'اعدام' : 'تاریخ'}</dt><dd className="text-ivory/90">{date ?? (g === 3 ? 'تاریخ در این منبع نیامده' : 'دی‌ماه ۱۴۰۴، روز ثبت نشده')}</dd>
+            {note && <><dt className="text-ivory/45">توضیح</dt><dd className="text-ivory/90">{note}</dd></>}
+            <dt className="text-ivory/45">اعتبار</dt><dd className="text-ivory/90">{src.confidence}</dd>
+            <dt className="text-ivory/45">منبع</dt><dd><a href={srcUrl} target="_blank" rel="noopener" className="text-gold underline">{src.label}</a></dd>
+          </dl>
+          <p className="mt-6 text-rose-200/80">یادش گرامی</p>
+          <form method="dialog"><button className="mt-5 rounded-full border border-rose-300/40 px-6 py-2 text-rose-50 hover:bg-rose-800/40" autoFocus>بستن</button></form>
+        </div>
+      )}
+    </dialog>
+  )
+}
+
+function NameWall({ prov, setProv }: { prov: string; setProv: (p: string) => void }) {
   const [rows, setRows] = useState<NameRow[] | null>(null)
   const [q, setQ] = useState('')
-  const [prov, setProv] = useState('')
+  const [sel, setSel] = useState<NameRow | null>(null)
   useEffect(() => {
     let live = true
     import('../../data/dey1404/names.json').then((m) => { if (live) setRows(m.default as NameRow[]) })
@@ -66,7 +160,7 @@ function NameWall() {
     const k = norm(q)
     return (rows ?? []).filter((r) => (!prov || r[2] === prov) && (!k || norm(r[0]).includes(k)))
   }, [rows, q, prov])
-  const groups = ([1, 2] as const).map((a) => ({ a, list: shown.filter((r) => r[4] === a) }))
+  const groups = ([1, 3, 2] as const).map((a) => ({ a, list: shown.filter((r) => r[4] === a) }))
 
   return (
     <div>
@@ -87,24 +181,21 @@ function NameWall() {
       <p className="mt-3 text-sm text-ivory/55" aria-live="polite">{rows ? `${fa(shown.length)} نام از ${fa(rows.length)}` : 'در حال بارگذاری نام‌ها…'}</p>
       {groups.map(({ a, list }) => list.length > 0 && (
         <section key={a} className="mt-8" aria-label={NAME_SOURCES[a].label}>
-          <h3 className="text-lg font-bold text-rose-100">{NAME_SOURCES[a].label}</h3>
-          <p className="text-sm text-ivory/50">{NAME_SOURCES[a].note}</p>
+          <h3 className="text-xl font-black text-rose-100">{NAME_SOURCES[a].title} <span className="text-sm font-normal text-ivory/45">({fa(list.length)})</span></h3>
+          <p className="text-sm text-ivory/50">{NAME_SOURCES[a].label}. {NAME_SOURCES[a].note}</p>
           <ul className="dey-wall mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-            {list.map((r, i) => (
-              <li key={i} className="dey-name group">
-                <span className="dey-flame" aria-hidden="true" />
-                <span className="block font-bold text-ivory/95 leading-snug">{r[0]}</span>
-                <span className="block text-[0.72rem] text-ivory/45">{[r[1] && `${r[1]} ساله`, r[2], r[3]].filter(Boolean).join(' · ')}</span>
-              </li>
-            ))}
+            {list.map((r, i) => <NameCard key={i} row={r} onOpen={setSel} />)}
           </ul>
         </section>
       ))}
+      <NameDialog row={sel} onClose={() => setSel(null)} />
     </div>
   )
 }
 
 export function DeyPage() {
+  const [prov, setProv] = useState('')
+  const pick = (p: string) => { setProv(p); document.getElementById('names-wall')?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }) }
   return (
     <PageTransition>
       <article lang="fa" dir="rtl" className="dey -mt-8 pb-24">
@@ -122,10 +213,10 @@ export function DeyPage() {
         </header>
 
         <div className="mx-auto max-w-6xl px-5">
-          <ul className="-mt-10 grid grid-cols-2 gap-3 md:grid-cols-4">
+          <ul className="-mt-10 grid grid-cols-2 gap-3 md:grid-cols-5">
             {stats.map((s) => (
               <li key={s.label} className="dey-card p-5 text-center">
-                <span className="block text-3xl font-black text-rose-100 md:text-4xl">{s.value}</span>
+                <span className="block text-3xl font-black text-rose-100 md:text-4xl"><Tally value={s.value} /></span>
                 <span className="mt-2 block text-sm text-ivory/60">{s.label}</span>
               </li>
             ))}
@@ -198,7 +289,20 @@ export function DeyPage() {
                 {otherLists.map((l) => <a key={l.href} href={l.href} target="_blank" rel="noopener" className="rounded-full border border-rose-300/30 px-3 py-1 text-rose-100 hover:bg-rose-400/10">{l.label} ↗</a>)}
               </p>
             </div>
-            <div className="mt-10"><NameWall /></div>
+            <div className="mt-12"><ProvinceGrid value={prov} onPick={pick} /></div>
+            <div id="names-wall" className="mt-12 scroll-mt-24"><NameWall prov={prov} setProv={setProv} /></div>
+          </section>
+
+          <section aria-labelledby="closing-h" className="dey-closing relative mt-28 overflow-hidden px-6 py-20 text-center">
+            <div className="dey-candles mx-auto flex justify-center gap-5" aria-hidden="true">{Array.from({ length: 7 }, (_, i) => <span key={i} className="dey-candle"><span className="dey-flame dey-flame-lg" /></span>)}</div>
+            <p className="mt-10 text-sm font-bold text-gold">نگاه ما</p>
+            <h2 id="closing-h" className="dey-title mt-2 text-5xl font-black md:text-7xl">{closing.title}</h2>
+            <div className="mx-auto mt-8 max-w-3xl space-y-6">{closing.paras.map((p, i) => <p key={i} className="read text-justify text-xl leading-[2.3] text-ivory/85">{p}</p>)}</div>
+            <p className="mt-10 flex flex-wrap justify-center gap-3 text-sm">
+              <a href="/property" className="rounded-full border border-gold/40 px-4 py-2 text-gold hover:bg-gold/10">حقوق مالکیت در تاریخ ایران</a>
+              <a href="/event/mashruteh" className="rounded-full border border-gold/40 px-4 py-2 text-gold hover:bg-gold/10">انقلاب مشروطه</a>
+              <a href="/timeline" className="rounded-full border border-gold/40 px-4 py-2 text-gold hover:bg-gold/10">گاه‌شمار سراسری</a>
+            </p>
           </section>
 
           <section aria-labelledby="dey-src-h" className="mt-24">
