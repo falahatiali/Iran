@@ -31,6 +31,8 @@ export function siblingLocalePath(pathname: string): string {
     const slug = path.slice('/king/'.length)
     return isFeaturedKing(slug) ? `/en${path}` : '/en/cylinder'
   }
+  // the Dey 1404 memorial is Persian only
+  if (path === '/event/dey-1404' || path.startsWith('/event/dey-1404/')) return '/en/cylinder'
   if (path.startsWith('/en/event/')) return path.slice(3)
   if (path.startsWith('/event/')) return `/en${path}`
   if (path.startsWith('/en/battle/')) return path.slice(3)

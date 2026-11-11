@@ -26,7 +26,6 @@ import { Route as EnDariusRouteImport } from './routes/en/darius'
 import { Route as EnPropertyRouteImport } from './routes/en/property'
 import { Route as EnShahnamehRouteImport } from './routes/en/shahnameh'
 import { Route as Event28MordadRouteImport } from './routes/event/28-mordad'
-import { Route as EventDey1404RouteImport } from './routes/event/dey-1404'
 import { Route as EventJashn2500RouteImport } from './routes/event/jashn-2500'
 import { Route as EventMashrutehRouteImport } from './routes/event/mashruteh'
 import { Route as KingSlugRouteImport } from './routes/king/$slug'
@@ -39,6 +38,8 @@ import { Route as EnEventJashn2500RouteImport } from './routes/en/event/jashn-25
 import { Route as EnEventMashrutehRouteImport } from './routes/en/event/mashruteh'
 import { Route as EnKingSlugRouteImport } from './routes/en/king/$slug'
 import { Route as EnPlaceSlugRouteImport } from './routes/en/place/$slug'
+import { Route as EventDey1404IndexRouteImport } from './routes/event/dey-1404/index'
+import { Route as EventDey1404ProvinceRouteImport } from './routes/event/dey-1404/$province'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -125,11 +126,6 @@ const Event28MordadRoute = Event28MordadRouteImport.update({
   path: '/event/28-mordad',
   getParentRoute: () => rootRouteImport,
 } as any)
-const EventDey1404Route = EventDey1404RouteImport.update({
-  id: '/event/dey-1404',
-  path: '/event/dey-1404',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const EventJashn2500Route = EventJashn2500RouteImport.update({
   id: '/event/jashn-2500',
   path: '/event/jashn-2500',
@@ -190,6 +186,16 @@ const EnPlaceSlugRoute = EnPlaceSlugRouteImport.update({
   path: '/en/place/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EventDey1404IndexRoute = EventDey1404IndexRouteImport.update({
+  id: '/event/dey-1404/',
+  path: '/event/dey-1404/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventDey1404ProvinceRoute = EventDey1404ProvinceRouteImport.update({
+  id: '/event/dey-1404/$province',
+  path: '/event/dey-1404/$province',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -209,7 +215,6 @@ export interface FileRoutesByFullPath {
   '/en/property': typeof EnPropertyRoute
   '/en/shahnameh': typeof EnShahnamehRoute
   '/event/28-mordad': typeof Event28MordadRoute
-  '/event/dey-1404': typeof EventDey1404Route
   '/event/jashn-2500': typeof EventJashn2500Route
   '/event/mashruteh': typeof EventMashrutehRoute
   '/king/$slug': typeof KingSlugRoute
@@ -222,6 +227,8 @@ export interface FileRoutesByFullPath {
   '/en/event/mashruteh': typeof EnEventMashrutehRoute
   '/en/king/$slug': typeof EnKingSlugRoute
   '/en/place/$slug': typeof EnPlaceSlugRoute
+  '/event/dey-1404/$province': typeof EventDey1404ProvinceRoute
+  '/event/dey-1404/': typeof EventDey1404IndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -241,7 +248,6 @@ export interface FileRoutesByTo {
   '/en/property': typeof EnPropertyRoute
   '/en/shahnameh': typeof EnShahnamehRoute
   '/event/28-mordad': typeof Event28MordadRoute
-  '/event/dey-1404': typeof EventDey1404Route
   '/event/jashn-2500': typeof EventJashn2500Route
   '/event/mashruteh': typeof EventMashrutehRoute
   '/king/$slug': typeof KingSlugRoute
@@ -254,6 +260,8 @@ export interface FileRoutesByTo {
   '/en/event/mashruteh': typeof EnEventMashrutehRoute
   '/en/king/$slug': typeof EnKingSlugRoute
   '/en/place/$slug': typeof EnPlaceSlugRoute
+  '/event/dey-1404/$province': typeof EventDey1404ProvinceRoute
+  '/event/dey-1404': typeof EventDey1404IndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -274,7 +282,6 @@ export interface FileRoutesById {
   '/en/property': typeof EnPropertyRoute
   '/en/shahnameh': typeof EnShahnamehRoute
   '/event/28-mordad': typeof Event28MordadRoute
-  '/event/dey-1404': typeof EventDey1404Route
   '/event/jashn-2500': typeof EventJashn2500Route
   '/event/mashruteh': typeof EventMashrutehRoute
   '/king/$slug': typeof KingSlugRoute
@@ -287,6 +294,8 @@ export interface FileRoutesById {
   '/en/event/mashruteh': typeof EnEventMashrutehRoute
   '/en/king/$slug': typeof EnKingSlugRoute
   '/en/place/$slug': typeof EnPlaceSlugRoute
+  '/event/dey-1404/$province': typeof EventDey1404ProvinceRoute
+  '/event/dey-1404/': typeof EventDey1404IndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -308,7 +317,6 @@ export interface FileRouteTypes {
     | '/en/property'
     | '/en/shahnameh'
     | '/event/28-mordad'
-    | '/event/dey-1404'
     | '/event/jashn-2500'
     | '/event/mashruteh'
     | '/king/$slug'
@@ -321,6 +329,8 @@ export interface FileRouteTypes {
     | '/en/event/mashruteh'
     | '/en/king/$slug'
     | '/en/place/$slug'
+    | '/event/dey-1404/$province'
+    | '/event/dey-1404/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -340,7 +350,6 @@ export interface FileRouteTypes {
     | '/en/property'
     | '/en/shahnameh'
     | '/event/28-mordad'
-    | '/event/dey-1404'
     | '/event/jashn-2500'
     | '/event/mashruteh'
     | '/king/$slug'
@@ -353,6 +362,8 @@ export interface FileRouteTypes {
     | '/en/event/mashruteh'
     | '/en/king/$slug'
     | '/en/place/$slug'
+    | '/event/dey-1404/$province'
+    | '/event/dey-1404'
   id:
     | '__root__'
     | '/'
@@ -372,7 +383,6 @@ export interface FileRouteTypes {
     | '/en/property'
     | '/en/shahnameh'
     | '/event/28-mordad'
-    | '/event/dey-1404'
     | '/event/jashn-2500'
     | '/event/mashruteh'
     | '/king/$slug'
@@ -385,6 +395,8 @@ export interface FileRouteTypes {
     | '/en/event/mashruteh'
     | '/en/king/$slug'
     | '/en/place/$slug'
+    | '/event/dey-1404/$province'
+    | '/event/dey-1404/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -405,7 +417,6 @@ export interface RootRouteChildren {
   EnPropertyRoute: typeof EnPropertyRoute
   EnShahnamehRoute: typeof EnShahnamehRoute
   Event28MordadRoute: typeof Event28MordadRoute
-  EventDey1404Route: typeof EventDey1404Route
   EventJashn2500Route: typeof EventJashn2500Route
   EventMashrutehRoute: typeof EventMashrutehRoute
   KingSlugRoute: typeof KingSlugRoute
@@ -418,6 +429,8 @@ export interface RootRouteChildren {
   EnEventMashrutehRoute: typeof EnEventMashrutehRoute
   EnKingSlugRoute: typeof EnKingSlugRoute
   EnPlaceSlugRoute: typeof EnPlaceSlugRoute
+  EventDey1404ProvinceRoute: typeof EventDey1404ProvinceRoute
+  EventDey1404IndexRoute: typeof EventDey1404IndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -541,13 +554,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Event28MordadRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/event/dey-1404': {
-      id: '/event/dey-1404'
-      path: '/event/dey-1404'
-      fullPath: '/event/dey-1404'
-      preLoaderRoute: typeof EventDey1404RouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/event/jashn-2500': {
       id: '/event/jashn-2500'
       path: '/event/jashn-2500'
@@ -632,6 +638,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnPlaceSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/event/dey-1404/': {
+      id: '/event/dey-1404/'
+      path: '/event/dey-1404'
+      fullPath: '/event/dey-1404/'
+      preLoaderRoute: typeof EventDey1404IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/event/dey-1404/$province': {
+      id: '/event/dey-1404/$province'
+      path: '/event/dey-1404/$province'
+      fullPath: '/event/dey-1404/$province'
+      preLoaderRoute: typeof EventDey1404ProvinceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -653,7 +673,6 @@ const rootRouteChildren: RootRouteChildren = {
   EnPropertyRoute: EnPropertyRoute,
   EnShahnamehRoute: EnShahnamehRoute,
   Event28MordadRoute: Event28MordadRoute,
-  EventDey1404Route: EventDey1404Route,
   EventJashn2500Route: EventJashn2500Route,
   EventMashrutehRoute: EventMashrutehRoute,
   KingSlugRoute: KingSlugRoute,
@@ -666,6 +685,8 @@ const rootRouteChildren: RootRouteChildren = {
   EnEventMashrutehRoute: EnEventMashrutehRoute,
   EnKingSlugRoute: EnKingSlugRoute,
   EnPlaceSlugRoute: EnPlaceSlugRoute,
+  EventDey1404ProvinceRoute: EventDey1404ProvinceRoute,
+  EventDey1404IndexRoute: EventDey1404IndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -26,10 +26,12 @@ export const NAME_SOURCES: Record<NameGroup, { source: string; label: string; ti
   3: { source: 'ihr-exec', title: 'اعدام‌شدگان خیزش دی', label: 'سازمان حقوق بشر ایران، فهرست معترضان اعدام‌شده (۱۳ مهر ۱۴۰۵)', note: 'بازداشت‌شدگان اعتراضات دی‌ماه که از ۲۸ اسفند ۱۴۰۴ تا پایان مهر ۱۴۰۵ اعدام شدند؛ به ترتیب زمان اعدام. گزارش آبان همین سازمان شمار آنان را تا پایان اکتبر همچنان ۳۴ نفر می‌داند.', confidence: 'اعدام؛ ثبت‌شده در گزارش سازمان حقوق بشر ایران' },
 }
 
-/** [name, age, province, date, group, city?, note?]; null where the source has «؟» or only «دی ماه».
+/** [id, name, age, province, date, group, city?, note?]; null where the source has «؟» or only «دی ماه».
  * Group 1 and 2 are the two annexes of the IHRNGO report; group 3 is IHRNGO's list of executed protesters.
+ * The id is stable and cites the source row: «a1-123» is row 123 of annex 1, «a2-7» row 7 of annex 2,
+ * «x5» the fifth name on the executed list. New sources get a new prefix; ids are never reused or renumbered.
  * City and note are filled only where an IHRNGO table gives them (Afghan and dual-national victims, the Alikhani case). */
-export type NameRow = [string, string | null, string | null, string | null, NameGroup, (string | null)?, (string | null)?]
+export type NameRow = [string, string, string | null, string | null, string | null, NameGroup, (string | null)?, (string | null)?]
 
 /** Killed per province (groups 1 and 2), as the annexes record it; the test checks it against names.json. */
 export const PROVINCE_COUNTS: Record<string, number> = {
@@ -37,15 +39,13 @@ export const PROVINCE_COUNTS: Record<string, number> = {
 }
 export const UNKNOWN_PROVINCE = 198
 
-/** A rough tile map of Iran: [province, column from the west, row from the north]. */
-export const PROVINCE_TILES: [string, number, number][] = [
-  ['آذربایجان غربی', 0, 0], ['آذربایجان شرقی', 1, 0], ['اردبیل', 2, 0],
-  ['کردستان', 0, 1], ['زنجان', 1, 1], ['گیلان', 2, 1], ['مازندران', 3, 1], ['گلستان', 4, 1], ['خراسان شمالی', 5, 1],
-  ['کرمانشاه', 0, 2], ['همدان', 1, 2], ['قزوین', 2, 2], ['البرز', 3, 2], ['تهران', 4, 2], ['سمنان', 5, 2], ['خراسان رضوی', 6, 2],
-  ['ایلام', 0, 3], ['لرستان', 1, 3], ['مرکزی', 2, 3], ['قم', 3, 3], ['اصفهان', 4, 3], ['یزد', 5, 3], ['خراسان جنوبی', 6, 3],
-  ['خوزستان', 0, 4], ['چهارمحال و بختیاری', 1, 4], ['کهگیلویه و بویراحمد', 2, 4], ['فارس', 3, 4], ['کرمان', 4, 4], ['سیستان و بلوچستان', 5, 4],
-  ['بوشهر', 1, 5], ['هرمزگان', 3, 5],
-]
+/** URL slug of each province page, /event/dey-1404/<slug>. */
+export const PROVINCE_SLUGS: Record<string, string> = {
+  'تهران': 'tehran', 'اصفهان': 'isfahan', 'خراسان رضوی': 'razavi-khorasan', 'البرز': 'alborz', 'گیلان': 'gilan', 'فارس': 'fars', 'مازندران': 'mazandaran', 'کرمانشاه': 'kermanshah', 'مرکزی': 'markazi', 'خوزستان': 'khuzestan', 'قزوین': 'qazvin', 'گلستان': 'golestan', 'لرستان': 'lorestan', 'هرمزگان': 'hormozgan', 'کرمان': 'kerman', 'خراسان شمالی': 'north-khorasan', 'چهارمحال و بختیاری': 'chaharmahal-bakhtiari', 'همدان': 'hamadan', 'ایلام': 'ilam', 'بوشهر': 'bushehr', 'زنجان': 'zanjan', 'سمنان': 'semnan', 'اردبیل': 'ardabil', 'یزد': 'yazd', 'سیستان و بلوچستان': 'sistan-baluchestan', 'آذربایجان شرقی': 'east-azerbaijan', 'قم': 'qom', 'کردستان': 'kurdistan', 'کهگیلویه و بویراحمد': 'kohgiluyeh-boyerahmad', 'آذربایجان غربی': 'west-azerbaijan', 'خراسان جنوبی': 'south-khorasan',
+}
+/** Provinces with at least one recorded name, most first: the ones that get a section and a page. */
+export const NAMED_PROVINCES = Object.entries(PROVINCE_COUNTS).filter(([, n]) => n > 0).sort((a, b) => b[1] - a[1]).map(([p]) => p)
+export const provinceBySlug = (slug: string) => NAMED_PROVINCES.find((p) => PROVINCE_SLUGS[p] === slug)
 
 export const hero = {
   kicker: 'به یاد جاویدنامان',

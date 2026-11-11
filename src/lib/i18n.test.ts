@@ -23,3 +23,9 @@ test('siblingLocalePath mirrors paired topic pages including property', () => {
   assert.equal(siblingLocalePath('/shahnameh/rostam-esfandiar'), '/en/shahnameh')
   assert.equal(siblingLocalePath('/en/shahnameh/foo'), '/shahnameh/foo')
 })
+
+test('the Persian-only Dey 1404 memorial switches to the English home, not a missing mirror', () => {
+  assert.equal(siblingLocalePath('/event/dey-1404'), '/en/cylinder')
+  assert.equal(siblingLocalePath('/event/dey-1404/tehran'), '/en/cylinder')
+  assert.equal(siblingLocalePath('/event/mashruteh'), '/en/event/mashruteh')
+})

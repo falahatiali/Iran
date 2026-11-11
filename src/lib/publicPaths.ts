@@ -1,5 +1,7 @@
 /** Every public, indexable URL path on the site, built from the data modules.
  * The sitemap is written from this list, and the link test checks every internal link against it. */
+import { NAMED_PROVINCES } from '../data/dey1404'
+import { provinceHref } from '../data/dey1404/people'
 import { dynasties } from '../data/dynasties'
 import { FEATURED_KING_SLUGS } from '../data/featured/slugs'
 import { places } from '../data/places'
@@ -14,6 +16,7 @@ export function publicPaths(): string[] {
     ...dynasties.flatMap((d) => d.rulers.map((r) => `/king/${r.id}`)),
     ...FEATURED_KING_SLUGS.map((s) => `/en/king/${s}`),
     ...Object.keys(places).flatMap((s) => [`/place/${s}`, `/en/place/${s}`]),
+    ...NAMED_PROVINCES.map(provinceHref),
   ]
   return [...new Set(all)]
 }
