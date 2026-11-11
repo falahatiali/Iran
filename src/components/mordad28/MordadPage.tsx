@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from 'react'
 import { cast, days, documents, facts, mordadSources, myths, page, photo, photos, views, type Certainty, type MordadPhoto, type Verdict } from '../../data/mordad28'
 import type { Locale } from '../../lib/i18n'
+import { digits } from '../../lib/format'
 import { PageTransition, Reveal } from '../Reveal'
 import { Shamseh } from '../Ornament'
 import { SectionNav } from '../SectionNav'
@@ -218,7 +219,7 @@ function DayTimeline({ locale, Chips, t }: { locale: Locale; Chips: ChipsT; t: T
           <button key={x.id} ref={(el) => { tabs.current[k] = el }} role="tab" id={`tab-${x.id}`} aria-selected={k === i} aria-controls={`panel-${x.id}`} tabIndex={k === i ? 0 : -1} onClick={() => setI(k)}
             className={`shrink-0 rounded-2xl px-4 py-3 min-h-11 text-start border transition ${k === i ? 'border-gold bg-gold/15 text-gold-bright' : 'border-ivory/10 bg-lapis/40 text-ivory/70 hover:border-gold/50'} ${x.id === 'd28' ? 'ring-1 ring-crimson/60' : ''}`}>
             <span className="block font-black">{x.label[locale]}</span>
-            <span className="block text-[11px] opacity-70">{x.moments.length} {isFa ? 'رخداد' : 'events'}</span>
+            <span className="block text-[11px] opacity-70">{digits(x.moments.length, locale)} {isFa ? 'رخداد' : 'events'}</span>
           </button>
         ))}
       </div>

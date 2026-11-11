@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { Locale } from '../../lib/i18n'
+import { digits } from '../../lib/format'
 import { chapters, claims, faNote, mongol, mongolPhotos, mongolSources, quotes, type MQuote } from '../../data/khwarazm/mongol'
 import { khwPhotos, khwSources } from '../../data/khwarazm/common'
 import { muhammadKh } from '../../data/khwarazm/muhammad'
@@ -97,7 +98,7 @@ export function MongolInvasion({ locale }: { locale: Locale }) {
             <Reveal>
               <div className={`grid gap-6 ${c.photo ? 'lg:grid-cols-[1fr_22rem]' : ''} items-start`}>
                 <div>
-                  <p className="text-xs text-[#e0875a]">{i + 1} · {c.when[locale]} · {c.place[locale]}</p>
+                  <p className="text-xs text-[#e0875a]">{digits(i + 1, locale)} · {c.when[locale]} · {c.place[locale]}</p>
                   <h3 className="mt-1 text-2xl font-black text-[#f0c49a]">{c.title[locale]}</h3>
                   <span className={`mt-2 inline-block rounded-full border px-3 py-0.5 text-xs font-bold ${TONE[c.certainty]}`}>{CERT[c.certainty][locale]}</span>
                   {c.note && <span className="ms-2 text-xs text-ivory/55">{c.note[locale]}</span>}

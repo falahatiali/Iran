@@ -1,5 +1,7 @@
 const FA = '۰۱۲۳۴۵۶۷۸۹'
 export const fa = (v: number | string) => String(v).replace(/\d/g, (d) => FA[+d])
+/** digits in the page's script: Persian digits on Persian pages, Latin on English ones */
+export const digits = (v: number | string, locale: 'fa' | 'en') => (locale === 'fa' ? fa(v) : String(v))
 
 /** uncertain dating: everything before the Achaemenid foundation is approximate */
 export const isCirca = (y: number) => y < -560

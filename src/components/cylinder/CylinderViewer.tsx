@@ -1,5 +1,6 @@
 import { useId, useState } from 'react'
 import type { Locale } from '../../lib/i18n'
+import { digits } from '../../lib/format'
 
 /** Photogrammetry of the actual BM 90920. CC BY 4.0, @artfletch on Sketchfab. Not an official museum scan. */
 const SKETCHFAB = {
@@ -82,7 +83,7 @@ export function CylinderViewer({ locale }: { locale: Locale }) {
             <button type="button" className="glass rounded-full px-4 py-2 min-h-11" onClick={() => setI((p) => (p + n - 1) % n)} aria-label={fa ? 'عکس قبلی' : 'Previous photograph'}>
               {fa ? '‹ قبلی' : '‹ Prev'}
             </button>
-            <span className="glass rounded-full px-4 py-2 min-h-11 tabular-nums" dir="ltr">{i + 1}/{n}</span>
+            <span className="glass rounded-full px-4 py-2 min-h-11 tabular-nums" dir="ltr">{digits(i + 1, locale)}/{digits(n, locale)}</span>
             <button type="button" className="glass rounded-full px-4 py-2 min-h-11" onClick={() => setI((p) => (p + 1) % n)} aria-label={fa ? 'عکس بعدی' : 'Next photograph'}>
               {fa ? 'بعدی ›' : 'Next ›'}
             </button>
