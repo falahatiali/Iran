@@ -60,7 +60,7 @@ export const haftKhan: Story = {
       n: 52,
       poemUrl: 'https://ganjoor.net/ferdousi/shahname/kkavoos/sh11',
       poemTitle: 'خان هفتم رستم',
-      meaning: 'رستم گفت جگرگاه دیو سپید را دریدم؛ شاه دیگر از او بیمی ندارد.',
+      meaning: 'رستم به کاووس گفت جگرگاه دیو سپید را دریدم؛ شاه مازندران دیگر امیدی به او ندارد.',
     },
   ],
   characters: [

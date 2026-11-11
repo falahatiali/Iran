@@ -54,7 +54,7 @@ export const tahmuras: Story = {
       n: 37,
       poemUrl: 'https://ganjoor.net/ferdousi/shahname/tahmoores/sh1',
       poemTitle: 'تهمورث دیوبند',
-      meaning: 'نیمی از دیوان را با افسون به بند کشید و بقیه را با گرز گران شکست داد.',
+      meaning: 'دو بخش از سه بخش دیوان را با افسون به بند کشید و بقیه را با گرز گران از پا انداخت.',
     },
     {
       lines: ['نبشتن یکی نه، که نزدیک سی', 'چه رومی، چه تازی و چه پارسی'],
