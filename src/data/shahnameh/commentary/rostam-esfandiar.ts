@@ -688,7 +688,7 @@ export const rostamEsfandiarCommentary = {
       "glossary": [
         {
           "word": "زواره",
-          "meaning": "برادران رستم"
+          "meaning": "برادر رستم"
         },
         {
           "word": "فرامرز",
@@ -1157,7 +1157,7 @@ export const rostamEsfandiarCommentary = {
       "glossary": [
         {
           "word": "پشوتن",
-          "meaning": "برادران خردمند اسفندیار و مشاور همیشگی او"
+          "meaning": "برادر خردمند اسفندیار و رایزن همیشگی او"
         },
         {
           "word": "آزرم",
