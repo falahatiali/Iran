@@ -501,6 +501,21 @@ event / 2,500-year celebrations of the Persian monarchy, 1971 (local webp in pub
 - reception.webp ← EmpfangPersepolis.jpg — unknown photographer — PD-Iran — https://commons.wikimedia.org/wiki/File:EmpfangPersepolis.jpg
 - pasargadae-1.webp ← ShahanshahiIran2500YearsPasargad1.jpg — unknown photographer — PD-Iran — https://commons.wikimedia.org/wiki/File:ShahanshahiIran2500YearsPasargad1.jpg
 - pasargadae-7.webp ← ShahanshahiIran2500YearsPasargad7.jpg — unknown photographer — PD-Iran — https://commons.wikimedia.org/wiki/File:ShahanshahiIran2500YearsPasargad7.jpg
+
+event / The Iranian Constitutional Revolution, 1905–1911 (local webp in public/media/mashruteh/{key}.webp; licence tags read from the Commons wikitext 2026-11-11)
+- first-majles.webp ← First Majlis MPs.jpg — Unknown photographer — PD-Iran — https://commons.wikimedia.org/wiki/File:First_Majlis_MPs.jpg
+- mozaffar.webp ← Mozaffar ad-Din Shah Qajar.jpg — Unknown photographer — PD-Iran — https://commons.wikimedia.org/wiki/File:Mozaffar_ad-Din_Shah_Qajar.jpg
+- mozaffar-1902.webp ← Mozaffar ad-Din Shah 1902.jpg — Éd. Rocher-Dubois — PD-old-70 — https://commons.wikimedia.org/wiki/File:Mozaffar_ad-Din_Shah_1902.jpg
+- nuri-behbahani.webp ← AyatFazlollahNouriAndAyatBehbahani.jpg — Unknown photographer — PD-Iran — https://commons.wikimedia.org/wiki/File:AyatFazlollahNouriAndAyatBehbahani.jpg
+- mohammad-ali.webp ← Mohammad Ali Shah Qajar.png — Bain News Service — PD-Bain — https://commons.wikimedia.org/wiki/File:Mohammad_Ali_Shah_Qajar.png
+- majles-bombarded.webp ← Majlisbomb.jpg — Unknown photographer — PD-Iran — https://commons.wikimedia.org/wiki/File:Majlisbomb.jpg
+- bagh-e-shah.webp ← Prisoners in Bagh-e Shah 1908.jpg — Unknown photographer — PD-Iran — https://commons.wikimedia.org/wiki/File:Prisoners_in_Bagh-e_Shah_1908.jpg
+- sattar-baqer.webp ← Sattar khan and Bagir khan.jpg — Unknown photographer — PD-old — https://commons.wikimedia.org/wiki/File:Sattar_khan_and_Bagir_khan.jpg
+- tabriz-guns.webp ← Tabriz Constitutional Revolution.jpg — Unknown photographer — PD-Iran — https://commons.wikimedia.org/wiki/File:Tabriz_Constitutional_Revolution.jpg
+- tabriz-forces.webp ← Constitutional forces in Tabriz.jpg — Unknown photographer — PD-Iran — https://commons.wikimedia.org/wiki/File:Constitutional_forces_in_Tabriz.jpg
+- davachi.webp ← Revolutionists defending Davachi bridge, Tabriz (May 1, 1909).jpg — Hermanus Willem Koekkoek — PD-US — https://commons.wikimedia.org/wiki/File:Revolutionists_defending_Davachi_bridge,_Tabriz_(May_1,_1909).jpg
+- yeprem.webp ← Yeprem khan.jpg — Unknown photographer — PD-Iran — https://commons.wikimedia.org/wiki/File:Yeprem_khan.jpg
+- shuster.webp ← MorganShuster.jpg — Unknown photographer — PD-US — https://commons.wikimedia.org/wiki/File:MorganShuster.jpg
 - ceremony.webp ← ShahanshahAriamehrFest2500ShahanshahiIran.jpg — unknown photographer — PD-Iran — https://commons.wikimedia.org/wiki/File:ShahanshahAriamehrFest2500ShahanshahiIran.jpg
 - shahyad-opening.webp ← ShahyadAryamehrOpening24Mehr1350.jpg — Bellavista — PD-Iran — https://commons.wikimedia.org/wiki/File:ShahyadAryamehrOpening24Mehr1350.jpg
 - shahyad-aerial.webp ← Azadi Square & Azadi Tower, aerial view 1971.jpg — unknown photographer — PD-Iran — https://commons.wikimedia.org/wiki/File:Azadi_Square_%26_Azadi_Tower,_aerial_view_1971.jpg
