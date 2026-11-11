@@ -69,7 +69,7 @@ export const fereydun: Story = {
       n: 28,
       poemUrl: 'https://ganjoor.net/ferdousi/shahname/zahak/sh12',
       poemTitle: 'بند کردن فریدون، ضحاک را',
-      meaning: 'فریدون گرز گاوسر را برداشت و چنان بر سر ضحاک زد که خود او خرد شد.',
+      meaning: 'فریدون گرز گاوسر را برداشت و چنان بر سر ضحاک زد که کلاهخودش خرد شد.',
     },
     {
       lines: ['بیآورد ضحاک را چون نوند', 'به کوه دماوند کردش به بند'],

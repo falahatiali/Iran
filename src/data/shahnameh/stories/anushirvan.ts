@@ -60,14 +60,14 @@ export const anushirvan: Story = {
       n: 5,
       poemUrl: 'https://ganjoor.net/ferdousi/shahname/anooshirvan/sh32',
       poemTitle: 'یافتن بوزرجمهر در مرو',
-      meaning: 'آن کودک را بوزرجمهر می‌خواندند و چهره‌اش از مهر بر دفتر نشسته بود.',
+      meaning: 'آن کودک را بوزرجمهر می‌خواندند و از سر مهر روی در دفتر داشت؛ یعنی دل به خواندن سپرده بود.',
     },
     {
       lines: ['یکی تخت شطرنج کرده به رنج', 'تهی کرده از رنج شطرنج گنج'],
       n: 19,
       poemUrl: 'https://ganjoor.net/ferdousi/shahname/anooshirvan/sh63',
       poemTitle: 'داستان درنهادن شطرنج',
-      meaning: 'تختی شطرنج پیش آوردند که با رنج بسیار ساخته بودند و گنج را از رنج آن بازی تهی کرده بودند.',
+      meaning: 'تخت شطرنجی پیش آوردند که با رنج بسیار ساخته بودند و برای ساختن آن گنجی را تهی کرده بودند.',
     },
   ],
   characters: [
