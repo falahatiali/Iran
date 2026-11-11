@@ -49,11 +49,11 @@ export const eras: EraInfo[] = [
   },
   {
     id: 'kayanian',
-    title: 'کیانیان',
-    titleEn: 'The Kayanian age',
+    title: 'پهلوانان و کیانیان',
+    titleEn: 'The age of heroes and the Kayanians',
     kicker: 'عصر پهلوانان',
-    blurb: 'از منوچهر تا مرگ رستم: روزگار پهلوانان، سیمرغ، هفت‌خوان، کین کیخسرو و تراژدی‌های بزرگ.',
-    blurbEn: 'From Manuchehr to the death of Rostam: the heroic age of the Simorgh, the seven labours, Kay Khosrow’s revenge, and the great tragedies.',
+    blurb: 'از منوچهر، واپسین شاه بزرگ پیشدادی که سام و زال در روزگار او برمی‌آیند، تا کیانیان و مرگ رستم: روزگار پهلوانان، سیمرغ، هفت‌خوان، کین کیخسرو و تراژدی‌های بزرگ.',
+    blurbEn: 'From Manuchehr, the last great Pishdadian king, in whose reign Sam and Zal rise, through the Kayanians to the death of Rostam: the heroic age of the Simorgh, the seven labours, Kay Khosrow’s revenge, and the great tragedies.',
   },
   {
     id: 'sasanian',
