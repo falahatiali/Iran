@@ -163,6 +163,7 @@ export function Footer() {
         { href: '/en/battle/carrhae', title: 'The Battle of Carrhae', kicker: '53 BCE' },
       ]
     : [
+        { href: '/event/dey-1404', title: 'جاویدنامان ۱۸ و ۱۹ دی', kicker: 'دی ۱۴۰۴' },
         { href: '/event/mashruteh', title: 'انقلاب مشروطه', kicker: '۱۲۸۵ خورشیدی' },
         { href: '/event/28-mordad', title: '۲۸ مرداد ۱۳۳۲', kicker: 'کودتای ۱۹۵۳' },
         { href: '/event/jashn-2500', title: 'جشن‌های ۲۵۰۰ ساله', kicker: 'مهر ۱۳۵۰' },

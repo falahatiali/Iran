@@ -59,6 +59,11 @@ export const SITE_PAGES: readonly SitePage[] = [
     keywords: 'انقلاب مشروطه مشروطیت مجلس شورای ملی مظفرالدین شاه محمدعلی شاه ستارخان باقرخان بهبهانی طباطبایی Constitutional Revolution Mashruteh Majles 1906',
   },
   {
+    key: 'dey1404', searchable: true,
+    fa: { path: '/event/dey-1404', label: 'جاویدنامان ۱۸ و ۱۹ دی ۱۴۰۴', sub: 'یادنامهٔ خیزش دی‌ماه' },
+    keywords: 'دی 1404 ۱۸ دی ۱۹ دی جاویدنامان جانباختگان کشتار اعتراضات خیزش آزادی لاله January 2026 protests massacre Iran names victims',
+  },
+  {
     key: 'property', searchable: true,
     fa: { path: '/property', label: 'حقوق مالکیت در تاریخ ایران', sub: 'لوح‌ها، قراردادها، هزار داوری' },
     en: { path: '/en/property', label: 'Property rights in the history of Iran', sub: 'Tablets, contracts, Mādayān ī hazār dādestān' },

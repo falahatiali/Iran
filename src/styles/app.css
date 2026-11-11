@@ -126,3 +126,53 @@ p.read:lang(en), li.read:lang(en), .read:lang(en) > li, blockquote.read:lang(en)
 @media (max-width: 640px) {
   body { background-attachment: scroll; }
 }
+
+/* ── /event/dey-1404: memorial page ─────────────────────────────── */
+.dey { background: radial-gradient(120% 60% at 50% 0%, #3b0812 0%, #16030a 45%, #070206 100%); }
+.dey-hero { background: radial-gradient(60% 50% at 50% 38%, rgb(192 18 43 / .35), transparent 70%), radial-gradient(100% 80% at 50% 100%, #2a0610, transparent 70%); }
+.dey-blood { background: linear-gradient(to bottom, transparent, #16030a); }
+.dey-title {
+  background: linear-gradient(180deg, #fff1f2 0%, #fecdd3 35%, #e11d48 75%, #7f1d1d 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 6px 30px rgb(225 29 72 / .35));
+}
+.dey-tulip-wrap { filter: drop-shadow(0 0 28px rgb(255 59 78 / .55)); animation: dey-breathe 6s ease-in-out infinite; }
+.dey-card {
+  border-radius: 1.25rem; border: 1px solid rgb(253 164 175 / .16);
+  background: linear-gradient(160deg, rgb(127 29 29 / .28), rgb(10 2 6 / .7));
+  box-shadow: 0 20px 50px -25px rgb(0 0 0 / .9), inset 0 1px 0 rgb(255 255 255 / .05);
+  backdrop-filter: blur(8px);
+}
+.dey-manifesto {
+  border-radius: 2rem; border: 1px solid rgb(217 180 90 / .25);
+  background: radial-gradient(80% 60% at 50% 0%, rgb(155 28 49 / .25), transparent), rgb(8 2 5 / .65);
+  box-shadow: 0 40px 120px -40px rgb(155 28 49 / .6);
+}
+.dey-line::before { content: ''; position: absolute; inset-block: .5rem; inset-inline-start: .55rem; width: 2px; background: linear-gradient(to bottom, #e11d48, #7f1d1d 70%, transparent); }
+.dey-dot { width: 1.15rem; height: 1.15rem; border-radius: 9999px; background: radial-gradient(circle, #fecdd3, #e11d48 55%, #7f1d1d); box-shadow: 0 0 18px #e11d48; }
+.dey-wall > li { content-visibility: auto; contain-intrinsic-size: auto 64px; }
+.dey-name {
+  position: relative; border-radius: .9rem; padding: .7rem .9rem .7rem 2rem;
+  border: 1px solid rgb(253 164 175 / .1); background: linear-gradient(160deg, rgb(76 5 25 / .45), rgb(12 3 7 / .6));
+  transition: border-color .3s, background .3s;
+}
+.dey-name:hover { border-color: rgb(253 164 175 / .4); background: linear-gradient(160deg, rgb(127 29 29 / .55), rgb(12 3 7 / .6)); }
+.dey-flame { position: absolute; inset-inline-end: .8rem; top: 50%; width: .45rem; height: .8rem; margin-top: -.4rem; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; background: radial-gradient(circle at 50% 70%, #fff7d6, #fbbf24 45%, #e11d48 80%); box-shadow: 0 0 10px #f59e0b; animation: dey-flicker 2.4s ease-in-out infinite; }
+.dey-name:nth-child(3n) .dey-flame { animation-delay: -.8s; }
+.dey-name:nth-child(3n+1) .dey-flame { animation-delay: -1.6s; }
+.dey-petal {
+  position: absolute; top: -8%; border-radius: 80% 0 80% 0;
+  background: linear-gradient(135deg, #ff4d5e, #9f1239 70%, #4c0519); opacity: .75;
+  animation-name: dey-fall; animation-timing-function: linear; animation-iteration-count: infinite;
+}
+@keyframes dey-fall {
+  0% { transform: translate3d(0, -10vh, 0) rotate(0deg); opacity: 0; }
+  10% { opacity: .8; }
+  100% { transform: translate3d(var(--drift, 0), 105vh, 0) rotate(540deg); opacity: 0; }
+}
+@keyframes dey-flicker { 0%, 100% { transform: scale(1) translateY(0); opacity: 1; } 40% { transform: scale(1.12, .92) translateY(-1px); opacity: .85; } 70% { transform: scale(.94, 1.08); opacity: .95; } }
+@keyframes dey-breathe { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-6px) scale(1.03); } }
+@media (prefers-reduced-motion: reduce) {
+  .dey-petals { display: none; }
+  .dey-flame, .dey-tulip-wrap { animation: none; }
+}
