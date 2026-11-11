@@ -11,6 +11,27 @@ export const SITE_URL = resolvePublicSiteUrl({
 })
 export const SITE_NAME = 'تاریخ ایران'
 
+/** Share image for pages that have none of their own: the Cyrus Cylinder (Daderot, CC0; see public/media/ATTRIBUTION.txt). */
+export const DEFAULT_OG_IMAGE = '/media/cyrus-cylinder-daderot-cc0.jpg'
+
+/** Search engines show about 160 characters of a description; longer ones are cut mid-word.
+ * Shorten at a sentence end when one falls late enough, otherwise at a word boundary with an ellipsis. */
+export function clampDescription(text: string, max = 160): string {
+  const t = text.replace(/\s+/g, ' ').trim()
+  if (t.length <= max) return t
+  const head = t.slice(0, max)
+  let sentence = -1
+  for (const m of head.matchAll(/[.!?؟](?= )/g)) {
+    // a dot that closes a date abbreviation (پ.م. / ه.ق. / م.) is not a sentence end
+    if (m[0] === '.' && /(^|[\s(])(پ\.م|ق\.م|ه\.ق|ه\.ش|[مقش]|BCE?|CE|AD|c|ca)$/.test(head.slice(0, m.index))) continue
+    sentence = m.index
+  }
+  if (sentence >= max * 0.5) return head.slice(0, sentence + 1)
+  const space = head.lastIndexOf(' ')
+  const cut = head.slice(0, space > max * 0.5 ? space : max - 1).replace(/[\s،؛,;:(–—-]+$/, '')
+  return cut + '…'
+}
+
 export function seo({
   title,
   description,
@@ -26,11 +47,13 @@ export function seo({
   locale?: string
   alternates?: { hrefLang: string; path: string }[]
   noindex?: boolean
-  /** site-relative or absolute og:image; switches the Twitter card to summary_large_image */
+  /** site-relative or absolute og:image; pages without one share DEFAULT_OG_IMAGE */
   image?: string
 }) {
-  const img = image ? (image.startsWith('http') ? image : SITE_URL + image) : undefined
+  const src = image ?? DEFAULT_OG_IMAGE
+  const img = src.startsWith('http') ? src : SITE_URL + src
   const full = title === SITE_NAME ? title : `${title} | ${SITE_NAME}`
+  description = clampDescription(description)
   return {
     meta: [
       { title: full },
@@ -41,8 +64,9 @@ export function seo({
       { property: 'og:locale', content: locale },
       { property: 'og:url', content: SITE_URL + path },
       { property: 'og:site_name', content: SITE_NAME },
-      { name: 'twitter:card', content: img ? 'summary_large_image' : 'summary' },
-      ...(img ? [{ property: 'og:image', content: img }, { name: 'twitter:image', content: img }] : []),
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { property: 'og:image', content: img },
+      { name: 'twitter:image', content: img },
       ...(noindex ? [{ name: 'robots', content: 'noindex, follow' }] : []),
     ],
     links: [
