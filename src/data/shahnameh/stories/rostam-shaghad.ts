@@ -12,7 +12,7 @@ export const rostamShaghad: Story = {
   summary: 'شغاد با شاه کابل در نخچیرگاه چاه حربه‌دار می‌کند. رخش بو می‌برد، اما رستم و رخش در دام می‌افتند.',
   summaryEn: 'Shaghad and the king of Kabul dig a hidden pit; Rostam and Rakhsh fall, and Rostam shoots his brother through a plane tree.',
   lede: 'جهان‌پهلوان نه در میدان جنگ با هماورد، که در شکارگاه کابل، به نیرنگ برادر ناتنی از پا می‌افتد. واپسین تیر او از بن چاه رها می‌شود.',
-  readingMinutes: 8,
+  readingMinutes: 7,
   heroId: 'rostam-shaghad',
   sections: [
     {

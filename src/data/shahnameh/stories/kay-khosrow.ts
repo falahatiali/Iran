@@ -12,7 +12,7 @@ export const kayKhosrow: Story = {
   summary: 'کیخسرو در توران زاده می‌شود، گیو هفت سال او را می‌جوید، کین سیاوش را می‌ستاند و سرانجام از پادشاهی کناره می‌گیرد.',
   summaryEn: 'Born in Turan, found by Giv after seven years, Kay Khosrow avenges Siyavash and later leaves the throne.',
   lede: 'کیخسرو فرزند سیاوش و فرنگیس است: نیمه ایرانی، نیمه تورانی. شاهنامه او را پادشاهی می‌داند که هم کین پدر را تمام می‌کند و هم، وقتی از فرّ خود می‌ترسد، تاج را فرو می‌گذارد.',
-  readingMinutes: 11,
+  readingMinutes: 10,
   heroId: 'kaykhosrow-battle',
   sections: [
     {

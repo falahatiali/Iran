@@ -12,7 +12,7 @@ export const hushang: Story = {
   summary: 'هوشنگ پس از کیومرث چهل سال پادشاهی می‌کند، آهن را از سنگ جدا می‌سازد، آتش را از برخورد دو سنگ می‌یابد و جشن سده را بنیان می‌نهد.',
   summaryEn: 'Hushang discovers fire, founds the Sadeh festival, and teaches metalwork, irrigation and farming.',
   lede: 'هوشنگ، نوهٔ کیومرث، تاج نیایشاه را با رای و داد بر سر می‌نهد و جهان را یک‌سر آباد می‌کند. بزرگ‌ترین هدیه‌اش به مردم، آتش است.',
-  readingMinutes: 6,
+  readingMinutes: 8,
   heroId: 'hushang-sadeh',
   sections: [
     {

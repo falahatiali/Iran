@@ -12,7 +12,7 @@ export const siyavash: Story = {
   summary: 'سیاوش که در زابل نزد رستم پرورده شده، تهمت سودابه را با گذشتن از کوه آتش پاسخ می‌دهد. پیمان را نمی‌شکند، به توران می‌رود و بی‌گناه کشته می‌شود.',
   summaryEn: 'Siyavash rides through a mountain of fire to prove his innocence, keeps his word, and is later killed in Turan; Rostam avenges him.',
   lede: 'سیاوش فرزند کاووس است، اما خوی او بیشتر به پرورنده‌اش رستم می‌ماند: شرم، پیمان‌داری و پاکی. همین پاکی، هم او را از آتش می‌رهاند و هم در توران به خون می‌کشد.',
-  readingMinutes: 13,
+  readingMinutes: 15,
   heroId: 'siyavash-fire',
   sections: [
     {

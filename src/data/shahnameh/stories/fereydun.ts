@@ -12,7 +12,7 @@ export const fereydun: Story = {
   summary: 'کاوهٔ آهنگر محضر دروغین ضحاک را می‌درد و مردم را به سوی فریدون می‌خواند. فریدون ضحاک را با گرز گاوسر می‌کوبد و به فرمان سروش در دماوند به بند می‌کشد.',
   summaryEn: 'Kaveh the blacksmith tears Zahhak’s false decree and leads the people to Fereydun, who binds Zahhak on Mount Damavand.',
   lede: 'شب هزارساله با فریاد یک آهنگر شکافته می‌شود. کاوه نمی‌گوید من شاه تازه‌ام؛ می‌گوید من دادخواهم. فریدون آن فریاد را به پیروزی می‌رساند.',
-  readingMinutes: 9,
+  readingMinutes: 10,
   heroId: 'fereydun-zahhak',
   sections: [
     {

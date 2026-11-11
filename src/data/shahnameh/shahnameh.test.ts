@@ -48,6 +48,22 @@ test('every ready story has a child-friendly retelling, labelled commentary, cha
   }
 })
 
+test('reading time follows the length of each story page', () => {
+  // About 75 words a minute: verses are read slowly, with their meanings beside them.
+  for (const s of readyStories) {
+    const text = [
+      s.lede,
+      ...s.sections.flatMap((sec) => sec.paragraphs),
+      ...s.verses.flatMap((v) => [...v.lines, v.meaning ?? '']),
+      ...s.characters.map((c) => c.blurb),
+      ...s.ourView,
+    ].join(' ')
+    const words = text.split(/\s+/).filter(Boolean).length
+    const expected = Math.round(words / 75)
+    assert.ok(Math.abs(s.readingMinutes - expected) <= 1, `${s.slug}: ${s.readingMinutes} min for ${words} words, expected about ${expected}`)
+  }
+})
+
 test('verses are exact couplets cited to Ganjoor', () => {
   for (const s of readyStories) {
     for (const v of s.verses) {

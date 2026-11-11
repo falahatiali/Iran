@@ -12,7 +12,7 @@ export const bahramGur: Story = {
   summary: 'بهرام گور بر تخت می‌نشیند، دیوان خراج را در آتش می‌نهد، در شکار گور نر و ماده را به یک تیر می‌دوزد و خراج هفت سال را می‌بخشد.',
   summaryEn: 'Bahram Gur burns the tax ledgers, pins two onagers with one arrow, and remits tribute for seven years.',
   lede: 'از اینجا شاهنامه به پادشاهی‌هایی نزدیک می‌شود که با حافظهٔ تاریخی ایران آشناترند. بهرام گور در کتاب، هم شکارچی چیره‌دست است و هم شهریاری که نامش با بخشش و داد گره خورده است.',
-  readingMinutes: 9,
+  readingMinutes: 7,
   heroId: 'bahram-onagers',
   sections: [
     {

@@ -12,7 +12,7 @@ export const jamshid: Story = {
   summary: 'جمشید هفتصد سال جهان را می‌آراید، نوروز را بنیاد می‌نهد و سیصد سال مرگ از گیتی دور می‌شود؛ تا آن‌که منی می‌کند و فرّ یزدان از او می‌گردد.',
   summaryEn: 'Jamshid builds a golden age and founds Nowruz, then loses the divine farr through pride.',
   lede: 'گرانمایه جمشید، فرزند تهمورث، با دلی پر از پند پدر بر تخت نشست. جهان سرتاسر او را رهی شد؛ و همین شکوه، سرانجام آزمونی برای جان او گردید.',
-  readingMinutes: 9,
+  readingMinutes: 11,
   heroId: 'jamshid-court',
   sections: [
     {

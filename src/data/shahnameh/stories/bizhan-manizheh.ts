@@ -12,7 +12,7 @@ export const bizhanManizheh: Story = {
   summary: 'بیژن برای راندن گرازان به مرز می‌رود، به ایوان منیژه راه می‌یابد و در چاه افراسیاب زندانی می‌شود تا رستم از راه برسد.',
   summaryEn: 'Bizhan is thrown into a pit in Turan after meeting Manizheh; she keeps him alive until Rostam comes.',
   lede: 'فردوسی این داستان را در شبی قیرگون آغاز می‌کند: یار مهربانش چراغ می‌آورد و از دفتر پهلوی داستانی می‌خواهد. آنچه می‌آید، عشق و رنج منیژه است در کنار چاه بیژن.',
-  readingMinutes: 10,
+  readingMinutes: 8,
   heroId: 'bizhan-pit',
   sections: [
     {

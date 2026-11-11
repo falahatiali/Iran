@@ -12,7 +12,7 @@ export const keyumars: Story = {
   summary: 'کیومرث آیین تخت و کلاه را می‌آورد، در کوهستان با پوست پلنگ زندگی می‌کند و پس از مرگ پسرش سیامک، کین را به هوشنگ می‌سپارد.',
   summaryEn: 'Keyumars, the first king in the Shahnameh, lives in the mountains, teaches a new way of life, and mourns his son Siamak.',
   lede: 'شاهنامه از پرسشی ساده آغاز می‌شود: نخستین کسی که در جهان تاج بر سر نهاد که بود؟ پاسخ دهقانِ سخن‌گو، کیومرث است.',
-  readingMinutes: 7,
+  readingMinutes: 9,
   heroId: 'gayumars-court',
   sections: [
     {

@@ -12,7 +12,7 @@ export const zal: Story = {
   summary: 'سام از سپیدی موی نوزادش می‌هراسد و او را در البرز رها می‌کند. سیمرغ کودک را می‌پرورد و چون سام پشیمان بازمی‌گردد، پری از خود به زال می‌سپارد.',
   summaryEn: 'Abandoned for his white hair, Zal is raised by the Simorgh, who later returns him to Sam with a magic feather.',
   lede: 'در روزگار منوچهر، جهان‌پهلوان سام صاحب فرزندی می‌شود که مویش چون پیران سپید است. ترس پدر، کودک را به کوه می‌فرستد؛ مهر سیمرغ او را به زندگی برمی‌گرداند.',
-  readingMinutes: 8,
+  readingMinutes: 7,
   heroId: 'zal-simurgh',
   sections: [
     {

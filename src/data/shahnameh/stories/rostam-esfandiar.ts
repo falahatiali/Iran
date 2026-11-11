@@ -12,7 +12,7 @@ export const rostamEsfandiar: Story = {
   summary: 'گشتاسپ تاج را به بستن رستم پیوند می‌زند. دو پهلوان به هم می‌رسند و راز تیر گز، چشم اسفندیار را فرو می‌بندد.',
   summaryEn: 'Goshtasp ties the crown to chaining Rostam; the tragic duel ends with the tamarisk arrow.',
   lede: 'اسفندیار تاج وعده‌داده‌شده را می‌خواهد و گشتاسپ می‌گوید نخست رستم را به بند آر. یکی تن به بند نمی‌دهد و دیگری از فرمان پدر سر نمی‌پیچد. پایان این راه، تیری است از چوب گز.',
-  readingMinutes: 11,
+  readingMinutes: 8,
   heroId: 'rostam-esfandiar',
   sections: [
     {

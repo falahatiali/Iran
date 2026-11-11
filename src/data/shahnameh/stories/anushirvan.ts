@@ -12,7 +12,7 @@ export const anushirvan: Story = {
   summary: 'کسری نوشین‌روان با سخن داد بر تخت می‌نشیند، بوزرجمهر را در مرو می‌یابد و راز تخت شطرنج هند را می‌گشاید.',
   summaryEn: 'Kasra Anushirvan crowns himself with a speech on justice, finds Bozorgmehr in Merv, and solves the riddle of Indian chess.',
   lede: 'در پایان شاهنامه، کسری نوشین‌روان چهرهٔ شهریاری است که نامش با داد گره خورده است. کنار او نوجوانی از مرو می‌بالد: بوزرجمهر، که خواب شاه را می‌گزارد و بازی شطرنج را می‌گشاید.',
-  readingMinutes: 9,
+  readingMinutes: 7,
   heroId: 'bozorgmehr-chess',
   sections: [
     {

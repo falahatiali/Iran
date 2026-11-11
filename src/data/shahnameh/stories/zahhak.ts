@@ -12,7 +12,7 @@ export const zahhak: Story = {
   summary: 'ضحاک تازی هزار سال شهریار می‌شود؛ هنر خوار و جادویی ارجمند می‌گردد و هر روز مغز جوانان خوراک مارهای شانه‌اش می‌شود.',
   summaryEn: 'Zahhak’s thousand-year reign turns virtue cheap and sorcery honoured, and the brains of the young feed the snakes on his shoulders.',
   lede: 'با رفتن فرّ از جمشید، راه برای شهریاری دیگر گشوده شد. فردوسی این هزار سال را نه عصر شکوه، که شب درازی می‌داند که در آن راستی پنهان شد.',
-  readingMinutes: 8,
+  readingMinutes: 7,
   heroId: 'zahhak-folio',
   sections: [
     {
