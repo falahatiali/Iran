@@ -176,3 +176,8 @@ p.read:lang(en), li.read:lang(en), .read:lang(en) > li, blockquote.read:lang(en)
   .dey-petals { display: none; }
   .dey-flame, .dey-tulip-wrap { animation: none; }
 }
+.dey-banner {
+  border: 1px solid rgb(253 164 175 / .25);
+  background: radial-gradient(60% 90% at 70% 40%, rgb(192 18 43 / .45), transparent 70%), radial-gradient(120% 120% at 50% 100%, #2a0610, #0b0306 70%);
+  box-shadow: 0 40px 120px -40px rgb(225 29 72 / .55), inset 0 1px 0 rgb(255 255 255 / .06);
+}
