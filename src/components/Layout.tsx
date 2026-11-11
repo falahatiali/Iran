@@ -157,11 +157,13 @@ export function Footer() {
       ]
   const events = isEn
     ? [
+        { href: '/en/event/mashruteh', title: 'The Constitutional Revolution', kicker: '1905–1911' },
         { href: '/en/event/28-mordad', title: '19 August 1953', kicker: '28 Mordad 1332' },
         { href: '/en/event/jashn-2500', title: 'The 2,500-year celebrations', kicker: 'October 1971' },
         { href: '/en/battle/carrhae', title: 'The Battle of Carrhae', kicker: '53 BCE' },
       ]
     : [
+        { href: '/event/mashruteh', title: 'انقلاب مشروطه', kicker: '۱۲۸۵ خورشیدی' },
         { href: '/event/28-mordad', title: '۲۸ مرداد ۱۳۳۲', kicker: 'کودتای ۱۹۵۳' },
         { href: '/event/jashn-2500', title: 'جشن‌های ۲۵۰۰ ساله', kicker: 'مهر ۱۳۵۰' },
         { href: '/battle/carrhae', title: 'نبرد حران', kicker: '۵۳ پیش از میلاد' },

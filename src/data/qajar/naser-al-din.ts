@@ -99,7 +99,17 @@ export const naserDossier: DossierSection[] = [
      ['Yarshater describes Mozaffar al-Din Shah as “weak, pleasure-loving, simple-minded, and considerate”. The revolution was born of an alliance of reformist ulama, merchants and intellectuals; Iranica writes that the vagueness of the demand for a “house of justice” made a compromise between the court and the ulama in sanctuary possible.', 'The two Iranica articles do not agree about the farmān of 5 August (the Constitutional edict, or a vague text that was rejected); we show the disagreement.']],
     [['پسر او، محمدعلی‌شاه، در ۲۳ ژوئن ۱۹۰۸ مجلس را به توپ بست و در ژوئیهٔ ۱۹۰۹ مشروطه‌خواهان تهران را گرفتند و او را برکنار کردند. ایرانیکا می‌نویسد خواسته‌های این دوره، مانند دولت متمرکز با ارتش نیرومند و دیوان گسترده، دستور کار اصلاحات آغاز دورهٔ رضاشاه را ساخت.'],
      ['His son, Mohammad-Ali Shah, had the Majles bombarded on 23 June 1908, and in July 1909 the constitutionalists took Tehran and deposed him. Iranica writes that the goals of this era, such as a centralised state with a powerful army and an extensive bureaucracy, set the agenda for the early reforms under Reza Shah.']],
-    CRI.concat(YA), { photos: ['first-majles'], quotes: [{ text: 'the principles (asās) of mašrūṭīyat cannot be suspended', fa: '«اساس مشروطیت تعطیل‌بردار نیست.»', ref: 'Supplementary Fundamental Law (1907), Art. 7, in E. G. Browne, The Persian Revolution, pp. 372-73, quoted in Encyclopaedia Iranica, “Constitutional Revolution i”', source: 'iranica-constitutional-i' }] }),
+    CRI.concat(YA), { link: {
+      href: { fa: '/event/mashruteh', en: '/en/event/mashruteh' },
+      kicker: { fa: 'صفحهٔ ویژه', en: 'Dedicated page' },
+      label: { fa: 'انقلاب مشروطه', en: 'The Constitutional Revolution' },
+      blurb: {
+        fa: 'از بست شاه عبدالعظیم و سفارت تا فرمان مشروطیت، مجلس اول، به توپ بستن مجلس، ایستادگی تبریز و اولتیماتوم ۱۹۱۱.',
+        en: 'From the sanctuaries at Shah Abd al-Azim and the legation to the rescript, the First Majles, the bombardment, the resistance of Tabriz and the 1911 ultimatum.',
+      },
+      thumb: '/media/mashruteh/first-majles.webp',
+      thumbAlt: { fa: 'نمایندگان مجلس اول', en: 'Members of the First Majles' },
+    }, photos: ['first-majles'], quotes: [{ text: 'the principles (asās) of mašrūṭīyat cannot be suspended', fa: '«اساس مشروطیت تعطیل‌بردار نیست.»', ref: 'Supplementary Fundamental Law (1907), Art. 7, in E. G. Browne, The Persian Revolution, pp. 372-73, quoted in Encyclopaedia Iranica, “Constitutional Revolution i”', source: 'iranica-constitutional-i' }] }),
 ]
 
 export const naserAlDin: FeaturedKing = {

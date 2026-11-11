@@ -81,6 +81,11 @@ function KingPage() {
                   <Link to="/cylinder" className="text-gold hover:underline min-h-11 inline-flex items-center">صفحهٔ پرچم: استوانهٔ کوروش (BM 90920)</Link>
                 </p>
               )}
+              {['naser-al-din', 'mozaffar-al-din', 'mohammad-ali-shah', 'ahmad-shah'].includes(r.id) && (
+                <p className="mt-4">
+                  <a href="/event/mashruteh" className="text-gold hover:underline min-h-11 inline-flex items-center">صفحهٔ ویژه: انقلاب مشروطه (۱۲۸۴ تا ۱۲۹۰ خورشیدی) ←</a>
+                </p>
+              )}
               {featured && (
                 <p className="mt-4 flex flex-wrap gap-2">
                   <a href="#fk-h" className="text-gold hover:underline min-h-11 inline-flex items-center">پروندهٔ ویژه: نقشهٔ متحرک و تحلیل مالکیت ↓</a>
