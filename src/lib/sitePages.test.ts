@@ -3,7 +3,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { test } from 'node:test'
 import { PAGE_PAIRS, SITE_PAGES, STATIC_PATHS, pageAlternates } from './sitePages'
-import { REDIRECT_PATHS, publicPaths } from './publicPaths'
+import { PRIVATE_PATHS, REDIRECT_PATHS, publicPaths } from './publicPaths'
 import { siblingLocalePath } from './i18n'
 
 const root = path.resolve(import.meta.dirname, '../..')
@@ -37,7 +37,7 @@ test('every route file is reachable from the sitemap (or is a legacy redirect)',
       const prefix = route.slice(0, route.indexOf('$'))
       assert.ok([...paths].some((p) => p.startsWith(prefix) && p.length > prefix.length), `no sitemap path for ${route}`)
     } else {
-      assert.ok(paths.has(route) || REDIRECT_PATHS.includes(route), `route ${route} is missing from SITE_PAGES / the sitemap`)
+      assert.ok(paths.has(route) || REDIRECT_PATHS.includes(route) || PRIVATE_PATHS.includes(route), `route ${route} is missing from SITE_PAGES / the sitemap`)
     }
   }
 })

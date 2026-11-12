@@ -23,3 +23,6 @@ export function publicPaths(): string[] {
 
 /** Legacy paths that answer with a redirect: valid link targets, but not listed in the sitemap. */
 export const REDIRECT_PATHS: readonly string[] = ['/darius', '/en/darius']
+
+/** Routes that exist but are not for search engines (noindex, kept out of the sitemap). */
+export const PRIVATE_PATHS: readonly string[] = ['/admin/comments']

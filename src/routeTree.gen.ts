@@ -17,6 +17,7 @@ import { Route as DariusRouteImport } from './routes/darius'
 import { Route as KingsRouteImport } from './routes/kings'
 import { Route as PropertyRouteImport } from './routes/property'
 import { Route as TimelineRouteImport } from './routes/timeline'
+import { Route as AdminCommentsRouteImport } from './routes/admin/comments'
 import { Route as BattleCarrhaeRouteImport } from './routes/battle/carrhae'
 import { Route as DynastySlugRouteImport } from './routes/dynasty/$slug'
 import { Route as EnAboutRouteImport } from './routes/en/about'
@@ -79,6 +80,11 @@ const PropertyRoute = PropertyRouteImport.update({
 const TimelineRoute = TimelineRouteImport.update({
   id: '/timeline',
   path: '/timeline',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminCommentsRoute = AdminCommentsRouteImport.update({
+  id: '/admin/comments',
+  path: '/admin/comments',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BattleCarrhaeRoute = BattleCarrhaeRouteImport.update({
@@ -206,6 +212,7 @@ export interface FileRoutesByFullPath {
   '/kings': typeof KingsRoute
   '/property': typeof PropertyRoute
   '/timeline': typeof TimelineRoute
+  '/admin/comments': typeof AdminCommentsRoute
   '/battle/carrhae': typeof BattleCarrhaeRoute
   '/dynasty/$slug': typeof DynastySlugRoute
   '/en/about': typeof EnAboutRoute
@@ -239,6 +246,7 @@ export interface FileRoutesByTo {
   '/kings': typeof KingsRoute
   '/property': typeof PropertyRoute
   '/timeline': typeof TimelineRoute
+  '/admin/comments': typeof AdminCommentsRoute
   '/battle/carrhae': typeof BattleCarrhaeRoute
   '/dynasty/$slug': typeof DynastySlugRoute
   '/en/about': typeof EnAboutRoute
@@ -273,6 +281,7 @@ export interface FileRoutesById {
   '/kings': typeof KingsRoute
   '/property': typeof PropertyRoute
   '/timeline': typeof TimelineRoute
+  '/admin/comments': typeof AdminCommentsRoute
   '/battle/carrhae': typeof BattleCarrhaeRoute
   '/dynasty/$slug': typeof DynastySlugRoute
   '/en/about': typeof EnAboutRoute
@@ -308,6 +317,7 @@ export interface FileRouteTypes {
     | '/kings'
     | '/property'
     | '/timeline'
+    | '/admin/comments'
     | '/battle/carrhae'
     | '/dynasty/$slug'
     | '/en/about'
@@ -341,6 +351,7 @@ export interface FileRouteTypes {
     | '/kings'
     | '/property'
     | '/timeline'
+    | '/admin/comments'
     | '/battle/carrhae'
     | '/dynasty/$slug'
     | '/en/about'
@@ -374,6 +385,7 @@ export interface FileRouteTypes {
     | '/kings'
     | '/property'
     | '/timeline'
+    | '/admin/comments'
     | '/battle/carrhae'
     | '/dynasty/$slug'
     | '/en/about'
@@ -408,6 +420,7 @@ export interface RootRouteChildren {
   KingsRoute: typeof KingsRoute
   PropertyRoute: typeof PropertyRoute
   TimelineRoute: typeof TimelineRoute
+  AdminCommentsRoute: typeof AdminCommentsRoute
   BattleCarrhaeRoute: typeof BattleCarrhaeRoute
   DynastySlugRoute: typeof DynastySlugRoute
   EnAboutRoute: typeof EnAboutRoute
@@ -489,6 +502,13 @@ declare module '@tanstack/react-router' {
       path: '/timeline'
       fullPath: '/timeline'
       preLoaderRoute: typeof TimelineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/comments': {
+      id: '/admin/comments'
+      path: '/admin/comments'
+      fullPath: '/admin/comments'
+      preLoaderRoute: typeof AdminCommentsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/battle/carrhae': {
@@ -664,6 +684,7 @@ const rootRouteChildren: RootRouteChildren = {
   KingsRoute: KingsRoute,
   PropertyRoute: PropertyRoute,
   TimelineRoute: TimelineRoute,
+  AdminCommentsRoute: AdminCommentsRoute,
   BattleCarrhaeRoute: BattleCarrhaeRoute,
   DynastySlugRoute: DynastySlugRoute,
   EnAboutRoute: EnAboutRoute,

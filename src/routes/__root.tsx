@@ -1,6 +1,6 @@
 import { HeadContent, Link, Outlet, Scripts, createRootRoute, useRouter, useRouterState } from '@tanstack/react-router'
 import { MotionConfig } from 'motion/react'
-import { useEffect, useState } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import appCss from '../styles/app.css?url'
 import { getOverview } from '../server/api'
 import { BackToTop, Footer, Header } from '../components/Layout'
@@ -9,6 +9,9 @@ import { ReadingTool } from '../components/ReadingTool'
 import { READING_BOOT_SCRIPT } from '../lib/reading'
 import { GA_ID, gaEnabled, trackPageView } from '../lib/analytics'
 import { ConsentBanner } from '../components/ConsentBanner'
+
+// Comments load after the page is interactive and never block first paint.
+const CommentsRoot = lazy(() => import('../components/comments/CommentsRoot'))
 
 export const Route = createRootRoute({
   loader: () => getOverview(),
@@ -99,7 +102,7 @@ function RootLayout() {
   return (
     <MotionConfig reducedMotion="user">
       <Header data={data} />
-      <main id="main"><Outlet /></main>
+      <main id="main"><Outlet /><ClientComments /></main>
       <Footer />
       <BackToTop />
       <ReadingTool locale={isEn ? 'en' : 'fa'} />
@@ -135,4 +138,14 @@ function ClientConsent({ isEn }: { isEn: boolean }) {
   const [mounted, setMounted] = useState(false)
   useEffect(() => setMounted(true), [])
   return mounted && gaEnabled() ? <ConsentBanner locale={isEn ? 'en' : 'fa'} /> : null
+}
+
+function ClientComments() {
+  const [ready, setReady] = useState(false)
+  useEffect(() => {
+    const w = window as Window & { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number }
+    if (w.requestIdleCallback) w.requestIdleCallback(() => setReady(true), { timeout: 2500 })
+    else setTimeout(() => setReady(true), 600)
+  }, [])
+  return ready ? <Suspense fallback={null}><CommentsRoot /></Suspense> : null
 }

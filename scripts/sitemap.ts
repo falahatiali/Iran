@@ -33,5 +33,5 @@ const paths = publicPaths()
 const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${paths.map((p) => `  <url><loc>${host}${p}</loc></url>`).join('\n')}\n</urlset>\n`
 const pub = path.resolve(import.meta.dirname, '../public')
 fs.writeFileSync(path.join(pub, 'sitemap.xml'), xml)
-fs.writeFileSync(path.join(pub, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${host}/sitemap.xml\n`)
+fs.writeFileSync(path.join(pub, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /admin/\nSitemap: ${host}/sitemap.xml\n`)
 console.log(`sitemap: ${paths.length} urls`)
