@@ -332,6 +332,13 @@ sudo journalctl -u docker -f | grep iran-history
 
 ---
 
+## 💬 نظرها • Comments
+
+The comments system needs only runtime variables in the server env file (`/home/deploy/envFiles/.env.iran-history`), with no rebuild:
+`ADMIN_EMAILS`, `MAIL_FROM`, and one mail transport (`MAIL_TRANSPORT=smtp` + `SMTP_*`, or `MAIL_TRANSPORT=resend` + `RESEND_API_KEY`).
+Without mail, sign-in stays off in production. Data lives in `/data/comments.db` on the `iran-history-data` volume, apart from the content DB that is reseeded on each boot.
+Details: [docs/COMMENTS.md](docs/COMMENTS.md).
+
 ## 🔐 امنیت
 
 ### بهترین روش‌ها اعمال‌شده
