@@ -25,9 +25,42 @@ Readers can comment on any paragraph, verse, heading, or list item of any page, 
 
 ## Data
 
-The data lives in a separate SQLite file, `comments.db`, next to `DATABASE_URL`, which is `/data/comments.db` in the container on the `iran-history-data` volume. Override it with `COMMENTS_DATABASE_URL`. It is kept apart from `iran.db` because the content database is rolled back and reseeded on every build and boot, and readers' data must never be. The schema is versioned in `src/server/comments/schema.ts` and applied automatically on first use.
+The data lives in a separate SQLite file, `comments.db`, next to `DATABASE_URL`, which is `/data/comments.db` in the container on the `iran-history-data` volume. Override it with `COMMENTS_DATABASE_URL`. It is kept apart from `iran.db` because the content database is rolled back and reseeded on every build and boot, and readers' data must never be. The schema is versioned in `src/server/comments/storage/sqlite/schema.ts` and applied automatically on first use.
 
 **Backups.** Use `sqlite3 /data/comments.db ".backup /data/comments-$(date +%F).db"` inside the container, or copy the volume.
+
+## Storage adapters
+
+The comment and sign-in code never talks to a database directly. It follows the repository pattern:
+
+- **Contract.** `src/server/comments/storage/types.ts` defines the plain domain types (`User`, `LoginCode`, `Session`, `Comment`) and one repository interface per aggregate: `UserRepository`, `LoginCodeRepository`, `SessionRepository`, `RateLimitRepository`, `CommentRepository` and `SecretRepository`. Together they form `Storage`. Nothing in it mentions SQL, rows or columns.
+- **Adapters.** `storage/sqlite/` is the production adapter, and the only folder that holds SQL or imports `@libsql/client`. `storage/memory/` is a Map-based adapter used by the tests.
+- **Composition root.** `storage/index.ts` lists the adapters in `ADAPTERS` and picks one. `service.ts` receives a `Storage` through `createService({ storage, mailer, config })` and depends only on the interfaces, which keeps the dependency direction inward (SOLID: dependency inversion, interface segregation). The only place that builds the real thing is `commentsApi.ts`, with `createStorage()`.
+- **Proof.** `storage/contract.test.ts` runs the same repository contract against every entry in `ADAPTERS`, and the full service suite (`service.test.ts`) runs once per adapter. The same file fails the build if SQL or a database client appears anywhere in `src/server/comments` or `commentsApi.ts` outside `storage/sqlite/`.
+
+**Switching databases is one line.** Either set the server env var
+
+```
+COMMENTS_DB_DRIVER=mongodb
+```
+
+or change the default in `src/server/comments/storage/index.ts`:
+
+```ts
+export const DEFAULT_DRIVER: DriverName = 'sqlite' // ← the one line
+```
+
+An unknown driver name fails at startup with the list of known ones. `memory` keeps nothing across restarts, so it is for tests only.
+
+**Adding an adapter, MongoDB as the example:**
+
+1. Create `src/server/comments/storage/mongodb/index.ts` that exports `createMongoStorage: StorageFactory`. It gets `{ url, env }` (`url` comes from `COMMENTS_DATABASE_URL`) and returns an object that implements `Storage`: the six repositories plus `close()`. Use `storage/memory/index.ts` as the readable reference for the expected behaviour, for example `comments.delete` also removes replies, `codes.consume` succeeds only once, and lists come back in creation order.
+2. Add one entry to `ADAPTERS` in `storage/index.ts`: `mongodb: createMongoStorage`.
+3. Make `npm test` pass. The contract suite and the service suite pick up the new adapter automatically. If it needs a running server, point the test at it with an env var.
+4. Move existing data with a one-off script that reads through one adapter and writes through the other. Both speak the same domain types, so the script needs no SQL.
+5. Set `COMMENTS_DB_DRIVER=mongodb` and `COMMENTS_DATABASE_URL=mongodb://…` in the server env, and redeploy.
+
+The service, the API, the UI and the security rules do not change.
 
 ## Configuration
 

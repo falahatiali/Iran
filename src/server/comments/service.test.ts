@@ -2,26 +2,30 @@ import assert from 'node:assert/strict'
 import fs from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
-import { test } from 'node:test'
-import { openStore } from './store'
+import { test as nodeTest } from 'node:test'
+import { createStorage, type DriverName } from './storage'
 import { createService, LIMITS } from './service'
 import { memoryMailer } from './mailer'
 import { readConfig } from './config'
 import { AppError } from './errors'
 import { cleanAnchor, cleanPath, cleanText, normalizeCode, normalizeEmail } from './sanitize'
-import { hashPassword, verifyPassword } from './crypto'
+import { hashPassword, sha256, verifyPassword } from './crypto'
 import { codeEmail } from './emailTemplate'
 import { publicPaths } from '../../lib/publicPaths'
 
+// The whole behaviour suite runs once per storage adapter: the service must not care which one it gets.
+for (const driver of ['sqlite', 'memory'] as DriverName[]) {
+const test = (name: string, fn: () => void | Promise<void>) => nodeTest(`[${driver}] ${name}`, fn)
+
 async function setup(env: Record<string, string> = {}) {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ih-comments-'))
-  const store = await openStore(`file:${path.join(dir, 'c.db')}`)
+  const storage = await createStorage({ driver, url: `file:${path.join(dir, 'c.db')}` })
   const mailer = memoryMailer()
   let clock = Date.UTC(2026, 10, 12, 12)
   const config = readConfig({ NODE_ENV: 'test', ADMIN_EMAILS: 'Admin@Example.com', ...env })
-  const s = await createService({ store, mailer, config, now: () => clock })
+  const s = await createService({ storage, mailer, config, now: () => clock })
   const lastCode = () => /(\d{6})/.exec(mailer.sent.at(-1)!.text)![1]
-  return { s, store, mailer, lastCode, tick: (ms: number) => { clock += ms }, req: { ip: '203.0.113.7', userAgent: 'test' } }
+  return { s, storage, mailer, lastCode, tick: (ms: number) => { clock += ms }, req: { ip: '203.0.113.7', userAgent: 'test' } }
 }
 
 async function rejects(p: Promise<unknown>, code: string) {
@@ -40,16 +44,18 @@ test('email + code signs a new reader up and in at once; the code is stored only
   assert.equal(r.email, 'reader@example.com')
   assert.equal(t.mailer.sent.length, 1)
   const code = t.lastCode()
-  const row = (await t.store.all<{ code_hash: string }>('SELECT code_hash FROM login_codes'))[0]
-  assert.ok(!row.code_hash.includes(code))
+  const row = (await t.storage.codes.findById(r.requestId))!
+  assert.ok(!row.codeHash.includes(code))
   const persianDigits = code.replace(/\d/g, (d) => '۰۱۲۳۴۵۶۷۸۹'[Number(d)])
   const v = await t.s.verifyCode('reader@example.com', ` ${persianDigits.slice(0, 3)} ${persianDigits.slice(3)} `, t.req)
   assert.equal(v.isNewUser, true)
   const me = await t.s.sessionUser(v.token)
   assert.equal(me?.email, 'reader@example.com')
   assert.equal(me?.isAdmin, false)
-  const sess = (await t.store.all<{ id_hash: string }>('SELECT id_hash FROM sessions'))[0]
-  assert.notEqual(sess.id_hash, v.token)
+  const sess = (await t.storage.sessions.findByIdHash(sha256(v.token)))!
+  assert.ok(sess, 'stored by hash')
+  assert.notEqual(sess.idHash, v.token)
+  assert.equal(await t.storage.sessions.findByIdHash(v.token), null, 'never by the raw token')
 })
 
 test('a code works once', async () => {
@@ -133,7 +139,7 @@ test('mail failure leaves no usable code behind', async () => {
   const t = await setup()
   t.mailer.send = async () => { throw new Error('smtp down') }
   await rejects(t.s.requestCode('a@example.com', t.req), 'mail_failed')
-  assert.equal((await t.store.all('SELECT * FROM login_codes')).length, 0)
+  assert.equal(await t.storage.codes.latestUnconsumed('a@example.com'), null)
 })
 
 test('production without a mail transport refuses to sign in instead of logging codes', () => {
@@ -148,7 +154,7 @@ test('password: optional, scrypt-hashed, and either it or a code signs in', asyn
   const me = await signIn(t)
   await rejects(t.s.setPassword(me, 'short', undefined), 'weak_password')
   await t.s.setPassword(me, 'a long passphrase', undefined)
-  const stored = (await t.store.get<{ password_hash: string }>('SELECT password_hash FROM users'))!.password_hash
+  const stored = (await t.storage.users.findByEmail('reader@example.com'))!.passwordHash!
   assert.match(stored, /^scrypt\$/)
   assert.ok(!stored.includes('passphrase'))
   const r = await t.s.loginPassword('READER@example.com', 'a long passphrase', t.req)
@@ -261,10 +267,12 @@ test('comment rate limit per reader', async () => {
 
 test('a blocked reader loses sessions and cannot sign back in', async () => {
   const t = await setup()
-  const me = await signIn(t)
+  await t.s.requestCode('reader@example.com', t.req)
+  const v = await t.s.verifyCode('reader@example.com', t.lastCode(), t.req)
+  const me = (await t.s.sessionUser(v.token))!
   const admin = await signIn(t, 'admin@example.com')
   await t.s.setBlocked(admin, me.id, true)
-  assert.equal((await t.store.all('SELECT * FROM sessions WHERE user_id = ?', [me.id])).length, 0)
+  assert.equal(await t.s.sessionUser(v.token), null)
   t.tick(LIMITS.resendAfter + 1)
   await t.s.requestCode('reader@example.com', t.req)
   await rejects(t.s.verifyCode('reader@example.com', t.lastCode(), t.req), 'blocked')
@@ -296,3 +304,4 @@ test('the code email carries the code in both languages and escapes nothing unsa
   assert.match(m.html, /dir="rtl"/)
   assert.match(m.html, /lang="en"/)
 })
+}

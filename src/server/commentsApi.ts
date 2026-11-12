@@ -4,7 +4,7 @@ import { createServerFn } from '@tanstack/react-start'
 import { deleteCookie, getCookie, getRequestHeader, getRequestIP, setCookie } from '@tanstack/react-start/server'
 import { readConfig } from './comments/config'
 import { createMailer } from './comments/mailer'
-import { openStore, commentsDbUrl } from './comments/store'
+import { createStorage } from './comments/storage'
 import { createService, type CommentsService, type RequestFacts } from './comments/service'
 import { AppError } from './comments/errors'
 import { randomToken, safeEqual } from './comments/crypto'
@@ -20,8 +20,8 @@ const DEVICE = config.production ? '__Host-ih_dev' : 'ih_dev'
 let servicePromise: Promise<CommentsService> | null = null
 function service(): Promise<CommentsService> {
   servicePromise ??= (async () => {
-    const store = await openStore(commentsDbUrl())
-    const s = await createService({ store, mailer: createMailer(config.mail), config })
+    // Which database: decided once, in ./comments/storage/index.ts (COMMENTS_DB_DRIVER).
+    const s = await createService({ storage: await createStorage(), mailer: createMailer(config.mail), config })
     s.housekeeping().catch(() => undefined)
     setInterval(() => s.housekeeping().catch(() => undefined), 6 * 3600_000).unref?.()
     return s
