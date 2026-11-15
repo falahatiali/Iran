@@ -41,3 +41,6 @@
 ::view-transition-image-pair(book-hero) { overflow: clip; }
 ::view-transition-old(book-hero), ::view-transition-new(book-hero) { height: 100%; width: 100%; object-fit: cover; }
 ::view-transition-old(root), ::view-transition-new(root) { animation-duration: .5s; }
+/* keep the site header above the morphing headpiece during the hand-off (scoped: this file loads only with the animation) */
+header.sticky.top-0 { view-transition-name: site-header; }
+::view-transition-group(site-header) { z-index: 2; animation-duration: 0s; }
