@@ -5,7 +5,7 @@ import { digits } from '../../lib/format'
 /** Photogrammetry of the actual BM 90920. CC BY 4.0, @artfletch on Sketchfab. Not an official museum scan. */
 const SKETCHFAB = {
   uid: 'f8d0a48f63f44bb49323b623853f6592',
-  embed: 'https://sketchfab.com/models/f8d0a48f63f44bb49323b623853f6592/embed?ui_theme=dark&ui_infos=1&ui_controls=1',
+  embed: 'https://sketchfab.com/models/f8d0a48f63f44bb49323b623853f6592/embed?ui_theme=dark&ui_infos=1&ui_controls=1&autostart=1',
   page: 'https://sketchfab.com/3d-models/the-cyrus-cylinder-f8d0a48f63f44bb49323b623853f6592',
   license: 'https://creativecommons.org/licenses/by/4.0/',
 }
@@ -43,9 +43,14 @@ const PHOTOS = [
   },
 ] as const
 
+/** AVIF copy of PHOTOS[0], the poster that stands in for the 3D viewer (69 KB instead of 226 KB). */
+const POSTER_AVIF = '/media/cyrus-cylinder-daderot-cc0.avif'
+
 export function CylinderViewer({ locale }: { locale: Locale }) {
   const fa = locale === 'fa'
   const [mode, setMode] = useState<'3d' | 'photo'>('3d')
+  // the Sketchfab viewer is ~1 MB of third-party script: a poster stands in until the reader asks for it
+  const [viewer, setViewer] = useState(false)
   const [i, setI] = useState(0)
   const photo = PHOTOS[i]!
   const labelId = useId()
@@ -60,14 +65,27 @@ export function CylinderViewer({ locale }: { locale: Locale }) {
       </p>
       {mode === '3d' ? (
         <div className="relative w-full aspect-[16/10] bg-night">
-          <iframe
-            title={fa ? 'استوانهٔ کوروش، فتوگرامتری شیء واقعی BM 90920' : 'The Cyrus Cylinder, photogrammetry of the actual BM 90920'}
-            src={SKETCHFAB.embed}
-            className="absolute inset-0 h-full w-full border-0"
-            allow="autoplay; fullscreen; xr-spatial-tracking; web-share"
-            allowFullScreen
-            loading="eager"
-          />
+          {viewer ? (
+            <iframe
+              title={fa ? 'استوانهٔ کوروش، فتوگرامتری شیء واقعی BM 90920' : 'The Cyrus Cylinder, photogrammetry of the actual BM 90920'}
+              src={SKETCHFAB.embed}
+              className="absolute inset-0 h-full w-full border-0"
+              allow="autoplay; fullscreen; xr-spatial-tracking; web-share"
+              allowFullScreen
+            />
+          ) : (
+            <button type="button" onClick={() => setViewer(true)} className="group absolute inset-0 h-full w-full" aria-describedby={labelId}>
+              <picture>
+                <source type="image/avif" srcSet={POSTER_AVIF} />
+                <img src={PHOTOS[0].src} alt="" className="h-full w-full object-contain bg-night opacity-80 transition-opacity group-hover:opacity-100" width={1280} height={650} decoding="async" />
+              </picture>
+              <span className="absolute inset-0 grid place-items-center">
+                <span className="glass inline-flex min-h-11 items-center gap-3 rounded-full border-gold/60 px-6 py-3 font-bold text-gold-bright shadow-lg shadow-black/40 group-hover:border-gold">
+                  <span aria-hidden="true" className="text-xl">⟳</span>{fa ? 'نمایش سه‌بعدی واقعی (Sketchfab)' : 'Open the real 3D view (Sketchfab)'}
+                </span>
+              </span>
+            </button>
+          )}
         </div>
       ) : (
         <div className="relative w-full aspect-[16/10] bg-night">

@@ -163,7 +163,7 @@ cross-fade fallback, honours `prefers-reduced-motion`, and can be skipped with a
 | 3D | three.js, plus an embedded Sketchfab model |
 | Database | SQLite through `@libsql/client` (repository/factory layer) |
 | Server | Nitro (Node) |
-| Font | Vazirmatn, self-hosted (OFL); Noto Naskh Arabic Bold, Persian subset, on the library pages (OFL) |
+| Font | Vazirmatn, self-hosted and subset to Persian, Latin and punctuation (OFL); Noto Naskh Arabic Bold, Persian subset, on the library pages (OFL) |
 | CI/CD | GitHub Actions → GHCR → Docker + Traefik |
 
 ## 🗂 Project structure

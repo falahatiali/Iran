@@ -103,6 +103,7 @@ test('every photo file exists, is WebP, and is listed in ATTRIBUTION.txt', () =>
   for (const p of photos) {
     assert.ok(existsSync(`public${p.src}`), p.src)
     assert.ok(existsSync(`public${p.src800}`), p.src800)
+    for (const webp of [p.src, p.src800]) assert.ok(existsSync(`public${webp.replace(/\.webp$/, '.avif')}`), `AVIF beside ${webp}`)
     assert.match(p.src, /^\/media\/shahnameh\/[\w-]+\.webp$/)
     assert.ok(p.page.startsWith('https://commons.wikimedia.org/wiki/File:'), p.id)
     assert.ok(attribution.includes(p.src.split('/').pop()!), p.id)
