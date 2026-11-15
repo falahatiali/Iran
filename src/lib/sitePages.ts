@@ -17,6 +17,11 @@ export interface SitePage {
 export const SITE_PAGES: readonly SitePage[] = [
   { key: 'home', fa: { path: '/', label: 'خانه', sub: 'تاریخ ایران' } },
   {
+    key: 'library', searchable: true,
+    fa: { path: '/library', label: 'کتابخانهٔ ادبیات', sub: 'گنجینهٔ ادب پارسی، قفسه به قفسه' },
+    keywords: 'ادبیات کتابخانه گنجینه ادب پارسی شعر فارسی منطق الطیر منطق‌الطیر عطار سیمرغ هفت وادی شاهنامه حافظ سعدی مولوی نظامی خیام literature library Persian poetry Attar Conference of the Birds',
+  },
+  {
     key: 'shahnameh', searchable: true,
     fa: { path: '/shahnameh', label: 'شاهنامه', sub: 'فردوسی · Shahnameh' },
     en: { path: '/en/shahnameh', label: 'Shahnameh', sub: 'Ferdowsi’s Book of Kings' },

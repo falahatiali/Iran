@@ -4,6 +4,7 @@ import { NAMED_PROVINCES } from '../data/dey1404'
 import { provinceHref } from '../data/dey1404/people'
 import { dynasties } from '../data/dynasties'
 import { FEATURED_KING_SLUGS } from '../data/featured/slugs'
+import { librarySitemapPaths } from '../data/library'
 import { places } from '../data/places'
 import { shahnamehSitemapPaths } from '../data/shahnameh'
 import { STATIC_PATHS } from './sitePages'
@@ -11,6 +12,7 @@ import { STATIC_PATHS } from './sitePages'
 export function publicPaths(): string[] {
   const all = [
     ...STATIC_PATHS,
+    ...librarySitemapPaths(),
     ...shahnamehSitemapPaths(),
     ...dynasties.map((d) => `/dynasty/${d.slug}`),
     ...dynasties.flatMap((d) => d.rulers.map((r) => `/king/${r.id}`)),

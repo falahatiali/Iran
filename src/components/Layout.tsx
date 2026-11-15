@@ -34,7 +34,7 @@ export function Header({ data }: { data: Overview }) {
       ] as const
     : [
         { to: '/', label: 'خانه' },
-        { to: '/shahnameh', label: 'شاهنامه', special: true },
+        { to: '/library', label: 'ادبیات', special: true, isNew: true },
         { to: '/cylinder', label: 'استوانهٔ کوروش' },
         { to: '/archives', label: 'بایگانی تخت‌جمشید', compact: true },
         { to: '/king/$slug', params: { slug: 'darius-i' }, label: 'داریوش بزرگ', compact: true },
@@ -54,14 +54,17 @@ export function Header({ data }: { data: Overview }) {
                 key={l.label}
                 to={l.to}
                 params={'params' in l ? l.params : undefined}
-                activeOptions={{ exact: true }}
-                className={`rounded-full px-4 py-3 text-sm transition-colors min-h-11 ${
+                activeOptions={{ exact: l.to !== '/library' }}
+                className={`relative rounded-full px-4 py-3 text-sm transition-colors min-h-11 ${
                   'special' in l && l.special
                     ? 'border border-gold/50 text-gold-bright bg-gold/10 hover:bg-gold/20'
                     : 'text-ivory/75 hover:text-gold'
                 } ${'compact' in l && l.compact ? 'hidden lg:inline-flex' : ''}`}
                 activeProps={{ className: 'bg-gold/15 !text-gold-bright' }}
-              >{l.label}</Link>
+              >
+                {l.label}
+                {'isNew' in l && l.isNew && <span className="absolute -top-1 -left-1.5 rounded-full bg-crimson px-1.5 text-[0.6rem] font-bold leading-4 text-ivory shadow">تازه</span>}
+              </Link>
             ))}
           </nav>
           <div className="flex items-center gap-2">
@@ -147,6 +150,7 @@ export function Footer() {
         { href: '/en/about', label: 'Method and sources' },
       ]
     : [
+        { href: '/library', label: 'کتابخانهٔ ادبیات' },
         { href: '/shahnameh', label: 'شاهنامه' },
         { href: '/cylinder', label: 'استوانهٔ کوروش' },
         { href: '/archives', label: 'بایگانی تخت‌جمشید' },

@@ -22,7 +22,8 @@ function HeroPainting({ photo }: { photo: (typeof photoById)[string] }) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
   return (
-    <div ref={ref} className="absolute inset-0">
+    // named for the library's book-opening View Transition: the opened book's headpiece lands here
+    <div ref={ref} className="absolute inset-0" style={{ viewTransitionName: 'book-hero' }}>
       <Miniature photo={photo} priority decorative sizes="100vw" className="shn-hero-img" />
     </div>
   )
@@ -33,7 +34,7 @@ export function LandingPage() {
   return (
     <ShahnamehShell>
       <PageTransition>
-        <section className="shn-hero">
+        <section className="shn-hero" data-book-arrival="shahnameh">
           {hero && <HeroPainting photo={hero} />}
           <div className="shn-hero-veil" />
           <TazhibCorner className="absolute top-6 right-6 size-20 md:size-28 z-10 hidden sm:block" />

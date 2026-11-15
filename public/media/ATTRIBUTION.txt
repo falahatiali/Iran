@@ -567,3 +567,16 @@ event / Shahnameh manuscript paintings (local webp in public/media/shahnameh/{id
   manuscript: شاهنامهٔ شاه‌تهماسب، حدود ۱۵۳۰–۱۵۳۵؛ موزهٔ متروپولیتن
 - bozorgmehr-chess.webp ← "Buzurjmihr Masters the Hindu Game of Chess", Folio 639v from the Shahnama (Book of Kings) of Shah Tahmasp MET DP107184.jpg — Shahnameh of Shah Tahmasp atelier — CC0 — https://commons.wikimedia.org/wiki/File:%22Buzurjmihr_Masters_the_Hindu_Game_of_Chess%22,_Folio_639v_from_the_Shahnama_(Book_of_Kings)_of_Shah_Tahmasp_MET_DP107184.jpg
   manuscript: شاهنامهٔ شاه‌تهماسب، برگ ۶۳۹پ، حدود ۱۵۳۰–۱۵۳۵؛ موزهٔ متروپولیتن
+
+## library (/library and /library/mantiq-al-tayr) — original artwork generated for this site, 2026-11-15
+Not photographs or reproductions of any real manuscript, building or object; no third-party image is used.
+Same licence as the site. Resized and encoded to AVIF and WebP at the widths shown.
+- library/hall-640.(avif|webp), hall-1280.(avif|webp), og-library.jpg
+  Original generated artwork for this site: an imagined lamplit library hall with Persian vaults. Background of the library landing page.
+- library/simorgh-640.(avif|webp), simorgh-960.(avif|webp), simorgh-1280.(avif|webp), og-mantiq-al-tayr.jpg
+  Original generated artwork for this site: the hoopoe leading the birds towards the Simorgh over Mount Qaf, in a miniature-inspired style. Hero of the Mantiq al-Tayr page and headpiece of the opened book.
+- library/cover-mantiq-al-tayr.(avif|webp)
+  Original generated artwork for this site: a tooled leather book cover with a gilt shamseh. Cover of the 3D book in the opening animation.
+- library/cover-shahnameh.(avif|webp)
+  The same cover artwork recoloured to crimson for the Shahnameh book.
+Typeface on the library pages: Noto Naskh Arabic Bold (Google, SIL Open Font License 1.1), subset to Persian letters: /fonts/NotoNaskhArabic-Bold-fa.woff2.

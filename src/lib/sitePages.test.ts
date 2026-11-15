@@ -69,7 +69,7 @@ test('the Carrhae battle pages are in the sitemap', () => {
 })
 
 /** Internal links written as string literals anywhere in src (components, routes and data prose). */
-const LINK = /(?<![\w.:/-])\/(?:en\/)?(?:king|dynasty|place|event|battle|shahnameh|cylinder|archives|timeline|kings|about|property|darius)(?:\/[a-z0-9-]+)?(?=[#?'"`)\s\]]|$)/g
+const LINK = /(?<![\w.:/-])\/(?:en\/)?(?:king|dynasty|place|event|battle|shahnameh|library|cylinder|archives|timeline|kings|about|property|darius)(?:\/[a-z0-9-]+)?(?=[#?'"`)\s\]]|$)/g
 
 test('no broken internal links in source or data', () => {
   const valid = new Set([...paths, ...REDIRECT_PATHS])

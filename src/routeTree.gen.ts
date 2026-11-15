@@ -30,6 +30,8 @@ import { Route as Event28MordadRouteImport } from './routes/event/28-mordad'
 import { Route as EventJashn2500RouteImport } from './routes/event/jashn-2500'
 import { Route as EventMashrutehRouteImport } from './routes/event/mashruteh'
 import { Route as KingSlugRouteImport } from './routes/king/$slug'
+import { Route as LibraryIndexRouteImport } from './routes/library/index'
+import { Route as LibraryMantiqAlTayrRouteImport } from './routes/library/mantiq-al-tayr'
 import { Route as PlaceSlugRouteImport } from './routes/place/$slug'
 import { Route as ShahnamehIndexRouteImport } from './routes/shahnameh/index'
 import { Route as ShahnamehSlugRouteImport } from './routes/shahnameh/$slug'
@@ -147,6 +149,16 @@ const KingSlugRoute = KingSlugRouteImport.update({
   path: '/king/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LibraryIndexRoute = LibraryIndexRouteImport.update({
+  id: '/library/',
+  path: '/library/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LibraryMantiqAlTayrRoute = LibraryMantiqAlTayrRouteImport.update({
+  id: '/library/mantiq-al-tayr',
+  path: '/library/mantiq-al-tayr',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PlaceSlugRoute = PlaceSlugRouteImport.update({
   id: '/place/$slug',
   path: '/place/$slug',
@@ -225,8 +237,10 @@ export interface FileRoutesByFullPath {
   '/event/jashn-2500': typeof EventJashn2500Route
   '/event/mashruteh': typeof EventMashrutehRoute
   '/king/$slug': typeof KingSlugRoute
+  '/library/mantiq-al-tayr': typeof LibraryMantiqAlTayrRoute
   '/place/$slug': typeof PlaceSlugRoute
   '/shahnameh/$slug': typeof ShahnamehSlugRoute
+  '/library/': typeof LibraryIndexRoute
   '/shahnameh/': typeof ShahnamehIndexRoute
   '/en/battle/carrhae': typeof EnBattleCarrhaeRoute
   '/en/event/28-mordad': typeof EnEvent28MordadRoute
@@ -259,8 +273,10 @@ export interface FileRoutesByTo {
   '/event/jashn-2500': typeof EventJashn2500Route
   '/event/mashruteh': typeof EventMashrutehRoute
   '/king/$slug': typeof KingSlugRoute
+  '/library/mantiq-al-tayr': typeof LibraryMantiqAlTayrRoute
   '/place/$slug': typeof PlaceSlugRoute
   '/shahnameh/$slug': typeof ShahnamehSlugRoute
+  '/library': typeof LibraryIndexRoute
   '/shahnameh': typeof ShahnamehIndexRoute
   '/en/battle/carrhae': typeof EnBattleCarrhaeRoute
   '/en/event/28-mordad': typeof EnEvent28MordadRoute
@@ -294,8 +310,10 @@ export interface FileRoutesById {
   '/event/jashn-2500': typeof EventJashn2500Route
   '/event/mashruteh': typeof EventMashrutehRoute
   '/king/$slug': typeof KingSlugRoute
+  '/library/mantiq-al-tayr': typeof LibraryMantiqAlTayrRoute
   '/place/$slug': typeof PlaceSlugRoute
   '/shahnameh/$slug': typeof ShahnamehSlugRoute
+  '/library/': typeof LibraryIndexRoute
   '/shahnameh/': typeof ShahnamehIndexRoute
   '/en/battle/carrhae': typeof EnBattleCarrhaeRoute
   '/en/event/28-mordad': typeof EnEvent28MordadRoute
@@ -330,8 +348,10 @@ export interface FileRouteTypes {
     | '/event/jashn-2500'
     | '/event/mashruteh'
     | '/king/$slug'
+    | '/library/mantiq-al-tayr'
     | '/place/$slug'
     | '/shahnameh/$slug'
+    | '/library/'
     | '/shahnameh/'
     | '/en/battle/carrhae'
     | '/en/event/28-mordad'
@@ -364,8 +384,10 @@ export interface FileRouteTypes {
     | '/event/jashn-2500'
     | '/event/mashruteh'
     | '/king/$slug'
+    | '/library/mantiq-al-tayr'
     | '/place/$slug'
     | '/shahnameh/$slug'
+    | '/library'
     | '/shahnameh'
     | '/en/battle/carrhae'
     | '/en/event/28-mordad'
@@ -398,8 +420,10 @@ export interface FileRouteTypes {
     | '/event/jashn-2500'
     | '/event/mashruteh'
     | '/king/$slug'
+    | '/library/mantiq-al-tayr'
     | '/place/$slug'
     | '/shahnameh/$slug'
+    | '/library/'
     | '/shahnameh/'
     | '/en/battle/carrhae'
     | '/en/event/28-mordad'
@@ -433,8 +457,10 @@ export interface RootRouteChildren {
   EventJashn2500Route: typeof EventJashn2500Route
   EventMashrutehRoute: typeof EventMashrutehRoute
   KingSlugRoute: typeof KingSlugRoute
+  LibraryMantiqAlTayrRoute: typeof LibraryMantiqAlTayrRoute
   PlaceSlugRoute: typeof PlaceSlugRoute
   ShahnamehSlugRoute: typeof ShahnamehSlugRoute
+  LibraryIndexRoute: typeof LibraryIndexRoute
   ShahnamehIndexRoute: typeof ShahnamehIndexRoute
   EnBattleCarrhaeRoute: typeof EnBattleCarrhaeRoute
   EnEvent28MordadRoute: typeof EnEvent28MordadRoute
@@ -595,6 +621,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KingSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/library/': {
+      id: '/library/'
+      path: '/library'
+      fullPath: '/library/'
+      preLoaderRoute: typeof LibraryIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/library/mantiq-al-tayr': {
+      id: '/library/mantiq-al-tayr'
+      path: '/library/mantiq-al-tayr'
+      fullPath: '/library/mantiq-al-tayr'
+      preLoaderRoute: typeof LibraryMantiqAlTayrRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/place/$slug': {
       id: '/place/$slug'
       path: '/place/$slug'
@@ -697,8 +737,10 @@ const rootRouteChildren: RootRouteChildren = {
   EventJashn2500Route: EventJashn2500Route,
   EventMashrutehRoute: EventMashrutehRoute,
   KingSlugRoute: KingSlugRoute,
+  LibraryMantiqAlTayrRoute: LibraryMantiqAlTayrRoute,
   PlaceSlugRoute: PlaceSlugRoute,
   ShahnamehSlugRoute: ShahnamehSlugRoute,
+  LibraryIndexRoute: LibraryIndexRoute,
   ShahnamehIndexRoute: ShahnamehIndexRoute,
   EnBattleCarrhaeRoute: EnBattleCarrhaeRoute,
   EnEvent28MordadRoute: EnEvent28MordadRoute,

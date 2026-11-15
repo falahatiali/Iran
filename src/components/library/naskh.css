@@ -1,0 +1,10 @@
+/* Noto Naskh Arabic Bold (OFL), subset to the Persian letters and digits; ~14 KB. Only the library pages load it. */
+@font-face {
+  font-family: 'Library Naskh';
+  src: url('/fonts/NotoNaskhArabic-Bold-fa.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0020-0021, U+0028-0029, U+002C-002E, U+003A, U+00AB, U+00BB, U+060C, U+061B, U+061F, U+0621-063A, U+0640-0655, U+0660-0669, U+0670, U+067E, U+0686, U+0698, U+06A9, U+06AF, U+06C0, U+06CC, U+06F0-06F9, U+200C-200D, U+2013-2014;
+}
+:root { --naskh: 'Library Naskh', Vazirmatn, serif; }

@@ -142,6 +142,16 @@ flowchart LR
   O --> GA
 ```
 
+### Literature library (`/library`)
+
+A bookcase of Persian classics. Each book is one record in `src/data/library/books/<slug>.ts`, listed in
+`src/data/library/index.ts`; the landing page, the hover cards, the sitemap and the tests read only that registry.
+A `soon` book is a greyed spine. To open a new book, switch it to `ready` (href, cover, headpiece, first lines)
+and give it a page under `src/routes/library/` that marks its hero with `data-book-arrival="<slug>"`.
+The opening animation (`src/components/library/openBook.ts`) is a separate chunk fetched on the first hover,
+focus or tap; it animates only transforms and opacity, hands off through the View Transitions API with a
+cross-fade fallback, honours `prefers-reduced-motion`, and can be skipped with a click or Esc.
+
 ## 🛠 Tech stack
 
 | Layer | Technology |
@@ -153,7 +163,7 @@ flowchart LR
 | 3D | three.js, plus an embedded Sketchfab model |
 | Database | SQLite through `@libsql/client` (repository/factory layer) |
 | Server | Nitro (Node) |
-| Font | Vazirmatn, self-hosted (OFL) |
+| Font | Vazirmatn, self-hosted (OFL); Noto Naskh Arabic Bold, Persian subset, on the library pages (OFL) |
 | CI/CD | GitHub Actions → GHCR → Docker + Traefik |
 
 ## 🗂 Project structure
@@ -238,6 +248,8 @@ This project relies on the following, each credited on the pages where it is use
 - **[OpenStreetMap](https://www.openstreetmap.org/) contributors:** map embeds on place pages.
 - **[@artfletch on Sketchfab](https://sketchfab.com/3d-models/the-cyrus-cylinder-f8d0a48f63f44bb49323b623853f6592):** the Cyrus Cylinder photogrammetry model (CC BY 4.0).
 - **Saber Rastikerdar:** the [Vazirmatn](https://github.com/rastikerdar/vazirmatn) font (OFL).
+- **Google Fonts:** [Noto Naskh Arabic](https://fonts.google.com/noto/specimen/Noto+Naskh+Arabic) (OFL), subset for the titles of the literature library.
+- **[Ganjoor](https://ganjoor.net):** the text of the verses quoted in the literature library, each linked to its page.
 
 ## 🕊 About the birds
 
