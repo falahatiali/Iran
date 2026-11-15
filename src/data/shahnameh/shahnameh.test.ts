@@ -284,3 +284,14 @@ test('loadStoryPoem dynamically imports the Ganjoor text used on the story page'
   assert.match(zahhak.poems[0].couplets[0].a, /\S/)
   assert.equal(await loadStoryPoem('no-such-story'), undefined)
 })
+
+test('the lazy commentary loader serves every story its own commentary', async () => {
+  const { COMMENTARY_SLUGS, loadCommentary } = await import('./commentary/load')
+  for (const s of readyStories) {
+    assert.ok(COMMENTARY_SLUGS.includes(s.slug), `${s.slug} has a lazy commentary loader`)
+    const lazy = await loadCommentary(s.slug)
+    assert.equal(lazy.slug, s.slug)
+    assert.deepEqual(lazy, getCommentary(s.slug))
+  }
+  assert.deepEqual(await loadCommentary('no-such-story'), getCommentary('no-such-story'))
+})

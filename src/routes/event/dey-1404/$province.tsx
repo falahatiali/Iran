@@ -11,16 +11,14 @@ export const Route = createFileRoute('/event/dey-1404/$province')({
     const province = provinceBySlug(params.province)
     if (!province) throw notFound()
     const rows = (await import('../../../data/dey1404/names.json')).default as NameRow[]
-    return { province, rows: rows.filter((r) => r[3] === province && r[5] !== 3) }
-  },
-  head: ({ params }) => {
-    const p = provinceBySlug(params.province)
-    if (!p) return {}
-    return seo({
+    const p = province
+    const meta = {
       title: `جاویدنامان استان ${p} در خیزش دی ۱۴۰۴`,
       description: `نام ${fa(PROVINCE_COUNTS[p])} جان‌باختهٔ استان ${p} در سرکوب اعتراضات دی‌ماه ۱۴۰۴، با سن، شهر و تاریخ، به ثبت سازمان حقوق بشر ایران.`,
-      path: `/event/dey-1404/${params.province}`, image: '/media/dey1404/og.jpg',
-    })
+    }
+    return { province, meta, rows: rows.filter((r) => r[3] === province && r[5] !== 3) }
   },
+  // head reads the loader's meta: the loader is code-split, so the memorial data stays out of the entry bundle
+  head: ({ loaderData, params }) => (loaderData ? seo({ ...loaderData.meta, path: `/event/dey-1404/${params.province}`, image: '/media/dey1404/og.jpg' }) : {}),
   component: function Page() { const d = Route.useLoaderData(); return <ProvincePage province={d.province} rows={d.rows} /> },
 })

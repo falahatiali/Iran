@@ -9,7 +9,6 @@ import { Epithets } from '../../components/Epithets'
 import { EventIcon } from '../../components/EventIcon'
 import { eventTypeNames, fa, range, shRange, year } from '../../lib/format'
 import { kingAlternates, kingJsonLd, seo } from '../../lib/seo'
-import { getFeaturedKing } from '../../data/featured'
 import { placesForKing } from '../../data/places'
 import { FeaturedDossier, FeaturedHero } from '../../components/featured/FeaturedDossier'
 
@@ -17,7 +16,7 @@ export const Route = createFileRoute('/king/$slug')({
   loader: ({ params }) => getRuler({ data: params.slug }),
   head: ({ loaderData, params }) => {
     if (!loaderData) return {}
-    const fk = getFeaturedKing(params.slug)
+    const fk = loaderData.featured
     const base = seo({
       title: fk ? fk.title.fa : loaderData.ruler.name,
       description: `${loaderData.ruler.name} (${loaderData.dynasty.name}): ${loaderData.ruler.description}`,
@@ -38,7 +37,7 @@ function KingPage() {
   const { ruler: r, dynasty: d } = k
   const years = (r.end ?? new Date().getFullYear()) - r.start
   const sh = shRange(r.start, r.end)
-  const featured = getFeaturedKing(r.id)
+  const featured = k.featured
   return (
     <PageTransition>
       <article>

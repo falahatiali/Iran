@@ -3,6 +3,9 @@ import { notFound } from '@tanstack/react-router'
 import { getRepositories } from './db/factory'
 import type { DynastyRow, EventRow, RulerRow, Source } from './db/repositories'
 import type { ArchivesProject, CylinderProject } from './db/research'
+// server-only: the featured dossiers (~800 KB) reach the browser per king, inside getRuler's response
+import { getFeaturedKing } from '../data/featured'
+import type { FeaturedKing } from '../data/featured/types'
 
 export interface DynastySummary extends DynastyRow { rulers: Pick<RulerRow, 'id' | 'name' | 'latin' | 'start' | 'end'>[]; eventCount: number }
 export interface Overview { dynasties: DynastySummary[]; events: Pick<EventRow, 'id' | 'title' | 'year' | 'dynastySlug'>[]; totals: { dynasties: number; rulers: number; events: number } }
@@ -44,6 +47,8 @@ export interface RulerDetail {
   father: TreeNode | null; grandfather: TreeNode | null; mother: string | null; spouses: string[]
   siblings: TreeNode[]; children: TreeNode[]; grandchildren: TreeNode[]
   events: EventRow[]; sources: Source[]
+  /** The extended dossier, for the ~100 featured kings. */
+  featured: FeaturedKing | null
 }
 
 export const getRuler = createServerFn({ method: 'GET' })
@@ -84,6 +89,7 @@ export const getRuler = createServerFn({ method: 'GET' })
       siblings, children, grandchildren,
       events: events.filter((e) => e.year >= ruler.start && e.year <= end),
       sources,
+      featured: getFeaturedKing(id) ?? null,
     }
   })
 

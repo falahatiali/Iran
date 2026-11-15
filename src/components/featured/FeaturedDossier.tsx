@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { Suspense, type ReactNode } from 'react'
 import type { EvidenceLayer } from '../../data/research/types'
 import type { BiParas, FeaturedKing, Person } from '../../data/featured/types'
 import type { CommonsPhoto } from '../../data/places/types'
@@ -9,11 +9,14 @@ import { EvidenceBadge } from '../cylinder/EvidenceBadge'
 import { AnimatedClip } from './AnimatedClip'
 import { BattleDiagram } from './BattleDiagram'
 import { CampaignMap } from './CampaignMap'
-import { MongolInvasion } from '../khwarazm/MongolInvasion'
 import { DariusPrayer } from '../darius/DariusPrayer'
-import { CarrhaeBattle } from '../carrhae/CarrhaeBattle'
-import { CyrusTombReconstruction } from '../cyrus/CyrusTombReconstruction'
-import { MrsEconomyChart } from '../pahlavi/MrsEconomyChart'
+import { lazyPiece } from '../lazyPiece'
+
+// One-king set pieces, each with its own data: separate chunks, so ~100 other dossiers never download them.
+const MongolInvasion = lazyPiece(() => import('../khwarazm/MongolInvasion').then((m) => m.MongolInvasion))
+const CarrhaeBattle = lazyPiece(() => import('../carrhae/CarrhaeBattle').then((m) => m.CarrhaeBattle))
+const CyrusTombReconstruction = lazyPiece(() => import('../cyrus/CyrusTombReconstruction').then((m) => m.CyrusTombReconstruction))
+const MrsEconomyChart = lazyPiece(() => import('../pahlavi/MrsEconomyChart').then((m) => m.MrsEconomyChart))
 
 /** Turn `[label](href)` markers in dossier body text into gold underlined links. */
 function withInlineLinks(text: string): ReactNode {
@@ -185,7 +188,7 @@ export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: 
         </div>
       </section>
 
-      {king.slug === 'jalal-al-din' && <MongolInvasion locale={locale} />}
+      {king.slug === 'jalal-al-din' && <Suspense fallback={null}><MongolInvasion locale={locale} /></Suspense>}
 
       <section id="map" className="scroll-mt-24 mt-14">
         <h2 className="text-3xl font-black text-gilded mb-4">{king.mapTitle[locale]}</h2>
@@ -235,9 +238,9 @@ export function FeaturedDossier({ king, locale }: { king: FeaturedKing; locale: 
                 <footer className="mt-2 text-xs text-ivory/50">{q.ref} · <a href={`#src-${q.source}`} className="text-gold hover:underline">{author(q.source)}</a>{isFa && ` · ${q.lang === 'fr' ? t.quoteNoteFr : t.quoteNote}`}</footer>
               </blockquote>
             ))}
-            {s.embed === 'carrhae' && <div className="mt-8"><CarrhaeBattle locale={locale} sources={king.sources} id={`${s.id}-battle`} /></div>}
-            {s.embed === 'cyrus-tomb' && <div className="mt-8"><CyrusTombReconstruction locale={locale} /></div>}
-            {s.embed === 'mrs-economy' && <div className="mt-8"><MrsEconomyChart locale={locale} /></div>}
+            {s.embed === 'carrhae' && <div className="mt-8"><Suspense fallback={null}><CarrhaeBattle locale={locale} sources={king.sources} id={`${s.id}-battle`} /></Suspense></div>}
+            {s.embed === 'cyrus-tomb' && <div className="mt-8"><Suspense fallback={null}><CyrusTombReconstruction locale={locale} /></Suspense></div>}
+            {s.embed === 'mrs-economy' && <div className="mt-8"><Suspense fallback={null}><MrsEconomyChart locale={locale} /></Suspense></div>}
             {s.clip && !s.embed && <AnimatedClip clip={s.clip.media} caption={s.clip.caption} locale={locale} />}
             {s.link && <TopicPageCard link={s.link} locale={locale} />}
             {s.people && (

@@ -1,10 +1,12 @@
 import { Link, useNavigate, useSearch } from '@tanstack/react-router'
 import { motion } from 'motion/react'
 import { useEffect, useMemo, useState, type ReactNode } from 'react'
-import { catalog, eras, getCommentary, isStory, neighbors, photoById, sourcesFor, storyPhoto, type CatalogEntry, type Story } from '../../data/shahnameh'
+import { catalog, eras, isStory, neighbors, photoById, sourcesFor, storyPhoto, type CatalogEntry, type Story } from '../../data/shahnameh'
 import { storyViewFromLocation, type StoryView } from '../../data/shahnameh/storyView'
 import { poemCtaLabel, poemTabLabel } from '../../data/shahnameh/poemLabel'
 import { loadStoryPoem } from '../../data/shahnameh/poems/load'
+import { loadCommentary } from '../../data/shahnameh/commentary/load'
+import type { StoryPoemCommentary } from '../../data/shahnameh/commentary/types'
 import type { StoryPoemText } from '../../data/shahnameh/poems/types'
 import { Reveal } from '../Reveal'
 import { FolioLightbox } from './FolioLightbox'
@@ -129,7 +131,7 @@ export function StoryPage({ story }: { story: Story }) {
   const era = eras.find((e) => e.id === story.era)
   const { prev, next } = neighbors(story.slug)
   const sources = sourcesFor(story.sources)
-  const commentary = getCommentary(story.slug)
+  const [commentary, setCommentary] = useState<StoryPoemCommentary | null>(null)
   const [open, setOpen] = useState(false)
   const search = useSearch({ from: '/shahnameh/$slug' })
   const navigate = useNavigate({ from: '/shahnameh/$slug' })
@@ -174,11 +176,19 @@ export function StoryPage({ story }: { story: Story }) {
     return () => { cancelled = true }
   }, [story.slug])
 
+  // the verse-by-verse commentary is the heaviest part of a story (up to ~100 KB); fetch it only for the poem view
+  useEffect(() => {
+    if (tab !== 'poem' || commentary?.slug === story.slug) return
+    let cancelled = false
+    void loadCommentary(story.slug).then((data) => { if (!cancelled) setCommentary(data) })
+    return () => { cancelled = true }
+  }, [tab, story.slug, commentary?.slug])
+
   const visibleGlossary = useMemo(() => {
     const seen = new Set<string>()
     const items: { word: string; meaning: string }[] = []
     for (const key of visibleKeys) {
-      const note = commentary.notes[key]
+      const note = commentary?.notes[key]
       for (const g of note?.glossary ?? []) {
         if (seen.has(g.word)) continue
         seen.add(g.word)
@@ -186,7 +196,7 @@ export function StoryPage({ story }: { story: Story }) {
       }
     }
     return items
-  }, [visibleKeys, commentary.notes])
+  }, [visibleKeys, commentary])
 
   const scenes = tab === 'poem' && poem
     ? poem.poems.map((p) => ({ id: `scene-${p.ganjoorId}`, title: p.title.replace(/^بخش\s+\d+\s*[-–]\s*/, ''), href: `#scene-${p.ganjoorId}` }))
@@ -400,7 +410,7 @@ export function StoryPage({ story }: { story: Story }) {
 
                 <OpenPoemCard coupletCount={poem?.coupletCount} onOpen={() => selectTab('poem', { scroll: true })} />
               </div>
-            ) : poem ? (
+            ) : poem && commentary?.slug === story.slug ? (
               <div id="panel-poem" role="tabpanel" aria-labelledby="tab-poem" className="mt-10">
                 <PoemReader slug={story.slug} poem={poem} commentary={commentary} onVisibleKeys={setVisibleKeys} />
               </div>

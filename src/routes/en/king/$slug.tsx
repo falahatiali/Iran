@@ -1,6 +1,5 @@
 import { createFileRoute, redirect } from '@tanstack/react-router'
 import { getRuler } from '../../../server/api'
-import { getFeaturedKing } from '../../../data/featured'
 import { isFeaturedKing } from '../../../data/featured/slugs'
 import { FeaturedDossier, FeaturedHero } from '../../../components/featured/FeaturedDossier'
 import { PageTransition } from '../../../components/Reveal'
@@ -14,8 +13,8 @@ export const Route = createFileRoute('/en/king/$slug')({
     if (!isFeaturedKing(params.slug)) throw redirect({ to: '/king/$slug', params: { slug: params.slug }, statusCode: 302 })
   },
   loader: ({ params }) => getRuler({ data: params.slug }),
-  head: ({ params }) => {
-    const fk = getFeaturedKing(params.slug)
+  head: ({ loaderData, params }) => {
+    const fk = loaderData?.featured
     if (!fk) return {}
     return {
       ...seo({ title: fk.title.en, description: fk.lede.en.slice(0, 300), path: `/en/king/${params.slug}`, locale: 'en_GB', alternates: kingAlternates(params.slug), image: fk.shareImage }),
@@ -27,7 +26,7 @@ export const Route = createFileRoute('/en/king/$slug')({
 
 function KingPageEn() {
   const k = Route.useLoaderData()
-  const fk = getFeaturedKing(k.ruler.id)
+  const fk = k.featured
   if (!fk) return null
   return (
     <PageTransition>

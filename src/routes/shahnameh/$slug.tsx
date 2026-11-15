@@ -10,12 +10,14 @@ export const Route = createFileRoute('/shahnameh/$slug')({
   loader: ({ params }) => {
     const entry = getEntry(params.slug)
     if (!entry) throw notFound()
-    return entry
+    // resolved here because the loader is code-split: head must not import the Shahnameh data itself
+    const image = entry.heroId ? photoById[entry.heroId]?.src : '/media/shahnameh/gayumars-court.webp'
+    return { entry, image }
   },
-  head: ({ loaderData }) => {
-    if (!loaderData) return {}
-    const image = loaderData.heroId ? photoById[loaderData.heroId]?.src : '/media/shahnameh/gayumars-court.webp'
-    if (isStory(loaderData)) {
+  head: ({ loaderData: d }) => {
+    if (!d) return {}
+    const { entry: loaderData, image } = d
+    if (loaderData.status === 'ready') { // not isStory(): head must not import the data module
       return seo({
         title: `${loaderData.title} در شاهنامه`,
         description: loaderData.summary,
@@ -37,7 +39,7 @@ export const Route = createFileRoute('/shahnameh/$slug')({
     })
   },
   component: function ShahnamehStoryRoute() {
-    const entry = Route.useLoaderData()
+    const { entry } = Route.useLoaderData()
     return isStory(entry) ? <StoryPage story={entry} /> : <ComingSoonPage entry={entry} />
   },
 })
