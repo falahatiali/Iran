@@ -168,7 +168,12 @@ export async function openBook({ book, spine, navigate }: { book: ReadyBook; spi
     hand.append(headpiece)
     document.body.append(hand)
     stage.classList.add('is-handoff')
-    const arrived = async () => { await navigate(); await waitFor(`[data-book-arrival="${book.arrivalMarker}"]`) }
+    const arrived = async () => {
+      await navigate()
+      await waitFor(`[data-book-arrival="${book.arrivalMarker}"]`)
+      // the arriving page's own fade-in (`.page-in`) would be caught half-transparent in the transition's snapshot
+      document.querySelectorAll('.page-in').forEach((el) => el.getAnimations().forEach((a) => a.finish()))
+    }
 
     if (typeof document.startViewTransition === 'function') {
       const vt = document.startViewTransition(async () => { await arrived(); cleanup() })

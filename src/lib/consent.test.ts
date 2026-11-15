@@ -18,3 +18,22 @@ test('consent: garbage or unknown values are ignored', () => {
   for (const raw of ['granted', '{', '{"choice":"yes","date":"x"}', '{"choice":"granted"}']) assert.equal(parseConsent(raw), null)
   assert.equal(CONSENT_KEY, 'iiraan-consent')
 })
+
+test('the boot script asks for consent before first paint only when no valid choice is stored', async () => {
+  const { runInNewContext } = await import('node:vm')
+  const { CONSENT_BOOT_SCRIPT, CONSENT_ASK_ATTR, CONSENT_KEY } = await import('./consent')
+  const run = (stored: string | null, throws = false) => {
+    const attrs = new Set<string>()
+    runInNewContext(CONSENT_BOOT_SCRIPT, {
+      localStorage: { getItem: (k: string) => { if (throws) throw new Error('blocked'); return k === CONSENT_KEY ? stored : null } },
+      document: { documentElement: { setAttribute: (a: string) => attrs.add(a) } },
+    })
+    return attrs.has(CONSENT_ASK_ATTR)
+  }
+  assert.equal(run(null), true)
+  assert.equal(run('not json'), true)
+  assert.equal(run(JSON.stringify({ choice: 'maybe', date: 'x' })), true)
+  assert.equal(run(JSON.stringify({ choice: 'granted', date: '2026-01-01T00:00:00Z' })), false)
+  assert.equal(run(JSON.stringify({ choice: 'denied', date: '2026-01-01T00:00:00Z' })), false)
+  assert.equal(run(null, true), true)
+})

@@ -1,7 +1,7 @@
 import { useNavigate, useRouterState } from '@tanstack/react-router'
 import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import type { Overview } from '../server/api'
+import { getOverview, type Overview } from '../server/api'
 import { normalize } from '../lib/search'
 import { localeFromPath } from '../lib/i18n'
 import { range, year } from '../lib/format'
@@ -18,7 +18,25 @@ type Hit =
   | { kind: 'page'; key: string; label: string; sub: string; slug: string }
   | { kind: 'place'; key: string; label: string; sub: string; slug: string }
 
-export function SearchDialog({ data, open, onClose }: { data: Overview; open: boolean; onClose: () => void }) {
+// Fetched once, on first use (or on hover/focus of the search button), instead of riding along with every page.
+let overview: Promise<Overview> | undefined
+export function prefetchSearchIndex(): Promise<Overview> {
+  overview ??= getOverview().catch((e: unknown) => { overview = undefined; throw e })
+  return overview
+}
+
+function useOverview(): Overview | null {
+  const [data, setData] = useState<Overview | null>(null)
+  useEffect(() => {
+    let live = true
+    prefetchSearchIndex().then((d) => { if (live) setData(d) }, () => { /* offline: the dialog still searches site pages */ })
+    return () => { live = false }
+  }, [])
+  return data
+}
+
+export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const data = useOverview()
   const [q, setQ] = useState('')
   const [sel, setSel] = useState(0)
   const input = useRef<HTMLInputElement>(null)
@@ -26,13 +44,14 @@ export function SearchDialog({ data, open, onClose }: { data: Overview; open: bo
   const locale = useRouterState({ select: (s) => localeFromPath(s.location.pathname) })
   const en = locale === 'en'
   const index = useMemo(() => {
-    const names = new Map(data.dynasties.map((d) => [d.slug, d.name]))
+    const dynasties = data?.dynasties ?? []
+    const names = new Map(dynasties.map((d) => [d.slug, d.name]))
     const all: (Hit & { hay: string })[] = []
-    for (const d of data.dynasties) {
+    for (const d of dynasties) {
       all.push({ kind: 'dynasty', key: `d-${d.slug}`, label: en ? d.latin : d.name, sub: range(d.start, d.end), slug: d.slug, hay: normalize(`${d.name} ${d.latin}`) })
       for (const r of d.rulers) all.push({ kind: 'ruler', key: `r-${r.id}`, label: en ? r.latin : r.name, sub: [en ? d.latin : d.name, range(r.start, r.end), ...nicknamesFor(r.id).map((e) => `«${en ? e.en : e.fa}»`)].join(' · '), slug: r.id, hay: normalize(`${r.name} ${r.latin} ${epithetSearchText(r.id)}`) })
     }
-    for (const e of data.events) all.push({ kind: 'event', key: `e-${e.id}`, label: e.title, sub: `${names.get(e.dynastySlug)} · ${year(e.year)}`, slug: e.dynastySlug, hay: normalize(e.title) })
+    for (const e of data?.events ?? []) all.push({ kind: 'event', key: `e-${e.id}`, label: e.title, sub: `${names.get(e.dynastySlug)} · ${year(e.year)}`, slug: e.dynastySlug, hay: normalize(e.title) })
     for (const p of Object.values(places)) all.push({ kind: 'place', key: `pl-${p.slug}`, label: en ? p.name.en : p.name.fa, sub: en ? p.name.fa : p.name.en, slug: p.slug, hay: normalize([p.name.fa, p.name.en, ...p.aliases].join(' ')) })
     for (const p of SITE_PAGES) {
       if (!p.searchable) continue

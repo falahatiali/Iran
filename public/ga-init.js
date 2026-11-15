@@ -1,4 +1,4 @@
-/* global window, document, localStorage */
+/* global window, document, localStorage, setTimeout */
 // GA4 init with Consent Mode v2, loaded as a same-origin file so no inline script is needed.
 ;(function () {
   var s = document.currentScript
@@ -13,4 +13,18 @@
   } catch { /* no storage: stay denied */ }
   window.gtag('js', new Date())
   window.gtag('config', id, { allow_google_signals: false, allow_ad_personalization_signals: false })
+  // gtag.js replays the dataLayer queue whenever it arrives, so it can wait until the page is loaded and idle:
+  // it never competes with the page's own scripts, images or first interaction.
+  function loadGtag() {
+    var g = document.createElement('script')
+    g.async = true
+    g.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(id)
+    document.head.appendChild(g)
+  }
+  function whenIdle() {
+    if (window.requestIdleCallback) window.requestIdleCallback(loadGtag, { timeout: 4000 })
+    else setTimeout(loadGtag, 1500)
+  }
+  if (document.readyState === 'complete') whenIdle()
+  else window.addEventListener('load', whenIdle, { once: true })
 })()

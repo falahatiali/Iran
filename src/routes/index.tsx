@@ -1,6 +1,6 @@
-import { Link, createFileRoute, getRouteApi, stripSearchParams, useNavigate } from '@tanstack/react-router'
+import { Link, createFileRoute, stripSearchParams, useNavigate } from '@tanstack/react-router'
 import { motion, useScroll, useTransform } from 'motion/react'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 import { Shamseh, Divider } from '../components/Ornament'
 import { Reveal } from '../components/Reveal'
 import { DariusPrayerTeaser } from '../components/darius/DariusPrayer'
@@ -11,10 +11,13 @@ import { normalize } from '../lib/search'
 import { seo, websiteJsonLd } from '../lib/seo'
 import { HOME_DEFAULTS, filterByQuery, hasNonDefaultSearch, homeSearchSchema, type HomeSearch } from '../lib/searchSchema'
 import { useDraftQuery } from '../lib/useDraftQuery'
+import { getOverview } from '../server/api'
 
 export const Route = createFileRoute('/')({
   validateSearch: (search: Record<string, unknown>): HomeSearch => homeSearchSchema.parse(search),
   search: { middlewares: [stripSearchParams(HOME_DEFAULTS)] },
+  loader: () => getOverview(),
+  staleTime: Infinity,
   head: ({ match }) => ({
     ...seo({
       title: 'تاریخ ایران',
@@ -25,7 +28,6 @@ export const Route = createFileRoute('/')({
   }),
   component: Home,
 })
-const root = getRouteApi('__root__')
 
 function Hero({ totals }: { totals: { dynasties: number; rulers: number; events: number } }) {
   const ref = useRef<HTMLElement>(null)
@@ -40,32 +42,32 @@ function Hero({ totals }: { totals: { dynasties: number; rulers: number; events:
       </motion.div>
       <motion.div style={{ y: y2 }} className="absolute -bottom-20 inset-x-0 h-72 bg-gradient-to-t from-night via-night/80 to-transparent" />
       <motion.div style={{ opacity: op }} className="relative z-10 text-center px-4 max-w-4xl">
-        <motion.p initial={{ opacity: 0, letterSpacing: '0.6em' }} animate={{ opacity: 1, letterSpacing: '0.25em' }} transition={{ duration: 1.4 }} className="text-turquoise-soft text-sm md:text-base">از شوش تا تهران · پنج هزار سال</motion.p>
-        <motion.h1 id="hero-h" initial={{ opacity: 0, y: 40, filter: 'blur(12px)' }} animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }} transition={{ duration: 1.1, delay: 0.2, ease: [0.2, 0.8, 0.2, 1] }}
-          className="text-[length:var(--text-display)] font-black leading-[1.15] mt-4 text-gilded">تاریخ ایران</motion.h1>
-        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7, duration: 1 }} className="mt-6 text-lg md:text-xl leading-9 text-ivory/80">
+        {/* the entrance runs in CSS (`.hero-*` in app.css) from the first paint, not after hydration */}
+        <p className="hero-kicker text-turquoise-soft text-sm md:text-base tracking-[0.25em]">از شوش تا تهران · پنج هزار سال</p>
+        <h1 id="hero-h" className="hero-in text-[length:var(--text-display)] font-black leading-[1.15] mt-4 text-gilded" style={{ '--hero-y': '40px', '--hero-delay': '.1s', '--hero-dur': '1.1s' } as CSSProperties}>تاریخ ایران</h1>
+        <p className="hero-in mt-6 text-lg md:text-xl leading-9 text-ivory/80" style={{ '--hero-delay': '.3s' } as CSSProperties}>
           روایت دودمان‌ها و فرمانروایانی که این سرزمین را ساختند — به ترتیب زمان، با رویدادها، شجره‌نامه‌ها و منابع.
-        </motion.p>
-        <motion.dl initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1 }} className="mt-10 grid grid-cols-3 gap-3 max-w-lg mx-auto">
+        </p>
+        <dl className="hero-in mt-10 grid grid-cols-3 gap-3 max-w-lg mx-auto" style={{ '--hero-y': '20px', '--hero-delay': '.5s', '--hero-dur': '.6s' } as CSSProperties}>
           {[['دودمان و دوره', totals.dynasties], ['فرمانروا', totals.rulers], ['رویداد', totals.events]].map(([l, n]) => (
             <div key={l} className="glass rounded-2xl py-4"><dt className="text-xs text-ivory/60">{l}</dt><dd className="text-3xl font-black text-gold-bright">{fa(n)}</dd></div>
           ))}
-        </motion.dl>
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.3 }} className="mt-10 flex flex-wrap justify-center gap-3">
+        </dl>
+        <div className="hero-in mt-10 flex flex-wrap justify-center gap-3" style={{ '--hero-delay': '.7s', '--hero-dur': '.6s' } as CSSProperties}>
           <a href="#eras" className="rounded-full bg-gradient-to-l from-gold to-[#b8862f] text-night font-bold px-7 py-3 min-h-11 inline-flex items-center hover:shadow-[0_0_30px_#d9b45a80] transition-shadow">آغاز سفر</a>
           <Link to="/cylinder" className="glass rounded-full px-7 py-3 min-h-11 inline-flex items-center hover:border-gold">استوانهٔ کوروش</Link>
           <Link to="/king/$slug" params={{ slug: 'darius-i' }} className="glass rounded-full px-7 py-3 min-h-11 inline-flex items-center hover:border-gold">داریوش بزرگ</Link>
           <Link to="/archives" className="glass rounded-full px-7 py-3 min-h-11 inline-flex items-center hover:border-gold">بایگانی تخت‌جمشید</Link>
           <Link to="/timeline" className="glass rounded-full px-7 py-3 min-h-11 inline-flex items-center hover:border-gold">گاه‌شمار سراسری</Link>
-        </motion.div>
+        </div>
       </motion.div>
-      <motion.span aria-hidden="true" animate={{ y: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 2 }} className="absolute bottom-8 text-gold/60 text-2xl">⌄</motion.span>
+      <span aria-hidden="true" className="hero-bob absolute bottom-8 text-gold/60 text-2xl">⌄</span>
     </section>
   )
 }
 
 function Home() {
-  const data = root.useLoaderData()
+  const data = Route.useLoaderData()
   const { q = '' } = Route.useSearch()
   const navigate = useNavigate({ from: '/' })
   const [draft, setDraft] = useDraftQuery(q, (next) => {

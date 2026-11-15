@@ -205,3 +205,42 @@ p.read:lang(en), li.read:lang(en), .read:lang(en) > li, blockquote.read:lang(en)
 .dey-person:nth-child(3n+1) .dey-flame { animation-delay: -1.6s; }
 .dey-person-lit { outline: 2px solid #f2d68b; outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { .dey-pcard, .dey-chev { transition: none; } }
+
+/* Reveal and PageTransition (components/Reveal.tsx): CSS only, so nothing waits on JavaScript to become visible. */
+@keyframes reveal-in { from { opacity: 0; transform: translateY(var(--reveal-y, 28px)); } }
+@keyframes page-in { from { opacity: 0; } }
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal-in linear both;
+      animation-timeline: view();
+      animation-range: entry calc(var(--reveal-delay, 0) * 240px) entry calc(180px + var(--reveal-delay, 0) * 240px);
+    }
+  }
+  /* set by the root route after the first client-side navigation */
+  html[data-nav] .page-in { animation: page-in .45s cubic-bezier(.2, .8, .2, 1) both; }
+}
+
+/* header reading progress (components/ScrollProgress.tsx) */
+.scroll-progress { transform: scaleX(0); will-change: transform; }
+@keyframes scroll-progress { to { transform: scaleX(1); } }
+@supports (animation-timeline: scroll()) {
+  .scroll-progress { animation: scroll-progress linear both; animation-timeline: scroll(root); }
+}
+
+/* reading-settings panel (components/ReadingTool.tsx) */
+@keyframes reading-pop { from { opacity: 0; transform: translateY(12px) scale(.96); } }
+@media (prefers-reduced-motion: no-preference) { .reading-pop { animation: reading-pop .22s cubic-bezier(.2, .8, .2, 1) both; } }
+
+/* consent banner: server-rendered, visible only while <html data-consent-ask> (set by CONSENT_BOOT_SCRIPT) */
+html:not([data-consent-ask]) .consent-banner { display: none; }
+
+/* home hero entrance (routes/index.tsx): CSS, so it plays from the first paint instead of after hydration */
+@keyframes hero-in { from { opacity: 0; transform: translateY(var(--hero-y, 0)); } }
+@keyframes hero-kicker { from { opacity: 0; letter-spacing: .6em; } }
+@keyframes hero-bob { 50% { transform: translateY(10px); } }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-in { animation: hero-in var(--hero-dur, 1s) cubic-bezier(.2, .8, .2, 1) var(--hero-delay, 0s) both; }
+  .hero-kicker { animation: hero-kicker 1.4s ease-out both; }
+  .hero-bob { animation: hero-bob 2s ease-in-out infinite; }
+}

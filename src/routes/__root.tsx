@@ -2,20 +2,18 @@ import { HeadContent, Link, Outlet, Scripts, createRootRoute, useRouter, useRout
 import { MotionConfig } from 'motion/react'
 import { lazy, Suspense, useEffect, useState } from 'react'
 import appCss from '../styles/app.css?url'
-import { getOverview } from '../server/api'
 import { BackToTop, Footer, Header } from '../components/Layout'
 import { Shamseh } from '../components/Ornament'
 import { ReadingTool } from '../components/ReadingTool'
 import { READING_BOOT_SCRIPT } from '../lib/reading'
 import { GA_ID, gaEnabled, trackPageView } from '../lib/analytics'
 import { ConsentBanner } from '../components/ConsentBanner'
+import { CONSENT_BOOT_SCRIPT } from '../lib/consent'
 
 // Comments load after the page is interactive and never block first paint.
 const CommentsRoot = lazy(() => import('../components/comments/CommentsRoot'))
 
 export const Route = createRootRoute({
-  loader: () => getOverview(),
-  staleTime: Infinity,
   head: () => ({
     meta: [
       { charSet: 'utf-8' },
@@ -26,7 +24,6 @@ export const Route = createRootRoute({
     links: [
       { rel: 'preload', href: '/fonts/Vazirmatn-Regular.woff2', as: 'font', type: 'font/woff2', crossOrigin: 'anonymous' },
       { rel: 'preload', href: '/fonts/Vazirmatn-Black.woff2', as: 'font', type: 'font/woff2', crossOrigin: 'anonymous' },
-      { rel: 'preload', href: '/fonts/GentiumBookPlus-Regular.woff2', as: 'font', type: 'font/woff2', crossOrigin: 'anonymous' },
       { rel: 'stylesheet', href: appCss },
       { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
     ],
@@ -41,6 +38,10 @@ function RootDocument({ children }: { children: React.ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname })
   const isEn = pathname.startsWith('/en')
   const router = useRouter()
+  useEffect(() => router.subscribe('onBeforeNavigate', (e) => {
+    // after the first client-side move, pages fade in (`.page-in`); the server-rendered first paint never does
+    if (e.fromLocation && e.pathChanged) document.documentElement.dataset.nav = ''
+  }), [router])
   useEffect(() => {
     if (!gaEnabled()) return
     return router.subscribe('onResolved', (e) => {
@@ -83,13 +84,16 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     <html lang={isEn ? 'en' : 'fa'} dir={isEn ? 'ltr' : 'rtl'} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: READING_BOOT_SCRIPT }} />
+        {gaEnabled() && <script dangerouslySetInnerHTML={{ __html: CONSENT_BOOT_SCRIPT }} />}
         <HeadContent />
-        {gaEnabled() && <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />}
-        {gaEnabled() && <script src="/ga-init.js" data-ga-id={GA_ID} />}
+        {/* the Latin serif leads only on English pages; Persian pages fetch it lazily if a Latin run appears */}
+        {isEn && <link rel="preload" href="/fonts/GentiumBookPlus-Regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />}
+        {/* ga-init.js queues the config at once and fetches gtag.js (~180 KB) only once the page has loaded and gone idle */}
+        {gaEnabled() && <script defer src="/ga-init.js" data-ga-id={GA_ID} />}
       </head>
       <body>
         {children}
-        <ClientConsent isEn={isEn} />
+        {gaEnabled() && <ConsentBanner locale={isEn ? 'en' : 'fa'} />}
         <Scripts />
       </body>
     </html>
@@ -97,11 +101,10 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 }
 
 function RootLayout() {
-  const data = Route.useLoaderData()
   const isEn = useRouterState({ select: (s) => s.location.pathname.startsWith('/en') })
   return (
     <MotionConfig reducedMotion="user">
-      <Header data={data} />
+      <Header />
       <main id="main"><Outlet /><ClientComments /></main>
       <Footer />
       <BackToTop />
@@ -132,12 +135,6 @@ function RootError() {
       <a href="/" className="mt-8 glass rounded-full px-6 py-3 hover:border-gold min-h-11 inline-flex items-center">{isEn ? 'Back home' : 'بازگشت به خانه'}</a>
     </section>
   )
-}
-
-function ClientConsent({ isEn }: { isEn: boolean }) {
-  const [mounted, setMounted] = useState(false)
-  useEffect(() => setMounted(true), [])
-  return mounted && gaEnabled() ? <ConsentBanner locale={isEn ? 'en' : 'fa'} /> : null
 }
 
 function ClientComments() {

@@ -1,4 +1,3 @@
-import { AnimatePresence, motion } from 'motion/react'
 import { useCallback, useEffect, useId, useRef, useState } from 'react'
 import {
   DEFAULT_PREFS, LEADING_STEPS, MEASURE_STEPS, SIZE_STEPS, WEIGHT_STEPS,
@@ -93,14 +92,11 @@ export function ReadingTool({ locale }: { locale: 'fa' | 'en' }) {
 
   return (
     <div className={`fixed z-40 ${place} print:hidden`} dir={isFa ? 'rtl' : 'ltr'} lang={locale}>
-      <AnimatePresence>
-        {open && (
-          <motion.div
+      {open && (
+          <div
             ref={panel} id="reading-panel" role="dialog" aria-modal="true" aria-labelledby={titleId}
-            initial={{ opacity: 0, y: 12, scale: 0.96 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 8, scale: 0.97 }}
-            transition={{ duration: 0.22, ease: [0.2, 0.8, 0.2, 1] }}
             style={{ background: 'linear-gradient(160deg, rgb(15 31 75 / .97), rgb(7 13 31 / .98))' }}
-            className={`glass absolute bottom-16 end-0 w-[min(21rem,calc(100vw-2rem))] rounded-2xl p-4 ${isFa ? 'origin-bottom-left' : 'origin-bottom-right'}`}
+            className={`reading-pop glass absolute bottom-16 end-0 w-[min(21rem,calc(100vw-2rem))] rounded-2xl p-4 ${isFa ? 'origin-bottom-left' : 'origin-bottom-right'}`}
           >
             <div className="flex items-center justify-between">
               <h2 id={titleId} className="text-gilded font-black text-lg">{t.title}</h2>
@@ -116,20 +112,19 @@ export function ReadingTool({ locale }: { locale: 'fa' | 'en' }) {
               type="button" onClick={() => update({ ...DEFAULT_PREFS })} disabled={isDefault(prefs)}
               className="mt-3 w-full min-h-11 rounded-full border border-gold/40 text-sm text-gold-bright hover:bg-gold/10 disabled:opacity-40 disabled:cursor-default"
             >{t.reset}</button>
-          </motion.div>
-        )}
-      </AnimatePresence>
-      <motion.button
+          </div>
+      )}
+      <button
         ref={btn} type="button" aria-label={t.open} aria-expanded={open} aria-controls="reading-panel" aria-haspopup="dialog"
-        onClick={() => setOpen((o) => !o)} whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.94 }}
-        className="relative grid place-items-center size-12 rounded-full bg-night/80 border border-gold/60 shadow-lg shadow-gold/20 backdrop-blur-md text-gilded"
+        onClick={() => setOpen((o) => !o)}
+        className="relative grid transition-[scale] duration-200 hover:scale-108 active:scale-94 motion-reduce:transition-none place-items-center size-12 rounded-full bg-night/80 border border-gold/60 shadow-lg shadow-gold/20 backdrop-blur-md text-gilded"
       >
         <svg aria-hidden viewBox="0 0 48 48" className="absolute inset-0 size-full">
           <circle cx="24" cy="24" r="20.5" fill="none" stroke="#d9b45a" strokeOpacity=".45" strokeWidth=".8" strokeDasharray="1.6 2.4" />
           {[0, 90, 180, 270].map((a) => <path key={a} d="M24 1.6l1.4 2.4-1.4 2.4-1.4-2.4z" fill="#f2d68b" transform={`rotate(${a} 24 24)`} />)}
         </svg>
         <span aria-hidden className={`relative font-black leading-none ${isFa ? 'text-lg' : 'font-serif text-lg'}`} style={{ color: '#f2d68b' }}>{t.glyph}</span>
-      </motion.button>
+      </button>
     </div>
   )
 }

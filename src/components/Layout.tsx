@@ -1,23 +1,26 @@
 import { Link, useRouterState } from '@tanstack/react-router'
-import { motion, useScroll, useSpring } from 'motion/react'
-import { useEffect, useState } from 'react'
-import type { Overview } from '../server/api'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import { localeFromPath, siblingLocalePath } from '../lib/i18n'
-import { SearchDialog } from './Search'
+import { ScrollProgress } from './ScrollProgress'
 import { openConsent } from './ConsentBanner'
 import { gaEnabled } from '../lib/analytics'
 import { Shamseh } from './Ornament'
 
-export function Header({ data }: { data: Overview }) {
+// The search dialog and its index (all dynasties, rulers, events and places) load on first use, not with every page.
+const loadSearch = () => import('./Search')
+const SearchDialog = lazy(() => loadSearch().then((m) => ({ default: m.SearchDialog })))
+const prefetchSearch = () => { void loadSearch().then((m) => m.prefetchSearchIndex()) }
+
+export function Header() {
   const pathname = useRouterState({ select: (s) => s.location.pathname })
   const locale = localeFromPath(pathname)
   const [open, setOpen] = useState(false)
+  const [searchUsed, setSearchUsed] = useState(false)
   const [menu, setMenu] = useState(false)
-  const { scrollYProgress } = useScroll()
-  const scaleX = useSpring(scrollYProgress, { stiffness: 150, damping: 30 })
+  const openSearch = () => { setSearchUsed(true); setOpen(true) }
   useEffect(() => {
     const k = (e: KeyboardEvent) => {
-      if ((e.key === 'k' && (e.metaKey || e.ctrlKey)) || (e.key === '/' && !(e.target instanceof HTMLInputElement))) { e.preventDefault(); setOpen(true) }
+      if ((e.key === 'k' && (e.metaKey || e.ctrlKey)) || (e.key === '/' && !(e.target instanceof HTMLInputElement))) { e.preventDefault(); setSearchUsed(true); setOpen(true) }
     }
     window.addEventListener('keydown', k)
     return () => window.removeEventListener('keydown', k)
@@ -76,7 +79,7 @@ export function Header({ data }: { data: Overview }) {
             >
               {locale === 'en' ? 'فا' : 'EN'}
             </a>
-            <button onClick={() => setOpen(true)} className="glass rounded-full px-5 py-2.5 text-sm flex items-center gap-2 hover:border-gold/60 transition-colors min-h-11 min-w-11" aria-label={locale === 'en' ? 'Search (Ctrl+K)' : 'جست‌وجو (Ctrl+K)'}>
+            <button onClick={openSearch} onPointerEnter={prefetchSearch} onFocus={prefetchSearch} className="glass rounded-full px-5 py-2.5 text-sm flex items-center gap-2 hover:border-gold/60 transition-colors min-h-11 min-w-11" aria-label={locale === 'en' ? 'Search (Ctrl+K)' : 'جست‌وجو (Ctrl+K)'}>
               <span aria-hidden="true">⌕</span><span className="hidden sm:inline text-ivory/70">{locale === 'en' ? 'Search' : 'جست‌وجو'}</span><kbd className="hidden lg:inline text-[0.65rem] text-ivory/40">Ctrl K</kbd>
             </button>
             <button className="md:hidden glass rounded-full size-11" aria-expanded={menu} aria-controls="mobile-nav" aria-label={locale === 'en' ? 'Menu' : 'منو'} onClick={() => setMenu((m) => !m)}>☰</button>
@@ -87,9 +90,9 @@ export function Header({ data }: { data: Overview }) {
             {links.map((l) => <Link key={l.label} to={l.to} params={'params' in l ? l.params : undefined} onClick={() => setMenu(false)} className="py-3 text-ivory/80 min-h-11 flex items-center">{l.label}</Link>)}
           </nav>
         )}
-        <motion.div style={{ scaleX }} className="h-0.5 origin-right bg-gradient-to-l from-turquoise via-gold to-crimson" aria-hidden="true" />
+        <ScrollProgress />
       </header>
-      <SearchDialog data={data} open={open} onClose={() => setOpen(false)} />
+      {searchUsed && <Suspense fallback={null}><SearchDialog open={open} onClose={() => setOpen(false)} /></Suspense>}
     </>
   )
 }
@@ -103,13 +106,13 @@ export function BackToTop() {
     return () => window.removeEventListener('scroll', f)
   }, [])
   return (
-    <motion.button
+    <button
+      type="button"
       aria-label={isEn ? 'Back to top' : 'بازگشت به بالا'}
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      initial={false} animate={{ opacity: show ? 1 : 0, scale: show ? 1 : 0.6, pointerEvents: show ? 'auto' : 'none' }}
-      whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.92 }}
-      className="fixed bottom-24 right-4 sm:bottom-6 sm:right-6 z-40 grid place-items-center size-12 rounded-full bg-gradient-to-br from-gold to-[#9c6f1f] text-night text-xl font-black shadow-lg shadow-gold/30"
-    >↑</motion.button>
+      tabIndex={show ? 0 : -1}
+      className={`fixed bottom-24 right-4 sm:bottom-6 sm:right-6 z-40 grid place-items-center size-12 rounded-full bg-gradient-to-br from-gold to-[#9c6f1f] text-night text-xl font-black shadow-lg shadow-gold/30 transition-[opacity,scale] duration-300 motion-reduce:transition-none ${show ? 'opacity-100 scale-100 hover:scale-110 active:scale-[.92]' : 'opacity-0 scale-60 pointer-events-none'}`}
+    >↑</button>
   )
 }
 
