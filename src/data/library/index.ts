@@ -9,6 +9,7 @@ import { mantiqAlTayr } from './books/mantiq-al-tayr'
 import { masnavi } from './books/masnavi'
 import { shahnameh } from './books/shahnameh'
 import { isReady, type LibraryBook, type ReadyBook } from './types'
+import { MANTIQ_SECTIONS, sectionPath } from './mantiq/sections'
 
 export * from './types'
 
@@ -39,5 +40,9 @@ export function catalogue(): LibraryBook[] {
 /** Paths the library adds to the sitemap: the hall and every ready book page that lives under it
  * (the Shahnameh is listed by its own section). */
 export function librarySitemapPaths(): string[] {
-  return [LIBRARY_PATH, ...BOOKS.filter(isReady).map((b) => b.href).filter((h) => h.startsWith(`${LIBRARY_PATH}/`))]
+  return [
+    LIBRARY_PATH,
+    ...BOOKS.filter(isReady).map((b) => b.href).filter((h) => h.startsWith(`${LIBRARY_PATH}/`)),
+    ...MANTIQ_SECTIONS.map((s) => sectionPath(s.slug)),
+  ]
 }

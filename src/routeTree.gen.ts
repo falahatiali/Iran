@@ -31,7 +31,6 @@ import { Route as EventJashn2500RouteImport } from './routes/event/jashn-2500'
 import { Route as EventMashrutehRouteImport } from './routes/event/mashruteh'
 import { Route as KingSlugRouteImport } from './routes/king/$slug'
 import { Route as LibraryIndexRouteImport } from './routes/library/index'
-import { Route as LibraryMantiqAlTayrRouteImport } from './routes/library/mantiq-al-tayr'
 import { Route as PlaceSlugRouteImport } from './routes/place/$slug'
 import { Route as ShahnamehIndexRouteImport } from './routes/shahnameh/index'
 import { Route as ShahnamehSlugRouteImport } from './routes/shahnameh/$slug'
@@ -43,6 +42,8 @@ import { Route as EnKingSlugRouteImport } from './routes/en/king/$slug'
 import { Route as EnPlaceSlugRouteImport } from './routes/en/place/$slug'
 import { Route as EventDey1404IndexRouteImport } from './routes/event/dey-1404/index'
 import { Route as EventDey1404ProvinceRouteImport } from './routes/event/dey-1404/$province'
+import { Route as LibraryMantiqAlTayrIndexRouteImport } from './routes/library/mantiq-al-tayr/index'
+import { Route as LibraryMantiqAlTayrSectionRouteImport } from './routes/library/mantiq-al-tayr/$section'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -154,11 +155,6 @@ const LibraryIndexRoute = LibraryIndexRouteImport.update({
   path: '/library/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LibraryMantiqAlTayrRoute = LibraryMantiqAlTayrRouteImport.update({
-  id: '/library/mantiq-al-tayr',
-  path: '/library/mantiq-al-tayr',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const PlaceSlugRoute = PlaceSlugRouteImport.update({
   id: '/place/$slug',
   path: '/place/$slug',
@@ -214,6 +210,18 @@ const EventDey1404ProvinceRoute = EventDey1404ProvinceRouteImport.update({
   path: '/event/dey-1404/$province',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LibraryMantiqAlTayrIndexRoute =
+  LibraryMantiqAlTayrIndexRouteImport.update({
+    id: '/library/mantiq-al-tayr/',
+    path: '/library/mantiq-al-tayr/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const LibraryMantiqAlTayrSectionRoute =
+  LibraryMantiqAlTayrSectionRouteImport.update({
+    id: '/library/mantiq-al-tayr/$section',
+    path: '/library/mantiq-al-tayr/$section',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -237,7 +245,6 @@ export interface FileRoutesByFullPath {
   '/event/jashn-2500': typeof EventJashn2500Route
   '/event/mashruteh': typeof EventMashrutehRoute
   '/king/$slug': typeof KingSlugRoute
-  '/library/mantiq-al-tayr': typeof LibraryMantiqAlTayrRoute
   '/place/$slug': typeof PlaceSlugRoute
   '/shahnameh/$slug': typeof ShahnamehSlugRoute
   '/library/': typeof LibraryIndexRoute
@@ -249,7 +256,9 @@ export interface FileRoutesByFullPath {
   '/en/king/$slug': typeof EnKingSlugRoute
   '/en/place/$slug': typeof EnPlaceSlugRoute
   '/event/dey-1404/$province': typeof EventDey1404ProvinceRoute
+  '/library/mantiq-al-tayr/$section': typeof LibraryMantiqAlTayrSectionRoute
   '/event/dey-1404/': typeof EventDey1404IndexRoute
+  '/library/mantiq-al-tayr/': typeof LibraryMantiqAlTayrIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -273,7 +282,6 @@ export interface FileRoutesByTo {
   '/event/jashn-2500': typeof EventJashn2500Route
   '/event/mashruteh': typeof EventMashrutehRoute
   '/king/$slug': typeof KingSlugRoute
-  '/library/mantiq-al-tayr': typeof LibraryMantiqAlTayrRoute
   '/place/$slug': typeof PlaceSlugRoute
   '/shahnameh/$slug': typeof ShahnamehSlugRoute
   '/library': typeof LibraryIndexRoute
@@ -285,7 +293,9 @@ export interface FileRoutesByTo {
   '/en/king/$slug': typeof EnKingSlugRoute
   '/en/place/$slug': typeof EnPlaceSlugRoute
   '/event/dey-1404/$province': typeof EventDey1404ProvinceRoute
+  '/library/mantiq-al-tayr/$section': typeof LibraryMantiqAlTayrSectionRoute
   '/event/dey-1404': typeof EventDey1404IndexRoute
+  '/library/mantiq-al-tayr': typeof LibraryMantiqAlTayrIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -310,7 +320,6 @@ export interface FileRoutesById {
   '/event/jashn-2500': typeof EventJashn2500Route
   '/event/mashruteh': typeof EventMashrutehRoute
   '/king/$slug': typeof KingSlugRoute
-  '/library/mantiq-al-tayr': typeof LibraryMantiqAlTayrRoute
   '/place/$slug': typeof PlaceSlugRoute
   '/shahnameh/$slug': typeof ShahnamehSlugRoute
   '/library/': typeof LibraryIndexRoute
@@ -322,7 +331,9 @@ export interface FileRoutesById {
   '/en/king/$slug': typeof EnKingSlugRoute
   '/en/place/$slug': typeof EnPlaceSlugRoute
   '/event/dey-1404/$province': typeof EventDey1404ProvinceRoute
+  '/library/mantiq-al-tayr/$section': typeof LibraryMantiqAlTayrSectionRoute
   '/event/dey-1404/': typeof EventDey1404IndexRoute
+  '/library/mantiq-al-tayr/': typeof LibraryMantiqAlTayrIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -348,7 +359,6 @@ export interface FileRouteTypes {
     | '/event/jashn-2500'
     | '/event/mashruteh'
     | '/king/$slug'
-    | '/library/mantiq-al-tayr'
     | '/place/$slug'
     | '/shahnameh/$slug'
     | '/library/'
@@ -360,7 +370,9 @@ export interface FileRouteTypes {
     | '/en/king/$slug'
     | '/en/place/$slug'
     | '/event/dey-1404/$province'
+    | '/library/mantiq-al-tayr/$section'
     | '/event/dey-1404/'
+    | '/library/mantiq-al-tayr/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -384,7 +396,6 @@ export interface FileRouteTypes {
     | '/event/jashn-2500'
     | '/event/mashruteh'
     | '/king/$slug'
-    | '/library/mantiq-al-tayr'
     | '/place/$slug'
     | '/shahnameh/$slug'
     | '/library'
@@ -396,7 +407,9 @@ export interface FileRouteTypes {
     | '/en/king/$slug'
     | '/en/place/$slug'
     | '/event/dey-1404/$province'
+    | '/library/mantiq-al-tayr/$section'
     | '/event/dey-1404'
+    | '/library/mantiq-al-tayr'
   id:
     | '__root__'
     | '/'
@@ -420,7 +433,6 @@ export interface FileRouteTypes {
     | '/event/jashn-2500'
     | '/event/mashruteh'
     | '/king/$slug'
-    | '/library/mantiq-al-tayr'
     | '/place/$slug'
     | '/shahnameh/$slug'
     | '/library/'
@@ -432,7 +444,9 @@ export interface FileRouteTypes {
     | '/en/king/$slug'
     | '/en/place/$slug'
     | '/event/dey-1404/$province'
+    | '/library/mantiq-al-tayr/$section'
     | '/event/dey-1404/'
+    | '/library/mantiq-al-tayr/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -457,7 +471,6 @@ export interface RootRouteChildren {
   EventJashn2500Route: typeof EventJashn2500Route
   EventMashrutehRoute: typeof EventMashrutehRoute
   KingSlugRoute: typeof KingSlugRoute
-  LibraryMantiqAlTayrRoute: typeof LibraryMantiqAlTayrRoute
   PlaceSlugRoute: typeof PlaceSlugRoute
   ShahnamehSlugRoute: typeof ShahnamehSlugRoute
   LibraryIndexRoute: typeof LibraryIndexRoute
@@ -469,7 +482,9 @@ export interface RootRouteChildren {
   EnKingSlugRoute: typeof EnKingSlugRoute
   EnPlaceSlugRoute: typeof EnPlaceSlugRoute
   EventDey1404ProvinceRoute: typeof EventDey1404ProvinceRoute
+  LibraryMantiqAlTayrSectionRoute: typeof LibraryMantiqAlTayrSectionRoute
   EventDey1404IndexRoute: typeof EventDey1404IndexRoute
+  LibraryMantiqAlTayrIndexRoute: typeof LibraryMantiqAlTayrIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -628,13 +643,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LibraryIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/library/mantiq-al-tayr': {
-      id: '/library/mantiq-al-tayr'
-      path: '/library/mantiq-al-tayr'
-      fullPath: '/library/mantiq-al-tayr'
-      preLoaderRoute: typeof LibraryMantiqAlTayrRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/place/$slug': {
       id: '/place/$slug'
       path: '/place/$slug'
@@ -712,6 +720,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EventDey1404ProvinceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/library/mantiq-al-tayr/': {
+      id: '/library/mantiq-al-tayr/'
+      path: '/library/mantiq-al-tayr'
+      fullPath: '/library/mantiq-al-tayr/'
+      preLoaderRoute: typeof LibraryMantiqAlTayrIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/library/mantiq-al-tayr/$section': {
+      id: '/library/mantiq-al-tayr/$section'
+      path: '/library/mantiq-al-tayr/$section'
+      fullPath: '/library/mantiq-al-tayr/$section'
+      preLoaderRoute: typeof LibraryMantiqAlTayrSectionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -737,7 +759,6 @@ const rootRouteChildren: RootRouteChildren = {
   EventJashn2500Route: EventJashn2500Route,
   EventMashrutehRoute: EventMashrutehRoute,
   KingSlugRoute: KingSlugRoute,
-  LibraryMantiqAlTayrRoute: LibraryMantiqAlTayrRoute,
   PlaceSlugRoute: PlaceSlugRoute,
   ShahnamehSlugRoute: ShahnamehSlugRoute,
   LibraryIndexRoute: LibraryIndexRoute,
@@ -749,7 +770,9 @@ const rootRouteChildren: RootRouteChildren = {
   EnKingSlugRoute: EnKingSlugRoute,
   EnPlaceSlugRoute: EnPlaceSlugRoute,
   EventDey1404ProvinceRoute: EventDey1404ProvinceRoute,
+  LibraryMantiqAlTayrSectionRoute: LibraryMantiqAlTayrSectionRoute,
   EventDey1404IndexRoute: EventDey1404IndexRoute,
+  LibraryMantiqAlTayrIndexRoute: LibraryMantiqAlTayrIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

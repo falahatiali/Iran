@@ -10,7 +10,9 @@ const walk = (d: string): string[] => fs.readdirSync(d, { withFileTypes: true })
   return e.isDirectory() ? walk(p) : /\.(tsx?|json)$/.test(e.name) && !/\.test\.tsx?$/.test(e.name) ? [p] : []
 })
 // The Shahnameh stream owns data/shahnameh and checks its own text; verse quoted elsewhere uses می for "wine".
-const files = walk(src).filter((f) => !f.includes(`${path.sep}shahnameh${path.sep}`)).map((f) => ({ rel: path.relative(src, f), text: fs.readFileSync(f, 'utf8') }))
+// Mantiq al-Tayr's text is Ganjoor's, verbatim (scripts/fetch-ganjoor-mantiq.py), so its spelling is not ours to correct.
+const verbatim = path.join('data', 'library', 'mantiq', 'text') + path.sep
+const files = walk(src).filter((f) => !f.includes(`${path.sep}shahnameh${path.sep}`) && !f.includes(verbatim)).map((f) => ({ rel: path.relative(src, f), text: fs.readFileSync(f, 'utf8') }))
 
 function offenders(re: RegExp, skip: (rel: string) => boolean = () => false) {
   const out: string[] = []

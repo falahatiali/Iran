@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from 'react'
-import type { StoryPoemCommentary, VerseNote } from '../../data/shahnameh/commentary'
+import type { StoryPoemCommentary } from '../../data/shahnameh/commentary'
 import { noteKey, verseAnchor } from '../../data/shahnameh/poems/load'
 import type { StoryPoemText } from '../../data/shahnameh/poems/types'
 import { lineLinkUrl } from '../../lib/lineLink'
 import { SITE_URL } from '../../lib/seo'
+import { VerseExplanation } from '../verse/VerseExplanation'
 
 function sceneTitle(title: string) {
   return title.replace(/^بخش\s+\d+\s*[-–]\s*/, '').replace(/^بخش\s+\d+\s*/, '')
@@ -135,29 +136,5 @@ export function PoemReader({
         ))}
       </div>
     </div>
-  )
-}
-
-function VerseExplanation({ note, open }: { note: VerseNote; open: boolean }) {
-  return (
-    <details className="mt-3" open={open || undefined}>
-      <summary className="cursor-pointer text-sm text-gold min-h-11 inline-flex items-center">توضیح ما</summary>
-      <div className="mt-3 border-t border-gold/15 pt-3">
-        <p className="read text-ivory/88">{note.meaning}</p>
-        {note.glossary && note.glossary.length > 0 && (
-          <dl className="mt-3 space-y-1.5 text-sm">
-            {note.glossary.map((g) => (
-              <div key={g.word} className="flex gap-2">
-                <dt className="font-bold text-gold-bright shrink-0">{g.word}:</dt>
-                <dd className="read text-ivory/75">{g.meaning}</dd>
-              </div>
-            ))}
-          </dl>
-        )}
-        {note.artistry && (
-          <p className="read mt-3 text-sm text-ivory/75"><span className="text-turquoise-soft font-bold">هنر بیت. </span>{note.artistry}</p>
-        )}
-      </div>
-    </details>
   )
 }
