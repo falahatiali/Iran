@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { mantiq } from '../../data/library/mantiq'
 import {
   MANTIQ_TOTAL_COUPLETS, baytAnchor, groupTitle, neighbours, noteKey, sectionsByGroup,
@@ -58,6 +58,17 @@ function Pager({ slug }: { slug: string }) {
 export function MantiqSectionPage({ meta, text, notes }: { meta: MantiqSectionMeta; text: MantiqText; notes: MantiqNotes }) {
   const [open, setOpen] = useState(true)
   const annotated = notes.status !== 'none'
+  useEffect(() => {
+    // bayts use content-visibility, so the browser's own jump to #b-… lands on estimated heights; settle it on the real one
+    const id = decodeURIComponent(window.location.hash.slice(1))
+    if (!id.startsWith('b-') && !id.startsWith('p-')) return
+    let frames = 0
+    const settle = () => {
+      document.getElementById(id)?.scrollIntoView({ block: id.startsWith('b-') ? 'center' : 'start' })
+      if (++frames < 3) requestAnimationFrame(settle)
+    }
+    requestAnimationFrame(settle)
+  }, [meta.slug])
   return (
     <div className="mq mqr">
       <div className="mqr-folio">
