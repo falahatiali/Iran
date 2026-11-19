@@ -101,6 +101,7 @@
   .kh-panel { margin: -110px 12px 0; padding: 22px 18px; border-radius: 160px 160px 18px 18px / 80px 80px 18px 18px; }
   .kh-panel h1 { font-size: 50px; }
   .kh-rubai p { flex-direction: column; }
+  .kh-rubai span { flex: none; }
   .kh-rubai span:last-child { text-align: start; padding-inline-start: 1.5em; }
   .kh-rubai.is-opening { font-size: 19px; }
   .kh-intro { font-size: 15.5px; }
