@@ -7,6 +7,8 @@ import { publicPaths } from '../../lib/publicPaths'
 import { SITE_PAGES } from '../../lib/sitePages'
 import { BOOKS, LIBRARY_PATH, catalogue, isReady, librarySitemapPaths, readyBook, shelfBooks } from '.'
 import { MANTIQ_PATH, mantiq } from './mantiq'
+import { KHAYYAM_PAGES, KHAYYAM_PATH, SOURCES, khayyam } from './khayyam'
+import { rubaiyat } from './khayyam/repository'
 import {
   MANTIQ_GROUPS, MANTIQ_SECTIONS, MANTIQ_TOTAL_COUPLETS, hasNotes, loadMantiqNotes, loadMantiqText, noteKey, sectionBySlug,
 } from './mantiq/sections'
@@ -41,7 +43,7 @@ test('every ready book opens into a real route, with its cover and headpiece on 
     for (const ext of ['avif', 'webp']) assert.ok(publicFile(`${b.cover}.${ext}`), `${b.slug}: missing ${b.cover}.${ext}`)
     assert.ok(publicFile(b.headpiece.src), `${b.slug}: missing ${b.headpiece.src}`)
     for (const part of [...(b.headpiece.srcSet?.split(',') ?? []), ...(b.headpiece.avifSrcSet?.split(',') ?? [])]) assert.ok(publicFile(part.trim().split(' ')[0]), `${b.slug}: missing ${part}`)
-    const src = fs.readFileSync(routeFile(b.href)!, 'utf8') + fs.readFileSync(path.join(root, 'src/components', b.slug === 'shahnameh' ? 'shahnameh/LandingPage.tsx' : 'library/MantiqPage.tsx'), 'utf8')
+    const src = fs.readFileSync(routeFile(b.href)!, 'utf8') + fs.readFileSync(path.join(root, 'src/components', ({ shahnameh: 'shahnameh/LandingPage.tsx', khayyam: 'library/khayyam/KhayyamPage.tsx' } as Record<string, string>)[b.slug] ?? 'library/MantiqPage.tsx'), 'utf8')
     assert.ok(src.includes(`data-book-arrival`), `${b.slug}: the page must mark its arrival element for the opening animation`)
   }
 })
@@ -55,7 +57,8 @@ test('the library hall, the Mantiq page and every Mantiq section are in the site
   assert.ok(paths.has(LIBRARY_PATH))
   assert.ok(paths.has(MANTIQ_PATH))
   assert.ok(paths.has('/shahnameh'))
-  assert.deepEqual(librarySitemapPaths(), [LIBRARY_PATH, MANTIQ_PATH, ...MANTIQ_SECTIONS.map((s) => `${MANTIQ_PATH}/${s.slug}`)])
+  assert.deepEqual(librarySitemapPaths(), [LIBRARY_PATH, MANTIQ_PATH, KHAYYAM_PATH, ...MANTIQ_SECTIONS.map((s) => `${MANTIQ_PATH}/${s.slug}`), ...KHAYYAM_PAGES.slice(1)])
+  for (const p of KHAYYAM_PAGES) assert.ok(paths.has(p), p)
   assert.equal(readyBook('shahnameh').href, '/shahnameh')
   assert.ok(SITE_PAGES.some((p) => p.fa.path === LIBRARY_PATH))
 })
@@ -130,5 +133,39 @@ test('every library image is credited in ATTRIBUTION.txt as original artwork', (
   for (const f of fs.readdirSync(path.join(root, 'public/media/library'))) {
     const stem = f.replace(/(-\d+)?\.(avif|webp|jpg)$/, '')
     assert.ok(section.includes(`library/${stem}`) || section.includes(stem), `${f} is not credited`)
+  }
+})
+
+test('the Khayyam book opens on Hedayat\'s quatrain, word for word, and the edition is whole', async () => {
+  const b = readyBook('khayyam')
+  assert.equal(b.href, KHAYYAM_PATH)
+  const h = await rubaiyat.hedayat()
+  const opening = h.quatrains.find((q) => q.n === khayyam.openingN)!
+  assert.deepEqual([...b.incipit], opening.lines.slice(0, 2))
+  assert.equal(h.quatrains.length, 143)
+  assert.deepEqual(h.quatrains.map((q) => q.n), Array.from({ length: 143 }, (_, i) => i + 1))
+  assert.equal(h.themes.length, 8)
+  for (const t of h.themes) assert.equal(h.quatrains.filter((q) => q.theme === t.id).length, t.count, t.title)
+  const fg = await rubaiyat.foroughi()
+  assert.equal(fg.quatrains.length, 178)
+  for (const q of [...h.quatrains, ...fg.quatrains]) {
+    assert.equal(q.lines.length, 4)
+    for (const l of q.lines) assert.ok(l.trim() && !l.startsWith('*'), `${q.ganjoor}: clean line`)
+  }
+  for (const q of h.quatrains) if (q.fg) assert.ok(fg.quatrains.some((x) => x.n === q.fg))
+  assert.ok(h.quatrains.some((q) => q.doubtful) && h.quatrains.some((q) => !q.doubtful))
+})
+
+test('every Khayyam note sits on a real quatrain, and every sentence of prose cites a listed source', async () => {
+  const [h, notes] = await Promise.all([rubaiyat.hedayat(), rubaiyat.notes()])
+  for (const [k, n] of Object.entries(notes.notes)) {
+    assert.ok(h.quatrains.some((q) => String(q.n) === k), `note ${k}`)
+    assert.ok(n.meaning.trim().length > 20, `note ${k} has a meaning`)
+  }
+  if (notes.status === 'complete') assert.equal(Object.keys(notes.notes).length, h.quatrains.length)
+  const ids = new Set(SOURCES.map((s) => s.id))
+  for (const p of [...khayyam.intro, ...khayyam.about.flatMap((s) => s.paras)]) {
+    assert.ok(p.cite.length > 0, p.text.slice(0, 30))
+    for (const c of p.cite) assert.ok(ids.has(c), c)
   }
 })

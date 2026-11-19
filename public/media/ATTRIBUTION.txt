@@ -579,4 +579,12 @@ Same licence as the site. Resized and encoded to AVIF and WebP at the widths sho
   Original generated artwork for this site: a tooled leather book cover with a gilt shamseh. Cover of the 3D book in the opening animation.
 - library/cover-shahnameh.(avif|webp)
   The same cover artwork recoloured to crimson for the Shahnameh book.
+- library/khayyam-night-640.(avif|webp), khayyam-night-960.(avif|webp), khayyam-night-1280.(avif|webp), og-khayyam.jpg
+  Original generated artwork for this site (2026-11-19): an imagined night garden in Khorasan with a clay jug, a cup, an open book and an astrolabe under the stars, in a miniature-inspired style; the town and domes are generic, not a real building. Hero of /library/khayyam and headpiece of the opened book. The turning star chart over it is drawn in SVG by the page itself.
+- library/cover-khayyam.(avif|webp)
+  The same cover artwork recoloured to wine red for the Khayyam book.
+Text of Khayyam's quatrains (/library/khayyam): verbatim from Ganjoor (ganjoor.net), extracted from Ganjoor's open data export
+  https://github.com/ganjoor/ganjoor-data (commit e3999b29200a43f25ca8dc73a2f428957aaee3cd) by scripts/extract-ganjoor-khayyam.py;
+  editions: Sadegh Hedayat, «ترانه‌های خیام» (1934; Ganjoor text entered by Mahmoudreza Rajaei) and the Foroughi–Ghani selection.
+  The quatrains are medieval and in the public domain; the editors' selections are credited on every page. Only the Khayyam text is copied, not the dump.
 Typeface on the library pages: Noto Naskh Arabic Bold (Google, SIL Open Font License 1.1), subset to Persian letters: /fonts/NotoNaskhArabic-Bold-fa.woff2.

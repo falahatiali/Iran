@@ -42,6 +42,10 @@ import { Route as EnKingSlugRouteImport } from './routes/en/king/$slug'
 import { Route as EnPlaceSlugRouteImport } from './routes/en/place/$slug'
 import { Route as EventDey1404IndexRouteImport } from './routes/event/dey-1404/index'
 import { Route as EventDey1404ProvinceRouteImport } from './routes/event/dey-1404/$province'
+import { Route as LibraryKhayyamIndexRouteImport } from './routes/library/khayyam/index'
+import { Route as LibraryKhayyamAboutRouteImport } from './routes/library/khayyam/about'
+import { Route as LibraryKhayyamForoughiRouteImport } from './routes/library/khayyam/foroughi'
+import { Route as LibraryKhayyamRubaiyatRouteImport } from './routes/library/khayyam/rubaiyat'
 import { Route as LibraryMantiqAlTayrIndexRouteImport } from './routes/library/mantiq-al-tayr/index'
 import { Route as LibraryMantiqAlTayrSectionRouteImport } from './routes/library/mantiq-al-tayr/$section'
 
@@ -210,6 +214,26 @@ const EventDey1404ProvinceRoute = EventDey1404ProvinceRouteImport.update({
   path: '/event/dey-1404/$province',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LibraryKhayyamIndexRoute = LibraryKhayyamIndexRouteImport.update({
+  id: '/library/khayyam/',
+  path: '/library/khayyam/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LibraryKhayyamAboutRoute = LibraryKhayyamAboutRouteImport.update({
+  id: '/library/khayyam/about',
+  path: '/library/khayyam/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LibraryKhayyamForoughiRoute = LibraryKhayyamForoughiRouteImport.update({
+  id: '/library/khayyam/foroughi',
+  path: '/library/khayyam/foroughi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LibraryKhayyamRubaiyatRoute = LibraryKhayyamRubaiyatRouteImport.update({
+  id: '/library/khayyam/rubaiyat',
+  path: '/library/khayyam/rubaiyat',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LibraryMantiqAlTayrIndexRoute =
   LibraryMantiqAlTayrIndexRouteImport.update({
     id: '/library/mantiq-al-tayr/',
@@ -256,8 +280,12 @@ export interface FileRoutesByFullPath {
   '/en/king/$slug': typeof EnKingSlugRoute
   '/en/place/$slug': typeof EnPlaceSlugRoute
   '/event/dey-1404/$province': typeof EventDey1404ProvinceRoute
+  '/library/khayyam/about': typeof LibraryKhayyamAboutRoute
+  '/library/khayyam/foroughi': typeof LibraryKhayyamForoughiRoute
+  '/library/khayyam/rubaiyat': typeof LibraryKhayyamRubaiyatRoute
   '/library/mantiq-al-tayr/$section': typeof LibraryMantiqAlTayrSectionRoute
   '/event/dey-1404/': typeof EventDey1404IndexRoute
+  '/library/khayyam/': typeof LibraryKhayyamIndexRoute
   '/library/mantiq-al-tayr/': typeof LibraryMantiqAlTayrIndexRoute
 }
 export interface FileRoutesByTo {
@@ -293,8 +321,12 @@ export interface FileRoutesByTo {
   '/en/king/$slug': typeof EnKingSlugRoute
   '/en/place/$slug': typeof EnPlaceSlugRoute
   '/event/dey-1404/$province': typeof EventDey1404ProvinceRoute
+  '/library/khayyam/about': typeof LibraryKhayyamAboutRoute
+  '/library/khayyam/foroughi': typeof LibraryKhayyamForoughiRoute
+  '/library/khayyam/rubaiyat': typeof LibraryKhayyamRubaiyatRoute
   '/library/mantiq-al-tayr/$section': typeof LibraryMantiqAlTayrSectionRoute
   '/event/dey-1404': typeof EventDey1404IndexRoute
+  '/library/khayyam': typeof LibraryKhayyamIndexRoute
   '/library/mantiq-al-tayr': typeof LibraryMantiqAlTayrIndexRoute
 }
 export interface FileRoutesById {
@@ -331,8 +363,12 @@ export interface FileRoutesById {
   '/en/king/$slug': typeof EnKingSlugRoute
   '/en/place/$slug': typeof EnPlaceSlugRoute
   '/event/dey-1404/$province': typeof EventDey1404ProvinceRoute
+  '/library/khayyam/about': typeof LibraryKhayyamAboutRoute
+  '/library/khayyam/foroughi': typeof LibraryKhayyamForoughiRoute
+  '/library/khayyam/rubaiyat': typeof LibraryKhayyamRubaiyatRoute
   '/library/mantiq-al-tayr/$section': typeof LibraryMantiqAlTayrSectionRoute
   '/event/dey-1404/': typeof EventDey1404IndexRoute
+  '/library/khayyam/': typeof LibraryKhayyamIndexRoute
   '/library/mantiq-al-tayr/': typeof LibraryMantiqAlTayrIndexRoute
 }
 export interface FileRouteTypes {
@@ -370,8 +406,12 @@ export interface FileRouteTypes {
     | '/en/king/$slug'
     | '/en/place/$slug'
     | '/event/dey-1404/$province'
+    | '/library/khayyam/about'
+    | '/library/khayyam/foroughi'
+    | '/library/khayyam/rubaiyat'
     | '/library/mantiq-al-tayr/$section'
     | '/event/dey-1404/'
+    | '/library/khayyam/'
     | '/library/mantiq-al-tayr/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -407,8 +447,12 @@ export interface FileRouteTypes {
     | '/en/king/$slug'
     | '/en/place/$slug'
     | '/event/dey-1404/$province'
+    | '/library/khayyam/about'
+    | '/library/khayyam/foroughi'
+    | '/library/khayyam/rubaiyat'
     | '/library/mantiq-al-tayr/$section'
     | '/event/dey-1404'
+    | '/library/khayyam'
     | '/library/mantiq-al-tayr'
   id:
     | '__root__'
@@ -444,8 +488,12 @@ export interface FileRouteTypes {
     | '/en/king/$slug'
     | '/en/place/$slug'
     | '/event/dey-1404/$province'
+    | '/library/khayyam/about'
+    | '/library/khayyam/foroughi'
+    | '/library/khayyam/rubaiyat'
     | '/library/mantiq-al-tayr/$section'
     | '/event/dey-1404/'
+    | '/library/khayyam/'
     | '/library/mantiq-al-tayr/'
   fileRoutesById: FileRoutesById
 }
@@ -482,8 +530,12 @@ export interface RootRouteChildren {
   EnKingSlugRoute: typeof EnKingSlugRoute
   EnPlaceSlugRoute: typeof EnPlaceSlugRoute
   EventDey1404ProvinceRoute: typeof EventDey1404ProvinceRoute
+  LibraryKhayyamAboutRoute: typeof LibraryKhayyamAboutRoute
+  LibraryKhayyamForoughiRoute: typeof LibraryKhayyamForoughiRoute
+  LibraryKhayyamRubaiyatRoute: typeof LibraryKhayyamRubaiyatRoute
   LibraryMantiqAlTayrSectionRoute: typeof LibraryMantiqAlTayrSectionRoute
   EventDey1404IndexRoute: typeof EventDey1404IndexRoute
+  LibraryKhayyamIndexRoute: typeof LibraryKhayyamIndexRoute
   LibraryMantiqAlTayrIndexRoute: typeof LibraryMantiqAlTayrIndexRoute
 }
 
@@ -720,6 +772,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EventDey1404ProvinceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/library/khayyam/': {
+      id: '/library/khayyam/'
+      path: '/library/khayyam'
+      fullPath: '/library/khayyam/'
+      preLoaderRoute: typeof LibraryKhayyamIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/library/khayyam/about': {
+      id: '/library/khayyam/about'
+      path: '/library/khayyam/about'
+      fullPath: '/library/khayyam/about'
+      preLoaderRoute: typeof LibraryKhayyamAboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/library/khayyam/foroughi': {
+      id: '/library/khayyam/foroughi'
+      path: '/library/khayyam/foroughi'
+      fullPath: '/library/khayyam/foroughi'
+      preLoaderRoute: typeof LibraryKhayyamForoughiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/library/khayyam/rubaiyat': {
+      id: '/library/khayyam/rubaiyat'
+      path: '/library/khayyam/rubaiyat'
+      fullPath: '/library/khayyam/rubaiyat'
+      preLoaderRoute: typeof LibraryKhayyamRubaiyatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/library/mantiq-al-tayr/': {
       id: '/library/mantiq-al-tayr/'
       path: '/library/mantiq-al-tayr'
@@ -770,8 +850,12 @@ const rootRouteChildren: RootRouteChildren = {
   EnKingSlugRoute: EnKingSlugRoute,
   EnPlaceSlugRoute: EnPlaceSlugRoute,
   EventDey1404ProvinceRoute: EventDey1404ProvinceRoute,
+  LibraryKhayyamAboutRoute: LibraryKhayyamAboutRoute,
+  LibraryKhayyamForoughiRoute: LibraryKhayyamForoughiRoute,
+  LibraryKhayyamRubaiyatRoute: LibraryKhayyamRubaiyatRoute,
   LibraryMantiqAlTayrSectionRoute: LibraryMantiqAlTayrSectionRoute,
   EventDey1404IndexRoute: EventDey1404IndexRoute,
+  LibraryKhayyamIndexRoute: LibraryKhayyamIndexRoute,
   LibraryMantiqAlTayrIndexRoute: LibraryMantiqAlTayrIndexRoute,
 }
 export const routeTree = rootRouteImport

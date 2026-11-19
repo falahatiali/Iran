@@ -10,6 +10,7 @@ import { masnavi } from './books/masnavi'
 import { shahnameh } from './books/shahnameh'
 import { isReady, type LibraryBook, type ReadyBook } from './types'
 import { MANTIQ_SECTIONS, sectionPath } from './mantiq/sections'
+import { KHAYYAM_PAGES } from './khayyam/paths'
 
 export * from './types'
 
@@ -44,5 +45,6 @@ export function librarySitemapPaths(): string[] {
     LIBRARY_PATH,
     ...BOOKS.filter(isReady).map((b) => b.href).filter((h) => h.startsWith(`${LIBRARY_PATH}/`)),
     ...MANTIQ_SECTIONS.map((s) => sectionPath(s.slug)),
+    ...KHAYYAM_PAGES.slice(1),
   ]
 }
