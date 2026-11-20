@@ -71,6 +71,7 @@ export function HafezPage({ summary }: { summary: ReturnType<typeof summarise> }
             </li>
           ))}
         </ol>
+        <p className="hf-more">و جز غزل: <Link to="/library/hafez/robaiyat">رباعیات</Link> · <Link to="/library/hafez/qetaat">قطعات</Link></p>
       </section>
 
       <section className="hf-two">

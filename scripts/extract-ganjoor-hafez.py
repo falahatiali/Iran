@@ -93,6 +93,25 @@ for n in range(1, 496):
 
 with open(os.path.join(root, 'index.json'), 'w', encoding='utf-8') as fh:
     json.dump({'source': 'ganjoor-data', 'commit': commit, 'stats': stats, 'ghazals': index}, fh, ensure_ascii=False, separators=(',', ':'))
+# Hafez's rubaiyat and qet'as: small, so each set is one file, read only by its own page.
+for cat, out_name in (('robaee2', 'robaiyat.json'), ('ghete', 'qetaat.json')):
+    files = sorted((int(f[2:-5]), f) for f in os.listdir(os.path.join(src, 'poets', 'hafez', cat)) if f.startswith('sh'))
+    poems = []
+    for n, f in files:
+        d = json.load(open(os.path.join(src, 'poets', 'hafez', cat, f), encoding='utf-8'))
+        bayts = []
+        for v in sorted(d['Verses'], key=lambda v: v['VOrder']):
+            if v['Position'] == 'Right':
+                m = meaning(v.get('CoupletSummary'))
+                bayts.append({'l': [clean(v['Text'])], **({'m': m} if m else {})})
+            elif v['Position'] == 'Left':
+                bayts[-1]['l'].append(clean(v['Text']))
+        assert all(len(b['l']) == 2 for b in bayts), (cat, n)
+        poems.append({'n': n, 'metre': d['Metre']['Rhythm'] if d.get('Metre') else None, 'summary': meaning(d.get('PoemSummary')), 'bayts': bayts})
+        stats[cat] = len(poems)
+    with open(os.path.join(root, out_name), 'w', encoding='utf-8') as fh:
+        json.dump(poems, fh, ensure_ascii=False, separators=(',', ':'))
+
 with open(os.path.join(root, 'meta.json'), 'w', encoding='utf-8') as fh:
     json.dump({'source': 'ganjoor-data', 'commit': commit, 'stats': stats}, fh, ensure_ascii=False, separators=(',', ':'))
 print(commit, stats)

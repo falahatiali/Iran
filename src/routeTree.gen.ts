@@ -45,6 +45,8 @@ import { Route as EventDey1404ProvinceRouteImport } from './routes/event/dey-140
 import { Route as LibraryHafezIndexRouteImport } from './routes/library/hafez/index'
 import { Route as LibraryHafezAboutRouteImport } from './routes/library/hafez/about'
 import { Route as LibraryHafezGhazalsRouteImport } from './routes/library/hafez/ghazals'
+import { Route as LibraryHafezQetaatRouteImport } from './routes/library/hafez/qetaat'
+import { Route as LibraryHafezRobaiyatRouteImport } from './routes/library/hafez/robaiyat'
 import { Route as LibraryKhayyamIndexRouteImport } from './routes/library/khayyam/index'
 import { Route as LibraryKhayyamAboutRouteImport } from './routes/library/khayyam/about'
 import { Route as LibraryKhayyamForoughiRouteImport } from './routes/library/khayyam/foroughi'
@@ -233,6 +235,16 @@ const LibraryHafezGhazalsRoute = LibraryHafezGhazalsRouteImport.update({
   path: '/library/hafez/ghazals',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LibraryHafezQetaatRoute = LibraryHafezQetaatRouteImport.update({
+  id: '/library/hafez/qetaat',
+  path: '/library/hafez/qetaat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LibraryHafezRobaiyatRoute = LibraryHafezRobaiyatRouteImport.update({
+  id: '/library/hafez/robaiyat',
+  path: '/library/hafez/robaiyat',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LibraryKhayyamIndexRoute = LibraryKhayyamIndexRouteImport.update({
   id: '/library/khayyam/',
   path: '/library/khayyam/',
@@ -306,6 +318,8 @@ export interface FileRoutesByFullPath {
   '/event/dey-1404/$province': typeof EventDey1404ProvinceRoute
   '/library/hafez/about': typeof LibraryHafezAboutRoute
   '/library/hafez/ghazals': typeof LibraryHafezGhazalsRoute
+  '/library/hafez/qetaat': typeof LibraryHafezQetaatRoute
+  '/library/hafez/robaiyat': typeof LibraryHafezRobaiyatRoute
   '/library/khayyam/about': typeof LibraryKhayyamAboutRoute
   '/library/khayyam/foroughi': typeof LibraryKhayyamForoughiRoute
   '/library/khayyam/rubaiyat': typeof LibraryKhayyamRubaiyatRoute
@@ -351,6 +365,8 @@ export interface FileRoutesByTo {
   '/event/dey-1404/$province': typeof EventDey1404ProvinceRoute
   '/library/hafez/about': typeof LibraryHafezAboutRoute
   '/library/hafez/ghazals': typeof LibraryHafezGhazalsRoute
+  '/library/hafez/qetaat': typeof LibraryHafezQetaatRoute
+  '/library/hafez/robaiyat': typeof LibraryHafezRobaiyatRoute
   '/library/khayyam/about': typeof LibraryKhayyamAboutRoute
   '/library/khayyam/foroughi': typeof LibraryKhayyamForoughiRoute
   '/library/khayyam/rubaiyat': typeof LibraryKhayyamRubaiyatRoute
@@ -397,6 +413,8 @@ export interface FileRoutesById {
   '/event/dey-1404/$province': typeof EventDey1404ProvinceRoute
   '/library/hafez/about': typeof LibraryHafezAboutRoute
   '/library/hafez/ghazals': typeof LibraryHafezGhazalsRoute
+  '/library/hafez/qetaat': typeof LibraryHafezQetaatRoute
+  '/library/hafez/robaiyat': typeof LibraryHafezRobaiyatRoute
   '/library/khayyam/about': typeof LibraryKhayyamAboutRoute
   '/library/khayyam/foroughi': typeof LibraryKhayyamForoughiRoute
   '/library/khayyam/rubaiyat': typeof LibraryKhayyamRubaiyatRoute
@@ -444,6 +462,8 @@ export interface FileRouteTypes {
     | '/event/dey-1404/$province'
     | '/library/hafez/about'
     | '/library/hafez/ghazals'
+    | '/library/hafez/qetaat'
+    | '/library/hafez/robaiyat'
     | '/library/khayyam/about'
     | '/library/khayyam/foroughi'
     | '/library/khayyam/rubaiyat'
@@ -489,6 +509,8 @@ export interface FileRouteTypes {
     | '/event/dey-1404/$province'
     | '/library/hafez/about'
     | '/library/hafez/ghazals'
+    | '/library/hafez/qetaat'
+    | '/library/hafez/robaiyat'
     | '/library/khayyam/about'
     | '/library/khayyam/foroughi'
     | '/library/khayyam/rubaiyat'
@@ -534,6 +556,8 @@ export interface FileRouteTypes {
     | '/event/dey-1404/$province'
     | '/library/hafez/about'
     | '/library/hafez/ghazals'
+    | '/library/hafez/qetaat'
+    | '/library/hafez/robaiyat'
     | '/library/khayyam/about'
     | '/library/khayyam/foroughi'
     | '/library/khayyam/rubaiyat'
@@ -580,6 +604,8 @@ export interface RootRouteChildren {
   EventDey1404ProvinceRoute: typeof EventDey1404ProvinceRoute
   LibraryHafezAboutRoute: typeof LibraryHafezAboutRoute
   LibraryHafezGhazalsRoute: typeof LibraryHafezGhazalsRoute
+  LibraryHafezQetaatRoute: typeof LibraryHafezQetaatRoute
+  LibraryHafezRobaiyatRoute: typeof LibraryHafezRobaiyatRoute
   LibraryKhayyamAboutRoute: typeof LibraryKhayyamAboutRoute
   LibraryKhayyamForoughiRoute: typeof LibraryKhayyamForoughiRoute
   LibraryKhayyamRubaiyatRoute: typeof LibraryKhayyamRubaiyatRoute
@@ -845,6 +871,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LibraryHafezGhazalsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/library/hafez/qetaat': {
+      id: '/library/hafez/qetaat'
+      path: '/library/hafez/qetaat'
+      fullPath: '/library/hafez/qetaat'
+      preLoaderRoute: typeof LibraryHafezQetaatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/library/hafez/robaiyat': {
+      id: '/library/hafez/robaiyat'
+      path: '/library/hafez/robaiyat'
+      fullPath: '/library/hafez/robaiyat'
+      preLoaderRoute: typeof LibraryHafezRobaiyatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/library/khayyam/': {
       id: '/library/khayyam/'
       path: '/library/khayyam'
@@ -932,6 +972,8 @@ const rootRouteChildren: RootRouteChildren = {
   EventDey1404ProvinceRoute: EventDey1404ProvinceRoute,
   LibraryHafezAboutRoute: LibraryHafezAboutRoute,
   LibraryHafezGhazalsRoute: LibraryHafezGhazalsRoute,
+  LibraryHafezQetaatRoute: LibraryHafezQetaatRoute,
+  LibraryHafezRobaiyatRoute: LibraryHafezRobaiyatRoute,
   LibraryKhayyamAboutRoute: LibraryKhayyamAboutRoute,
   LibraryKhayyamForoughiRoute: LibraryKhayyamForoughiRoute,
   LibraryKhayyamRubaiyatRoute: LibraryKhayyamRubaiyatRoute,

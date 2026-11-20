@@ -37,4 +37,7 @@ export interface GhazalIndex {
 export interface DivanRepository {
   index(): Promise<GhazalIndex>
   ghazal(n: number): Promise<Ghazal | undefined>
+  /** Hafez's rubaiyat and qet'as: each set is one small file */
+  robaiyat(): Promise<readonly Ghazal[]>
+  qetaat(): Promise<readonly Ghazal[]>
 }

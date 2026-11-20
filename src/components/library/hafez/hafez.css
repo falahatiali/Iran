@@ -135,3 +135,9 @@
   .hfr-filter { position: static; }
 }
 @media (prefers-reduced-motion: reduce) { .hf-letter-grid a { transition: none; } }
+.hf-more { margin-top: 16px; font-size: 14.5px; color: #6b4a22; }
+.hf-more a { font-weight: 700; color: var(--hf-ink); text-decoration: underline; text-decoration-color: rgb(184 134 47 / .6); text-underline-offset: 4px; display: inline-block; padding: 6px 4px; }
+.hfp-poem { margin-top: 26px; scroll-margin-top: 90px; }
+.hf .hfp-poem h2 { font-size: 22px; display: flex; align-items: center; gap: 10px; }
+.hfp-poem h2 a { text-decoration: none; }
+.hfp-sum { margin-top: 6px; font-size: 14.5px; line-height: 2; color: #4a3a20; }

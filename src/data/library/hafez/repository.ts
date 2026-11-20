@@ -5,6 +5,8 @@ const files = import.meta.glob<{ default: Ghazal }>('./text/ghazals/*.json')
 
 export const jsonDivan: DivanRepository = {
   index: () => import('./text/index.json').then((m) => m.default as unknown as GhazalIndex),
+  robaiyat: () => import('./text/robaiyat.json').then((m) => m.default as unknown as readonly Ghazal[]),
+  qetaat: () => import('./text/qetaat.json').then((m) => m.default as unknown as readonly Ghazal[]),
   ghazal: async (n) => (await files[`./text/ghazals/${n}.json`]?.())?.default,
 }
 
