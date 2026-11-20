@@ -587,6 +587,9 @@ Text of Khayyam's quatrains (/library/khayyam): verbatim from Ganjoor (ganjoor.n
   https://github.com/ganjoor/ganjoor-data (commit e3999b29200a43f25ca8dc73a2f428957aaee3cd) by scripts/extract-ganjoor-khayyam.py;
   editions: Sadegh Hedayat, «ترانه‌های خیام» (1934; Ganjoor text entered by Mahmoudreza Rajaei) and the Foroughi–Ghani selection.
   The quatrains are medieval and in the public domain; the editors' selections are credited on every page. Only the Khayyam text is copied, not the dump.
+  Meanings of the 94 Foroughi–Ghani quatrains not in Hedayat's selection (/library/khayyam/foroughi): Ganjoor's CoupletSummary from ganjoor-data
+  commit 7d7beabc1edfbddbd51835e979b309d653d25e39 (scripts/extract-ganjoor-khayyam-meanings.py), labelled on the page as AI-written
+  (added to ganjoor-data by Arman Jafarnezhad, pull request #4) or written by Ganjoor's readers; one colloquial meaning is left out.
 - library/hafez-garden-640.(avif|webp), hafez-garden-960.(avif|webp), hafez-garden-1280.(avif|webp), og-hafez.jpg
   Original generated artwork for this site (2026-11-20): an imagined Shiraz garden at dusk with cypresses, roses, a pool, an orange tree, a nightingale and a domed pavilion, in a miniature-inspired style; the pavilion is generic, not the Hafezieh. Hero of /library/hafez and headpiece of the opened book. The falling rose petals over it are drawn in SVG by the page itself.
 - library/cover-hafez.(avif|webp)

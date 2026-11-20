@@ -63,6 +63,11 @@
 .kh-sources ol { list-style: decimal; padding-inline-start: 20px; margin: 6px 0; }
 .kh-sources a { text-decoration: underline; text-decoration-color: rgb(184 134 47 / .6); text-underline-offset: 3px; display: inline-block; padding: 5px 0; }
 .kh-sources li:target { background: rgb(184 134 47 / .18); border-radius: 8px; }
+/* Ganjoor's meanings on the Foroughi page */
+.khf-m { margin-top: 8px; font-size: 14.5px; line-height: 2; color: #3a2a14; }
+.khf-m summary { cursor: pointer; min-height: 32px; display: inline-flex; align-items: center; font-weight: 700; color: var(--kh-wine); }
+.khf-m p + p { margin-top: 4px; }
+.khf-m .hf-src { display: inline-block; margin-inline-start: 4px; padding: 0 9px; border-radius: 99px; font-size: 11px; line-height: 1.9; border: 1px solid rgb(184 134 47 / .5); color: #6b4a22; white-space: nowrap; }
 /* reading pages */
 .khr { padding-top: 20px; }
 .khr-page { max-width: 860px; margin: 0 auto; padding: 0 16px; }

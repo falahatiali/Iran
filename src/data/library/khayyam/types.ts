@@ -46,7 +46,16 @@ export interface QuatrainNotes {
 
 /** Where the rubaiyat come from. The pages read only this, so the storage behind it can change in one place. */
 export interface RubaiyatRepository {
+  foroughiMeanings(): Promise<ForoughiMeanings>
   hedayat(): Promise<HedayatEdition>
   foroughi(): Promise<Edition<Quatrain>>
   notes(): Promise<QuatrainNotes>
+}
+
+/** Ganjoor's meanings for the Foroughi–Ghani quatrains not in Hedayat's selection, one per bayt
+ * (scripts/extract-ganjoor-khayyam-meanings.py). `ai`: Ganjoor marks it «هوش مصنوعی». */
+export interface ForoughiMeanings {
+  source: string
+  commit: string
+  meanings: Record<string, readonly { text: string; ai: boolean }[]>
 }
