@@ -9,6 +9,8 @@ import { BOOKS, LIBRARY_PATH, catalogue, isReady, librarySitemapPaths, readyBook
 import { MANTIQ_PATH, mantiq } from './mantiq'
 import { KHAYYAM_PAGES, KHAYYAM_PATH, SOURCES, khayyam } from './khayyam'
 import { rubaiyat } from './khayyam/repository'
+import { GHAZAL_COUNT, HAFEZ_PAGES, HAFEZ_PATH, SOURCES as HF_SOURCES, ghazalPath, ghazalPaths, hafez } from './hafez'
+import type { Ghazal, GhazalIndex } from './hafez/types'
 import {
   MANTIQ_GROUPS, MANTIQ_SECTIONS, MANTIQ_TOTAL_COUPLETS, hasNotes, loadMantiqNotes, loadMantiqText, noteKey, sectionBySlug,
 } from './mantiq/sections'
@@ -43,7 +45,7 @@ test('every ready book opens into a real route, with its cover and headpiece on 
     for (const ext of ['avif', 'webp']) assert.ok(publicFile(`${b.cover}.${ext}`), `${b.slug}: missing ${b.cover}.${ext}`)
     assert.ok(publicFile(b.headpiece.src), `${b.slug}: missing ${b.headpiece.src}`)
     for (const part of [...(b.headpiece.srcSet?.split(',') ?? []), ...(b.headpiece.avifSrcSet?.split(',') ?? [])]) assert.ok(publicFile(part.trim().split(' ')[0]), `${b.slug}: missing ${part}`)
-    const src = fs.readFileSync(routeFile(b.href)!, 'utf8') + fs.readFileSync(path.join(root, 'src/components', ({ shahnameh: 'shahnameh/LandingPage.tsx', khayyam: 'library/khayyam/KhayyamPage.tsx' } as Record<string, string>)[b.slug] ?? 'library/MantiqPage.tsx'), 'utf8')
+    const src = fs.readFileSync(routeFile(b.href)!, 'utf8') + fs.readFileSync(path.join(root, 'src/components', ({ shahnameh: 'shahnameh/LandingPage.tsx', khayyam: 'library/khayyam/KhayyamPage.tsx', hafez: 'library/hafez/HafezPage.tsx' } as Record<string, string>)[b.slug] ?? 'library/MantiqPage.tsx'), 'utf8')
     assert.ok(src.includes(`data-book-arrival`), `${b.slug}: the page must mark its arrival element for the opening animation`)
   }
 })
@@ -57,8 +59,8 @@ test('the library hall, the Mantiq page and every Mantiq section are in the site
   assert.ok(paths.has(LIBRARY_PATH))
   assert.ok(paths.has(MANTIQ_PATH))
   assert.ok(paths.has('/shahnameh'))
-  assert.deepEqual(librarySitemapPaths(), [LIBRARY_PATH, MANTIQ_PATH, KHAYYAM_PATH, ...MANTIQ_SECTIONS.map((s) => `${MANTIQ_PATH}/${s.slug}`), ...KHAYYAM_PAGES.slice(1)])
-  for (const p of KHAYYAM_PAGES) assert.ok(paths.has(p), p)
+  assert.deepEqual(librarySitemapPaths(), [LIBRARY_PATH, MANTIQ_PATH, HAFEZ_PATH, KHAYYAM_PATH, ...MANTIQ_SECTIONS.map((s) => `${MANTIQ_PATH}/${s.slug}`), ...KHAYYAM_PAGES.slice(1), ...HAFEZ_PAGES.slice(1), ...ghazalPaths()])
+  for (const p of [...KHAYYAM_PAGES, ...HAFEZ_PAGES, ghazalPath(1), ghazalPath(GHAZAL_COUNT)]) assert.ok(paths.has(p), p)
   assert.equal(readyBook('shahnameh').href, '/shahnameh')
   assert.ok(SITE_PAGES.some((p) => p.fa.path === LIBRARY_PATH))
 })
@@ -165,6 +167,41 @@ test('every Khayyam note sits on a real quatrain, and every sentence of prose ci
   if (notes.status === 'complete') assert.equal(Object.keys(notes.notes).length, h.quatrains.length)
   const ids = new Set(SOURCES.map((s) => s.id))
   for (const p of [...khayyam.intro, ...khayyam.about.flatMap((s) => s.paras)]) {
+    assert.ok(p.cite.length > 0, p.text.slice(0, 30))
+    for (const c of p.cite) assert.ok(ids.has(c), c)
+  }
+})
+
+const hafezText = (f: string) => JSON.parse(fs.readFileSync(path.join(root, 'src/data/library/hafez/text', f), 'utf8'))
+
+test('the Hafez book opens on the Divan\'s first bayt, and all 495 ghazals have text and a meaning per bayt', () => {
+  const b = readyBook('hafez')
+  assert.equal(b.href, HAFEZ_PATH)
+  const index: GhazalIndex = hafezText('index.json')
+  assert.deepEqual(index.ghazals.map((g) => g.n), Array.from({ length: GHAZAL_COUNT }, (_, i) => i + 1))
+  for (const e of index.ghazals) {
+    const g: Ghazal = hafezText(`ghazals/${e.n}.json`)
+    assert.equal(g.n, e.n)
+    assert.equal(g.bayts.length, e.count)
+    assert.deepEqual([...g.bayts[0].l], [...e.first])
+    for (const [i, x] of g.bayts.entries()) {
+      assert.equal(x.l.length, 2, `${e.n}:${i + 1}`)
+      for (const l of x.l) assert.ok(l.trim(), `${e.n}:${i + 1} empty hemistich`)
+      if (x.m) assert.ok(x.m.text.length > 3 && !x.m.text.startsWith('هوش مصنوعی'), `${e.n}:${i + 1} meaning`)
+    }
+    if (g.summary) assert.ok(!g.summary.text.startsWith('هوش مصنوعی'))
+  }
+  const first: Ghazal = hafezText('ghazals/1.json')
+  assert.deepEqual([...b.incipit], [...first.bayts[0].l])
+  const meta = hafezText('meta.json')
+  assert.match(meta.commit, /^[0-9a-f]{40}$/)
+  const credit = fs.readFileSync(path.join(root, 'public/media/ATTRIBUTION.txt'), 'utf8')
+  assert.ok(credit.includes(meta.commit), 'ATTRIBUTION.txt names the ganjoor-data commit the Hafez text was taken from')
+})
+
+test('every sentence of Hafez prose cites a listed source', () => {
+  const ids = new Set(HF_SOURCES.map((s) => s.id))
+  for (const p of [...hafez.intro, ...hafez.about.flatMap((s) => s.paras)]) {
     assert.ok(p.cite.length > 0, p.text.slice(0, 30))
     for (const c of p.cite) assert.ok(ids.has(c), c)
   }

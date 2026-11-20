@@ -42,12 +42,16 @@ import { Route as EnKingSlugRouteImport } from './routes/en/king/$slug'
 import { Route as EnPlaceSlugRouteImport } from './routes/en/place/$slug'
 import { Route as EventDey1404IndexRouteImport } from './routes/event/dey-1404/index'
 import { Route as EventDey1404ProvinceRouteImport } from './routes/event/dey-1404/$province'
+import { Route as LibraryHafezIndexRouteImport } from './routes/library/hafez/index'
+import { Route as LibraryHafezAboutRouteImport } from './routes/library/hafez/about'
+import { Route as LibraryHafezGhazalsRouteImport } from './routes/library/hafez/ghazals'
 import { Route as LibraryKhayyamIndexRouteImport } from './routes/library/khayyam/index'
 import { Route as LibraryKhayyamAboutRouteImport } from './routes/library/khayyam/about'
 import { Route as LibraryKhayyamForoughiRouteImport } from './routes/library/khayyam/foroughi'
 import { Route as LibraryKhayyamRubaiyatRouteImport } from './routes/library/khayyam/rubaiyat'
 import { Route as LibraryMantiqAlTayrIndexRouteImport } from './routes/library/mantiq-al-tayr/index'
 import { Route as LibraryMantiqAlTayrSectionRouteImport } from './routes/library/mantiq-al-tayr/$section'
+import { Route as LibraryHafezGhazalNRouteImport } from './routes/library/hafez/ghazal/$n'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -214,6 +218,21 @@ const EventDey1404ProvinceRoute = EventDey1404ProvinceRouteImport.update({
   path: '/event/dey-1404/$province',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LibraryHafezIndexRoute = LibraryHafezIndexRouteImport.update({
+  id: '/library/hafez/',
+  path: '/library/hafez/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LibraryHafezAboutRoute = LibraryHafezAboutRouteImport.update({
+  id: '/library/hafez/about',
+  path: '/library/hafez/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LibraryHafezGhazalsRoute = LibraryHafezGhazalsRouteImport.update({
+  id: '/library/hafez/ghazals',
+  path: '/library/hafez/ghazals',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LibraryKhayyamIndexRoute = LibraryKhayyamIndexRouteImport.update({
   id: '/library/khayyam/',
   path: '/library/khayyam/',
@@ -246,6 +265,11 @@ const LibraryMantiqAlTayrSectionRoute =
     path: '/library/mantiq-al-tayr/$section',
     getParentRoute: () => rootRouteImport,
   } as any)
+const LibraryHafezGhazalNRoute = LibraryHafezGhazalNRouteImport.update({
+  id: '/library/hafez/ghazal/$n',
+  path: '/library/hafez/ghazal/$n',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -280,13 +304,17 @@ export interface FileRoutesByFullPath {
   '/en/king/$slug': typeof EnKingSlugRoute
   '/en/place/$slug': typeof EnPlaceSlugRoute
   '/event/dey-1404/$province': typeof EventDey1404ProvinceRoute
+  '/library/hafez/about': typeof LibraryHafezAboutRoute
+  '/library/hafez/ghazals': typeof LibraryHafezGhazalsRoute
   '/library/khayyam/about': typeof LibraryKhayyamAboutRoute
   '/library/khayyam/foroughi': typeof LibraryKhayyamForoughiRoute
   '/library/khayyam/rubaiyat': typeof LibraryKhayyamRubaiyatRoute
   '/library/mantiq-al-tayr/$section': typeof LibraryMantiqAlTayrSectionRoute
   '/event/dey-1404/': typeof EventDey1404IndexRoute
+  '/library/hafez/': typeof LibraryHafezIndexRoute
   '/library/khayyam/': typeof LibraryKhayyamIndexRoute
   '/library/mantiq-al-tayr/': typeof LibraryMantiqAlTayrIndexRoute
+  '/library/hafez/ghazal/$n': typeof LibraryHafezGhazalNRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -321,13 +349,17 @@ export interface FileRoutesByTo {
   '/en/king/$slug': typeof EnKingSlugRoute
   '/en/place/$slug': typeof EnPlaceSlugRoute
   '/event/dey-1404/$province': typeof EventDey1404ProvinceRoute
+  '/library/hafez/about': typeof LibraryHafezAboutRoute
+  '/library/hafez/ghazals': typeof LibraryHafezGhazalsRoute
   '/library/khayyam/about': typeof LibraryKhayyamAboutRoute
   '/library/khayyam/foroughi': typeof LibraryKhayyamForoughiRoute
   '/library/khayyam/rubaiyat': typeof LibraryKhayyamRubaiyatRoute
   '/library/mantiq-al-tayr/$section': typeof LibraryMantiqAlTayrSectionRoute
   '/event/dey-1404': typeof EventDey1404IndexRoute
+  '/library/hafez': typeof LibraryHafezIndexRoute
   '/library/khayyam': typeof LibraryKhayyamIndexRoute
   '/library/mantiq-al-tayr': typeof LibraryMantiqAlTayrIndexRoute
+  '/library/hafez/ghazal/$n': typeof LibraryHafezGhazalNRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -363,13 +395,17 @@ export interface FileRoutesById {
   '/en/king/$slug': typeof EnKingSlugRoute
   '/en/place/$slug': typeof EnPlaceSlugRoute
   '/event/dey-1404/$province': typeof EventDey1404ProvinceRoute
+  '/library/hafez/about': typeof LibraryHafezAboutRoute
+  '/library/hafez/ghazals': typeof LibraryHafezGhazalsRoute
   '/library/khayyam/about': typeof LibraryKhayyamAboutRoute
   '/library/khayyam/foroughi': typeof LibraryKhayyamForoughiRoute
   '/library/khayyam/rubaiyat': typeof LibraryKhayyamRubaiyatRoute
   '/library/mantiq-al-tayr/$section': typeof LibraryMantiqAlTayrSectionRoute
   '/event/dey-1404/': typeof EventDey1404IndexRoute
+  '/library/hafez/': typeof LibraryHafezIndexRoute
   '/library/khayyam/': typeof LibraryKhayyamIndexRoute
   '/library/mantiq-al-tayr/': typeof LibraryMantiqAlTayrIndexRoute
+  '/library/hafez/ghazal/$n': typeof LibraryHafezGhazalNRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -406,13 +442,17 @@ export interface FileRouteTypes {
     | '/en/king/$slug'
     | '/en/place/$slug'
     | '/event/dey-1404/$province'
+    | '/library/hafez/about'
+    | '/library/hafez/ghazals'
     | '/library/khayyam/about'
     | '/library/khayyam/foroughi'
     | '/library/khayyam/rubaiyat'
     | '/library/mantiq-al-tayr/$section'
     | '/event/dey-1404/'
+    | '/library/hafez/'
     | '/library/khayyam/'
     | '/library/mantiq-al-tayr/'
+    | '/library/hafez/ghazal/$n'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -447,13 +487,17 @@ export interface FileRouteTypes {
     | '/en/king/$slug'
     | '/en/place/$slug'
     | '/event/dey-1404/$province'
+    | '/library/hafez/about'
+    | '/library/hafez/ghazals'
     | '/library/khayyam/about'
     | '/library/khayyam/foroughi'
     | '/library/khayyam/rubaiyat'
     | '/library/mantiq-al-tayr/$section'
     | '/event/dey-1404'
+    | '/library/hafez'
     | '/library/khayyam'
     | '/library/mantiq-al-tayr'
+    | '/library/hafez/ghazal/$n'
   id:
     | '__root__'
     | '/'
@@ -488,13 +532,17 @@ export interface FileRouteTypes {
     | '/en/king/$slug'
     | '/en/place/$slug'
     | '/event/dey-1404/$province'
+    | '/library/hafez/about'
+    | '/library/hafez/ghazals'
     | '/library/khayyam/about'
     | '/library/khayyam/foroughi'
     | '/library/khayyam/rubaiyat'
     | '/library/mantiq-al-tayr/$section'
     | '/event/dey-1404/'
+    | '/library/hafez/'
     | '/library/khayyam/'
     | '/library/mantiq-al-tayr/'
+    | '/library/hafez/ghazal/$n'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -530,13 +578,17 @@ export interface RootRouteChildren {
   EnKingSlugRoute: typeof EnKingSlugRoute
   EnPlaceSlugRoute: typeof EnPlaceSlugRoute
   EventDey1404ProvinceRoute: typeof EventDey1404ProvinceRoute
+  LibraryHafezAboutRoute: typeof LibraryHafezAboutRoute
+  LibraryHafezGhazalsRoute: typeof LibraryHafezGhazalsRoute
   LibraryKhayyamAboutRoute: typeof LibraryKhayyamAboutRoute
   LibraryKhayyamForoughiRoute: typeof LibraryKhayyamForoughiRoute
   LibraryKhayyamRubaiyatRoute: typeof LibraryKhayyamRubaiyatRoute
   LibraryMantiqAlTayrSectionRoute: typeof LibraryMantiqAlTayrSectionRoute
   EventDey1404IndexRoute: typeof EventDey1404IndexRoute
+  LibraryHafezIndexRoute: typeof LibraryHafezIndexRoute
   LibraryKhayyamIndexRoute: typeof LibraryKhayyamIndexRoute
   LibraryMantiqAlTayrIndexRoute: typeof LibraryMantiqAlTayrIndexRoute
+  LibraryHafezGhazalNRoute: typeof LibraryHafezGhazalNRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -772,6 +824,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EventDey1404ProvinceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/library/hafez/': {
+      id: '/library/hafez/'
+      path: '/library/hafez'
+      fullPath: '/library/hafez/'
+      preLoaderRoute: typeof LibraryHafezIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/library/hafez/about': {
+      id: '/library/hafez/about'
+      path: '/library/hafez/about'
+      fullPath: '/library/hafez/about'
+      preLoaderRoute: typeof LibraryHafezAboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/library/hafez/ghazals': {
+      id: '/library/hafez/ghazals'
+      path: '/library/hafez/ghazals'
+      fullPath: '/library/hafez/ghazals'
+      preLoaderRoute: typeof LibraryHafezGhazalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/library/khayyam/': {
       id: '/library/khayyam/'
       path: '/library/khayyam'
@@ -814,6 +887,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LibraryMantiqAlTayrSectionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/library/hafez/ghazal/$n': {
+      id: '/library/hafez/ghazal/$n'
+      path: '/library/hafez/ghazal/$n'
+      fullPath: '/library/hafez/ghazal/$n'
+      preLoaderRoute: typeof LibraryHafezGhazalNRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -850,13 +930,17 @@ const rootRouteChildren: RootRouteChildren = {
   EnKingSlugRoute: EnKingSlugRoute,
   EnPlaceSlugRoute: EnPlaceSlugRoute,
   EventDey1404ProvinceRoute: EventDey1404ProvinceRoute,
+  LibraryHafezAboutRoute: LibraryHafezAboutRoute,
+  LibraryHafezGhazalsRoute: LibraryHafezGhazalsRoute,
   LibraryKhayyamAboutRoute: LibraryKhayyamAboutRoute,
   LibraryKhayyamForoughiRoute: LibraryKhayyamForoughiRoute,
   LibraryKhayyamRubaiyatRoute: LibraryKhayyamRubaiyatRoute,
   LibraryMantiqAlTayrSectionRoute: LibraryMantiqAlTayrSectionRoute,
   EventDey1404IndexRoute: EventDey1404IndexRoute,
+  LibraryHafezIndexRoute: LibraryHafezIndexRoute,
   LibraryKhayyamIndexRoute: LibraryKhayyamIndexRoute,
   LibraryMantiqAlTayrIndexRoute: LibraryMantiqAlTayrIndexRoute,
+  LibraryHafezGhazalNRoute: LibraryHafezGhazalNRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
