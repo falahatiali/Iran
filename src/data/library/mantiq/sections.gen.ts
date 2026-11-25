@@ -2287,4 +2287,4 @@ export const MANTIQ_SECTIONS: readonly MantiqSectionMeta[] = [
 
 export const MANTIQ_TOTAL_COUPLETS = 4697
 
-export const MANTIQ_MEANINGS = {"bayts": 4697, "ai": 4455, "human": 175, "fixed": 67, "none": 0, "summaries": 211, "summaries_ai": 209, "commit": "7d7beabc1edfbddbd51835e979b309d653d25e39"} as const
+export const MANTIQ_MEANINGS = {"bayts": 4697, "ai": 4454, "human": 175, "fixed": 68, "none": 0, "summaries": 211, "summaries_ai": 209, "commit": "7d7beabc1edfbddbd51835e979b309d653d25e39"} as const
