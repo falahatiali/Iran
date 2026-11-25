@@ -1,0 +1,26 @@
+/* Sheikh San'an: the tale as one loop, from the Kaaba to Rum and back. */
+.sn { margin: 22px 0 0; }
+.sn-svg { display: block; width: 100%; height: auto; border-radius: 24px; box-shadow: 0 24px 48px -28px rgb(20 20 50 / .7); }
+.sn-svg text { font-family: var(--naskh); font-weight: 700; font-size: 20px; fill: #fbf4e2; }
+.sn-kaaba text { fill: #3a2a10; }
+.sn-road { fill: none; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.sn-fall { stroke: #e7b7b0; }
+.sn-return { stroke: #f6dc96; stroke-width: 3.5; }
+.sn-stn circle { fill: #0b3b4a; stroke: #f6dc96; stroke-width: 2; transition: transform .3s; transform-box: fill-box; transform-origin: center; }
+.sn-stn:hover circle, .sn-stn:focus-visible circle { transform: scale(1.15); }
+.sn-stn text { font-size: 16px; pointer-events: none; }
+.sn-steps { list-style: none; margin: 12px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 4px 12px; }
+.sn-steps a { display: flex; align-items: baseline; gap: 8px; min-height: 40px; padding: 6px 8px; border-radius: 10px; text-decoration: none; font-size: 14.5px; color: #2a1a0a; }
+.sn-steps a:hover { background: rgb(184 134 47 / .14); }
+.sn-steps b { flex: none; display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; font-size: 12.5px; color: #fbf4e2; background: #0b3b4a; }
+.sn-steps small { margin-inline-start: auto; font-size: 12px; color: #8a6a3a; white-space: nowrap; }
+.sn-note { font-size: 12.5px; color: #7a5a2a; margin-top: 6px; text-align: justify; }
+@media (prefers-reduced-motion: no-preference) {
+  .sn .sn-road { stroke-dashoffset: 1; }
+  .sn .sn-stn { opacity: 0; }
+  .sn.is-on .sn-fall { animation: sn-draw 3.2s ease-in-out forwards; }
+  .sn.is-on .sn-return { animation: sn-draw 3.2s 3s ease-in-out forwards; }
+  .sn.is-on .sn-stn { animation: sn-in .6s calc(var(--i) * 1s + .4s) ease-out forwards; }
+}
+@keyframes sn-draw { to { stroke-dashoffset: 0; } }
+@keyframes sn-in { to { opacity: 1; } }

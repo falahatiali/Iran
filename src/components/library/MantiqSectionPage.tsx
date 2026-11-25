@@ -6,6 +6,7 @@ import {
 } from '../../data/library/mantiq/sections'
 import type { Meaning, MantiqNotes, MantiqSectionMeta, MantiqText } from '../../data/library/mantiq/types'
 import { VerseExplanation } from '../verse/VerseExplanation'
+import { SananArc } from './mantiq/SananArc'
 import './naskh.css'
 import './mantiq.css'
 import './mantiq-read.css'
@@ -123,6 +124,8 @@ export function MantiqSectionPage({ meta, text, notes }: { meta: MantiqSectionMe
             </button>
           </header>
 
+          {meta.slug === 'sheikh-sanan' && <SananArc />}
+
           <details className="mqr-toc-m">
             <summary>فهرست کتاب</summary>
             <MantiqToc current={meta.slug} />
@@ -169,7 +172,7 @@ export function MantiqSectionPage({ meta, text, notes }: { meta: MantiqSectionMe
             معنی‌های نشان‌دار «هوش مصنوعی» را هوش مصنوعی نوشته و آرمان جعفرنژاد به ganjoor-data افزوده است؛ «نوشتهٔ خوانندگان گنجور» را کاربران گنجور نوشته‌اند؛
             «ویراستهٔ این سایت» را ما پس از بازخوانی بازنویسی کرده‌ایم.
             {ours ? ' «شرح این سایت» نوشتهٔ ماست، بر پایهٔ خوانش‌های رایج شارحان.' : ''}
-            {' '}کل کتاب: {fa(MANTIQ_TOTAL_COUPLETS)} بیت؛ {fa(MANTIQ_MEANINGS.ai)} معنی هوش مصنوعی و {fa(MANTIQ_MEANINGS.human)} معنی خوانندگان گنجور.
+            {' '}کل کتاب: {fa(MANTIQ_TOTAL_COUPLETS)} بیت؛ {fa(MANTIQ_MEANINGS.ai)} معنی هوش مصنوعی، {fa(MANTIQ_MEANINGS.human)} معنی خوانندگان گنجور و {fa(MANTIQ_MEANINGS.fixed)} معنی ویراستهٔ این سایت.
           </p>
         </article>
 
