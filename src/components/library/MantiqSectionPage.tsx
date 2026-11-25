@@ -8,6 +8,8 @@ import type { Meaning, MantiqNotes, MantiqSectionMeta, MantiqText } from '../../
 import { VerseExplanation } from '../verse/VerseExplanation'
 import { SananArc } from './mantiq/SananArc'
 import { SimorghMirror } from './mantiq/SimorghMirror'
+import { QuestionDial } from './mantiq/QuestionDial'
+import { ValleyEmblem } from './mantiq/ValleyEmblem'
 import './naskh.css'
 import './mantiq.css'
 import './mantiq-read.css'
@@ -127,6 +129,8 @@ export function MantiqSectionPage({ meta, text, notes }: { meta: MantiqSectionMe
 
           {meta.slug === 'sheikh-sanan' && <SananArc />}
           {meta.slug === 'si-morgh' && <SimorghMirror />}
+          <QuestionDial slug={meta.slug} />
+          <ValleyEmblem slug={meta.slug} />
 
           <details className="mqr-toc-m">
             <summary>فهرست کتاب</summary>

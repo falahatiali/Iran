@@ -1,0 +1,47 @@
+/* One emblem per valley, drawn from a bayt of that valley. */
+.ve { margin: 22px 0 0; display: grid; grid-template-columns: minmax(140px, 220px) 1fr; align-items: center; gap: 18px; padding: 16px 20px;
+  border-radius: 22px; color: #fbf4e2; background: radial-gradient(140% 140% at 85% 50%, #3a3160 0%, #1a2140 55%, #0c1026 100%);
+  box-shadow: 0 24px 48px -28px rgb(20 20 50 / .7); }
+.ve-svg { display: block; width: 100%; height: auto; }
+.ve figcaption { display: grid; gap: 8px; }
+.ve-name { font-size: 13px; color: #d8cbe8; }
+.ve-bayt { display: grid; gap: 2px; text-decoration: none; color: #f6dc96; font-family: var(--naskh); font-size: 21px; font-weight: 700; line-height: 1.9; }
+.ve-bayt span:last-child { padding-inline-start: 2.2em; }
+.ve-bayt:hover { color: #fff3c8; }
+.ve small { font-size: 12px; color: #b9acd0; }
+.ve-line { fill: none; stroke: #d8cbe8; stroke-width: 3; stroke-linecap: round; }
+.ve-thorn { fill: none; stroke: #e7b7b0; stroke-width: 2.5; stroke-linejoin: round; }
+.ve-gold { fill: #f6dc96; }
+.ve-flame { stroke: none; transform-box: fill-box; transform-origin: 50% 100%; }
+.ve-f1 { fill: #e0773a; }
+.ve-f2 { fill: #f6dc96; }
+.ve-eye { fill: none; stroke: #d8cbe8; stroke-width: 2; opacity: calc(1 - var(--i) * .18); }
+.ve-wind { fill: none; stroke: #d8cbe8; stroke-width: 2.4; stroke-linecap: round; opacity: .75; }
+.ve-leaf { fill: #f6dc96; transform-box: fill-box; transform-origin: center; }
+.ve-ray { stroke: #d8cbe8; stroke-width: 1.4; opacity: .55; }
+.ve-dot { fill: #d8cbe8; }
+.ve-spin { stroke: #f6dc96; stroke-width: 2.4; transform-box: fill-box; transform-origin: center; }
+.ve-shade { fill: #0c1026; stroke: #6e5a8a; stroke-width: 1.5; }
+@media (max-width: 600px) {
+  .ve { grid-template-columns: 1fr; text-align: center; }
+  .ve-svg { max-width: 200px; margin: 0 auto; }
+  .ve-bayt { font-size: 19px; }
+  .ve-bayt span:last-child { padding: 0; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ve-flame { animation: ve-flicker 1.8s ease-in-out infinite alternate; }
+  .ve-f2 { animation-duration: 1.3s; }
+  .ve-thorn { animation: ve-blink 3s calc(var(--i) * .4s) ease-in-out infinite; }
+  .ve-wind { stroke-dasharray: 60 40; animation: ve-blow 3.5s calc(var(--i) * -.6s) linear infinite; }
+  .ve-leaf { animation: ve-tumble 5s calc(var(--i) * -1.2s) linear infinite; }
+  .ve-spin { animation: ve-turn 24s linear infinite; }
+  .ve-sun { animation: ve-swell 4s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: center; }
+  .ve-shade { animation: ve-fade 4s calc(var(--i) * .5s) ease-in-out infinite alternate; }
+}
+@keyframes ve-flicker { to { transform: scale(1.04, .95) skewX(2deg); } }
+@keyframes ve-blink { 50% { opacity: .35; } }
+@keyframes ve-blow { to { stroke-dashoffset: -100; } }
+@keyframes ve-tumble { 0% { transform: translateX(0) rotate(0); opacity: 1; } 100% { transform: translateX(-120px) rotate(360deg); opacity: 0; } }
+@keyframes ve-turn { to { transform: rotate(-360deg); } }
+@keyframes ve-swell { to { transform: scale(1.12); } }
+@keyframes ve-fade { to { opacity: .15; } }

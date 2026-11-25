@@ -1,0 +1,26 @@
+/* The twenty-two questions: an arc of beads under a night sky, the current one gold. */
+.mqq { margin: 22px 0 0; padding: 18px 16px 16px; border-radius: 22px; color: #fbf4e2; text-align: center;
+  background: radial-gradient(120% 140% at 50% 110%, #3a3160 0%, #1a2140 55%, #0c1026 100%);
+  box-shadow: 0 24px 48px -28px rgb(20 20 50 / .7); }
+.mqq-k { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; margin: 0; font-size: 13px; }
+.mqq-k b { color: #f6dc96; font-size: 14px; }
+.mqq-who { color: #d8cbe8; }
+.mqq-arc { list-style: none; margin: 34px 0 0; padding: 0; display: flex; justify-content: space-between; gap: 2px; }
+.mqq-arc li { transform: translateY(var(--y)); }
+.mqq-arc a { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; font-size: 12.5px; text-decoration: none;
+  color: #d8cbe8; border: 1.5px solid rgb(216 203 232 / .55); transition: transform .25s, background-color .25s; }
+.mqq-arc a:hover, .mqq-arc a:focus-visible { transform: scale(1.15); background: rgb(246 220 150 / .18); }
+.mqq-arc a.is-past { background: rgb(216 203 232 / .22); color: #fbf4e2; }
+.mqq-arc a.is-cur { width: 40px; height: 40px; margin: -5px; font-size: 15px; font-weight: 700; color: #2a1a05; background: #f6dc96; border-color: #fff3c8;
+  box-shadow: 0 0 0 6px rgb(246 220 150 / .18), 0 0 26px rgb(246 220 150 / .55); }
+.mqq-t { margin: 6px 0 0; font-family: var(--naskh); font-size: 22px; font-weight: 700; color: #f6dc96; }
+@media (max-width: 720px) {
+  .mqq-arc { display: grid; grid-template-columns: repeat(11, 1fr); gap: 8px 2px; margin-top: 16px; }
+  .mqq-arc li { transform: none; display: grid; place-items: center; }
+  .mqq-arc a { width: 28px; height: 28px; font-size: 12px; }
+  .mqq-arc a.is-cur { width: 34px; height: 34px; margin: -3px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .mqq-arc a.is-cur { animation: mqq-glow 2.8s ease-in-out infinite alternate; }
+}
+@keyframes mqq-glow { to { box-shadow: 0 0 0 9px rgb(246 220 150 / .12), 0 0 34px rgb(246 220 150 / .7); } }
