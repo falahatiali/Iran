@@ -1,0 +1,18 @@
+/* The Simorgh ending: thirty birds, one mirror. Uses .sn-steps / .sn-note from sanan.css for the caption. */
+
+.smr { margin: 22px 0 0; }
+.smr-svg { display: block; width: 100%; height: auto; border-radius: 24px; box-shadow: 0 24px 48px -28px rgb(20 20 50 / .7); }
+.smr-rays line { stroke-width: 1.5; stroke-linecap: round; opacity: .35; }
+.smr-birds path { fill: none; stroke: #fbf4e2; stroke-width: 2.2; stroke-linecap: round; transform: translate(var(--x1), var(--y1)); }
+.smr-reflect path { fill: none; stroke: #5a4520; stroke-width: 2; stroke-linecap: round; opacity: .8; }
+.smr-name { font-family: var(--naskh); font-weight: 700; font-size: 40px; fill: #4a3410; }
+.smr-label { font-family: var(--naskh); font-weight: 700; font-size: 26px; fill: #f6dc96; }
+.smr-sub { font-family: var(--naskh); font-size: 16px; fill: #d8cbe8; }
+@media (prefers-reduced-motion: no-preference) {
+  .smr .smr-birds path { transform: translate(var(--x0), var(--y0)); transition: transform 2.6s cubic-bezier(.45, .05, .3, 1); transition-delay: calc(var(--i) * 60ms); }
+  .smr.is-on .smr-birds path { transform: translate(var(--x1), var(--y1)); }
+  .smr .smr-reflect { opacity: 0; transition: opacity 1.6s 3.4s ease-out; }
+  .smr.is-on .smr-reflect { opacity: 1; }
+  .smr .smr-rays { opacity: 0; transition: opacity 1.4s 3.8s; }
+  .smr.is-on .smr-rays { opacity: 1; }
+}

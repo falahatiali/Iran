@@ -7,6 +7,7 @@ import {
 import type { Meaning, MantiqNotes, MantiqSectionMeta, MantiqText } from '../../data/library/mantiq/types'
 import { VerseExplanation } from '../verse/VerseExplanation'
 import { SananArc } from './mantiq/SananArc'
+import { SimorghMirror } from './mantiq/SimorghMirror'
 import './naskh.css'
 import './mantiq.css'
 import './mantiq-read.css'
@@ -125,6 +126,7 @@ export function MantiqSectionPage({ meta, text, notes }: { meta: MantiqSectionMe
           </header>
 
           {meta.slug === 'sheikh-sanan' && <SananArc />}
+          {meta.slug === 'si-morgh' && <SimorghMirror />}
 
           <details className="mqr-toc-m">
             <summary>فهرست کتاب</summary>
