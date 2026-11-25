@@ -79,6 +79,7 @@ export function KhayyamPage({ summary }: { summary: ReturnType<typeof summarise>
           <h2>گزینشی دیگر</h2>
           <p className="read">فروغی و غنی ۱۷۸ رباعی را برگزیدند (در متن گنجور). متن کامل این گزینش را هم آورده‌ایم تا بتوانید دو گزینش را کنار هم ببینید.</p>
           <p><Link className="kh-btn" to="/library/khayyam/foroughi">رباعیات به گزینش فروغی و غنی</Link></p>
+          <p className="kh-more"><Link className="kh-btn" to="/library/khayyam/nowruzname">نوروزنامه (منسوب به خیام)</Link> <Link className="kh-btn" to="/library/khayyam/arabic">شعر عربی خیام</Link></p>
         </div>
       </section>
 

@@ -10,7 +10,7 @@ import { masnavi } from './books/masnavi'
 import { shahnameh } from './books/shahnameh'
 import { isReady, type LibraryBook, type ReadyBook } from './types'
 import { MANTIQ_SECTIONS, sectionPath } from './mantiq/sections'
-import { KHAYYAM_PAGES } from './khayyam/paths'
+import { KHAYYAM_PAGES, nowruzPaths } from './khayyam/paths'
 import { HAFEZ_PAGES, ghazalPaths, montasabPaths } from './hafez/paths'
 import { saadiPaths } from './saadi/paths'
 
@@ -51,6 +51,7 @@ export function librarySitemapPaths(): string[] {
     ...HAFEZ_PAGES.slice(1),
     ...ghazalPaths(),
     ...montasabPaths(),
+    ...nowruzPaths(),
     ...saadiPaths(),
   ]
 }

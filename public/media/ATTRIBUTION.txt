@@ -620,4 +620,8 @@ Text of Saadi's Bustan and Golestan and their meanings (/library/bustan, /librar
   readers and are labelled «نوشتهٔ خوانندگان گنجور». 12 meanings that were colloquial or off the text were rewritten by this site
   (src/data/library/saadi/text/fixes.json) and are labelled «ویراستهٔ این سایت». ganjoor-data carries no licence file of its own; every section page credits
   Ganjoor with a link to the poem on ganjoor.net. Only these two books are copied, not the dump.
+Text of the Nowruz-nama and its meanings (/library/khayyam/nowruzname): from Ganjoor (ganjoor.net), extracted from ganjoor-data
+  (commit 7d7beabc1edfbddbd51835e979b309d653d25e39) by scripts/extract-ganjoor-nowruz.py: its 42 sections, a medieval Persian text in the public domain
+  whose attribution to Khayyam is disputed. Meanings and summaries are labelled «هوش مصنوعی» (AI-generated, added by Arman Jafarnezhad,
+  ganjoor/ganjoor-data pull request #4) or «نوشتهٔ خوانندگان گنجور». Khayyam's Arabic verse is described from Encyclopaedia Iranica only; no text is copied.
 Typeface on the library pages: Noto Naskh Arabic Bold (Google, SIL Open Font License 1.1), subset to Persian letters: /fonts/NotoNaskhArabic-Bold-fa.woff2.

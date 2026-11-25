@@ -11,6 +11,8 @@ import { KHAYYAM_PAGES, KHAYYAM_PATH, SOURCES, khayyam } from './khayyam'
 import { rubaiyat } from './khayyam/repository'
 import { GHAZAL_COUNT, HAFEZ_PAGES, HAFEZ_PATH, MONTASAB_COUNT, SOURCES as HF_SOURCES, ghazalPath, ghazalPaths, hafez, montasabPaths } from './hafez'
 import type { Ghazal, GhazalIndex, MontasabEntry, Poem } from './hafez/types'
+import { nowruzPaths } from './khayyam/paths'
+import { ARABIC_PARAS, NOWRUZ_INTRO } from './khayyam/nowruz'
 import { BOOKS as SD_BOOKS, SOURCES as SD_SOURCES, SAADI_BOOKS, about as saadiAbout, chapterCounts, saadiPaths } from './saadi'
 import type { BookIndex, Section } from './saadi/types'
 import {
@@ -61,7 +63,7 @@ test('the library hall, the Mantiq page and every Mantiq section are in the site
   assert.ok(paths.has(LIBRARY_PATH))
   assert.ok(paths.has(MANTIQ_PATH))
   assert.ok(paths.has('/shahnameh'))
-  assert.deepEqual(librarySitemapPaths(), [LIBRARY_PATH, MANTIQ_PATH, HAFEZ_PATH, '/library/golestan', '/library/bustan', KHAYYAM_PATH, ...MANTIQ_SECTIONS.map((s) => `${MANTIQ_PATH}/${s.slug}`), ...KHAYYAM_PAGES.slice(1), ...HAFEZ_PAGES.slice(1), ...ghazalPaths(), ...montasabPaths(), ...saadiPaths()])
+  assert.deepEqual(librarySitemapPaths(), [LIBRARY_PATH, MANTIQ_PATH, HAFEZ_PATH, '/library/golestan', '/library/bustan', KHAYYAM_PATH, ...MANTIQ_SECTIONS.map((s) => `${MANTIQ_PATH}/${s.slug}`), ...KHAYYAM_PAGES.slice(1), ...HAFEZ_PAGES.slice(1), ...ghazalPaths(), ...montasabPaths(), ...nowruzPaths(), ...saadiPaths()])
   for (const p of [...KHAYYAM_PAGES, ...HAFEZ_PAGES, ghazalPath(1), ghazalPath(GHAZAL_COUNT)]) assert.ok(paths.has(p), p)
   assert.equal(readyBook('shahnameh').href, '/shahnameh')
   assert.ok(SITE_PAGES.some((p) => p.fa.path === LIBRARY_PATH))
@@ -309,5 +311,26 @@ test('Hafez\'s other forms: two masnavis, three qasidas, the preface and 118 att
     const p: Poem = hafezText(`montasab/${e.n}.json`)
     assert.equal(p.bayts.length, e.count)
     check(`montasab/${e.n}`, p)
+  }
+})
+
+test('the Nowruz-nama: 42 sections in Ganjoor\'s order, each block with text and a labelled meaning', () => {
+  const dir = path.join(root, 'src/data/library/khayyam/text/nowruz')
+  const index = JSON.parse(fs.readFileSync(path.join(dir, 'index.json'), 'utf8'))
+  assert.equal(index.sections.length, 42)
+  assert.deepEqual(nowruzPaths().length, 42)
+  for (const e of index.sections) {
+    const s = JSON.parse(fs.readFileSync(path.join(dir, `${e.n}.json`), 'utf8'))
+    assert.equal(s.n, e.n)
+    assert.equal(s.blocks.length, e.count)
+    for (const b of s.blocks) {
+      assert.ok(('p' in b ? b.p : b.l.join('')).trim())
+      if (b.m) assert.ok(b.m.text.trim().length > 1 && !b.m.text.startsWith('هوش مصنوعی'))
+    }
+  }
+  const ids = new Set(SOURCES.map((s) => s.id))
+  for (const p of [...NOWRUZ_INTRO, ...ARABIC_PARAS]) {
+    assert.ok(p.cite.length > 0)
+    for (const c of p.cite) assert.ok(ids.has(c), c)
   }
 })

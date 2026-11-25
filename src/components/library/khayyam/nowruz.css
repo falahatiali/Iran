@@ -1,0 +1,33 @@
+/* The Nowruz-nama and the Arabic-verse pages, on the Khayyam parchment. */
+.nw { --lb-ink: #6a1f3e; }
+.nw-list { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 8px; }
+.nw-list a { display: grid; grid-template-columns: auto 1fr; gap: 2px 14px; align-items: center; padding: 10px 16px; border-radius: 16px; border: 1px solid rgb(184 134 47 / .3); background: rgb(251 244 226 / .75); text-decoration: none; }
+.nw-list a:hover, .nw-list a:focus-visible { border-color: #b8862f; background: #fbf4e2; }
+.nw-list .n { grid-row: span 2; width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%; font-size: 13px; color: #f6dc96; background: radial-gradient(circle at 35% 30%, #8a2a4e, #3a0d20); }
+.nw-list .t { font-family: var(--naskh); font-weight: 700; font-size: 17px; line-height: 1.9; color: #4a1228; }
+.nw-list small { font-size: 13px; color: #6b4a22; line-height: 1.9; }
+.nw-toggle { margin-top: 12px; min-height: 44px; padding: 8px 20px; border-radius: 99px; border: 1.5px solid #b8862f; font-size: 14px; font-weight: 700; color: #6b4a12; }
+.nw-summary { margin-top: 22px; padding: 16px 22px; border-radius: 18px; background: #fbf4e2; border: 1px solid rgb(184 134 47 / .45); font-size: 15.5px; line-height: 2.1; color: #3a2a14; }
+.nw .nw-summary h2 { font-size: 20px; display: flex; align-items: center; gap: 10px; }
+.nw-blocks { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 10px; }
+.nw-blocks > li { padding: 16px 20px 12px; border-radius: 18px; border: 1px solid rgb(184 134 47 / .3); background: rgb(255 250 238 / .85); scroll-margin-top: 90px; }
+.nw-prose { margin: 0; font-family: var(--naskh); font-weight: 500; font-size: clamp(17px, 2.1vw, 19px); line-height: 2.2; color: #1d1a12; text-align: justify; }
+.nw-bayt { margin: 0; font-family: var(--naskh); font-weight: 700; font-size: clamp(18px, 2.3vw, 21px); line-height: 2.05; display: flex; flex-wrap: wrap; column-gap: 40px; }
+.nw-bayt span { flex: 1 1 14rem; }
+.nw-bayt span:last-child { text-align: end; }
+.nw-m { margin-top: 8px; padding-top: 8px; border-top: 1px dashed rgb(184 134 47 / .4); font-size: 15px; line-height: 2.05; color: #3a3020; }
+.nw .hf-src { display: inline-block; margin-inline-start: 4px; padding: 0 9px; border-radius: 99px; font-size: 11px; line-height: 1.9; font-weight: 500; white-space: nowrap; border: 1px solid; vertical-align: 1px; }
+.nw .hf-src.is-ai { color: #4a5a78; border-color: rgb(74 90 120 / .35); }
+.nw .hf-src.is-human { color: #2a5a3a; border-color: rgb(42 90 58 / .35); }
+.nw-nav { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.nw-credit { margin-top: 28px; font-size: 12.5px; line-height: 2; color: #7a5a2a; text-align: center; }
+.nw-credit a { text-decoration: underline; }
+.nw-time .grid { stroke: rgb(184 134 47 / .25); stroke-width: 1; }
+.nw-time .yr { font-size: 12px; fill: #8a6a3a; }
+.nw-time .life { fill: #b8862f; transform-box: fill-box; transform-origin: right center; transform: scaleX(0); animation: nw-grow 1.1s ease forwards; animation-delay: calc(.2s + var(--i) * 220ms); }
+.nw-time .life.is-kh { fill: #6a1f3e; }
+.nw-time .who { font-size: 13px; font-weight: 700; fill: #3a2a14; }
+.nw-time .what { font-weight: 400; fill: #6b4a22; }
+@keyframes nw-grow { to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) { .nw-time .life { animation: none; transform: none; } }
+@media (max-width: 600px) { .nw-bayt { flex-direction: column; } .nw-bayt span:last-child { text-align: start; padding-inline-start: 1.5em; } }

@@ -20,6 +20,9 @@ export const SOURCES = [
   { id: 'mactutor', title: 'MacTutor History of Mathematics (St Andrews), “Omar Khayyam”', url: 'https://mathshistory.st-andrews.ac.uk/Biographies/Khayyam/' },
   { id: 'ganjoor-nowruz', title: 'گنجور: نوروزنامه (منسوب به خیام)', url: 'https://ganjoor.net/khayyam/nouroozname' },
   { id: 'wiki-tomb', title: 'Wikipedia, “Mausoleum of Omar Khayyam” (به نقل از چهارمقاله، Sarton 1938 و Salari Sardari 2024)', url: 'https://en.wikipedia.org/wiki/Tomb_of_Omar_Khayyam' },
+  { id: 'iranica-minovi', title: 'Encyclopaedia Iranica, “Minovi, Mojtaba” (ویرایش نوروزنامه، ۱۹۳۳)', url: 'https://www.iranicaonline.org/articles/minovi-mojtaba/' },
+  { id: 'noormags-nowruz', title: '«نویسندهٔ نوروزنامه کیست؟!»، مقاله در پایگاه مجلات تخصصی نور (۱۳۹۱)', url: 'https://www.noormags.ir/view/en/articlepage/2972028/who-is-the-author-of-nowruznameh' },
+  { id: 'ismi-nowruz', title: 'ISMI (Max Planck Institute for the History of Science), “Nawrūz-nāmah”: نسخه‌ها و کتاب‌شناسی', url: 'https://ismi.mpiwg-berlin.mpg.de/text/145681' },
 ] as const satisfies readonly KhSource[]
 
 export type SourceId = (typeof SOURCES)[number]['id']
