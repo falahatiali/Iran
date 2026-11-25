@@ -52,6 +52,7 @@ import { Route as LibraryHafezMoqaddameRouteImport } from './routes/library/hafe
 import { Route as LibraryHafezQasaidRouteImport } from './routes/library/hafez/qasaid'
 import { Route as LibraryHafezQetaatRouteImport } from './routes/library/hafez/qetaat'
 import { Route as LibraryHafezRobaiyatRouteImport } from './routes/library/hafez/robaiyat'
+import { Route as LibraryHafezThemesRouteImport } from './routes/library/hafez/themes'
 import { Route as LibraryKhayyamIndexRouteImport } from './routes/library/khayyam/index'
 import { Route as LibraryKhayyamAboutRouteImport } from './routes/library/khayyam/about'
 import { Route as LibraryKhayyamArabicRouteImport } from './routes/library/khayyam/arabic'
@@ -286,6 +287,11 @@ const LibraryHafezRobaiyatRoute = LibraryHafezRobaiyatRouteImport.update({
   path: '/library/hafez/robaiyat',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LibraryHafezThemesRoute = LibraryHafezThemesRouteImport.update({
+  id: '/library/hafez/themes',
+  path: '/library/hafez/themes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LibraryKhayyamIndexRoute = LibraryKhayyamIndexRouteImport.update({
   id: '/library/khayyam/',
   path: '/library/khayyam/',
@@ -425,6 +431,7 @@ export interface FileRoutesByFullPath {
   '/library/hafez/qasaid': typeof LibraryHafezQasaidRoute
   '/library/hafez/qetaat': typeof LibraryHafezQetaatRoute
   '/library/hafez/robaiyat': typeof LibraryHafezRobaiyatRoute
+  '/library/hafez/themes': typeof LibraryHafezThemesRoute
   '/library/khayyam/about': typeof LibraryKhayyamAboutRoute
   '/library/khayyam/arabic': typeof LibraryKhayyamArabicRoute
   '/library/khayyam/foroughi': typeof LibraryKhayyamForoughiRoute
@@ -488,6 +495,7 @@ export interface FileRoutesByTo {
   '/library/hafez/qasaid': typeof LibraryHafezQasaidRoute
   '/library/hafez/qetaat': typeof LibraryHafezQetaatRoute
   '/library/hafez/robaiyat': typeof LibraryHafezRobaiyatRoute
+  '/library/hafez/themes': typeof LibraryHafezThemesRoute
   '/library/khayyam/about': typeof LibraryKhayyamAboutRoute
   '/library/khayyam/arabic': typeof LibraryKhayyamArabicRoute
   '/library/khayyam/foroughi': typeof LibraryKhayyamForoughiRoute
@@ -552,6 +560,7 @@ export interface FileRoutesById {
   '/library/hafez/qasaid': typeof LibraryHafezQasaidRoute
   '/library/hafez/qetaat': typeof LibraryHafezQetaatRoute
   '/library/hafez/robaiyat': typeof LibraryHafezRobaiyatRoute
+  '/library/hafez/themes': typeof LibraryHafezThemesRoute
   '/library/khayyam/about': typeof LibraryKhayyamAboutRoute
   '/library/khayyam/arabic': typeof LibraryKhayyamArabicRoute
   '/library/khayyam/foroughi': typeof LibraryKhayyamForoughiRoute
@@ -617,6 +626,7 @@ export interface FileRouteTypes {
     | '/library/hafez/qasaid'
     | '/library/hafez/qetaat'
     | '/library/hafez/robaiyat'
+    | '/library/hafez/themes'
     | '/library/khayyam/about'
     | '/library/khayyam/arabic'
     | '/library/khayyam/foroughi'
@@ -680,6 +690,7 @@ export interface FileRouteTypes {
     | '/library/hafez/qasaid'
     | '/library/hafez/qetaat'
     | '/library/hafez/robaiyat'
+    | '/library/hafez/themes'
     | '/library/khayyam/about'
     | '/library/khayyam/arabic'
     | '/library/khayyam/foroughi'
@@ -743,6 +754,7 @@ export interface FileRouteTypes {
     | '/library/hafez/qasaid'
     | '/library/hafez/qetaat'
     | '/library/hafez/robaiyat'
+    | '/library/hafez/themes'
     | '/library/khayyam/about'
     | '/library/khayyam/arabic'
     | '/library/khayyam/foroughi'
@@ -807,6 +819,7 @@ export interface RootRouteChildren {
   LibraryHafezQasaidRoute: typeof LibraryHafezQasaidRoute
   LibraryHafezQetaatRoute: typeof LibraryHafezQetaatRoute
   LibraryHafezRobaiyatRoute: typeof LibraryHafezRobaiyatRoute
+  LibraryHafezThemesRoute: typeof LibraryHafezThemesRoute
   LibraryKhayyamAboutRoute: typeof LibraryKhayyamAboutRoute
   LibraryKhayyamArabicRoute: typeof LibraryKhayyamArabicRoute
   LibraryKhayyamForoughiRoute: typeof LibraryKhayyamForoughiRoute
@@ -1134,6 +1147,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LibraryHafezRobaiyatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/library/hafez/themes': {
+      id: '/library/hafez/themes'
+      path: '/library/hafez/themes'
+      fullPath: '/library/hafez/themes'
+      preLoaderRoute: typeof LibraryHafezThemesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/library/khayyam/': {
       id: '/library/khayyam/'
       path: '/library/khayyam'
@@ -1303,6 +1323,7 @@ const rootRouteChildren: RootRouteChildren = {
   LibraryHafezQasaidRoute: LibraryHafezQasaidRoute,
   LibraryHafezQetaatRoute: LibraryHafezQetaatRoute,
   LibraryHafezRobaiyatRoute: LibraryHafezRobaiyatRoute,
+  LibraryHafezThemesRoute: LibraryHafezThemesRoute,
   LibraryKhayyamAboutRoute: LibraryKhayyamAboutRoute,
   LibraryKhayyamArabicRoute: LibraryKhayyamArabicRoute,
   LibraryKhayyamForoughiRoute: LibraryKhayyamForoughiRoute,

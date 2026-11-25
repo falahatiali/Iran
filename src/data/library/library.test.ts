@@ -369,3 +369,12 @@ test('«شرح این سایت»: every point cites a source, every ghazal exist
     for (const p of s.points) assert.ok(p.h && p.t && p.refs.length > 0, `ghazal ${e.n}: «${p.h}» needs a source`)
   }
 })
+
+test('the theme map covers every ghazal once, with one count per theme, and says how it was made', () => {
+  const m = hafezText('themes.json')
+  const keys = m.method.themes.map((t: { key: string }) => t.key)
+  assert.deepEqual(m.ghazals.map((r: number[]) => r[0]), Array.from({ length: GHAZAL_COUNT }, (_, i) => i + 1))
+  for (const r of m.ghazals) assert.equal(r.length, keys.length + 1)
+  assert.deepEqual(Object.keys(m.top), keys)
+  assert.ok(m.method.minHits >= 1 && m.method.themes.every((t: { words: string[] }) => t.words.length > 5))
+})

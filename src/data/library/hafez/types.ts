@@ -80,7 +80,16 @@ export interface SharhEntry {
   points: number
 }
 
+/** The site's own word-count theme map (scripts/hafez-themes.py): not a reading, a count. */
+export interface ThemeMap {
+  method: { minHits: number; suffixes: readonly string[]; prefixes: readonly string[]; themes: readonly { key: string; label: string; words: readonly string[] }[] }
+  /** [n, hits per theme in method.themes order] */
+  ghazals: readonly (readonly number[])[]
+  top: Record<string, readonly (readonly [number, number, string])[]>
+}
+
 export interface DivanRepository {
+  themes(): Promise<ThemeMap>
   /** which ghazals have «شرح این سایت», and one ghazal's notes */
   sharhIndex(): Promise<readonly SharhEntry[]>
   sharh(n: number): Promise<Sharh | undefined>

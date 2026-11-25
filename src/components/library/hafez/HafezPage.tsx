@@ -73,6 +73,7 @@ export function HafezPage({ summary }: { summary: ReturnType<typeof summarise> }
           <li><Link to="/library/hafez/robaiyat"><b>رباعیات</b><small>۴۲ رباعی</small></Link></li>
           <li><Link to="/library/hafez/montasab"><b>اشعار منتسب</b><small>۱۱۸ شعر</small></Link></li>
           <li><Link to="/library/hafez/moqaddame"><b>مقدمهٔ دیوان</b><small>از جمع‌آورنده</small></Link></li>
+          <li><Link to="/library/hafez/themes"><b>نقشهٔ مضمون‌ها</b><small>می، باغ، شب، هجران، ریا</small></Link></li>
         </ul>
       </section>
 

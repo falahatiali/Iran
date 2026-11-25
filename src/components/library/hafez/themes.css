@@ -1,0 +1,49 @@
+.hft { --t-wine: #9b2042; --t-garden: #3e7d4b; --t-night: #2b3f7a; --t-separation: #7d5c9e; --t-piety: #b07a22; --t-none: #d9c9a6; }
+.hft .t-wine { --c: var(--t-wine); } .hft .t-garden { --c: var(--t-garden); } .hft .t-night { --c: var(--t-night); }
+.hft .t-separation { --c: var(--t-separation); } .hft .t-piety { --c: var(--t-piety); } .hft .t-none { --c: var(--t-none); }
+.hft-chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 18px 0 8px; }
+.hft-chips button { font: inherit; font-size: 14px; padding: 7px 14px; border-radius: 999px; border: 1.5px solid var(--hf-gold); background: #fbf4e2; color: var(--hf-ink); cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+.hft-chips button i { width: 10px; height: 10px; border-radius: 50%; background: var(--c, var(--hf-ink)); }
+.hft-chips button small { opacity: .7; }
+.hft-chips button[aria-pressed='true'] { background: var(--c, var(--hf-ink)); border-color: var(--c, var(--hf-ink)); color: #fff8e6; }
+.hft-chips button[aria-pressed='true'] i { background: #fff8e6; }
+.hft-chips button:focus-visible { outline: 3px solid var(--hf-gold); outline-offset: 2px; }
+.hft h2 { font-family: var(--naskh); font-size: clamp(22px, 3.4vw, 28px); text-align: center; margin: 0 0 8px; }
+.hft-sky { margin: 16px 0; padding: 18px 12px 12px; border-radius: 22px; background: radial-gradient(ellipse at 50% 35%, #22325e 0%, #101a33 70%); color: #f4e4bd; }
+.hft .hft-sky h2 { color: #f6d38a; }
+.hft-sky svg { display: block; width: 100%; max-width: 520px; margin: 0 auto; }
+.hft-star { fill: #fff3cf; opacity: .55; }
+.hft-edge path { fill: none; stroke: #f6d38a; stroke-opacity: .55; stroke-linecap: round; transition: stroke-opacity .3s; }
+.hft-edge text { fill: #fbe9bd; font-size: 11px; font-weight: 700; paint-order: stroke; stroke: #101a33; stroke-width: 3px; }
+.hft-edge.is-dim path { stroke-opacity: .08; }
+.hft-node .dot { fill: var(--c); stroke: #f6d38a; stroke-width: 1.5; transition: opacity .3s; }
+.hft-node .n { fill: #fff8e6; font-size: 13px; font-weight: 700; }
+.hft-node .l { fill: #f6d38a; font-size: 14px; font-weight: 700; }
+.hft-node.is-dim { opacity: .25; }
+.hft .hft-sky .hft-cap { color: #f4e4bd; }
+.hft-cap { text-align: center; font-size: 13.5px; line-height: 1.9; margin: 6px auto 0; max-width: 62ch; opacity: .9; }
+.hft-tiles { margin: 22px 0; }
+.hft-grid { display: block; width: 100%; max-width: 760px; margin: 10px auto 0; }
+.hft-grid rect { fill: var(--c); transition: opacity .25s, transform .25s; transform-box: fill-box; transform-origin: center; }
+.hft-grid rect.is-dim { opacity: .14; }
+.hft-grid a:hover rect, .hft-grid a:focus-visible rect { transform: scale(1.35); stroke: var(--hf-ink); stroke-width: 1.2; }
+.hft-grid a:focus-visible { outline: none; }
+.hft-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.hft-col { padding: 12px 14px; border-radius: 14px; background: #fbf4e2; border-top: 4px solid var(--c); }
+.hft-col h3 { margin: 0 0 6px; font-size: 16px; color: var(--c); display: flex; align-items: center; gap: 6px; }
+.hft-col h3 i { width: 10px; height: 10px; border-radius: 50%; background: var(--c); }
+.hft-col ol { margin: 0; padding-inline-start: 18px; }
+.hft-col li { margin: 4px 0; line-height: 1.6; }
+.hft-col a { font-family: var(--naskh); font-size: 15.5px; color: var(--hf-ink); text-decoration: none; }
+.hft-col a:hover { text-decoration: underline; }
+.hft-col small { display: block; font-size: 11.5px; opacity: .7; }
+.hft-method { margin: 22px 0 8px; padding: 14px 16px; border-radius: 14px; border: 1px dashed var(--hf-gold); font-size: 14px; line-height: 2; color: #4d3a1c; }
+.hft-method summary { cursor: pointer; font-weight: 700; color: var(--hf-wine); }
+.hft-method ul { padding-inline-start: 20px; }
+@media (prefers-reduced-motion: no-preference) {
+  .hft-star { animation: hft-twinkle 4.2s ease-in-out infinite; }
+  @keyframes hft-twinkle { 0%, 100% { opacity: .25; } 50% { opacity: .8; } }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hft-edge path, .hft-node .dot, .hft-grid rect { transition: none; }
+}
