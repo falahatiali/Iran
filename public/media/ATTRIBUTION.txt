@@ -603,4 +603,18 @@ Text of Hafez's ghazals and their meanings (/library/hafez): from Ganjoor (ganjo
   colloquial or off the text were rewritten by this site (src/data/library/hafez/text/fixes.json) and are labelled «ویراستهٔ این سایت».
   ganjoor-data carries no licence file of its own; credit is given to Ganjoor on every ghazal page with a link to the poem on ganjoor.net.
   Only the Hafez ghazals are copied, not the dump.
+- library/bustan-garden-640.(avif|webp), bustan-garden-960.(avif|webp), bustan-garden-1280.(avif|webp), og-bustan.jpg
+  Original generated artwork for this site (2026-11-20): an imagined Persian four-fold orchard garden (chahar bagh) with fruit trees, herb beds, water channels and a pavilion, in a miniature-inspired style. Hero of /library/bustan. The self-drawing garden plan below it is SVG drawn by the page itself.
+- library/golestan-roses-640.(avif|webp), golestan-roses-960.(avif|webp), golestan-roses-1280.(avif|webp), og-golestan.jpg
+  Original generated artwork for this site (2026-11-20): an imagined rose garden with a tiled fountain, an arch, and an open blank book and a rose on a carpet, in a miniature-inspired style. Hero of /library/golestan. The opening eight-petalled rose below it is SVG drawn by the page itself.
+- library/cover-bustan.(avif|webp), library/cover-golestan.(avif|webp)
+  The same cover artwork recoloured to emerald (Bustan) and crimson (Golestan).
+Text of Saadi's Bustan and Golestan and their meanings (/library/bustan, /library/golestan): from Ganjoor (ganjoor.net), extracted from Ganjoor's open data export
+  https://github.com/ganjoor/ganjoor-data (commit 7d7beabc1edfbddbd51835e979b309d653d25e39, 2026-11-20) by scripts/extract-ganjoor-saadi.py.
+  Text: Ganjoor's Bustan (preface and ten chapters, 230 sections) and Golestan (preface and eight chapters, 291 sections). The works are medieval and in the public domain.
+  Meanings of bayts and prose paragraphs (CoupletSummary) and section summaries (PoemSummary): those Ganjoor marks «هوش مصنوعی» are AI-generated, added to
+  ganjoor-data by Arman Jafarnezhad (ganjoor/ganjoor-data pull request #4), and are labelled «هوش مصنوعی» on the page; the others were written by Ganjoor's
+  readers and are labelled «نوشتهٔ خوانندگان گنجور». 12 meanings that were colloquial or off the text were rewritten by this site
+  (src/data/library/saadi/text/fixes.json) and are labelled «ویراستهٔ این سایت». ganjoor-data carries no licence file of its own; every section page credits
+  Ganjoor with a link to the poem on ganjoor.net. Only these two books are copied, not the dump.
 Typeface on the library pages: Noto Naskh Arabic Bold (Google, SIL Open Font License 1.1), subset to Persian letters: /fonts/NotoNaskhArabic-Bold-fa.woff2.

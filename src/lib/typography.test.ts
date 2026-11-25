@@ -11,8 +11,8 @@ const walk = (d: string): string[] => fs.readdirSync(d, { withFileTypes: true })
 })
 // The Shahnameh stream owns data/shahnameh and checks its own text; verse quoted elsewhere uses می for "wine".
 // Mantiq al-Tayr's text is Ganjoor's, verbatim (scripts/extract-ganjoor-mantiq.py), so its spelling is not ours to correct.
-// Khayyam's quatrains and Hafez's ghazals (with Ganjoor's meanings) are Ganjoor's too (scripts/extract-ganjoor-khayyam.py), where می is often "wine".
-const verbatim = ['mantiq', 'khayyam', 'hafez'].map((b) => path.join('data', 'library', b, 'text') + path.sep)
+// Khayyam's quatrains, Hafez's ghazals and Saadi's Bustan and Golestan (with Ganjoor's meanings) are Ganjoor's too (scripts/extract-ganjoor-khayyam.py), where می is often "wine".
+const verbatim = ['mantiq', 'khayyam', 'hafez', 'saadi'].map((b) => path.join('data', 'library', b, 'text') + path.sep)
 const files = walk(src).filter((f) => !f.includes(`${path.sep}shahnameh${path.sep}`) && !verbatim.some((v) => f.includes(v))).map((f) => ({ rel: path.relative(src, f), text: fs.readFileSync(f, 'utf8') }))
 
 function offenders(re: RegExp, skip: (rel: string) => boolean = () => false) {

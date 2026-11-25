@@ -12,6 +12,7 @@ import { isReady, type LibraryBook, type ReadyBook } from './types'
 import { MANTIQ_SECTIONS, sectionPath } from './mantiq/sections'
 import { KHAYYAM_PAGES } from './khayyam/paths'
 import { HAFEZ_PAGES, ghazalPaths } from './hafez/paths'
+import { saadiPaths } from './saadi/paths'
 
 export * from './types'
 
@@ -49,5 +50,6 @@ export function librarySitemapPaths(): string[] {
     ...KHAYYAM_PAGES.slice(1),
     ...HAFEZ_PAGES.slice(1),
     ...ghazalPaths(),
+    ...saadiPaths(),
   ]
 }

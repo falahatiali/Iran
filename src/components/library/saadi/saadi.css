@@ -1,0 +1,158 @@
+/* Saadi: the Hafez parchment, re-inked per book: emerald for the Bustan, rose for the Golestan. */
+.sd { --sd-ink: #143f2b; --sd-wine: #1f6a45; --sd-gold: #b8862f; --sd-night: #0b2418; --sd-hi: #2f7a52; --sd-shade: 12 52 32; background: #f4ead2; color: #2a1a0a; padding-bottom: 72px; }
+.sd a { color: inherit; }
+.sd h2 { font-family: var(--naskh); font-weight: 700; font-size: 34px; line-height: 1.6; color: var(--sd-ink); }
+.sd .read { text-align: justify; }
+.sd-hero { position: relative; height: 460px; overflow: hidden; background: var(--sd-night); }
+.sd-hero-img { position: absolute; inset: 0; view-transition-name: book-hero; }
+.sd-hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%; display: block; }
+.sd-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgb(var(--sd-shade) / .4), transparent 25%, transparent 58%, #f4ead2 99%); pointer-events: none; }
+.sd-crumb { font-size: 13px; color: #6b4a22; }
+.sd-hero .sd-crumb { position: absolute; top: 18px; right: max(16px, calc(50% - 624px)); z-index: 2; color: #fff; background: rgb(var(--sd-shade) / .55); padding: 6px 14px; border-radius: 99px; border: 1px solid rgb(242 214 139 / .35); }
+.sd-crumb a { text-decoration: underline; text-decoration-color: rgb(184 134 47 / .55); text-underline-offset: 3px; display: inline-block; padding: 6px 0; }
+.sd-crumb b { font-weight: 700; color: var(--sd-wine); }
+.sd-hero .sd-crumb b { color: var(--color-gold-bright); }
+.sd-panel { position: relative; z-index: 3; max-width: 860px; margin: -190px auto 0; text-align: center; padding: 24px 50px 26px; background: linear-gradient(#fbf4e2, #f2e3c4); border-radius: 220px 220px 22px 22px / 120px 120px 22px 22px; border: 1.5px solid var(--sd-gold); box-shadow: 0 0 0 6px #f4ead2, 0 0 0 7.5px rgb(184 134 47 / .6), 0 30px 60px -20px rgb(var(--sd-shade) / .5); }
+.sd-panel .k, .sdr-head .k { font-size: 13px; font-weight: 700; color: var(--sd-wine); letter-spacing: .06em; }
+.sd-panel h1 { font-family: var(--naskh); font-weight: 700; font-size: 72px; line-height: 1.35; background: linear-gradient(180deg, var(--sd-hi), var(--sd-ink) 60%, var(--sd-night)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.sd-panel .by { font-size: 16px; color: #7a5a2a; font-weight: 500; margin-top: -6px; }
+.sd-where { font-size: 11.5px; color: #8a6a3a; }
+.sd-where a { text-decoration: underline; text-decoration-color: rgb(184 134 47 / .5); display: inline-block; padding: 4px 0; }
+.sd-facts { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 12px 0 0; padding: 0; list-style: none; font-size: 12.5px; color: #4a3210; }
+.sd-facts li { border: 1px solid rgb(184 134 47 / .45); background: #f7ecd2; border-radius: 99px; padding: 4px 12px; }
+.sd-facts b { color: var(--sd-wine); margin-inline-end: 4px; }
+.sd-ctas { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+.sd-btn { display: inline-flex; align-items: center; min-height: 44px; border-radius: 99px; padding: 10px 24px; font-size: 15px; font-weight: 700; border: 1.5px solid var(--sd-gold); color: #6b4a12 !important; text-decoration: none; }
+.sd-btn.is-primary { background: linear-gradient(var(--sd-hi), var(--sd-ink)); color: #fbf4e2 !important; border-color: var(--sd-ink); box-shadow: 0 8px 20px -6px rgb(var(--sd-shade) / .6); }
+.sd-intro, .sd-view { max-width: 760px; margin: 44px auto 0; padding: 0 16px; font-size: 16.5px; line-height: 2.2; color: #3a2a14; }
+.sd-intro p + p, .sd-view p + p, .sda-sec p + p { margin-top: 12px; }
+.sd-view { border-inline-start: 3px solid var(--sd-gold); padding-inline-start: 20px; }
+.sd-view h2 { font-size: 26px; }
+.sd-cite { font-size: 11px; margin-inline-start: 2px; }
+.sd-cite a { text-decoration: none; color: var(--sd-wine); padding: 0 1px; }
+.sd-two { max-width: 1180px; margin: 52px auto 0; padding: 0 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.sd-card { border-radius: 22px; padding: 24px 28px; background: #fbf4e2; border: 1px solid rgb(184 134 47 / .45); }
+.sd-card h2 { font-size: 26px; }
+.sd-card p.read { font-size: 15.5px; line-height: 2.1; color: #3a2a14; margin: 6px 0 14px; }
+.sd-sources { max-width: 760px; margin: 48px auto 0; padding: 0 16px; font-size: 13.5px; line-height: 2.1; color: #4a3210; }
+.sd-sources h2 { font-size: 24px; }
+.sd-sources ol { list-style: decimal; padding-inline-start: 20px; margin: 6px 0; }
+.sd-sources a { text-decoration: underline; text-decoration-color: rgb(184 134 47 / .6); text-underline-offset: 3px; display: inline-block; padding: 5px 0; }
+.sd-sources li:target { background: rgb(184 134 47 / .18); border-radius: 8px; }
+/* reading pages */
+.sdr { padding-top: 20px; }
+.sdr-page { max-width: 860px; margin: 0 auto; padding: 0 16px; }
+.sdr-head { text-align: center; margin-top: 6px; padding: 22px 16px 20px; border: 1.5px solid var(--sd-gold); border-radius: 120px 120px 18px 18px / 60px 60px 18px 18px; background: linear-gradient(#fbf4e2, #f2e3c4); }
+.sdr-head h1 { font-family: var(--naskh); font-weight: 700; font-size: clamp(34px, 6vw, 52px); line-height: 1.4; color: var(--sd-ink); }
+.sd-toggle { margin-top: 12px; min-height: 44px; padding: 8px 20px; border-radius: 99px; border: 1.5px solid var(--sd-gold); font-size: 14px; font-weight: 700; color: #6b4a12; }
+.sdr-credit { margin-top: 32px; font-size: 12.5px; line-height: 2; color: #7a5a2a; text-align: center; }
+.sdr-credit a { text-decoration: underline; text-decoration-color: rgb(184 134 47 / .5); }
+.sdr-toc ol { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 16px 0 0; padding: 0; list-style: none; }
+.sdr-toc a { display: inline-flex; align-items: center; min-height: 36px; padding: 2px 12px; border-radius: 99px; border: 1px solid rgb(184 134 47 / .45); background: #fbf4e2; text-decoration: none; font-size: 13.5px; }
+.sda-sec { margin-top: 36px; scroll-margin-top: 90px; font-size: 16px; line-height: 2.15; color: #3a2a14; }
+.sda-sec h2 { font-size: 28px; }
+@media (max-width: 860px) { .sd-two { grid-template-columns: 1fr; } }
+@media (max-width: 600px) {
+  .sd-hero { height: 300px; }
+  .sd-panel { margin: -110px 12px 0; padding: 22px 18px; border-radius: 160px 160px 18px 18px / 80px 80px 18px 18px; }
+  .sd-panel h1 { font-size: 50px; }
+  .sd-intro { font-size: 15.5px; }
+  .sd h2 { font-size: 28px; }
+}
+.sd-bayt { margin: 0; font-family: var(--naskh); font-weight: 700; font-size: clamp(18px, 2.3vw, 21px); line-height: 2.05; color: #1d1a12; display: flex; flex-wrap: wrap; column-gap: 40px; }
+.sd-bayt span { flex: 1 1 14rem; }
+.sd-bayt span:last-child { text-align: end; }
+.sd-bayt.is-opening { max-width: 760px; margin: 14px auto 0; font-size: 21px; column-gap: 32px; }
+@media (min-width: 601px) { .sd-bayt.is-opening span { flex: 1 1 0; white-space: nowrap; } }
+.sd-btn:not(.is-primary):hover { background: rgb(184 134 47 / .1); }
+/* a section */
+.sdg-summary { margin-top: 22px; padding: 16px 22px; border-radius: 18px; background: #fbf4e2; border: 1px solid rgb(184 134 47 / .45); font-size: 15.5px; line-height: 2.1; color: #3a2a14; }
+.sd .sdg-summary h2 { font-size: 20px; display: flex; align-items: center; gap: 10px; }
+.sdg-bayts { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 10px; }
+.sdg-bayts > li { position: relative; padding: 14px 18px 12px; padding-inline-start: 56px; border-radius: 18px; border: 1px solid rgb(184 134 47 / .3); background: rgb(251 244 226 / .75); scroll-margin-top: 90px; }
+.sdg-bayts > li:target { border-color: var(--sd-gold); box-shadow: 0 0 0 2px rgb(184 134 47 / .35); }
+.sdg-bayts.is-bare > li { padding-top: 8px; padding-bottom: 6px; }
+.sdg-n { position: absolute; inset-inline-start: 12px; top: 14px; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; font-size: 12px; color: #7a5a2a; border: 1px solid rgb(184 134 47 / .5); text-decoration: none; }
+.sdg-m { margin-top: 6px; padding-top: 8px; border-top: 1px dashed rgb(184 134 47 / .4); font-size: 15px; line-height: 2.05; color: #3a3020; }
+.sd-src { display: inline-block; margin-inline-start: 4px; padding: 0 9px; border-radius: 99px; font-size: 11px; line-height: 1.9; font-family: var(--font-sans, inherit); font-weight: 500; vertical-align: 1px; white-space: nowrap; border: 1px solid; }
+.sd-src.is-ai { color: #4a5a78; border-color: rgb(74 90 120 / .35); }
+.sd-src.is-human { color: #2a5a3a; border-color: rgb(42 90 58 / .35); }
+.sd-src.is-fixed { color: #7a4a12; border-color: rgb(184 134 47 / .55); }
+.sdg-nav { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+@media (max-width: 600px) {
+  .sd-bayt { flex-direction: column; }
+  .sd-bayt span { flex: none; }
+  .sd-bayt span:last-child { text-align: start; padding-inline-start: 1.5em; }
+  .sd-bayt.is-opening { font-size: 19px; }
+  .sdg-bayts > li { padding-inline-start: 16px; padding-top: 48px; }
+}
+.sd.is-golestan { --sd-ink: #5a1428; --sd-wine: #9a2a48; --sd-night: #2a0812; --sd-hi: #b23a5a; --sd-shade: 60 12 28; }
+.sd.is-golestan .sd-hero-img img { object-position: 50% 40%; }
+/* chapter lists on a landing and on a chapter page */
+.sd-chapters { max-width: 1000px; margin: 52px auto 0; padding: 0 16px; text-align: center; scroll-margin-top: 90px; }
+.sd-chapters .sub { font-size: 14px; color: #6b4a22; }
+.sd-ch-list { list-style: none; margin: 20px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; text-align: start; }
+.sd-ch-list a { display: flex; align-items: center; gap: 14px; min-height: 64px; padding: 12px 16px; border-radius: 18px; border: 1px solid rgb(184 134 47 / .45); background: #fbf4e2; text-decoration: none; transition: transform .3s var(--ease-silk), box-shadow .3s; }
+.sd-ch-list a:hover, .sd-ch-list a:focus-visible { transform: translateY(-2px); box-shadow: 0 14px 26px -16px rgb(var(--sd-shade) / .6); }
+.sd-ch-list .n { flex: none; width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; font-size: 14px; color: #f6dc96; background: radial-gradient(circle at 35% 30%, var(--sd-hi), var(--sd-night)); }
+.sd-ch-list b { display: block; font-family: var(--naskh); font-size: 18px; line-height: 1.6; color: var(--sd-ink); }
+.sd-ch-list small { font-size: 12px; color: #8a6a3a; }
+.sd-sections { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 8px; }
+.sd-sections a { display: grid; grid-template-columns: auto 1fr; gap: 2px 14px; align-items: center; padding: 10px 16px; border-radius: 16px; border: 1px solid rgb(184 134 47 / .3); background: rgb(251 244 226 / .75); text-decoration: none; }
+.sd-sections a:hover, .sd-sections a:focus-visible { border-color: var(--sd-gold); background: #fbf4e2; }
+.sd-sections .n { grid-row: span 2; width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%; font-size: 13px; color: #f6dc96; background: radial-gradient(circle at 35% 30%, var(--sd-hi), var(--sd-night)); }
+.sd-sections .t { font-family: var(--naskh); font-weight: 700; font-size: 17px; line-height: 1.9; color: var(--sd-ink); }
+.sd-sections small { font-size: 13px; color: #6b4a22; font-family: var(--naskh); line-height: 1.9; }
+/* prose of the Golestan: justified, a little larger than the meanings */
+.sd-prose { margin: 0; font-family: var(--naskh); font-weight: 500; font-size: clamp(17px, 2.1vw, 19px); line-height: 2.15; color: #1d1a12; text-align: justify; }
+.sdg-bayts > li.is-prose { background: rgb(255 250 238 / .85); }
+@media (prefers-reduced-motion: reduce) { .sd-ch-list a { transition: none; } }
+.sd-feature { max-width: 760px; margin: 44px auto 0; padding: 22px 26px; border-radius: 22px; text-align: center; background: #fbf4e2; border: 1px solid rgb(184 134 47 / .5); }
+.sd-feature h2 { font-size: 24px; }
+.sd-feature .sd-bayt { margin-top: 8px; }
+.sd-feature p.note { font-size: 13.5px; color: #6b4a22; margin-top: 8px; }
+
+/* Bustan signature: a chahar-bagh garden plan draws itself; its ten beds are the ten chapters */
+.sd-plan { max-width: 760px; margin: 40px auto 0; padding: 0 16px; text-align: center; }
+.sd-plan svg { width: 100%; height: auto; display: block; overflow: visible; }
+.sd-plan .wall { fill: none; stroke: var(--sd-gold); stroke-width: 2.5; stroke-dasharray: 1; stroke-dashoffset: 1; animation: sd-draw 2.4s var(--ease-silk) .2s forwards; }
+.sd-plan .canal { fill: #7cc4c0; opacity: 0; animation: sd-fade 1.2s ease 1.6s forwards; }
+.sd-plan .pool { fill: #8fd0cb; stroke: var(--sd-gold); stroke-width: 1.5; opacity: 0; animation: sd-fade 1s ease 1.9s forwards; }
+.sd-plan .shimmer { fill: none; stroke: #fff; stroke-width: 1.2; opacity: 0; animation: sd-ripple 4s ease-in-out 3s infinite; transform-origin: 380px 200px; transform-box: view-box; }
+.sd-plan a .bed { fill: #2f6a46; stroke: #c9a24a; stroke-width: 1.2; transform-box: fill-box; transform-origin: center; transform: scale(.2); opacity: 0; animation: sd-grow .9s var(--ease-silk) forwards; animation-delay: calc(2s + var(--i) * 110ms); transition: fill .25s; }
+.sd-plan a .tree { fill: #1d4a30; opacity: 0; animation: sd-fade .8s ease forwards; animation-delay: calc(2.4s + var(--i) * 110ms); pointer-events: none; }
+.sd-plan a text { font-family: var(--naskh); font-weight: 700; font-size: 15px; fill: #fbf4e2; opacity: 0; animation: sd-fade .8s ease forwards; animation-delay: calc(2.5s + var(--i) * 110ms); pointer-events: none; }
+.sd-plan a:hover .bed, .sd-plan a:focus-visible .bed { fill: #3f8a5c; }
+.sd-plan a:focus-visible { outline: none; }
+.sd-plan a:focus-visible .bed { stroke: #fff; stroke-width: 2.5; }
+.sd-plan .cap { margin-top: 8px; font-size: 13.5px; color: #6b4a22; }
+@keyframes sd-draw { to { stroke-dashoffset: 0; } }
+@keyframes sd-fade { to { opacity: 1; } }
+@keyframes sd-grow { to { transform: scale(1); opacity: 1; } }
+@keyframes sd-ripple { 0%, 100% { opacity: 0; transform: scale(.6); } 40% { opacity: .7; } 80% { opacity: 0; transform: scale(1.25); } }
+
+/* Golestan signature: an eight-petalled rose, one petal for each chapter, opens over the garden */
+.sd-rose { max-width: 560px; margin: 40px auto 0; padding: 0 16px; text-align: center; }
+.sd-rose svg { width: 100%; height: auto; display: block; overflow: visible; }
+.sd-rose a .petal { fill: url(#sd-petal); stroke: #7a1430; stroke-width: 1; transform-box: view-box; transform-origin: 250px 250px; transform: rotate(var(--r)) scale(.15); opacity: 0; animation: sd-open 1.1s var(--ease-silk) forwards; animation-delay: calc(.4s + var(--i) * 140ms); transition: filter .25s; }
+.sd-rose .labels text { font-family: var(--naskh); font-weight: 700; font-size: 15px; fill: #fff6ea; opacity: 0; animation: sd-fade .8s ease forwards; animation-delay: calc(1.6s + var(--i) * 140ms); pointer-events: none; }
+.sd-rose .labels text.num { font-size: 13px; fill: #f6dc96; }
+.sd-rose a:hover .petal, .sd-rose a:focus-visible .petal { filter: brightness(1.18); }
+.sd-rose a:focus-visible { outline: none; }
+.sd-rose a:focus-visible .petal { stroke: #fff; stroke-width: 3; }
+.sd-rose .inner { opacity: 0; animation: sd-fade 1s ease 1.5s forwards; pointer-events: none; }
+.sd-rose .heart { fill: #f2c75c; stroke: #7a1430; stroke-width: 1.2; }
+.sd-rose .heart-link text { font-family: var(--naskh); font-weight: 700; font-size: 16px; fill: #5a1428; pointer-events: none; }
+.sd-rose .heart-link:hover .heart, .sd-rose .heart-link:focus-visible .heart { fill: #f8d97e; }
+.sd-rose .cap { margin-top: 4px; font-size: 13.5px; color: #6b4a22; }
+@keyframes sd-open { 60% { opacity: 1; } to { transform: rotate(var(--r)) scale(1); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .sd-plan .wall, .sd-plan .canal, .sd-plan .pool, .sd-plan a .bed, .sd-plan a .tree, .sd-plan a text, .sd-rose a .petal, .sd-rose .labels text, .sd-rose .inner { animation: none; opacity: 1; stroke-dashoffset: 0; }
+  .sd-plan a .bed { transform: none; }
+  .sd-rose a .petal { transform: rotate(var(--r)); }
+  .sd-plan .shimmer { animation: none; display: none; }
+}
+@media (max-width: 600px) {
+  .sd-plan a text { font-size: 23px; }
+  .sd-rose .labels text { font-size: 17px; }
+}

@@ -11,6 +11,8 @@ import { KHAYYAM_PAGES, KHAYYAM_PATH, SOURCES, khayyam } from './khayyam'
 import { rubaiyat } from './khayyam/repository'
 import { GHAZAL_COUNT, HAFEZ_PAGES, HAFEZ_PATH, SOURCES as HF_SOURCES, ghazalPath, ghazalPaths, hafez } from './hafez'
 import type { Ghazal, GhazalIndex } from './hafez/types'
+import { BOOKS as SD_BOOKS, SOURCES as SD_SOURCES, SAADI_BOOKS, about as saadiAbout, chapterCounts, saadiPaths } from './saadi'
+import type { BookIndex, Section } from './saadi/types'
 import {
   MANTIQ_GROUPS, MANTIQ_MEANINGS, MANTIQ_SECTIONS, MANTIQ_TOTAL_COUPLETS, hasNotes, legacySection, sectionOf, loadMantiqNotes, loadMantiqText, noteKey, sectionBySlug,
 } from './mantiq/sections'
@@ -45,7 +47,7 @@ test('every ready book opens into a real route, with its cover and headpiece on 
     for (const ext of ['avif', 'webp']) assert.ok(publicFile(`${b.cover}.${ext}`), `${b.slug}: missing ${b.cover}.${ext}`)
     assert.ok(publicFile(b.headpiece.src), `${b.slug}: missing ${b.headpiece.src}`)
     for (const part of [...(b.headpiece.srcSet?.split(',') ?? []), ...(b.headpiece.avifSrcSet?.split(',') ?? [])]) assert.ok(publicFile(part.trim().split(' ')[0]), `${b.slug}: missing ${part}`)
-    const src = fs.readFileSync(routeFile(b.href)!, 'utf8') + fs.readFileSync(path.join(root, 'src/components', ({ shahnameh: 'shahnameh/LandingPage.tsx', khayyam: 'library/khayyam/KhayyamPage.tsx', hafez: 'library/hafez/HafezPage.tsx' } as Record<string, string>)[b.slug] ?? 'library/MantiqPage.tsx'), 'utf8')
+    const src = fs.readFileSync(routeFile(b.href)!, 'utf8') + fs.readFileSync(path.join(root, 'src/components', ({ shahnameh: 'shahnameh/LandingPage.tsx', khayyam: 'library/khayyam/KhayyamPage.tsx', hafez: 'library/hafez/HafezPage.tsx', bustan: 'library/saadi/BookPage.tsx', golestan: 'library/saadi/BookPage.tsx' } as Record<string, string>)[b.slug] ?? 'library/MantiqPage.tsx'), 'utf8')
     assert.ok(src.includes(`data-book-arrival`), `${b.slug}: the page must mark its arrival element for the opening animation`)
   }
 })
@@ -59,7 +61,7 @@ test('the library hall, the Mantiq page and every Mantiq section are in the site
   assert.ok(paths.has(LIBRARY_PATH))
   assert.ok(paths.has(MANTIQ_PATH))
   assert.ok(paths.has('/shahnameh'))
-  assert.deepEqual(librarySitemapPaths(), [LIBRARY_PATH, MANTIQ_PATH, HAFEZ_PATH, KHAYYAM_PATH, ...MANTIQ_SECTIONS.map((s) => `${MANTIQ_PATH}/${s.slug}`), ...KHAYYAM_PAGES.slice(1), ...HAFEZ_PAGES.slice(1), ...ghazalPaths()])
+  assert.deepEqual(librarySitemapPaths(), [LIBRARY_PATH, MANTIQ_PATH, HAFEZ_PATH, '/library/golestan', '/library/bustan', KHAYYAM_PATH, ...MANTIQ_SECTIONS.map((s) => `${MANTIQ_PATH}/${s.slug}`), ...KHAYYAM_PAGES.slice(1), ...HAFEZ_PAGES.slice(1), ...ghazalPaths(), ...saadiPaths()])
   for (const p of [...KHAYYAM_PAGES, ...HAFEZ_PAGES, ghazalPath(1), ghazalPath(GHAZAL_COUNT)]) assert.ok(paths.has(p), p)
   assert.equal(readyBook('shahnameh').href, '/shahnameh')
   assert.ok(SITE_PAGES.some((p) => p.fa.path === LIBRARY_PATH))
@@ -236,6 +238,51 @@ test('the Hafez book opens on the Divan\'s first bayt, and all 495 ghazals have 
 test('every sentence of Hafez prose cites a listed source', () => {
   const ids = new Set(HF_SOURCES.map((s) => s.id))
   for (const p of [...hafez.intro, ...hafez.about.flatMap((s) => s.paras)]) {
+    assert.ok(p.cite.length > 0, p.text.slice(0, 30))
+    for (const c of p.cite) assert.ok(ids.has(c), c)
+  }
+})
+
+const saadiText = (f: string) => JSON.parse(fs.readFileSync(path.join(root, 'src/data/library/saadi/text', f), 'utf8'))
+
+test('Saadi: both books are whole, in Ganjoor\'s order, with text in every block and the landing incipits taken from the data', () => {
+  const meta = saadiText('meta.json')
+  assert.match(meta.commit, /^[0-9a-f]{40}$/)
+  assert.ok(fs.readFileSync(path.join(root, 'public/media/ATTRIBUTION.txt'), 'utf8').includes(`Saadi's Bustan and Golestan`))
+  const expect = { bustan: { chapters: 11, sections: 230 }, golestan: { chapters: 9, sections: 291 } }
+  for (const book of SAADI_BOOKS) {
+    const index: BookIndex = saadiText(`${book}/index.json`)
+    assert.equal(index.chapters.length, expect[book].chapters)
+    assert.deepEqual(index.chapters.map((c) => [c.slug, c.sections.length, c.title]), chapterCounts(book).map((c) => [...c]))
+    let sections = 0
+    for (const c of index.chapters) {
+      assert.deepEqual(c.sections.map((s) => s.n), Array.from({ length: c.sections.length }, (_, i) => i + 1))
+      for (const e of c.sections) {
+        sections++
+        const s: Section = saadiText(`${book}/${c.slug}-${e.n}.json`)
+        assert.equal(s.blocks.length, e.count, `${book}/${c.slug}/${e.n}`)
+        assert.ok(s.ganjoor.startsWith(`/saadi/`))
+        for (const [i, b] of s.blocks.entries()) {
+          if ('l' in b) for (const l of b.l) assert.ok(l.trim(), `${book}/${c.slug}/${e.n}:${i + 1} empty hemistich`)
+          else assert.ok(b.p.trim(), `${book}/${c.slug}/${e.n}:${i + 1} empty paragraph`)
+          if (b.m) assert.ok(b.m.text.trim().length > 1 && !b.m.text.startsWith('هوش مصنوعی'), `${book}/${c.slug}/${e.n}:${i + 1} meaning`)
+        }
+      }
+    }
+    assert.equal(sections, expect[book].sections)
+    assert.equal(meta.books[book].sections, sections)
+  }
+  const b0 = (saadiText('bustan/niyayesh-1.json') as Section).blocks[0]
+  assert.deepEqual([...readyBook('bustan').incipit], 'l' in b0 ? [...b0.l] : [])
+  const dibache: Section = saadiText('golestan/dibache-1.json')
+  assert.ok(dibache.blocks.some((b) => 'l' in b && b.l[0] === readyBook('golestan').incipit[0] && b.l[1] === readyBook('golestan').incipit[1]))
+  assert.equal(saadiPaths().length, 1 + 20 + 230 + 291)
+  assert.equal(SD_BOOKS.golestan.opening.starts, 'به چه کار آیدت')
+})
+
+test('every sentence of Saadi prose cites a listed source', () => {
+  const ids = new Set(SD_SOURCES.map((s) => s.id))
+  for (const p of [...SD_BOOKS.bustan.intro, ...SD_BOOKS.golestan.intro, ...saadiAbout.flatMap((s) => s.paras)]) {
     assert.ok(p.cite.length > 0, p.text.slice(0, 30))
     for (const c of p.cite) assert.ok(ids.has(c), c)
   }
