@@ -59,7 +59,7 @@
 .mqr-summary { margin: 14px 0 0; padding: 14px 18px; border-radius: 16px; background: #0b3b4a; color: #f3e8cf; }
 .mqr-summary .read { font-size: 15px; line-height: 2.1; text-align: justify; }
 .mqr-summary b { color: #f6dc96; }
-.mqr-summary .mqr-src { color: #f6dc96; border-color: rgb(246 220 150 / .45); }
+.mqr-summary .mqr-src.mqr-src { color: #f6dc96; border-color: rgb(246 220 150 / .45); }
 .mqr-m { margin-top: 4px; padding-top: 6px; border-top: 1px dashed rgb(184 134 47 / .35); font-size: 14.5px; line-height: 2.05; color: #3a2a14; }
 .mqr-m b { color: #0e6b6b; font-weight: 700; }
 .is-plain .mqr-m, .is-plain .mqr-summary { display: none; }
