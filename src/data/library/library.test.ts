@@ -9,8 +9,8 @@ import { BOOKS, LIBRARY_PATH, catalogue, isReady, librarySitemapPaths, readyBook
 import { MANTIQ_PATH, mantiq } from './mantiq'
 import { KHAYYAM_PAGES, KHAYYAM_PATH, SOURCES, khayyam } from './khayyam'
 import { rubaiyat } from './khayyam/repository'
-import { GHAZAL_COUNT, HAFEZ_PAGES, HAFEZ_PATH, MONTASAB_COUNT, SOURCES as HF_SOURCES, ghazalPath, ghazalPaths, hafez, montasabPaths } from './hafez'
-import type { Ghazal, GhazalIndex, MontasabEntry, Poem } from './hafez/types'
+import { GHAZAL_COUNT, HAFEZ_PAGES, HAFEZ_PATH, MONTASAB_COUNT, SOURCES as HF_SOURCES, LETTER_SLUGS, ghazalPath, ghazalPaths, hafez, letterPaths, montasabPaths } from './hafez'
+import type { Ghazal, GhazalEntry, GhazalIndex, MontasabEntry, Poem } from './hafez/types'
 import { nowruzPaths } from './khayyam/paths'
 import { ARABIC_PARAS, NOWRUZ_INTRO } from './khayyam/nowruz'
 import { BOOKS as SD_BOOKS, SOURCES as SD_SOURCES, SAADI_BOOKS, about as saadiAbout, chapterCounts, saadiPaths } from './saadi'
@@ -63,7 +63,7 @@ test('the library hall, the Mantiq page and every Mantiq section are in the site
   assert.ok(paths.has(LIBRARY_PATH))
   assert.ok(paths.has(MANTIQ_PATH))
   assert.ok(paths.has('/shahnameh'))
-  assert.deepEqual(librarySitemapPaths(), [LIBRARY_PATH, MANTIQ_PATH, HAFEZ_PATH, '/library/golestan', '/library/bustan', KHAYYAM_PATH, ...MANTIQ_SECTIONS.map((s) => `${MANTIQ_PATH}/${s.slug}`), ...KHAYYAM_PAGES.slice(1), ...HAFEZ_PAGES.slice(1), ...ghazalPaths(), ...montasabPaths(), ...nowruzPaths(), ...saadiPaths()])
+  assert.deepEqual(librarySitemapPaths(), [LIBRARY_PATH, MANTIQ_PATH, HAFEZ_PATH, '/library/golestan', '/library/bustan', KHAYYAM_PATH, ...MANTIQ_SECTIONS.map((s) => `${MANTIQ_PATH}/${s.slug}`), ...KHAYYAM_PAGES.slice(1), ...HAFEZ_PAGES.slice(1), ...letterPaths(), ...ghazalPaths(), ...montasabPaths(), ...nowruzPaths(), ...saadiPaths()])
   for (const p of [...KHAYYAM_PAGES, ...HAFEZ_PAGES, ghazalPath(1), ghazalPath(GHAZAL_COUNT)]) assert.ok(paths.has(p), p)
   assert.equal(readyBook('shahnameh').href, '/shahnameh')
   assert.ok(SITE_PAGES.some((p) => p.fa.path === LIBRARY_PATH))
@@ -333,4 +333,20 @@ test('the Nowruz-nama: 42 sections in Ganjoor\'s order, each block with text and
     assert.ok(p.cite.length > 0)
     for (const c of p.cite) assert.ok(ids.has(c), c)
   }
+})
+
+test('the ghazal index is split by letter: every ghazal on exactly one letter page, slugs as in paths.ts', () => {
+  const letters: { slug: string; letter: string; count: number; first: number }[] = hafezText('letters.json')
+  assert.deepEqual(letters.map((l) => l.slug), [...LETTER_SLUGS])
+  const seen: number[] = []
+  for (const l of letters) {
+    const es: GhazalEntry[] = hafezText(`letters/${l.slug}.json`)
+    assert.equal(es.length, l.count)
+    assert.equal(es[0].n, l.first)
+    for (const e of es) assert.equal(e.letter, l.letter)
+    seen.push(...es.map((e) => e.n))
+  }
+  assert.deepEqual(seen.sort((a, b) => a - b), Array.from({ length: GHAZAL_COUNT }, (_, i) => i + 1))
+  const g393: Ghazal = hafezText('ghazals/393.json')
+  assert.ok(g393.bayts[4].m?.fixed && !g393.bayts[4].m.text.includes('شومیعنی'))
 })

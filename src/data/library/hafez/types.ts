@@ -45,6 +45,15 @@ export interface GhazalEntry {
   count: number
 }
 
+export interface LetterEntry {
+  slug: string
+  letter: string
+  count: number
+  /** number and opening bayt of the letter's first ghazal */
+  first: number
+  mutla: readonly [string, string]
+}
+
 export interface GhazalIndex {
   source: string
   commit: string
@@ -55,6 +64,9 @@ export interface GhazalIndex {
 export interface DivanRepository {
   index(): Promise<GhazalIndex>
   ghazal(n: number): Promise<Ghazal | undefined>
+  /** the letters, and one letter's ghazals: each its own small file */
+  letters(): Promise<readonly LetterEntry[]>
+  letter(slug: string): Promise<readonly GhazalEntry[] | undefined>
   /** Hafez's rubaiyat and qet'as: each set is one small file */
   robaiyat(): Promise<readonly Ghazal[]>
   qetaat(): Promise<readonly Ghazal[]>

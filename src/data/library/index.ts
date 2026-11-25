@@ -11,7 +11,7 @@ import { shahnameh } from './books/shahnameh'
 import { isReady, type LibraryBook, type ReadyBook } from './types'
 import { MANTIQ_SECTIONS, sectionPath } from './mantiq/sections'
 import { KHAYYAM_PAGES, nowruzPaths } from './khayyam/paths'
-import { HAFEZ_PAGES, ghazalPaths, montasabPaths } from './hafez/paths'
+import { HAFEZ_PAGES, ghazalPaths, letterPaths, montasabPaths } from './hafez/paths'
 import { saadiPaths } from './saadi/paths'
 
 export * from './types'
@@ -49,6 +49,7 @@ export function librarySitemapPaths(): string[] {
     ...MANTIQ_SECTIONS.map((s) => sectionPath(s.slug)),
     ...KHAYYAM_PAGES.slice(1),
     ...HAFEZ_PAGES.slice(1),
+    ...letterPaths(),
     ...ghazalPaths(),
     ...montasabPaths(),
     ...nowruzPaths(),

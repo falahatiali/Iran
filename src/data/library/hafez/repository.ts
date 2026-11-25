@@ -1,7 +1,8 @@
-import type { DivanRepository, Ghazal, GhazalIndex, MontasabEntry, Poem } from './types'
+import type { DivanRepository, Ghazal, GhazalEntry, GhazalIndex, LetterEntry, MontasabEntry, Poem } from './types'
 
 /** One lazy chunk per ghazal: a ghazal's page loads only its own file. */
 const files = import.meta.glob<{ default: Ghazal }>('./text/ghazals/*.json')
+const letterFiles = import.meta.glob<{ default: GhazalEntry[] }>('./text/letters/*.json')
 const attributed = import.meta.glob<{ default: Poem }>(['./text/montasab/*.json', '!./text/montasab/index.json'])
 
 export const jsonDivan: DivanRepository = {
@@ -13,6 +14,8 @@ export const jsonDivan: DivanRepository = {
   moqaddame: () => import('./text/moqaddame.json').then((m) => m.default as unknown as readonly Poem[]),
   montasabIndex: () => import('./text/montasab/index.json').then((m) => m.default as unknown as readonly MontasabEntry[]),
   montasab: async (n) => (await attributed[`./text/montasab/${n}.json`]?.())?.default as Poem | undefined,
+  letters: () => import('./text/letters.json').then((m) => m.default as unknown as readonly LetterEntry[]),
+  letter: async (slug) => (await letterFiles[`./text/letters/${slug}.json`]?.())?.default,
   ghazal: async (n) => (await files[`./text/ghazals/${n}.json`]?.())?.default,
 }
 

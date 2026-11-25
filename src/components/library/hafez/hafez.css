@@ -149,3 +149,10 @@
 .hf-forms a { display: inline-flex; flex-direction: column; align-items: center; min-width: 110px; padding: 10px 16px; border-radius: 18px; border: 1px solid rgb(184 134 47 / .5); background: #fbf4e2; text-decoration: none; }
 .hf-forms b { font-family: var(--naskh); font-size: 18px; color: var(--hf-ink); }
 .hf-forms small { font-size: 11.5px; color: #8a6a3a; }
+.hfr-letters { list-style: none; margin: 18px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.hfr-letters a { display: grid; grid-template-columns: auto 1fr; gap: 0 14px; align-items: center; padding: 12px 16px; border-radius: 18px; border: 1px solid rgb(184 134 47 / .4); background: rgb(251 244 226 / .8); text-decoration: none; min-height: 72px; }
+.hfr-letters a:hover, .hfr-letters a:focus-visible { border-color: var(--hf-gold); background: #fbf4e2; }
+.hfr-letters b { grid-row: span 2; width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; font-family: var(--naskh); font-size: 24px; color: #f6dc96; background: radial-gradient(circle at 35% 30%, #2f64a8, var(--hf-night)); }
+.hfr-letters .c { font-size: 12.5px; font-weight: 700; color: var(--hf-wine); }
+.hfr-letters .m { font-family: var(--naskh); font-size: 14.5px; line-height: 1.8; color: #3a2a14; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.hfr-head .sub { line-height: 1.9; margin: 4px auto 14px; max-width: 56ch; }

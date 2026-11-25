@@ -11,6 +11,10 @@ export const MONTASAB_PATH = `${HAFEZ_PATH}/montasab`
 export const MONTASAB_COUNT = 118
 export const montasabPath = (n: number) => `${MONTASAB_PATH}/${n}`
 export const montasabPaths = () => Array.from({ length: MONTASAB_COUNT }, (_, i) => montasabPath(i + 1))
+/** the letters the Divan's ghazals end on, in the Divan's order (text/letters.json; a test keeps the two equal) */
+export const LETTER_SLUGS = ['alef',  'be',  'te',  'se',  'jim',  'he-jimi',  'khe',  'dal',  're',  'ze',  'sin',  'shin',  'ein',  'ghein',  'fe',  'ghaf',  'kaf',  'lam',  'mim',  'nun',  'vav',  'he',  'ye'] as const
+export const letterPath = (slug: string) => `${GHAZALS_PATH}/${slug}`
+export const letterPaths = () => LETTER_SLUGS.map(letterPath)
 export const GHAZAL_COUNT = 495
 export const ghazalPath = (n: number) => `${HAFEZ_PATH}/ghazal/${n}`
 export const HAFEZ_PAGES = [HAFEZ_PATH, GHAZALS_PATH, ABOUT_PATH, ROBAIYAT_PATH, QETAAT_PATH, MASNAVI_PATH, QASAID_PATH, MOQADDAME_PATH, MONTASAB_PATH] as const

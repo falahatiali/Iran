@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router'
 import { hafez } from '../../../data/library/hafez'
-import type { Bayt, GhazalIndex } from '../../../data/library/hafez/types'
+import type { Bayt, LetterEntry } from '../../../data/library/hafez/types'
 import { Picture } from '../Picture'
 import { FalButton } from './Fal'
 import { BaytLines, Crumb, Paras, Sources, TEXT_CREDIT, fa } from './parts'
@@ -8,22 +8,16 @@ import { Petals } from './Petals'
 import '../naskh.css'
 import './hafez.css'
 
-/** What the landing shows of the Divan: the opening bayt, the letters with their counts, and the totals. */
-export function summarise(index: GhazalIndex, opening: Bayt) {
-  const letters = new Map<string, { letter: string; count: number; first: number }>()
-  for (const g of index.ghazals) {
-    const l = letters.get(g.letter)
-    if (l) l.count++
-    else letters.set(g.letter, { letter: g.letter, count: 1, first: g.n })
-  }
-  const st = index.stats
+/** What the landing shows of the Divan: the opening bayt, the letters with their counts, and the totals
+ * (from the small letters file and meta.json, not the full index). */
+export function summarise(letters: readonly LetterEntry[], stats: { bayts: number; ai: number; human: number }, opening: Bayt) {
   return {
     opening,
-    letters: [...letters.values()],
-    total: index.ghazals.length,
-    bayts: st.bayts,
-    ai: st.ai,
-    human: st.human,
+    letters,
+    total: letters.reduce((n, l) => n + l.count, 0),
+    bayts: stats.bayts,
+    ai: stats.ai,
+    human: stats.human,
   }
 }
 
@@ -64,7 +58,7 @@ export function HafezPage({ summary }: { summary: ReturnType<typeof summarise> }
         <ol className="hf-letter-grid">
           {summary.letters.map((l) => (
             <li key={l.letter}>
-              <Link to="/library/hafez/ghazals" search={{ letter: l.letter }}>
+              <Link to="/library/hafez/ghazals/$harf" params={{ harf: l.slug }}>
                 <b>{l.letter}</b>
                 <small>{fa(l.count)}</small>
               </Link>

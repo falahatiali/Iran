@@ -93,6 +93,23 @@ for n in range(1, 496):
 
 with open(os.path.join(root, 'index.json'), 'w', encoding='utf-8') as fh:
     json.dump({'source': 'ganjoor-data', 'commit': commit, 'stats': stats, 'ghazals': index}, fh, ensure_ascii=False, separators=(',', ':'))
+# The index split by letter, so each letter's page loads only its own ghazals; letters.json lists them in Divan order.
+SLUGS = {'ا': 'alef', 'ب': 'be', 'پ': 'pe', 'ت': 'te', 'ث': 'se', 'ج': 'jim', 'چ': 'che', 'ح': 'he-jimi', 'خ': 'khe', 'د': 'dal',
+         'ذ': 'zal', 'ر': 're', 'ز': 'ze', 'ژ': 'zhe', 'س': 'sin', 'ش': 'shin', 'ص': 'sad', 'ض': 'zad', 'ط': 'ta', 'ظ': 'za',
+         'ع': 'ein', 'غ': 'ghein', 'ف': 'fe', 'ق': 'ghaf', 'ک': 'kaf', 'گ': 'gaf', 'ل': 'lam', 'م': 'mim', 'ن': 'nun', 'و': 'vav',
+         'ه': 'he', 'ی': 'ye'}
+os.makedirs(os.path.join(root, 'letters'), exist_ok=True)
+by = {}
+for e in index:
+    by.setdefault(e['letter'], []).append(e)
+letters = []
+for l, es in by.items():
+    slug = SLUGS[l]
+    letters.append({'slug': slug, 'letter': l, 'count': len(es), 'first': es[0]['n'], 'mutla': es[0]['first']})
+    with open(os.path.join(root, 'letters', f'{slug}.json'), 'w', encoding='utf-8') as fh:
+        json.dump(es, fh, ensure_ascii=False, separators=(',', ':'))
+with open(os.path.join(root, 'letters.json'), 'w', encoding='utf-8') as fh:
+    json.dump(letters, fh, ensure_ascii=False, separators=(',', ':'))
 # Hafez's rubaiyat and qet'as: small, so each set is one file, read only by its own page.
 for cat, out_name in (('robaee2', 'robaiyat.json'), ('ghete', 'qetaat.json')):
     files = sorted((int(f[2:-5]), f) for f in os.listdir(os.path.join(src, 'poets', 'hafez', cat)) if f.startswith('sh'))
