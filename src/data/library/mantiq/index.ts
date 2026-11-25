@@ -62,8 +62,8 @@ export const mantiq = {
   sevenValleys: {
     intro: {
       lines: ['گفت ما را هفت وادی در ره است', 'چون گذشتی هفت وادی، درگه است'],
-      section: 'ozr-10', part: 12002, n: 9,
-      where: 'عذر آوردن مرغان، بخش ۱۰',
+      section: 'q-22', part: 12002, n: 9,
+      where: 'پرسش ۲۲: درازی راه',
     } satisfies Verse,
     valleys: [
       { n: 1, name: 'طلب', line: 'هست وادی طلب آغاز کار', slug: 'talab' },
@@ -74,7 +74,7 @@ export const mantiq = {
       { n: 6, name: 'حیرت', line: 'پس ششم وادی حیرت صعب ناک', slug: 'heyrat' },
       { n: 7, name: 'فقر و فنا', line: 'هفتمین وادی فقرست و فنا', slug: 'faghr' },
     ] satisfies Valley[],
-    listSource: { section: 'ozr-10', part: 12002, n: 13, where: 'عذر آوردن مرغان، بخش ۱۰' },
+    listSource: { section: 'q-22', part: 12002, n: 13, where: 'پرسش ۲۲: درازی راه' },
   },
   story: [
     {
@@ -114,6 +114,7 @@ export const mantiq = {
   ] as readonly { name: string; slug: string; guide?: boolean }[],
   sources: [
     { id: 'ganjoor', title: 'گنجور: عطار، منطق‌الطیر (منبع متن)', url: GANJOOR },
+    { id: 'ganjoor-data', title: 'ganjoor-data: دادهٔ باز گنجور (متن، معنی بیت‌ها و چکیده‌ها)', url: 'https://github.com/ganjoor/ganjoor-data' },
     { id: 'iranica', title: 'Encyclopaedia Iranica, “ʿAṭṭār, Farīd-al-Dīn” (Benedikt Reinert)', url: IRANICA },
   ] satisfies Source[],
 }

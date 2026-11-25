@@ -12,7 +12,7 @@ import { rubaiyat } from './khayyam/repository'
 import { GHAZAL_COUNT, HAFEZ_PAGES, HAFEZ_PATH, SOURCES as HF_SOURCES, ghazalPath, ghazalPaths, hafez } from './hafez'
 import type { Ghazal, GhazalIndex } from './hafez/types'
 import {
-  MANTIQ_GROUPS, MANTIQ_SECTIONS, MANTIQ_TOTAL_COUPLETS, hasNotes, loadMantiqNotes, loadMantiqText, noteKey, sectionBySlug,
+  MANTIQ_GROUPS, MANTIQ_MEANINGS, MANTIQ_SECTIONS, MANTIQ_TOTAL_COUPLETS, hasNotes, legacySection, sectionOf, loadMantiqNotes, loadMantiqText, noteKey, sectionBySlug,
 } from './mantiq/sections'
 
 const root = path.resolve(import.meta.dirname, '../../..')
@@ -109,7 +109,7 @@ test('the whole of Mantiq al-Tayr is readable section by section, and every note
     assert.equal(n, s.coupletCount, s.slug)
     for (const p of text.parts) {
       p.couplets.forEach((c, i) => {
-        assert.equal(c.n, i + 1, `${s.slug} ${p.id} numbering`)
+        assert.equal(c.n, p.from + i, `${s.slug} ${p.id} numbering`)
         assert.ok(c.a.trim() && c.b.trim(), `${s.slug} ${p.id}:${c.n} has both hemistichs`)
       })
     }
@@ -126,6 +126,40 @@ test('the whole of Mantiq al-Tayr is readable section by section, and every note
   assert.equal(total, MANTIQ_TOTAL_COUPLETS)
   assert.ok(total > 4600)
   assert.equal(await loadMantiqText('no-such-section'), undefined)
+})
+
+test('Mantiq al-Tayr runs in Ganjoor order with nothing skipped or repeated, and every bayt has its meaning', async () => {
+  // pieces of one Ganjoor poem follow each other, poem ids rise through the book, and each poem is read from 1 to its end
+  let last = { id: 0, to: 0, of: 0 }
+  let meanings = 0
+  for (const s of MANTIQ_SECTIONS) {
+    const text = (await loadMantiqText(s.slug))!
+    for (const p of text.parts) {
+      if (p.id === last.id) assert.equal(p.from, last.to + 1, `${s.slug} ${p.id} continues`)
+      else {
+        assert.ok(p.id > last.id, `${s.slug} ${p.id} comes after ${last.id}`)
+        assert.equal(last.to, last.of, `poem ${last.id} is read to its end`)
+        assert.equal(p.from, 1, `${s.slug} ${p.id} starts at its first bayt`)
+      }
+      for (const c of p.couplets) {
+        assert.ok(c.m && c.m.text.trim() && !/^هوش\s*مصنوعی/.test(c.m.text), `${s.slug} ${p.id}:${c.n} has a clean meaning`)
+        meanings++
+      }
+      last = { id: p.id, to: p.to, of: p.of }
+    }
+  }
+  assert.equal(last.to, last.of)
+  assert.equal(meanings, MANTIQ_TOTAL_COUPLETS)
+  assert.equal(MANTIQ_MEANINGS.ai + MANTIQ_MEANINGS.human + MANTIQ_MEANINGS.fixed, MANTIQ_TOTAL_COUPLETS)
+  // the birds' twenty-two questions each have a page, opening on the question itself
+  const qs = MANTIQ_SECTIONS.filter((s) => s.group === 'questions')
+  assert.equal(qs.length, 22)
+  for (const q of qs) assert.match(q.first[0], /^(سایلی|دیگری) (گفتش|گفت|پرسید)/, q.slug)
+  // the old even split of the excuses still lands somewhere sensible
+  assert.equal(legacySection('ozr-1')?.slug, 'q-1')
+  assert.equal(legacySection('ozr-10')?.group, 'questions')
+  assert.equal(legacySection('ozr-11'), undefined)
+  assert.equal(sectionOf(12002, 13)?.slug, 'q-22')
 })
 
 test('every library image is credited in ATTRIBUTION.txt as original artwork', () => {

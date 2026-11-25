@@ -27,18 +27,7 @@
 .mq-btn { display: inline-flex; align-items: center; min-height: 44px; border-radius: 99px; padding: 10px 24px; font-size: 15px; font-weight: 700; border: 1.5px solid #b8862f; color: #6b4a12 !important; }
 .mq-btn.is-primary { background: linear-gradient(#1b6f78, #0b3b4a); color: #fbf4e2 !important; border-color: #0b3b4a; box-shadow: 0 8px 20px -6px rgb(11 59 74 / .6); }
 .mq-intro { max-width: 760px; margin: 44px auto 0; padding: 0 16px; font-size: 16.5px; line-height: 2.2; color: #3a2a14; }
-.mq-valleys { max-width: 1180px; margin: 48px auto 0; padding: 0 16px; text-align: center; scroll-margin-top: 90px; }
 .mq h2 { font-family: var(--naskh); font-weight: 700; font-size: 34px; line-height: 1.6; color: #0b3b4a; }
-.mq-valleys .sub { font-size: 14.5px; color: #6b4a22; margin-top: 2px; }
-.mq-path { position: relative; display: flex; justify-content: space-between; margin: 22px 0 0; padding: 0 20px; list-style: none; }
-.mq-path::before { content: ''; position: absolute; top: 33px; right: 60px; left: 60px; border-top: 2.5px dashed #b8862f; }
-.mq-v { position: relative; width: 140px; }
-.mq-v a { display: flex; flex-direction: column; align-items: center; gap: 6px; text-decoration: none; border-radius: 16px; padding-bottom: 6px; }
-.mq-v .m { width: 66px; height: 66px; display: grid; place-items: center; font-family: var(--naskh); font-size: 26px; font-weight: 700; color: #fbf4e2; background: radial-gradient(circle at 35% 30%, #2a8f97, #0b3b4a); border-radius: 50%; box-shadow: 0 0 0 4px #f3e8cf, 0 0 0 5.5px #b8862f, 0 10px 20px -6px rgb(11 59 74 / .6); transition: transform .3s var(--ease-silk); }
-.mq-v:last-child .m { background: radial-gradient(circle at 35% 30%, #f6dc96, #b8862f 60%, #7a5414); color: #2a1a0a; }
-.mq-v a:hover .m, .mq-v a:focus-visible .m { transform: translateY(-4px); }
-.mq-v b { font-family: var(--naskh); font-size: 21px; color: #2a1a0a; }
-.mq-v small { font-size: 12px; line-height: 1.8; color: #7a5a2a; }
 .mq-cite { font-size: 12px; color: #8a6a3a; margin-top: 10px; }
 .mq-cite a { text-decoration: underline; text-decoration-color: rgb(184 134 47 / .5); display: inline-block; padding: 4px 0; }
 .mq-story { max-width: 1180px; margin: 56px auto 0; padding: 0 16px; display: grid; grid-template-columns: 1.15fr 1fr; gap: 28px; align-items: start; }
@@ -63,8 +52,6 @@
 .mq-sources p { margin-top: 6px; }
 @media (max-width: 860px) {
   .mq-story { grid-template-columns: 1fr; }
-  .mq-path { flex-wrap: wrap; justify-content: center; row-gap: 18px; }
-  .mq-path::before { display: none; }
 }
 @media (max-width: 600px) {
   .mq-hero { height: 300px; }
@@ -73,19 +60,23 @@
   .mq-couplet blockquote, .mq-couplet.is-opening blockquote { flex-direction: column; font-size: 19px; line-height: 1.9; }
   .mq-couplet.is-small blockquote { font-size: 17px; }
   .mq-intro { font-size: 15.5px; }
-  .mq-v { width: 31%; }
-  .mq-v small { display: none; }
   .mq-card { padding: 20px 18px; }
   .mq h2 { font-size: 28px; }
 }
-@media (prefers-reduced-motion: reduce) { .mq-v .m { transition: none; } }
 .mq-contents { max-width: 1180px; margin: 56px auto 0; padding: 0 16px; text-align: center; scroll-margin-top: 90px; }
 .mq-contents .sub { font-size: 14.5px; color: #6b4a22; }
-.mq-contents-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; margin-top: 22px; text-align: start; }
-.mq-contents-g { border: 1px solid rgb(184 134 47 / .45); border-radius: 18px; background: #f8efd9; padding: 14px 14px 10px; }
-.mq-contents-g h3 { font-family: var(--naskh); font-size: 21px; font-weight: 700; color: #0b3b4a; }
-.mq-contents-g ol { list-style: none; margin: 6px 0 0; padding: 0; }
-.mq-contents-g a { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; min-height: 40px; padding: 4px 8px; border-radius: 10px; text-decoration: none; font-size: 15px; color: #2a1a0a; }
-.mq-contents-g a:hover { background: rgb(184 134 47 / .14); }
-.mq-contents-g small { margin-inline-start: auto; font-size: 12px; color: #8a6a3a; }
+.mq-stages { list-style: none; margin: 26px auto 0; padding: 0; max-width: 1040px; text-align: start; position: relative; }
+.mq-stages::before { content: ''; position: absolute; top: 24px; bottom: 24px; inset-inline-start: 23px; width: 2px; background: linear-gradient(#b8862f, #0e6b6b 55%, #b8862f); opacity: .55; }
+.mq-stage { position: relative; padding-inline-start: 64px; margin-top: 18px; }
+.mq-stage header { display: flex; align-items: center; gap: 14px; margin-inline-start: -64px; }
+.mq-stage-n { position: relative; z-index: 1; flex: none; width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; font-family: var(--naskh); font-size: 21px; font-weight: 700; color: #fbf4e2; background: radial-gradient(circle at 35% 30%, #2a8f97, #0b3b4a 70%); box-shadow: 0 0 0 4px #f3e8cf, 0 0 0 5.5px rgb(184 134 47 / .6); }
+.mq-stage.is-valleys .mq-stage-n, .mq-stage.is-end .mq-stage-n { background: radial-gradient(circle at 35% 30%, #f6dc96, #b8862f 60%, #7a5414); color: #2a1a0a; }
+.mq-stage h3 { font-family: var(--naskh); font-size: 24px; font-weight: 700; color: #0b3b4a; line-height: 1.5; }
+.mq-stage header p { font-size: 13px; color: #7a5a2a; }
+.mq-stage-list { list-style: none; margin: 8px 0 0; padding: 8px; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 2px 10px; border: 1px solid rgb(184 134 47 / .4); border-radius: 18px; background: #f8efd9; }
+.mq-stage-list a { display: flex; align-items: center; gap: 6px; min-height: 44px; padding: 4px 10px; border-radius: 10px; text-decoration: none; font-size: 15px; color: #2a1a0a; }
+.mq-stage-list a:hover, .mq-stage-list a:focus-visible { background: rgb(184 134 47 / .16); }
+.mq-stage-list small { margin-inline-start: auto; font-size: 12px; color: #8a6a3a; white-space: nowrap; }
+.mq-stage-list.is-chips { grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); }
+.mq-stage-list .q { order: -1; flex: none; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; font-size: 12.5px; font-weight: 700; color: #0b3b4a; border: 1.5px solid #0e6b6b; }
 .mq-annotated { font-size: 11px; font-weight: 700; color: #fbf4e2; background: #0e6b6b; border-radius: 99px; padding: 1px 8px; }

@@ -1,0 +1,53 @@
+/* The seven valleys as one night climb, from the gathering to the mirror of the Simorgh. */
+.mqj { max-width: 1180px; margin: 56px auto 0; padding: 0 16px; text-align: center; scroll-margin-top: 90px; }
+.mqj-intro { margin-top: 4px; }
+.mqj-stage { position: relative; margin-top: 20px; border-radius: 28px; overflow: hidden; background: radial-gradient(120% 90% at 12% 18%, #23466a 0%, #0f2440 45%, #081428 100%); box-shadow: 0 30px 60px -30px rgb(8 20 40 / .8), inset 0 0 0 1px rgb(242 214 139 / .25); }
+.mqj-stage::before { content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .55;
+  background-image: radial-gradient(1px 1px at 20% 30%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 70% 12%, #fff 50%, transparent 51%), radial-gradient(1.4px 1.4px at 42% 22%, #f6e7b8 50%, transparent 51%), radial-gradient(1px 1px at 88% 40%, #fff 50%, transparent 51%), radial-gradient(1.2px 1.2px at 55% 8%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 8% 60%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 33% 52%, #f6e7b8 50%, transparent 51%), radial-gradient(1px 1px at 63% 44%, #fff 50%, transparent 51%); }
+.mqj-frame { position: relative; }
+.mqj-frame.is-wide { aspect-ratio: 1000 / 520; }
+.mqj-frame.is-tall { display: none; aspect-ratio: 360 / 1040; }
+.mqj-svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.mqj-road { stroke: rgb(242 214 139 / .22); stroke-width: 10; stroke-linecap: round; }
+.mqj-road-dash { stroke: #e9c66e; stroke-width: 2.2; stroke-dasharray: 2 9; stroke-linecap: round; }
+.mqj-stn circle { fill: #0b3b4a; stroke: #e9c66e; stroke-width: 2; }
+.mqj-stn text { fill: #fbf4e2; font-family: var(--naskh); font-size: 19px; font-weight: 700; }
+.mqj-start { fill: #e9c66e; }
+.mqj-mirror { fill: rgb(220 236 246 / .10); stroke: rgb(242 214 139 / .7); stroke-width: 1.5; transition: fill 1.6s ease, stroke 1.6s ease; }
+.mqj-mirror-rim { stroke: rgb(242 214 139 / .18); stroke-width: 1; stroke-dasharray: 1 5; }
+.mqj-halo { opacity: .35; transition: opacity 1.6s ease; }
+.is-arrived .mqj-mirror { fill: rgb(255 246 216 / .5); stroke: #fff6d8; }
+.is-arrived .mqj-halo { opacity: 1; }
+.mqj-birds path { fill: none; stroke: #f6dc96; stroke-width: 1.6; stroke-linecap: round; }
+.is-arrived .mqj-birds path { stroke: #fff6d8; }
+.mqj-labels { position: absolute; inset: 0; margin: 0; padding: 0; list-style: none; pointer-events: none; }
+.mqj-labels li { position: absolute; width: 168px; translate: -50% 0; pointer-events: auto; }
+.mqj-labels li.is-down { margin-top: 26px; }
+.mqj-labels li.is-up { translate: -50% -100%; margin-top: -26px; }
+.mqj-labels a { display: flex; flex-direction: column; align-items: center; gap: 0; text-decoration: none; color: #fbf4e2; border-radius: 12px; padding: 2px 6px; }
+.mqj-labels a:hover b, .mqj-labels a:focus-visible b { color: #fff; text-decoration: underline; text-decoration-color: #e9c66e; text-underline-offset: 6px; }
+.mqj-labels b { font-family: var(--naskh); font-size: 22px; line-height: 1.5; color: #f6dc96; }
+.mqj-labels small { font-size: 11.5px; line-height: 1.7; color: rgb(251 244 226 / .78); }
+.mqj-gate, .mqj-from { position: absolute; translate: -50% 0; margin: 0; font-family: var(--naskh); font-size: 19px; font-weight: 700; white-space: nowrap; }
+.mqj-from { translate: -50% 14px; font-size: 16px; }
+.mqj-gate a, .mqj-from a { color: #f6dc96; text-decoration: none; display: inline-block; padding: 4px 8px; }
+.mqj-gate a:hover, .mqj-from a:hover { text-decoration: underline; }
+.mqj-end { max-width: 820px; margin: 18px auto 0; }
+.mqj-end .mq-couplet.is-mirror blockquote { color: #0b3b4a; font-size: 26px; }
+.mqj-note { font-size: 12.5px; line-height: 2; color: #7a5a2a; margin-top: 12px; text-align: justify; text-align-last: center; }
+.mqj-note a { text-decoration: underline; text-decoration-color: rgb(184 134 47 / .5); }
+.mqj-replay { margin-top: 12px; background: #fbf4e2; cursor: pointer; }
+@media (max-width: 760px) {
+  .mqj-frame.is-wide { display: none; }
+  .mqj-frame.is-tall { display: block; }
+  .mqj-labels li { width: 46%; translate: 0 -50%; }
+  .mqj-labels li.is-e { translate: calc(-100% - 30px) -50%; }
+  .mqj-labels li.is-s { translate: 30px -50%; }
+  .mqj-labels li.is-e a { align-items: flex-start; text-align: right; }
+  .mqj-labels li.is-s a { align-items: flex-end; text-align: left; }
+  .mqj-labels b { font-size: 21px; }
+  .mqj-end .mq-couplet.is-mirror blockquote { font-size: 21px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mqj-mirror, .mqj-halo { transition: none; }
+}

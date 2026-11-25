@@ -1,7 +1,8 @@
 import { Link } from '@tanstack/react-router'
 import { mantiq, type Verse } from '../../data/library/mantiq'
-import { MANTIQ_SECTIONS, MANTIQ_TOTAL_COUPLETS, baytAnchor, hasNotes, sectionsByGroup } from '../../data/library/mantiq/sections'
+import { MANTIQ_MEANINGS, MANTIQ_SECTIONS, MANTIQ_TOTAL_COUPLETS, baytAnchor, hasNotes, sectionsByGroup } from '../../data/library/mantiq/sections'
 import { Picture } from './Picture'
+import { JourneyMap } from './mantiq/JourneyMap'
 import './naskh.css'
 import './mantiq.css'
 
@@ -17,7 +18,6 @@ function Couplet({ verse, className = '' }: { verse: Verse; className?: string }
 }
 
 export function MantiqPage() {
-  const { sevenValleys: sv } = mantiq
   return (
     <div className="mq">
       <section className="mq-hero" data-book-arrival="mantiq-al-tayr">
@@ -56,23 +56,7 @@ export function MantiqPage() {
         {mantiq.intro.map((p, i) => <p key={i} className="read">{p}</p>)}
       </section>
 
-      <section id="valleys" className="mq-valleys" aria-labelledby="mq-valleys-h">
-        <h2 id="mq-valleys-h">هفت وادی</h2>
-        <p className="sub">راهی که مرغان به رهبری هدهد تا درگاه سیمرغ می‌پیمایند</p>
-        <Couplet verse={sv.intro} />
-        <ol className="mq-path">
-          {sv.valleys.map((v) => (
-            <li key={v.n} className="mq-v">
-              <Link to="/library/mantiq-al-tayr/$section" params={{ section: v.slug }} aria-label={`وادی ${v.name}: متن و شرح`}>
-                <span className="m" aria-hidden="true">{fa(v.n)}</span>
-                <b>{v.name}</b>
-                <small>{v.line}</small>
-              </Link>
-            </li>
-          ))}
-        </ol>
-        <p className="mq-cite">نام وادی‌ها از زبان هدهد: <Link to="/library/mantiq-al-tayr/$section" params={{ section: sv.listSource.section }} hash={baytAnchor(sv.listSource.part, sv.listSource.n)}>{sv.listSource.where}، بیت‌های {fa(sv.listSource.n)} تا {fa(sv.listSource.n + 3)}</Link></p>
-      </section>
+      <JourneyMap />
 
       <section className="mq-story">
         <div id="story" className="mq-card">
@@ -100,25 +84,34 @@ export function MantiqPage() {
 
       <section id="contents" className="mq-contents" aria-labelledby="mq-contents-h">
         <h2 id="mq-contents-h">متن کامل کتاب</h2>
-        <p className="sub">{fa(MANTIQ_TOTAL_COUPLETS)} بیت در {fa(MANTIQ_SECTIONS.length)} بخش · بخش‌های نشان‌دار معنی بیت‌به‌بیت دارند</p>
-        <div className="mq-contents-grid">
-          {sectionsByGroup().map((g) => (
-            <div key={g.id} className="mq-contents-g">
-              <h3>{g.title}</h3>
-              <ol>
+        <p className="sub">
+          {fa(MANTIQ_TOTAL_COUPLETS)} بیت در {fa(MANTIQ_SECTIONS.length)} بخش، به ترتیب گنجور · زیر همهٔ بیت‌ها معنی آمده است
+        </p>
+        <ol className="mq-stages">
+          {sectionsByGroup().map((g, gi) => (
+            <li key={g.id} className={`mq-stage is-${g.id}`}>
+              <header>
+                <span className="mq-stage-n" aria-hidden="true">{fa(gi + 1)}</span>
+                <div>
+                  <h3>{g.title}</h3>
+                  <p>{g.sub} · {fa(g.sections.reduce((n, s) => n + s.coupletCount, 0))} بیت</p>
+                </div>
+              </header>
+              <ol className={g.id === 'questions' ? 'mq-stage-list is-chips' : 'mq-stage-list'}>
                 {g.sections.map((s) => (
                   <li key={s.slug}>
                     <Link to="/library/mantiq-al-tayr/$section" params={{ section: s.slug }}>
-                      {s.title}
-                      {hasNotes(s.slug) && <span className="mq-annotated" title="با معنی و شرح بیت‌ها">شرح‌دار</span>}
+                      <span className="t">{g.id === 'questions' ? s.title.replace(/^پرسش [۰-۹]+: /, '') : s.title}</span>
+                      {g.id === 'questions' && <span className="q" aria-hidden="true">{s.title.match(/[۰-۹]+/)?.[0]}</span>}
+                      {hasNotes(s.slug) && <span className="mq-annotated" title="با شرح این سایت">شرح ما</span>}
                       <small>{fa(s.coupletCount)} بیت</small>
                     </Link>
                   </li>
                 ))}
               </ol>
-            </div>
+            </li>
           ))}
-        </div>
+        </ol>
         <p className="mq-ctas"><Link className="mq-btn is-primary" to="/library/mantiq-al-tayr/$section" params={{ section: MANTIQ_SECTIONS[0].slug }}>خواندن از آغاز</Link></p>
       </section>
 
@@ -127,7 +120,12 @@ export function MantiqPage() {
         <ol>
           {mantiq.sources.map((s) => <li key={s.id}><a href={s.url} target="_blank" rel="noopener noreferrer">{s.title}</a></li>)}
         </ol>
-        <p>متن بیت‌ها عیناً از گنجور است و شمارهٔ هر بیت، شمارهٔ آن در پارهٔ خودش. تاریخ‌ها و دربارهٔ قاب داستان از مقالهٔ ایرانیکا است.</p>
+        <p>
+          متن بیت‌ها عیناً از گنجور است، به همان ترتیب ۲۹ فصل و {fa(MANTIQ_SECTIONS.reduce((n, s) => n + s.parts.length, 0) - 22)} پارهٔ گنجور، و شمارهٔ هر بیت شمارهٔ آن در پارهٔ خودش.
+          گنجور پرسش‌های مرغان را جدا نکرده و هر پرسش از میانهٔ حکایت پیش از آن آغاز می‌شود؛ ما آن فصل را از بیتِ آغاز هر پرسش بریده‌ایم تا هر پرسش صفحهٔ خودش را داشته باشد.
+          معنی همهٔ {fa(MANTIQ_MEANINGS.bayts)} بیت از دادهٔ باز گنجور است: {fa(MANTIQ_MEANINGS.ai)} معنی با نشان «هوش مصنوعی» و {fa(MANTIQ_MEANINGS.human)} معنی «نوشتهٔ خوانندگان گنجور».
+          تاریخ‌ها و دربارهٔ قاب داستان از مقالهٔ ایرانیکا است.
+        </p>
         <p><Link to="/library">← بازگشت به کتابخانه</Link></p>
       </section>
     </div>

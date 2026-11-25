@@ -27,8 +27,9 @@
 .mqr-part { margin-top: 40px; scroll-margin-top: 90px; }
 .mqr .mqr-part h2 { font-size: clamp(24px, 3.4vw, 30px); text-align: center; }
 .mqr-bayts { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 10px; }
-.mqr-bayt { position: relative; padding: 6px 16px; padding-inline-start: 52px; border-radius: 16px; border: 1px solid transparent; scroll-margin-top: 90px; content-visibility: auto; contain-intrinsic-size: auto 5rem; }
-.mqr-bayt.has-note { padding-block: 12px; border-color: rgb(184 134 47 / .3); background: rgb(251 244 226 / .7); contain-intrinsic-size: auto 14rem; }
+.mqr-bayt { position: relative; padding: 6px 16px; padding-inline-start: 52px; border-radius: 16px; border: 1px solid transparent; scroll-margin-top: 90px; content-visibility: auto; contain-intrinsic-size: auto 8.5rem; padding-block: 10px; border-color: rgb(184 134 47 / .18); background: rgb(251 244 226 / .45); }
+.is-plain .mqr-bayt { contain-intrinsic-size: auto 5rem; padding-block: 6px; border-color: transparent; background: none; }
+.mqr-bayt.has-note { padding-block: 12px; border-color: rgb(184 134 47 / .3); background: rgb(251 244 226 / .7); contain-intrinsic-size: auto 18rem; }
 .mqr-bayt:target { border-color: #b8862f; box-shadow: 0 0 0 2px rgb(184 134 47 / .35); }
 .mqr-n { position: absolute; inset-inline-start: 10px; top: 10px; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; font-size: 12px; color: #7a5a2a; border: 1px solid rgb(184 134 47 / .5); text-decoration: none; }
 .mqr-lines { display: flex; flex-wrap: wrap; column-gap: 40px; row-gap: 0; font-family: var(--naskh); font-weight: 700; font-size: clamp(19px, 2.4vw, 22px); line-height: 2; color: #2a1a0a; }
@@ -41,3 +42,28 @@
 .mqr-pager small { font-size: 12px; font-weight: 500; color: #8a6a3a; }
 .mqr-credit { margin-top: 24px; font-size: 12.5px; color: #7a5a2a; text-align: center; }
 .mqr-credit a { text-decoration: underline; text-decoration-color: rgb(184 134 47 / .5); }
+/* the journey strip: the book's seven stretches, this page's lit */
+.mqr-journey ol { list-style: none; margin: 10px 0 0; padding: 0; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); position: relative; }
+.mqr-journey ol::before { content: ''; position: absolute; top: 13px; inset-inline: 7%; border-top: 2px dotted rgb(184 134 47 / .6); }
+.mqr-journey a { position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 44px; text-decoration: none; padding: 4px 2px; border-radius: 10px; }
+.mqr-journey .d { width: 14px; height: 14px; margin-top: 6px; border-radius: 50%; background: #f3e8cf; border: 2px solid #b8862f; }
+.mqr-journey .t { font-size: 11.5px; line-height: 1.5; color: #7a5a2a; text-align: center; }
+.mqr-journey .is-past .d { background: #b8862f; }
+.mqr-journey .is-here .d { width: 20px; height: 20px; margin-top: 3px; background: radial-gradient(circle at 35% 30%, #2a8f97, #0b3b4a); border-color: #0b3b4a; box-shadow: 0 0 0 4px rgb(14 107 107 / .18); }
+.mqr-journey .is-here .t { color: #0b3b4a; font-weight: 700; }
+.mqr-journey a:hover .t { color: #0b3b4a; text-decoration: underline; }
+@media (max-width: 600px) { .mqr-journey .t { font-size: 10px; } .mqr-journey li:not(.is-here) .t { opacity: .8; } }
+.mqr-epi { display: flex; justify-content: center; flex-wrap: wrap; column-gap: 36px; margin: 6px 0 8px; font-family: var(--naskh); font-size: 19px; font-weight: 700; line-height: 2; color: #6b4a22; }
+.mqr-part-src { text-align: center; font-size: 12px; color: #8a6a3a; }
+.mqr-part-src a { display: inline-block; padding: 4px 0; text-decoration: underline; text-decoration-color: rgb(184 134 47 / .45); text-underline-offset: 3px; }
+.mqr-summary { margin: 14px 0 0; padding: 14px 18px; border-radius: 16px; background: #0b3b4a; color: #f3e8cf; }
+.mqr-summary .read { font-size: 15px; line-height: 2.1; text-align: justify; }
+.mqr-summary b { color: #f6dc96; }
+.mqr-summary .mqr-src { color: #f6dc96; border-color: rgb(246 220 150 / .45); }
+.mqr-m { margin-top: 4px; padding-top: 6px; border-top: 1px dashed rgb(184 134 47 / .35); font-size: 14.5px; line-height: 2.05; color: #3a2a14; }
+.mqr-m b { color: #0e6b6b; font-weight: 700; }
+.is-plain .mqr-m, .is-plain .mqr-summary { display: none; }
+.mqr-src { display: inline-block; margin-inline-start: 4px; padding: 0 9px; border-radius: 99px; font-size: 11px; line-height: 1.9; font-weight: 500; vertical-align: 1px; white-space: nowrap; border: 1px solid; }
+.mqr-src.is-ai { color: #4a5a78; border-color: rgb(74 90 120 / .35); }
+.mqr-src.is-human { color: #2a5a3a; border-color: rgb(42 90 58 / .35); }
+.mqr-src.is-fixed { color: #7a4a12; border-color: rgb(184 134 47 / .55); }
