@@ -1,13 +1,13 @@
 import { Link } from '@tanstack/react-router'
 import { useState } from 'react'
 import { GHAZAL_COUNT } from '../../../data/library/hafez/paths'
-import type { Ghazal } from '../../../data/library/hafez/types'
+import type { Ghazal, Sharh } from '../../../data/library/hafez/types'
 import { FalButton } from './Fal'
 import { BaytLines, Crumb, Source, fa } from './parts'
 import '../naskh.css'
 import './hafez.css'
 
-export function GhazalPage({ g, commit, fal }: { g: Ghazal; commit: string; fal: boolean }) {
+export function GhazalPage({ g, commit, fal, sharh }: { g: Ghazal; commit: string; fal: boolean; sharh?: Sharh }) {
   const [meanings, setMeanings] = useState(true)
   const prev = g.n > 1 ? g.n - 1 : null
   const next = g.n < GHAZAL_COUNT ? g.n + 1 : null
@@ -24,6 +24,7 @@ export function GhazalPage({ g, commit, fal }: { g: Ghazal; commit: string; fal:
           <p className="k">دیوان حافظ · غزلیات</p>
           <h1>غزل {fa(g.n)}</h1>
           {g.metre && <p className="sub">وزن: {g.metre}</p>}
+          {sharh && <p className="hfs-badge"><a href="#sharh">با «شرح این سایت»: {fa(sharh.points.length)} نکته از شارحان</a></p>}
           <button type="button" className="hf-toggle" aria-pressed={meanings} onClick={() => setMeanings((v) => !v)}>
             {meanings ? 'پنهان کردن معنی‌ها' : 'نمایش معنی‌ها'}
           </button>
@@ -48,6 +49,8 @@ export function GhazalPage({ g, commit, fal }: { g: Ghazal; commit: string; fal:
           ))}
         </ol>
 
+        {sharh && <SharhSection s={sharh} />}
+
         <nav className="hfg-nav" aria-label="غزل‌های دیگر">
           {prev ? <Link to="/library/hafez/ghazal/$n" params={{ n: String(prev) }} className="hf-btn">→ غزل {fa(prev)}</Link> : <span />}
           <Link to="/library/hafez/ghazals" className="hf-btn">فهرست غزل‌ها</Link>
@@ -62,5 +65,38 @@ export function GhazalPage({ g, commit, fal }: { g: Ghazal; commit: string; fal:
         </p>
       </div>
     </div>
+  )
+}
+
+/** «شرح این سایت»: what the commentators say about this ghazal, each point with its sources. */
+function SharhSection({ s }: { s: Sharh }) {
+  const wikiUrl = `https://fa.wikipedia.org/w/index.php?oldid=${s.wiki.oldid}`
+  return (
+    <section className="hfs" id="sharh" aria-labelledby="hfs-h">
+      <h2 id="hfs-h">شرح این سایت</h2>
+      <p className="hfs-lede">
+        آنچه شارحان و پژوهشگران دربارهٔ این غزل گفته‌اند، کوتاه و به زبان ما؛ هر نکته با منبعش. جایی که شارحان هم‌رأی نیستند، هر دو سو آمده است.
+      </p>
+      <ol className="hfs-points">
+        {s.points.map((p) => (
+          <li key={p.h}>
+            <h3>{p.h}</h3>
+            <p className="read">{p.t}</p>
+            <p className="hfs-refs"><span>منبع:</span> {p.refs.join(' · ')}</p>
+          </li>
+        ))}
+      </ol>
+      <details className="hfs-books">
+        <summary>منابع و روش</summary>
+        <ul>
+          {s.books.map((b) => <li key={b}>{b}</li>)}
+        </ul>
+        <p>
+          این نکته‌ها از مقالهٔ ویکی‌پدیای فارسی{' '}
+          <a href={wikiUrl} target="_blank" rel="noopener noreferrer">«{s.wiki.title}»</a> (نسخهٔ {s.wiki.date}) گردآوری و بازنویسی شده‌اند
+          و شمارهٔ صفحه‌ها همان است که آن مقاله آورده؛ ما خود این کتاب‌ها را برگ‌به‌برگ ندیده‌ایم. چیزی از خود نیفزوده‌ایم.
+        </p>
+      </details>
+    </section>
   )
 }

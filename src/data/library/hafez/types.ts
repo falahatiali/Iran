@@ -61,7 +61,29 @@ export interface GhazalIndex {
   ghazals: readonly GhazalEntry[]
 }
 
+/** «شرح این سایت» for one famous ghazal: short sourced notes. Each point paraphrases the cited works,
+ * gathered through one dated Persian Wikipedia revision (`wiki`); the page refs are the ones given there. */
+export interface SharhPoint {
+  h: string
+  t: string
+  refs: readonly string[]
+}
+export interface Sharh {
+  n: number
+  points: readonly SharhPoint[]
+  books: readonly string[]
+  wiki: { title: string; oldid: number; date: string }
+}
+export interface SharhEntry {
+  n: number
+  first: readonly [string, string]
+  points: number
+}
+
 export interface DivanRepository {
+  /** which ghazals have «شرح این سایت», and one ghazal's notes */
+  sharhIndex(): Promise<readonly SharhEntry[]>
+  sharh(n: number): Promise<Sharh | undefined>
   index(): Promise<GhazalIndex>
   ghazal(n: number): Promise<Ghazal | undefined>
   /** the letters, and one letter's ghazals: each its own small file */

@@ -13,7 +13,10 @@ export const Route = createFileRoute('/library/hafez/ghazals/')({
     const hit = (await divan.letters()).find((l) => l.letter === letter)
     if (hit) throw redirect({ to: '/library/hafez/ghazals/$harf', params: { harf: hit.slug }, statusCode: 301 })
   },
-  loader: async () => ({ letters: await divan.letters() }),
+  loader: async () => {
+    const [letters, sharh] = await Promise.all([divan.letters(), divan.sharhIndex()])
+    return { letters, sharh }
+  },
   head: () => {
     const s = seo({
       title: 'غزلیات حافظ: فهرست ۴۹۵ غزل با معنی',
@@ -24,6 +27,7 @@ export const Route = createFileRoute('/library/hafez/ghazals/')({
     return { ...s, links: [...s.links, NASKH_PRELOAD] }
   },
   component: function Page() {
-    return <GhazalsPage letters={Route.useLoaderData().letters} />
+    const { letters, sharh } = Route.useLoaderData()
+    return <GhazalsPage letters={letters} sharh={sharh} />
   },
 })

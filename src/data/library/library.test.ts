@@ -350,3 +350,22 @@ test('the ghazal index is split by letter: every ghazal on exactly one letter pa
   const g393: Ghazal = hafezText('ghazals/393.json')
   assert.ok(g393.bayts[4].m?.fixed && !g393.bayts[4].m.text.includes('شومیعنی'))
 })
+
+test('«شرح این سایت»: every point cites a source, every ghazal exists, and the Wikipedia revision is pinned', async () => {
+  const { readdirSync, readFileSync } = await import('node:fs')
+  const dir = new URL('./hafez/sharh/', import.meta.url)
+  const index: { n: number; first: string[]; points: number }[] = JSON.parse(readFileSync(new URL('index.json', dir), 'utf8'))
+  const files = readdirSync(dir).filter((f) => f !== 'index.json')
+  assert.equal(files.length, index.length)
+  assert.ok(index.length >= 15)
+  for (const e of index) {
+    const s = JSON.parse(readFileSync(new URL(`${e.n}.json`, dir), 'utf8'))
+    const g: Ghazal = hafezText(`ghazals/${e.n}.json`)
+    assert.equal(s.n, e.n)
+    assert.equal(e.first[0], g.bayts[0].l[0])
+    assert.equal(s.points.length, e.points)
+    assert.ok(Number.isInteger(s.wiki.oldid) && s.wiki.oldid > 0)
+    assert.ok(s.books.length > 0)
+    for (const p of s.points) assert.ok(p.h && p.t && p.refs.length > 0, `ghazal ${e.n}: «${p.h}» needs a source`)
+  }
+})

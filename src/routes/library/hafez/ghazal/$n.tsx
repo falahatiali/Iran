@@ -13,7 +13,7 @@ export const Route = createFileRoute('/library/hafez/ghazal/$n')({
     const n = Number(params.n)
     const g = Number.isInteger(n) && String(n) === params.n ? await divan.ghazal(n) : undefined
     if (!g) throw notFound()
-    return { g }
+    return { g, sharh: await divan.sharh(n) }
   },
   head: ({ loaderData: m }) => {
     if (!m) return {}
@@ -21,7 +21,7 @@ export const Route = createFileRoute('/library/hafez/ghazal/$n')({
     const first = `${g.bayts[0].l[0]} / ${g.bayts[0].l[1]}`
     const s = seo({
       title: `غزل ${fa(g.n)} حافظ: ${g.bayts[0].l[0]}`,
-      description: `${first}. متن کامل غزل ${fa(g.n)} حافظ با معنی بیت به بیت${g.summary ? ' و خلاصهٔ غزل' : ''}.`,
+      description: `${first}. متن کامل غزل ${fa(g.n)} حافظ با معنی بیت به بیت${g.summary ? ' و خلاصهٔ غزل' : ''}${m.sharh ? '، و شرحی کوتاه و مستند از نکته‌های شارحان' : ''}.`,
       path: ghazalPath(g.n),
       image: '/media/library/og-hafez.jpg',
     })
@@ -31,7 +31,7 @@ export const Route = createFileRoute('/library/hafez/ghazal/$n')({
 })
 
 function GhazalRoute() {
-  const { g } = Route.useLoaderData()
+  const { g, sharh } = Route.useLoaderData()
   const { fal } = Route.useSearch()
-  return <GhazalPage g={g} commit={indexMeta.commit} fal={fal === 1} />
+  return <GhazalPage g={g} commit={indexMeta.commit} fal={fal === 1} sharh={sharh} />
 }

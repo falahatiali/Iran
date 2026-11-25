@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { useDeferredValue, useEffect, useMemo, useState } from 'react'
 import { divan } from '../../../data/library/hafez/repository'
-import type { GhazalEntry, LetterEntry } from '../../../data/library/hafez/types'
+import type { GhazalEntry, LetterEntry, SharhEntry } from '../../../data/library/hafez/types'
 import { FalButton } from './Fal'
 import { Crumb, TEXT_CREDIT, fa } from './parts'
 import '../naskh.css'
@@ -43,7 +43,7 @@ function Rows({ ghazals }: { ghazals: readonly GhazalEntry[] }) {
 
 /** The ghazal index. Each letter is its own page with only its own ghazals; the whole index (for search across
  * the Divan) is fetched only when the reader starts typing. */
-export function GhazalsPage({ letters, current }: { letters: readonly LetterEntry[]; current?: { entry: LetterEntry; ghazals: readonly GhazalEntry[] } }) {
+export function GhazalsPage({ letters, current, sharh }: { letters: readonly LetterEntry[]; current?: { entry: LetterEntry; ghazals: readonly GhazalEntry[] }; sharh?: readonly SharhEntry[] }) {
   const [q, setQ] = useState('')
   const dq = useDeferredValue(q)
   const [all, setAll] = useState<readonly GhazalEntry[] | null>(null)
@@ -87,6 +87,22 @@ export function GhazalsPage({ letters, current }: { letters: readonly LetterEntr
         ) : current ? (
           <Rows ghazals={current.ghazals} />
         ) : (
+          <>
+          {sharh && sharh.length > 0 && (
+            <section className="hfs-list" aria-labelledby="hfs-list-h">
+              <h2 id="hfs-list-h">غزل‌های با «شرح این سایت»</h2>
+              <p>{fa(sharh.length)} غزل نامدار با نکته‌های مستند از حافظ‌نامهٔ خرمشاهی، شرح سودی، شرح جلالی و پژوهش‌های دیگر.</p>
+              <ul>
+                {sharh.map((e) => (
+                  <li key={e.n}>
+                    <Link to="/library/hafez/ghazal/$n" params={{ n: String(e.n) }} hash="sharh">
+                      <span className="n">{fa(e.n)}</span> {e.first[0]}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
           <ol className="hfr-letters">
             {letters.map((l) => (
               <li key={l.slug}>
@@ -98,6 +114,7 @@ export function GhazalsPage({ letters, current }: { letters: readonly LetterEntr
               </li>
             ))}
           </ol>
+          </>
         )}
         <p className="hfr-credit">{TEXT_CREDIT}</p>
       </div>
