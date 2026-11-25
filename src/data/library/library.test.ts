@@ -378,3 +378,17 @@ test('the theme map covers every ghazal once, with one count per theme, and says
   assert.deepEqual(Object.keys(m.top), keys)
   assert.ok(m.method.minHits >= 1 && m.method.themes.every((t: { words: string[] }) => t.words.length > 5))
 })
+
+test('site edits reach the masnavis and attributed poems too, marked as ours', () => {
+  const fixes = hafezText('fixes.json')
+  const masnavi: Poem[] = hafezText('masnavi.json')
+  for (const [key, blocks] of Object.entries(fixes) as [string, Record<string, string>][]) {
+    if (/^\d+$/.test(key)) continue
+    const [kind, n] = key.split('/')
+    const poem: Poem = kind === 'masnavi' ? masnavi[Number(n) - 1] : kind === 'qasaid' ? hafezText('qasaid.json')[Number(n) - 1] : hafezText(`montasab/${n}.json`)
+    for (const [i, text] of Object.entries(blocks)) {
+      const m = poem.bayts[Number(i) - 1].m
+      assert.ok(m?.fixed && !m.ai && m.text === text, `${key} #${i}`)
+    }
+  }
+})

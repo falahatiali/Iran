@@ -154,11 +154,18 @@ def blocks_of(d, where):
     return out
 
 
-def poem(rel, n, title=None):
+def poem(rel, n, title=None, key=None):
+    """key names the poem in fixes.json ("masnavi/1", "qasaid/2", "montasab/13"); its block numbers are 1-based."""
     d = json.load(open(os.path.join(src, 'poets', 'hafez', rel), encoding='utf-8'))
     bs = blocks_of(d, rel)
+    for i, b in enumerate(bs, 1):
+        f = fixes.get(key, {}).get(str(i)) if key else None
+        if f:
+            assert 'm' in b, (key, i)
+            b['m'] = {'text': f, 'ai': False, 'fixed': True}
+            rest['fixed'] += 1
     for b in bs:
-        k = 'none' if 'm' not in b else ('ai' if b['m']['ai'] else 'human')
+        k = 'none' if 'm' not in b else ('ai' if b['m']['ai'] else 'human')  # a site fix counts as human
         rest[k] += 1
         rest['bayts' if 'l' in b else 'paragraphs'] += 1
     summary = meaning(d.get('PoemSummary'))
@@ -168,13 +175,13 @@ def poem(rel, n, title=None):
     return {'n': n, 'title': t, 'metre': d['Metre']['Rhythm'] if d.get('Metre') else None, 'summary': summary, 'bayts': bs}
 
 
-rest = {'bayts': 0, 'paragraphs': 0, 'ai': 0, 'human': 0, 'none': 0, 'ps_ai': 0, 'ps_human': 0}
+rest = {'bayts': 0, 'paragraphs': 0, 'ai': 0, 'human': 0, 'none': 0, 'ps_ai': 0, 'ps_human': 0, 'fixed': 0}
 def dump(name, obj):
     with open(os.path.join(root, name), 'w', encoding='utf-8') as fh:
         json.dump(obj, fh, ensure_ascii=False, separators=(',', ':'))
 
-dump('masnavi.json', [poem('masnavi.json', 1), poem('saghiname.json', 2)])
-dump('qasaid.json', [poem(f'ghaside/sh{n}.json', n) for n in (1, 2, 3)])
+dump('masnavi.json', [poem('masnavi.json', 1, key='masnavi/1'), poem('saghiname.json', 2, key='masnavi/2')])
+dump('qasaid.json', [poem(f'ghaside/sh{n}.json', n, key=f'qasaid/{n}') for n in (1, 2, 3)])
 dump('moqaddame.json', [poem('dibache.json', 1)])
 os.makedirs(os.path.join(root, 'montasab'), exist_ok=True)
 cat = json.load(open(os.path.join(src, 'poets', 'hafez', 'montasab', '_cat.json'), encoding='utf-8'))
@@ -182,7 +189,7 @@ mindex = []
 for i, pm in enumerate(cat['Poems'], 1):
     slug = pm['FullUrl'].rsplit('/', 1)[-1]
     assert slug == f'sh{i}', (i, slug)
-    p = poem(f'montasab/{slug}.json', i, '')
+    p = poem(f'montasab/{slug}.json', i, '', key=f'montasab/{i}')
     dump(f'montasab/{i}.json', p)
     first = next(b for b in p['bayts'] if 'l' in b)
     mindex.append({'n': i, 'first': first['l'], 'count': len(p['bayts'])})
