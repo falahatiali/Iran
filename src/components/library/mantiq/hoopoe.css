@@ -1,0 +1,25 @@
+/* The gathering of the birds: the hoopoe's call reaching the twelve other birds greeted at the opening. Caption uses .sn-steps / .sn-note. */
+.hc { margin: 22px 0 0; }
+.hc-svg { display: block; width: 100%; height: auto; border-radius: 24px; box-shadow: 0 24px 48px -28px rgb(20 20 50 / .7); }
+.hc-orbit { fill: none; stroke: #f6dc96; stroke-width: 1.2; stroke-dasharray: 2 7; opacity: .45; }
+.hc-rings ellipse { fill: none; stroke: #f6dc96; stroke-width: 1.6; opacity: .35; transform-box: fill-box; transform-origin: center; }
+.hc-rings ellipse:nth-child(2) { transform: scale(1.9); opacity: .22; }
+.hc-rings ellipse:nth-child(3) { transform: scale(2.8); opacity: .12; }
+.hc-name { font-family: var(--naskh); font-weight: 700; font-size: 30px; fill: #f6dc96; }
+.hc-seat circle { fill: #0b3b4a; stroke: #f6dc96; stroke-width: 2; transition: transform .3s, fill .3s; transform-box: fill-box; transform-origin: center; }
+.hc-seat path { fill: none; stroke: #fbf4e2; stroke-width: 1.6; stroke-linecap: round; }
+.hc-seat:hover circle, .hc-seat:focus-visible circle { transform: scale(1.12); fill: #12566b; }
+.hc-sign { font-family: var(--naskh); font-weight: 700; font-size: 13px; fill: #f6dc96; pointer-events: none; }
+.hc-bname { font-family: var(--naskh); font-weight: 700; font-size: 21px; fill: #fbf4e2; pointer-events: none; }
+.hc-crest { transform-box: fill-box; transform-origin: 50% 100%; }
+@media (prefers-reduced-motion: no-preference) {
+  .hc .hc-seat { opacity: 0; }
+  .hc .hc-crest { transform: scaleY(.55); }
+  .hc.is-on .hc-crest { animation: hc-crest 1.1s .2s cubic-bezier(.3, 1.6, .5, 1) forwards; }
+  .hc.is-on .hc-rings ellipse { animation: hc-ring 3.6s calc(var(--k) * 1.2s + .8s) ease-out 3 both; }
+  .hc.is-on .hc-seat { animation: hc-in .7s calc(var(--i) * 140ms + 1.4s) ease-out forwards; }
+}
+@keyframes hc-crest { to { transform: scaleY(1); } }
+@keyframes hc-ring { from { transform: scale(1); opacity: .55; } to { transform: scale(3.6); opacity: 0; } }
+@keyframes hc-in { from { opacity: 0; } to { opacity: 1; } }
+.hc-sign-long { font-size: 10.5px; }

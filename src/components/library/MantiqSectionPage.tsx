@@ -8,6 +8,7 @@ import type { Meaning, MantiqNotes, MantiqSectionMeta, MantiqText } from '../../
 import { VerseExplanation } from '../verse/VerseExplanation'
 import { SananArc } from './mantiq/SananArc'
 import { SimorghMirror } from './mantiq/SimorghMirror'
+import { HoopoeCall } from './mantiq/HoopoeCall'
 import { QuestionDial } from './mantiq/QuestionDial'
 import { ValleyEmblem } from './mantiq/ValleyEmblem'
 import './naskh.css'
@@ -129,6 +130,7 @@ export function MantiqSectionPage({ meta, text, notes }: { meta: MantiqSectionMe
 
           {meta.slug === 'sheikh-sanan' && <SananArc />}
           {meta.slug === 'si-morgh' && <SimorghMirror />}
+          {meta.slug === 'majma' && <HoopoeCall />}
           <QuestionDial slug={meta.slug} />
           <ValleyEmblem slug={meta.slug} />
 
