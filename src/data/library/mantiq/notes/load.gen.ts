@@ -20,6 +20,7 @@ export const notesLoaders: Record<string, () => Promise<MantiqNotes>> = {
   'q-5': () => import('./q-5.json').then((m) => m.default as MantiqNotes),
   'q-6': () => import('./q-6.json').then((m) => m.default as MantiqNotes),
   'q-7': () => import('./q-7.json').then((m) => m.default as MantiqNotes),
+  'q-8': () => import('./q-8.json').then((m) => m.default as MantiqNotes),
   'sheikh-sanan': () => import('./sheikh-sanan.json').then((m) => m.default as MantiqNotes),
   'si-morgh': () => import('./si-morgh.json').then((m) => m.default as MantiqNotes),
   'talab': () => import('./talab.json').then((m) => m.default as MantiqNotes),
