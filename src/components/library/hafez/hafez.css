@@ -141,3 +141,11 @@
 .hf .hfp-poem h2 { font-size: 22px; display: flex; align-items: center; gap: 10px; }
 .hfp-poem h2 a { text-decoration: none; }
 .hfp-sum { margin-top: 6px; font-size: 14.5px; line-height: 2; color: #4a3a20; }
+
+.hfp-sub { font-size: 12.5px; color: #8a6a3a; margin-top: -4px; }
+.hf-prose { margin: 0; font-family: var(--naskh); font-weight: 500; font-size: clamp(17px, 2.1vw, 19px); line-height: 2.15; color: #1d1a12; text-align: justify; }
+.hfg-bayts > li.is-band { background: rgb(184 134 47 / .12); }
+.hf-forms { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 14px; padding: 0; list-style: none; }
+.hf-forms a { display: inline-flex; flex-direction: column; align-items: center; min-width: 110px; padding: 10px 16px; border-radius: 18px; border: 1px solid rgb(184 134 47 / .5); background: #fbf4e2; text-decoration: none; }
+.hf-forms b { font-family: var(--naskh); font-size: 18px; color: var(--hf-ink); }
+.hf-forms small { font-size: 11.5px; color: #8a6a3a; }

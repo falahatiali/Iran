@@ -1,0 +1,20 @@
+/* Small signature figures for the library's shorter pages: a rhyme map and a shamseh. SVG + CSS; still under reduced motion. */
+.lb-emblem { max-width: 720px; margin: 18px auto 0; text-align: center; }
+.lb-emblem svg { width: 100%; height: auto; display: block; overflow: visible; }
+.lb-emblem figcaption { margin-top: 6px; font-size: 13px; line-height: 1.9; color: #6b4a22; }
+.lb-rhyme .bar { fill: rgb(122 90 42 / .28); opacity: 0; animation: lb-in .5s ease forwards; animation-delay: calc(var(--i) * 70ms); }
+.lb-rhyme .dot { fill: #b8862f; opacity: 0; animation: lb-in .4s ease forwards; animation-delay: calc(.3s + var(--i) * 70ms); }
+.lb-rhyme .arc { fill: none; stroke: var(--lb-ink, #1f4f8f); stroke-width: 1.6; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; animation: lb-draw .9s ease forwards; animation-delay: calc(.5s + var(--i) * 90ms); }
+.lb-rhyme .thread { fill: none; stroke: #b8862f; stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; animation: lb-draw 2.2s ease .6s forwards; }
+.lb-shamseh .ray { fill: none; stroke: #b8862f; stroke-width: 1.4; stroke-dasharray: 1; stroke-dashoffset: 1; animation: lb-draw 1.6s ease forwards; animation-delay: calc(var(--i) * 60ms); }
+.lb-shamseh .core { fill: var(--lb-ink, #1f4f8f); opacity: 0; animation: lb-in 1s ease 1s forwards; }
+.lb-shamseh .ring { fill: none; stroke: #b8862f; stroke-width: 1.2; stroke-dasharray: 1; stroke-dashoffset: 1; animation: lb-draw 1.8s ease .2s forwards; }
+.lb-shamseh .glow { fill: #f2d68b; opacity: 0; animation: lb-pulse 5s ease-in-out 2.5s infinite; }
+@keyframes lb-in { to { opacity: 1; } }
+@keyframes lb-draw { to { stroke-dashoffset: 0; } }
+@keyframes lb-pulse { 0%, 100% { opacity: 0; } 50% { opacity: .35; } }
+@media (prefers-reduced-motion: reduce) {
+  .lb-rhyme .bar, .lb-rhyme .dot, .lb-shamseh .core { animation: none; opacity: 1; }
+  .lb-rhyme .arc, .lb-rhyme .thread, .lb-shamseh .ray, .lb-shamseh .ring { animation: none; stroke-dashoffset: 0; }
+  .lb-shamseh .glow { animation: none; }
+}

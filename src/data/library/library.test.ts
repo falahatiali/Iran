@@ -9,8 +9,8 @@ import { BOOKS, LIBRARY_PATH, catalogue, isReady, librarySitemapPaths, readyBook
 import { MANTIQ_PATH, mantiq } from './mantiq'
 import { KHAYYAM_PAGES, KHAYYAM_PATH, SOURCES, khayyam } from './khayyam'
 import { rubaiyat } from './khayyam/repository'
-import { GHAZAL_COUNT, HAFEZ_PAGES, HAFEZ_PATH, SOURCES as HF_SOURCES, ghazalPath, ghazalPaths, hafez } from './hafez'
-import type { Ghazal, GhazalIndex } from './hafez/types'
+import { GHAZAL_COUNT, HAFEZ_PAGES, HAFEZ_PATH, MONTASAB_COUNT, SOURCES as HF_SOURCES, ghazalPath, ghazalPaths, hafez, montasabPaths } from './hafez'
+import type { Ghazal, GhazalIndex, MontasabEntry, Poem } from './hafez/types'
 import { BOOKS as SD_BOOKS, SOURCES as SD_SOURCES, SAADI_BOOKS, about as saadiAbout, chapterCounts, saadiPaths } from './saadi'
 import type { BookIndex, Section } from './saadi/types'
 import {
@@ -61,7 +61,7 @@ test('the library hall, the Mantiq page and every Mantiq section are in the site
   assert.ok(paths.has(LIBRARY_PATH))
   assert.ok(paths.has(MANTIQ_PATH))
   assert.ok(paths.has('/shahnameh'))
-  assert.deepEqual(librarySitemapPaths(), [LIBRARY_PATH, MANTIQ_PATH, HAFEZ_PATH, '/library/golestan', '/library/bustan', KHAYYAM_PATH, ...MANTIQ_SECTIONS.map((s) => `${MANTIQ_PATH}/${s.slug}`), ...KHAYYAM_PAGES.slice(1), ...HAFEZ_PAGES.slice(1), ...ghazalPaths(), ...saadiPaths()])
+  assert.deepEqual(librarySitemapPaths(), [LIBRARY_PATH, MANTIQ_PATH, HAFEZ_PATH, '/library/golestan', '/library/bustan', KHAYYAM_PATH, ...MANTIQ_SECTIONS.map((s) => `${MANTIQ_PATH}/${s.slug}`), ...KHAYYAM_PAGES.slice(1), ...HAFEZ_PAGES.slice(1), ...ghazalPaths(), ...montasabPaths(), ...saadiPaths()])
   for (const p of [...KHAYYAM_PAGES, ...HAFEZ_PAGES, ghazalPath(1), ghazalPath(GHAZAL_COUNT)]) assert.ok(paths.has(p), p)
   assert.equal(readyBook('shahnameh').href, '/shahnameh')
   assert.ok(SITE_PAGES.some((p) => p.fa.path === LIBRARY_PATH))
@@ -285,5 +285,29 @@ test('every sentence of Saadi prose cites a listed source', () => {
   for (const p of [...SD_BOOKS.bustan.intro, ...SD_BOOKS.golestan.intro, ...saadiAbout.flatMap((s) => s.paras)]) {
     assert.ok(p.cite.length > 0, p.text.slice(0, 30))
     for (const c of p.cite) assert.ok(ids.has(c), c)
+  }
+})
+
+test('Hafez\'s other forms: two masnavis, three qasidas, the preface and 118 attributed poems, each block with text', () => {
+  const sets: Record<string, number> = { 'masnavi.json': 2, 'qasaid.json': 3, 'moqaddame.json': 1 }
+  const check = (where: string, p: Poem) => {
+    assert.ok(p.bayts.length > 0, where)
+    for (const [i, b] of p.bayts.entries()) {
+      if ('p' in b) assert.ok(b.p.trim(), `${where}:${i + 1}`)
+      else for (const l of b.l) assert.ok(l.trim(), `${where}:${i + 1}`)
+      if (b.m) assert.ok(b.m.text.trim().length > 1 && !b.m.text.startsWith('هوش مصنوعی'), `${where}:${i + 1} meaning`)
+    }
+  }
+  for (const [f, n] of Object.entries(sets)) {
+    const poems: Poem[] = hafezText(f)
+    assert.equal(poems.length, n, f)
+    for (const p of poems) check(f, p)
+  }
+  const index: MontasabEntry[] = hafezText('montasab/index.json')
+  assert.deepEqual(index.map((e) => e.n), Array.from({ length: MONTASAB_COUNT }, (_, i) => i + 1))
+  for (const e of index) {
+    const p: Poem = hafezText(`montasab/${e.n}.json`)
+    assert.equal(p.bayts.length, e.count)
+    check(`montasab/${e.n}`, p)
   }
 })

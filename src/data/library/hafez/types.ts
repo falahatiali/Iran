@@ -11,6 +11,24 @@ export interface Bayt {
   m?: Meaning
 }
 
+/** A bayt (`c`: a centred band-bayt of a tarji'-band) or a paragraph of prose. */
+export type Block = (Bayt & { c?: true }) | { p: string; m?: Meaning }
+
+/** Any other poem of the Divan: a masnavi, a qasida, the preface, an attributed poem. */
+export interface Poem {
+  n: number
+  title?: string
+  metre: string | null
+  summary: Meaning | null
+  bayts: readonly Block[]
+}
+
+export interface MontasabEntry {
+  n: number
+  first: readonly [string, string]
+  count: number
+}
+
 export interface Ghazal {
   n: number
   metre: string | null
@@ -40,4 +58,11 @@ export interface DivanRepository {
   /** Hafez's rubaiyat and qet'as: each set is one small file */
   robaiyat(): Promise<readonly Ghazal[]>
   qetaat(): Promise<readonly Ghazal[]>
+  /** the masnavi «الا ای آهوی وحشی» and the Saqi-nama; the three qasidas; the compiler's preface */
+  masnavi(): Promise<readonly Poem[]>
+  qasaid(): Promise<readonly Poem[]>
+  moqaddame(): Promise<readonly Poem[]>
+  /** poems Ganjoor gathers as attributed to Hafez, not in the Qazvini–Ghani edition: one file each */
+  montasabIndex(): Promise<readonly MontasabEntry[]>
+  montasab(n: number): Promise<Poem | undefined>
 }

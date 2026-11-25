@@ -603,6 +603,9 @@ Text of Hafez's ghazals and their meanings (/library/hafez): from Ganjoor (ganjo
   colloquial or off the text were rewritten by this site (src/data/library/hafez/text/fixes.json) and are labelled «ویراستهٔ این سایت».
   ganjoor-data carries no licence file of its own; credit is given to Ganjoor on every ghazal page with a link to the poem on ganjoor.net.
   Only the Hafez ghazals are copied, not the dump.
+  Also from the same commit (/library/hafez/masnavi, /qasaid, /moqaddame, /montasab): the masnavi «الا ای آهوی وحشی» and the Saqi-nama,
+  the three qasidas, the compiler's preface to the Divan, and the 118 poems Ganjoor gathers as attributed to Hafez (not in the Qazvini–Ghani
+  edition), with their meanings and summaries labelled the same way. None of these meanings has been rewritten by this site.
 - library/bustan-garden-640.(avif|webp), bustan-garden-960.(avif|webp), bustan-garden-1280.(avif|webp), og-bustan.jpg
   Original generated artwork for this site (2026-11-20): an imagined Persian four-fold orchard garden (chahar bagh) with fruit trees, herb beds, water channels and a pavilion, in a miniature-inspired style. Hero of /library/bustan. The self-drawing garden plan below it is SVG drawn by the page itself.
 - library/golestan-roses-640.(avif|webp), golestan-roses-960.(avif|webp), golestan-roses-1280.(avif|webp), og-golestan.jpg

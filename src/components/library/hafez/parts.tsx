@@ -1,4 +1,5 @@
 import { Link } from '@tanstack/react-router'
+import type { ReactNode } from 'react'
 import { type Para, type SourceId, SOURCES, sourceById } from '../../../data/library/hafez'
 import type { Bayt, Meaning } from '../../../data/library/hafez/types'
 
@@ -50,13 +51,13 @@ export function Sources({ note }: { note?: string }) {
   )
 }
 
-export function Crumb({ here, mid }: { here?: string; mid?: boolean }) {
+export function Crumb({ here, mid }: { here?: string; mid?: boolean | ReactNode }) {
   return (
     <nav className="hf-crumb" aria-label="مسیر">
       <Link to="/library">کتابخانه</Link> ‹{' '}
       {here ? (
         <>
-          <Link to="/library/hafez">دیوان حافظ</Link> ‹ {mid && <><Link to="/library/hafez/ghazals">غزلیات</Link> ‹ </>}
+          <Link to="/library/hafez">دیوان حافظ</Link> ‹ {mid === true ? <><Link to="/library/hafez/ghazals">غزلیات</Link> ‹ </> : mid ? <>{mid} ‹ </> : null}
           <b aria-current="page">{here}</b>
         </>
       ) : <b aria-current="page">دیوان حافظ</b>}

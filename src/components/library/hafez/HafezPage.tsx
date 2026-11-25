@@ -71,7 +71,15 @@ export function HafezPage({ summary }: { summary: ReturnType<typeof summarise> }
             </li>
           ))}
         </ol>
-        <p className="hf-more">و جز غزل: <Link to="/library/hafez/robaiyat">رباعیات</Link> · <Link to="/library/hafez/qetaat">قطعات</Link></p>
+        <p className="hf-more">و جز غزل:</p>
+        <ul className="hf-forms">
+          <li><Link to="/library/hafez/qasaid"><b>قصاید</b><small>۳ قصیده</small></Link></li>
+          <li><Link to="/library/hafez/masnavi"><b>مثنوی‌ها</b><small>آهوی وحشی · ساقی‌نامه</small></Link></li>
+          <li><Link to="/library/hafez/qetaat"><b>قطعات</b><small>۳۴ قطعه</small></Link></li>
+          <li><Link to="/library/hafez/robaiyat"><b>رباعیات</b><small>۴۲ رباعی</small></Link></li>
+          <li><Link to="/library/hafez/montasab"><b>اشعار منتسب</b><small>۱۱۸ شعر</small></Link></li>
+          <li><Link to="/library/hafez/moqaddame"><b>مقدمهٔ دیوان</b><small>از جمع‌آورنده</small></Link></li>
+        </ul>
       </section>
 
       <section className="hf-two">

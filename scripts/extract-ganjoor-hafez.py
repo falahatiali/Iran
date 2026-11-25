@@ -115,3 +115,62 @@ for cat, out_name in (('robaee2', 'robaiyat.json'), ('ghete', 'qetaat.json')):
 with open(os.path.join(root, 'meta.json'), 'w', encoding='utf-8') as fh:
     json.dump({'source': 'ganjoor-data', 'commit': commit, 'stats': stats}, fh, ensure_ascii=False, separators=(',', ':'))
 print(commit, stats)
+
+
+# The rest of the Divan: the masnavis, the qasidas, the compiler's preface and the attributed poems.
+# A block is a bayt {l, m} (Right+Left, or a centred band-bayt CenteredVerse1+2, flagged c) or prose {p, m}.
+def blocks_of(d, where):
+    out = []
+    for v in sorted(d['Verses'], key=lambda v: v['VOrder']):
+        pos, t = v['Position'], clean(v['Text'])
+        m = meaning(v.get('CoupletSummary'))
+        if pos in ('Right', 'CenteredVerse1'):
+            out.append({'l': [t], **({'c': True} if pos == 'CenteredVerse1' else {}), **({'m': m} if m else {})})
+        elif pos in ('Left', 'CenteredVerse2'):
+            out[-1]['l'].append(t)
+        elif pos == 'Paragraph':
+            out.append({'p': t, **({'m': m} if m else {})})
+        else:
+            raise AssertionError((where, pos))
+    for b in out:
+        assert 'p' in b or len(b['l']) == 2, where
+    return out
+
+
+def poem(rel, n, title=None):
+    d = json.load(open(os.path.join(src, 'poets', 'hafez', rel), encoding='utf-8'))
+    bs = blocks_of(d, rel)
+    for b in bs:
+        k = 'none' if 'm' not in b else ('ai' if b['m']['ai'] else 'human')
+        rest[k] += 1
+        rest['bayts' if 'l' in b else 'paragraphs'] += 1
+    summary = meaning(d.get('PoemSummary'))
+    if summary:
+        rest['ps_ai' if summary['ai'] else 'ps_human'] += 1
+    t = title if title is not None else re.sub(r'^(قصیدهٔ )?شمارهٔ [۰-۹]+ - ', '', d['Title'])
+    return {'n': n, 'title': t, 'metre': d['Metre']['Rhythm'] if d.get('Metre') else None, 'summary': summary, 'bayts': bs}
+
+
+rest = {'bayts': 0, 'paragraphs': 0, 'ai': 0, 'human': 0, 'none': 0, 'ps_ai': 0, 'ps_human': 0}
+def dump(name, obj):
+    with open(os.path.join(root, name), 'w', encoding='utf-8') as fh:
+        json.dump(obj, fh, ensure_ascii=False, separators=(',', ':'))
+
+dump('masnavi.json', [poem('masnavi.json', 1), poem('saghiname.json', 2)])
+dump('qasaid.json', [poem(f'ghaside/sh{n}.json', n) for n in (1, 2, 3)])
+dump('moqaddame.json', [poem('dibache.json', 1)])
+os.makedirs(os.path.join(root, 'montasab'), exist_ok=True)
+cat = json.load(open(os.path.join(src, 'poets', 'hafez', 'montasab', '_cat.json'), encoding='utf-8'))
+mindex = []
+for i, pm in enumerate(cat['Poems'], 1):
+    slug = pm['FullUrl'].rsplit('/', 1)[-1]
+    assert slug == f'sh{i}', (i, slug)
+    p = poem(f'montasab/{slug}.json', i, '')
+    dump(f'montasab/{i}.json', p)
+    first = next(b for b in p['bayts'] if 'l' in b)
+    mindex.append({'n': i, 'first': first['l'], 'count': len(p['bayts'])})
+dump('montasab/index.json', mindex)
+stats['rest'] = rest
+with open(os.path.join(root, 'meta.json'), 'w', encoding='utf-8') as fh:
+    json.dump({'source': 'ganjoor-data', 'commit': commit, 'stats': stats}, fh, ensure_ascii=False, separators=(',', ':'))
+print('rest', rest)

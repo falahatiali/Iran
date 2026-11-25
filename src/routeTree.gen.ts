@@ -48,6 +48,9 @@ import { Route as LibraryGolestanIndexRouteImport } from './routes/library/goles
 import { Route as LibraryHafezIndexRouteImport } from './routes/library/hafez/index'
 import { Route as LibraryHafezAboutRouteImport } from './routes/library/hafez/about'
 import { Route as LibraryHafezGhazalsRouteImport } from './routes/library/hafez/ghazals'
+import { Route as LibraryHafezMasnaviRouteImport } from './routes/library/hafez/masnavi'
+import { Route as LibraryHafezMoqaddameRouteImport } from './routes/library/hafez/moqaddame'
+import { Route as LibraryHafezQasaidRouteImport } from './routes/library/hafez/qasaid'
 import { Route as LibraryHafezQetaatRouteImport } from './routes/library/hafez/qetaat'
 import { Route as LibraryHafezRobaiyatRouteImport } from './routes/library/hafez/robaiyat'
 import { Route as LibraryKhayyamIndexRouteImport } from './routes/library/khayyam/index'
@@ -61,6 +64,8 @@ import { Route as LibraryBustanChapterNRouteImport } from './routes/library/bust
 import { Route as LibraryGolestanChapterIndexRouteImport } from './routes/library/golestan/$chapter/index'
 import { Route as LibraryGolestanChapterNRouteImport } from './routes/library/golestan/$chapter/$n'
 import { Route as LibraryHafezGhazalNRouteImport } from './routes/library/hafez/ghazal/$n'
+import { Route as LibraryHafezMontasabIndexRouteImport } from './routes/library/hafez/montasab/index'
+import { Route as LibraryHafezMontasabNRouteImport } from './routes/library/hafez/montasab/$n'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -257,6 +262,21 @@ const LibraryHafezGhazalsRoute = LibraryHafezGhazalsRouteImport.update({
   path: '/library/hafez/ghazals',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LibraryHafezMasnaviRoute = LibraryHafezMasnaviRouteImport.update({
+  id: '/library/hafez/masnavi',
+  path: '/library/hafez/masnavi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LibraryHafezMoqaddameRoute = LibraryHafezMoqaddameRouteImport.update({
+  id: '/library/hafez/moqaddame',
+  path: '/library/hafez/moqaddame',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LibraryHafezQasaidRoute = LibraryHafezQasaidRouteImport.update({
+  id: '/library/hafez/qasaid',
+  path: '/library/hafez/qasaid',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LibraryHafezQetaatRoute = LibraryHafezQetaatRouteImport.update({
   id: '/library/hafez/qetaat',
   path: '/library/hafez/qetaat',
@@ -326,6 +346,17 @@ const LibraryHafezGhazalNRoute = LibraryHafezGhazalNRouteImport.update({
   path: '/library/hafez/ghazal/$n',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LibraryHafezMontasabIndexRoute =
+  LibraryHafezMontasabIndexRouteImport.update({
+    id: '/library/hafez/montasab/',
+    path: '/library/hafez/montasab/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const LibraryHafezMontasabNRoute = LibraryHafezMontasabNRouteImport.update({
+  id: '/library/hafez/montasab/$n',
+  path: '/library/hafez/montasab/$n',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -363,6 +394,9 @@ export interface FileRoutesByFullPath {
   '/event/dey-1404/$province': typeof EventDey1404ProvinceRoute
   '/library/hafez/about': typeof LibraryHafezAboutRoute
   '/library/hafez/ghazals': typeof LibraryHafezGhazalsRoute
+  '/library/hafez/masnavi': typeof LibraryHafezMasnaviRoute
+  '/library/hafez/moqaddame': typeof LibraryHafezMoqaddameRoute
+  '/library/hafez/qasaid': typeof LibraryHafezQasaidRoute
   '/library/hafez/qetaat': typeof LibraryHafezQetaatRoute
   '/library/hafez/robaiyat': typeof LibraryHafezRobaiyatRoute
   '/library/khayyam/about': typeof LibraryKhayyamAboutRoute
@@ -378,8 +412,10 @@ export interface FileRoutesByFullPath {
   '/library/bustan/$chapter/$n': typeof LibraryBustanChapterNRoute
   '/library/golestan/$chapter/$n': typeof LibraryGolestanChapterNRoute
   '/library/hafez/ghazal/$n': typeof LibraryHafezGhazalNRoute
+  '/library/hafez/montasab/$n': typeof LibraryHafezMontasabNRoute
   '/library/bustan/$chapter/': typeof LibraryBustanChapterIndexRoute
   '/library/golestan/$chapter/': typeof LibraryGolestanChapterIndexRoute
+  '/library/hafez/montasab/': typeof LibraryHafezMontasabIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -417,6 +453,9 @@ export interface FileRoutesByTo {
   '/event/dey-1404/$province': typeof EventDey1404ProvinceRoute
   '/library/hafez/about': typeof LibraryHafezAboutRoute
   '/library/hafez/ghazals': typeof LibraryHafezGhazalsRoute
+  '/library/hafez/masnavi': typeof LibraryHafezMasnaviRoute
+  '/library/hafez/moqaddame': typeof LibraryHafezMoqaddameRoute
+  '/library/hafez/qasaid': typeof LibraryHafezQasaidRoute
   '/library/hafez/qetaat': typeof LibraryHafezQetaatRoute
   '/library/hafez/robaiyat': typeof LibraryHafezRobaiyatRoute
   '/library/khayyam/about': typeof LibraryKhayyamAboutRoute
@@ -432,8 +471,10 @@ export interface FileRoutesByTo {
   '/library/bustan/$chapter/$n': typeof LibraryBustanChapterNRoute
   '/library/golestan/$chapter/$n': typeof LibraryGolestanChapterNRoute
   '/library/hafez/ghazal/$n': typeof LibraryHafezGhazalNRoute
+  '/library/hafez/montasab/$n': typeof LibraryHafezMontasabNRoute
   '/library/bustan/$chapter': typeof LibraryBustanChapterIndexRoute
   '/library/golestan/$chapter': typeof LibraryGolestanChapterIndexRoute
+  '/library/hafez/montasab': typeof LibraryHafezMontasabIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -472,6 +513,9 @@ export interface FileRoutesById {
   '/event/dey-1404/$province': typeof EventDey1404ProvinceRoute
   '/library/hafez/about': typeof LibraryHafezAboutRoute
   '/library/hafez/ghazals': typeof LibraryHafezGhazalsRoute
+  '/library/hafez/masnavi': typeof LibraryHafezMasnaviRoute
+  '/library/hafez/moqaddame': typeof LibraryHafezMoqaddameRoute
+  '/library/hafez/qasaid': typeof LibraryHafezQasaidRoute
   '/library/hafez/qetaat': typeof LibraryHafezQetaatRoute
   '/library/hafez/robaiyat': typeof LibraryHafezRobaiyatRoute
   '/library/khayyam/about': typeof LibraryKhayyamAboutRoute
@@ -487,8 +531,10 @@ export interface FileRoutesById {
   '/library/bustan/$chapter/$n': typeof LibraryBustanChapterNRoute
   '/library/golestan/$chapter/$n': typeof LibraryGolestanChapterNRoute
   '/library/hafez/ghazal/$n': typeof LibraryHafezGhazalNRoute
+  '/library/hafez/montasab/$n': typeof LibraryHafezMontasabNRoute
   '/library/bustan/$chapter/': typeof LibraryBustanChapterIndexRoute
   '/library/golestan/$chapter/': typeof LibraryGolestanChapterIndexRoute
+  '/library/hafez/montasab/': typeof LibraryHafezMontasabIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -528,6 +574,9 @@ export interface FileRouteTypes {
     | '/event/dey-1404/$province'
     | '/library/hafez/about'
     | '/library/hafez/ghazals'
+    | '/library/hafez/masnavi'
+    | '/library/hafez/moqaddame'
+    | '/library/hafez/qasaid'
     | '/library/hafez/qetaat'
     | '/library/hafez/robaiyat'
     | '/library/khayyam/about'
@@ -543,8 +592,10 @@ export interface FileRouteTypes {
     | '/library/bustan/$chapter/$n'
     | '/library/golestan/$chapter/$n'
     | '/library/hafez/ghazal/$n'
+    | '/library/hafez/montasab/$n'
     | '/library/bustan/$chapter/'
     | '/library/golestan/$chapter/'
+    | '/library/hafez/montasab/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -582,6 +633,9 @@ export interface FileRouteTypes {
     | '/event/dey-1404/$province'
     | '/library/hafez/about'
     | '/library/hafez/ghazals'
+    | '/library/hafez/masnavi'
+    | '/library/hafez/moqaddame'
+    | '/library/hafez/qasaid'
     | '/library/hafez/qetaat'
     | '/library/hafez/robaiyat'
     | '/library/khayyam/about'
@@ -597,8 +651,10 @@ export interface FileRouteTypes {
     | '/library/bustan/$chapter/$n'
     | '/library/golestan/$chapter/$n'
     | '/library/hafez/ghazal/$n'
+    | '/library/hafez/montasab/$n'
     | '/library/bustan/$chapter'
     | '/library/golestan/$chapter'
+    | '/library/hafez/montasab'
   id:
     | '__root__'
     | '/'
@@ -636,6 +692,9 @@ export interface FileRouteTypes {
     | '/event/dey-1404/$province'
     | '/library/hafez/about'
     | '/library/hafez/ghazals'
+    | '/library/hafez/masnavi'
+    | '/library/hafez/moqaddame'
+    | '/library/hafez/qasaid'
     | '/library/hafez/qetaat'
     | '/library/hafez/robaiyat'
     | '/library/khayyam/about'
@@ -651,8 +710,10 @@ export interface FileRouteTypes {
     | '/library/bustan/$chapter/$n'
     | '/library/golestan/$chapter/$n'
     | '/library/hafez/ghazal/$n'
+    | '/library/hafez/montasab/$n'
     | '/library/bustan/$chapter/'
     | '/library/golestan/$chapter/'
+    | '/library/hafez/montasab/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -691,6 +752,9 @@ export interface RootRouteChildren {
   EventDey1404ProvinceRoute: typeof EventDey1404ProvinceRoute
   LibraryHafezAboutRoute: typeof LibraryHafezAboutRoute
   LibraryHafezGhazalsRoute: typeof LibraryHafezGhazalsRoute
+  LibraryHafezMasnaviRoute: typeof LibraryHafezMasnaviRoute
+  LibraryHafezMoqaddameRoute: typeof LibraryHafezMoqaddameRoute
+  LibraryHafezQasaidRoute: typeof LibraryHafezQasaidRoute
   LibraryHafezQetaatRoute: typeof LibraryHafezQetaatRoute
   LibraryHafezRobaiyatRoute: typeof LibraryHafezRobaiyatRoute
   LibraryKhayyamAboutRoute: typeof LibraryKhayyamAboutRoute
@@ -706,8 +770,10 @@ export interface RootRouteChildren {
   LibraryBustanChapterNRoute: typeof LibraryBustanChapterNRoute
   LibraryGolestanChapterNRoute: typeof LibraryGolestanChapterNRoute
   LibraryHafezGhazalNRoute: typeof LibraryHafezGhazalNRoute
+  LibraryHafezMontasabNRoute: typeof LibraryHafezMontasabNRoute
   LibraryBustanChapterIndexRoute: typeof LibraryBustanChapterIndexRoute
   LibraryGolestanChapterIndexRoute: typeof LibraryGolestanChapterIndexRoute
+  LibraryHafezMontasabIndexRoute: typeof LibraryHafezMontasabIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -985,6 +1051,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LibraryHafezGhazalsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/library/hafez/masnavi': {
+      id: '/library/hafez/masnavi'
+      path: '/library/hafez/masnavi'
+      fullPath: '/library/hafez/masnavi'
+      preLoaderRoute: typeof LibraryHafezMasnaviRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/library/hafez/moqaddame': {
+      id: '/library/hafez/moqaddame'
+      path: '/library/hafez/moqaddame'
+      fullPath: '/library/hafez/moqaddame'
+      preLoaderRoute: typeof LibraryHafezMoqaddameRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/library/hafez/qasaid': {
+      id: '/library/hafez/qasaid'
+      path: '/library/hafez/qasaid'
+      fullPath: '/library/hafez/qasaid'
+      preLoaderRoute: typeof LibraryHafezQasaidRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/library/hafez/qetaat': {
       id: '/library/hafez/qetaat'
       path: '/library/hafez/qetaat'
@@ -1076,6 +1163,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LibraryHafezGhazalNRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/library/hafez/montasab/': {
+      id: '/library/hafez/montasab/'
+      path: '/library/hafez/montasab'
+      fullPath: '/library/hafez/montasab/'
+      preLoaderRoute: typeof LibraryHafezMontasabIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/library/hafez/montasab/$n': {
+      id: '/library/hafez/montasab/$n'
+      path: '/library/hafez/montasab/$n'
+      fullPath: '/library/hafez/montasab/$n'
+      preLoaderRoute: typeof LibraryHafezMontasabNRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -1115,6 +1216,9 @@ const rootRouteChildren: RootRouteChildren = {
   EventDey1404ProvinceRoute: EventDey1404ProvinceRoute,
   LibraryHafezAboutRoute: LibraryHafezAboutRoute,
   LibraryHafezGhazalsRoute: LibraryHafezGhazalsRoute,
+  LibraryHafezMasnaviRoute: LibraryHafezMasnaviRoute,
+  LibraryHafezMoqaddameRoute: LibraryHafezMoqaddameRoute,
+  LibraryHafezQasaidRoute: LibraryHafezQasaidRoute,
   LibraryHafezQetaatRoute: LibraryHafezQetaatRoute,
   LibraryHafezRobaiyatRoute: LibraryHafezRobaiyatRoute,
   LibraryKhayyamAboutRoute: LibraryKhayyamAboutRoute,
@@ -1130,8 +1234,10 @@ const rootRouteChildren: RootRouteChildren = {
   LibraryBustanChapterNRoute: LibraryBustanChapterNRoute,
   LibraryGolestanChapterNRoute: LibraryGolestanChapterNRoute,
   LibraryHafezGhazalNRoute: LibraryHafezGhazalNRoute,
+  LibraryHafezMontasabNRoute: LibraryHafezMontasabNRoute,
   LibraryBustanChapterIndexRoute: LibraryBustanChapterIndexRoute,
   LibraryGolestanChapterIndexRoute: LibraryGolestanChapterIndexRoute,
+  LibraryHafezMontasabIndexRoute: LibraryHafezMontasabIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
