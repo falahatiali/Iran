@@ -6,6 +6,7 @@ export const notesLoaders: Record<string, () => Promise<MantiqNotes>> = {
   'esteghna': () => import('./esteghna.json').then((m) => m.default as MantiqNotes),
   'faghr': () => import('./faghr.json').then((m) => m.default as MantiqNotes),
   'heyrat': () => import('./heyrat.json').then((m) => m.default as MantiqNotes),
+  'majma': () => import('./majma.json').then((m) => m.default as MantiqNotes),
   'marefat': () => import('./marefat.json').then((m) => m.default as MantiqNotes),
   'q-1': () => import('./q-1.json').then((m) => m.default as MantiqNotes),
   'q-10': () => import('./q-10.json').then((m) => m.default as MantiqNotes),
@@ -31,6 +32,7 @@ export const notesLoaders: Record<string, () => Promise<MantiqNotes>> = {
   'q-9': () => import('./q-9.json').then((m) => m.default as MantiqNotes),
   'sheikh-sanan': () => import('./sheikh-sanan.json').then((m) => m.default as MantiqNotes),
   'si-morgh': () => import('./si-morgh.json').then((m) => m.default as MantiqNotes),
+  'simorgh': () => import('./simorgh.json').then((m) => m.default as MantiqNotes),
   'talab': () => import('./talab.json').then((m) => m.default as MantiqNotes),
   'towhid': () => import('./towhid.json').then((m) => m.default as MantiqNotes),
 }
