@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { LibraryPage } from '../../components/library/LibraryPage'
-import { NASKH_PRELOAD } from '../../components/library/head'
+import { libraryHead } from '../../components/library/head'
 import { seo } from '../../lib/seo'
 
 export const Route = createFileRoute('/library/')({
@@ -11,7 +11,7 @@ export const Route = createFileRoute('/library/')({
       path: '/library',
       image: '/media/library/og-library.jpg',
     })
-    return { ...s, links: [...s.links, NASKH_PRELOAD] }
+    return libraryHead(s)
   },
   component: LibraryPage,
 })

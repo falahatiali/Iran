@@ -1,8 +1,9 @@
-/* Generates public/sitemap.xml and public/robots.txt from the data modules. */
+/* Generates public/sitemap.xml (an index), one public/sitemap-<section>.xml per section, and public/robots.txt. */
 import fs from 'node:fs'
 import path from 'node:path'
 import { resolvePublicSiteUrl } from '../src/lib/siteUrl'
 import { publicPaths } from '../src/lib/publicPaths'
+import { buildSitemaps } from '../src/lib/sitemap'
 
 /** Local `.env` files (Vite loads these; `tsx` does not). Never invent a placeholder. */
 function loadDotenv() {
@@ -30,8 +31,10 @@ const host = resolvePublicSiteUrl({
   strict: true,
 })
 const paths = publicPaths()
-const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${paths.map((p) => `  <url><loc>${host}${p}</loc></url>`).join('\n')}\n</urlset>\n`
+const lastmod = JSON.parse(fs.readFileSync(path.resolve(import.meta.dirname, '../src/data/sitemap-lastmod.json'), 'utf8')) as Record<string, string>
+const { files, counts } = buildSitemaps(host, paths, lastmod)
 const pub = path.resolve(import.meta.dirname, '../public')
-fs.writeFileSync(path.join(pub, 'sitemap.xml'), xml)
+for (const old of fs.readdirSync(pub)) if (/^sitemap.*\.xml$/.test(old)) fs.rmSync(path.join(pub, old))
+for (const [name, xml] of Object.entries(files)) fs.writeFileSync(path.join(pub, name), xml)
 fs.writeFileSync(path.join(pub, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /admin/\nSitemap: ${host}/sitemap.xml\n`)
-console.log(`sitemap: ${paths.length} urls`)
+console.log(`sitemap: ${paths.length} urls in ${Object.keys(files).length - 1} sitemaps`, counts)

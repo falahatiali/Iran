@@ -20,7 +20,8 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "predev": "npm run db:migrate --silent && npm run db:seed --silent",
-    "sitemap": "tsx scripts/sitemap.ts"
+    "sitemap": "tsx scripts/sitemap.ts",
+    "sitemap:dates": "tsx scripts/sitemap-dates.ts"
   },
   "dependencies": {
     "@libsql/client": "^0.18.0",

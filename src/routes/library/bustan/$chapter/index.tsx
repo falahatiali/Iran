@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { NASKH_PRELOAD } from '../../../../components/library/head'
+import { libraryHead } from '../../../../components/library/head'
 import { ChapterPage } from '../../../../components/library/saadi/ChapterPage'
 import { BOOKS, chapterPath } from '../../../../data/library/saadi'
 import { loadChapter } from '../../../../data/library/saadi/load'
@@ -15,7 +15,7 @@ export const Route = createFileRoute('/library/bustan/$chapter/')({
       path: chapterPath('bustan', m.chapter.slug),
       image: '/media/library/og-bustan.jpg',
     })
-    return { ...s, links: [...s.links, NASKH_PRELOAD] }
+    return libraryHead(s, { leaf: m.chapter.title, work: { name: `${m.chapter.title} · ${BOOKS.bustan.title}` } })
   },
   component: Chapter,
 })

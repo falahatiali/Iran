@@ -2,11 +2,13 @@ import { useEffect, useRef, useState } from 'react'
 import type { Locale } from '../../lib/i18n'
 import { SITE_URL } from '../../lib/seo'
 import { lineLinkUrl } from '../../lib/lineLink'
+import { track } from '../../lib/engagement'
 
 async function copyText(text: string, promptLabel: string): Promise<void> {
   try {
     if (navigator.clipboard?.writeText) {
       await navigator.clipboard.writeText(text)
+      track('share', { method: 'copy_link', content_type: 'line' })
       return
     }
   } catch {

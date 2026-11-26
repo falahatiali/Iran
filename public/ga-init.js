@@ -4,6 +4,9 @@
   var s = document.currentScript
   var id = s && s.getAttribute('data-ga-id')
   if (!id) return
+  // Do Not Track / Global Privacy Control: no analytics at all
+  var nav = window.navigator || {}
+  if (nav.doNotTrack === '1' || nav.doNotTrack === 'yes' || window.doNotTrack === '1' || nav.globalPrivacyControl === true) return
   window.dataLayer = window.dataLayer || []
   window.gtag = function () { window.dataLayer.push(arguments) }
   window.gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', wait_for_update: 500 })

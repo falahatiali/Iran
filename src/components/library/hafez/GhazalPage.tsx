@@ -6,13 +6,16 @@ import { FalButton } from './Fal'
 import { BaytLines, Crumb, Source, fa } from './parts'
 import '../naskh.css'
 import './hafez.css'
+import { track } from '../../../lib/engagement'
 
-export function GhazalPage({ g, commit, fal, sharh }: { g: Ghazal; commit: string; fal: boolean; sharh?: Sharh }) {
+export interface RelatedList { theme?: string; items: readonly { n: number; first: string }[] }
+
+export function GhazalPage({ g, commit, fal, sharh, related }: { g: Ghazal; commit: string; fal: boolean; sharh?: Sharh; related?: RelatedList }) {
   const [meanings, setMeanings] = useState(true)
   const prev = g.n > 1 ? g.n - 1 : null
   const next = g.n < GHAZAL_COUNT ? g.n + 1 : null
   return (
-    <div className="hf hfr">
+    <div className="hf hfr" data-book="hafez" data-section={`ghazal-${g.n}`}>
       <div className="hfr-page">
         <Crumb here={`غزل ${fa(g.n)}`} mid />
         {fal && (
@@ -24,8 +27,8 @@ export function GhazalPage({ g, commit, fal, sharh }: { g: Ghazal; commit: strin
           <p className="k">دیوان حافظ · غزلیات</p>
           <h1>غزل {fa(g.n)}</h1>
           {g.metre && <p className="sub">وزن: {g.metre}</p>}
-          {sharh && <p className="hfs-badge"><a href="#sharh">با «شرح این سایت»: {fa(sharh.points.length)} نکته از شارحان</a></p>}
-          <button type="button" className="hf-toggle" aria-pressed={meanings} onClick={() => setMeanings((v) => !v)}>
+          {sharh && <p className="hfs-badge"><a href="#sharh" onClick={() => track('commentary_open', { book: 'hafez', section: `ghazal-${g.n}`, via: 'badge' })}>با «شرح این سایت»: {fa(sharh.points.length)} نکته از شارحان</a></p>}
+          <button type="button" className="hf-toggle" aria-pressed={meanings} onClick={() => { track(meanings ? 'meaning_hide' : 'meaning_open', { book: 'hafez', section: `ghazal-${g.n}`, bayt: 'all' }); setMeanings((v) => !v) }}>
             {meanings ? 'پنهان کردن معنی‌ها' : 'نمایش معنی‌ها'}
           </button>
         </header>
@@ -39,7 +42,7 @@ export function GhazalPage({ g, commit, fal, sharh }: { g: Ghazal; commit: strin
 
         <ol className={`hfg-bayts${meanings ? '' : ' is-bare'}`}>
           {g.bayts.map((b, i) => (
-            <li key={i} id={`b-${i + 1}`}>
+            <li key={i} id={`b-${i + 1}`} data-bayt={i + 1}>
               <a className="hfg-n" href={`#b-${i + 1}`} aria-label={`بیت ${fa(i + 1)}`}>{fa(i + 1)}</a>
               <BaytLines b={b} />
               {meanings && b.m && (
@@ -50,6 +53,27 @@ export function GhazalPage({ g, commit, fal, sharh }: { g: Ghazal; commit: strin
         </ol>
 
         {sharh && <SharhSection s={sharh} />}
+
+        <p className="hfg-end" data-track-view="story_complete" data-book="hafez" data-section={`ghazal-${g.n}`} aria-hidden="true" />
+
+        {related && related.items.length > 0 && (
+          <section className="hfg-rel" aria-labelledby="hfg-rel-h">
+            <h2 id="hfg-rel-h">غزل‌های هم‌مضمون</h2>
+            <p className="sub">
+              نزدیک‌ترین غزل‌ها به این غزل{related.theme ? <> (مضمون غالب: {related.theme})</> : null} بر پایهٔ{' '}
+              <Link to="/library/hafez/themes">نقشهٔ مضمون‌ها</Link>، که شمارش ماشینی واژه‌ها و دسته‌بندی خود این سایت است.
+            </p>
+            <ul>
+              {related.items.map((r) => (
+                <li key={r.n}>
+                  <Link to="/library/hafez/ghazal/$n" params={{ n: String(r.n) }}>
+                    <span className="hfg-rel-n">غزل {fa(r.n)}</span> {r.first}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         <nav className="hfg-nav" aria-label="غزل‌های دیگر">
           {prev ? <Link to="/library/hafez/ghazal/$n" params={{ n: String(prev) }} className="hf-btn">→ غزل {fa(prev)}</Link> : <span />}
@@ -73,6 +97,7 @@ function SharhSection({ s }: { s: Sharh }) {
   const wikiUrl = `https://fa.wikipedia.org/w/index.php?oldid=${s.wiki.oldid}`
   return (
     <section className="hfs" id="sharh" aria-labelledby="hfs-h">
+      <span data-track-view="commentary_open" aria-hidden="true" />
       <h2 id="hfs-h">شرح این سایت</h2>
       <p className="hfs-lede">
         آنچه شارحان و پژوهشگران دربارهٔ این غزل گفته‌اند، کوتاه و به زبان ما؛ هر نکته با منبعش. جایی که شارحان هم‌رأی نیستند، هر دو سو آمده است.

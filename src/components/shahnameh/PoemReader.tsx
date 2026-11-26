@@ -5,6 +5,7 @@ import type { StoryPoemText } from '../../data/shahnameh/poems/types'
 import { lineLinkUrl } from '../../lib/lineLink'
 import { SITE_URL } from '../../lib/seo'
 import { VerseExplanation } from '../verse/VerseExplanation'
+import { track, trackSearch } from '../../lib/engagement'
 
 function sceneTitle(title: string) {
   return title.replace(/^بخش\s+\d+\s*[-–]\s*/, '').replace(/^بخش\s+\d+\s*/, '')
@@ -62,6 +63,7 @@ export function PoemReader({
     const url = lineLinkUrl(SITE_URL, `/shahnameh/${slug}`, id)
     try {
       await navigator.clipboard.writeText(url)
+      track('share', { method: 'copy_link', content_type: 'bayt' })
       setCopied(id)
       window.setTimeout(() => setCopied((c) => (c === id ? null : c)), 1600)
     } catch {
@@ -83,7 +85,7 @@ export function PoemReader({
             <span className="sr-only">جست‌وجو در شعر</span>
             <input
               value={q}
-              onChange={(e) => setQ(e.target.value)}
+              onChange={(e) => { setQ(e.target.value); trackSearch(e.target.value, 'shahnameh') }}
               placeholder="جست‌وجو در بیت‌ها…"
               className="w-full rounded-full border border-gold/25 bg-night/40 px-4 py-2.5 outline-none focus:border-gold min-h-11"
             />

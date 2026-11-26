@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { NASKH_PRELOAD } from '../../../components/library/head'
+import { libraryHead } from '../../../components/library/head'
 import { AboutPage } from '../../../components/library/hafez/AboutPage'
 import { ABOUT_PATH } from '../../../data/library/hafez'
 import { seo } from '../../../lib/seo'
@@ -12,7 +12,7 @@ export const Route = createFileRoute('/library/hafez/about')({
       path: ABOUT_PATH,
       image: '/media/library/og-hafez.jpg',
     })
-    return { ...s, links: [...s.links, NASKH_PRELOAD] }
+    return libraryHead(s)
   },
   component: AboutPage,
 })

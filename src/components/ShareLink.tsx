@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { track } from '../lib/engagement'
 
 export function ShareLink({ label = 'رونوشت پیوند' }: { label?: string }) {
   const [copied, setCopied] = useState(false)
@@ -7,6 +8,7 @@ export function ShareLink({ label = 'رونوشت پیوند' }: { label?: strin
     const url = window.location.href
     try {
       await navigator.clipboard.writeText(url)
+      track('share', { method: 'copy_link', content_type: 'page' })
     } catch {
       window.prompt('پیوند:', url)
     }

@@ -21,6 +21,7 @@ import {
   type TimelineSearch,
 } from '../lib/searchSchema'
 import { useDraftQuery } from '../lib/useDraftQuery'
+import { trackSearch } from '../lib/engagement'
 
 export const Route = createFileRoute('/timeline')({
   validateSearch: (search: Record<string, unknown>): TimelineSearch => timelineSearchSchema.parse(search),
@@ -70,7 +71,7 @@ function TimelinePage() {
         <p className="mt-3 text-ivory/65">{fa(events.length)} رویداد از {fa(dynasties.length)} دوره.</p>
 
         <form role="search" onSubmit={(e) => e.preventDefault()} className="sticky top-16 z-20 mt-8 glass bg-night/80 rounded-2xl p-4 flex flex-wrap gap-3 items-center">
-          <label><span className="sr-only">جست‌وجو</span><input value={draft} onChange={(e) => setDraft(e.target.value)} placeholder="جست‌وجوی رویداد…" className={sel} /></label>
+          <label><span className="sr-only">جست‌وجو</span><input value={draft} onChange={(e) => { setDraft(e.target.value); trackSearch(e.target.value, 'timeline') }} placeholder="جست‌وجوی رویداد…" className={sel} /></label>
           <label><span className="sr-only">دوران</span>
             <select value={search.era} onChange={(e) => { const era = e.target.value as TimelineSearch['era']; const r = eraRanges.find((x) => x.id === era); patch({ era, dynasty: '', from: r?.from ?? TIMELINE_DEFAULTS.from, to: r?.to ?? TIMELINE_DEFAULTS.to }, false) }} className={sel}>
               <option value="">همه‌ی دوران‌ها</option>{Object.entries(eraNames).map(([k, v]) => <option key={k} value={k}>{v}</option>)}

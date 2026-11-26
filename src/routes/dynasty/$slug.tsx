@@ -9,6 +9,7 @@ import { Reveal, PageTransition } from '../../components/Reveal'
 import { Divider } from '../../components/Ornament'
 import { eraNames, fa, range } from '../../lib/format'
 import { seo } from '../../lib/seo'
+import { ERA_LINKS } from '../../data/library/eraLinks'
 
 export const Route = createFileRoute('/dynasty/$slug')({
   loader: ({ params }) => getDynasty({ data: params.slug }),
@@ -39,6 +40,16 @@ function DynastyPage() {
               <Link to="/cylinder" className="glass rounded-full px-5 py-2 min-h-11 inline-flex items-center hover:border-gold">استوانهٔ کوروش</Link>
               <Link to="/archives" className="glass rounded-full px-5 py-2 min-h-11 inline-flex items-center hover:border-gold">بایگانی بارو و خزانه</Link>
             </p>
+          )}
+          {ERA_LINKS[d.slug] && (
+            <section aria-label="این دوره در کتابخانه" className="mt-6">
+              <p className="read text-sm text-ivory/70 max-w-3xl">{ERA_LINKS[d.slug].note}</p>
+              <ul className="mt-3 flex flex-wrap gap-3">
+                {ERA_LINKS[d.slug].links.map((l) => (
+                  <li key={l.href}><a href={l.href} className="glass rounded-full px-5 py-2 min-h-11 inline-flex items-center hover:border-gold">{l.label}</a></li>
+                ))}
+              </ul>
+            </section>
           )}
         </div>
       </header>

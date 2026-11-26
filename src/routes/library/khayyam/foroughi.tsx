@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { NASKH_PRELOAD } from '../../../components/library/head'
+import { libraryHead } from '../../../components/library/head'
 import { ForoughiPage } from '../../../components/library/khayyam/ForoughiPage'
 import { FOROUGHI_PATH } from '../../../data/library/khayyam'
 import { rubaiyat } from '../../../data/library/khayyam/repository'
@@ -19,7 +19,7 @@ export const Route = createFileRoute('/library/khayyam/foroughi')({
       path: FOROUGHI_PATH,
       image: '/media/library/og-khayyam.jpg',
     })
-    return { ...s, links: [...s.links, NASKH_PRELOAD] }
+    return libraryHead(s)
   },
   component: ForoughiRoute,
 })

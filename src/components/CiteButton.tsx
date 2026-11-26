@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { track } from '../lib/engagement'
 
 export function CiteButton({
   text,
@@ -14,6 +15,7 @@ export function CiteButton({
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(text)
+      track('share', { method: 'copy_citation', content_type: 'page' })
     } catch {
       window.prompt(label, text)
     }
@@ -48,6 +50,7 @@ export function ShareHashButton({
     const url = `${window.location.origin}${window.location.pathname}#${hash}`
     try {
       await navigator.clipboard.writeText(url)
+      track('share', { method: 'copy_link', content_type: 'page' })
     } catch {
       window.prompt(label, url)
     }

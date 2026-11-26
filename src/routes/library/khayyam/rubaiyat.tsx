@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { NASKH_PRELOAD } from '../../../components/library/head'
+import { libraryHead } from '../../../components/library/head'
 import { RubaiyatPage, STATUS_FILTERS, type StatusFilter } from '../../../components/library/khayyam/RubaiyatPage'
 import { RUBAIYAT_PATH } from '../../../data/library/khayyam'
 import { rubaiyat } from '../../../data/library/khayyam/repository'
@@ -26,7 +26,7 @@ export const Route = createFileRoute('/library/khayyam/rubaiyat')({
       path: RUBAIYAT_PATH,
       image: '/media/library/og-khayyam.jpg',
     })
-    return { ...s, links: [...s.links, NASKH_PRELOAD] }
+    return libraryHead(s)
   },
   component: RubaiyatRoute,
 })

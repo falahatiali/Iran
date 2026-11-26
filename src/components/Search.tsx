@@ -9,6 +9,7 @@ import { placeForEventTitle, places } from '../data/places'
 import { epithetSearchText, nicknamesFor } from '../data/epithets'
 import { isFeaturedKing } from '../data/featured/slugs'
 import { SITE_PAGES } from '../lib/sitePages'
+import { trackSearch } from '../lib/engagement'
 
 type Hit =
   | { kind: 'dynasty'; key: string; label: string; sub: string; slug: string }
@@ -106,7 +107,7 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
             <label className="flex items-center gap-3 px-5 border-b border-gold/20">
               <span aria-hidden="true" className="text-gold">⌕</span>
               <span className="sr-only">{en ? 'Search for a king, dynasty or event' : 'جست‌وجوی پادشاه، دودمان یا رویداد'}</span>
-              <input ref={input} value={q} onChange={(e) => setQ(e.target.value)} placeholder={en ? 'A king, dynasty or event… (Cyrus, Abbas, Chaldiran)' : 'نام پادشاه، دودمان یا رویداد… (مثلاً کوروش، Abbas، چالدران)'}
+              <input ref={input} value={q} onChange={(e) => { setQ(e.target.value); trackSearch(e.target.value, 'site') }} placeholder={en ? 'A king, dynasty or event… (Cyrus, Abbas, Chaldiran)' : 'نام پادشاه، دودمان یا رویداد… (مثلاً کوروش، Abbas، چالدران)'}
                 className="w-full bg-transparent py-4 outline-none placeholder:text-ivory/40" role="combobox" aria-expanded={hits.length > 0} aria-controls="search-results" aria-activedescendant={hits[sel]?.key} />
               <kbd className="text-xs text-ivory/40 border border-ivory/20 rounded px-1.5">Esc</kbd>
             </label>

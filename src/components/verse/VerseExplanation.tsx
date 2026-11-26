@@ -30,7 +30,7 @@ export function VerseExplanation({
 }) {
   const t = TONES[tone]
   return (
-    <details className="mt-3" open={open || undefined}>
+    <details className="mt-3" open={open || undefined} data-ev="commentary_open">
       <summary className={`cursor-pointer text-sm ${t.summary} min-h-11 inline-flex items-center`}>{label}</summary>
       <div className={`mt-3 border-t ${t.rule} pt-3`}>
         <p className={`read ${t.meaning}`}>{note.meaning}</p>

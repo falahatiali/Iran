@@ -1,8 +1,8 @@
 import { createFileRoute, notFound } from '@tanstack/react-router'
-import { NASKH_PRELOAD } from '../../../../components/library/head'
+import { libraryHead } from '../../../../components/library/head'
 import { GhazalsPage } from '../../../../components/library/hafez/GhazalsPage'
 import { fa } from '../../../../components/library/hafez/parts'
-import { letterPath } from '../../../../data/library/hafez'
+import { GHAZALS_PATH, letterPath } from '../../../../data/library/hafez'
 import { divan } from '../../../../data/library/hafez/repository'
 import { seo } from '../../../../lib/seo'
 
@@ -23,7 +23,7 @@ export const Route = createFileRoute('/library/hafez/ghazals/$harf')({
       path: letterPath(entry.slug),
       image: '/media/library/og-hafez.jpg',
     })
-    return { ...s, links: [...s.links, NASKH_PRELOAD] }
+    return libraryHead(s, { crumbs: [{ name: 'غزلیات', path: GHAZALS_PATH }], leaf: `حرف «${entry.letter}»` })
   },
   component: function Page() {
     const { letters, current } = Route.useLoaderData()

@@ -6,6 +6,7 @@ import { FalButton } from './Fal'
 import { Crumb, TEXT_CREDIT, fa } from './parts'
 import '../naskh.css'
 import './hafez.css'
+import { trackSearch } from '../../../lib/engagement'
 
 /** Search ignores vowel marks, ZWNJ and Arabic letter forms, and accepts Persian or Latin digits. */
 export const fold = (s: string) =>
@@ -69,7 +70,7 @@ export function GhazalsPage({ letters, current, sharh }: { letters: readonly Let
         <div className="hfr-filter" role="search">
           <label className="hfr-search">
             <span className="sr-only">جست‌وجو در همهٔ غزل‌ها</span>
-            <input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="جست‌وجو در مطلع، ردیف یا شمارهٔ غزل، در همهٔ دیوان" />
+            <input type="search" value={q} onChange={(e) => { setQ(e.target.value); trackSearch(e.target.value, 'hafez-ghazals') }} placeholder="جست‌وجو در مطلع، ردیف یا شمارهٔ غزل، در همهٔ دیوان" />
           </label>
           <p>حرف:</p>
           <ul>

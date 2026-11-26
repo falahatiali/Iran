@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { NASKH_PRELOAD } from '../../../components/library/head'
+import { libraryHead } from '../../../components/library/head'
 import { KhayyamPage, summarise } from '../../../components/library/khayyam/KhayyamPage'
 import { KHAYYAM_PATH, khayyam } from '../../../data/library/khayyam'
 import { rubaiyat } from '../../../data/library/khayyam/repository'
@@ -13,7 +13,7 @@ export const Route = createFileRoute('/library/khayyam/')({
   head: ({ loaderData: m }) => {
     if (!m) return {}
     const s = seo({ title: m.title, description: m.description, path: m.path, image: OG })
-    return { ...s, links: [...s.links, NASKH_PRELOAD] }
+    return libraryHead(s)
   },
   component: KhayyamRoute,
 })

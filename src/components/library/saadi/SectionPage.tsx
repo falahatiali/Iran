@@ -4,6 +4,7 @@ import type { Section } from '../../../data/library/saadi/types'
 import { BaytLines, ChapterLink, Crumb, SectionLink, Source, fa, shortTitle } from './parts'
 import '../naskh.css'
 import './saadi.css'
+import { track } from '../../../lib/engagement'
 
 export interface Neighbour {
   chapter: string
@@ -15,13 +16,13 @@ export function SectionPage({ s, chapterTitle, commit, prev, next }: { s: Sectio
   const book: SaadiBook = s.book
   const c = BOOKS[book]
   return (
-    <div className={`sd sdr is-${book}`}>
+    <div className={`sd sdr is-${book}`} data-book={book} data-section={`${s.chapter}-${s.n}`}>
       <div className="sdr-page">
         <Crumb book={book} chapter={{ slug: s.chapter, title: chapterTitle }} here={`${c.unit} ${fa(s.n)}`} />
         <header className="sdr-head">
           <p className="k">{c.title} · {chapterTitle}</p>
           <h1>{s.title}</h1>
-          <button type="button" className="sd-toggle" aria-pressed={meanings} onClick={() => setMeanings((v) => !v)}>
+          <button type="button" className="sd-toggle" aria-pressed={meanings} onClick={() => { track(meanings ? 'meaning_hide' : 'meaning_open', { book, section: `${s.chapter}-${s.n}`, bayt: 'all' }); setMeanings((v) => !v) }}>
             {meanings ? 'پنهان کردن معنی‌ها' : 'نمایش معنی‌ها'}
           </button>
         </header>
@@ -43,6 +44,7 @@ export function SectionPage({ s, chapterTitle, commit, prev, next }: { s: Sectio
           ))}
         </ol>
 
+        <p className="sdg-end" data-track-view="story_complete" aria-hidden="true" />
         <nav className="sdg-nav" aria-label={`${c.unit}های دیگر`}>
           {prev ? <SectionLink book={book} chapter={prev.chapter} n={prev.n} className="sd-btn">→ {c.unit} پیشین</SectionLink> : <span />}
           <ChapterLink book={book} chapter={s.chapter} className="sd-btn">{shortTitle(chapterTitle)}</ChapterLink>

@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { NASKH_PRELOAD } from '../../../components/library/head'
+import { libraryHead } from '../../../components/library/head'
 import { ThemesPage } from '../../../components/library/hafez/ThemesPage'
 import { THEMES_PATH } from '../../../data/library/hafez/paths'
 import { divan } from '../../../data/library/hafez/repository'
@@ -14,7 +14,7 @@ export const Route = createFileRoute('/library/hafez/themes')({
       path: THEMES_PATH,
       image: '/media/library/og-hafez.jpg',
     })
-    return { ...s, links: [...s.links, NASKH_PRELOAD] }
+    return libraryHead(s)
   },
   component: function Page() {
     return <ThemesPage map={Route.useLoaderData().map} />

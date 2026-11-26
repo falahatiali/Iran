@@ -7,6 +7,7 @@ import { Shamseh } from '../components/Ornament'
 import { ReadingTool } from '../components/ReadingTool'
 import { READING_BOOT_SCRIPT } from '../lib/reading'
 import { GA_ID, gaEnabled, trackPageView } from '../lib/analytics'
+import { installEngagement } from '../lib/engagement'
 import { ConsentBanner } from '../components/ConsentBanner'
 import { CONSENT_BOOT_SCRIPT } from '../lib/consent'
 
@@ -50,6 +51,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       requestAnimationFrame(() => trackPageView(e.toLocation.href))
     })
   }, [router])
+  useEffect(() => (gaEnabled() ? installEngagement() : undefined), [])
   useEffect(() => {
     // One-time reload guard for stale chunk/asset errors after deployment
     const handleChunkError = (event: ErrorEvent | PromiseRejectionEvent) => {

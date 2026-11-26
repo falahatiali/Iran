@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { MantiqPage } from '../../../components/library/MantiqPage'
-import { NASKH_PRELOAD } from '../../../components/library/head'
+import { libraryHead } from '../../../components/library/head'
 import { MANTIQ_PATH, mantiq } from '../../../data/library/mantiq'
 import { seo } from '../../../lib/seo'
 
@@ -10,7 +10,7 @@ export const Route = createFileRoute('/library/mantiq-al-tayr/')({
   head: ({ loaderData: m }) => {
     if (!m) return {}
     const s = seo({ ...m, image: '/media/library/og-mantiq-al-tayr.jpg' })
-    return { ...s, links: [...s.links, NASKH_PRELOAD] }
+    return libraryHead(s)
   },
   component: MantiqPage,
 })

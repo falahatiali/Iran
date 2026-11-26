@@ -1,8 +1,8 @@
 import { Link, createFileRoute, notFound } from '@tanstack/react-router'
-import { NASKH_PRELOAD } from '../../../../components/library/head'
+import { libraryHead } from '../../../../components/library/head'
 import { PoemsPage } from '../../../../components/library/hafez/PoemsPage'
 import { fa } from '../../../../components/library/hafez/parts'
-import { MONTASAB_COUNT, montasabPath } from '../../../../data/library/hafez'
+import { MONTASAB_COUNT, MONTASAB_PATH, montasabPath } from '../../../../data/library/hafez'
 import { divan } from '../../../../data/library/hafez/repository'
 import { seo } from '../../../../lib/seo'
 
@@ -17,8 +17,13 @@ export const Route = createFileRoute('/library/hafez/montasab/$n')({
     if (!m) return {}
     const first = m.p.bayts.find((b) => 'l' in b)
     const line = first && 'l' in first ? `${first.l[0]} / ${first.l[1]}` : ''
-    const s = seo({ title: `شعر منتسب به حافظ، شمارهٔ ${fa(m.p.n)}: ${first && 'l' in first ? first.l[0] : ''}`, description: `${line}. متن کامل با معنی بیت به بیت.`, path: montasabPath(m.p.n), image: '/media/library/og-hafez.jpg' })
-    return { ...s, links: [...s.links, NASKH_PRELOAD] }
+    const title = `شعر منتسب به حافظ، شمارهٔ ${fa(m.p.n)}: ${first && 'l' in first ? first.l[0] : ''}`
+    const s = seo({ title, description: `${line}. متن کامل با معنی بیت به بیت.`, path: montasabPath(m.p.n), image: '/media/library/og-hafez.jpg' })
+    return libraryHead(s, {
+      crumbs: [{ name: 'اشعار منتسب', path: MONTASAB_PATH }],
+      leaf: `شمارهٔ ${fa(m.p.n)}`,
+      work: { name: title, description: line, author: null },
+    })
   },
   component: function Page() {
     const { p } = Route.useLoaderData()

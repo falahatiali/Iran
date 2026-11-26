@@ -1,6 +1,6 @@
 import { createFileRoute, notFound, redirect } from '@tanstack/react-router'
 import { MantiqSectionPage } from '../../../components/library/MantiqSectionPage'
-import { NASKH_PRELOAD } from '../../../components/library/head'
+import { libraryHead } from '../../../components/library/head'
 import { mantiq } from '../../../data/library/mantiq'
 import { groupTitle, legacySection, loadMantiqNotes, loadMantiqText, sectionBySlug, sectionPath } from '../../../data/library/mantiq/sections'
 import { seo } from '../../../lib/seo'
@@ -29,7 +29,7 @@ export const Route = createFileRoute('/library/mantiq-al-tayr/$section')({
   head: ({ loaderData: m }) => {
     if (!m) return {}
     const s = seo({ title: m.title, description: m.description, path: m.path, image: '/media/library/og-mantiq-al-tayr.jpg' })
-    return { ...s, links: [...s.links, NASKH_PRELOAD] }
+    return libraryHead(s, { leaf: m.meta.title, work: { name: m.title, description: m.description } })
   },
   component: SectionRoute,
 })

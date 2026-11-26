@@ -8,6 +8,7 @@ import { Crumb, Paras, Sources, fa } from './parts'
 import '../naskh.css'
 import './khayyam.css'
 import './nowruz.css'
+import { track } from '../../../lib/engagement'
 
 const CREDIT = 'متن و معنی‌ها از گنجور است، از دادهٔ باز گنجور (ganjoor-data). معنی‌های نشان‌دار «هوش مصنوعی» را هوش مصنوعی نوشته و آرمان جعفرنژاد به ganjoor-data افزوده است؛ «نوشتهٔ خوانندگان گنجور» را کاربران گنجور نوشته‌اند.'
 
@@ -50,7 +51,7 @@ export function NowruzPage({ index }: { index: NwIndex }) {
 export function NowruzSectionPage({ s, total }: { s: NwSection; total: number }) {
   const [meanings, setMeanings] = useState(true)
   return (
-    <div className="kh khr nw">
+    <div className="kh khr nw" data-book="nowruzname" data-section={String(s.n)}>
       <div className="khr-page">
         <nav className="kh-crumb" aria-label="مسیر">
           <Link to="/library">کتابخانه</Link> ‹ <Link to="/library/khayyam">رباعیات خیام</Link> ‹ <Link to="/library/khayyam/nowruzname">نوروزنامه</Link> ‹ <b aria-current="page">بخش {fa(s.n)}</b>
@@ -58,7 +59,7 @@ export function NowruzSectionPage({ s, total }: { s: NwSection; total: number })
         <header className="khr-head">
           <p className="k">نوروزنامه · بخش {fa(s.n)} از {fa(total)}</p>
           <h1>{s.title}</h1>
-          <button type="button" className="nw-toggle" aria-pressed={meanings} onClick={() => setMeanings((v) => !v)}>
+          <button type="button" className="nw-toggle" aria-pressed={meanings} onClick={() => { track(meanings ? 'meaning_hide' : 'meaning_open', { book: 'nowruzname', section: String(s.n), bayt: 'all' }); setMeanings((v) => !v) }}>
             {meanings ? 'پنهان کردن معنی‌ها' : 'نمایش معنی‌ها'}
           </button>
         </header>
@@ -76,6 +77,7 @@ export function NowruzSectionPage({ s, total }: { s: NwSection; total: number })
             </li>
           ))}
         </ol>
+        <p className="nw-end" data-track-view="story_complete" aria-hidden="true" />
         <nav className="nw-nav" aria-label="بخش‌های دیگر">
           {s.n > 1 ? <Link to="/library/khayyam/nowruzname/$n" params={{ n: String(s.n - 1) }} className="kh-btn">→ بخش {fa(s.n - 1)}</Link> : <span />}
           <Link to="/library/khayyam/nowruzname" className="kh-btn">فهرست</Link>

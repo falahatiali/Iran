@@ -14,6 +14,7 @@ import { ValleyEmblem } from './mantiq/ValleyEmblem'
 import './naskh.css'
 import './mantiq.css'
 import './mantiq-read.css'
+import { track } from '../../lib/engagement'
 
 const fa = (n: number) => n.toLocaleString('fa-IR')
 const GANJOOR = mantiq.sources.find((s) => s.id === 'ganjoor')!
@@ -101,7 +102,7 @@ export function MantiqSectionPage({ meta, text, notes }: { meta: MantiqSectionMe
     requestAnimationFrame(settle)
   }, [meta.slug])
   return (
-    <div className="mq mqr">
+    <div className="mq mqr" data-book="mantiq-al-tayr" data-section={meta.slug}>
       <div className="mqr-folio">
         <aside className="mqr-rail mqr-rail-start" aria-label="فهرست منطق‌الطیر">
           <div className="mqr-sticky">
@@ -123,7 +124,7 @@ export function MantiqSectionPage({ meta, text, notes }: { meta: MantiqSectionMe
               {fa(meta.coupletCount)} بیت{meta.parts.length > 1 ? ` در ${fa(meta.parts.length)} پاره` : ''} · زیر هر بیت معنی آن
               {ours ? '، و شرح این سایت با واژه‌های دشوار و نکتهٔ عرفانی' : ''}
             </p>
-            <button type="button" className="mqr-toggle" onClick={() => setOpen((v) => !v)} aria-pressed={!open}>
+            <button type="button" className="mqr-toggle" onClick={() => { track(open ? 'meaning_hide' : 'meaning_open', { book: 'mantiq-al-tayr', section: meta.slug, bayt: 'all' }); setOpen((v) => !v) }} aria-pressed={!open}>
               {open ? 'فقط متن' : 'نمایش معنی بیت‌ها'}
             </button>
           </header>
@@ -157,7 +158,7 @@ export function MantiqSectionPage({ meta, text, notes }: { meta: MantiqSectionMe
                   const note = notes.notes[noteKey(p.id, c.n)]
                   const id = baytAnchor(p.id, c.n)
                   return (
-                    <li key={id} id={id} className={note ? 'mqr-bayt has-note' : 'mqr-bayt'}>
+                    <li key={id} id={id} data-bayt={id} className={note ? 'mqr-bayt has-note' : 'mqr-bayt'}>
                       <a href={`#${id}`} className="mqr-n" aria-label={`بیت ${fa(c.n)}`}>{fa(c.n)}</a>
                       <p className="mqr-lines"><span>{c.a}</span><span>{c.b}</span></p>
                       {note && <VerseExplanation note={note} open={open} tone="parchment" label="شرح این سایت" artLabel="نکتهٔ عرفانی." />}
@@ -173,6 +174,7 @@ export function MantiqSectionPage({ meta, text, notes }: { meta: MantiqSectionMe
             </section>
           ))}
 
+          <p className="mqr-end" data-track-view="story_complete" aria-hidden="true" />
           <Pager slug={meta.slug} />
           <p className="mqr-credit">
             متن بیت‌ها عیناً از <a href={GANJOOR.url} target="_blank" rel="noopener noreferrer">گنجور</a> است، استخراج‌شده از دادهٔ باز گنجور

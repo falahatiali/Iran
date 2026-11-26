@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { NASKH_PRELOAD } from '../../../components/library/head'
+import { libraryHead } from '../../../components/library/head'
 import { HafezPage, summarise } from '../../../components/library/hafez/HafezPage'
 import { HAFEZ_PATH, hafez } from '../../../data/library/hafez'
 import { divan } from '../../../data/library/hafez/repository'
@@ -16,7 +16,7 @@ export const Route = createFileRoute('/library/hafez/')({
   head: ({ loaderData: m }) => {
     if (!m) return {}
     const s = seo({ title: m.title, description: m.description, path: m.path, image: OG })
-    return { ...s, links: [...s.links, NASKH_PRELOAD] }
+    return libraryHead(s)
   },
   component: HafezRoute,
 })

@@ -1,5 +1,5 @@
 import { createFileRoute, redirect } from '@tanstack/react-router'
-import { NASKH_PRELOAD } from '../../../../components/library/head'
+import { libraryHead } from '../../../../components/library/head'
 import { GhazalsPage } from '../../../../components/library/hafez/GhazalsPage'
 import { GHAZALS_PATH } from '../../../../data/library/hafez'
 import { divan } from '../../../../data/library/hafez/repository'
@@ -24,7 +24,7 @@ export const Route = createFileRoute('/library/hafez/ghazals/')({
       path: GHAZALS_PATH,
       image: '/media/library/og-hafez.jpg',
     })
-    return { ...s, links: [...s.links, NASKH_PRELOAD] }
+    return libraryHead(s)
   },
   component: function Page() {
     const { letters, sharh } = Route.useLoaderData()
