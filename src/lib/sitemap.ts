@@ -2,18 +2,19 @@
  * last content change, from src/data/sitemap-lastmod.json (written by `npm run sitemap:dates` from git history;
  * the Docker build has no .git, so the dates are committed). */
 
-export const SECTIONS = ['pages', 'history', 'shahnameh', 'library-hafez', 'library-saadi', 'library-khayyam', 'library-mantiq'] as const
+export const SECTIONS = ['pages', 'history', 'shahnameh', 'library-hafez', 'library-saadi', 'library-khayyam', 'library-mantiq', 'civilizations'] as const
 export type Section = (typeof SECTIONS)[number]
 
 /** The git paths whose history dates each section. */
 export const SECTION_SOURCES: Record<Section, readonly string[]> = {
-  pages: ['src/routes', 'src/components', ':(exclude)src/routes/library', ':(exclude)src/components/library'],
-  history: ['src/data', 'src/routes/dynasty', 'src/routes/king', ':(exclude)src/data/library', ':(exclude)src/data/shahnameh', ':(exclude)src/data/sitemap-lastmod.json'],
+  pages: ['src/routes', 'src/components', ':(exclude)src/routes/library', ':(exclude)src/components/library', ':(exclude)src/routes/civilizations', ':(exclude)src/components/civilizations'],
+  history: ['src/data', 'src/routes/dynasty', 'src/routes/king', ':(exclude)src/data/library', ':(exclude)src/data/shahnameh', ':(exclude)src/data/sitemap-lastmod.json', ':(exclude)src/data/civilizations'],
   shahnameh: ['src/data/shahnameh', 'src/routes/shahnameh', 'src/components/shahnameh'],
   'library-hafez': ['src/data/library/hafez', 'src/routes/library/hafez', 'src/components/library/hafez'],
   'library-saadi': ['src/data/library/saadi', 'src/routes/library/bustan', 'src/routes/library/golestan', 'src/routes/library/saadi.tsx', 'src/components/library/saadi'],
   'library-khayyam': ['src/data/library/khayyam', 'src/routes/library/khayyam', 'src/components/library/khayyam'],
   'library-mantiq': ['src/data/library/mantiq', 'src/routes/library/mantiq-al-tayr', 'src/components/library/MantiqSectionPage.tsx', 'src/components/library/mantiq'],
+  civilizations: ['src/data/civilizations', 'src/routes/civilizations', 'src/components/civilizations', 'public/media/civ'],
 }
 
 export function sectionOf(path: string): Section {
@@ -23,6 +24,7 @@ export function sectionOf(path: string): Section {
   if (p.startsWith('/library/khayyam')) return 'library-khayyam'
   if (p.startsWith('/library/mantiq-al-tayr')) return 'library-mantiq'
   if (p.startsWith('/shahnameh')) return 'shahnameh'
+  if (p.startsWith('/civilizations')) return 'civilizations'
   if (/^\/(dynasty|king|place|event|province|dey1404)(\/|$)/.test(p)) return 'history'
   return 'pages'
 }

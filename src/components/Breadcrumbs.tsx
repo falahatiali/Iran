@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router'
 
-export interface Crumb { label: string; to?: '/dynasty/$slug' | '/timeline' | '/about'; params?: { slug: string } }
+export interface Crumb { label: string; to?: '/dynasty/$slug' | '/timeline' | '/about' | '/civilizations'; params?: { slug: string } }
 
 export function Breadcrumbs({ items, locale = 'fa' }: { items: Crumb[]; locale?: 'fa' | 'en' }) {
   return (

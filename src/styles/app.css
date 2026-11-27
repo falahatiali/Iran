@@ -244,3 +244,29 @@ html:not([data-consent-ask]) .consent-banner { display: none; }
   .hero-kicker { animation: hero-kicker 1.4s ease-out both; }
   .hero-bob { animation: hero-bob 2s ease-in-out infinite; }
 }
+
+/* Ancient civilizations (/civilizations and the home box) */
+.civ-banner {
+  border: 1px solid rgb(217 180 90 / .28);
+  background:
+    radial-gradient(55% 80% at 15% 30%, rgb(46 196 182 / .22), transparent 70%),
+    radial-gradient(60% 90% at 85% 20%, rgb(224 164 88 / .30), transparent 70%),
+    radial-gradient(120% 120% at 50% 110%, #2a1d0b, #0a0b16 72%);
+  box-shadow: 0 40px 120px -40px rgb(217 180 90 / .45), inset 0 1px 0 rgb(255 255 255 / .06);
+}
+.civ-title {
+  background: linear-gradient(180deg, #fff7e0 0%, #f2d68b 40%, #d9b45a 70%, #8a5a1c 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 6px 30px rgb(217 180 90 / .35));
+}
+.civ-dust { position: absolute; bottom: -10px; border-radius: 9999px; background: #f2d68b; opacity: 0; animation: civ-rise linear infinite; }
+@keyframes civ-rise { 0% { transform: translate(0, 0); opacity: 0; } 15% { opacity: .55; } 100% { transform: translate(var(--drift, 0), -420px); opacity: 0; } }
+.civ-zig { animation: civ-glow 7s ease-in-out infinite; }
+@keyframes civ-glow { 0%, 100% { filter: drop-shadow(0 0 12px rgb(217 180 90 / .25)); } 50% { filter: drop-shadow(0 0 30px rgb(217 180 90 / .6)); } }
+.civ-card { transition: transform .35s cubic-bezier(.2, .8, .2, 1), border-color .3s, box-shadow .35s; }
+.civ-card:hover, .civ-card:focus-visible { transform: translateY(-4px); border-color: rgb(217 180 90 / .7); box-shadow: 0 24px 60px -24px var(--civ-accent, #d9b45a); }
+.civ-card:hover .civ-card-img { transform: scale(1.06); }
+.civ-card-img { transition: transform .8s cubic-bezier(.2, .8, .2, 1); }
+.civ-map-dot { cursor: pointer; }
+.civ-map-dot:hover text, .civ-map-dot:focus-visible text { fill: #f2d68b; }
+@media (prefers-reduced-motion: reduce) { .civ-dust, .civ-zig { animation: none; } .civ-card, .civ-card-img { transition: none; } }

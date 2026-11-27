@@ -19,6 +19,8 @@ import { Route as PropertyRouteImport } from './routes/property'
 import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as AdminCommentsRouteImport } from './routes/admin/comments'
 import { Route as BattleCarrhaeRouteImport } from './routes/battle/carrhae'
+import { Route as CivilizationsIndexRouteImport } from './routes/civilizations/index'
+import { Route as CivilizationsSlugRouteImport } from './routes/civilizations/$slug'
 import { Route as DynastySlugRouteImport } from './routes/dynasty/$slug'
 import { Route as EnAboutRouteImport } from './routes/en/about'
 import { Route as EnArchivesRouteImport } from './routes/en/archives'
@@ -120,6 +122,16 @@ const AdminCommentsRoute = AdminCommentsRouteImport.update({
 const BattleCarrhaeRoute = BattleCarrhaeRouteImport.update({
   id: '/battle/carrhae',
   path: '/battle/carrhae',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CivilizationsIndexRoute = CivilizationsIndexRouteImport.update({
+  id: '/civilizations/',
+  path: '/civilizations/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CivilizationsSlugRoute = CivilizationsSlugRouteImport.update({
+  id: '/civilizations/$slug',
+  path: '/civilizations/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DynastySlugRoute = DynastySlugRouteImport.update({
@@ -402,6 +414,7 @@ export interface FileRoutesByFullPath {
   '/timeline': typeof TimelineRoute
   '/admin/comments': typeof AdminCommentsRoute
   '/battle/carrhae': typeof BattleCarrhaeRoute
+  '/civilizations/$slug': typeof CivilizationsSlugRoute
   '/dynasty/$slug': typeof DynastySlugRoute
   '/en/about': typeof EnAboutRoute
   '/en/archives': typeof EnArchivesRoute
@@ -416,6 +429,7 @@ export interface FileRoutesByFullPath {
   '/library/saadi': typeof LibrarySaadiRoute
   '/place/$slug': typeof PlaceSlugRoute
   '/shahnameh/$slug': typeof ShahnamehSlugRoute
+  '/civilizations/': typeof CivilizationsIndexRoute
   '/library/': typeof LibraryIndexRoute
   '/shahnameh/': typeof ShahnamehIndexRoute
   '/en/battle/carrhae': typeof EnBattleCarrhaeRoute
@@ -466,6 +480,7 @@ export interface FileRoutesByTo {
   '/timeline': typeof TimelineRoute
   '/admin/comments': typeof AdminCommentsRoute
   '/battle/carrhae': typeof BattleCarrhaeRoute
+  '/civilizations/$slug': typeof CivilizationsSlugRoute
   '/dynasty/$slug': typeof DynastySlugRoute
   '/en/about': typeof EnAboutRoute
   '/en/archives': typeof EnArchivesRoute
@@ -480,6 +495,7 @@ export interface FileRoutesByTo {
   '/library/saadi': typeof LibrarySaadiRoute
   '/place/$slug': typeof PlaceSlugRoute
   '/shahnameh/$slug': typeof ShahnamehSlugRoute
+  '/civilizations': typeof CivilizationsIndexRoute
   '/library': typeof LibraryIndexRoute
   '/shahnameh': typeof ShahnamehIndexRoute
   '/en/battle/carrhae': typeof EnBattleCarrhaeRoute
@@ -531,6 +547,7 @@ export interface FileRoutesById {
   '/timeline': typeof TimelineRoute
   '/admin/comments': typeof AdminCommentsRoute
   '/battle/carrhae': typeof BattleCarrhaeRoute
+  '/civilizations/$slug': typeof CivilizationsSlugRoute
   '/dynasty/$slug': typeof DynastySlugRoute
   '/en/about': typeof EnAboutRoute
   '/en/archives': typeof EnArchivesRoute
@@ -545,6 +562,7 @@ export interface FileRoutesById {
   '/library/saadi': typeof LibrarySaadiRoute
   '/place/$slug': typeof PlaceSlugRoute
   '/shahnameh/$slug': typeof ShahnamehSlugRoute
+  '/civilizations/': typeof CivilizationsIndexRoute
   '/library/': typeof LibraryIndexRoute
   '/shahnameh/': typeof ShahnamehIndexRoute
   '/en/battle/carrhae': typeof EnBattleCarrhaeRoute
@@ -597,6 +615,7 @@ export interface FileRouteTypes {
     | '/timeline'
     | '/admin/comments'
     | '/battle/carrhae'
+    | '/civilizations/$slug'
     | '/dynasty/$slug'
     | '/en/about'
     | '/en/archives'
@@ -611,6 +630,7 @@ export interface FileRouteTypes {
     | '/library/saadi'
     | '/place/$slug'
     | '/shahnameh/$slug'
+    | '/civilizations/'
     | '/library/'
     | '/shahnameh/'
     | '/en/battle/carrhae'
@@ -661,6 +681,7 @@ export interface FileRouteTypes {
     | '/timeline'
     | '/admin/comments'
     | '/battle/carrhae'
+    | '/civilizations/$slug'
     | '/dynasty/$slug'
     | '/en/about'
     | '/en/archives'
@@ -675,6 +696,7 @@ export interface FileRouteTypes {
     | '/library/saadi'
     | '/place/$slug'
     | '/shahnameh/$slug'
+    | '/civilizations'
     | '/library'
     | '/shahnameh'
     | '/en/battle/carrhae'
@@ -725,6 +747,7 @@ export interface FileRouteTypes {
     | '/timeline'
     | '/admin/comments'
     | '/battle/carrhae'
+    | '/civilizations/$slug'
     | '/dynasty/$slug'
     | '/en/about'
     | '/en/archives'
@@ -739,6 +762,7 @@ export interface FileRouteTypes {
     | '/library/saadi'
     | '/place/$slug'
     | '/shahnameh/$slug'
+    | '/civilizations/'
     | '/library/'
     | '/shahnameh/'
     | '/en/battle/carrhae'
@@ -790,6 +814,7 @@ export interface RootRouteChildren {
   TimelineRoute: typeof TimelineRoute
   AdminCommentsRoute: typeof AdminCommentsRoute
   BattleCarrhaeRoute: typeof BattleCarrhaeRoute
+  CivilizationsSlugRoute: typeof CivilizationsSlugRoute
   DynastySlugRoute: typeof DynastySlugRoute
   EnAboutRoute: typeof EnAboutRoute
   EnArchivesRoute: typeof EnArchivesRoute
@@ -804,6 +829,7 @@ export interface RootRouteChildren {
   LibrarySaadiRoute: typeof LibrarySaadiRoute
   PlaceSlugRoute: typeof PlaceSlugRoute
   ShahnamehSlugRoute: typeof ShahnamehSlugRoute
+  CivilizationsIndexRoute: typeof CivilizationsIndexRoute
   LibraryIndexRoute: typeof LibraryIndexRoute
   ShahnamehIndexRoute: typeof ShahnamehIndexRoute
   EnBattleCarrhaeRoute: typeof EnBattleCarrhaeRoute
@@ -914,6 +940,20 @@ declare module '@tanstack/react-router' {
       path: '/battle/carrhae'
       fullPath: '/battle/carrhae'
       preLoaderRoute: typeof BattleCarrhaeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/civilizations/': {
+      id: '/civilizations/'
+      path: '/civilizations'
+      fullPath: '/civilizations/'
+      preLoaderRoute: typeof CivilizationsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/civilizations/$slug': {
+      id: '/civilizations/$slug'
+      path: '/civilizations/$slug'
+      fullPath: '/civilizations/$slug'
+      preLoaderRoute: typeof CivilizationsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dynasty/$slug': {
@@ -1294,6 +1334,7 @@ const rootRouteChildren: RootRouteChildren = {
   TimelineRoute: TimelineRoute,
   AdminCommentsRoute: AdminCommentsRoute,
   BattleCarrhaeRoute: BattleCarrhaeRoute,
+  CivilizationsSlugRoute: CivilizationsSlugRoute,
   DynastySlugRoute: DynastySlugRoute,
   EnAboutRoute: EnAboutRoute,
   EnArchivesRoute: EnArchivesRoute,
@@ -1308,6 +1349,7 @@ const rootRouteChildren: RootRouteChildren = {
   LibrarySaadiRoute: LibrarySaadiRoute,
   PlaceSlugRoute: PlaceSlugRoute,
   ShahnamehSlugRoute: ShahnamehSlugRoute,
+  CivilizationsIndexRoute: CivilizationsIndexRoute,
   LibraryIndexRoute: LibraryIndexRoute,
   ShahnamehIndexRoute: ShahnamehIndexRoute,
   EnBattleCarrhaeRoute: EnBattleCarrhaeRoute,

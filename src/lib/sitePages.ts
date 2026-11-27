@@ -22,6 +22,11 @@ export const SITE_PAGES: readonly SitePage[] = [
     keywords: 'ادبیات کتابخانه گنجینه ادب پارسی شعر فارسی منطق الطیر منطق‌الطیر عطار سیمرغ هفت وادی شاهنامه حافظ سعدی مولوی نظامی خیام literature library Persian poetry Attar Conference of the Birds',
   },
   {
+    key: 'civilizations', searchable: true,
+    fa: { path: '/civilizations', label: 'تمدن‌های کهن ایران', sub: 'دانشنامهٔ مصور، از گنج‌دره تا چغازنبیل' },
+    keywords: 'تمدن های کهن ایران تمدن‌های باستانی پیش از تاریخ باستان‌شناسی جیرفت کنار صندل شهر سوخته شوش ایلام چغازنبیل زیگورات سیلک گنج دره گنج‌دره ancient civilizations Iran archaeology Jiroft Shahr-e Sukhteh Burnt City Susa Elam Chogha Zanbil Sialk Ganj Dareh',
+  },
+  {
     key: 'shahnameh', searchable: true,
     fa: { path: '/shahnameh', label: 'شاهنامه', sub: 'فردوسی · Shahnameh' },
     en: { path: '/en/shahnameh', label: 'Shahnameh', sub: 'Ferdowsi’s Book of Kings' },

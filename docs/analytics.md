@@ -12,10 +12,10 @@ GA4 is on in production builds. The measurement ID comes from `VITE_GA_ID` (defa
 | --- | --- | --- |
 | `meaning_open` / `meaning_hide` | the reader turns the bayt meanings on or off on a ghazal, Bustan/Golestan story, Nowruznameh section or Mantiq section | `book`, `section`, `bayt` (`all`: the toggle covers every bayt) |
 | `commentary_open` | «شرح این سایت» comes into view on a Hafez ghazal, its badge is clicked (`via=badge`), or a per-bayt commentary (`<details data-ev>`, Mantiq and Shahnameh) is opened | `book`, `section`, `bayt`, `page`, `via` |
-| `story_complete` | the end marker after the last bayt of a ghazal, story or section scrolls into view | `book`, `section`, `page` |
+| `story_complete` | the end marker after the last bayt of a ghazal, story or section scrolls into view; on `/civilizations` the end of the landing page (`section=landing`) or of a civilization page (`section=<slug>`), with `book=civilizations` | `book`, `section`, `page` |
 | `scroll_depth` | 25 / 50 / 75 / 100 % of a page (once each per page) | `percent`, `page` |
 | `internal_nav` | a click on a link to another page of the site | `from`, `to` |
-| `outbound_click` | a click on a link to another site (Ganjoor, Wikipedia, Iranica…) | `link_domain`, `link_url`, `from` |
+| `outbound_click` | a click on a link to another site (Ganjoor, Wikipedia, Iranica, YouTube videos and photo credits on `/civilizations`…) | `link_domain`, `link_url`, `from` |
 | `copy_text` | the reader copies text (e.g. a bayt) | `chars`, `book`, `section`, `bayt`, `page` |
 | `share` | a copy-link / copy-citation button | `method` (`copy_link`, `copy_citation`), `content_type` (`page`, `bayt`, `line`) |
 | `search` | a search box, after the reader pauses typing (1.2 s, 2+ characters) | `search_term` (first 100 characters), `where` (`site`, `hafez-ghazals`, `timeline`, `shahnameh`) |
