@@ -282,5 +282,457 @@ export const PHOTOS: Record<string, CivPhoto[]> = {
       "ratio": 1.115,
       "museum": "موزهٔ متروپولیتن نیویورک"
     }
+  ],
+  "ali-kosh": [
+    {
+      "id": "map",
+      "src": "/media/civ/ali-kosh/map.webp",
+      "caption": "نقشهٔ محوطه‌های نوسنگی ایران.",
+      "page": "https://commons.wikimedia.org/wiki/File:Neolithic_sites_in_Iran.jpg",
+      "author": "Amani82",
+      "license": "CC0",
+      "ratio": 1.359
+    }
+  ],
+  "chogha-mish": [
+    {
+      "id": "site",
+      "src": "/media/civ/chogha-mish/site.webp",
+      "caption": "تپهٔ باستانی چغامیش در دشت شوشتر و دزفول.",
+      "page": "https://commons.wikimedia.org/wiki/File:Choghamish.jpg",
+      "author": "Motabassem. The original uploader was Motabassem at Persian Wikipedia.",
+      "license": "Public domain",
+      "ratio": 1.679
+    },
+    {
+      "id": "pot",
+      "src": "/media/civ/chogha-mish/pot.webp",
+      "caption": "ظرف سفالی از چغامیش، ۵۲۰۰ تا ۴۲۰۰ پ.م.؛ موزهٔ ملی ایران.",
+      "page": "https://commons.wikimedia.org/wiki/File:Ceramic_pot_-_Chogha_Mish_-_5200_-_4200_BC_-_National_museum_of_Iran_-_Inventory_number_7032.JPG",
+      "author": "Faqscl",
+      "license": "CC BY-SA 4.0",
+      "ratio": 1.333
+    }
+  ],
+  "tepe-hissar": [
+    {
+      "id": "site",
+      "src": "/media/civ/tepe-hissar/site.webp",
+      "caption": "تپه حصار در جنوب دامغان.",
+      "page": "https://commons.wikimedia.org/wiki/File:DAMGHAN_TEPPE_HISAR.jpg",
+      "author": "PEJ MAN",
+      "license": "CC BY-SA 4.0",
+      "ratio": 1.778
+    },
+    {
+      "id": "met-ibex",
+      "src": "/media/civ/tepe-hissar/met-ibex.webp",
+      "caption": "پیالهٔ سفالی منقوش با نقش بز کوهی از تپه حصار، حدود ۴۰۰۰ پ.م.",
+      "page": "https://www.metmuseum.org/art/collection/search/324045",
+      "author": "The Metropolitan Museum of Art",
+      "license": "CC0 (Met Open Access)",
+      "ratio": 0.8,
+      "museum": "موزهٔ متروپولیتن نیویورک"
+    },
+    {
+      "id": "jar",
+      "src": "/media/civ/tepe-hissar/jar.webp",
+      "caption": "خمرهٔ سفالی منقوش از تپه حصار، ۳۷۵۰ تا ۳۳۵۰ پ.م.؛ موزهٔ ملی ایران.",
+      "page": "https://commons.wikimedia.org/wiki/File:Pottery_Jar_-_3750-3350_BC_-_Tepe_Hissar_-_National_museum_of_Tehran_-_inventory_number_395.JPG",
+      "author": "Faqscl",
+      "license": "CC BY-SA 4.0",
+      "ratio": 1.5
+    },
+    {
+      "id": "greyware",
+      "src": "/media/civ/tepe-hissar/greyware.webp",
+      "caption": "کاسهٔ پایه‌دار خاکستری از تپه حصار.",
+      "page": "https://commons.wikimedia.org/wiki/File:Greyware_stemmed_bowl_from_Tepe_Hissar_in_modern_day_Iran_3800_BCE_Ceramic.jpg",
+      "author": "Mary Harrsch",
+      "license": "CC BY 2.0",
+      "ratio": 0.939
+    },
+    {
+      "id": "met-goblet",
+      "src": "/media/civ/tepe-hissar/met-goblet.webp",
+      "caption": "جام پایه‌دار سفالی از تپه حصار، حدود ۳۳۶۵ تا ۳۰۳۰ پ.م. (حصار IIB).",
+      "page": "https://www.metmuseum.org/art/collection/search/323711",
+      "author": "The Metropolitan Museum of Art",
+      "license": "CC0 (Met Open Access)",
+      "ratio": 1.0,
+      "museum": "موزهٔ متروپولیتن نیویورک"
+    },
+    {
+      "id": "figurine",
+      "src": "/media/civ/tepe-hissar/figurine.webp",
+      "caption": "پیکرک مرمرین از لایهٔ III تپه حصار، ۲۳۰۰ تا ۱۹۰۰ پ.م.؛ نمایشگاه «ایران: فرهنگ‌های کهن میان آب و بیابان»، بن، ۲۰۱۷.",
+      "page": "https://commons.wikimedia.org/wiki/File:Figurine_aus_Iran,_Tappe_Hesar,_Schicht_III,_Alabaster,_2300-1900_v.C._(1).jpg",
+      "author": "NearEMPTiness",
+      "license": "CC BY-SA 4.0",
+      "ratio": 0.666
+    }
+  ],
+  "godin-tepe": [
+    {
+      "id": "plan",
+      "src": "/media/civ/godin-tepe/plan.webp",
+      "caption": "طرح بخشی از ساختمان‌های گودین تپه، به نقل از Desset.",
+      "page": "https://commons.wikimedia.org/wiki/File:Godin_tape.jpg",
+      "author": "Nightdevil",
+      "license": "CC BY-SA 4.0",
+      "ratio": 1.0
+    },
+    {
+      "id": "vessel",
+      "src": "/media/civ/godin-tepe/vessel.webp",
+      "caption": "ظرف منقوش از گودین تپه، حدود ۱۴۵۰ تا ۱۱۵۰ پ.م.؛ نمایشگاه «ایران، گهوارهٔ تمدن‌ها»، موزهٔ باستان‌شناسی آلیکانته (MARQ).",
+      "page": "https://commons.wikimedia.org/wiki/File:Vaso_con_decoraci%C3%B3n_pintada_(Godin_Tepe,_Ir%C3%A1n)_-_MARQ.jpg",
+      "author": "Dorieo",
+      "license": "CC BY-SA 4.0",
+      "ratio": 1.5
+    },
+    {
+      "id": "bowl",
+      "src": "/media/civ/godin-tepe/bowl.webp",
+      "caption": "کاسهٔ سفالی از گودین تپه، حدود ۱۴۵۰ تا ۱۱۵۰ پ.م.؛ نمایشگاه «ایران، گهوارهٔ تمدن‌ها»، موزهٔ باستان‌شناسی آلیکانته (MARQ).",
+      "page": "https://commons.wikimedia.org/wiki/File:Cuenco_de_Cer%C3%A1mica_(Godin_Tepe,_Ir%C3%A1n)_-_MARQ.jpg",
+      "author": "Dorieo",
+      "license": "CC BY-SA 4.0",
+      "ratio": 1.5
+    }
+  ],
+  "tepe-yahya": [
+    {
+      "id": "tablet",
+      "src": "/media/civ/tepe-yahya/tablet.webp",
+      "caption": "لوح آغاز ایلامی از تپه یحیی، حدود ۳۰۰۰ پ.م.؛ موزهٔ ملی ایران.",
+      "page": "https://commons.wikimedia.org/wiki/File:Proto-elamite_tablet-_ca_3000_BCE_-_Tepe_Yahya_(Kerman_Province)_-_National_Museum_of_Iran_-_Inv._number_341_(cropped).jpg",
+      "author": "Darafsh",
+      "license": "CC BY 3.0",
+      "ratio": 1.498
+    },
+    {
+      "id": "tablet-2",
+      "src": "/media/civ/tepe-yahya/tablet-2.webp",
+      "caption": "لوح گلی آغاز ایلامی از تپه یحیی، حدود ۳۱۰۰ تا ۲۹۰۰ پ.م.؛ موزهٔ ملی ایران.",
+      "page": "https://commons.wikimedia.org/wiki/File:Clay_Tablet_3000_BCE_Tappeh_Yahya_Iran_01.jpg",
+      "author": "Hnapel",
+      "license": "CC0",
+      "ratio": 1.077
+    }
+  ],
+  "shahdad": [
+    {
+      "id": "flask",
+      "src": "/media/civ/shahdad/flask.webp",
+      "caption": "ظرف آرایش از شهداد، عصر مفرغ؛ نمایشگاه «ایران، گهوارهٔ تمدن‌ها»، موزهٔ باستان‌شناسی آلیکانته (MARQ).",
+      "page": "https://commons.wikimedia.org/wiki/File:Frasco_de_maquillaje_de_la_Edad_del_Bronce_(Shahdad,_Ir%C3%A1n)_-_MARQ.jpg",
+      "author": "Dorieo",
+      "license": "CC BY-SA 4.0",
+      "ratio": 0.667
+    },
+    {
+      "id": "sceptre",
+      "src": "/media/civ/shahdad/sceptre.webp",
+      "caption": "عصای مفرغی از شهداد؛ نمایشگاه «ایران، گهوارهٔ تمدن‌ها»، موزهٔ باستان‌شناسی آلیکانته (MARQ).",
+      "page": "https://commons.wikimedia.org/wiki/File:Cetro_de_la_Edad_del_Bronce_(Shahdad,_Ir%C3%A1n)_-_MARQ.jpg",
+      "author": "Dorieo",
+      "license": "CC BY-SA 4.0",
+      "ratio": 2.222
+    },
+    {
+      "id": "plate",
+      "src": "/media/civ/shahdad/plate.webp",
+      "caption": "بشقاب مفرغی از شهداد؛ نمایشگاه «ایران، گهوارهٔ تمدن‌ها»، موزهٔ باستان‌شناسی آلیکانته (MARQ).",
+      "page": "https://commons.wikimedia.org/wiki/File:Plato_de_bronce_de_la_Edad_del_Bronce_(Shahdad,_Ir%C3%A1n)_-_MARQ_01.jpg",
+      "author": "Dorieo",
+      "license": "CC BY-SA 4.0",
+      "ratio": 1.5
+    },
+    {
+      "id": "stone-bowl",
+      "src": "/media/civ/shahdad/stone-bowl.webp",
+      "caption": "کاسهٔ سنگی از شهداد؛ نمایشگاه «ایران، گهوارهٔ تمدن‌ها»، موزهٔ باستان‌شناسی آلیکانته (MARQ).",
+      "page": "https://commons.wikimedia.org/wiki/File:Cuenco_de_piedra_de_la_Edad_del_Bronce_(Shahdad,_Ir%C3%A1n)_-_MARQ.jpg",
+      "author": "Dorieo",
+      "license": "CC BY-SA 4.0",
+      "ratio": 1.489
+    },
+    {
+      "id": "necklace",
+      "src": "/media/civ/shahdad/necklace.webp",
+      "caption": "گردن‌بند از شهداد، عصر مفرغ؛ نمایشگاه «ایران، گهوارهٔ تمدن‌ها»، موزهٔ باستان‌شناسی آلیکانته (MARQ).",
+      "page": "https://commons.wikimedia.org/wiki/File:Collar_de_la_Edad_del_Bronce_(Shahdad,_Ir%C3%A1n)_-_MARQ.jpg",
+      "author": "Dorieo",
+      "license": "CC BY-SA 4.0",
+      "ratio": 1.5
+    },
+    {
+      "id": "met-zebu",
+      "src": "/media/civ/shahdad/met-zebu.webp",
+      "caption": "بشقاب با نقش گاو کوهان‌دار خفته، شرق ایران، اواخر هزارهٔ سوم تا اوایل هزارهٔ دوم پ.م.",
+      "page": "https://www.metmuseum.org/art/collection/search/328186",
+      "author": "The Metropolitan Museum of Art",
+      "license": "CC0 (Met Open Access)",
+      "ratio": 0.872,
+      "museum": "موزهٔ متروپولیتن نیویورک"
+    }
+  ],
+  "anshan": [
+    {
+      "id": "tablet",
+      "src": "/media/civ/anshan/tablet.webp",
+      "caption": "لوح آغاز ایلامی از تل ملیان (انشان)، حدود ۳۰۰۰ پ.م.؛ موزهٔ ملی ایران.",
+      "page": "https://commons.wikimedia.org/wiki/File:Proto-elamite_tablet-_ca_3000_BCE_-_Tell-e_Maly%C3%A2n_(Anshan)_-_National_Museum_of_Iran_-_Inv._number_3102.jpg",
+      "author": "Darafsh",
+      "license": "CC BY 3.0",
+      "ratio": 1.509
+    },
+    {
+      "id": "met-bull",
+      "src": "/media/civ/anshan/met-bull.webp",
+      "caption": "گاو زانوزده با ظرف لوله‌دار، نقره، جنوب غرب ایران، دورهٔ آغاز ایلامی، حدود ۳۱۰۰ تا ۲۹۰۰ پ.م.",
+      "page": "https://www.metmuseum.org/art/collection/search/329074",
+      "author": "The Metropolitan Museum of Art",
+      "license": "CC0 (Met Open Access)",
+      "ratio": 0.71,
+      "museum": "موزهٔ متروپولیتن نیویورک"
+    },
+    {
+      "id": "met-pendant",
+      "src": "/media/civ/anshan/met-pendant.webp",
+      "caption": "آویز نقره‌ای به شکل آهو، جنوب غرب ایران، دورهٔ آغاز ایلامی، حدود ۳۱۰۰ تا ۲۹۰۰ پ.م.",
+      "page": "https://www.metmuseum.org/art/collection/search/324030",
+      "author": "The Metropolitan Museum of Art",
+      "license": "CC0 (Met Open Access)",
+      "ratio": 0.845,
+      "museum": "موزهٔ متروپولیتن نیویورک"
+    },
+    {
+      "id": "tablet-2",
+      "src": "/media/civ/anshan/tablet-2.webp",
+      "caption": "لوح آغاز ایلامی دیگری از تل ملیان؛ موزهٔ ملی ایران.",
+      "page": "https://commons.wikimedia.org/wiki/File:Proto-elamite_tablet-_ca_3000_BCE_-_Tell-e_Maly%C3%A2n_(Anshan)_-_National_Museum_of_Iran_-_Inv._number_4012.jpg",
+      "author": "Darafsh",
+      "license": "CC BY 3.0",
+      "ratio": 1.509
+    }
+  ],
+  "haft-tepe": [
+    {
+      "id": "tomb",
+      "src": "/media/civ/haft-tepe/tomb.webp",
+      "caption": "آرامگاه طاق‌دار آجری هفت‌تپه که کاوشگران «آرامگاه شاهی» نامیدند.",
+      "page": "https://commons.wikimedia.org/wiki/File:Grabgew%C3%B6lbe_Haft_Tepe.JPG",
+      "author": "Rainer Fischer",
+      "license": "CC BY-SA 3.0",
+      "ratio": 1.498
+    },
+    {
+      "id": "portrait",
+      "src": "/media/civ/haft-tepe/portrait.webp",
+      "caption": "سر سفالی رنگ‌شدهٔ ایلامی از هفت‌تپه؛ نمایشگاه «ایران: فرهنگ‌های کهن میان آب و بیابان»، بن، ۲۰۱۷.",
+      "page": "https://commons.wikimedia.org/wiki/File:Keramik_aus_Iran,_Elamisches_Totenportrait,_Haft_Tappe,_um_1250_v.C._(3).jpg",
+      "author": "NearEMPTiness",
+      "license": "CC BY-SA 4.0",
+      "ratio": 0.666
+    },
+    {
+      "id": "coffin",
+      "src": "/media/civ/haft-tepe/coffin.webp",
+      "caption": "تابوت سفالی ایلامی در موزهٔ هفت‌تپه.",
+      "page": "https://commons.wikimedia.org/wiki/File:Elamisches_Bestattungsgefaess.JPG",
+      "author": "Rainer Fischer",
+      "license": "CC BY-SA 3.0",
+      "ratio": 1.498
+    }
+  ],
+  "marlik": [
+    {
+      "id": "goblet",
+      "src": "/media/civ/marlik/goblet.webp",
+      "caption": "جام الکتروم با نقش جانوران بالدار دوسر که آهوها را رام کرده‌اند، ۱۴۰۰ تا ۱۱۰۰ پ.م.؛ موزهٔ لوور. این جام از کاوش علمی نیامده و نسبتش به مارلیک بر پایهٔ سبک است.",
+      "page": "https://commons.wikimedia.org/wiki/File:Gobelet_de_Marlik_(Louvre,_AO_20281)_1.jpg",
+      "author": "Tangopaso",
+      "license": "Public domain",
+      "ratio": 0.75
+    },
+    {
+      "id": "gold-beaker",
+      "src": "/media/civ/marlik/gold-beaker.webp",
+      "caption": "جام زرین از گورهای مارلیک؛ نمایشگاه «ایران: فرهنگ‌های کهن میان آب و بیابان»، بن، ۲۰۱۷.",
+      "page": "https://commons.wikimedia.org/wiki/File:Goldbecher_aus_Iran,_Grabbeigaben,_Marlik,_1200-800_v.C._(1).jpg",
+      "author": "NearEMPTiness",
+      "license": "CC BY-SA 4.0",
+      "ratio": 0.666
+    },
+    {
+      "id": "rhyton",
+      "src": "/media/civ/marlik/rhyton.webp",
+      "caption": "ریتون سفالی به شکل جانور از مارلیک؛ موزهٔ ملی ایران.",
+      "page": "https://commons.wikimedia.org/wiki/File:Animal_shaped_pottery_object_(Rython)_-_Marlik_-_1st_mill_BC_-_National_Museum_of_Iran_-_Inventory_number_7610.JPG",
+      "author": "Faqscl",
+      "license": "CC BY-SA 4.0",
+      "ratio": 1.5
+    },
+    {
+      "id": "deer",
+      "src": "/media/civ/marlik/deer.webp",
+      "caption": "ریتون به شکل گوزن از گورهای مارلیک؛ نمایشگاه «ایران: فرهنگ‌های کهن میان آب و بیابان»، بن، ۲۰۱۷.",
+      "page": "https://commons.wikimedia.org/wiki/File:Hirschf%C3%B6rmiges_Rhyton_aus_Iran,_Grabbeigaben,_Marlik,_1200-800_v.C._(1).jpg",
+      "author": "NearEMPTiness",
+      "license": "CC BY-SA 4.0",
+      "ratio": 1.502
+    },
+    {
+      "id": "met-cup",
+      "src": "/media/civ/marlik/met-cup.webp",
+      "caption": "پیالهٔ زرین با نوار آهوها، شمال غرب ایران، منطقهٔ دریای کاسپین، اوایل هزارهٔ یکم پ.م.",
+      "page": "https://www.metmuseum.org/art/collection/search/325511",
+      "author": "The Metropolitan Museum of Art",
+      "license": "CC0 (Met Open Access)",
+      "ratio": 1.358,
+      "museum": "موزهٔ متروپولیتن نیویورک"
+    }
+  ],
+  "hasanlu": [
+    {
+      "id": "site",
+      "src": "/media/civ/hasanlu/site.webp",
+      "caption": "تپه حسنلو در دشت سلدوز.",
+      "page": "https://commons.wikimedia.org/wiki/File:Hasanlu_13960422_01.jpg",
+      "author": "Mahdi Zavar مهدی زوار",
+      "license": "CC BY 4.0",
+      "ratio": 1.5
+    },
+    {
+      "id": "site-2",
+      "src": "/media/civ/hasanlu/site-2.webp",
+      "caption": "بقایای ساختمان‌های ارگ حسنلو.",
+      "page": "https://commons.wikimedia.org/wiki/File:Hasanlu_13960422_03.jpg",
+      "author": "Mahdi Zavar مهدی زوار",
+      "license": "CC BY 4.0",
+      "ratio": 1.5
+    },
+    {
+      "id": "met-jar",
+      "src": "/media/civ/hasanlu/met-jar.webp",
+      "caption": "خمرهٔ لوله‌دار با پایه از حسنلو، حدود ۱۰۵۰ تا ۸۰۰ پ.م.",
+      "page": "https://www.metmuseum.org/art/collection/search/325800",
+      "author": "The Metropolitan Museum of Art",
+      "license": "CC0 (Met Open Access)",
+      "ratio": 1.0,
+      "museum": "موزهٔ متروپولیتن نیویورک"
+    },
+    {
+      "id": "met-ivory",
+      "src": "/media/civ/hasanlu/met-ivory.webp",
+      "caption": "تکه‌های لوحهٔ عاج با نقش بزرگی ریش‌دار از حسنلو، حدود سدهٔ نهم پ.م.",
+      "page": "https://www.metmuseum.org/art/collection/search/325730",
+      "author": "The Metropolitan Museum of Art",
+      "license": "CC0 (Met Open Access)",
+      "ratio": 0.766,
+      "museum": "موزهٔ متروپولیتن نیویورک"
+    },
+    {
+      "id": "lion",
+      "src": "/media/civ/hasanlu/lion.webp",
+      "caption": "پیکرک مفرغی شیر از حسنلو، هزارهٔ یکم پ.م.؛ موزهٔ ملی ایران.",
+      "page": "https://commons.wikimedia.org/wiki/File:Bronze_lion_figurine_-_Hasanlu_(West_Azerbaijan_province)_-_1st_millenium_BC_-_National_museum_of_Iran_-_Inventory_number_6776.jpg",
+      "author": "Darafsh",
+      "license": "CC BY-SA 3.0",
+      "ratio": 1.509
+    },
+    {
+      "id": "met-earrings",
+      "src": "/media/civ/hasanlu/met-earrings.webp",
+      "caption": "گوشواره‌های زرین از حسنلو، حدود سدهٔ نهم پ.م.",
+      "page": "https://www.metmuseum.org/art/collection/search/325791",
+      "author": "The Metropolitan Museum of Art",
+      "license": "CC0 (Met Open Access)",
+      "ratio": 0.675,
+      "museum": "موزهٔ متروپولیتن نیویورک"
+    }
+  ],
+  "mannea": [
+    {
+      "id": "met-plaque",
+      "src": "/media/civ/mannea/met-plaque.webp",
+      "caption": "لوحهٔ زرین با پرندهٔ شکاری و جانوران بالدار، سدهٔ هشتم تا هفتم پ.م.؛ «گفته می‌شود» از زیویه.",
+      "page": "https://www.metmuseum.org/art/collection/search/327233",
+      "author": "The Metropolitan Museum of Art",
+      "license": "CC0 (Met Open Access)",
+      "ratio": 1.334,
+      "museum": "موزهٔ متروپولیتن نیویورک"
+    },
+    {
+      "id": "met-jar",
+      "src": "/media/civ/mannea/met-jar.webp",
+      "caption": "خمرهٔ لعابدار با گاوهای بالدار در دو سوی نخل‌واره، سدهٔ هشتم تا هفتم پ.م.؛ «گفته می‌شود» از زیویه.",
+      "page": "https://www.metmuseum.org/art/collection/search/324141",
+      "author": "The Metropolitan Museum of Art",
+      "license": "CC0 (Met Open Access)",
+      "ratio": 0.768,
+      "museum": "موزهٔ متروپولیتن نیویورک"
+    },
+    {
+      "id": "ivory",
+      "src": "/media/civ/mannea/ivory.webp",
+      "caption": "تکه‌ای از لوحهٔ عاج با نقش نگهبان بالدار، منطقهٔ زیویه، سدهٔ هشتم تا هفتم پ.م.؛ موزهٔ لوور.",
+      "page": "https://commons.wikimedia.org/wiki/File:Ivoire_Ziwiye_AO_26301.jpg",
+      "author": "Zunkir",
+      "license": "CC BY-SA 4.0",
+      "ratio": 0.76
+    },
+    {
+      "id": "met-creature",
+      "src": "/media/civ/mannea/met-creature.webp",
+      "caption": "پیکرهٔ عاجی موجودی افسانه‌ای، سدهٔ هشتم تا هفتم پ.م.؛ «گفته می‌شود» از زیویه.",
+      "page": "https://www.metmuseum.org/art/collection/search/323800",
+      "author": "The Metropolitan Museum of Art",
+      "license": "CC0 (Met Open Access)",
+      "ratio": 1.081,
+      "museum": "موزهٔ متروپولیتن نیویورک"
+    }
+  ],
+  "hegmataneh": [
+    {
+      "id": "hill",
+      "src": "/media/civ/hegmataneh/hill.webp",
+      "caption": "نمایی از موزهٔ محوطهٔ تپهٔ هگمتانه در همدان.",
+      "page": "https://commons.wikimedia.org/wiki/File:Iran_-_Hamadan_-_Hegmataneh_-_(Ecbatana)_-_panoramio.jpg",
+      "author": "Alireza Javaheri",
+      "license": "CC BY 3.0",
+      "ratio": 1.187
+    },
+    {
+      "id": "nushijan",
+      "src": "/media/civ/hegmataneh/nushijan.webp",
+      "caption": "بقایای ساختمان‌های خشتی تپه نوشیجان در نزدیکی ملایر.",
+      "page": "https://commons.wikimedia.org/wiki/File:Nooshijan.jpg",
+      "author": "Mortezagr",
+      "license": "CC BY 4.0",
+      "ratio": 2.4
+    },
+    {
+      "id": "met-jar",
+      "src": "/media/civ/hegmataneh/met-jar.webp",
+      "caption": "کوزهٔ لوله‌دار از تپه نوشیجان، حدود سدهٔ هفتم پ.م.",
+      "page": "https://www.metmuseum.org/art/collection/search/326149",
+      "author": "The Metropolitan Museum of Art",
+      "license": "CC0 (Met Open Access)",
+      "ratio": 1.274,
+      "museum": "موزهٔ متروپولیتن نیویورک"
+    },
+    {
+      "id": "met-horse",
+      "src": "/media/civ/hegmataneh/met-horse.webp",
+      "caption": "پیکرک سفالی اسب از تپه نوشیجان، سدهٔ هفتم تا ششم پ.م.",
+      "page": "https://www.metmuseum.org/art/collection/search/325974",
+      "author": "The Metropolitan Museum of Art",
+      "license": "CC0 (Met Open Access)",
+      "ratio": 1.31,
+      "museum": "موزهٔ متروپولیتن نیویورک"
+    }
   ]
 }

@@ -6,7 +6,7 @@ import { SITE_URL, seo } from '../../lib/seo'
 import { breadcrumbList, ldScript } from '../../lib/structuredData'
 
 export const LANDING_TITLE = 'تمدن‌های کهن ایران: دانشنامهٔ مصور از گنج‌دره تا چغازنبیل'
-export const LANDING_DESCRIPTION = 'دانشنامهٔ مصور تمدن‌های کهن ایران پیش از هخامنشیان: گنج‌دره، سیلک، شوش، شهر سوخته، جیرفت و چغازنبیل، با نقشه، گاه‌نگار، عکس، ویدیو و منبع.'
+export const LANDING_DESCRIPTION = 'دانشنامهٔ مصور تمدن‌های کهن ایران پیش از هخامنشیان: گنج‌دره، علی‌کش، سیلک، شوش، شهر سوخته، جیرفت، چغازنبیل و دیگران، با نقشه، گاه‌نگار، عکس، ویدیو و منبع.'
 const CRUMB = { name: 'تمدن‌های کهن ایران', path: '/civilizations' }
 
 export function landingHead(items: readonly (CivSummary & { cover?: string })[]) {

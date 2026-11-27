@@ -38,6 +38,7 @@ export const civSources: CivSource[] = [
   unesco('unesco-susa', 'Susa', 1455),
   unesco('unesco-chogha-zanbil', 'Tchogha Zanbil', 113),
   unesco('unesco-shahr-i-sokhta', 'Shahr-i Sokhta', 1456),
+  unesco('unesco-hegmataneh', 'Hegmataneh', 1716),
   // journals, books, magazines
   {
     id: 'lawler-world-between', author: 'Andrew Lawler، مجلهٔ Archaeology (انجمن باستان‌شناسی آمریکا)', title: 'The World in Between', year: '۲۰۱۱',
@@ -58,6 +59,18 @@ export const civSources: CivSource[] = [
   {
     id: 'fazeli-2013', author: 'Hassan Fazeli Nashli, Robin Coningham و دیگران', title: 'Mapping the Neolithic occupation of the Kashan, Tehran and Qazvin plains (در The Neolithisation of Iran)', year: '2013',
     url: 'https://doi.org/10.2307/j.ctvh1dp0q.14', kind: 'book',
+  },
+  {
+    id: 'michel-1993', author: 'Rudolph H. Michel, Patrick E. McGovern, Virginia R. Badler', title: 'The first wine & beer: chemical detection of ancient fermented beverages (Analytical Chemistry 65)', year: '1993',
+    url: 'https://doi.org/10.1021/ac00056a002', kind: 'journal',
+  },
+  {
+    id: 'nyt-beer-1992', author: 'نیویورک تایمز', title: 'Jar in Iranian Ruins Betrays Beer Drinkers of 3500 B.C.', year: '۵ نوامبر ۱۹۹۲',
+    url: 'https://www.nytimes.com/1992/11/05/world/jar-in-iranian-ruins-betrays-beer-drinkers-of-3500-bc.html', kind: 'magazine',
+  },
+  {
+    id: 'desset-2022', author: 'François Desset, Kambiz Tabibzadeh, Matthieu Kervran, Gian Pietro Basello, Gianni Marchesi', title: 'The Decipherment of Linear Elamite Writing (Zeitschrift für Assyriologie 112)', year: '2022',
+    url: 'https://doi.org/10.1515/za-2022-0003', kind: 'journal',
   },
   {
     id: 'bips-sialk', author: 'John Curtis، مؤسسهٔ بریتانیایی مطالعات ایرانی (BIPS)', title: 'Tappeh Sialk and Ancient Kashan International Conference', year: '2017',

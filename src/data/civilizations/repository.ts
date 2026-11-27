@@ -15,6 +15,7 @@ type Loader = () => Promise<{ civ: Civilization }>
 /** One loader per page; a catalog entry without a loader is not listed. */
 const LOADERS: Record<string, Loader> = {
   'ganj-dareh': () => import('./content/ganj-dareh'),
+  'ali-kosh': () => import('./content/ali-kosh'),
   sialk: () => import('./content/sialk'),
   susa: () => import('./content/susa'),
   'shahr-e-sukhteh': () => import('./content/shahr-e-sukhteh'),
