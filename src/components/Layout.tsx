@@ -38,7 +38,6 @@ export function Header() {
     : [
         { to: '/', label: 'خانه' },
         { to: '/library', label: 'ادبیات', special: true, isNew: true },
-        { to: '/civilizations', label: 'تمدن‌های کهن', isNew: true },
         { to: '/cylinder', label: 'استوانهٔ کوروش' },
         { to: '/archives', label: 'بایگانی تخت‌جمشید', compact: true },
         { to: '/king/$slug', params: { slug: 'darius-i' }, label: 'داریوش بزرگ', compact: true },
@@ -155,7 +154,6 @@ export function Footer() {
       ]
     : [
         { href: '/library', label: 'کتابخانهٔ ادبیات' },
-        { href: '/civilizations', label: 'تمدن‌های کهن ایران' },
         { href: '/shahnameh', label: 'شاهنامه' },
         { href: '/cylinder', label: 'استوانهٔ کوروش' },
         { href: '/archives', label: 'بایگانی تخت‌جمشید' },

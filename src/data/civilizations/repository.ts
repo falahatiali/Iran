@@ -16,6 +16,10 @@ type Loader = () => Promise<{ civ: Civilization }>
 const LOADERS: Record<string, Loader> = {
   'ganj-dareh': () => import('./content/ganj-dareh'),
   'ali-kosh': () => import('./content/ali-kosh'),
+  'chogha-mish': () => import('./content/chogha-mish'),
+  'tepe-hissar': () => import('./content/tepe-hissar'),
+  'godin-tepe': () => import('./content/godin-tepe'),
+  'tepe-yahya': () => import('./content/tepe-yahya'),
   sialk: () => import('./content/sialk'),
   susa: () => import('./content/susa'),
   'shahr-e-sukhteh': () => import('./content/shahr-e-sukhteh'),
